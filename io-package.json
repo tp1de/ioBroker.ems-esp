@@ -69,9 +69,12 @@
 		]
 	},	
 	"native": { 
-		"mqtt_instance": 0,
+		"mqtt_instance": "mqtt.0",
 		"mqtt_topic": "ems-esp",
-		"control_file": "ems.csv"
+		"control_file": "ems.csv",
+		"km200_ip": "http://192.168.178.x",
+		"gateway_pw": " ",
+		"private_pw": " "
 	},
 	"objects": [],
 	"instanceObjects": []
