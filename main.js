@@ -1,4 +1,5 @@
 "use strict";
+"esversion":6";
 
 /*
  * Created with @iobroker/create-adapter v1.33.0
@@ -8,10 +9,13 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 
-
-
 // Load your modules here, e.g.:
-// const fs = require("fs");
+const fs = require("fs");
+const request = require("request");
+const schedule = require('node-schedule');
+
+var datafields = [];
+
 
 class EmsEsp extends utils.Adapter {
 
@@ -34,12 +38,17 @@ class EmsEsp extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		// Initialize your adapter here
+		// Initialize your adapter here - Read csv-file:
+		var fn = "./lib/"+this.config.control_file;
+		datafields = read_file(fn);
+		this.log.info(datafields);
 
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
-		this.log.info("config option1: " + this.config.option1);
-		this.log.info("config option2: " + this.config.option2);
+		//this.log.info("config option1: " + this.config.option1);
+		//this.log.info("config option2: " + this.config.option2);
+
+
 
 		/*
 		For every state in the system there has to be also an object of type state
@@ -166,4 +175,44 @@ if (require.main !== module) {
 } else {
 	// otherwise start the instance directly
 	new EmsEsp();
+}
+
+
+function read_file(fn) {
+	var result =[];
+	var data = fs.readFileSync(fn, 'utf8'); 
+	var result = [];
+	// Eingelesenen Text in ein Array splitten (\r\n, \n und\r sind die Trennzeichen für verschiedene Betriebssysteme wie Windows, Linux, OS X)
+	var textArray = data.split(/(\n|\r)/gm);
+
+	// Über alle CSV-Zeilen iterieren
+	for (var i = 0; i < textArray.length; i++) {
+		// Nur wenn die Größe einer Zeile > 1 ist (sonst ist in der Zeile nur das Zeilenumbruch Zeichen drin)
+		if (textArray[i].length > 1) {
+			var element ={};
+			var km200,ems_device,ems_field_write,ems_id,mqtt_topic_read,mqtt_field_read,type,units,min,max,states,ems_device_command;
+
+			// Zeile am Trennzeichen trennen
+			var elementArray = textArray[i].split(separator);
+			// überflüssiges Element am Ende entfernen - nur notwendig wenn die Zeile mit dem Separator endet
+			elementArray.splice(elementArray.length - 1, 1);
+			element.km200=elementArray[0].trim();
+			element.ems_device=elementArray[1].trim();
+			element.ems_field_write=elementArray[2].trim();
+			element.ems_id=elementArray[3].trim();
+			element.mqtt_topic_read=elementArray[4].trim();
+			element.mqtt_field_read=elementArray[5].trim();
+			element.type=elementArray[6].trim();
+			element.units=elementArray[7].trim();
+			element.min=elementArray[8];
+			element.max=elementArray[9];
+			var re = /,/gi;element.states=elementArray[10].replace(re,';');
+			element.ems_device_command=elementArray[11].trim();
+			element.val = '0';
+
+			// Array der Zeile dem Ergebnis hinzufügen
+			result.push(element);
+		} // Ende if
+	} // Ende for
+	return result;
 }
