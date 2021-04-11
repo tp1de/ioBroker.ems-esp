@@ -69,10 +69,9 @@
 		]
 	},	
 	"native": { 
-		"mqtt-Instanz": 0,
-		"mqtt-Topic": "ems-esp",
-		"Control-File": "ems.csv"
-
+		"mqtt_instance": 0,
+		"mqtt_topic": "ems-esp",
+		"control_file": "ems.csv"
 	},
 	"objects": [],
 	"instanceObjects": []
