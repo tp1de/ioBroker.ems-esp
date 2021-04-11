@@ -67,10 +67,12 @@
 				"js-controller": ">=2.0.0"
 			}
 		]
-	},
-	"native": {
-		"option1": true,
-		"option2": "42"
+	},	
+	"native": { 
+		"mqtt-Instanz": 0,
+		"mqtt-Topic": "ems-esp",
+		"Control-File": "ems.csv"
+
 	},
 	"objects": [],
 	"instanceObjects": []
