@@ -1,0 +1,77 @@
+{
+	"common": {
+		"name": "ems-esp",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"titleLang": {
+			"en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+			"de": "EMS-basierte Geräte (Energy Management System) von Herstellern wie Bosch, Buderus, Nefit, Junkers, Worcester und Sieger.",
+			"ru": "Оборудование на базе EMS (системы управления энергопотреблением) от таких производителей, как Bosch, Buderus, Nefit, Junkers, Worcester и Sieger.",
+			"pt": "Equipamentos baseados em EMS (Sistema de Gerenciamento de Energia) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
+			"nl": "Op EMS (Energy Management System) gebaseerde apparatuur van fabrikanten als Bosch, Buderus, Nefit, Junkers, Worcester en Sieger.",
+			"fr": "Équipement basé sur EMS (Energy Management System) de fabricants tels que Bosch, Buderus, Nefit, Junkers, Worcester et Sieger.",
+			"it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
+			"es": "Equipos basados ​​en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
+			"pl": "Sprzęt oparty na EMS (Energy Management System) producentów takich jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
+			"zh-cn": "博世（Bosch），布德鲁斯（Buderus），尼菲特（Nefit），容克斯（Junkers），伍斯特（Worcester）和西格尔（Sieger）等制造商的基于EMS（能源管理系统）的设备。"
+		},
+		"desc": {
+			"en": "ems-esp",
+			"de": "ems-esp",
+			"ru": "ems-esp",
+			"pt": "ems-esp",
+			"nl": "ems-esp",
+			"fr": "ems-esp",
+			"it": "ems-esp",
+			"es": "ems-esp",
+			"pl": "ems-esp",
+			"zh-cn": "ems-esp"
+		},
+		"authors": [
+			"Thomas Petrick <tpetrick@gmx.de>"
+		],
+		"keywords": [
+			"ems-esp",
+			"buderus",
+			"km200",
+			"heating"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"icon": "ems-esp.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/tp1de/ioBroker.ems-esp/master/admin/ems-esp.png",
+		"readme": "https://github.com/tp1de/ioBroker.ems-esp/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "climate-control",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "push",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
+}
