@@ -8,6 +8,8 @@
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 
+
+
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
