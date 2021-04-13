@@ -1,5 +1,5 @@
 //"use strict";
-//"esversion":6";
+"esversion":6";
 
 /*
  * Created with @iobroker/create-adapter v1.33.0
@@ -8,14 +8,14 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require("@iobroker/adapter-core");
-var adapter = utils.adapter('ems-esp');
+const adapter = utils.adapter("ems-esp");
 
 // Load your modules here, e.g.:
 const fs = require("fs");
 const request = require("request");
-const schedule = require('node-schedule');
+const schedule = require("node-schedule");
 
-var datafields = [];
+let datafields = [];
 
 
 class EmsEsp extends utils.Adapter {
@@ -40,54 +40,55 @@ class EmsEsp extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here - Read csv-file:
-		var dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
-		var fn = dataDir+this.config.control_file;
-		var data ='';
-		if (this.config.control_file !== '') {
+		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
+		const fn = dataDir+this.config.control_file;
+		let data ="";
+		if (this.config.control_file !== "") {
 			try {
-				data = fs.readFileSync(fn, 'utf8');
+				data = fs.readFileSync(fn, "utf8");
 			} catch (err) {
 				this.log.info(err);
 			}
 		}
 		datafields = read_file(data);
-	
-		for (var i=2; i < datafields.length; i++) {
-			var r = datafields[i];
 
-			if (r.mqtt_field_read !== '' && r.ems_device !=='') {
-				var statename = r.ems_device+'.'+r.mqtt_field_read;
-			
-				var obj={_id:statename,type:'state',common:{},native:{}};
-				obj.common.name= 'ems:'+r.mqtt_topic_read+'.'+r.mqtt_field_read ;
+		for (let i=2; i < datafields.length; i++) {
+			const r = datafields[i];
+
+			if (r.mqtt_field_read !== "" && r.ems_device !=="") {
+				const statename = r.ems_device+"."+r.mqtt_field_read;
+
+				const obj={_id:statename,type:"state",common:{},native:{}};
+				obj.common.name= "ems:"+r.mqtt_topic_read+"."+r.mqtt_field_read ;
 				obj.common.role = "value";
 				obj.common.read = true;
-				obj.common.write = false;if (r.ems_field_write !== '') {obj.common.write = true;}
+				obj.common.write = false;if (r.ems_field_write !== "") {obj.common.write = true;}
 				obj.common.unit = r.units;
-				obj.common.type = r.type;            
+				obj.common.type = r.type;
 				if(r.min !="") obj.common.min = r.min;
 				if(r.max !="") obj.common.max = r.max;
 				if(r.states !="") obj.common.states = r.states;
 				obj.native.ems_command = r.ems_field_write;
 				obj.native.ems_device = r.ems_device_command;
 				obj.native.ems_id = r.ems_id;
-			
+
 				//this.log.info(JSON.stringify(obj));
 				await this.setObjectNotExistsAsync(statename, obj);
 				//await this.setStateAsync(statename, 0);
-                 
+
 			} else {
-				if (r.km200 !== '') {
-					/*
-					var statename = adapter_km200+r.km200;
-					var obj1 = getObject(statename);
+				if (r.km200 !== "") {
+					
+					var statename = adapter.config.km200_instance+"."+r.km200;
+					this.getObject(statename,obj1);
 					obj1._id = r.km200;
 					obj1.common.name= 'km200:'+r.km200;
 					obj1.native.ems_km200 = r.km200;
-			
-					setObject(obj1._id, obj1, function (err) {if (err) console.log('error:'+err);}); 
-					*/
-				} 
+
+					await this.setObjectNotExistsAsync(obj1._id, obj1);
+					//setObject(obj1._id, obj1, function (err) {if (err) console.log('error:'+err);});
+					
+				}
 			}
 		}
 
@@ -99,7 +100,7 @@ class EmsEsp extends utils.Adapter {
 		For every state in the system there has to be also an object of type state
 		Here a simple template for a boolean variable named "testVariable"
 		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		
+
 		await this.setObjectNotExistsAsync("testVariable", {
 			type: "state",
 			common: {
@@ -115,10 +116,10 @@ class EmsEsp extends utils.Adapter {
 
 		// MQTT Lesen
 
-		var subscribe_mqtt = this.config.mqtt_instance+'.'+this.config.mqtt_topic+'.*';
+		const subscribe_mqtt = this.config.mqtt_instance+"."+this.config.mqtt_topic+".*";
 		this.subscribeForeignStates(subscribe_mqtt);
 		this.subscribeStates("*");
- 
+
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		//this.subscribeStates("testVariable");
 
@@ -192,57 +193,57 @@ class EmsEsp extends utils.Adapter {
 	 */
 	onStateChange(id, state) {
 		if (state) {
-			if (state.from !== 'system.adapter.'+adapter.namespace) {
+			if (state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
 				//this.log.info(state.from);
-				var array = id.split('.');
-				var mqtt_selector = this.config.mqtt_instance+'.'+this.config.mqtt_topic;
-				var state_selector = array[0]+'.'+array[1]+'.'+array[2];
-				var adapt = array[0];
+				const array = id.split(".");
+				const mqtt_selector = this.config.mqtt_instance+"."+this.config.mqtt_topic;
+				const state_selector = array[0]+"."+array[1]+"."+array[2];
+				const adapt = array[0];
 				if (mqtt_selector == state_selector) {
 
 					//this.log.info(id+':'+JSON.stringify(state));
-					var device= array[3];
+					const device= array[3];
 					//adapter.log.info(typeof state.val);
 					if (typeof state.val === "string") {
-						var content = JSON.parse(state.val);
+						const content = JSON.parse(state.val);
 						for (const [key, value] of Object.entries(content)) {
 							if (typeof value !== "object") {
 								//this.log.info(device+' '+key+ ' ' + value);
 								ems2iobroker(device,key,value);
 							}
 							else {
-								var key1 = key;
-								var wert = JSON.parse(JSON.stringify(value));
+								const key1 = key;
+								const wert = JSON.parse(JSON.stringify(value));
 								for (const [key2, value2] of Object.entries(wert)) {
 									//this.log.info(device+' '+key1+'.'+key2+ ' ' + value2);
-									ems2iobroker(device,key1+'.'+key2,value2);
+									ems2iobroker(device,key1+"."+key2,value2);
 								}
 							}
 						}
-					} else write_state(device,state.val);		
+					} else write_state(device,state.val);
 				}else {
 					//this.log.info('ems-esp Änderung:'+ id + '->'+JSON.stringify(state));
-					var data = state.val;
-					adapter.getObject(id,function (err, obj) {            
+					const data = state.val;
+					adapter.getObject(id,function (err, obj) {
 						if (obj.native.ems_device != null){
-							var topic = adapter.config.mqtt_topic+'/' + obj.native.ems_device;
-							var command ={};
+							const topic = adapter.config.mqtt_topic+"/" + obj.native.ems_device;
+							const command ={};
 							command.cmd  = obj.native.ems_command;
 							command.data = data;
-							if (obj.native.ems_id != '') {
+							if (obj.native.ems_id != "") {
 								command.id = obj.native.ems_id.substr(2,1);
 							}
-							var scommand = JSON.stringify(command);
-							adapter.sendTo(adapter.config.mqtt_instance, 'sendMessage2Client', {topic : topic , message: scommand});
-						} 
+							const scommand = JSON.stringify(command);
+							adapter.sendTo(adapter.config.mqtt_instance, "sendMessage2Client", {topic : topic , message: scommand});
+						}
 						else {
 							//var statename= adapter_km200+obj.native.ems_km200;
 							//setState(statename,data);
 						}
 					});
 				}
-			} 
+			}
 		} else this.log.info(`state ${id} deleted`);
 	}
 
@@ -279,20 +280,20 @@ if (require.main !== module) {
 
 
 function read_file(data) {
-	var results =[];
+	const results =[];
 
 	// Eingelesenen Text in ein Array splitten (\r\n, \n und\r sind die Trennzeichen für verschiedene Betriebssysteme wie Windows, Linux, OS X)
-	var textArray = data.split(/(\n|\r)/gm);
+	const textArray = data.split(/(\n|\r)/gm);
 
 	// Über alle CSV-Zeilen iterieren
-	for (var i = 0; i < textArray.length; i++) {
+	for (let i = 0; i < textArray.length; i++) {
 		// Nur wenn die Größe einer Zeile > 1 ist (sonst ist in der Zeile nur das Zeilenumbruch Zeichen drin)
 		if (textArray[i].length > 1) {
-			var element ={};
+			const element ={};
 			var km200,ems_device,ems_field_write,ems_id,mqtt_topic_read,mqtt_field_read,type,units,min,max,states,ems_device_command;
-			var separator = ";";
+			const separator = ";";
 			// Zeile am Trennzeichen trennen
-			var elementArray = textArray[i].split(separator);
+			const elementArray = textArray[i].split(separator);
 			// überflüssiges Element am Ende entfernen - nur notwendig wenn die Zeile mit dem Separator endet
 			elementArray.splice(elementArray.length - 1, 1);
 			element.km200=elementArray[0].trim();
@@ -305,9 +306,9 @@ function read_file(data) {
 			element.units=elementArray[7].trim();
 			element.min=elementArray[8];
 			element.max=elementArray[9];
-			var re = /,/gi;element.states=elementArray[10].replace(re,';');
+			const re = /,/gi;element.states=elementArray[10].replace(re,";");
 			element.ems_device_command=elementArray[11].trim();
-			element.val = '0';
+			element.val = "0";
 
 			// Array der Zeile dem Ergebnis hinzufügen
 			results.push(element);
@@ -318,31 +319,31 @@ function read_file(data) {
 
 
 function ems2iobroker(device,key,value) {
-    var devicenew = '';
-    for (var i=1; i < datafields.length; i++) { 
-        if(device == datafields[i].mqtt_topic_read && key == datafields[i].mqtt_field_read) {
-            devicenew = datafields[i].ems_device;
-            write_state(devicenew+'.'+key,value);
-        }      
-    }
-    if (devicenew=='') {
-        write_state(device+'.'+key,value);
-    }
+	let devicenew = "";
+	for (let i=1; i < datafields.length; i++) {
+		if(device == datafields[i].mqtt_topic_read && key == datafields[i].mqtt_field_read) {
+			devicenew = datafields[i].ems_device;
+			write_state(devicenew+"."+key,value);
+		}
+	}
+	if (devicenew=="") {
+		write_state(device+"."+key,value);
+	}
 }
 
 
 async function write_state(field_ems,value) {
-    var statename = field_ems;
+	const statename = field_ems;
 
-	var array = statename.split('.');
-	var device = '', command ='',device_id='';
+	const array = statename.split(".");
+	let device = "", command ="",device_id="";
 
-	if (array[0] == 'thermostat_data') device = 'thermostat'; 
-	if (array[0] == 'boiler_data') device = 'boiler'; 
-	if (array[0] == 'boiler_data_ww') device = 'boiler'; 
-	if (device != '') command = array[1];
+	if (array[0] == "thermostat_data") device = "thermostat";
+	if (array[0] == "boiler_data") device = "boiler";
+	if (array[0] == "boiler_data_ww") device = "boiler";
+	if (device != "") command = array[1];
 
-	if (array[1] == 'hc1' || array[1] == 'hc2' || array[1] == 'hc3' ) {
+	if (array[1] == "hc1" || array[1] == "hc2" || array[1] == "hc3" ) {
 		device_id = array[1];
 		command = array[2];
 	}
@@ -350,30 +351,31 @@ async function write_state(field_ems,value) {
 	//adapter.log.info(array[0] +':'+value);
 
 
+	// @ts-ignore
 	await adapter.setObjectNotExistsAsync(statename, {
-			type: "state",
-			common: {
-				name: statename,
-				type: "mixed",
-				read: true
-			},
-			native: {
-				ems_command: command,
-				ems_device: device,
-				ems_device_id: device_id
-			}
-		});
+		type: "state",
+		common: {
+			name: statename,
+			type: "mixed",
+			read: true
+		},
+		native: {
+			ems_command: command,
+			ems_device: device,
+			ems_device_id: device_id
+		}
+	});
 
 
-    (function(value) {
-        adapter.getState(statename, function(err, state) {
+	(function(value) {
+		adapter.getState(statename, function(err, state) {
 			if(state == null) {
 				adapter.setState(statename, {ack: true, val: value});
-			} 
+			}
 			else {
 				if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});
 			}
-        });
-    })(value);
+		});
+	})(value);
 }
 
