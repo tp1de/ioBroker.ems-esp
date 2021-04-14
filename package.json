@@ -1,6 +1,6 @@
 {
   "name": "iobroker.ems-esp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ems-esp",
   "author": {
     "name": "Thomas Petrick",
