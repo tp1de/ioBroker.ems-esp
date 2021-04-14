@@ -1,5 +1,5 @@
 //"use strict";
-"esversion":6";
+//"esversion":6";
 
 /*
  * Created with @iobroker/create-adapter v1.33.0
@@ -78,16 +78,17 @@ class EmsEsp extends utils.Adapter {
 
 			} else {
 				if (r.km200 !== "") {
-					
 					var statename = adapter.config.km200_instance+"."+r.km200;
-					this.getObject(statename,obj1);
-					obj1._id = r.km200;
-					obj1.common.name= 'km200:'+r.km200;
-					obj1.native.ems_km200 = r.km200;
-
-					await this.setObjectNotExistsAsync(obj1._id, obj1);
-					//setObject(obj1._id, obj1, function (err) {if (err) console.log('error:'+err);});
-					
+					//this.log.info(statename);
+					try {
+						var obj1 = await this.getForeignObjectAsync(statename);
+						obj1._id = r.km200;
+						obj1.common.name= 'km200:'+r.km200;
+						obj1.native.ems_km200 = r.km200;
+						await this.setObjectNotExistsAsync(obj1._id, obj1);									  
+					  } catch (err) {
+						this.log.info(statename+':'+err);
+					  }
 				}
 			}
 		}
@@ -120,6 +121,28 @@ class EmsEsp extends utils.Adapter {
 		this.subscribeForeignStates(subscribe_mqtt);
 		this.subscribeStates("*");
 
+		km200_read(datafields);
+		var j = schedule.scheduleJob('* * * * *', function() {
+			//adapter.log.info('SCHEDULE*********');
+			km200_read(datafields);
+		});
+
+		async function km200_read(result){		
+			for (var i=2; i < result.length; i++) {
+				if (result[i].mqtt_field_read == '' && result[i].km200 != '') {
+					var statename = adapter.config.km200_instance +'.'+result[i].km200;
+					try {
+						var state = await adapter.getForeignStateAsync(statename);
+						statename= result[i].km200;
+						adapter.setState(statename, {ack: true, val: state.val});
+					} catch (err) {
+						//adapter.log.info(statename+':'+err);
+					}
+				}         
+			}			
+		}
+
+	
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		//this.subscribeStates("testVariable");
 
@@ -238,8 +261,8 @@ class EmsEsp extends utils.Adapter {
 							adapter.sendTo(adapter.config.mqtt_instance, "sendMessage2Client", {topic : topic , message: scommand});
 						}
 						else {
-							//var statename= adapter_km200+obj.native.ems_km200;
-							//setState(statename,data);
+							var statename= adapter.config.km200_instance+'.'+obj.native.ems_km200;
+							adapter.setForeignStateAsync(statename,data);
 						}
 					});
 				}
@@ -378,4 +401,5 @@ async function write_state(field_ems,value) {
 		});
 	})(value);
 }
+
 
