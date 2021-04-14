@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.3.0",
+    "version": "0.2.0",
     "news": {
       "0.0.1": {
         "en": "initial release",
@@ -67,13 +67,12 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/iobroker.ems-esp#9061554e4f205b177d5916dbe11c903cf027d4bf"
+    "installedFrom": "tp1de/iobroker.ems-esp#e7a40c4fb3fe6ea7ea8456fe5ff4851926d7ef99"
   },
   "native": {
     "mqtt_instance": "mqtt.0",
     "mqtt_topic": "ems-esp",
     "control_file": "ems.csv",
-    "km200_instance": "km200.0",
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": " ",
     "private_pw": " "

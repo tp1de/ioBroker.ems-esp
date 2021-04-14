@@ -2,7 +2,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v 0.3
+ * ems-esp adapter version v 0.4
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -15,6 +15,23 @@ const fs = require("fs");
 const request = require("request");
 const schedule = require("node-schedule");
 let datafields = [];
+
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+const Rijndael = require('rijndael-js');
+const crypto = require('crypto');
+
+const km200_crypt_md5_salt = new Uint8Array([
+    0x86, 0x78, 0x45, 0xe9, 0x7c, 0x4e, 0x29, 0xdc,
+    0xe5, 0x22, 0xb9, 0xa7, 0xd3, 0xa3, 0xe0, 0x7b,
+    0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
+    0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
+]);
+
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 class EmsEsp extends utils.Adapter {
 
@@ -37,7 +54,20 @@ class EmsEsp extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		// Initialize your adapter here - Read csv-file:
+		// Initialize your adapter here 
+		
+		km200_server = this.config.km200_ip;
+		km200_gatewaypassword = this.config.gateway_pw;
+		km200_privatepassword = this.config.private_pw;
+		
+		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		
+		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
+		km200_aeskey = Buffer.from(km200_key,"hex");
+		cipher = new Rijndael(km200_aeskey, "ecb");		
+
+
+		// Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
 		const fn = dataDir+this.config.control_file;
 		let data ="";
@@ -69,107 +99,57 @@ class EmsEsp extends utils.Adapter {
 				obj.native.ems_command = r.ems_field_write;
 				obj.native.ems_device = r.ems_device_command;
 				obj.native.ems_id = r.ems_id;
-
-				//this.log.info(JSON.stringify(obj));
 				await this.setObjectNotExistsAsync(statename, obj);
-				//await this.setStateAsync(statename, 0);
 
 			} else {
 				if (r.km200 !== "") {
-					var statename = adapter.config.km200_instance+"."+r.km200;
-					//this.log.info(statename);
-					try {
-						var obj1 = await this.getForeignObjectAsync(statename);
-						obj1._id = r.km200;
-						obj1.common.name= 'km200:'+r.km200;
-						obj1.native.ems_km200 = r.km200;
-						await this.setObjectNotExistsAsync(obj1._id, obj1);									  
-					  } catch (err) {
-						this.log.info(statename+':'+err);
-					  }
+					let o;
+				try {
+						o = await km200_get(r.km200);					    
+					}
+					catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
+					if (o != undefined) {			
+						let obj1 = km200_obj(r.km200,o); 												
+						try {
+							obj1._id = r.km200;
+							obj1.common.name= "km200:"+r.km200;
+							obj1.native.ems_km200 = r.km200;
+							await this.setObjectNotExistsAsync(obj1._id, obj1);
+						} 
+						catch (err) {this.log.info(statename+":"+err);}
+						
+					}
 				}
 			}
 		}
 
 
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
-
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-
-		await this.setObjectNotExistsAsync("testVariable", {
-			type: "state",
-			common: {
-				name: "testVariable",
-				type: "boolean",
-				role: "indicator",
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
-		*/
-
-		// MQTT Lesen
+		// MQTT Read 
 
 		const subscribe_mqtt = this.config.mqtt_instance+"."+this.config.mqtt_topic+".*";
 		this.subscribeForeignStates(subscribe_mqtt);
 		this.subscribeStates("*");
 
-		km200_read(datafields);
-		var j = schedule.scheduleJob('* * * * *', function() {
-			//adapter.log.info('SCHEDULE*********');
-			km200_read(datafields);
-		});
+		const j = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
 
-		async function km200_read(result){		
-			for (var i=2; i < result.length; i++) {
-				if (result[i].mqtt_field_read == '' && result[i].km200 != '') {
-					var statename = adapter.config.km200_instance +'.'+result[i].km200;
+		async function km200_read(result){
+			for (let i=2; i < result.length; i++) {
+				if (result[i].mqtt_field_read == "" && result[i].km200 != "") {
+					let body;
 					try {
-						var state = await adapter.getForeignStateAsync(statename);
-						statename= result[i].km200;
-						adapter.setState(statename, {ack: true, val: state.val});
-					} catch (err) {
-						//adapter.log.info(statename+':'+err);
+						body = await km200_get(result[i].km200);
 					}
-				}         
-			}			
+					catch(error) {}
+					if (body != undefined) {
+						try {
+							var val = body.value;
+							adapter.setState(result[i].km200, {ack: true, val: val});
+						}
+						catch(error) {adapter.log.info("setState error:"+result[i].km200);}
+					}
+				}
+			}
 		}
-
-	
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		//this.subscribeStates("testVariable");
-
-
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates("lights.*");
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates("*");
-
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		//await this.setStateAsync("testVariable", true);
-
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		//await this.setStateAsync("testVariable", { val: true, ack: true });
-
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		//await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
-
-		// examples for the checkPassword/checkGroup functions
-		//let result = await this.checkPasswordAsync("admin", "iobroker");
-		//this.log.info("check user admin pw iobroker: " + result);
-
-		//result = await this.checkGroupAsync("admin", "admin");
-		//this.log.info("check group user admin group admin: " + result);
 	}
 
 	/**
@@ -190,24 +170,7 @@ class EmsEsp extends utils.Adapter {
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  * @param {string} id
-	//  * @param {ioBroker.Object | null | undefined} obj
-	//  */
-	// onObjectChange(id, obj) {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
-
-	/**
+	/********************************************************************************************************************
 	 * Is called if a subscribed state changes
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
@@ -259,8 +222,12 @@ class EmsEsp extends utils.Adapter {
 							adapter.sendTo(adapter.config.mqtt_instance, "sendMessage2Client", {topic : topic , message: scommand});
 						}
 						else {
-							var statename= adapter.config.km200_instance+'.'+obj.native.ems_km200;
-							adapter.setForeignStateAsync(statename,data);
+							try {   
+								adapter.log.info(obj.native.ems_km200);
+								var response = km200_put(obj.native.ems_km200 , data);
+								
+							}   
+							catch(error) {console.error("http fehler:"+feld);}    
 						}
 					});
 				}
@@ -330,7 +297,6 @@ function read_file(data) {
 			const re = /,/gi;element.states=elementArray[10].replace(re,";");
 			element.ems_device_command=elementArray[11].trim();
 			element.val = "0";
-
 			// Array der Zeile dem Ergebnis hinzufügen
 			results.push(element);
 		} // Ende if
@@ -400,4 +366,168 @@ async function write_state(field_ems,value) {
 	})(value);
 }
 
+async function km200_get(url) {return new Promise(function(resolve,reject) {
+    var urls = km200_server +  "/" + url.split('.').join('/') ;
+	var options = 
+        {   url: urls, 
+            method: 'GET', 
+            status: [200],
+            timeout: 5000, 
+            encoding: 'utf8',
+            port: 80,
+            headers: {'Accept': "application/json", 'agent': 'TeleHeater/2.2.3', 'User-Agent': "TeleHeater/2.2.3"} 
+        };
 
+    request(options, function(error,response,body) {
+        if (error) {return reject(error);}
+        if (response.statusCode !== 200) {return reject(error);}
+        else {                    
+            var data= km200_decrypt(body);   
+            resolve(data);}
+        }); 
+    });
+}
+
+
+
+async function km200_put(url,value) {return new Promise(function(resolve,reject) {
+    var data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );   
+    var urls = km200_server +"/" + url.split('.').join('/');
+    request.put({headers: {'Accept': '"application/json','User-Agent': 'TeleHeater/2.2.3'},url: urls, body: data},
+                function(error, response, body){if (error) {return reject(error);} resolve(response);});
+    });
+}
+
+
+function km200_decrypt(input) {
+    // Decrypt
+    var s = Buffer.from(cipher.decrypt(Buffer.from(input,"base64"),16)).toString('utf8');
+    while (s.charCodeAt(s.length - 1) === 0) s = s.slice(0, s.length - 1);
+    var output = JSON.parse(s);
+    return output;
+}
+
+function km200_encrypt(input) {
+    // Encrypt
+    var output = Buffer.from(cipher.encrypt(input,16)).toString("base64");
+    return output;
+}
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function km200_getAccesskey(gatewaypassword, privatepassword) {
+            function md5(text) {
+                return crypto.createHash('md5').update(text).digest("hex");
+            }
+
+            function str2ab(str) {
+                let buf = new ArrayBuffer(str.length * 1); // 2 bytes for each char
+                let bufView = new Uint8Array(buf);
+                for (let i = 0, strLen = str.length; i < strLen; i++) {bufView[i] = str.charCodeAt(i);}
+                return bufView;
+            }
+
+            function concatUint8Array(array1, array2) {
+                const array3 = new Uint8Array(array1.length + array2.length);
+                for (let i = 0; i < array1.length; i++) {array3[i] = array1[i];}
+                for (let i = 0; i < array2.length; i++) {array3[array1.length + i] = array2[i];}
+                return array3;
+            }
+
+            gatewaypassword = gatewaypassword.replace(/-/g, '');
+            let km200_gateway_password = str2ab(gatewaypassword);
+            let km200_private_password = str2ab(privatepassword);
+            // Erste Hälfte des Schlüssels: MD5 von ( Gerätepasswort . Salt )
+            let key_1 = md5(concatUint8Array(km200_gateway_password, km200_crypt_md5_salt));
+            // Zweite Hälfte des Schlüssels - privat: MD5 von ( Salt . privates Passwort )
+            let key_2_private = md5(concatUint8Array(km200_crypt_md5_salt, km200_private_password));
+            let km200_crypt_key_private = key_1 + key_2_private;
+            return km200_crypt_key_private.trim().toLowerCase();
+}
+
+
+function km200_obj(n,o) {
+    
+        let t = o.type;
+        let u = o.unitOfMeasure;
+        let v = o.value;
+        o.valIs = "value";
+
+        let w = !!o.writeable;
+        let r = w ? 'level' : 'value';
+        let s = false;
+        if (u === 'C') {
+            u = '°C';
+            r += '.temperature';
+        } else if (typeof u === 'undefined')
+            u = "";
+        switch (t) {
+            case 'stringValue':
+                if (Array.isArray(o.allowedValues)) {
+                    o.valIs = 'states';
+                    t = 'number';
+                    v = o.allowedValues.indexOf(o.value);
+                    s = [];
+                    for (let ii = 0; ii < o.allowedValues.length; ++ii)
+                        s.push(ii.toString() + ':' + o.allowedValues[ii]);
+                    s = s.join(';');
+                } else
+                    t = 'string';
+                break;
+            case 'floatValue':
+                t = 'number';
+                break;
+            case 'systeminfo':
+            case 'errorList':
+            case 'arrayData':
+                v = o.values; //*****
+                o.valIs = "values";
+                t = 'string';
+                w = false;
+                break;
+            case 'switchProgram':
+                v = o.switchPoints; //*****
+                o.valIs = "switchPoints";
+                t = 'string';
+                //                w = false;
+                break;
+            case 'yRecording':
+                v = o.values;
+                o.valIs = "values";
+                t = 'array';
+                w = false;
+                break;
+            default: // put others in pure objects'
+                v = o;  //*****
+                o.valIs = "values";
+                t = 'string';
+                w = false;             
+		}   
+        const c = {
+            type: 'state',
+            id: n,
+            common: {
+                id: n,
+                name: n,
+                type: t,
+                unit: u,
+                read: true,
+                write: w,
+                role: r,
+            },
+            native: {}
+        };
+
+        if (s) {
+            c.common.states = s;
+            c.common.min = 0;
+            c.common.max = o.allowedValues.length - 1;
+        }
+        if (typeof o.minValue !== 'undefined')
+            c.common.min = o.minValue;
+        if (typeof o.maxValue !== 'undefined')
+            c.common.max = o.maxValue;
+        c.native.km200 = o;
+        //c.common.native = { km200: o };
+    return c;
+}

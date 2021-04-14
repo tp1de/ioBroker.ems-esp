@@ -20,8 +20,8 @@ Therefore a mqqt-server instance has to be installed and active in ioBroker.
 This adapter then reads values from this mqtt instance and is capable to subscribe on state changes and send the respective mqtt commands back to ems-esp hardware.
 Polling is dependend on the ems-esp parameters set (e.g. boiler data updated every 10 seconds ...)
 
-If a km200 adapter is installed an running these values can be integrated into the ems-esp adapter as well (read polling every minute).
-State changes within ems-esp adapter states are then written back to the km200 adapter to send them back by http post to the km200 ip interface.
+If a km200 interface is available it cann be polled as well an the values can be integrated into the ems-esp adapter as well (read polling every minute).
+State changes within ems-esp adapter states are then send back by http post to the km200 ip interface.
 
 The ems-esp adapter reads a ems.csv file within the iobroker-data directory. 
 This file contains the following status information per datapoint: (seperated by ";")
@@ -123,8 +123,8 @@ For later updates, the above procedure is not necessary. Just do the following:
 
 ## Changelog
 
-### 0.3.0
-* (Thomas Petrick) 1st working testing adapter
+### 0.4.0
+* (Thomas Petrick) 1st working adapter
 
 ## License
 MIT License
