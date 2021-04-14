@@ -2,11 +2,11 @@
 //"esversion":6";
 
 /*
+ * ems-esp adapter version v 0.3
+ *
  * Created with @iobroker/create-adapter v1.33.0
  */
 
-// The adapter-core module gives you access to the core ioBroker functions
-// you need to create an adapter
 const utils = require("@iobroker/adapter-core");
 const adapter = utils.adapter("ems-esp");
 
@@ -14,9 +14,7 @@ const adapter = utils.adapter("ems-esp");
 const fs = require("fs");
 const request = require("request");
 const schedule = require("node-schedule");
-
 let datafields = [];
-
 
 class EmsEsp extends utils.Adapter {
 
