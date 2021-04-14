@@ -13,7 +13,36 @@
 
 ## ems-esp adapter for ioBroker
 
-Describe your project here
+The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.0.x and the ESP32 chip.
+
+The EMS-ESP32 reads values from the hardware EMS-bus with installed ems-esp hardware and distribution of the values by mqtt. 
+Therefore a mqqt-server instance has to be installed and active in ioBroker.
+This adapter then reads values from this mqtt instance and is capable to subscribe on state changes and send the respective mqtt commands back to ems-esp hardware.
+Polling is dependend on the ems-esp parameters set (e.g. boiler data updated every 10 seconds ...)
+
+If a km200 adapter is installed an running these values can be integrated into the ems-esp adapter as well (read polling every minute).
+State changes within ems-esp adapter states are then written back to the km200 adapter to send them back by http post to the km200 ip interface.
+
+The ems-esp adapter reads a ems.csv file within the iobroker-data directory. 
+This file contains the following status information per datapoint: (seperated by ";")
+
+column 1: km200 equivalent state
+column 2: ioBroker device for state tree (e.g. heatSources instead of boiler)
+column 3: ems-esp write command - if filled the state is writable
+column 4: id for mqtt write commands (e.g. hc1 / hc2 etc.)
+column 5: mqtt topic for read
+column 6: mqtt field for read
+column 7: type (number,character ...)
+column 8: unit (%, minutes , °C ...)
+column 9: minimum value 
+column 10: maximum value
+column 11: allowed states (e.g. 0:off;1:on ...)
+column 12: device (for mqtt commands)
+
+By start of the adapter all states will be initialized by reading the ems.csv file.
+If the file is not available, then the states will be created as being present in mqtt topics.
+In this case the above information is only partially available within ioBroker. (no info about writable, units etc.)
+
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
@@ -94,8 +123,8 @@ For later updates, the above procedure is not necessary. Just do the following:
 
 ## Changelog
 
-### 0.0.1
-* (Thomas Petrick) initial release
+### 0.3.0
+* (Thomas Petrick) 1st working testing adapter
 
 ## License
 MIT License
