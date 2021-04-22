@@ -16,7 +16,6 @@ const request = require("request");
 const schedule = require("node-schedule");
 let datafields = [];
 
-
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 const Rijndael = require('rijndael-js');
@@ -30,6 +29,19 @@ const km200_crypt_md5_salt = new Uint8Array([
 ]);
 
 let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
+
+// -------- energy recordings parameters ------------------------------------
+
+let root = "recordings."; 
+let avg12m = "actualPower.avg12m";
+let avg12mdhw = "actualDHWPower.avg12m";
+let hh = "actualPower._Hours", hhdhw= "actualDHWPower._Hours";
+let dd = "actualPower._Days", dddhw= "actualDHWPower._Days";
+let mm = "actualPower._Months", mmdhw= "actualDHWPower._Months";
+let felddhw = "recordings/heatSources/actualDHWPower?interval=";
+let feld = "recordings/heatSources/actualPower?interval=";
+let sum_mm = 0, sum_mm_1 = 0, sumdhw_mm = 0, sumdhw_mm_1 = 0, datamm=[],datammdhw=[];
+let db = 'sql.0';
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +97,6 @@ class EmsEsp extends utils.Adapter {
 
 			if (r.mqtt_field_read !== "" && r.ems_device !=="") {
 				const statename = r.ems_device+"."+r.mqtt_field_read;
-
 				const obj={_id:statename,type:"state",common:{},native:{}};
 				obj.common.name= "ems:"+r.mqtt_topic_read+"."+r.mqtt_field_read ;
 				obj.common.role = "value";
@@ -116,21 +127,64 @@ class EmsEsp extends utils.Adapter {
 							obj1.native.ems_km200 = r.km200;
 							await this.setObjectNotExistsAsync(obj1._id, obj1);
 						} 
-						catch (err) {this.log.info(statename+":"+err);}
-						
+						catch (err) {this.log.info(statename+":"+err);}						
 					}
 				}
 			}
 		}
 
-
+		// Recording states
+		
+		await this.setObjectNotExistsAsync(root+hh,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+hhdhw,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+dd,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+dddhw,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+mm,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+mmdhw,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
+		await this.setObjectNotExistsAsync(root+avg12m,{type: 'state',common: {type: 'number', read: true, write: false}, native: {}});
+		await this.setObjectNotExistsAsync(root+avg12mdhw,{type: 'state',common: {type: 'number', read: true, write: false}, native: {}});
+		
+		/*
+		enable_state(root+hh);
+		enable_state(root+hhdhw);
+		enable_state(root+dd);
+		enable_state(root+dddhw);
+		enable_state(root+mm);
+		enable_state(root+mmdhw);
+		*/
+		
+		async function enable_state(stateid) {
+			var id =  adapter.namespace  + '.' + stateid;
+			//adapter.log.info(id);
+			adapter.sendTo('sql.0', 'enableHistory',
+				{
+					id: id,
+					options: {
+						changesOnly: false,
+						debounce: 0,
+						retention: 31536000,
+						maxLength: 3,
+						changesMinDelta: 0,
+						aliasId: ""
+					}
+				}, function (result) {
+					if (result.error) { console.log(result.error); }
+					if (result.success) { }
+				});
+			//await adapter.setStateAsync(stateid,{val:0});
+		}
+		
 		// MQTT Read 
 
 		const subscribe_mqtt = this.config.mqtt_instance+"."+this.config.mqtt_topic+".*";
 		this.subscribeForeignStates(subscribe_mqtt);
 		this.subscribeStates("*");
 
+		// km200 Read 
+
 		const j = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
+		//km200_recordings();
+		schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
 
 		async function km200_read(result){
 			for (let i=2; i < result.length; i++) {
@@ -151,6 +205,8 @@ class EmsEsp extends utils.Adapter {
 			}
 		}
 	}
+
+
 
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -179,21 +235,16 @@ class EmsEsp extends utils.Adapter {
 		if (state) {
 			if (state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
-				//this.log.info(state.from);
 				const array = id.split(".");
 				const mqtt_selector = this.config.mqtt_instance+"."+this.config.mqtt_topic;
 				const state_selector = array[0]+"."+array[1]+"."+array[2];
 				const adapt = array[0];
 				if (mqtt_selector == state_selector) {
-
-					//this.log.info(id+':'+JSON.stringify(state));
 					const device= array[3];
-					//adapter.log.info(typeof state.val);
 					if (typeof state.val === "string") {
 						const content = JSON.parse(state.val);
 						for (const [key, value] of Object.entries(content)) {
 							if (typeof value !== "object") {
-								//this.log.info(device+' '+key+ ' ' + value);
 								ems2iobroker(device,key,value);
 							}
 							else {
@@ -206,7 +257,7 @@ class EmsEsp extends utils.Adapter {
 							}
 						}
 					} else write_state(device,state.val);
-				}else {
+				} else {
 					//this.log.info('ems-esp Änderung:'+ id + '->'+JSON.stringify(state));
 					const data = state.val;
 					adapter.getObject(id,function (err, obj) {
@@ -224,15 +275,14 @@ class EmsEsp extends utils.Adapter {
 						else {
 							try {   
 								adapter.log.info(obj.native.ems_km200);
-								var response = km200_put(obj.native.ems_km200 , data);
-								
+								var response = km200_put(obj.native.ems_km200 , data);								
 							}   
 							catch(error) {console.error("http fehler:"+feld);}    
 						}
 					});
 				}
 			}
-		} else this.log.info(`state ${id} deleted`);
+		} else this.log.info(`state ${id} deleted`);		
 	}
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
@@ -269,27 +319,24 @@ if (require.main !== module) {
 
 function read_file(data) {
 	const results =[];
-
 	// Eingelesenen Text in ein Array splitten (\r\n, \n und\r sind die Trennzeichen für verschiedene Betriebssysteme wie Windows, Linux, OS X)
 	const textArray = data.split(/(\n|\r)/gm);
 
-	// Über alle CSV-Zeilen iterieren
 	for (let i = 0; i < textArray.length; i++) {
-		// Nur wenn die Größe einer Zeile > 1 ist (sonst ist in der Zeile nur das Zeilenumbruch Zeichen drin)
 		if (textArray[i].length > 1) {
 			const element ={};
 			var km200,ems_device,ems_field_write,ems_id,mqtt_topic_read,mqtt_field_read,type,units,min,max,states,ems_device_command;
 			const separator = ";";
-			// Zeile am Trennzeichen trennen
 			const elementArray = textArray[i].split(separator);
-			// überflüssiges Element am Ende entfernen - nur notwendig wenn die Zeile mit dem Separator endet
 			elementArray.splice(elementArray.length - 1, 1);
 			element.km200=elementArray[0].trim();
 			element.ems_device=elementArray[1].trim();
 			element.ems_field_write=elementArray[2].trim();
 			element.ems_id=elementArray[3].trim();
-			element.mqtt_topic_read=elementArray[4].trim();
-			element.mqtt_field_read=elementArray[5].trim();
+			element.mqtt_topic_read=elementArray[4].toLowerCase();
+			element.mqtt_topic_read=element.mqtt_topic_read.trim();
+			element.mqtt_field_read=elementArray[5].toLowerCase();
+			element.mqtt_field_read=element.mqtt_field_read.trim();
 			element.type=elementArray[6].trim();
 			element.units=elementArray[7].trim();
 			element.min=elementArray[8];
@@ -297,22 +344,25 @@ function read_file(data) {
 			const re = /,/gi;element.states=elementArray[10].replace(re,";");
 			element.ems_device_command=elementArray[11].trim();
 			element.val = "0";
-			// Array der Zeile dem Ergebnis hinzufügen
 			results.push(element);
-		} // Ende if
-	} // Ende for
+		} // End if
+	} // End for
 	return results;
 }
 
 
 function ems2iobroker(device,key,value) {
 	let devicenew = "";
+	key = key.toLowerCase();
+	device = device.toLowerCase();
+
 	for (let i=1; i < datafields.length; i++) {
 		if(device == datafields[i].mqtt_topic_read && key == datafields[i].mqtt_field_read) {
 			devicenew = datafields[i].ems_device;
 			write_state(devicenew+"."+key,value);
 		}
 	}
+
 	if (devicenew=="") {
 		write_state(device+"."+key,value);
 	}
@@ -321,7 +371,6 @@ function ems2iobroker(device,key,value) {
 
 async function write_state(field_ems,value) {
 	const statename = field_ems;
-
 	const array = statename.split(".");
 	let device = "", command ="",device_id="";
 
@@ -341,28 +390,13 @@ async function write_state(field_ems,value) {
 	// @ts-ignore
 	await adapter.setObjectNotExistsAsync(statename, {
 		type: "state",
-		common: {
-			name: statename,
-			type: "mixed",
-			read: true
-		},
-		native: {
-			ems_command: command,
-			ems_device: device,
-			ems_device_id: device_id
-		}
+		common: {name: statename,type: "mixed",read: true},
+		native: {ems_command: command,ems_device: device,ems_device_id: device_id}
 	});
-
-
 	(function(value) {
 		adapter.getState(statename, function(err, state) {
-			if(state == null) {
-				adapter.setState(statename, {ack: true, val: value});
-			}
-			else {
-				if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});
-			}
-		});
+			if(state == null) {adapter.setState(statename, {ack: true, val: value});}
+			else {if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});} });
 	})(value);
 }
 
@@ -373,7 +407,7 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
             method: 'GET', 
             status: [200],
             timeout: 5000, 
-            encoding: 'utf8',
+            //encoding: 'utf8',
             port: 80,
             headers: {'Accept': "application/json", 'agent': 'TeleHeater/2.2.3', 'User-Agent': "TeleHeater/2.2.3"} 
         };
@@ -412,6 +446,360 @@ function km200_encrypt(input) {
     var output = Buffer.from(cipher.encrypt(input,16)).toString("base64");
     return output;
 }
+
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+async function km200_recordings(){
+	var adapt = adapter.namespace+'.';
+	await hours();
+    await days();
+    await months();
+    await write2mm(adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1);
+    await write2mm(adapt+root+mm,sum_mm,sum_mm_1);
+	await write_avg12m();
+}   
+
+async function write_avg12m(){
+	var adapt = adapter.namespace+'.';
+
+	var query = "SELECT ts,val FROM iobroker.ts_number where id = (SELECT id FROM iobroker.datapoints where name = ";
+    query +=  "'"+adapt+root+mmdhw+"');";
+    
+    adapter.sendTo(db, 'query', query, function (result) {
+        if (result.error  || result.result[0] == null) {} else {
+            var count = 0, sum = 0, avg = 0, val = 0;
+            count = result.result.length;
+            for (var i = count-13; i < count-1; i++){
+                val = result.result[i].val;
+                sum += val;
+            } 
+            sum = Math.round(sum) ;
+            adapter.setState(root+avg12mdhw, sum);
+        }
+    });
+
+    query = "SELECT ts,val FROM iobroker.ts_number where id = (SELECT id FROM iobroker.datapoints where name = ";
+    query +=  "'"+adapt+root+mm+"');";
+    
+    adapter.sendTo('sql.0', 'query', query, function (result) {
+        if (result.error  || result.result[0] == null) {} else {
+            var count = 0, sum = 0, avg = 0, val = 0;
+            count = result.result.length;
+            for (var i = count-13; i < count-1; i++){
+                val = result.result[i].val;
+                sum += val;
+            } 
+            sum = Math.round(sum) ;
+            adapter.setState(root+avg12m, sum);
+        }
+    });
+}
+
+
+
+async function hours() {
+	var adapt = adapter.namespace+'.';
+    // id's der datenpunkte lesen
+    var datum= new Date();
+	var datums = datum.getFullYear()+'/'+ (datum.getMonth()+1) +'/'+datum.getDate();
+    var url1 = feld + datums;
+    var url11 = felddhw + datums;    
+
+    try 
+    {   var data = await km200_get(url1);
+    }   catch(error) {data = " "; }
+    if (data != " ") writehh (data,adapt+root+hh);
+  
+    try 
+    {   var data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ") writehh (data,adapt+root+hhdhw);
+    
+    datum.setDate(datum.getDate() - 1);
+    datums = datum.getFullYear()+'/'+ (datum.getMonth()+1) +'/'+datum.getDate();
+    var url2 = feld + datums;
+    var url21 = felddhw + datums;
+    try 
+    {   var data = await km200_get(url2);
+    }   catch(error) {data = " "; }    
+    if (data != " ") writehh (data,adapt+root+hh);
+    
+    try 
+    {   var data = await km200_get(url21);
+    }   catch(error) {data = " "; }
+    if (data != " ") writehh (data,adapt+root+hhdhw);
+
+    datum.setDate(datum.getDate() - 1);
+    datums = datum.getFullYear()+'/'+ (datum.getMonth()+1) +'/'+datum.getDate();
+    var url3 = feld + datums;
+    var url31 = felddhw + datums;
+    try 
+    {   var data = await km200_get(url3);
+    }   catch(error) {data = " "; }    
+    if (data != " ") writehh (data,adapt+root+hh);
+    try 
+    {   var data = await km200_get(url31);
+    }   catch(error) {data = " "; }
+    if (data != " ") writehh (data,adapt+root+hhdhw);
+    
+}
+
+//************************************************************************************************************************************************** */
+async function days() {
+	const adapt = adapter.namespace+'.';
+
+    var datum= new Date();
+	var jahr = datum.getFullYear();
+    var monat = datum.getMonth() + 1;
+
+//  Aktueller Monat
+    var datums = jahr+'-'+monat;
+    if (monat < 10) datums = jahr+'-0'+monat;
+ 
+    var url1 = feld + datums;
+    var url11 = felddhw + datums;    
+    try 
+    {   var data = await km200_get(url1);
+    }   catch(error) {data = " "; }
+    if (data != " ")  {sum_mm=summe(data);writedd (data,adapt+root+dd);}
+    try 
+    {   var data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ")  {sumdhw_mm=summe(data);writedd (data,adapt+root+dddhw);}
+    
+
+//  Vormonat
+    if (monat == 1) {jahr = jahr-1;monat=12;}
+    else if (monat > 1) {monat = monat-1;}
+
+    var datums = jahr+'-'+monat;
+    if (monat < 10) datums = jahr+'-0'+monat;    
+
+    var url1 = feld + datums;
+    var url11 = felddhw + datums;
+    try 
+    {   var data = await km200_get(url1);
+    }   catch(error) {data = " "; }    
+    if (data != " ") {sum_mm_1 = summe(data);writedd (data,adapt+root+dd);}
+    try 
+    {   var data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ") {sumdhw_mm_1=summe(data);writedd (data,adapt+root+dddhw);}
+  
+}
+
+//************************************************************************************************************************************************** */
+async function months() {
+	const adapt = adapter.namespace+'.';
+
+    var datum= new Date();
+    datamm=[];
+    datammdhw=[];
+
+    // vor 2 Jahren
+    var datums = datum.getFullYear()-2;
+    var data ='', body='';
+     
+    var url1 = feld + datums;
+    var url11 = felddhw + datums;    
+
+    try 
+    {   data = await km200_get(url1);
+    }   catch(error) {data = " "; }
+    if (data != " ") writemm (data,adapt+root+mm,0,0,datamm);
+
+    try 
+    {   data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ") writemm (data,adapt+root+mmdhw,0,0,datammdhw);
+   
+
+    // Vorjahr
+    datums = datum.getFullYear()-1;
+    url1 = feld + datums;
+    url11 = felddhw + datums;
+
+    try 
+    {   data = await km200_get(url1);
+    }   catch(error) {data = " "; }    
+    if (data != " ") writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
+    
+    try 
+    {   data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ") writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
+
+    // aktuelles Jahr
+    datums = datum.getFullYear();
+    url1 = feld + datums;
+    url11 = felddhw + datums;
+
+    try 
+    {   data = await km200_get(url1);
+    }   catch(error) {data = " "; }    
+    if (data != " ") writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
+    
+    try 
+    {   data = await km200_get(url11);
+    }   catch(error) {data = " "; }
+    if (data != " ") writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
+ 
+}
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+async function writehh (data,feld){
+    interval = data.interval;
+    var ut1 = new Date(interval).getTime();
+    var ut2 = ut1 + 3600000 * 25 ;
+    var liste = data.recording;
+
+    await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);
+	await sleep(1000);
+
+    var i = 0;
+    var daten = [];
+    
+    for (i = 0; i < liste.length; i++){
+        if (liste[i] !== null){
+            var wert = Math.round(liste[i].y / 6) / 10;   
+            var ts = ut1 + ((i+2) * 3600000 );
+            daten.push({id: feld,state: {ts: + ts ,val: wert}})
+        }
+    } 
+    await adapter.sendToAsync(db, 'storeState', daten);
+}
+
+async function writedd (data,feld){
+    var interval = data.interval;
+    var ut1 = new Date(interval).getTime();
+
+    var year = interval.substr(0,4);
+    var month = parseInt(interval.substr(5,2))-1;
+    var days = daysofmonth(year,month);
+
+    var ut2 = ut1 + 3600000 * 24 * days ;
+    var liste = data.recording;
+
+    await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);
+    await sleep(1000);
+    var i = 0;
+    var daten = [];
+
+    for (i = 0; i < liste.length; i++){
+        if (liste[i] !== null)  {
+            var wert = Math.round(liste[i].y / 6) / 10;      
+            var ts = ut1 + 60000 + (i * 3600000 * 24);
+            if (liste[i].c > 0) daten.push({id: feld,state: {ts: + ts ,val: wert}})
+        }
+    } 
+    await adapter.sendToAsync(db,'storeState', daten);
+}
+
+function summe (data){
+    var sum = 0;
+    var liste = data.recording;
+    var i = 0;
+    for (i = 0; i < liste.length; i++) {
+        if (liste[i] != null) {
+            var wert = Math.round(liste[i].y / 6) / 10;
+            sum = sum + wert;
+        }
+    }
+    return sum;
+}
+
+async function writemm (data,feld,m0,m1,dataarray){
+
+    var year = data.interval;
+    var interval = year + "-01-01";
+    var ut1 = new Date(interval).getTime();
+    interval = year + "-12-31";
+    var ut2 = new Date(interval).getTime();
+    var liste = data.recording;
+
+    var ya = new Date().getFullYear();
+    var ma = new Date().getMonth()+1;
+
+    await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);    
+    await sleep(1000);
+
+    var ts = ut1;
+    var days = 0;
+    var i = 0;
+    var daten = [];
+
+    for (i = 0; i < liste.length; i++) {
+        if (liste[i] != null) {
+            var wert = Math.round(liste[i].y / 6) / 10;
+            var m = i+1;
+            var t = year+ "-" + m.toString() +"-02" ;
+            ts = new Date(t).getTime();
+            if (liste[i].c > 0) {
+                daten.push({id: feld,state: {ts: + ts ,val: wert}})
+                dataarray.push(wert);
+            }
+            else {
+                //console.log('ma:'+ma+'  m0:'+m0+'  m1:'+m1);
+                if (ya === parseInt(year) && ma === m) daten.push({id: feld,state: {ts: + ts ,val: m0}});
+                if (ya === parseInt(year) && m < ma){
+                     daten.push({id: feld,state: {ts: + ts ,val: m1}});
+                    dataarray.push(m1);
+                }     
+            }
+        } 
+    } 
+    await adapter.sendToAsync(db,'storeState', daten);
+}
+
+async function write2mm (feld,m0,m1){
+
+    var ya = new Date().getFullYear();
+    var ma = new Date().getMonth();
+    var da = new Date().getDate();
+    var ha = new Date().getHours();
+
+    //console.log(ya+'/'+ma+'/'+da);
+
+    if (ma > 0) {var ut1 = new Date(ya,ma-1).getTime();}
+    else        {var ut1 = new Date(ya-1,11).getTime();}
+    if (ma === 11) {var ut2 = new Date(ya+1,0).getTime();}
+    else           {var ut2 = new Date(ya,ma+1).getTime();}
+    
+    //console.log('ut1:'+ut1);console.log('ut2:'+ut2);
+
+    await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);    
+    await sleep(1000);
+
+    var daten = [];
+    var ts = new Date(ya,ma,da,ha).getTime();
+    daten.push({id: feld,state: {ts: + ts ,val: m0}});
+
+    var ts = ut1 + (2*24*60*60*1000);
+    daten.push({id: feld,state: {ts: + ts ,val: m1}});
+    //console.log(daten);
+    await adapter.sendToAsync(db,'storeState', daten);
+}
+
+
+function daysofmonth(year,i) {
+    var month = i+1;
+    var y = new Date().getFullYear();
+    var m = new Date().getMonth();
+
+    if ((year == y) && (i == m)) {
+         var days = new Date().getDate();
+         return days;
+    } 
+    if(month != 2) {
+        if(month == 9 || month == 4 || month == 6 || month == 11) {return 30;} 
+        else {return 31;}
+    } else {return (year % 4) == "" && (year % 100) !="" ? 29 : 28;}
+}
+
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
