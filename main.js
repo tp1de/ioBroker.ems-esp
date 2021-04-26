@@ -2,36 +2,30 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v 0.4
+ * ems-esp adapter version v 0.6
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
 
 const utils = require("@iobroker/adapter-core");
 const adapter = utils.adapter("ems-esp");
-
-// Load your modules here, e.g.:
 const fs = require("fs");
 const request = require("request");
 const schedule = require("node-schedule");
 let datafields = [];
 
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+// ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
 const Rijndael = require('rijndael-js');
 const crypto = require('crypto');
-
 const km200_crypt_md5_salt = new Uint8Array([
     0x86, 0x78, 0x45, 0xe9, 0x7c, 0x4e, 0x29, 0xdc,
     0xe5, 0x22, 0xb9, 0xa7, 0xd3, 0xa3, 0xe0, 0x7b,
     0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
     0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
-
-let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,emsesp;
 
 // -------- energy recordings parameters ------------------------------------
-
 let root = "recordings."; 
 let avg12m = "actualPower.avg12m";
 let avg12mdhw = "actualDHWPower.avg12m";
@@ -66,75 +60,31 @@ class EmsEsp extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		// Initialize your adapter here 
-		
 		km200_server = this.config.km200_ip;
 		km200_gatewaypassword = this.config.gateway_pw;
 		km200_privatepassword = this.config.private_pw;
-		
+        emsesp = this.config.emsesp_ip ;
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
 		cipher = new Rijndael(km200_aeskey, "ecb");		
 
-
-		// Read csv-file:
+        // Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
 		const fn = dataDir+this.config.control_file;
 		let data ="";
+
 		if (this.config.control_file !== "") {
-			try {
-				data = fs.readFileSync(fn, "utf8");
-			} catch (err) {
-				this.log.info(err);
-			}
+			try {data = fs.readFileSync(fn, "utf8");
+			} catch (err) {this.log.info(err);}
 		}
 		datafields = read_file(data);
+        
+        init_states_emsesp();
+        init_states_km200();
 
-		for (let i=2; i < datafields.length; i++) {
-			const r = datafields[i];
-
-			if (r.mqtt_field_read !== "" && r.ems_device !=="") {
-				const statename = r.ems_device+"."+r.mqtt_field_read;
-				const obj={_id:statename,type:"state",common:{},native:{}};
-				obj.common.name= "ems:"+r.mqtt_topic_read+"."+r.mqtt_field_read ;
-				obj.common.role = "value";
-				obj.common.read = true;
-				obj.common.write = false;if (r.ems_field_write !== "") {obj.common.write = true;}
-				obj.common.unit = r.units;
-				obj.common.type = r.type;
-				if(r.min !="") obj.common.min = r.min;
-				if(r.max !="") obj.common.max = r.max;
-				if(r.states !="") obj.common.states = r.states;
-				obj.native.ems_command = r.ems_field_write;
-				obj.native.ems_device = r.ems_device_command;
-				obj.native.ems_id = r.ems_id;
-				await this.setObjectNotExistsAsync(statename, obj);
-
-			} else {
-				if (r.km200 !== "") {
-					let o;
-				try {
-						o = await km200_get(r.km200);					    
-					}
-					catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
-					if (o != undefined) {			
-						let obj1 = km200_obj(r.km200,o); 												
-						try {
-							obj1._id = r.km200;
-							obj1.common.name= "km200:"+r.km200;
-							obj1.native.ems_km200 = r.km200;
-							await this.setObjectNotExistsAsync(obj1._id, obj1);
-						} 
-						catch (err) {this.log.info(statename+":"+err);}						
-					}
-				}
-			}
-		}
-
-		// Recording states
-		
+        // Recording states
+		     
 		await this.setObjectNotExistsAsync(root+hh,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
 		await this.setObjectNotExistsAsync(root+hhdhw,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
 		await this.setObjectNotExistsAsync(root+dd,{type: 'state',common: {type: 'number', read: true, write: true}, native: {}});
@@ -144,69 +94,37 @@ class EmsEsp extends utils.Adapter {
 		await this.setObjectNotExistsAsync(root+avg12m,{type: 'state',common: {type: 'number', read: true, write: false}, native: {}});
 		await this.setObjectNotExistsAsync(root+avg12mdhw,{type: 'state',common: {type: 'number', read: true, write: false}, native: {}});
 		
-		/*
 		enable_state(root+hh);
 		enable_state(root+hhdhw);
 		enable_state(root+dd);
 		enable_state(root+dddhw);
 		enable_state(root+mm);
 		enable_state(root+mmdhw);
-		*/
-		
+			
 		async function enable_state(stateid) {
 			var id =  adapter.namespace  + '.' + stateid;
-			//adapter.log.info(id);
-			adapter.sendTo('sql.0', 'enableHistory',
-				{
-					id: id,
-					options: {
-						changesOnly: false,
-						debounce: 0,
-						retention: 31536000,
-						maxLength: 3,
-						changesMinDelta: 0,
-						aliasId: ""
-					}
-				}, function (result) {
+			adapter.sendTo('sql.0', 'enableHistory', {id: id, options: 
+                {changesOnly: false,debounce: 0,retention: 31536000,
+				maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 					if (result.error) { console.log(result.error); }
-					if (result.success) { }
-				});
-			//await adapter.setStateAsync(stateid,{val:0});
+					if (result.success) { } 
+            });
 		}
 		
-		// MQTT Read 
 
-		const subscribe_mqtt = this.config.mqtt_instance+"."+this.config.mqtt_topic+".*";
-		this.subscribeForeignStates(subscribe_mqtt);
 		this.subscribeStates("*");
 
-		// km200 Read 
+		// ems and km200 read schedule
 
-		const j = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
-		//km200_recordings();
+		const s1 = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
+        const s2 = schedule.scheduleJob("*/15 * * * * *", function() {ems_read();});
+       
+
+		km200_recordings();
+        await sleep(5000);
 		schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
 
-		async function km200_read(result){
-			for (let i=2; i < result.length; i++) {
-				if (result[i].mqtt_field_read == "" && result[i].km200 != "") {
-					let body;
-					try {
-						body = await km200_get(result[i].km200);
-					}
-					catch(error) {}
-					if (body != undefined) {
-						try {
-							var val = body.value;
-							adapter.setState(result[i].km200, {ack: true, val: val});
-						}
-						catch(error) {adapter.log.info("setState error:"+result[i].km200);}
-					}
-				}
-			}
-		}
-	}
-
-
+    }
 
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
@@ -235,54 +153,26 @@ class EmsEsp extends utils.Adapter {
 		if (state) {
 			if (state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
-				const array = id.split(".");
-				const mqtt_selector = this.config.mqtt_instance+"."+this.config.mqtt_topic;
-				const state_selector = array[0]+"."+array[1]+"."+array[2];
-				const adapt = array[0];
-				if (mqtt_selector == state_selector) {
-					const device= array[3];
-					if (typeof state.val === "string") {
-						const content = JSON.parse(state.val);
-						for (const [key, value] of Object.entries(content)) {
-							if (typeof value !== "object") {
-								ems2iobroker(device,key,value);
-							}
-							else {
-								const key1 = key;
-								const wert = JSON.parse(JSON.stringify(value));
-								for (const [key2, value2] of Object.entries(wert)) {
-									//this.log.info(device+' '+key1+'.'+key2+ ' ' + value2);
-									ems2iobroker(device,key1+"."+key2,value2);
-								}
-							}
-						}
-					} else write_state(device,state.val);
-				} else {
-					//this.log.info('ems-esp Änderung:'+ id + '->'+JSON.stringify(state));
-					const data = state.val;
-					adapter.getObject(id,function (err, obj) {
-						if (obj.native.ems_device != null){
-							const topic = adapter.config.mqtt_topic+"/" + obj.native.ems_device;
-							const command ={};
-							command.cmd  = obj.native.ems_command;
-							command.data = data;
-							if (obj.native.ems_id != "") {
-								command.id = obj.native.ems_id.substr(2,1);
-							}
-							const scommand = JSON.stringify(command);
-							adapter.sendTo(adapter.config.mqtt_instance, "sendMessage2Client", {topic : topic , message: scommand});
-						}
-						else {
-							try {   
-								adapter.log.info(obj.native.ems_km200);
-								var response = km200_put(obj.native.ems_km200 , data);								
-							}   
-							catch(error) {console.error("http fehler:"+feld);}    
-						}
-					});
-				}
+                var value = state.val;
+               
+                adapter.getObject(id,function (err, obj) {
+                    if (obj.native.ems_device != null){
+                        var url = emsesp + "/api?device="+obj.native.ems_device;
+                        url+= "&cmd="+obj.native.ems_command+"&data="+value;
+                        if (obj.native.ems_id != "") {
+                            url += "&id="+obj.native.ems_id.substr(2,1);
+                        }
+                        try {var response = ems_get(url); }
+                        catch(error) {adapter.log.error("ems http write error:"+id);} 
+                    }
+                    else {
+                        try {var response = km200_put(obj.native.ems_km200 , value);}   
+                        catch(error) {console.error("km200 http write error:"+obj.native.ems_km200);}    
+                    }
+                });					
+				
 			}
-		} else this.log.info(`state ${id} deleted`);		
+		} else adapter.log.info("state "+id+" deleted");		
 	}
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
@@ -316,6 +206,139 @@ if (require.main !== module) {
 	new EmsEsp();
 }
 
+//---------functions ---------------------------------------------------------------------------------------------------------
+
+async function init_states_km200() {
+    for (let i=2; i < datafields.length; i++) {
+        const r = datafields[i];    
+        if (r.mqtt_field_read !== "" && r.ems_device !=="") {
+        } else {
+            if (r.km200 !== "") {let o;
+            try {o = await km200_get(r.km200);}
+                catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
+                if (o != undefined) {
+                    let obj1 = km200_obj(r.km200,o); 												
+                    let value = o.value;
+                    try {obj1._id = r.km200;
+                        obj1.common.name= "km200:"+r.km200;
+                        //obj1.native.source = "km200";
+                        obj1.native.ems_km200 = r.km200;
+                        await adapter.setObjectNotExistsAsync(obj1._id, obj1);
+                    } catch (err) {adapter.log.info(statename+":"+err);}
+                }
+            }
+        }
+    }
+}
+
+
+
+async function init_states_emsesp() {
+    var url = emsesp +  "/api?device=system&cmd=info";
+
+    var data = await ems_get(url);
+
+    if (data != "Invalid") {
+        var devices = JSON.parse(data).Devices;
+        var status = JSON.parse(data).Status;
+        var system = JSON.parse(data).System;
+
+        for (const [key, value] of Object.entries(status)) {
+            if (typeof value !== "object") write_state('status.'+key,value,"");
+        }
+
+        for (const [key, value] of Object.entries(system)) {
+            if (typeof value !== "object") write_state('system.'+key,value,"");
+        }
+
+        for (let i=0; i < devices.length; i++) {
+            if (devices[i].handlers != "") {
+                var device = devices[i].type.toLowerCase();
+                var url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
+                var data = await ems_get(url1);
+                var fields = JSON.parse(data);
+           
+                for (const [key, value] of Object.entries(fields)) {
+                    if (typeof value !== "object") {
+                        var url2 = emsesp +  "/api?device="+device+"&cmd="+key;
+                        var def = await ems_get(url2);
+                        write_state(device+'.'+key,value,def);
+                    }
+                    else {
+                        const key1 = key;
+                        const wert = JSON.parse(JSON.stringify(value));
+                        for (const [key2, value2] of Object.entries(wert)) {
+                            var url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
+                            var def = await ems_get(url2);
+                            write_state(device+'.'+key1+'.'+key2,value2,def);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+async function ems_read() {
+    var url = emsesp +  "/api?device=system&cmd=info";
+    var data = await ems_get(url);
+
+    if (data != "Invalid") {
+        var devices = JSON.parse(data).Devices;
+
+        for (let i=0; i < devices.length; i++) {
+            if (devices[i].handlers != "") {
+                var device = devices[i].type.toLowerCase();
+                var url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
+                var data = await ems_get(url1);
+                var fields = JSON.parse(data);
+           
+                for (const [key, value] of Object.entries(fields)) {
+                    if (typeof value !== "object") {
+                        write_state(device+'.'+key,value,"");
+                    }
+                    else {
+                        const key1 = key;
+                        const wert = JSON.parse(JSON.stringify(value));
+                        for (const [key2, value2] of Object.entries(wert)) {
+                            write_state(device+'.'+key1+'.'+key2,value2,"");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+async function km200_read(result){
+    for (let i=2; i < result.length; i++) {
+        if (result[i].mqtt_field_read == "" && result[i].km200 != "") {
+            let body;
+            try {
+                body = await km200_get(result[i].km200);}
+            catch(error) {adapter.log.warn("km200 get error:"+result[i].km200);}
+            if (body != undefined) {
+                try {
+                    var val = body.value;
+                    adapter.setState(result[i].km200, {ack: true, val: val});
+                }
+                catch(error) {adapter.log.warn("setState error:"+result[i].km200);}
+}}}}
+
+
+async function ems_get(url) {return new Promise(function(resolve,reject) {
+    var options = {url: url, method: 'GET', status: [200], timeout: 5000, port: 80 };
+    request(options, function(error,response,body) {
+        if (error) {return reject(error);}
+        if (response.statusCode !== 200) {return reject(error);}
+        else {resolve(body);}        
+        }); 
+    });
+}
+
+//--------------------------------------------------------------------------------------------------------------------------
 
 function read_file(data) {
 	const results =[];
@@ -351,54 +374,94 @@ function read_file(data) {
 }
 
 
-function ems2iobroker(device,key,value) {
-	let devicenew = "";
-	key = key.toLowerCase();
-	device = device.toLowerCase();
+async function write_state(statename,value,def) {
+    const array = statename.split(".");
+	let device = "", device_ems="",command ="",device_id="";
+    let statename1 = statename;
+    device = array[0];
+    device_ems=device;
+    if (def == "Invalid") adapter.log.warn("Invalid:"+statename);
 
-	for (let i=1; i < datafields.length; i++) {
-		if(device == datafields[i].mqtt_topic_read && key == datafields[i].mqtt_field_read) {
-			devicenew = datafields[i].ems_device;
-			write_state(devicenew+"."+key,value);
-		}
-	}
-
-	if (devicenew=="") {
-		write_state(device+"."+key,value);
-	}
-}
-
-
-async function write_state(field_ems,value) {
-	const statename = field_ems;
-	const array = statename.split(".");
-	let device = "", command ="",device_id="";
-
-	if (array[0] == "thermostat_data") device = "thermostat";
-	if (array[0] == "boiler_data") device = "boiler";
-	if (array[0] == "boiler_data_ww") device = "boiler";
-	if (device != "") command = array[1];
-
+    if (array[0] == "thermostat") device = "heatingCircuits";
+    if (array[0] == "thermostat" & array[1].substring(0,2) == "ww") device = "dhwCircuits";
+	if (array[0] == "mixer") device = "heatingCircuits";
+    if (array[0] == "boiler") {
+        if (array[1].substring(0,2) == "ww") device = "dhwCircuits.dhw1";
+        if (array[1].substring(0,2) != "ww") device = "heatSources.hs1";
+    }
+	
+    command = array[1];
 	if (array[1] == "hc1" || array[1] == "hc2" || array[1] == "hc3" ) {
 		device_id = array[1];
 		command = array[2];
 	}
 	command = command.toLowerCase();
-	//adapter.log.info(array[0] +':'+value);
 
+    if (device_id == "") {
+        statename1 = device+'.'+command;
+    } else {
+        statename1 = device+'.'+device_id+'.'+command;
+    }
 
-	// @ts-ignore
-	await adapter.setObjectNotExistsAsync(statename, {
-		type: "state",
-		common: {name: statename,type: "mixed",read: true},
-		native: {ems_command: command,ems_device: device,ems_device_id: device_id}
-	});
-	(function(value) {
-		adapter.getState(statename, function(err, state) {
-			if(state == null) {adapter.setState(statename, {ack: true, val: value});}
-			else {if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});} });
+    const obj={_id:statename1,type:"state",common:{},native:{}};
+    obj.common.id = statename;
+    obj.common.name= "ems:"+statename;
+    obj.common.type = "mixed";
+    obj.common.unit = "";
+    obj.common.read = true;
+    obj.common.write = false;
+    obj.common.role = "value";
+
+    if (def != "" & def != "Invalid") {
+        var defj = JSON.parse(def);
+
+        if (defj.writeable == true) {obj.common.write = true;}
+        obj.common.unit = defj.unit;
+        
+        if(defj.writeable == true) obj.common.min = defj.min;
+        if(defj.writeable == true) obj.common.max = defj.max;
+        
+        if(defj.type == "text") defj.type = "string";
+        obj.common.type = defj.type;
+        if(defj.type == "enum") {
+            obj.common.type = "number";
+            obj.common.states = "";
+            for (var ii = 0; ii< defj.enum.length;ii++) {
+                obj.common.states += ii+":"+defj.enum[ii];
+                if (ii< defj.enum.length-1) obj.common.states += ";";
+            }
+        }
+
+        if(defj.type == "boolean") {
+            obj.common.type = "number";
+            if (value == true) value = 1;
+            if (value == false) value = 0;
+            obj.common.states = "0:Off;1:On";
+        }
+    }
+
+    //obj.native.source = "ems-esp";
+    obj.native.ems_command = command;
+    obj.native.ems_device = device_ems;
+    obj.native.ems_id = device_id;  
+  
+    // @ts-ignore
+    await adapter.setObjectNotExistsAsync(statename1, obj)
+    await adapter.getStateAsync(statename1, function(err, state) {
+        if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
+        else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
+
+    /*
+    (async function(value) {
+		await adapter.getStateAsync(statename1, function(err, state) {
+			if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
+			else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
 	})(value);
+    */
+
 }
+
+//------- km200 functions ------------------------------------------------------------------------------------------
 
 async function km200_get(url) {return new Promise(function(resolve,reject) {
     var urls = km200_server +  "/" + url.split('.').join('/') ;
@@ -406,8 +469,8 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
         {   url: urls, 
             method: 'GET', 
             status: [200],
-            timeout: 5000, 
-            //encoding: 'utf8',
+            timeout: 10000, 
+            encoding: 'utf8',
             port: 80,
             headers: {'Accept': "application/json", 'agent': 'TeleHeater/2.2.3', 'User-Agent': "TeleHeater/2.2.3"} 
         };
@@ -422,8 +485,6 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
     });
 }
 
-
-
 async function km200_put(url,value) {return new Promise(function(resolve,reject) {
     var data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );   
     var urls = km200_server +"/" + url.split('.').join('/');
@@ -431,7 +492,6 @@ async function km200_put(url,value) {return new Promise(function(resolve,reject)
                 function(error, response, body){if (error) {return reject(error);} resolve(response);});
     });
 }
-
 
 function km200_decrypt(input) {
     // Decrypt
@@ -544,7 +604,6 @@ async function hours() {
     
 }
 
-//************************************************************************************************************************************************** */
 async function days() {
 	const adapt = adapter.namespace+'.';
 
@@ -588,7 +647,7 @@ async function days() {
   
 }
 
-//************************************************************************************************************************************************** */
+
 async function months() {
 	const adapt = adapter.namespace+'.';
 
@@ -657,7 +716,7 @@ async function writehh (data,feld){
     var liste = data.recording;
 
     await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);
-	await sleep(1000);
+	await sleep(5000);
 
     var i = 0;
     var daten = [];
@@ -684,7 +743,7 @@ async function writedd (data,feld){
     var liste = data.recording;
 
     await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);
-    await sleep(1000);
+    await sleep(5000);
     var i = 0;
     var daten = [];
 
@@ -724,7 +783,7 @@ async function writemm (data,feld,m0,m1,dataarray){
     var ma = new Date().getMonth()+1;
 
     await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);    
-    await sleep(1000);
+    await sleep(5000);
 
     var ts = ut1;
     var days = 0;
@@ -771,7 +830,7 @@ async function write2mm (feld,m0,m1){
     //console.log('ut1:'+ut1);console.log('ut2:'+ut2);
 
     await adapter.sendToAsync(db, 'deleteRange', [{id: feld, start: ut1, end: ut2}]);    
-    await sleep(1000);
+    await sleep(5000);
 
     var daten = [];
     var ts = new Date(ya,ma,da,ha).getTime();
@@ -798,8 +857,6 @@ function daysofmonth(year,i) {
         else {return 31;}
     } else {return (year % 4) == "" && (year % 100) !="" ? 29 : 28;}
 }
-
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

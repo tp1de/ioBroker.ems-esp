@@ -1,26 +1,38 @@
 {
-  "name": "iobroker.ems-esp",
-  "version": "0.4.0",
-  "description": "ems-esp",
+  "_from": "github:tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+  "_id": "iobroker.ems-esp@0.6.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/iobroker.ems-esp",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+    "rawSpec": "tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+    "saveSpec": "github:tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+    "fetchSpec": null,
+    "gitCommittish": "72c654603f6f9eb61a89ff4c4efa1b47bd848499"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "github:tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+  "_spec": "tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499",
+  "_where": "C:\\ioBroker",
   "author": {
     "name": "Thomas Petrick",
     "email": "tpetrick@gmx.de"
   },
-  "homepage": "https://github.com/tp1de/ioBroker.ems-esp",
-  "license": "MIT",
-  "keywords": [
-    "ems-esp",
-    "buderus",
-    "km200",
-    "heating"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tp1de/ioBroker.ems-esp"
+  "bugs": {
+    "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0"
   },
+  "deprecated": false,
+  "description": "ems-esp",
   "devDependencies": {
     "@iobroker/testing": "^2.4.4",
     "@types/chai": "^4.2.16",
@@ -42,18 +54,30 @@
     "sinon-chai": "^3.6.0",
     "typescript": "^4.2.4"
   },
+  "homepage": "https://github.com/tp1de/ioBroker.ems-esp",
+  "keywords": [
+    "ems-esp",
+    "buderus",
+    "bosch",
+    "junkers",
+    "km200",
+    "heating"
+  ],
+  "license": "MIT",
   "main": "main.js",
+  "name": "iobroker.ems-esp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tp1de/ioBroker.ems-esp.git"
+  },
   "scripts": {
+    "check": "tsc --noEmit -p tsconfig.check.json",
+    "lint": "eslint",
+    "test": "npm run test:js && npm run test:package",
+    "test:integration": "mocha test/integration --exit",
     "test:js": "mocha --config test/mocharc.custom.json \"{!(node_modules|test)/**/*.test.js,*.test.js,test/**/test!(PackageFiles|Startup).js}\"",
     "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
-    "test:integration": "mocha test/integration --exit",
-    "test": "npm run test:js && npm run test:package",
-    "check": "tsc --noEmit -p tsconfig.check.json",
-    "lint": "eslint"
+    "test:unit": "mocha test/unit --exit"
   },
-  "bugs": {
-    "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
-  },
-  "readmeFilename": "README.md"
+  "version": "0.6.0"
 }
