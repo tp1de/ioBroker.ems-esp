@@ -29,7 +29,8 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "@iobroker/adapter-core": "^2.4.0"
+    "@iobroker/adapter-core": "^2.4.0",
+    "rijndael-js": "^2.0.0"
   },
   "deprecated": false,
   "description": "ems-esp",
