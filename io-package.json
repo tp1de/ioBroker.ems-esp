@@ -67,14 +67,15 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/iobroker.ems-esp#72c654603f6f9eb61a89ff4c4efa1b47bd848499"
+    "installedFrom": "tp1de/iobroker.ems-esp#d2ec1fb70fedb00314599c7da758a33c597248d5"
   },
   "native": {
     "control_file": "ems.csv",
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": " ",
     "private_pw": " ",
-    "emsesp_ip": "http://ems-esp"
+    "emsesp_ip": "http://ems-esp",
+    "recordings": false
   },
   "objects": [],
   "instanceObjects": []

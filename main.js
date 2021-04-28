@@ -23,7 +23,7 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
-let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,emsesp;
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,emsesp,recordings=false;
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -64,6 +64,7 @@ class EmsEsp extends utils.Adapter {
 		km200_gatewaypassword = this.config.gateway_pw;
 		km200_privatepassword = this.config.private_pw;
 		emsesp = this.config.emsesp_ip ;
+		recordings = this.config.recordings;
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
@@ -84,46 +85,48 @@ class EmsEsp extends utils.Adapter {
 		init_states_km200();
 
 		// Recording states
+		if (recordings) {
+			await this.setObjectNotExistsAsync(root+hh,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+hhdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+dd,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+dddhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+mm,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+mmdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+avg12m,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
+			await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
 
-		await this.setObjectNotExistsAsync(root+hh,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+hhdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+dd,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+dddhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+mm,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+mmdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-		await this.setObjectNotExistsAsync(root+avg12m,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
-		await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
+			enable_state(root+hh);
+			enable_state(root+hhdhw);
+			enable_state(root+dd);
+			enable_state(root+dddhw);
+			enable_state(root+mm);
+			enable_state(root+mmdhw);
 
-		enable_state(root+hh);
-		enable_state(root+hhdhw);
-		enable_state(root+dd);
-		enable_state(root+dddhw);
-		enable_state(root+mm);
-		enable_state(root+mmdhw);
-
-		async function enable_state(stateid) {
-			const id =  adapter.namespace  + "." + stateid;
-			adapter.sendTo("sql.0", "enableHistory", {id: id, options:
-                {changesOnly: false,debounce: 0,retention: 31536000,
-                	maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
-				if (result.error) { console.log(result.error); }
-				if (result.success) { }
-			});
+			async function enable_state(stateid) {
+				const id =  adapter.namespace  + "." + stateid;
+				adapter.sendTo("sql.0", "enableHistory", {id: id, options:
+					{changesOnly: false,debounce: 0,retention: 31536000,
+						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
+					if (result.error) { console.log(result.error); }
+					if (result.success) { }
+				});
+			}
 		}
-
 
 		this.subscribeStates("*");
 
 		// ems and km200 read schedule
+		
 
 		const s1 = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
 		const s2 = schedule.scheduleJob("*/15 * * * * *", function() {ems_read();});
 
 
-		km200_recordings();
-		await sleep(5000);
-		schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
-
+		if (recordings) {
+			km200_recordings();
+			await sleep(5000);
+			schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
+		}
 	}
 
 	/**
