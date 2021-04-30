@@ -77,7 +77,8 @@ class EmsEsp extends utils.Adapter {
 
 		if (this.config.control_file !== "") {
 			try {data = fs.readFileSync(fn, "utf8");
-			} catch (err) {this.log.info(err);}
+			} 
+			catch (err) {this.log.info(err);}
 		}
 		datafields = read_file(data);
 
@@ -258,9 +259,13 @@ async function init_states_km200() {
 
 async function init_states_emsesp() {
 	const url = emsesp +  "/api?device=system&cmd=info";
-
-	let data = await ems_get(url);
-
+	let data ="";
+	try {data = await ems_get(url); }
+	catch(error) {
+		adapter.log.warn("ems read system error - wrong ip adress?");
+		data = "Invalid";
+	}
+	
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
 		const status = JSON.parse(data).Status;
@@ -305,7 +310,12 @@ async function init_states_emsesp() {
 
 async function ems_read() {
 	const url = emsesp +  "/api?device=system&cmd=info";
-	var data = await ems_get(url);
+	let data = "";
+	try {data = await ems_get(url); }
+	catch(error) {
+		adapter.log.warn("ems read system error - wrong ip adress?");
+		data = "Invalid";
+	}
 
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
@@ -314,7 +324,7 @@ async function ems_read() {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
-				var data = await ems_get(url1);
+				data = await ems_get(url1);
 				const fields = JSON.parse(data);
 
 				for (const [key, value] of Object.entries(fields)) {
@@ -348,7 +358,10 @@ async function km200_read(result){
 					adapter.setState(result[i].km200, {ack: true, val: val});
 				}
 				catch(error) {adapter.log.warn("setState error:"+result[i].km200);}
-			}}}}
+			}
+		}
+	}
+}
 
 
 async function ems_get(url) {return new Promise(function(resolve,reject) {
@@ -358,8 +371,7 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 		if (response.statusCode !== 200) {return reject(error);}
 		else {resolve(body);}
 	});
-});
-}
+});}
 
 //--------------------------------------------------------------------------------------------------------------------------
 

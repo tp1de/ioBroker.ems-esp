@@ -72,8 +72,8 @@
   "native": {
     "control_file": "ems.csv",
     "km200_ip": "http://192.168.178.x",
-    "gateway_pw": " ",
-    "private_pw": " ",
+    "gateway_pw": "",
+    "private_pw": "",
     "emsesp_ip": "http://ems-esp",
     "recordings": false,
     "database_instance": "sql.0"
