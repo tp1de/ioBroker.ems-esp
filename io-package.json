@@ -3,7 +3,7 @@
     "name": "ems-esp",
     "version": "0.6.0",
     "news": {
-      "0.0.1": {
+      "0.6.0": {
         "en": "initial release",
         "de": "Erstveröffentlichung",
         "ru": "Начальная версия",
@@ -70,7 +70,7 @@
     "installedFrom": "tp1de/iobroker.ems-esp#d2ec1fb70fedb00314599c7da758a33c597248d5"
   },
   "native": {
-    "control_file": "ems.csv",
+    "control_file": "",
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": "",
     "private_pw": "",
