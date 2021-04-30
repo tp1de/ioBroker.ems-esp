@@ -84,8 +84,11 @@ class EmsEsp extends utils.Adapter {
 		init_states_emsesp();
 		init_states_km200();
 
+		await this.setObjectNotExistsAsync(root+"created",{type: "state",common: {type: "boolean", read: true, write: true}, native: {}});
+
 		// Recording states
-		if (recordings) {
+
+		if (recordings === true) {
 			await this.setObjectNotExistsAsync(root+hh,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+hhdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+dd,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
@@ -95,16 +98,32 @@ class EmsEsp extends utils.Adapter {
 			await this.setObjectNotExistsAsync(root+avg12m,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
 			await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
 
-			enable_state(root+hh);
-			enable_state(root+hhdhw);
-			enable_state(root+dd);
-			enable_state(root+dddhw);
-			enable_state(root+mm);
-			enable_state(root+mmdhw);
+			adapter.getState(root+"created", function(err, state) {
+				if(state == null) {
+					enable_state(root+hh);
+					enable_state(root+hhdhw);
+					enable_state(root+dd);
+					enable_state(root+dddhw);
+					enable_state(root+mm);
+					enable_state(root+mmdhw);
+					adapter.setState(root+"created", {ack: true, val: true});
+				}
+				else { 
+					if (state.val === false){
+						enable_state(root+hh);
+						enable_state(root+hhdhw);
+						enable_state(root+dd);
+						enable_state(root+dddhw);
+						enable_state(root+mm);
+						enable_state(root+mmdhw);
+						adapter.setState(root+"created", {ack: true, val: true});
+					}
+				}	
+			});
 
-			async function enable_state(stateid) {
+			function enable_state(stateid) {
 				const id =  adapter.namespace  + "." + stateid;
-				adapter.sendTo("sql.0", "enableHistory", {id: id, options:
+				adapter.sendTo(db, "enableHistory", {id: id, options:
 					{changesOnly: false,debounce: 0,retention: 31536000,
 						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 					if (result.error) { console.log(result.error); }
@@ -127,6 +146,7 @@ class EmsEsp extends utils.Adapter {
 			await sleep(5000);
 			schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
 		}
+	
 	}
 
 	/**
@@ -214,7 +234,7 @@ if (require.main !== module) {
 async function init_states_km200() {
 	for (let i=2; i < datafields.length; i++) {
 		const r = datafields[i];
-		if (r.mqtt_field_read !== "" && r.ems_device !=="") {
+		if (r.ems_field !== "" && r.ems_device !=="") {
         } else {
 			if (r.km200 !== "") {let o;
 				try {o = await km200_get(r.km200);}
@@ -317,11 +337,11 @@ async function ems_read() {
 
 async function km200_read(result){
 	for (let i=2; i < result.length; i++) {
-		if (result[i].mqtt_field_read == "" && result[i].km200 != "") {
+		if (result[i].ems_field == "" && result[i].km200 != "") {
 			let body;
 			try {
 				body = await km200_get(result[i].km200);}
-			catch(error) {adapter.log.warn("km200 get error:"+result[i].km200);}
+			catch(error) {adapter.log.warn("km200 get error state:"+result[i].km200);}
 			if (body != undefined) {
 				try {
 					const val = body.value;
@@ -351,25 +371,21 @@ function read_file(data) {
 	for (let i = 0; i < textArray.length; i++) {
 		if (textArray[i].length > 1) {
 			const element ={};
-			let km200,ems_device,ems_field_write,ems_id,mqtt_topic_read,mqtt_field_read,type,units,min,max,states,ems_device_command;
+			let km200,ems_device,ems_device_new,ems_id,ems_field;
 			const separator = ";";
 			const elementArray = textArray[i].split(separator);
 			elementArray.splice(elementArray.length - 1, 1);
 			element.km200=elementArray[0].trim();
-			element.ems_device=elementArray[1].trim();
-			element.ems_field_write=elementArray[2].trim();
-			element.ems_id=elementArray[3].trim();
-			element.mqtt_topic_read=elementArray[4].toLowerCase();
-			element.mqtt_topic_read=element.mqtt_topic_read.trim();
-			element.mqtt_field_read=elementArray[5].toLowerCase();
-			element.mqtt_field_read=element.mqtt_field_read.trim();
-			element.type=elementArray[6].trim();
-			element.units=elementArray[7].trim();
-			element.min=elementArray[8];
-			element.max=elementArray[9];
-			const re = /,/gi;element.states=elementArray[10].replace(re,";");
-			element.ems_device_command=elementArray[11].trim();
-			element.val = "0";
+			element.ems_device_new=elementArray[1].trim();
+			element.ems_device=elementArray[2];
+			element.ems_id=elementArray[3];
+			element.ems_field=elementArray[4];
+
+			if (element.ems_field == undefined) element.ems_field = "";
+			if (element.ems_device == undefined) element.ems_device = "";
+			element.ems_field = element.ems_field.trim();
+			element.ems_device = element.ems_device.trim();
+
 			results.push(element);
 		} // End if
 	} // End for
@@ -480,7 +496,8 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
 
 	request(options, function(error,response,body) {
 		if (error) {return reject(error);}
-		if (response.statusCode !== 200) {return reject(error);}
+		if (response.statusCode !== 200) {
+			return reject(error+response.statusCode);}
 		else {
 			const data= km200_decrypt(body);
 			resolve(data);}
@@ -564,46 +581,46 @@ async function hours() {
 	const adapt = adapter.namespace+".";
 	// id's der datenpunkte lesen
 	const datum= new Date();
-	let datums = datum.getFullYear()+"/"+ (datum.getMonth()+1) +"/"+datum.getDate();
+	let datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 	const url1 = feld + datums;
 	const url11 = felddhw + datums;
 
 	try
 	{   var data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hh);
+	if (data != " ") await writehh (data,adapt+root+hh);
 
 	try
 	{   var data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hhdhw);
+	if (data != " ") await writehh (data,adapt+root+hhdhw);
 
 	datum.setDate(datum.getDate() - 1);
-	datums = datum.getFullYear()+"/"+ (datum.getMonth()+1) +"/"+datum.getDate();
+	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 	const url2 = feld + datums;
 	const url21 = felddhw + datums;
 	try
 	{   var data = await km200_get(url2);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hh);
+	if (data != " ") await writehh (data,adapt+root+hh);
 
 	try
 	{   var data = await km200_get(url21);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hhdhw);
+	if (data != " ") await writehh (data,adapt+root+hhdhw);
 
 	datum.setDate(datum.getDate() - 1);
-	datums = datum.getFullYear()+"/"+ (datum.getMonth()+1) +"/"+datum.getDate();
+	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 	const url3 = feld + datums;
 	const url31 = felddhw + datums;
 	try
 	{   var data = await km200_get(url3);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hh);
+	if (data != " ") await writehh (data,adapt+root+hh);
 	try
 	{   var data = await km200_get(url31);
 	}   catch(error) {data = " "; }
-	if (data != " ") writehh (data,adapt+root+hhdhw);
+	if (data != " ") await writehh (data,adapt+root+hhdhw);
 
 }
 
@@ -715,15 +732,9 @@ function sleep(ms) {
 async function writehh (data,feld){
 	interval = data.interval;
 	const ut1 = new Date(interval).getTime();
-	const ut2 = ut1 + 3600000 * 25 ;
 	const liste = data.recording;
-
-	await adapter.sendToAsync(db, "deleteRange", [{id: feld, start: ut1, end: ut2}]);
-	await sleep(5000);
-
 	let i = 0;
 	const daten = [];
-
 	for (i = 0; i < liste.length; i++){
 		if (liste[i] !== null){
 			const wert = Math.round(liste[i].y / 6) / 10;
@@ -731,25 +742,54 @@ async function writehh (data,feld){
 			daten.push({id: feld,state: {ts: + ts ,val: wert}});
 		}
 	}
-	await adapter.sendToAsync(db, "storeState", daten);
+	write_recordings(daten);
+}
+
+
+async function write_recordings(daten){
+	let ids;
+	let query ="SELECT * FROM iobroker.datapoints WHERE name='"+daten[0].id+"';";
+	adapter.sendTo(db, 'query',query, function (result) {
+		if (result.error) {adapter.log.info('Error:'+result.error)}
+		else {
+			let id = 0;
+			if (result.result[0] != undefined) id = result.result[0].id;
+			for (let ii = 0; ii < daten.length; ii++){
+				let query1 ="SELECT * FROM iobroker.ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
+				adapter.sendTo(db, 'query',query1, function (result) {
+					if (result.error) {adapter.log.info(result.error);}
+					else {
+						if (result.result[0] == undefined) {
+							//adapter.log.info('Neu:');	
+							adapter.sendTo(db, "storeState", daten[ii]);
+						} else {
+							let val_actual = result.result[0].val;
+							let val_new = daten[ii].state.val;
+							if (val_actual != val_new) {
+								//adapter.log.info("actual:" + val_actual + "---- new:" +val_new);
+								adapter.sendTo(db, "update", daten[ii], function(result){
+									if (result.error) {adapter.log.error(result.error);}
+									else {}
+									}  
+								);	
+							}
+						}
+					}
+				});
+			}
+		}
+	});
 }
 
 async function writedd (data,feld){
 	const interval = data.interval;
 	const ut1 = new Date(interval).getTime();
-
 	const year = interval.substr(0,4);
 	const month = parseInt(interval.substr(5,2))-1;
 	const days = daysofmonth(year,month);
-
-	const ut2 = ut1 + 3600000 * 24 * days ;
 	const liste = data.recording;
-
-	await adapter.sendToAsync(db, "deleteRange", [{id: feld, start: ut1, end: ut2}]);
-	await sleep(5000);
 	let i = 0;
 	const daten = [];
-
 	for (i = 0; i < liste.length; i++){
 		if (liste[i] !== null)  {
 			const wert = Math.round(liste[i].y / 6) / 10;
@@ -757,7 +797,7 @@ async function writedd (data,feld){
 			if (liste[i].c > 0) daten.push({id: feld,state: {ts: + ts ,val: wert}});
 		}
 	}
-	await adapter.sendToAsync(db,"storeState", daten);
+	write_recordings(daten);
 }
 
 function summe (data){
@@ -778,15 +818,10 @@ async function writemm (data,feld,m0,m1,dataarray){
 	const year = data.interval;
 	let interval = year + "-01-01";
 	const ut1 = new Date(interval).getTime();
-	interval = year + "-12-31";
-	const ut2 = new Date(interval).getTime();
 	const liste = data.recording;
 
 	const ya = new Date().getFullYear();
 	const ma = new Date().getMonth()+1;
-
-	await adapter.sendToAsync(db, "deleteRange", [{id: feld, start: ut1, end: ut2}]);
-	await sleep(5000);
 
 	let ts = ut1;
 	const days = 0;
@@ -813,7 +848,8 @@ async function writemm (data,feld,m0,m1,dataarray){
 			}
 		}
 	}
-	await adapter.sendToAsync(db,"storeState", daten);
+
+	write_recordings(daten);
 }
 
 async function write2mm (feld,m0,m1){
@@ -830,19 +866,13 @@ async function write2mm (feld,m0,m1){
 	if (ma === 11) {var ut2 = new Date(ya+1,0).getTime();}
 	else           {var ut2 = new Date(ya,ma+1).getTime();}
 
-	//console.log('ut1:'+ut1);console.log('ut2:'+ut2);
-
-	await adapter.sendToAsync(db, "deleteRange", [{id: feld, start: ut1, end: ut2}]);
-	await sleep(5000);
-
 	const daten = [];
 	var ts = new Date(ya,ma,da,ha).getTime();
 	daten.push({id: feld,state: {ts: + ts ,val: m0}});
 
 	var ts = ut1 + (2*24*60*60*1000);
 	daten.push({id: feld,state: {ts: + ts ,val: m1}});
-	//console.log(daten);
-	await adapter.sendToAsync(db,"storeState", daten);
+	write_recordings(daten);
 }
 
 

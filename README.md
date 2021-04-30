@@ -13,118 +13,48 @@
 
 ## ems-esp adapter for ioBroker
 
-The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.0.x and the ESP32 chip.
+The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter 
+and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.0.3 b4 and the ESP32 chip.
 
-The EMS-ESP32 reads values from the hardware EMS-bus with installed ems-esp hardware and distribution of the values by mqtt. 
-Therefore a mqqt-server instance has to be installed and active in ioBroker.
-This adapter then reads values from this mqtt instance and is capable to subscribe on state changes and send the respective mqtt commands back to ems-esp hardware.
-Polling is dependend on the ems-esp parameters set (e.g. boiler data updated every 10 seconds ...)
+The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the rest api interface. 
+The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-If a km200 interface is available it cann be polled as well an the values can be integrated into the ems-esp adapter as well (read polling every minute).
-State changes within ems-esp adapter states are then send back by http post to the km200 ip interface.
+When an IP-gateway like km200 / ip inside is available, this device can be integrated as well (read & write).
+Unlike the km200 adapter the fields to be used has to be defined in an csv file (standard ems.csv) within the iobroker-data directory.
 
-The ems-esp adapter reads a ems.csv file within the iobroker-data directory. 
-This file contains the following status information per datapoint: (seperated by ";")
+This adapter then reads values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send 
+the respective http (post) commands back to ems-esp hardware and km200. 
 
-column 1: km200 equivalent state
-column 2: ioBroker device for state tree (e.g. heatSources instead of boiler)
-column 3: ems-esp write command - if filled the state is writable
-column 4: id for mqtt write commands (e.g. hc1 / hc2 etc.)
-column 5: mqtt topic for read
-column 6: mqtt field for read
-column 7: type (number,character ...)
-column 8: unit (%, minutes , °C ...)
-column 9: minimum value 
-column 10: maximum value
-column 11: allowed states (e.g. 0:off;1:on ...)
-column 12: device (for mqtt commands)
+ems-esp read polling is fixed to 15 seconds and to 60 seconds for km200.
+ 
+The ems.csv file contains the following status information per datapoint: (separated by ";")
 
-By start of the adapter all states will be initialized by reading the ems.csv file.
-If the file is not available, then the states will be created as being present in mqtt topics.
-In this case the above information is only partially available within ioBroker. (no info about writable, units etc.)
+column 1: km200 field (e.g. iobroker state like: heatingCircuits.hc1.actualSupplyTemperature or km200 style heatingCircuits/hc1/actualSupplyTemperature)
+column 2: ioBroker device new for state tree (e.g. heatSources instead of boiler) - actually not used since managed within adapter code
+column 3: ems-esp device
+column 4: ems-esp id like hc1 / hc2 
+column 5: ems-esp field
 
 
-## Developer manual
-This section is intended for the developer. It can be deleted later
+By start of the adapter all ems-esp states will be initialized by by reading the devices by using the system info command and then getting all fields available 
+by device info and device field command. Therefore any ems.csv is not used and not needed.
 
-### Getting started
+The km200 datafields are initialized and processed when them column 1 within ems.csv file contains data and the column 5 (field) is empty.
+Whenever ems-esp field is available this one is used, when not available then km200 field is used.
 
-You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.ems-esp`
-1. Initialize the current folder as a new git repository:  
-	```bash
-	git init
-	git add .
-	git commit -m "Initial commit"
-	```
-1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/tp1de/ioBroker.ems-esp
-	```
+Most modern heating systems have ip-inside integrated and support energy statistics (recording for total power consmption and warm water (dhw)).
+For these systems the powerconsumption statistics for total power consumtion and warm water power consumption can be read (hourly / dayly / monthly).
+The checkbox recordings has to be enabled and the database instance (mySQL) has to be defined. SQL History adpter need to be installed.
+***** This is only tested yet for mySQL databases *****
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the sql. 
+Update is every hour. The values can be shown using the Flot Charts adapter.
 
-1. Push all files to the GitHub repo:  
-	```bash
-	git push origin master
-	```
 
-1. Head over to [main.js](main.js) and start programming!
-
-### Best Practices
-We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
-check them out. If you're already experienced, you should also take a look at them - you might learn something new :)
-
-### Scripts in `package.json`
-Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
-| Script name | Description |
-|-------------|-------------|
-| `test:js` | Executes the tests you defined in `*.test.js` files. |
-| `test:package` | Ensures your `package.json` and `io-package.json` are valid. |
-| `test:unit` | Tests the adapter startup with unit tests (fast, but might require module mocks to work). |
-| `test:integration` | Tests the adapter startup with an actual instance of ioBroker. |
-| `test` | Performs a minimal test run on package files and your tests. |
-| `check` | Performs a type-check on your code (without compiling anything). |
-| `lint` | Runs `ESLint` to check your code for formatting errors and potential bugs. |
-
-### Writing tests
-When done right, testing code is invaluable, because it gives you the 
-confidence to change your code while knowing exactly if and when 
-something breaks. A good read on the topic of test-driven development 
-is https://hackernoon.com/introduction-to-test-driven-development-tdd-61a13bc92d92. 
-Although writing tests before the code might seem strange at first, but it has very 
-clear upsides.
-
-The template provides you with basic tests for the adapter startup and package files.
-It is recommended that you add your own tests into the mix.
-
-### Publishing the adapter
-Since you have chosen GitHub Actions as your CI service, you can 
-enable automatic releases on npm whenever you push a new git tag that matches the form 
-`v<major>.<minor>.<patch>`. The necessary steps are described in `.github/workflows/test-and-release.yml`.
-
-To get your adapter released in ioBroker, please refer to the documentation 
-of [ioBroker.repositories](https://github.com/ioBroker/ioBroker.repositories#requirements-for-adapter-to-get-added-to-the-latest-repository).
-
-### Test the adapter manually on a local ioBroker installation
-In order to install the adapter locally without publishing, the following steps are recommended:
-1. Create a tarball from your dev directory:  
-	```bash
-	npm pack
-	```
-1. Upload the resulting file to your ioBroker host
-1. Install it locally (The paths are different on Windows):
-	```bash
-	cd /opt/iobroker
-	npm i /path/to/tarball.tgz
-	```
-
-For later updates, the above procedure is not necessary. Just do the following:
-1. Overwrite the changed files in the adapter directory (`/opt/iobroker/node_modules/iobroker.ems-esp`)
-1. Execute `iobroker upload ems-esp` on the ioBroker host
 
 ## Changelog
 
-### 0.4.0
-* (Thomas Petrick) 1st working adapter
+### 0.6.0
+* (Thomas Petrick) 1st working adapter with rest api
 
 ## License
 MIT License

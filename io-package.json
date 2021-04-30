@@ -75,7 +75,8 @@
     "gateway_pw": " ",
     "private_pw": " ",
     "emsesp_ip": "http://ems-esp",
-    "recordings": false
+    "recordings": false,
+    "database_instance": "sql.0"
   },
   "objects": [],
   "instanceObjects": []
