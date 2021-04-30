@@ -78,7 +78,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.control_file !== "") {
 			try {data = fs.readFileSync(fn, "utf8");
 			} 
-			//catch (err) {this.log.info(err);}
+			catch (err) {this.log.info(err);}
 		}
 		datafields = read_file(data);
 
