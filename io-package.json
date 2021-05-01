@@ -1,37 +1,37 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.6.0",
-    "title": "EMS-ESP",
+    "version": "0.6.1",
+    "title": "EMS-ESP Adapter (ems-esp and km200 integration)",
     "news": {
+      "0.6.1": {
+        "en": "new parameters & selection of ems or km200 device structure",
+        "de": "Neue Parameter und Wahl zwischen EMS- oder km200-Anlagenstruktur",
+        "ru": "new parameters & selection of ems or km200 device structure",
+        "pt": "new parameters & selection of ems or km200 device structure",
+        "nl": "new parameters & selection of ems or km200 device structure",
+        "fr": "new parameters & selection of ems or km200 device structure",
+        "it": "new parameters & selection of ems or km200 device structure",
+        "es": "new parameters & selection of ems or km200 device structure",
+        "pl": "new parameters & selection of ems or km200 device structure",
+        "zh-cn": "new parameters & selection of ems or km200 device structure"
+      },
       "0.6.0": {
-        "en": "initial release",
-        "de": "Erstveröffentlichung",
-        "ru": "Начальная версия",
-        "pt": "lançamento inicial",
-        "nl": "Eerste uitgave",
-        "fr": "Première version",
-        "it": "Versione iniziale",
-        "es": "Versión inicial",
-        "pl": "Pierwsze wydanie",
-        "zh-cn": "首次出版"
-      }
+        "en": "first tested working release",
+        "de": "Erste getestete Version",
+        "ru": "first tested working release",
+        "pt": "first tested working release",
+        "nl": "first tested working release",
+        "fr": "first tested working release",
+        "it": "first tested working release",
+        "es": "first tested working release",
+        "pl": "first tested working release",
+        "zh-cn": "first tested working release"
+      },
     },
     "titleLang": {
       "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
       "de": "EMS-basierte Geräte (Energy Management System) von Herstellern wie Bosch, Buderus, Nefit, Junkers, Worcester und Sieger.",
-      "ru": "Оборудование на базе EMS (системы управления энергопотреблением) от таких производителей, как Bosch, Buderus, Nefit, Junkers, Worcester и Sieger.",
-      "pt": "Equipamentos baseados em EMS (Sistema de Gerenciamento de Energia) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
-      "nl": "Op EMS (Energy Management System) gebaseerde apparatuur van fabrikanten als Bosch, Buderus, Nefit, Junkers, Worcester en Sieger.",
-      "fr": "Équipement basé sur EMS (Energy Management System) de fabricants tels que Bosch, Buderus, Nefit, Junkers, Worcester et Sieger.",
-      "it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
-      "es": "Equipos basados ​​en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
-      "pl": "Sprzęt oparty na EMS (Energy Management System) producentów takich jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
-      "zh-cn": "博世（Bosch），布德鲁斯（Buderus），尼菲特（Nefit），容克斯（Junkers），伍斯特（Worcester）和西格尔（Sieger）等制造商的基于EMS（能源管理系统）的设备。"
-    },
-    "desc": {
-      "en": "ems-esp",
-      "de": "ems-esp",
       "ru": "ems-esp",
       "pt": "ems-esp",
       "nl": "ems-esp",
@@ -40,6 +40,19 @@
       "es": "ems-esp",
       "pl": "ems-esp",
       "zh-cn": "ems-esp"
+
+    },
+    "desc": {
+      "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "de": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "ru": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "pt": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "nl": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "fr": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "it": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "es": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "pl": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
+      "zh-cn": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger."
     },
     "authors": [
       "Thomas Petrick <tpetrick@gmx.de>"
@@ -68,16 +81,18 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/iobroker.ems-esp#d2ec1fb70fedb00314599c7da758a33c597248d5"
+    "installedFrom": "tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17"
   },
   "native": {
-    "control_file": "",
+    "control_file": "ems.csv",
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": "",
     "private_pw": "",
     "emsesp_ip": "http://ems-esp",
     "recordings": false,
-    "database_instance": "sql.0"
+    "database_instance": "sql.0",
+    "database":"iobroker",
+    "km200_structure": true
   },
   "objects": [],
   "instanceObjects": []

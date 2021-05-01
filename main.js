@@ -2,7 +2,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v 0.6
+ * ems-esp adapter version v0.6.1
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -35,7 +35,9 @@ const mm = "actualPower._Months", mmdhw= "actualDHWPower._Months";
 const felddhw = "recordings/heatSources/actualDHWPower?interval=";
 const feld = "recordings/heatSources/actualPower?interval=";
 let sum_mm = 0, sum_mm_1 = 0, sumdhw_mm = 0, sumdhw_mm_1 = 0, datamm=[],datammdhw=[];
-const db = "sql.0";
+let db = "sql.0";
+let dbname = "iobroker";
+let km200_structure = true;
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -60,11 +62,16 @@ class EmsEsp extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+
 		km200_server = this.config.km200_ip;
 		km200_gatewaypassword = this.config.gateway_pw;
 		km200_privatepassword = this.config.private_pw;
 		emsesp = this.config.emsesp_ip ;
 		recordings = this.config.recordings;
+		db = this.config.database_instance;
+		dbname = this.config.database;
+		km200_structure= this.config.km200_structure;
+		
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
@@ -85,11 +92,10 @@ class EmsEsp extends utils.Adapter {
 		init_states_emsesp();
 		init_states_km200();
 
-		await this.setObjectNotExistsAsync(root+"created",{type: "state",common: {type: "boolean", read: true, write: true}, native: {}});
-
 		// Recording states
 
 		if (recordings === true) {
+			await this.setObjectNotExistsAsync(root+"created",{type: "state",common: {type: "boolean", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+hh,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+hhdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+dd,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
@@ -272,11 +278,11 @@ async function init_states_emsesp() {
 		const system = JSON.parse(data).System;
 
 		for (const [key, value] of Object.entries(status)) {
-			if (typeof value !== "object") write_state("status."+key,value,"");
+			if (typeof value !== "object") write_state("ems-status."+key,value,"");
 		}
 
 		for (const [key, value] of Object.entries(system)) {
-			if (typeof value !== "object") write_state("system."+key,value,"");
+			if (typeof value !== "object") write_state("ems-system."+key,value,"");
 		}
 
 		for (let i=0; i < devices.length; i++) {
@@ -414,12 +420,15 @@ async function write_state(statename,value,def) {
 	device_ems=device;
 	if (def == "Invalid") adapter.log.warn("Invalid:"+statename);
 
-	if (array[0] == "thermostat") device = "heatingCircuits";
-	if (array[0] == "thermostat" & array[1].substring(0,2) == "ww") device = "dhwCircuits";
-	if (array[0] == "mixer") device = "heatingCircuits";
-	if (array[0] == "boiler") {
-		if (array[1].substring(0,2) == "ww") device = "dhwCircuits.dhw1";
-		if (array[1].substring(0,2) != "ww") device = "heatSources.hs1";
+	if (km200_structure) {
+		if (array[0] == "thermostat") device = "heatingCircuits";
+		if (array[0] == "thermostat" & array[1].substring(0,2) == "ww") device = "dhwCircuits";
+		if (array[0] == "mixer") device = "heatingCircuits";
+		if (array[0] == "solar") device = "solarCircuits.sc1";
+		if (array[0] == "boiler") {
+			if (array[1].substring(0,2) == "ww") device = "dhwCircuits.dhw1";
+			if (array[1].substring(0,2) != "ww") device = "heatSources.hs1";
+		}
 	}
 
 	command = array[1];
@@ -555,7 +564,7 @@ async function km200_recordings(){
 async function write_avg12m(){
 	const adapt = adapter.namespace+".";
 
-	let query = "SELECT ts,val FROM iobroker.ts_number where id = (SELECT id FROM iobroker.datapoints where name = ";
+	let query = "SELECT ts,val FROM "+dbname+".ts_number where id = (SELECT id FROM "+dbname+".datapoints where name = ";
 	query +=  "'"+adapt+root+mmdhw+"');";
 
 	adapter.sendTo(db, "query", query, function (result) {
@@ -571,10 +580,10 @@ async function write_avg12m(){
 		}
 	});
 
-	query = "SELECT ts,val FROM iobroker.ts_number where id = (SELECT id FROM iobroker.datapoints where name = ";
+	query = "SELECT ts,val FROM "+dbname+".ts_number where id = (SELECT id FROM "+dbname+".datapoints where name = ";
 	query +=  "'"+adapt+root+mm+"');";
 
-	adapter.sendTo("sql.0", "query", query, function (result) {
+	adapter.sendTo(db, "query", query, function (result) {
 		if (result.error  || result.result[0] == null) {} else {
 			let count = 0, sum = 0, avg = 0, val = 0;
 			count = result.result.length;
@@ -761,14 +770,14 @@ async function writehh (data,feld){
 
 async function write_recordings(daten){
 	let ids;
-	let query ="SELECT * FROM iobroker.datapoints WHERE name='"+daten[0].id+"';";
+	let query ="SELECT * FROM "+dbname+".datapoints WHERE name='"+daten[0].id+"';";
 	adapter.sendTo(db, 'query',query, function (result) {
 		if (result.error) {adapter.log.info('Error:'+result.error)}
 		else {
 			let id = 0;
 			if (result.result[0] != undefined) id = result.result[0].id;
 			for (let ii = 0; ii < daten.length; ii++){
-				let query1 ="SELECT * FROM iobroker.ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
+				let query1 ="SELECT * FROM "+dbname+".ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
 				adapter.sendTo(db, 'query',query1, function (result) {
 					if (result.error) {adapter.log.info(result.error);}
 					else {
