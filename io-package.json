@@ -15,18 +15,6 @@
         "es": "new parameters & selection of ems or km200 device structure",
         "pl": "new parameters & selection of ems or km200 device structure",
         "zh-cn": "new parameters & selection of ems or km200 device structure"
-      },
-      "0.6.0": {
-        "en": "first tested working release",
-        "de": "Erste getestete Version",
-        "ru": "first tested working release",
-        "pt": "first tested working release",
-        "nl": "first tested working release",
-        "fr": "first tested working release",
-        "it": "first tested working release",
-        "es": "first tested working release",
-        "pl": "first tested working release",
-        "zh-cn": "first tested working release"
       }
     },
     "titleLang": {
