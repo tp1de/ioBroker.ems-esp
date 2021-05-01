@@ -70,7 +70,6 @@ While selecting the checkbox either km200-like device structure is used for ems-
 
 ### 0.6.1
 * (Thomas Petrick) New parameters & selection to use km200 or ems-esp device tree structure
-* (Thomas Petrick) 1st working adapter with rest api
 
 ### 0.6.0
 * (Thomas Petrick) 1st working adapter with rest api
@@ -78,7 +77,7 @@ While selecting the checkbox either km200-like device structure is used for ems-
 ## License
 MIT License
 
-Copyright (c) 2021 Thomas Petrick <tpetrick@gmx.de>
+Copyright (c) 2021 Thomas Petrick 
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
