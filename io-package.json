@@ -2,7 +2,7 @@
   "common": {
     "name": "ems-esp",
     "version": "0.6.1",
-    "title": "EMS-ESP Adapter (ems-esp and km200 integration)",
+    "title": "EMS-ESP Adapter (ems-esp & km200)",
     "news": {
       "0.6.1": {
         "en": "new parameters & selection of ems or km200 device structure",
