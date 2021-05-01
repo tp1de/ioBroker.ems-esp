@@ -262,7 +262,7 @@ async function init_states_emsesp() {
 	let data ="";
 	try {data = await ems_get(url); }
 	catch(error) {
-		adapter.log.warn("ems read system error - wrong ip adress?");
+		adapter.log.warn("ems read system error - wrong ip address?");
 		data = "Invalid";
 	}
 	
@@ -313,7 +313,7 @@ async function ems_read() {
 	let data = "";
 	try {data = await ems_get(url); }
 	catch(error) {
-		adapter.log.warn("ems read system error - wrong ip adress?");
+		adapter.log.warn("ems read system error - wrong ip address?");
 		data = "Invalid";
 	}
 
@@ -343,6 +343,7 @@ async function ems_read() {
 		}
 	}
 }
+
 
 
 async function km200_read(result){
