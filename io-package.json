@@ -2,7 +2,7 @@
   "common": {
     "name": "ems-esp",
     "version": "0.6.0",
-    "title": "EMS_ESP",
+    "title": "EMS-ESP",
     "news": {
       "0.6.0": {
         "en": "initial release",
