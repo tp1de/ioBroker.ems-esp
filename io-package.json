@@ -60,7 +60,8 @@
       "ems-esp",
       "buderus",
       "km200",
-      "heating"
+      "heating",
+      "smarthome"
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
