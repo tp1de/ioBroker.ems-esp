@@ -86,15 +86,15 @@ class EmsEsp extends utils.Adapter {
 		const fn = dataDir+this.config.control_file;
 		let data ="";
 
-		if (this.config.control_file !== "" &&  this.config.control_file !== "*") {
+		if (this.config.control_file != "" &&  this.config.control_file != "*") {
 			try {data = fs.readFileSync(fn, "utf8");
 			}
 			catch (err) {this.log.info(err);}
 		}
 
 		const results = [];
-		if (this.config.control_file !== "*") {datafields = read_file(data);}
-		else {datafields = await read_km200structure();}			
+		if (this.config.control_file != "*") {datafields = read_file(data);}
+		else {datafields = await read_km200structure();}
 
 		init_states_emsesp();
 		init_states_km200();
