@@ -15,6 +15,8 @@ const fs = require("fs");
 const request = require("request");
 const schedule = require("node-schedule");
 let datafields = [];
+let km200fields="";
+
 
 // ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
 const Rijndael = require("rijndael-js");
@@ -90,8 +92,9 @@ class EmsEsp extends utils.Adapter {
 			catch (err) {this.log.info(err);}
 		}
 
+		const results = [];
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
-		else datafields = await read_km200structure();
+		else {datafields = await read_km200structure();}			
 
 		init_states_emsesp();
 		init_states_km200();
@@ -145,10 +148,9 @@ class EmsEsp extends utils.Adapter {
 
 		this.subscribeStates("*");
 
-		// ems and km200 read schedule
-
-
-		const s1 = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
+		// ems and km200 read schedule		
+		
+		const s1 = schedule.scheduleJob("*/90 * * * *", function() {km200_read(datafields);});
 		const s2 = schedule.scheduleJob("*/15 * * * * *", function() {ems_read();});
 
 
@@ -243,10 +245,11 @@ if (require.main !== module) {
 //---------functions ---------------------------------------------------------------------------------------------------------
 
 async function init_states_km200() {
-	for (let i=2; i < datafields.length; i++) {
+	for (let i=1; i < datafields.length; i++) {
 		const r = datafields[i];
-		if (r.ems_field !== "" && r.ems_device !=="") {
-		} else {
+		//adapter.log.info(JSON.stringify(r));
+		if (r.ems_field !== "" && r.ems_device !=="") {	} 
+		else {
 			if (r.km200 !== "") {let o;
 				try {o = await km200_get(r.km200);}
 				catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
@@ -357,7 +360,8 @@ async function ems_read() {
 
 
 async function km200_read(result){
-	for (let i=2; i < result.length; i++) {
+	adapter.log.info("km200 read start");
+	for (let i=1; i < result.length; i++) {
 		if (result[i].ems_field == "" && result[i].km200 != "") {
 			let body;
 			try {
@@ -372,6 +376,7 @@ async function km200_read(result){
 			}
 		}
 	}
+	adapter.log.info("km200 read stop");
 }
 
 
@@ -416,14 +421,11 @@ function read_file(data) {
 	return results;
 }
 
+
 async function read_km200structure() {
-	const results =[];
-	let element ={};
-	element.km200="";
-	element.ems_device_new="";
-	element.ems_device="";
-	element.ems_id="";
-	element.ems_field="";
+
+	const results = [];
+	results.push({"km200":"","ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
 
 	await tree("heatSources");
 	await tree("dhwCircuits");
@@ -432,16 +434,17 @@ async function read_km200structure() {
 	await tree("notifications");
 	await tree("gateway");
 	await tree("solarCircuits");
+
 	return results;
 
-
+	
 	async function tree(reference) {
 		try {
 			let data = await km200_get(reference); 
 			if (data.type != "refEnum") {
-				element.km200=data.id.substring(1).split("/").join(".");
-				results.push(element);
-			}else await refEnum(data);
+				let element=data.id.substring(1).split("/").join(".");
+				results.push({"km200":element,"ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
+			} else await refEnum(data);
 		} catch(error) {adapter.log.warn("http error reading km200 tree:"+error);}
 	}
 
@@ -453,9 +456,10 @@ async function read_km200structure() {
 			catch(error) {data1 = "";}
 			if (data1 != "") {
 				if (data1.type != "refEnum") {
-					element.km200=data1.id.substring(1).split("/").join(".");
-					results.push(element);
-				} else {await refEnum(data1);}
+					element=data1.id.substring(1).split("/").join(".");
+					results.push({"km200":element,"ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
+				} 
+				else {await refEnum(data1);}
 			}
 		}
 	}

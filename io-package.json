@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.6.2": {
+        "en": "Select all km200 entries without cs file",
+        "de": "Lesen aller km200 Datenpunkte ohne csv File"
+      },
       "0.6.1": {
         "en": "new parameters & selection of ems or km200 device structure",
         "de": "Neue Parameter und Wahl zwischen EMS- oder km200-Anlagenstruktur",
