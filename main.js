@@ -1,3 +1,5 @@
+/* eslint-disable no-empty */
+/* eslint-disable no-mixed-spaces-and-tabs */
 //"use strict";
 //"esversion":6";
 
@@ -71,7 +73,7 @@ class EmsEsp extends utils.Adapter {
 		db = this.config.database_instance;
 		dbname = this.config.database;
 		km200_structure= this.config.km200_structure;
-		
+
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
@@ -84,7 +86,7 @@ class EmsEsp extends utils.Adapter {
 
 		if (this.config.control_file !== "") {
 			try {data = fs.readFileSync(fn, "utf8");
-			} 
+			}
 			catch (err) {this.log.info(err);}
 		}
 		datafields = read_file(data);
@@ -115,7 +117,7 @@ class EmsEsp extends utils.Adapter {
 					enable_state(root+mmdhw);
 					adapter.setState(root+"created", {ack: true, val: true});
 				}
-				else { 
+				else {
 					if (state.val === false){
 						enable_state(root+hh);
 						enable_state(root+hhdhw);
@@ -125,11 +127,11 @@ class EmsEsp extends utils.Adapter {
 						enable_state(root+mmdhw);
 						adapter.setState(root+"created", {ack: true, val: true});
 					}
-				}	
+				}
 			});
 
 			function enable_state(stateid) {
-				const id =  adapter.namespace  + "." + stateid;
+				let id =  adapter.namespace  + "." + stateid;
 				adapter.sendTo(db, "enableHistory", {id: id, options:
 					{changesOnly: false,debounce: 0,retention: 31536000,
 						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
@@ -142,7 +144,7 @@ class EmsEsp extends utils.Adapter {
 		this.subscribeStates("*");
 
 		// ems and km200 read schedule
-		
+
 
 		const s1 = schedule.scheduleJob("* * * * *", function() {km200_read(datafields);});
 		const s2 = schedule.scheduleJob("*/15 * * * * *", function() {ems_read();});
@@ -153,7 +155,7 @@ class EmsEsp extends utils.Adapter {
 			await sleep(5000);
 			schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
 		}
-	
+
 	}
 
 	/**
@@ -242,7 +244,7 @@ async function init_states_km200() {
 	for (let i=2; i < datafields.length; i++) {
 		const r = datafields[i];
 		if (r.ems_field !== "" && r.ems_device !=="") {
-        } else {
+		} else {
 			if (r.km200 !== "") {let o;
 				try {o = await km200_get(r.km200);}
 				catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
@@ -271,7 +273,7 @@ async function init_states_emsesp() {
 		adapter.log.warn("ems read system error - wrong ip address?");
 		data = "Invalid";
 	}
-	
+
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
 		const status = JSON.parse(data).Status;
@@ -294,16 +296,16 @@ async function init_states_emsesp() {
 
 				for (const [key, value] of Object.entries(fields)) {
 					if (typeof value !== "object") {
-						var url2 = emsesp +  "/api?device="+device+"&cmd="+key;
-						var def = await ems_get(url2);
+						let url2 = emsesp +  "/api?device="+device+"&cmd="+key;
+						let def = await ems_get(url2);
 						write_state(device+"."+key,value,def);
 					}
 					else {
 						const key1 = key;
 						const wert = JSON.parse(JSON.stringify(value));
 						for (const [key2, value2] of Object.entries(wert)) {
-							var url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
-							var def = await ems_get(url2);
+							let url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
+							let def = await ems_get(url2);
 							write_state(device+"."+key1+"."+key2,value2,def);
 						}
 					}
@@ -423,7 +425,7 @@ async function write_state(statename,value,def) {
 
 	if (km200_structure) {
 		if (array[0] == "thermostat") device = "heatingCircuits";
-		if (array[0] == "thermostat" & array[1].substring(0,2) == "ww") device = "dhwCircuits";
+		if (array[0] == "thermostat" && array[1].substring(0,2) == "ww") device = "dhwCircuits";
 		if (array[0] == "mixer") device = "heatingCircuits";
 		if (array[0] == "solar") device = "solarCircuits.sc1";
 		if (array[0] == "boiler") {
@@ -454,7 +456,7 @@ async function write_state(statename,value,def) {
 	obj.common.write = false;
 	obj.common.role = "value";
 
-	if (def != "" & def != "Invalid") {
+	if (def != "" && def != "Invalid") {
 		const defj = JSON.parse(def);
 
 		if (defj.writeable == true) {obj.common.write = true;}
@@ -609,7 +611,7 @@ async function hours() {
 	const url11 = felddhw + datums;
 
 	try
-	{   var data = await km200_get(url1);
+	{   let data = await km200_get(url1);
 	}   catch(error) {data = " "; }
 	if (data != " ") await writehh (data,adapt+root+hh);
 
@@ -783,7 +785,7 @@ async function write_recordings(daten){
 					if (result.error) {adapter.log.info(result.error);}
 					else {
 						if (result.result[0] == undefined) {
-							//adapter.log.info('Neu:');	
+							//adapter.log.info('Neu:');
 							adapter.sendTo(db, "storeState", daten[ii]);
 						} else {
 							let val_actual = result.result[0].val;
@@ -793,8 +795,7 @@ async function write_recordings(daten){
 								adapter.sendTo(db, "update", daten[ii], function(result){
 									if (result.error) {adapter.log.error(result.error);}
 									else {}
-									}  
-								);	
+								});
 							}
 						}
 					}
