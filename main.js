@@ -84,12 +84,14 @@ class EmsEsp extends utils.Adapter {
 		const fn = dataDir+this.config.control_file;
 		let data ="";
 
-		if (this.config.control_file !== "") {
+		if (this.config.control_file !== "" &&  this.config.control_file !== "*") {
 			try {data = fs.readFileSync(fn, "utf8");
 			}
 			catch (err) {this.log.info(err);}
 		}
-		datafields = read_file(data);
+
+		if (this.config.control_file !== "*") {datafields = read_file(data);}
+		else datafields = await read_km200structure();
 
 		init_states_emsesp();
 		init_states_km200();
@@ -414,6 +416,53 @@ function read_file(data) {
 	return results;
 }
 
+async function read_km200structure() {
+	const results =[];
+	let element ={};
+	element.km200="";
+	element.ems_device_new="";
+	element.ems_device="";
+	element.ems_id="";
+	element.ems_field="";
+
+	await tree("heatSources");
+	await tree("dhwCircuits");
+	await tree("heatingCircuits");
+	await tree("system");
+	await tree("notifications");
+	await tree("gateway");
+	await tree("solarCircuits");
+	return results;
+
+
+	async function tree(reference) {
+		try {
+			let data = await km200_get(reference); 
+			if (data.type != "refEnum") {
+				element.km200=data.id.substring(1).split("/").join(".");
+				results.push(element);
+			}else await refEnum(data);
+		} catch(error) {adapter.log.warn("http error reading km200 tree:"+error);}
+	}
+
+	async function refEnum(data){
+		let data1,field1;
+		for (let i=0;i < data.references.length;i++){
+			field1 =data.references[i].id.substring(1).split("/").join(".");
+			try {data1 = await km200_get(field1);}
+			catch(error) {data1 = "";}
+			if (data1 != "") {
+				if (data1.type != "refEnum") {
+					element.km200=data1.id.substring(1).split("/").join(".");
+					results.push(element);
+				} else {await refEnum(data1);}
+			}
+		}
+	}
+}
+
+
+
 
 async function write_state(statename,value,def) {
 	const array = statename.split(".");
@@ -520,11 +569,13 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
         };
 
 	request(options, function(error,response,body) {
+		if(response.statusCode == 403 || response.statusCode == 404 ) resolve("");
 		if (error) {return reject(error);}
 		if (response.statusCode !== 200) {
 			return reject(error+response.statusCode);}
 		else {
-			const data= km200_decrypt(body);
+			try {var data= km200_decrypt(body);}
+			catch(error) {data="";}
 			resolve(data);}
 	});
 });
@@ -774,14 +825,14 @@ async function writehh (data,feld){
 async function write_recordings(daten){
 	let ids;
 	let query ="SELECT * FROM "+dbname+".datapoints WHERE name='"+daten[0].id+"';";
-	adapter.sendTo(db, 'query',query, function (result) {
-		if (result.error) {adapter.log.info('Error:'+result.error)}
+	adapter.sendTo(db, "query",query, function (result) {
+		if (result.error) {adapter.log.info("Error:"+result.error)}
 		else {
 			let id = 0;
 			if (result.result[0] != undefined) id = result.result[0].id;
 			for (let ii = 0; ii < daten.length; ii++){
 				let query1 ="SELECT * FROM "+dbname+".ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
-				adapter.sendTo(db, 'query',query1, function (result) {
+				adapter.sendTo(db, "query",query1, function (result) {
 					if (result.error) {adapter.log.info(result.error);}
 					else {
 						if (result.result[0] == undefined) {
