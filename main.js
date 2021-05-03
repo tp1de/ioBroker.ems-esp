@@ -13,9 +13,7 @@ const utils = require("@iobroker/adapter-core");
 const adapter = utils.adapter("ems-esp");
 const fs = require("fs");
 const request = require("request");
-const schedule = require("node-schedule");
 let datafields = [];
-let km200fields="";
 
 
 // ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
@@ -76,6 +74,13 @@ class EmsEsp extends utils.Adapter {
 		dbname = this.config.database;
 		km200_structure= this.config.km200_structure;
 
+		adapter.getForeignObject("system.config", (err, obj) => {
+			if (obj && obj.native && obj.native.secret) {
+				adapter.log.info(JSON.stringify(obj.native.secret));
+			}
+		});
+
+
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
@@ -86,15 +91,15 @@ class EmsEsp extends utils.Adapter {
 		const fn = dataDir+this.config.control_file;
 		let data ="";
 
-		if (this.config.control_file != "" &&  this.config.control_file != "*") {
+		if (this.config.control_file !== "" &&  this.config.control_file !== "*") {
 			try {data = fs.readFileSync(fn, "utf8");
 			}
 			catch (err) {this.log.info(err);}
 		}
 
 		const results = [];
-		if (this.config.control_file != "*") {datafields = read_file(data);}
-		else {datafields = await read_km200structure();}
+		if (this.config.control_file !== "*") {datafields = read_file(data);}
+		else {datafields = await read_km200structure();}			
 
 		init_states_emsesp();
 		init_states_km200();
@@ -148,18 +153,14 @@ class EmsEsp extends utils.Adapter {
 
 		this.subscribeStates("*");
 
-		// ems and km200 read schedule		
+		// ems and km200 read schedule	
 		
-		const s1 = schedule.scheduleJob("*/90 * * * *", function() {km200_read(datafields);});
-		const s2 = schedule.scheduleJob("*/15 * * * * *", function() {ems_read();});
+		let interval1,interval2,interval3;
 
-
-		if (recordings) {
-			km200_recordings();
-			await sleep(5000);
-			schedule.scheduleJob('{"time":{"start":"00:00","end":"23:59","mode":"hours","interval":1},"period":{"days":1}}',km200_recordings());
-		}
-
+		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec 
+		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec 
+		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 Std = 3600 sec 
+		
 	}
 
 	/**
@@ -172,7 +173,9 @@ class EmsEsp extends utils.Adapter {
 			// clearTimeout(timeout1);
 			// clearTimeout(timeout2);
 			// ...
-			// clearInterval(interval1);
+			clearInterval(interval1);
+			clearInterval(interval2);
+			clearInterval(interval3);
 
 			callback();
 		} catch (e) {
@@ -360,7 +363,7 @@ async function ems_read() {
 
 
 async function km200_read(result){
-	adapter.log.info("km200 read start");
+	//adapter.log.info("km200 read start");
 	for (let i=1; i < result.length; i++) {
 		if (result[i].ems_field == "" && result[i].km200 != "") {
 			let body;
@@ -376,9 +379,8 @@ async function km200_read(result){
 			}
 		}
 	}
-	adapter.log.info("km200 read stop");
+	//adapter.log.info("km200 read stop");
 }
-
 
 
 async function ems_get(url) {return new Promise(function(resolve,reject) {
@@ -394,6 +396,7 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 
 function read_file(data) {
 	const results =[];
+	let km200_count = 0;
 	// Eingelesenen Text in ein Array splitten (\r\n, \n und\r sind die Trennzeichen für verschiedene Betriebssysteme wie Windows, Linux, OS X)
 	const textArray = data.split(/(\n|\r)/gm);
 
@@ -415,15 +418,18 @@ function read_file(data) {
 			element.ems_field = element.ems_field.trim();
 			element.ems_device = element.ems_device.trim();
 
+			if (element.km200 != "" & element.ems_field == "") km200_count += 1;
+
 			results.push(element);
 		} // End if
 	} // End for
+	adapter.log.info("End reading csv-file: " + km200_count + " km200-fields found");
 	return results;
 }
 
 
 async function read_km200structure() {
-
+	adapter.log.info("Start reading km200 data-structure");
 	const results = [];
 	results.push({"km200":"","ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
 
@@ -435,6 +441,7 @@ async function read_km200structure() {
 	await tree("gateway");
 	await tree("solarCircuits");
 
+	adapter.log.info("End reading km200 data-structure: " + results.length + " fields found");
 	return results;
 
 	
@@ -463,6 +470,7 @@ async function read_km200structure() {
 			}
 		}
 	}
+
 }
 
 
@@ -548,14 +556,6 @@ async function write_state(statename,value,def) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
 
-	/*
-    (async function(value) {
-		await adapter.getStateAsync(statename1, function(err, state) {
-			if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
-			else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
-	})(value);
-    */
-
 }
 
 //------- km200 functions ------------------------------------------------------------------------------------------
@@ -573,9 +573,10 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
         };
 
 	request(options, function(error,response,body) {
-		if(response.statusCode == 403 || response.statusCode == 404 ) resolve("");
 		if (error) {return reject(error);}
-		if (response.statusCode !== 200) {
+		if (response == undefined) {resolve("");}
+		if (response.statusCode == 403 || response.statusCode == 404 ) resolve("");
+			if (response.statusCode !== 200) {
 			return reject(error+response.statusCode);}
 		else {
 			try {var data= km200_decrypt(body);}
@@ -659,7 +660,7 @@ async function write_avg12m(){
 
 async function hours() {
 	const adapt = adapter.namespace+".";
-	// id's der datenpunkte lesen
+	
 	const datum= new Date();
 	let datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 	const url1 = feld + datums;
@@ -668,12 +669,12 @@ async function hours() {
 	try
 	{   let data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hh);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
 
 	try
 	{   var data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hhdhw);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
 
 	datum.setDate(datum.getDate() - 1);
 	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
@@ -682,12 +683,12 @@ async function hours() {
 	try
 	{   var data = await km200_get(url2);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hh);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
 
 	try
 	{   var data = await km200_get(url21);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hhdhw);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
 
 	datum.setDate(datum.getDate() - 1);
 	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
@@ -696,11 +697,11 @@ async function hours() {
 	try
 	{   var data = await km200_get(url3);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hh);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
 	try
 	{   var data = await km200_get(url31);
 	}   catch(error) {data = " "; }
-	if (data != " ") await writehh (data,adapt+root+hhdhw);
+	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
 
 }
 
@@ -711,7 +712,6 @@ async function days() {
 	let jahr = datum.getFullYear();
 	let monat = datum.getMonth() + 1;
 
-	//  Aktueller Monat
 	var datums = jahr+"-"+monat;
 	if (monat < 10) datums = jahr+"-0"+monat;
 
@@ -720,14 +720,13 @@ async function days() {
 	try
 	{   var data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ")  {sum_mm=summe(data);writedd (data,adapt+root+dd);}
+	if (data != " " & data != undefined)  {sum_mm=summe(data);writedd (data,adapt+root+dd);}
 	try
 	{   var data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ")  {sumdhw_mm=summe(data);writedd (data,adapt+root+dddhw);}
+	if (data != " " & data != undefined)  {sumdhw_mm=summe(data);writedd (data,adapt+root+dddhw);}
 
 
-	//  Vormonat
 	if (monat == 1) {jahr = jahr-1;monat=12;}
 	else if (monat > 1) {monat = monat-1;}
 
@@ -739,11 +738,11 @@ async function days() {
 	try
 	{   var data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") {sum_mm_1 = summe(data);writedd (data,adapt+root+dd);}
+	if (data != " " & data != undefined) {sum_mm_1 = summe(data);writedd (data,adapt+root+dd);}
 	try
 	{   var data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") {sumdhw_mm_1=summe(data);writedd (data,adapt+root+dddhw);}
+	if (data != " " & data != undefined) {sumdhw_mm_1=summe(data);writedd (data,adapt+root+dddhw);}
 
 }
 
@@ -755,7 +754,6 @@ async function months() {
 	datamm=[];
 	datammdhw=[];
 
-	// vor 2 Jahren
 	let datums = datum.getFullYear()-2;
 	let data ="", body="";
 
@@ -765,15 +763,13 @@ async function months() {
 	try
 	{   data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mm,0,0,datamm);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mm,0,0,datamm);
 
 	try
 	{   data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mmdhw,0,0,datammdhw);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,0,0,datammdhw);
 
-
-	// Vorjahr
 	datums = datum.getFullYear()-1;
 	url1 = feld + datums;
 	url11 = felddhw + datums;
@@ -781,14 +777,13 @@ async function months() {
 	try
 	{   data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
 
 	try
 	{   data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
 
-	// aktuelles Jahr
 	datums = datum.getFullYear();
 	url1 = feld + datums;
 	url11 = felddhw + datums;
@@ -796,12 +791,12 @@ async function months() {
 	try
 	{   data = await km200_get(url1);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
 
 	try
 	{   data = await km200_get(url11);
 	}   catch(error) {data = " "; }
-	if (data != " ") writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
+	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
 
 }
 
@@ -918,7 +913,6 @@ async function writemm (data,feld,m0,m1,dataarray){
 				dataarray.push(wert);
 			}
 			else {
-				//console.log('ma:'+ma+'  m0:'+m0+'  m1:'+m1);
 				if (ya === parseInt(year) && ma === m) daten.push({id: feld,state: {ts: + ts ,val: m0}});
 				if (ya === parseInt(year) && m < ma){
 					daten.push({id: feld,state: {ts: + ts ,val: m1}});
@@ -937,8 +931,6 @@ async function write2mm (feld,m0,m1){
 	const ma = new Date().getMonth();
 	const da = new Date().getDate();
 	const ha = new Date().getHours();
-
-	//console.log(ya+'/'+ma+'/'+da);
 
 	if (ma > 0) {var ut1 = new Date(ya,ma-1).getTime();}
 	else        {var ut1 = new Date(ya-1,11).getTime();}
@@ -994,9 +986,7 @@ function km200_getAccesskey(gatewaypassword, privatepassword) {
 	gatewaypassword = gatewaypassword.replace(/-/g, "");
 	const km200_gateway_password = str2ab(gatewaypassword);
 	const km200_private_password = str2ab(privatepassword);
-	// Erste Hälfte des Schlüssels: MD5 von ( Gerätepasswort . Salt )
 	const key_1 = md5(concatUint8Array(km200_gateway_password, km200_crypt_md5_salt));
-	// Zweite Hälfte des Schlüssels - privat: MD5 von ( Salt . privates Passwort )
 	const key_2_private = md5(concatUint8Array(km200_crypt_md5_salt, km200_private_password));
 	const km200_crypt_key_private = key_1 + key_2_private;
 	return km200_crypt_key_private.trim().toLowerCase();
