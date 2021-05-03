@@ -19,12 +19,35 @@
 
 	<script type="text/javascript">
 		// This will be called by the admin adapter when the settings page loads
+			var secret;
+				function encrypt(key, value) {
+					var result = '';
+					for(var i = 0; i < value.length; ++i) {
+						result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+					}
+					return result;
+				}
+				function decrypt(key, value) {
+					var result = '';
+					for(var i = 0; i < value.length; ++i) {
+						result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+					}
+					return result;
+				}
+
+
 		function load(settings, onChange) {
+
 			// example: select elements with id=key and class=value and insert value
 			if (!settings) return;
+			if (settings.electricityPollingInterval === undefined) settings.electricityPollingInterval = 20;
 			$('.value').each(function () {
 				var $key = $(this);
 				var id = $key.attr('id');
+				if (id === 'private_pw') {
+                	settings[id] = decrypt(secret, settings[id]);
+             	}
+
 				if ($key.attr('type') === 'checkbox') {
 					// do not call onChange direct, because onChange could expect some arguments
 					$key.prop('checked', settings[id])
@@ -54,7 +77,11 @@
 				} else if ($this.attr('type') === 'number') {
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
-					obj[$this.attr('id')] = $this.val();
+					var value = $this.val();
+                 	if (id === 'private_pw') {
+                     	value = encrypt(secret, value);
+                 	}
+                 	obj[$this.attr('id')] = value;
 				}
 			});
 			callback(obj);
@@ -112,7 +139,7 @@
 				</div>
 
 				<div class="col s4 input-field">
-					<input type="text" class="value" id="private_pw" />
+					<input type="password" class="value" id="private_pw" />
 					<label for="private_pw" class="translate">private_pw</label>
 				</div>			
 

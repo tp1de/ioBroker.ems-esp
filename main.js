@@ -67,7 +67,7 @@ class EmsEsp extends utils.Adapter {
 
 		km200_server = this.config.km200_ip;
 		km200_gatewaypassword = this.config.gateway_pw;
-		km200_privatepassword = this.config.private_pw;
+		//km200_privatepassword = this.config.private_pw;
 		emsesp = this.config.emsesp_ip ;
 		recordings = this.config.recordings;
 		db = this.config.database_instance;
@@ -76,9 +76,24 @@ class EmsEsp extends utils.Adapter {
 
 		adapter.getForeignObject("system.config", (err, obj) => {
 			if (obj && obj.native && obj.native.secret) {
-				adapter.log.info(JSON.stringify(obj.native.secret));
+			 //noinspection JSUnresolvedVariable
+			 adapter.config.private_pw = decrypt(obj.native.secret, adapter.config.private_pw);
+			} else {
+			 //noinspection JSUnresolvedVariable
+			 this.config.private_pw = decrypt("Zgfr56gFe87jJOM", adapter.config.private_pw);
 			}
-		});
+		
+		km200_privatepassword = this.config.private_pw;
+
+		function decrypt(key, value) {
+			let result = "";
+			for (let i = 0; i < value.length; ++i) {
+			 result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+			}
+			adapter.log.debug("client_secret decrypt ready");
+			return result;
+		   }
+		   
 
 
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
