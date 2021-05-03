@@ -19,7 +19,7 @@ and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested vers
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the rest api interface. 
 The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc.)
+While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc.
 
 
 When an IP-gateway like km200 / ip inside is available, the gateway can be integrated as well (read & write).
