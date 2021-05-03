@@ -68,9 +68,11 @@ Update is every hour. The values can then be shown by using e.g. the Flot Charts
 
 ## Changelog
 
+### 0.6.3
+* (Thomas Petrick) Encrypted password
+
 ### 0.6.2
 * (Thomas Petrick) Select all km200 datapoints without csv file (*)
-
 
 ### 0.6.1
 * (Thomas Petrick) New parameters & selection to use km200 or ems-esp device tree structure

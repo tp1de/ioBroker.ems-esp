@@ -67,23 +67,12 @@ class EmsEsp extends utils.Adapter {
 
 		km200_server = this.config.km200_ip;
 		km200_gatewaypassword = this.config.gateway_pw;
-		//km200_privatepassword = this.config.private_pw;
+		km200_privatepassword = this.config.private_pw;
 		emsesp = this.config.emsesp_ip ;
 		recordings = this.config.recordings;
 		db = this.config.database_instance;
 		dbname = this.config.database;
 		km200_structure= this.config.km200_structure;
-
-		adapter.getForeignObject("system.config", (err, obj) => {
-			if (obj && obj.native && obj.native.secret) {
-			 //noinspection JSUnresolvedVariable
-			 adapter.config.private_pw = decrypt(obj.native.secret, adapter.config.private_pw);
-			} else {
-			 //noinspection JSUnresolvedVariable
-			 this.config.private_pw = decrypt("Zgfr56gFe87jJOM", adapter.config.private_pw);
-			}
-		
-		km200_privatepassword = this.config.private_pw;
 
 		function decrypt(key, value) {
 			let result = "";
@@ -92,9 +81,17 @@ class EmsEsp extends utils.Adapter {
 			}
 			adapter.log.debug("client_secret decrypt ready");
 			return result;
-		   }
-		   
-
+		}
+		
+		adapter.getForeignObject("system.config", function (err, obj) {
+			//adapter.log.info(JSON.stringify(obj));
+			if (obj && obj.native && obj.native.secret) {
+				km200_privatepassword = decrypt(obj.native.secret, km200_privatepassword);
+			} else {
+				km200_privatepassword = decrypt("Zgfr56gFe87jJOM", km200_privatepassword);
+			}
+		});
+		await sleep(1000);
 
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);

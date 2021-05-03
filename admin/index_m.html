@@ -36,7 +36,7 @@
 				}
 
 
-		function load(settings, onChange) {
+		function loadHelper(settings, onChange) {
 
 			// example: select elements with id=key and class=value and insert value
 			if (!settings) return;
@@ -66,12 +66,24 @@
 			if (M) M.updateTextFields();
 		}
 
+		// This will be called by the admin adapter when the settings page loads
+		function load(settings, onChange) {
+				socket.emit('getObject', 'system.config', function (err, obj) {
+					secret = (obj.native ? obj.native.secret : '') || 'Zgfr56gFe87jJOM';
+					loadHelper(settings, onChange);
+		});
+		onChange(false);
+			}
+
+
+
 		// This will be called by the admin adapter when the user presses the save button
 		function save(callback) {
 			// example: select elements with class=value and build settings object
 			var obj = {};
 			$('.value').each(function () {
 				var $this = $(this);
+				var id = $this.attr('id')
 				if ($this.attr('type') === 'checkbox') {
 					obj[$this.attr('id')] = $this.prop('checked');
 				} else if ($this.attr('type') === 'number') {
