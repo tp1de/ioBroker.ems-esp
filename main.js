@@ -79,7 +79,6 @@ class EmsEsp extends utils.Adapter {
 			for (let i = 0; i < value.length; ++i) {
 			 result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
 			}
-			adapter.log.debug("client_secret decrypt ready");
 			return result;
 		}
 		
