@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.6.1
+ * ems-esp adapter version v0.6.3
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -81,7 +81,7 @@ class EmsEsp extends utils.Adapter {
 			}
 			return result;
 		}
-		
+
 		adapter.getForeignObject("system.config", function (err, obj) {
 			//adapter.log.info(JSON.stringify(obj));
 			if (obj && obj.native && obj.native.secret) {
@@ -110,7 +110,7 @@ class EmsEsp extends utils.Adapter {
 
 		const results = [];
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
-		else {datafields = await read_km200structure();}			
+		else {datafields = await read_km200structure();}
 
 		init_states_emsesp();
 		init_states_km200();
@@ -152,7 +152,7 @@ class EmsEsp extends utils.Adapter {
 			});
 
 			function enable_state(stateid) {
-				let id =  adapter.namespace  + "." + stateid;
+				const id =  adapter.namespace  + "." + stateid;
 				adapter.sendTo(db, "enableHistory", {id: id, options:
 					{changesOnly: false,debounce: 0,retention: 31536000,
 						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
@@ -165,13 +165,13 @@ class EmsEsp extends utils.Adapter {
 		this.subscribeStates("*");
 
 		// ems and km200 read schedule	
-		
+
 		let interval1,interval2,interval3;
 
 		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec 
 		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec 
 		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 Std = 3600 sec 
-		
+
 	}
 
 	/**
@@ -310,13 +310,16 @@ async function init_states_emsesp() {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
-				data = await ems_get(url1);
+				try {data = await ems_get(url1); }
+				catch(error) {adapter.log.error("ems http read error init:"+url1);}
 				const fields = JSON.parse(data);
 
 				for (const [key, value] of Object.entries(fields)) {
 					if (typeof value !== "object") {
 						let url2 = emsesp +  "/api?device="+device+"&cmd="+key;
-						let def = await ems_get(url2);
+						let def;
+						try {def = await ems_get(url2); }
+						catch(error) {adapter.log.error("ems http read error init:"+url2);}
 						write_state(device+"."+key,value,def);
 					}
 					else {
@@ -324,7 +327,9 @@ async function init_states_emsesp() {
 						const wert = JSON.parse(JSON.stringify(value));
 						for (const [key2, value2] of Object.entries(wert)) {
 							let url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
-							let def = await ems_get(url2);
+							let def;
+							try {def = await ems_get(url2); }
+							catch(error) {adapter.log.error("ems http read error init:"+url2);}
 							write_state(device+"."+key1+"."+key2,value2,def);
 						}
 					}
@@ -351,7 +356,8 @@ async function ems_read() {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
-				data = await ems_get(url1);
+				try {data = await ems_get(url1); }
+				catch(error) {adapter.log.error("ems http read error:"+url1);}
 				const fields = JSON.parse(data);
 
 				for (const [key, value] of Object.entries(fields)) {
@@ -467,7 +473,7 @@ async function read_km200structure() {
 	}
 
 	async function refEnum(data){
-		let data1,field1;
+		let data1,field1,element;
 		for (let i=0;i < data.references.length;i++){
 			field1 =data.references[i].id.substring(1).split("/").join(".");
 			try {data1 = await km200_get(field1);}
@@ -476,7 +482,7 @@ async function read_km200structure() {
 				if (data1.type != "refEnum") {
 					element=data1.id.substring(1).split("/").join(".");
 					results.push({"km200":element,"ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
-				} 
+				}
 				else {await refEnum(data1);}
 			}
 		}

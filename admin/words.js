@@ -51,8 +51,8 @@ systemDictionary = {
 		"zh-cn": "IP address km200"
 	},
 	"control_file": {
-		"en": "csv-file for km200 records (in iobroker-data directory- empty no data)",
-		"de": "csv File für die km200 Felder (im iobroker-data Verzeichnis - Leer keine Daten)",
+		"en": "csv-file for km200 records (in iobroker-data directory- empty no data - * read all km200 fields)",
+		"de": "csv File für die km200 Felder (im iobroker-data Verzeichnis - Leer keine Daten - * alle km200 Daten lesen)",
 		"ru": "csv-file for km200 records (in iobroker-data directory- empty no data)",
 		"pt": "csv-file for km200 records (in iobroker-data directory- empty no data)",
 		"nl": "csv-file for km200 records (in iobroker-data directory- empty no data)",
