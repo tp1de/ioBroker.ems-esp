@@ -310,9 +310,11 @@ async function init_states_emsesp() {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
+				data="";
 				try {data = await ems_get(url1); }
 				catch(error) {adapter.log.error("ems http read error init:"+url1);}
-				const fields = JSON.parse(data);
+				let fields = {};
+				if (data != "") fields = JSON.parse(data);
 
 				for (const [key, value] of Object.entries(fields)) {
 					if (typeof value !== "object") {
