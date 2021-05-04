@@ -112,8 +112,8 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
 		else {datafields = await read_km200structure();}
 
-		init_states_emsesp();
-		init_states_km200();
+		await init_states_emsesp();
+		await init_states_km200();
 
 		// Recording states
 
@@ -167,10 +167,10 @@ class EmsEsp extends utils.Adapter {
 		// ems and km200 read schedule	
 
 		let interval1,interval2,interval3;
-
+		adapter.log.info("start polling intervals now. ems: 15 secs & km200: 90 secs & km200 recordings: hour");
 		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec 
 		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec 
-		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 Std = 3600 sec 
+		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs 
 
 	}
 
@@ -259,6 +259,7 @@ if (require.main !== module) {
 //---------functions ---------------------------------------------------------------------------------------------------------
 
 async function init_states_km200() {
+	adapter.log.info("start initializing km200 states");
 	for (let i=1; i < datafields.length; i++) {
 		const r = datafields[i];
 		//adapter.log.info(JSON.stringify(r));
@@ -280,11 +281,13 @@ async function init_states_km200() {
 			}
 		}
 	}
+	adapter.log.info("end of initializing km200 states");
 }
 
 
 
 async function init_states_emsesp() {
+	adapter.log.info("start initializing ems states");
 	const url = emsesp +  "/api?device=system&cmd=info";
 	let data ="";
 	try {data = await ems_get(url); }
@@ -312,7 +315,7 @@ async function init_states_emsesp() {
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
 				data="";
 				try {data = await ems_get(url1); }
-				catch(error) {adapter.log.error("ems http read error init:"+url1);}
+				catch(error) {adapter.log.error("ems http read error init:" + error + " - " + url1);}
 				let fields = {};
 				if (data != "") fields = JSON.parse(data);
 
@@ -320,9 +323,11 @@ async function init_states_emsesp() {
 					if (typeof value !== "object") {
 						const url2 = emsesp +  "/api?device="+device+"&cmd="+key;
 						let def;
-						try {def = await ems_get(url2); }
-						catch(error) {adapter.log.error("ems http read error init:"+url2);}
-						write_state(device+"."+key,value,def);
+						try {
+							def = await ems_get(url2); 
+							write_state(device+"."+key,value,def);
+						}
+						catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
 					}
 					else {
 						const key1 = key;
@@ -330,15 +335,20 @@ async function init_states_emsesp() {
 						for (const [key2, value2] of Object.entries(wert)) {
 							const url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
 							let def;
-							try {def = await ems_get(url2); }
-							catch(error) {adapter.log.error("ems http read error init:"+url2);}
-							write_state(device+"."+key1+"."+key2,value2,def);
+							try {
+								def = await ems_get(url2); 
+								write_state(device+"."+key1+"."+key2,value2,def);
+							}
+							catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
+							await sleep(100);
 						}
 					}
+					await sleep(100);
 				}
 			}
 		}
 	}
+	adapter.log.info("end of initializing ems states");
 }
 
 
@@ -350,31 +360,34 @@ async function ems_read() {
 		adapter.log.warn("ems read system error - wrong ip address?");
 		data = "Invalid";
 	}
+	await sleep(100);
 
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
-
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
-				try {data = await ems_get(url1); }
-				catch(error) {adapter.log.error("ems http read error:"+url1);}
-				const fields = JSON.parse(data);
+				try {
+					data = await ems_get(url1); 
+					const fields = JSON.parse(data);
 
-				for (const [key, value] of Object.entries(fields)) {
-					if (typeof value !== "object") {
-						write_state(device+"."+key,value,"");
-					}
-					else {
-						const key1 = key;
-						const wert = JSON.parse(JSON.stringify(value));
-						for (const [key2, value2] of Object.entries(wert)) {
-							write_state(device+"."+key1+"."+key2,value2,"");
+					for (const [key, value] of Object.entries(fields)) {
+						if (typeof value !== "object") {
+							write_state(device+"."+key,value,"");
+						}
+						else {
+							const key1 = key;
+							const wert = JSON.parse(JSON.stringify(value));
+							for (const [key2, value2] of Object.entries(wert)) {
+								write_state(device+"."+key1+"."+key2,value2,"");
+							}
 						}
 					}
 				}
+				catch(error) {adapter.log.info("ems http read polling error:"+url1);}
 			}
+			await sleep(100);
 		}
 	}
 }
