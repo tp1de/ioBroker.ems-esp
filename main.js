@@ -318,7 +318,7 @@ async function init_states_emsesp() {
 
 				for (const [key, value] of Object.entries(fields)) {
 					if (typeof value !== "object") {
-						let url2 = emsesp +  "/api?device="+device+"&cmd="+key;
+						const url2 = emsesp +  "/api?device="+device+"&cmd="+key;
 						let def;
 						try {def = await ems_get(url2); }
 						catch(error) {adapter.log.error("ems http read error init:"+url2);}
@@ -328,7 +328,7 @@ async function init_states_emsesp() {
 						const key1 = key;
 						const wert = JSON.parse(JSON.stringify(value));
 						for (const [key2, value2] of Object.entries(wert)) {
-							let url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
+							const url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
 							let def;
 							try {def = await ems_get(url2); }
 							catch(error) {adapter.log.error("ems http read error init:"+url2);}
