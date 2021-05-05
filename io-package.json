@@ -34,16 +34,16 @@
       }
     },
     "titleLang": {
-      "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "de": "EMS-basierte Geräte (Energy Management System) von Herstellern wie Bosch, Buderus, Nefit, Junkers, Worcester und Sieger.",
-      "ru": "ems-esp",
-      "pt": "ems-esp",
-      "nl": "ems-esp",
-      "fr": "ems-esp",
-      "it": "ems-esp",
-      "es": "ems-esp",
-      "pl": "ems-esp",
-      "zh-cn": "ems-esp"
+      "en": "EMS-ESP (ems-esp & km200)",
+      "de": "EMS-ESP (ems-esp & km200)",
+      "ru": "EMS-ESP (ems-esp & km200)",
+      "pt": "EMS-ESP (ems-esp & km200)",
+      "nl": "EMS-ESP (ems-esp & km200)",
+      "fr": "EMS-ESP (ems-esp & km200)",
+      "it": "EMS-ESP (ems-esp & km200)",
+      "es": "EMS-ESP (ems-esp & km200)",
+      "pl": "EMS-ESP (ems-esp & km200)",
+      "zh-cn": "EMS-ESP (ems-esp & km200)"
     },
     "desc": {
       "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
