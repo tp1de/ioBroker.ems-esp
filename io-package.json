@@ -94,6 +94,8 @@
     "gateway_pw": "",
     "private_pw": "",
     "emsesp_ip": "http://ems-esp",
+    "ems_apiv3": false,
+    "ems_token": "",
     "recordings": false,
     "database_instance": "sql.0",
     "database": "iobroker",

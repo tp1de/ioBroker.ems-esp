@@ -38,6 +38,30 @@ systemDictionary = {
 		"pl": "IP address ems-esp",
 		"zh-cn": "IP address ems-esp"
 	},
+	"ems_apiv3": {
+		"en": "use REST API V3",
+		"de": "verwende REST API V3",
+		"ru": "use REST API V3",
+		"pt": "use REST API V3",
+		"nl": "use REST API V3",
+		"fr": "use REST API V3",
+		"it": "use REST API V3",
+		"es": "use REST API V3",
+		"pl": "use REST API V3",
+		"zh-cn": "use REST API V3"
+	},
+	"ems_token": {
+		"en": "ems access token",
+		"de": "ems access token",
+		"ru": "ems access token",
+		"pt": "ems access token",
+		"nl": "ems access token",
+		"fr": "ems access token",
+		"it": "ems access token",
+		"es": "ems access token",
+		"pl": "ems access token",
+		"zh-cn": "ems access token"
+	},
 	"km200_ip": {
 		"en": "IP address km200",
 		"de": "IP Adresse km200",
