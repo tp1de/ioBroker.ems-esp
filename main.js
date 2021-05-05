@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.6.3
+ * ems-esp adapter version v0.6.4
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -25,7 +25,8 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
-let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,emsesp,recordings=false;
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
+let emsesp,recordings=false,ems_apiv3 = false, ems_token ="";
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -68,11 +69,15 @@ class EmsEsp extends utils.Adapter {
 		km200_server = this.config.km200_ip;
 		km200_gatewaypassword = this.config.gateway_pw;
 		km200_privatepassword = this.config.private_pw;
-		emsesp = this.config.emsesp_ip ;
 		recordings = this.config.recordings;
 		db = this.config.database_instance;
 		dbname = this.config.database;
 		km200_structure= this.config.km200_structure;
+
+		emsesp = this.config.emsesp_ip ;
+		ems_token = this.config.ems_token;
+		ems_apiv3 = this.config.ems_apiv3;
+
 
 		function decrypt(key, value) {
 			let result = "";

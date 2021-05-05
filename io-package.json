@@ -1,9 +1,17 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.6.3",
+    "version": "0.6.4",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.6.4": {
+        "en": "Prepare Rest Api V3",
+        "de": "Rest Api V3 Vorbereitung"
+      },
+      "0.6.3": {
+        "en": "password encryption",
+        "de": "Kennwort Verschlüsselung"
+      },
       "0.6.2": {
         "en": "Select all km200 entries without cs file",
         "de": "Lesen aller km200 Datenpunkte ohne csv File"
