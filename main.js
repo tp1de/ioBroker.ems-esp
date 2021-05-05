@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.6.4
+ * ems-esp adapter version v0.7.0
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -76,8 +76,6 @@ class EmsEsp extends utils.Adapter {
 
 		emsesp = this.config.emsesp_ip ;
 		ems_token = this.config.ems_token;
-		ems_apiv3 = this.config.ems_apiv3;
-
 
 		function decrypt(key, value) {
 			let result = "";
@@ -212,13 +210,14 @@ class EmsEsp extends utils.Adapter {
 
 				adapter.getObject(id,function (err, obj) {
 					if (obj.native.ems_device != null){
-						let url = emsesp + "/api?device="+obj.native.ems_device;
-						url+= "&cmd="+obj.native.ems_command+"&data="+value;
-						if (obj.native.ems_id != "") {
-							url += "&id="+obj.native.ems_id.substr(2,1);
+						let url = emsesp + "/api/" + obj.native.ems_device;
+						if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
+						else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;  }
+						try {
+							ems_put(url,value);
 						}
-						try {let response = ems_get(url); }
-						catch(error) {adapter.log.error("ems http write error:"+id);}
+						catch(error) {adapter.log.warn("error ems post:"+ id +" -- " + error);}
+					
 					}
 					else {
 						try {let response = km200_put(obj.native.ems_km200 , value);}
@@ -293,7 +292,7 @@ async function init_states_km200() {
 
 async function init_states_emsesp() {
 	adapter.log.info("start initializing ems states");
-	const url = emsesp +  "/api?device=system&cmd=info";
+	const url = emsesp +  "/api/system";
 	let data ="";
 	try {data = await ems_get(url); }
 	catch(error) {
@@ -317,7 +316,7 @@ async function init_states_emsesp() {
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
-				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
+				const url1 = emsesp +  "/api/"+device;
 				data="";
 				try {data = await ems_get(url1); }
 				catch(error) {adapter.log.error("ems http read error init:" + error + " - " + url1);}
@@ -326,7 +325,7 @@ async function init_states_emsesp() {
 
 				for (const [key, value] of Object.entries(fields)) {
 					if (typeof value !== "object") {
-						const url2 = emsesp +  "/api?device="+device+"&cmd="+key;
+						const url2 = emsesp +  "/api/"+device+"/"+key;
 						let def;
 						try {
 							def = await ems_get(url2); 
@@ -338,7 +337,7 @@ async function init_states_emsesp() {
 						const key1 = key;
 						const wert = JSON.parse(JSON.stringify(value));
 						for (const [key2, value2] of Object.entries(wert)) {
-							const url2 = emsesp +  "/api?device="+device+"&cmd="+key2+"&id="+key1;
+							const url2 = emsesp +  "/api/"+device+"/"+key1+"/"+key2;
 							let def;
 							try {
 								def = await ems_get(url2); 
@@ -358,7 +357,7 @@ async function init_states_emsesp() {
 
 
 async function ems_read() {
-	const url = emsesp +  "/api?device=system&cmd=info";
+	const url = emsesp +  "/api/system";
 	let data = "";
 	try {data = await ems_get(url); }
 	catch(error) {
@@ -369,10 +368,21 @@ async function ems_read() {
 
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
+		const status = JSON.parse(data).Status;
+		const system = JSON.parse(data).System;
+
+		for (const [key, value] of Object.entries(status)) {
+			if (typeof value !== "object") write_state("ems-status."+key,value,"");
+		}
+
+		for (const [key, value] of Object.entries(system)) {
+			if (typeof value !== "object") write_state("ems-system."+key,value,"");
+		}
+
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
-				const url1 = emsesp +  "/api?device="+device+"&cmd=info&id=0";
+				const url1 = emsesp +  "/api/"+device;
 				try {
 					data = await ems_get(url1); 
 					const fields = JSON.parse(data);
@@ -410,7 +420,7 @@ async function km200_read(result){
 			if (body != undefined) {
 				try {
 					const val = body.value;
-					adapter.setState(result[i].km200, {ack: true, val: val});
+					adapter.setStateAsync(result[i].km200, {ack: true, val: val});
 				}
 				catch(error) {adapter.log.warn("setState error:"+result[i].km200);}
 			}
@@ -428,6 +438,14 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 		else {resolve(body);}
 	});
 });}
+
+
+async function ems_put(url,value) {return new Promise(function(resolve,reject) {
+	request.post({headers: {"Content-Type": '"application/json"', "Authorization": '"Bearer "' + ems_token },url: url, body: {"value":value}},
+		function(error, response, body){if (error) {return reject(error);} resolve(response);});
+});
+
+
 
 //--------------------------------------------------------------------------------------------------------------------------
 

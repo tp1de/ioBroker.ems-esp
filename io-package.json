@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.6.4",
+    "version": "0.7.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.7.0": {
+        "en": "Test version Rest API V3",
+        "de": "Rest API V3 Test"
+      },
       "0.6.4": {
         "en": "Prepare Rest Api V3",
         "de": "Rest Api V3 Vorbereitung"
@@ -102,7 +106,7 @@
     "gateway_pw": "",
     "private_pw": "",
     "emsesp_ip": "http://ems-esp",
-    "ems_apiv3": false,
+    "ems_apiv3": true,
     "ems_token": "",
     "recordings": false,
     "database_instance": "sql.0",
