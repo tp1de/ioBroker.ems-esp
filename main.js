@@ -441,9 +441,18 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 
 
 async function ems_put(url,value) {return new Promise(function(resolve,reject) {
-	request.post({headers: {"Content-Type": '"application/json"', "Authorization": '"Bearer "' + ems_token },url: url, body: {"value":value}},
-		function(error, response, body){if (error) {return reject(error);} resolve(response);});
-});
+	const options = {url: url, method: "POST", status: [200], timeout: 5000, port: 80, headers :{"Content-Type": "application/json"} };
+	adapter.log.info(url+ " " +options);
+	request(options, body, {"value":value},
+		function(error, response){
+			if (error) {return reject(error);} 
+			resolve(response);
+		});
+
+	//request.post({headers: {"Content-Type": '"application/json"', "Authorization": '"Bearer "' + ems_token },url: url, body: {"value":value}},
+	//	function(error, response, body){if (error) {return reject(error);} resolve(response);});
+	});
+}
 
 
 
