@@ -167,13 +167,13 @@ class EmsEsp extends utils.Adapter {
 
 		this.subscribeStates("*");
 
-		// ems and km200 read schedule	
+		// ems and km200 read schedule
 
 		let interval1,interval2,interval3;
 		adapter.log.info("start polling intervals now. ems: 15 secs & km200: 90 secs & km200 recordings: hour");
-		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec 
-		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec 
-		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs 
+		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
+		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
+		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
 
 	}
 
@@ -214,13 +214,13 @@ class EmsEsp extends utils.Adapter {
 						if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
 						else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;  }
 						try {
-							ems_put(url,value);
+							const response = ems_put(url,value);
 						}
 						catch(error) {adapter.log.warn("error ems post:"+ id +" -- " + error);}
-					
+
 					}
 					else {
-						try {let response = km200_put(obj.native.ems_km200 , value);}
+						try {const response = km200_put(obj.native.ems_km200 , value);}
 						catch(error) {console.error("km200 http write error:"+obj.native.ems_km200);}
 					}
 				});
@@ -267,7 +267,7 @@ async function init_states_km200() {
 	for (let i=1; i < datafields.length; i++) {
 		const r = datafields[i];
 		//adapter.log.info(JSON.stringify(r));
-		if (r.ems_field !== "" && r.ems_device !=="") {	} 
+		if (r.ems_field !== "" && r.ems_device !=="") {	}
 		else {
 			if (r.km200 !== "") {let o;
 				try {o = await km200_get(r.km200);}
@@ -328,7 +328,7 @@ async function init_states_emsesp() {
 						const url2 = emsesp +  "/api/"+device+"/"+key;
 						let def;
 						try {
-							def = await ems_get(url2); 
+							def = await ems_get(url2);
 							write_state(device+"."+key,value,def);
 						}
 						catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
@@ -340,7 +340,7 @@ async function init_states_emsesp() {
 							const url2 = emsesp +  "/api/"+device+"/"+key1+"/"+key2;
 							let def;
 							try {
-								def = await ems_get(url2); 
+								def = await ems_get(url2);
 								write_state(device+"."+key1+"."+key2,value2,def);
 							}
 							catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
@@ -384,7 +384,7 @@ async function ems_read() {
 				const device = devices[i].type.toLowerCase();
 				const url1 = emsesp +  "/api/"+device;
 				try {
-					data = await ems_get(url1); 
+					data = await ems_get(url1);
 					const fields = JSON.parse(data);
 
 					for (const [key, value] of Object.entries(fields)) {
@@ -441,17 +441,17 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 
 
 async function ems_put(url,value) {return new Promise(function(resolve,reject) {
-	const options = {url: url, method: "POST", status: [200], timeout: 5000, port: 80, headers :{"Content-Type": "application/json"} };
-	adapter.log.info(url+ " " +options);
-	request(options, body, {"value":value},
-		function(error, response){
-			if (error) {return reject(error);} 
-			resolve(response);
-		});
+	const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
+	const body =JSON.stringify({"value": value});
 
-	//request.post({headers: {"Content-Type": '"application/json"', "Authorization": '"Bearer "' + ems_token },url: url, body: {"value":value}},
-	//	function(error, response, body){if (error) {return reject(error);} resolve(response);});
+	request.post({url, headers: headers, body} , function(error, response){
+		console.log(response.statusCode);
+		const resp= JSON.parse(response.body).message;
+		if (response.statusCode == 200) {resolve (resp);}
+		else return reject (response.statusCode + ":" + resp);
 	});
+
+});
 }
 
 
@@ -508,12 +508,12 @@ async function read_km200structure() {
 	adapter.log.info("End reading km200 data-structure: " + results.length + " fields found");
 	return results;
 
-	
+
 	async function tree(reference) {
 		try {
-			let data = await km200_get(reference); 
+			const data = await km200_get(reference);
 			if (data.type != "refEnum") {
-				let element=data.id.substring(1).split("/").join(".");
+				const element=data.id.substring(1).split("/").join(".");
 				results.push({"km200":element,"ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
 			} else await refEnum(data);
 		} catch(error) {adapter.log.warn("http error reading km200 tree:"+error);}
@@ -640,7 +640,7 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
 		if (error) {return reject(error);}
 		if (response == undefined) {resolve("");}
 		if (response.statusCode == 403 || response.statusCode == 404 ) resolve("");
-			if (response.statusCode !== 200) {
+		if (response.statusCode !== 200) {
 			return reject(error+response.statusCode);}
 		else {
 			try {var data= km200_decrypt(body);}
@@ -654,7 +654,7 @@ async function km200_put(url,value) {return new Promise(function(resolve,reject)
 	const data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
 	const urls = km200_server +"/" + url.split(".").join("/");
 	request.put({headers: {"Accept": '"application/json',"User-Agent": "TeleHeater/2.2.3"},url: urls, body: data},
-		function(error, response, body){if (error) {return reject(error);} resolve(response);});
+		function(error, response){if (error) {return reject(error);} resolve(response);});
 });
 }
 
@@ -724,14 +724,14 @@ async function write_avg12m(){
 
 async function hours() {
 	const adapt = adapter.namespace+".";
-	
+
 	const datum= new Date();
 	let datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 	const url1 = feld + datums;
 	const url11 = felddhw + datums;
 
 	try
-	{   let data = await km200_get(url1);
+	{   const data = await km200_get(url1);
 	}   catch(error) {data = " "; }
 	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
 
@@ -887,14 +887,14 @@ async function writehh (data,feld){
 
 async function write_recordings(daten){
 	let ids;
-	let query ="SELECT * FROM "+dbname+".datapoints WHERE name='"+daten[0].id+"';";
+	const query ="SELECT * FROM "+dbname+".datapoints WHERE name='"+daten[0].id+"';";
 	adapter.sendTo(db, "query",query, function (result) {
-		if (result.error) {adapter.log.info("Error:"+result.error)}
+		if (result.error) {adapter.log.info("Error:"+result.error);}
 		else {
 			let id = 0;
 			if (result.result[0] != undefined) id = result.result[0].id;
 			for (let ii = 0; ii < daten.length; ii++){
-				let query1 ="SELECT * FROM "+dbname+".ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
+				const query1 ="SELECT * FROM "+dbname+".ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
 				adapter.sendTo(db, "query",query1, function (result) {
 					if (result.error) {adapter.log.info(result.error);}
 					else {
@@ -902,8 +902,8 @@ async function write_recordings(daten){
 							//adapter.log.info('Neu:');
 							adapter.sendTo(db, "storeState", daten[ii]);
 						} else {
-							let val_actual = result.result[0].val;
-							let val_new = daten[ii].state.val;
+							const val_actual = result.result[0].val;
+							const val_new = daten[ii].state.val;
 							if (val_actual != val_new) {
 								//adapter.log.info("actual:" + val_actual + "---- new:" +val_new);
 								adapter.sendTo(db, "update", daten[ii], function(result){
@@ -954,7 +954,7 @@ function summe (data){
 async function writemm (data,feld,m0,m1,dataarray){
 
 	const year = data.interval;
-	let interval = year + "-01-01";
+	const interval = year + "-01-01";
 	const ut1 = new Date(interval).getTime();
 	const liste = data.recording;
 
