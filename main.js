@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.7.0
+ * ems-esp adapter version v0.7.5
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -206,28 +206,12 @@ class EmsEsp extends utils.Adapter {
 		if (state) {
 			if (state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
-				const value = state.val;
-
-				adapter.getObject(id,function (err, obj) {
-					if (obj.native.ems_device != null){
-						let url = emsesp + "/api/" + obj.native.ems_device;
-						if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
-						else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;  }
-						try {
-							const response = ems_put(url,value);
-						}
-						catch(error) {adapter.log.warn("error ems post:"+ id +" -- " + error);}
-
-					}
-					else {
-						try {const response = km200_put(obj.native.ems_km200 , value);}
-						catch(error) {console.error("km200 http write error:"+obj.native.ems_km200);}
-					}
-				});
-
+				state_change(id,state);				
 			}
 		} else adapter.log.info("state "+id+" deleted");
 	}
+
+	
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
@@ -261,6 +245,35 @@ if (require.main !== module) {
 }
 
 //---------functions ---------------------------------------------------------------------------------------------------------
+
+
+async function state_change(id,state) {
+
+	const value = state.val;
+	const obj = await adapter.getObjectAsync(id);
+
+	if (obj.native.ems_device != null){
+		let url = emsesp + "/api/" + obj.native.ems_device;
+		if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
+		else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
+
+		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
+		const body =JSON.stringify({"value": value});
+	
+		request.post({url, headers: headers, body}, function(error,response) { 
+			const status= JSON.parse(response.body).statusCode;
+			const resp= JSON.parse(response.body).message;
+			if (resp != "OK") adapter.log.error("ems-esp http write error:" + resp);
+		});
+		
+	} else {
+		try {const response = km200_put(obj.native.ems_km200 , value);}
+		catch(error) {adapter.log.warn("km200 http write error:"+obj.native.ems_km200);}
+	}
+	
+} 
+
+
 
 async function init_states_km200() {
 	adapter.log.info("start initializing km200 states");
@@ -419,10 +432,15 @@ async function km200_read(result){
 			catch(error) {adapter.log.warn("km200 get error state:"+result[i].km200);}
 			if (body != undefined) {
 				try {
-					const val = body.value;
-					adapter.setStateAsync(result[i].km200, {ack: true, val: val});
+					let val = body.value;
+					if (body.type == "stringValue" && body.allowedValues != undefined){
+						val = body.allowedValues.indexOf(body.value);
+					}
+					adapter.setStateChangedAsync(result[i].km200, {ack: true, val: val});
 				}
-				catch(error) {adapter.log.warn("setState error:"+result[i].km200);}
+				catch(error) {
+					adapter.log.warn("setState error:"+result[i].km200);
+				}
 			}
 		}
 	}
@@ -440,18 +458,15 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 });}
 
 
-async function ems_put(url,value) {return new Promise(function(resolve,reject) {
+
+async function ems_put(url,value)  {
 	const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 	const body =JSON.stringify({"value": value});
 
-	request.post({url, headers: headers, body} , function(error, response){
-		console.log(response.statusCode);
+	request.post({url, headers: headers, body}, function(error,response) { ;
 		const resp= JSON.parse(response.body).message;
-		if (response.statusCode == 200) {resolve (resp);}
-		else return reject (response.statusCode + ":" + resp);
-	});
-
-});
+		 return (response);
+    });	
 }
 
 
@@ -699,8 +714,8 @@ async function write_avg12m(){
 				sum += val;
 			}
 			sum = Math.round(sum) ;
-			adapter.setState(root+avg12mdhw, sum);
-		}
+			adapter.setStateAsync(root+avg12mdhw, {ack: true, val: sum});
+			}
 	});
 
 	query = "SELECT ts,val FROM "+dbname+".ts_number where id = (SELECT id FROM "+dbname+".datapoints where name = ";
@@ -715,7 +730,7 @@ async function write_avg12m(){
 				sum += val;
 			}
 			sum = Math.round(sum) ;
-			adapter.setState(root+avg12m, sum);
+			adapter.setStateAsync(root+avg12m, {ack: true, val: sum});
 		}
 	});
 }
@@ -1138,6 +1153,13 @@ function km200_obj(n,o) {
 		c.common.min = o.minValue;
 	if (typeof o.maxValue !== "undefined")
 		c.common.max = o.maxValue;
+
+	if (o.state !== undefined){
+		if  (o.state[1] !== undefined) {
+			if  (o.state[1].na !== undefined) c.common.min = o.state[1].na;
+		}
+		   // c.common.min = o.state[1].na;
+	}
 	c.native.km200 = o;
 	//c.common.native = { km200: o };
 	return c;

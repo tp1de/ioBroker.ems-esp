@@ -1,9 +1,14 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.7.0",
+    "version": "0.7.5",
     "title": "EMS-ESP (ems-esp & km200)",
-    "news": {
+    "news": 
+    {
+      "0.7.5": {
+        "en": "Rest API V3 - js-controller 3.x",
+        "de": "Rest API V3 - js-controller 3.x"
+      },
       "0.7.0": {
         "en": "Test version Rest API V3",
         "de": "Rest API V3 Test"

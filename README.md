@@ -68,6 +68,12 @@ Update is every hour. The values can then be shown by using e.g. the Flot Charts
 
 ## Changelog
 
+### 0.7.0
+* (Thomas Petrick) REST API V3 and js-controller v3.3.x
+
+### 0.7.0
+* (Thomas Petrick) REST API V3
+
 ### 0.6.3
 * (Thomas Petrick) Encrypted password
 
