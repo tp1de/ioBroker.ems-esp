@@ -123,16 +123,16 @@ systemDictionary = {
 		"zh-cn": "generate SQL entries for power consumption (km200 only)"
 	},
 	"database_instance": {
-		"en": "database instance (mySQL only)",
-		"de": "Datenbank Instanz (nur mySQL)",
-		"ru": "database instance (mySQL only)",
-		"pt": "database instance (mySQL only)",
-		"nl": "database instance (mySQL only)",
-		"fr": "database instance (mySQL only)",
-		"it": "database instance (mySQL only)",
-		"es": "database instance (mySQL only)",
-		"pl": "database instance (mySQL only)",
-		"zh-cn": "database instance (mySQL only)"
+		"en": "database instance (mySQL or influxdb)",
+		"de": "Datenbank Instanz (mySQL oder influxdb)",
+		"ru": "database instance (mySQL or influxdb)",
+		"pt": "database instance (mySQL or influxdb)",
+		"nl": "database instance (mySQL or influxdb)",
+		"fr": "database instance (mySQL or influxdb)",
+		"it": "database instance (mySQL or influxdb)",
+		"es": "database instance (mySQL or influxdb)",
+		"pl": "database instance (mySQL or influxdb)",
+		"zh-cn": "database instance (mySQL or influxdb)"
 	},
 	"database": {
 		"en": "database name (iobroker)",

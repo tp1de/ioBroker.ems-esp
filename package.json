@@ -1,6 +1,6 @@
 {
   "_from": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
-  "_id": "iobroker.ems-esp@0.7.6",
+  "_id": "iobroker.ems-esp@0.8.0",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.ems-esp",
@@ -80,5 +80,5 @@
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit"
   },
-  "version": "0.7.6"
+  "version": "0.8.0"
 }

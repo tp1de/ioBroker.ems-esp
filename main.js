@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.7.6
+ * ems-esp adapter version v0.8.0
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -156,10 +156,12 @@ class EmsEsp extends utils.Adapter {
 			function enable_state(stateid) {
 				const id =  adapter.namespace  + "." + stateid;
 				adapter.sendTo(db, "enableHistory", {id: id, options:
-					{changesOnly: false,debounce: 0,retention: 31536000,
+					{changesOnly: false,debounce: 0,retention: 0,
 						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 					if (result.error) { console.log(result.error); }
-					if (result.success) { }
+					if (result.success) { 
+						//adapter.setState(stateid, {ack: true, val: 0});
+					}
 				});
 			}
 		}
@@ -698,7 +700,24 @@ async function km200_recordings(){
 	await months();
 }
 
+async function recs(field,daten) {
 
+	if (db.substring(0,3) == "sql" ) {
+		await adapter.sendToAsync(db, 'deleteAll', {id: field});
+		await sleep(100);	
+		adapter.sendTo(db,'storeState', daten);
+	}
+
+
+	if (db.substring(0,8) == "influxdb" ) {
+		let query = 'drop series from "' +  field + '";';
+		await adapter.sendToAsync(db, 'query', query);
+		await sleep(100);
+		for (let i = 0; i < daten.length;i++){
+			adapter.sendTo(db,'storeState', daten[i]);	
+		}
+	}
+}
 
 
 async function hours() {
@@ -718,15 +737,14 @@ async function hours() {
 				if (data.recording[ii] !== null){
 					let wert = Math.round(data.recording[ii].y / 6) / 10;   
 					let ts = ut1 + ((ii+2) * 3600000 );
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
 		datum.setDate(datum.getDate() - 1);
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
+
+	await recs(field,daten);
 
 	datum= new Date();
 	daten = [], data="";
@@ -742,15 +760,13 @@ async function hours() {
 				if (data.recording[ii] !== null){
 					let wert = Math.round(data.recording[ii].y / 6) / 10;   
 					let ts = ut1 + ((ii+2) * 3600000 );
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
 		datum.setDate(datum.getDate() - 1);
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
+	await recs(field,daten);
 }
 
 async function days() {
@@ -778,9 +794,7 @@ async function days() {
 		if (monat == 1) {jahr = jahr-1;monat=12;}
 		else if (monat > 1) {monat = monat-1;}
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
+	await recs(field,daten);
 
 	datum= new Date();
 	daten = [], data="";
@@ -805,9 +819,7 @@ async function days() {
 		if (monat == 1) {jahr = jahr-1;monat=12;}
 		else if (monat > 1) {monat = monat-1;}
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
+	await recs(field,daten);
 }
 
 
@@ -841,9 +853,7 @@ async function months() {
 		}
 		jahr = jahr-1;
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
+	await recs(field,daten);
 	sum = Math.round(sum) ;
 	adapter.setStateAsync(root+avg12m, {ack: true, val: sum});
 
@@ -872,10 +882,8 @@ async function months() {
 		}
 		jahr = jahr-1;
 	}
-	adapter.sendTo(db, 'deleteAll', {id: field}); 
-	await sleep(1000);
-	adapter.sendTo(db,'storeState', daten);
-	sum = Math.round(sum) ;
+	await recs(field,daten);
+	sum = Math.round(sum/12) ;
 	adapter.setStateAsync(root+avg12mdhw, {ack: true, val: sum});
 }
 

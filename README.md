@@ -16,22 +16,21 @@
 The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter 
 and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.0.3 b4 and the ESP32 chip.
 
-The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the rest api interface. 
+The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. 
 The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc.
 
-
 When an IP-gateway like km200 / ip inside is available, the gateway can be integrated as well (read & write).
 Unlike the km200 adapter the fields to be used has to be defined in an csv file (standard ems.csv) within the iobroker-data directory.
+KM200 datafields can be selected using a csv-file within iobroker-data directory. When filename is empty only ems-esp data will be read.
+Using a wildcard * within csv-file parameter field will read all available km200 datapoints.
 
 This adapter then reads values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send 
 the respective http (post) commands back to ems-esp hardware and km200. 
 
 ems-esp read polling is fixed to 15 seconds and to 90 seconds for km200.
  
-km200 datafields can be selected using a csv-file within iobroker-data directory. When filename is empty only ems-esp data will be read.
-Using a wildcard * within csv-file parameter field will read all available km200 datapoints.
 
 The ems.csv file contains the following status information per datapoint: (separated by ";")
 
@@ -56,9 +55,10 @@ Usi´ng the wildcard option will override this logic and all km200 fields will b
 Most modern heating systems have ip-inside integrated and support energy statistics (recording for total power consmption and warm water (dhw)).
 For these systems the powerconsumption statistics for total power consumtion and warm water power consumption can be read (hourly / dayly / monthly).
 
-The checkbox recordings has to be enabled and the database instance (mySQL) has to be defined. SQL History adapter need to be installed with mySQL.
+The checkbox recordings has to be enabled and the database instance (sql - mySQL -  or influxdb) has to be defined. 
+SQL History adapter need to be installed with mySQL. Since v0.8 influxdb instances are supported as well.
 
-***** This is only tested yet for mySQL databases *****
+*** This is only tested yet for mySQL and influxdb v1.8 databases ***
 
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
 Update is every hour. The values can then be shown by using e.g. the Flot Charts adapter.
@@ -67,6 +67,9 @@ Update is every hour. The values can then be shown by using e.g. the Flot Charts
 
 
 ## Changelog
+
+### 0.8.0
+* (Thomas Petrick) REST API V3 and js-controller v3.3.x and support of influxdb for recordings
 
 ### 0.7.5
 * (Thomas Petrick) REST API V3 and js-controller v3.3.x

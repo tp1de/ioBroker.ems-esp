@@ -1,13 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.7.6",
+    "version": "0.8.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "0.7.6": {
-        "en": "Rest API V3 - js-controller 3.x",
-        "de": "Rest API V3 - js-controller 3.x"
-      },
+      "0.8.0": {
+        "en": "Rest API V3 - js-controller 3.x and influxdb support",
+        "de": "Rest API V3 - js-controller 3.x and influxdb support"
+      },      
       "0.7.5": {
         "en": "Rest API V3 - js-controller 3.x",
         "de": "Rest API V3 - js-controller 3.x"
