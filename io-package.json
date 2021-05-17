@@ -5,12 +5,12 @@
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
       "0.7.6": {
-        "en": "Update recordings",
-        "de": "Update recordings"
+        "en": "Rest API V3 - js-controller 3.x",
+        "de": "Rest API V3 - js-controller 3.x"
       },
       "0.7.5": {
-        "en": "js-contoller 3.3",
-        "de": "js-controller 3.3"
+        "en": "Rest API V3 - js-controller 3.x",
+        "de": "Rest API V3 - js-controller 3.x"
       },
       "0.7.0": {
         "en": "Test version Rest API V3",
@@ -106,7 +106,7 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7"
+    "installedFrom": "tp1de/ioBroker.ems-esp#0183b51d5e8839b0a83de76488ff640e24be4286"
   },
   "native": {
     "control_file": "ems.csv",
