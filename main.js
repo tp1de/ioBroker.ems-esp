@@ -468,7 +468,7 @@ async function ems_put(url,value)  {
 	request.post({url, headers: headers, body}, function(error,response) { ;
 		const resp= JSON.parse(response.body).message;
 		 return (response);
-    });	
+	});	
 }
 
 
@@ -704,177 +704,177 @@ async function km200_recordings(){
 async function hours() {
 	const adapt = adapter.namespace+".";
 
-    let datum= new Date();
-    let daten = [], data;
-    let field = adapt+root+hh
+	let datum= new Date();
+	let daten = [], data;
+	let field = adapt+root+hh
 
-    for (var i=0;i<3;i++) {
-        let url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
-        try {data = await km200_get(url1);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            let ut1 = new Date(data.interval).getTime();
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
-                    let ts = ut1 + ((ii+2) * 3600000 );
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        datum.setDate(datum.getDate() - 1);
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (var i=0;i<3;i++) {
+		let url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+		try {data = await km200_get(url1);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			let ut1 = new Date(data.interval).getTime();
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10;   
+					let ts = ut1 + ((ii+2) * 3600000 );
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		datum.setDate(datum.getDate() - 1);
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 
-    datum= new Date();
-    daten = [], data="";
-    field = adapt+root+hhdhw;
+	datum= new Date();
+	daten = [], data="";
+	field = adapt+root+hhdhw;
 
-    for (let i=0;i<3;i++) {
-        let url11 = felddhw + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
-        try {data = await km200_get(url11);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            let ut1 = new Date(data.interval).getTime();
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
-                    let ts = ut1 + ((ii+2) * 3600000 );
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        datum.setDate(datum.getDate() - 1);
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (let i=0;i<3;i++) {
+		let url11 = felddhw + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+		try {data = await km200_get(url11);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			let ut1 = new Date(data.interval).getTime();
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10;   
+					let ts = ut1 + ((ii+2) * 3600000 );
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		datum.setDate(datum.getDate() - 1);
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 }
 
 async function days() {
 	const adapt = adapter.namespace+".";
-    let datum= new Date();
-    let daten = [], data;
-    let field = adapt+root+dd;
-    let jahr = datum.getFullYear();
-    let monat = datum.getMonth() + 1;
+	let datum= new Date();
+	let daten = [], data;
+	let field = adapt+root+dd;
+	let jahr = datum.getFullYear();
+	let monat = datum.getMonth() + 1;
 
-    for (var i=0;i<3;i++) {
-        let url1 = feld + jahr + "-" + monat;
-        try {data = await km200_get(url1);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            let ut1 = new Date(data.interval).getTime();
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
-                    let ts = ut1 + 60000 + (ii * 3600000 * 24);
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        if (monat == 1) {jahr = jahr-1;monat=12;}
-        else if (monat > 1) {monat = monat-1;}
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (var i=0;i<3;i++) {
+		let url1 = feld + jahr + "-" + monat;
+		try {data = await km200_get(url1);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			let ut1 = new Date(data.interval).getTime();
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10;   
+					let ts = ut1 + 60000 + (ii * 3600000 * 24);
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		if (monat == 1) {jahr = jahr-1;monat=12;}
+		else if (monat > 1) {monat = monat-1;}
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 
-    datum= new Date();
-    daten = [], data="";
-    field = adapt+root+dddhw;
-    jahr = datum.getFullYear();
-    monat = datum.getMonth() + 1;
+	datum= new Date();
+	daten = [], data="";
+	field = adapt+root+dddhw;
+	jahr = datum.getFullYear();
+	monat = datum.getMonth() + 1;
 
-    for (let i=0;i<3;i++) {
-        let url11 = felddhw + jahr +"-"+ monat;
-        try {data = await km200_get(url11);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            let ut1 = new Date(data.interval).getTime();
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
-                    let ts = ut1 + 60000 + (ii * 3600000 * 24);
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        if (monat == 1) {jahr = jahr-1;monat=12;}
-        else if (monat > 1) {monat = monat-1;}
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (let i=0;i<3;i++) {
+		let url11 = felddhw + jahr +"-"+ monat;
+		try {data = await km200_get(url11);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			let ut1 = new Date(data.interval).getTime();
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10;   
+					let ts = ut1 + 60000 + (ii * 3600000 * 24);
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		if (monat == 1) {jahr = jahr-1;monat=12;}
+		else if (monat > 1) {monat = monat-1;}
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 }
 
 
 
 async function months() {
 	const adapt = adapter.namespace+".";
-    let datum= new Date();
-    let daten = [], data;
-    let field = adapt+root+mm;
-    let jahr = datum.getFullYear();
-    let ja = jahr;
-    let ma = datum.getMonth() + 1;
-    let sum = 0;
+	let datum= new Date();
+	let daten = [], data;
+	let field = adapt+root+mm;
+	let jahr = datum.getFullYear();
+	let ja = jahr;
+	let ma = datum.getMonth() + 1;
+	let sum = 0;
 
-    for (var i=0;i<3;i++) {
-        let url1 = feld + jahr ;
-        try {data = await km200_get(url1);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10; 
-                    let m = ii+1;
-                    let t = jahr + "-" + m.toString() +"-15" ;
-                    if(jahr == ja && m < ma ) sum+=wert;
-                    if(jahr == ja-1 && m >= ma ) sum+=wert;
-                    let ts = new Date(t).getTime();
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        jahr = jahr-1;
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (var i=0;i<3;i++) {
+		let url1 = feld + jahr ;
+		try {data = await km200_get(url1);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10; 
+					let m = ii+1;
+					let t = jahr + "-" + m.toString() +"-15" ;
+					if(jahr == ja && m < ma ) sum+=wert;
+					if(jahr == ja-1 && m >= ma ) sum+=wert;
+					let ts = new Date(t).getTime();
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		jahr = jahr-1;
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 	sum = Math.round(sum) ;
 	adapter.setStateAsync(root+avg12m, {ack: true, val: sum});
 
-    datum= new Date();
-    daten = [], data="";
-    field = adapt+root+mmdhw;
-    jahr = datum.getFullYear();
-    sum = 0;
+	datum= new Date();
+	daten = [], data="";
+	field = adapt+root+mmdhw;
+	jahr = datum.getFullYear();
+	sum = 0;
 
-    for (let i=0;i<3;i++) {
-        let url11 = felddhw + jahr;
-        try {data = await km200_get(url11);}
-        catch(error) {console.error('error'+data);data = " "; }
-        if (data != " ") {
-            for (let ii = 0; ii < data.recording.length; ii++){
-                if (data.recording[ii] !== null){
-                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
-                    let m = ii+1;
-                    let t = jahr + "-" + m.toString() +"-15" ;
-                    if(jahr == ja && m < ma ) sum+=wert;
-                    if(jahr == ja-1 && m >= ma ) sum+=wert;
-                    let ts = new Date(t).getTime();
-                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
-                }
-            }
-        }
-        jahr = jahr-1;
-    }
-    adapter.sendTo(db, 'deleteAll', {id: field}); 
-    await sleep(1000);
-    adapter.sendTo(db,'storeState', daten);
+	for (let i=0;i<3;i++) {
+		let url11 = felddhw + jahr;
+		try {data = await km200_get(url11);}
+		catch(error) {console.error('error'+data);data = " "; }
+		if (data != " ") {
+			for (let ii = 0; ii < data.recording.length; ii++){
+				if (data.recording[ii] !== null){
+					let wert = Math.round(data.recording[ii].y / 6) / 10;   
+					let m = ii+1;
+					let t = jahr + "-" + m.toString() +"-15" ;
+					if(jahr == ja && m < ma ) sum+=wert;
+					if(jahr == ja-1 && m >= ma ) sum+=wert;
+					let ts = new Date(t).getTime();
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+				}
+			}
+		}
+		jahr = jahr-1;
+	}
+	adapter.sendTo(db, 'deleteAll', {id: field}); 
+	await sleep(1000);
+	adapter.sendTo(db,'storeState', daten);
 	sum = Math.round(sum) ;
 	adapter.setStateAsync(root+avg12mdhw, {ack: true, val: sum});
 }
