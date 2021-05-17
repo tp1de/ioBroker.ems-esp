@@ -4,7 +4,7 @@
 //"esversion":6";
 
 /*
- * ems-esp adapter version v0.7.5
+ * ems-esp adapter version v0.7.6
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -71,7 +71,6 @@ class EmsEsp extends utils.Adapter {
 		km200_privatepassword = this.config.private_pw;
 		recordings = this.config.recordings;
 		db = this.config.database_instance;
-		dbname = this.config.database;
 		km200_structure= this.config.km200_structure;
 
 		emsesp = this.config.emsesp_ip ;
@@ -128,8 +127,8 @@ class EmsEsp extends utils.Adapter {
 			await this.setObjectNotExistsAsync(root+dddhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+mm,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+mmdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
-			await this.setObjectNotExistsAsync(root+avg12m,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
-			await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: false}, native: {}});
+			await this.setObjectNotExistsAsync(root+avg12m,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
+			await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 
 			adapter.getState(root+"created", function(err, state) {
 				if(state == null) {
@@ -168,6 +167,7 @@ class EmsEsp extends utils.Adapter {
 		this.subscribeStates("*");
 
 		// ems and km200 read schedule
+		if (recordings) km200_recordings();
 
 		let interval1,interval2,interval3;
 		adapter.log.info("start polling intervals now. ems: 15 secs & km200: 90 secs & km200 recordings: hour");
@@ -267,8 +267,10 @@ async function state_change(id,state) {
 		});
 		
 	} else {
-		try {const response = km200_put(obj.native.ems_km200 , value);}
-		catch(error) {adapter.log.warn("km200 http write error:"+obj.native.ems_km200);}
+		if (obj.native.ems_km200 != null) {
+			try {const response = km200_put(obj.native.ems_km200 , value);}
+			catch(error) {adapter.log.warn("km200 http write error:"+obj.native.ems_km200);}
+		}
 	}
 	
 } 
@@ -694,352 +696,198 @@ async function km200_recordings(){
 	await hours();
 	await days();
 	await months();
-	await write2mm(adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1);
-	await write2mm(adapt+root+mm,sum_mm,sum_mm_1);
-	await write_avg12m();
 }
 
-async function write_avg12m(){
-	const adapt = adapter.namespace+".";
-
-	let query = "SELECT ts,val FROM "+dbname+".ts_number where id = (SELECT id FROM "+dbname+".datapoints where name = ";
-	query +=  "'"+adapt+root+mmdhw+"');";
-
-	adapter.sendTo(db, "query", query, function (result) {
-		if (result.error  || result.result[0] == null) {} else {
-			let count = 0, sum = 0, avg = 0, val = 0;
-			count = result.result.length;
-			for (let i = count-13; i < count-1; i++){
-				val = result.result[i].val;
-				sum += val;
-			}
-			sum = Math.round(sum) ;
-			adapter.setStateAsync(root+avg12mdhw, {ack: true, val: sum});
-			}
-	});
-
-	query = "SELECT ts,val FROM "+dbname+".ts_number where id = (SELECT id FROM "+dbname+".datapoints where name = ";
-	query +=  "'"+adapt+root+mm+"');";
-
-	adapter.sendTo(db, "query", query, function (result) {
-		if (result.error  || result.result[0] == null) {} else {
-			let count = 0, sum = 0, avg = 0, val = 0;
-			count = result.result.length;
-			for (let i = count-13; i < count-1; i++){
-				val = result.result[i].val;
-				sum += val;
-			}
-			sum = Math.round(sum) ;
-			adapter.setStateAsync(root+avg12m, {ack: true, val: sum});
-		}
-	});
-}
 
 
 
 async function hours() {
 	const adapt = adapter.namespace+".";
 
-	const datum= new Date();
-	let datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
-	const url1 = feld + datums;
-	const url11 = felddhw + datums;
+    let datum= new Date();
+    let daten = [], data;
+    let field = adapt+root+hh
 
-	try
-	{   const data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
+    for (var i=0;i<3;i++) {
+        let url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+        try {data = await km200_get(url1);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            let ut1 = new Date(data.interval).getTime();
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
+                    let ts = ut1 + ((ii+2) * 3600000 );
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        datum.setDate(datum.getDate() - 1);
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
 
-	try
-	{   var data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
+    datum= new Date();
+    daten = [], data="";
+    field = adapt+root+hhdhw;
 
-	datum.setDate(datum.getDate() - 1);
-	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
-	const url2 = feld + datums;
-	const url21 = felddhw + datums;
-	try
-	{   var data = await km200_get(url2);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
-
-	try
-	{   var data = await km200_get(url21);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
-
-	datum.setDate(datum.getDate() - 1);
-	datums = datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
-	const url3 = feld + datums;
-	const url31 = felddhw + datums;
-	try
-	{   var data = await km200_get(url3);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hh);
-	try
-	{   var data = await km200_get(url31);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) await writehh (data,adapt+root+hhdhw);
-
+    for (let i=0;i<3;i++) {
+        let url11 = felddhw + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+        try {data = await km200_get(url11);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            let ut1 = new Date(data.interval).getTime();
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
+                    let ts = ut1 + ((ii+2) * 3600000 );
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        datum.setDate(datum.getDate() - 1);
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
 }
 
 async function days() {
 	const adapt = adapter.namespace+".";
+    let datum= new Date();
+    let daten = [], data;
+    let field = adapt+root+dd;
+    let jahr = datum.getFullYear();
+    let monat = datum.getMonth() + 1;
 
-	const datum= new Date();
-	let jahr = datum.getFullYear();
-	let monat = datum.getMonth() + 1;
+    for (var i=0;i<3;i++) {
+        let url1 = feld + jahr + "-" + monat;
+        try {data = await km200_get(url1);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            let ut1 = new Date(data.interval).getTime();
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
+                    let ts = ut1 + 60000 + (ii * 3600000 * 24);
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        if (monat == 1) {jahr = jahr-1;monat=12;}
+        else if (monat > 1) {monat = monat-1;}
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
 
-	var datums = jahr+"-"+monat;
-	if (monat < 10) datums = jahr+"-0"+monat;
+    datum= new Date();
+    daten = [], data="";
+    field = adapt+root+dddhw;
+    jahr = datum.getFullYear();
+    monat = datum.getMonth() + 1;
 
-	var url1 = feld + datums;
-	var url11 = felddhw + datums;
-	try
-	{   var data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined)  {sum_mm=summe(data);writedd (data,adapt+root+dd);}
-	try
-	{   var data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined)  {sumdhw_mm=summe(data);writedd (data,adapt+root+dddhw);}
-
-
-	if (monat == 1) {jahr = jahr-1;monat=12;}
-	else if (monat > 1) {monat = monat-1;}
-
-	var datums = jahr+"-"+monat;
-	if (monat < 10) datums = jahr+"-0"+monat;
-
-	var url1 = feld + datums;
-	var url11 = felddhw + datums;
-	try
-	{   var data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) {sum_mm_1 = summe(data);writedd (data,adapt+root+dd);}
-	try
-	{   var data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) {sumdhw_mm_1=summe(data);writedd (data,adapt+root+dddhw);}
-
+    for (let i=0;i<3;i++) {
+        let url11 = felddhw + jahr +"-"+ monat;
+        try {data = await km200_get(url11);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            let ut1 = new Date(data.interval).getTime();
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
+                    let ts = ut1 + 60000 + (ii * 3600000 * 24);
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        if (monat == 1) {jahr = jahr-1;monat=12;}
+        else if (monat > 1) {monat = monat-1;}
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
 }
+
 
 
 async function months() {
 	const adapt = adapter.namespace+".";
+    let datum= new Date();
+    let daten = [], data;
+    let field = adapt+root+mm;
+    let jahr = datum.getFullYear();
+    let ja = jahr;
+    let ma = datum.getMonth() + 1;
+    let sum = 0;
 
-	const datum= new Date();
-	datamm=[];
-	datammdhw=[];
+    for (var i=0;i<3;i++) {
+        let url1 = feld + jahr ;
+        try {data = await km200_get(url1);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10; 
+                    let m = ii+1;
+                    let t = jahr + "-" + m.toString() +"-15" ;
+                    if(jahr == ja && m < ma ) sum+=wert;
+                    if(jahr == ja-1 && m >= ma ) sum+=wert;
+                    let ts = new Date(t).getTime();
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        jahr = jahr-1;
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
+	sum = Math.round(sum) ;
+	adapter.setStateAsync(root+avg12m, {ack: true, val: sum});
 
-	let datums = datum.getFullYear()-2;
-	let data ="", body="";
+    datum= new Date();
+    daten = [], data="";
+    field = adapt+root+mmdhw;
+    jahr = datum.getFullYear();
+    sum = 0;
 
-	let url1 = feld + datums;
-	let url11 = felddhw + datums;
-
-	try
-	{   data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mm,0,0,datamm);
-
-	try
-	{   data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,0,0,datammdhw);
-
-	datums = datum.getFullYear()-1;
-	url1 = feld + datums;
-	url11 = felddhw + datums;
-
-	try
-	{   data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
-
-	try
-	{   data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
-
-	datums = datum.getFullYear();
-	url1 = feld + datums;
-	url11 = felddhw + datums;
-
-	try
-	{   data = await km200_get(url1);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mm,sum_mm,sum_mm_1,datamm);
-
-	try
-	{   data = await km200_get(url11);
-	}   catch(error) {data = " "; }
-	if (data != " " & data != undefined) writemm (data,adapt+root+mmdhw,sumdhw_mm,sumdhw_mm_1,datammdhw);
-
+    for (let i=0;i<3;i++) {
+        let url11 = felddhw + jahr;
+        try {data = await km200_get(url11);}
+        catch(error) {console.error('error'+data);data = " "; }
+        if (data != " ") {
+            for (let ii = 0; ii < data.recording.length; ii++){
+                if (data.recording[ii] !== null){
+                    let wert = Math.round(data.recording[ii].y / 6) / 10;   
+                    let m = ii+1;
+                    let t = jahr + "-" + m.toString() +"-15" ;
+                    if(jahr == ja && m < ma ) sum+=wert;
+                    if(jahr == ja-1 && m >= ma ) sum+=wert;
+                    let ts = new Date(t).getTime();
+                    daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+                }
+            }
+        }
+        jahr = jahr-1;
+    }
+    adapter.sendTo(db, 'deleteAll', {id: field}); 
+    await sleep(1000);
+    adapter.sendTo(db,'storeState', daten);
+	sum = Math.round(sum) ;
+	adapter.setStateAsync(root+avg12mdhw, {ack: true, val: sum});
 }
+
+
+
+
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function writehh (data,feld){
-	interval = data.interval;
-	const ut1 = new Date(interval).getTime();
-	const liste = data.recording;
-	let i = 0;
-	const daten = [];
-	for (i = 0; i < liste.length; i++){
-		if (liste[i] !== null){
-			const wert = Math.round(liste[i].y / 6) / 10;
-			const ts = ut1 + ((i+2) * 3600000 );
-			daten.push({id: feld,state: {ts: + ts ,val: wert}});
-		}
-	}
-	write_recordings(daten);
-}
 
-
-async function write_recordings(daten){
-	let ids;
-	const query ="SELECT * FROM "+dbname+".datapoints WHERE name='"+daten[0].id+"';";
-	adapter.sendTo(db, "query",query, function (result) {
-		if (result.error) {adapter.log.info("Error:"+result.error);}
-		else {
-			let id = 0;
-			if (result.result[0] != undefined) id = result.result[0].id;
-			for (let ii = 0; ii < daten.length; ii++){
-				const query1 ="SELECT * FROM "+dbname+".ts_number WHERE id="+id+" and ts="+daten[ii].state.ts+" ;";
-				adapter.sendTo(db, "query",query1, function (result) {
-					if (result.error) {adapter.log.info(result.error);}
-					else {
-						if (result.result[0] == undefined) {
-							//adapter.log.info('Neu:');
-							adapter.sendTo(db, "storeState", daten[ii]);
-						} else {
-							const val_actual = result.result[0].val;
-							const val_new = daten[ii].state.val;
-							if (val_actual != val_new) {
-								//adapter.log.info("actual:" + val_actual + "---- new:" +val_new);
-								adapter.sendTo(db, "update", daten[ii], function(result){
-									if (result.error) {adapter.log.error(result.error);}
-									else {}
-								});
-							}
-						}
-					}
-				});
-			}
-		}
-	});
-}
-
-async function writedd (data,feld){
-	const interval = data.interval;
-	const ut1 = new Date(interval).getTime();
-	const year = interval.substr(0,4);
-	const month = parseInt(interval.substr(5,2))-1;
-	const days = daysofmonth(year,month);
-	const liste = data.recording;
-	let i = 0;
-	const daten = [];
-	for (i = 0; i < liste.length; i++){
-		if (liste[i] !== null)  {
-			const wert = Math.round(liste[i].y / 6) / 10;
-			const ts = ut1 + 60000 + (i * 3600000 * 24);
-			if (liste[i].c > 0) daten.push({id: feld,state: {ts: + ts ,val: wert}});
-		}
-	}
-	write_recordings(daten);
-}
-
-function summe (data){
-	let sum = 0;
-	const liste = data.recording;
-	let i = 0;
-	for (i = 0; i < liste.length; i++) {
-		if (liste[i] != null) {
-			const wert = Math.round(liste[i].y / 6) / 10;
-			sum = sum + wert;
-		}
-	}
-	return sum;
-}
-
-async function writemm (data,feld,m0,m1,dataarray){
-
-	const year = data.interval;
-	const interval = year + "-01-01";
-	const ut1 = new Date(interval).getTime();
-	const liste = data.recording;
-
-	const ya = new Date().getFullYear();
-	const ma = new Date().getMonth()+1;
-
-	let ts = ut1;
-	const days = 0;
-	let i = 0;
-	const daten = [];
-
-	for (i = 0; i < liste.length; i++) {
-		if (liste[i] != null) {
-			const wert = Math.round(liste[i].y / 6) / 10;
-			const m = i+1;
-			const t = year+ "-" + m.toString() +"-02" ;
-			ts = new Date(t).getTime();
-			if (liste[i].c > 0) {
-				daten.push({id: feld,state: {ts: + ts ,val: wert}});
-				dataarray.push(wert);
-			}
-			else {
-				if (ya === parseInt(year) && ma === m) daten.push({id: feld,state: {ts: + ts ,val: m0}});
-				if (ya === parseInt(year) && m < ma){
-					daten.push({id: feld,state: {ts: + ts ,val: m1}});
-					dataarray.push(m1);
-				}
-			}
-		}
-	}
-
-	write_recordings(daten);
-}
-
-async function write2mm (feld,m0,m1){
-
-	const ya = new Date().getFullYear();
-	const ma = new Date().getMonth();
-	const da = new Date().getDate();
-	const ha = new Date().getHours();
-
-	if (ma > 0) {var ut1 = new Date(ya,ma-1).getTime();}
-	else        {var ut1 = new Date(ya-1,11).getTime();}
-	if (ma === 11) {var ut2 = new Date(ya+1,0).getTime();}
-	else           {var ut2 = new Date(ya,ma+1).getTime();}
-
-	const daten = [];
-	var ts = new Date(ya,ma,da,ha).getTime();
-	daten.push({id: feld,state: {ts: + ts ,val: m0}});
-
-	var ts = ut1 + (2*24*60*60*1000);
-	daten.push({id: feld,state: {ts: + ts ,val: m1}});
-	write_recordings(daten);
-}
-
-
-function daysofmonth(year,i) {
-	const month = i+1;
-	const y = new Date().getFullYear();
-	const m = new Date().getMonth();
-
-	if ((year == y) && (i == m)) {
-		const days = new Date().getDate();
-		return days;
-	}
-	if(month != 2) {
-		if(month == 9 || month == 4 || month == 6 || month == 11) {return 30;}
-		else {return 31;}
-	} else {return (year % 4) == "" && (year % 100) !="" ? 29 : 28;}
-}
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

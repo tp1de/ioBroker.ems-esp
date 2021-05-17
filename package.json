@@ -1,24 +1,24 @@
 {
-  "_from": "github:tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
-  "_id": "iobroker.ems-esp@0.7.5",
+  "_from": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+  "_id": "iobroker.ems-esp@0.7.6",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.ems-esp",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
-    "rawSpec": "tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
-    "saveSpec": "github:tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
+    "raw": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+    "rawSpec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+    "saveSpec": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
     "fetchSpec": null,
-    "gitCommittish": "75c44315fe95ef3486466677ab686171998fbd17"
+    "gitCommittish": "c1765e0e82710ee2774994116e047a093c3765a7"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "github:tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
-  "_spec": "tp1de/iobroker.ems-esp#75c44315fe95ef3486466677ab686171998fbd17",
+  "_resolved": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+  "_spec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
   "_where": "C:\\ioBroker",
   "author": {
     "name": "Thomas Petrick",
@@ -80,5 +80,5 @@
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit"
   },
-  "version": "0.7.5"
+  "version": "0.7.6"
 }
