@@ -8,6 +8,10 @@
         "en": "Update recordings",
         "de": "Update recordings"
       },
+      "0.7.5": {
+        "en": "js-contoller 3.3",
+        "de": "js-controller 3.3"
+      },
       "0.7.0": {
         "en": "Test version Rest API V3",
         "de": "Rest API V3 Test"
