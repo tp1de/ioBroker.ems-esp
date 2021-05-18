@@ -265,7 +265,7 @@ async function state_change(id,state) {
 		request.post({url, headers: headers, body}, function(error,response) { 
 			const status= JSON.parse(response.body).statusCode;
 			const resp= JSON.parse(response.body).message;
-			if (resp != "OK") adapter.log.error("ems-esp http write error:" + resp);
+			if (resp != "OK") adapter.log.error("ems-esp http write error:" + url);
 		});
 		
 	} else {
