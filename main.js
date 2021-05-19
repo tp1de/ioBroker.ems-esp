@@ -268,10 +268,9 @@ async function state_change(id,state) {
 	} else {
 		if (obj.native.ems_km200 != null) {
 			try {
-				const response = km200_put(obj.native.ems_km200 , value);
-				adapter.log.debug(JSON.stringify(response));
+				km200_put(obj.native.ems_km200 , value);
 			}
-			catch(error) {adapter.log.warn("km200 http write error:"+obj.native.ems_km200);}
+			catch(error) {adapter.log.warn("km200 http write error"+error+":"+obj.native.ems_km200);}
 		}
 	}
 	
@@ -673,7 +672,10 @@ async function km200_put(url,value) {return new Promise(function(resolve,reject)
 	const data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
 	const urls = km200_server +"/" + url.split(".").join("/");
 	request.put({headers: {"Accept": '"application/json',"User-Agent": "TeleHeater/2.2.3"},url: urls, body: data},
-		function(error, response){if (error) {return reject(error);} resolve(response);});
+		function(error, response){
+			if (error) {return reject(error);}
+			if (response.statusCode == 403) {return reject(response.statusCode);}
+			resolve(response);});
 });
 }
 
