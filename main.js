@@ -248,7 +248,7 @@ if (require.main !== module) {
 
 async function state_change(id,state) {
 
-	const value = state.val;
+	let value = state.val;
 	const obj = await adapter.getObjectAsync(id);
 
 	if (obj.native.ems_device != null){
@@ -256,6 +256,8 @@ async function state_change(id,state) {
 		if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
 		else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
 
+		adapter.log.debug("ems-esp write: "+ id + ": "+value);
+		
 		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 		const body =JSON.stringify({"value": value});
 
@@ -268,6 +270,12 @@ async function state_change(id,state) {
 	} else {
 		if (obj.native.ems_km200 != null) {
 			try {
+				//adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": "+value);
+				if(obj.native.km200.allowedValues != undefined) {
+					value= obj.native.km200.allowedValues[value];
+				}
+				adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": "+value);
+
 				let resp = await km200_put(obj.native.ems_km200 , value);
 				if (resp.statusCode == 403) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
 			}
@@ -614,8 +622,11 @@ async function write_state(statename,value,def) {
 		if(defj.type == "enum") {
 			obj.common.type = "number";
 			obj.common.states = "";
+			obj.native.ems_enum = defj.enum;
 			for (let ii = 0; ii< defj.enum.length;ii++) {
-				obj.common.states += ii+":"+defj.enum[ii];
+				if (defj.min = 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
+				else {obj.common.states += ii+":"+defj.enum[ii];}
+				//obj.common.states += ii+":"+defj.enum[ii];
 				if (ii< defj.enum.length-1) obj.common.states += ";";
 			}
 		}
