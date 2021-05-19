@@ -157,7 +157,7 @@ class EmsEsp extends utils.Adapter {
 					{changesOnly: false,debounce: 0,retention: 0,
 						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 					if (result.error) { console.log(result.error); }
-					if (result.success) { 
+					if (result.success) {
 						//adapter.setState(stateid, {ack: true, val: 0});
 					}
 				});
@@ -258,23 +258,24 @@ async function state_change(id,state) {
 
 		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 		const body =JSON.stringify({"value": value});
-	
-		request.post({url, headers: headers, body}, function(error,response) { 
+
+		request.post({url, headers: headers, body}, function(error,response) {
 			const status= JSON.parse(response.body).statusCode;
 			const resp= JSON.parse(response.body).message;
 			if (resp != "OK") adapter.log.error("ems-esp http write error:" + url);
 		});
-		
+
 	} else {
 		if (obj.native.ems_km200 != null) {
 			try {
-				km200_put(obj.native.ems_km200 , value);
+				let resp = km200_put(obj.native.ems_km200 , value);
+				adapter.log.debug(JSON.stringify(resp));
 			}
 			catch(error) {adapter.log.warn("km200 http write error"+error+":"+obj.native.ems_km200);}
 		}
 	}
-	
-} 
+
+}
 
 
 
@@ -466,10 +467,10 @@ async function ems_put(url,value)  {
 	const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 	const body =JSON.stringify({"value": value});
 
-	request.post({url, headers: headers, body}, function(error,response) { ;
+	request.post({url, headers: headers, body}, function(error,response) {
 		const resp= JSON.parse(response.body).message;
 		 return (response);
-	});	
+	});
 }
 
 
@@ -674,10 +675,11 @@ async function km200_put(url,value) {return new Promise(function(resolve,reject)
 	request.put({headers: {"Accept": '"application/json',"User-Agent": "TeleHeater/2.2.3"},url: urls, body: data},
 		function(error, response){
 			if (error) {return reject(error);}
-			if (response.statusCode == 403) {return reject(response.statusCode);}
 			resolve(response);});
 });
 }
+
+
 
 function km200_decrypt(input) {
 	// Decrypt
@@ -705,18 +707,18 @@ async function km200_recordings(){
 async function recs(field,daten) {
 
 	if (db.substring(0,3) == "sql" ) {
-		await adapter.sendToAsync(db, 'deleteAll', {id: field});
-		await sleep(100);	
-		adapter.sendTo(db,'storeState', daten);
+		await adapter.sendToAsync(db, "deleteAll", {id: field});
+		await sleep(100);
+		adapter.sendTo(db,"storeState", daten);
 	}
 
 
 	if (db.substring(0,8) == "influxdb" ) {
-		let query = 'drop series from "' +  field + '";';
-		await adapter.sendToAsync(db, 'query', query);
+		const query = 'drop series from "' +  field + '";';
+		await adapter.sendToAsync(db, "query", query);
 		await sleep(100);
 		for (let i = 0; i < daten.length;i++){
-			adapter.sendTo(db,'storeState', daten[i]);	
+			adapter.sendTo(db,"storeState", daten[i]);
 		}
 	}
 }
@@ -727,18 +729,18 @@ async function hours() {
 
 	let datum= new Date();
 	let daten = [], data;
-	let field = adapt+root+hh
+	let field = adapt+root+hh;
 
-	for (var i=0;i<3;i++) {
-		let url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+	for (let i=0;i<3;i++) {
+		const url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 		try {data = await km200_get(url1);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
-			let ut1 = new Date(data.interval).getTime();
+			const ut1 = new Date(data.interval).getTime();
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10;   
-					let ts = ut1 + ((ii+2) * 3600000 );
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const ts = ut1 + ((ii+2) * 3600000 );
 					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
@@ -753,15 +755,15 @@ async function hours() {
 	field = adapt+root+hhdhw;
 
 	for (let i=0;i<3;i++) {
-		let url11 = felddhw + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
+		const url11 = felddhw + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 		try {data = await km200_get(url11);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
-			let ut1 = new Date(data.interval).getTime();
+			const ut1 = new Date(data.interval).getTime();
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10;   
-					let ts = ut1 + ((ii+2) * 3600000 );
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const ts = ut1 + ((ii+2) * 3600000 );
 					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
@@ -779,17 +781,17 @@ async function days() {
 	let jahr = datum.getFullYear();
 	let monat = datum.getMonth() + 1;
 
-	for (var i=0;i<3;i++) {
-		let url1 = feld + jahr + "-" + monat;
+	for (let i=0;i<3;i++) {
+		const url1 = feld + jahr + "-" + monat;
 		try {data = await km200_get(url1);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
-			let ut1 = new Date(data.interval).getTime();
+			const ut1 = new Date(data.interval).getTime();
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10;   
-					let ts = ut1 + 60000 + (ii * 3600000 * 24);
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const ts = ut1 + 60000 + (ii * 3600000 * 24);
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
@@ -805,16 +807,16 @@ async function days() {
 	monat = datum.getMonth() + 1;
 
 	for (let i=0;i<3;i++) {
-		let url11 = felddhw + jahr +"-"+ monat;
+		const url11 = felddhw + jahr +"-"+ monat;
 		try {data = await km200_get(url11);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
-			let ut1 = new Date(data.interval).getTime();
+			const ut1 = new Date(data.interval).getTime();
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10;   
-					let ts = ut1 + 60000 + (ii * 3600000 * 24);
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const ts = ut1 + 60000 + (ii * 3600000 * 24);
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
@@ -832,24 +834,24 @@ async function months() {
 	let daten = [], data;
 	let field = adapt+root+mm;
 	let jahr = datum.getFullYear();
-	let ja = jahr;
-	let ma = datum.getMonth() + 1;
+	const ja = jahr;
+	const ma = datum.getMonth() + 1;
 	let sum = 0;
 
-	for (var i=0;i<3;i++) {
-		let url1 = feld + jahr ;
+	for (let i=0;i<3;i++) {
+		const url1 = feld + jahr ;
 		try {data = await km200_get(url1);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10; 
-					let m = ii+1;
-					let t = jahr + "-" + m.toString() +"-15" ;
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const m = ii+1;
+					const t = jahr + "-" + m.toString() +"-15" ;
 					if(jahr == ja && m < ma ) sum+=wert;
 					if(jahr == ja-1 && m >= ma ) sum+=wert;
-					let ts = new Date(t).getTime();
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					const ts = new Date(t).getTime();
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
@@ -866,19 +868,19 @@ async function months() {
 	sum = 0;
 
 	for (let i=0;i<3;i++) {
-		let url11 = felddhw + jahr;
+		const url11 = felddhw + jahr;
 		try {data = await km200_get(url11);}
-		catch(error) {console.error('error'+data);data = " "; }
+		catch(error) {console.error("error"+data);data = " "; }
 		if (data != " ") {
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
-					let wert = Math.round(data.recording[ii].y / 6) / 10;   
-					let m = ii+1;
-					let t = jahr + "-" + m.toString() +"-15" ;
+					const wert = Math.round(data.recording[ii].y / 6) / 10;
+					const m = ii+1;
+					const t = jahr + "-" + m.toString() +"-15" ;
 					if(jahr == ja && m < ma ) sum+=wert;
 					if(jahr == ja-1 && m >= ma ) sum+=wert;
-					let ts = new Date(t).getTime();
-					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}})
+					const ts = new Date(t).getTime();
+					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
 		}
