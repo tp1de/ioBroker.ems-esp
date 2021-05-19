@@ -267,7 +267,10 @@ async function state_change(id,state) {
 		
 	} else {
 		if (obj.native.ems_km200 != null) {
-			try {const response = km200_put(obj.native.ems_km200 , value);}
+			try {
+				const response = km200_put(obj.native.ems_km200 , value);
+				adapter.log.debug(JSON.stringify(response));
+			}
 			catch(error) {adapter.log.warn("km200 http write error:"+obj.native.ems_km200);}
 		}
 	}
