@@ -26,7 +26,7 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
 let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
-let emsesp,recordings=false,ems_apiv3 = false, ems_token ="";
+let emsesp,recordings=false, ems_token ="";
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -37,9 +37,7 @@ const dd = "actualPower._Days", dddhw= "actualDHWPower._Days";
 const mm = "actualPower._Months", mmdhw= "actualDHWPower._Months";
 const felddhw = "recordings/heatSources/actualDHWPower?interval=";
 const feld = "recordings/heatSources/actualPower?interval=";
-let sum_mm = 0, sum_mm_1 = 0, sumdhw_mm = 0, sumdhw_mm_1 = 0, datamm=[],datammdhw=[];
 let db = "sql.0";
-let dbname = "iobroker";
 let km200_structure = true;
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +108,7 @@ class EmsEsp extends utils.Adapter {
 			catch (err) {this.log.info(err);}
 		}
 
-		const results = [];
+		//const results = [];
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
 		else {datafields = await read_km200structure();}
 
@@ -208,12 +206,11 @@ class EmsEsp extends utils.Adapter {
 		if (state) {
 			if (state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
-				state_change(id,state);				
+				state_change(id,state);
 			}
 		} else adapter.log.info("state "+id+" deleted");
 	}
 
-	
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
@@ -378,7 +375,7 @@ async function ems_read() {
 	let data = "";
 	try {data = await ems_get(url); }
 	catch(error) {
-		adapter.log.warn("ems read system error - wrong ip address?");
+		adapter.log.debug("ems read system error:" +url+ " - wrong ip address?");
 		data = "Invalid";
 	}
 	await sleep(100);
@@ -417,7 +414,7 @@ async function ems_read() {
 						}
 					}
 				}
-				catch(error) {adapter.log.info("ems http read polling error:"+url1);}
+				catch(error) {adapter.log.debug("ems http read polling error:"+url1);}
 			}
 			await sleep(100);
 		}
@@ -433,7 +430,7 @@ async function km200_read(result){
 			let body;
 			try {
 				body = await km200_get(result[i].km200);}
-			catch(error) {adapter.log.warn("km200 get error state:"+result[i].km200);}
+			catch(error) {adapter.log.debug("km200 get error state:"+result[i].km200);}
 			if (body != undefined) {
 				try {
 					let val = body.value;
