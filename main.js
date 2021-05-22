@@ -257,7 +257,7 @@ async function state_change(id,state) {
 		else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
 
 		adapter.log.debug("ems-esp write: "+ id + ": "+value);
-		
+
 		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 		const body =JSON.stringify({"value": value});
 
@@ -276,7 +276,7 @@ async function state_change(id,state) {
 				}
 				adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": "+value);
 
-				let resp = await km200_put(obj.native.ems_km200 , value);
+				const resp = await km200_put(obj.native.ems_km200 , value);
 				if (resp.statusCode == 403) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
 			}
 			catch(error) {adapter.log.warn("km200 http write error "+ error + ":" + obj.native.ems_km200);}
