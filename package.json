@@ -1,6 +1,5 @@
 {
   "_from": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
-  "_id": "iobroker.ems-esp@0.8.0",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.ems-esp",
@@ -20,14 +19,10 @@
   "_resolved": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
   "_spec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
   "_where": "C:\\ioBroker",
-  "author": {
-    "name": "Thomas Petrick",
-    "email": "tpetrick@gmx.de"
-  },
+  "author": "Thomas Petrick <tpetrick@gmx.de>",
   "bugs": {
     "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "rijndael-js": "^2.0.0"
@@ -80,5 +75,9 @@
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit"
   },
-  "version": "0.8.0"
+  "version": "0.8.0",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
