@@ -449,7 +449,7 @@ async function km200_read(result){
 						val = body.allowedValues.indexOf(body.value);
 					}
 					if (body.type == "switchProgram" && body.switchPoints != undefined){
-						val = body.switchPoints;
+						val = JSON.stringify(body.switchPoints);
 					}
 					adapter.setStateChangedAsync(result[i].km200, {ack: true, val: val});
 				}
