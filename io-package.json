@@ -30,52 +30,20 @@
       },
       "0.6.1": {
         "en": "new parameters & selection of ems or km200 device structure",
-        "de": "Neue Parameter und Wahl zwischen EMS- oder km200-Anlagenstruktur",
-        "ru": "new parameters & selection of ems or km200 device structure",
-        "pt": "new parameters & selection of ems or km200 device structure",
-        "nl": "new parameters & selection of ems or km200 device structure",
-        "fr": "new parameters & selection of ems or km200 device structure",
-        "it": "new parameters & selection of ems or km200 device structure",
-        "es": "new parameters & selection of ems or km200 device structure",
-        "pl": "new parameters & selection of ems or km200 device structure",
-        "zh-cn": "new parameters & selection of ems or km200 device structure"
+        "de": "Neue Parameter und Wahl zwischen EMS- oder km200-Anlagenstruktur"
       },
       "0.6.0": {
         "en": "first tested working release",
-        "de": "Erste getestete Version",
-        "ru": "first tested working release",
-        "pt": "first tested working release",
-        "nl": "first tested working release",
-        "fr": "first tested working release",
-        "it": "first tested working release",
-        "es": "first tested working release",
-        "pl": "first tested working release",
-        "zh-cn": "first tested working release"
+        "de": "Erste getestete Version"
       }
     },
     "titleLang": {
       "en": "EMS-ESP (ems-esp & km200)",
-      "de": "EMS-ESP (ems-esp & km200)",
-      "ru": "EMS-ESP (ems-esp & km200)",
-      "pt": "EMS-ESP (ems-esp & km200)",
-      "nl": "EMS-ESP (ems-esp & km200)",
-      "fr": "EMS-ESP (ems-esp & km200)",
-      "it": "EMS-ESP (ems-esp & km200)",
-      "es": "EMS-ESP (ems-esp & km200)",
-      "pl": "EMS-ESP (ems-esp & km200)",
-      "zh-cn": "EMS-ESP (ems-esp & km200)"
+      "de": "EMS-ESP (ems-esp & km200)"
     },
     "desc": {
       "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "de": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "ru": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "pt": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "nl": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "fr": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "it": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "es": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "pl": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "zh-cn": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger."
+      "de": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger."
     },
     "authors": [
       "Thomas Petrick <tp1degit@gmail.com>"
@@ -109,7 +77,7 @@
     "installedFrom": "tp1de/ioBroker.ems-esp#0183b51d5e8839b0a83de76488ff640e24be4286"
   },
   "native": {
-    "control_file": "ems.csv",
+    "control_file": "*",
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": "",
     "private_pw": "",
