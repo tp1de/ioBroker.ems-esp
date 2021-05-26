@@ -19,13 +19,14 @@
   "_resolved": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
   "_spec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
   "_where": "C:\\ioBroker",
-  "author": "Thomas Petrick <tp1degit@gmail.com>",
+  "author": "Thomas Petrick",
   "bugs": {
     "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
-    "rijndael-js": "^2.0.0"
+    "rijndael-js": "^2.0.0",
+    "user": "0.0.0"
   },
   "deprecated": false,
   "description": "ems-esp",
