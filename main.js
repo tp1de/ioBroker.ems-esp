@@ -99,8 +99,8 @@ class EmsEsp extends utils.Adapter {
 
 		// Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
-		await fs.promises.mkdir(dataDir+"/ems-esp", { recursive: true })
-		
+		await fs.promises.mkdir(dataDir+"/ems-esp", { recursive: true });
+
 		const fn = dataDir+"/ems-esp/"+this.config.control_file;
 		let data = "";
 
@@ -121,7 +121,7 @@ class EmsEsp extends utils.Adapter {
 		await init_controls();
 		if (this.config.emsesp_active) await init_states_emsesp();
 		if (this.config.km200_active) await init_states_km200();
-	
+
 
 		// Recording states
 
@@ -156,7 +156,7 @@ class EmsEsp extends utils.Adapter {
 		// ems and km200 read schedule
 		if (recordings && this.config.km200_active) km200_recordings();
 		read_statistics();
-		read_efficiency()
+		read_efficiency();
 
 		let interval1,interval2,interval3,interval4,interval5;;
 		adapter.log.info("start polling intervals now.");
@@ -167,8 +167,8 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
 		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
-		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 300000); // 5 minutes		
-		setInterval(function() {read_efficiency();}, 60000); // 60 sec	
+		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 300000); // 5 minutes
+		setInterval(function() {read_efficiency();}, 60000); // 60 sec
 	}
 
 	/**
@@ -328,7 +328,8 @@ async function read_efficiency() {
 			adapter.getState("heatSources.hs1.rettemp", function (err, state) {tempr = state.val;} ); 
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
-	} 
+	}
+
 	await sleep(1000);
 	//adapter.log.info(power+ " "+ temp + " " +tempr);
 	if (power > 0) {
