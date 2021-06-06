@@ -1,28 +1,32 @@
 {
-  "_from": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+  "_from": "github:tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
+  "_id": "iobroker.ems-esp@0.9.0",
   "_inBundle": false,
   "_integrity": "",
   "_location": "/iobroker.ems-esp",
   "_phantomChildren": {},
   "_requested": {
     "type": "git",
-    "raw": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
-    "rawSpec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
-    "saveSpec": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+    "raw": "tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
+    "rawSpec": "tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
+    "saveSpec": "github:tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
     "fetchSpec": null,
-    "gitCommittish": "c1765e0e82710ee2774994116e047a093c3765a7"
+    "gitCommittish": "1998b90f4eea88dfa1cfac9fd1189b3422deb9db"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "github:tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
-  "_spec": "tp1de/ioBroker.ems-esp#c1765e0e82710ee2774994116e047a093c3765a7",
+  "_resolved": "github:tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
+  "_spec": "tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db",
   "_where": "C:\\ioBroker",
-  "author": "Thomas Petrick",
+  "author": {
+    "name": "Thomas Petrick"
+  },
   "bugs": {
     "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "rijndael-js": "^2.0.0",
@@ -51,6 +55,10 @@
     "sinon-chai": "^3.6.0",
     "typescript": "^4.2.4"
   },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "homepage": "https://github.com/tp1de/ioBroker.ems-esp",
   "keywords": [
     "ems-esp",
@@ -76,9 +84,5 @@
     "test:package": "mocha test/package --exit",
     "test:unit": "mocha test/unit --exit"
   },
-  "version": "0.8.0",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  }
+  "version": "0.9.0"
 }

@@ -1,13 +1,17 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.0": {
+        "en": "Rest API V3 - js-controller 3.x and influxdb support and heating demand",
+        "de": "Rest API V3 - js-controller 3.x and influxdb support and heating demand"
+      },
       "0.8.0": {
         "en": "Rest API V3 - js-controller 3.x and influxdb support",
         "de": "Rest API V3 - js-controller 3.x and influxdb support"
-      },      
+      },
       "0.7.5": {
         "en": "Rest API V3 - js-controller 3.x",
         "de": "Rest API V3 - js-controller 3.x"
@@ -74,21 +78,34 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/ioBroker.ems-esp#0183b51d5e8839b0a83de76488ff640e24be4286"
+    "installedFrom": "tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db"
   },
   "native": {
     "control_file": "*",
+    "km200_active": false,
     "km200_ip": "http://192.168.178.x",
     "gateway_pw": "",
     "private_pw": "",
+    "emsesp_active": true,
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
     "ems_token": "",
     "recordings": false,
     "database_instance": "sql.0",
     "database": "iobroker",
-    "km200_structure": true
+    "km200_structure": true,
+    "eff_activive":true,
+    "eff20": 109.5,
+    "eff25": 109.3,
+    "eff30": 108.3,
+    "eff35": 108.0,
+    "eff40": 106.5,
+    "eff45": 105.2,
+    "eff50": 103,
+    "eff55": 100,
+    "eff60": 98,
+    "eff70": 97
   },
   "objects": [],
   "instanceObjects": []
-} 
+}

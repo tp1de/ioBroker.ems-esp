@@ -1,10 +1,10 @@
-/* eslint-disable no-empty */
+//eslint-disable no-empty */
 /* eslint-disable no-mixed-spaces-and-tabs */
 //"use strict";
-//"esversion":6";
+//"esversion":"6";
 
 /*
- * ems-esp adapter version v0.8.0
+ * ems-esp adapter version v0.9.0
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -99,25 +99,33 @@ class EmsEsp extends utils.Adapter {
 
 		// Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
-		const fn = dataDir+this.config.control_file;
-		let data ="";
+		await fs.promises.mkdir(dataDir+"/ems-esp", { recursive: true })
+		
+		const fn = dataDir+"/ems-esp/"+this.config.control_file;
+		let data = "";
 
 		if (this.config.control_file !== "" &&  this.config.control_file !== "*") {
-			try {data = fs.readFileSync(fn, "utf8");
-			}
+			try {data = fs.readFileSync(fn, "utf8");}
 			catch (err) {this.log.info(err);}
 		}
 
 		//const results = [];
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
-		else {datafields = await read_km200structure();}
+		else {
+			datafields = await read_km200structure();
+			const fnw = dataDir+"/ems-esp/km200.csv";
+			write_file(fnw,datafields);
+		}
 
-		await init_states_emsesp();
-		await init_states_km200();
+		await init_statistics();
+		await init_controls();
+		if (this.config.emsesp_active) await init_states_emsesp();
+		if (this.config.km200_active) await init_states_km200();
+	
 
 		// Recording states
 
-		if (recordings === true) {
+		if (recordings === true && this.config.km200_active === true) {
 			await this.setObjectNotExistsAsync(root+"created",{type: "state",common: {type: "boolean", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+hh,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 			await this.setObjectNotExistsAsync(root+hhdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
@@ -129,7 +137,7 @@ class EmsEsp extends utils.Adapter {
 			await this.setObjectNotExistsAsync(root+avg12mdhw,{type: "state",common: {type: "number", read: true, write: true}, native: {}});
 
 			adapter.getState(root+"created", function(err, state) {
-				if(state == null) {
+				if(state == null || state.val === false) {
 					enable_state(root+hh);
 					enable_state(root+hhdhw);
 					enable_state(root+dd);
@@ -138,43 +146,29 @@ class EmsEsp extends utils.Adapter {
 					enable_state(root+mmdhw);
 					adapter.setState(root+"created", {ack: true, val: true});
 				}
-				else {
-					if (state.val === false){
-						enable_state(root+hh);
-						enable_state(root+hhdhw);
-						enable_state(root+dd);
-						enable_state(root+dddhw);
-						enable_state(root+mm);
-						enable_state(root+mmdhw);
-						adapter.setState(root+"created", {ack: true, val: true});
-					}
-				}
 			});
 
-			function enable_state(stateid) {
-				const id =  adapter.namespace  + "." + stateid;
-				adapter.sendTo(db, "enableHistory", {id: id, options:
-					{changesOnly: false,debounce: 0,retention: 0,
-						maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
-					if (result.error) { console.log(result.error); }
-					if (result.success) {
-						//adapter.setState(stateid, {ack: true, val: 0});
-					}
-				});
-			}
+
 		}
 
 		this.subscribeStates("*");
 
 		// ems and km200 read schedule
-		if (recordings) km200_recordings();
+		if (recordings && this.config.km200_active) km200_recordings();
+		read_statistics();
+		read_efficiency()
 
-		let interval1,interval2,interval3;
-		adapter.log.info("start polling intervals now. ems: 15 secs & km200: 90 secs & km200 recordings: hour");
-		interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
-		interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
-		if (recordings) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
+		let interval1,interval2,interval3,interval4,interval5;;
+		adapter.log.info("start polling intervals now.");
+		adapter.log.info("ems  :"+this.config.emsesp_active+" 15 secs");
+		adapter.log.info("km200:"+this.config.km200_active+" 90 secs");
+		adapter.log.info("recordings:"+this.config.recordings+" hour");
 
+		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
+		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
+		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
+		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 300000); // 5 minutes		
+		setInterval(function() {read_efficiency();}, 60000); // 60 sec	
 	}
 
 	/**
@@ -185,12 +179,8 @@ class EmsEsp extends utils.Adapter {
 		try {
 			// Here you must clear all timeouts or intervals that may still be active
 			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
 			// ...
-			clearInterval(interval1);
-			clearInterval(interval2);
-			clearInterval(interval3);
-
+			clearInterval(interval1);clearInterval(interval2);clearInterval(interval3);clearInterval(interval4);clearInterval(interval5);
 			callback();
 		} catch (e) {
 			callback();
@@ -245,6 +235,18 @@ if (require.main !== module) {
 
 //---------functions ---------------------------------------------------------------------------------------------------------
 
+function enable_state(stateid) {
+	const id =  adapter.namespace  + "." + stateid;
+	adapter.sendTo(db, "enableHistory", {id: id, options:
+		{changesOnly: false,debounce: 0,retention: 0,
+			maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
+		if (result.error) { console.log(result.error); }
+		if (result.success) {
+			//adapter.setState(stateid, {ack: true, val: 0});
+		}
+	});
+}
+
 
 async function state_change(id,state) {
 
@@ -285,6 +287,105 @@ async function state_change(id,state) {
 
 }
 
+async function init_controls() {
+
+	await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
+		common: {type: "boolean", name: "optimization of takting time", unit: "", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
+		common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("controls.minimum_boilerpower",{type: "state",
+		common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
+		common: {type: "number", name: "heating demand from external source", unit: "kW", read: true, write: true}, native: {}});
+
+}
+
+
+async function init_statistics() {
+
+	await adapter.setObjectNotExistsAsync("statistics.ems-read",{type: "state",
+		common: {type: "number", name: "ems read time for polling", unit: "seconds", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.km200-read",{type: "state",
+		common: {type: "number", name: "km200 read time for polling", unit: "seconds", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.boiler-on-1h",{type: "state",
+		common: {type: "number", name: "percentage boiler on per hour", unit: "%", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.boiler-starts-1h",{type: "state",
+		common: {type: "number", name: "boiler starts per hour", unit: "", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.boiler-starts-24h",{type: "state",
+		common: {type: "number", name: "boiler starts per 24 hours", unit: "", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
+		common: {type: "number", name: "boiler efficiency", unit: "%", read: true, write: true}, native: {}});
+}
+
+async function read_efficiency() {
+	let value = 0;
+	let power = 0,temp = 0,tempr = 0, tempavg = 0;
+
+	if (adapter.config.emsesp_active){
+		try {
+			adapter.getState("heatSources.hs1.curburnpow", function (err, state) {power = state.val;} ); 
+			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {temp = state.val;} ); 
+			adapter.getState("heatSources.hs1.rettemp", function (err, state) {tempr = state.val;} ); 
+		}
+		catch (err) {adapter.log.error("error read efficiency:"+err);}
+	} 
+	await sleep(1000);
+	//adapter.log.info(power+ " "+ temp + " " +tempr);
+	if (power > 0) {
+		tempavg = (temp+tempr) / 2;
+		if (tempavg <= 20) value = adapter.config.eff20;
+		if (tempavg > 20) value = adapter.config.eff25;
+		if (tempavg > 25) value = adapter.config.eff30;
+		if (tempavg > 30) value = adapter.config.eff35;
+		if (tempavg > 35) value = adapter.config.eff40;
+		if (tempavg > 40) value = adapter.config.eff45;
+		if (tempavg > 45) value = adapter.config.eff50;
+		if (tempavg > 50) value = adapter.config.eff55;
+		if (tempavg > 55) value = adapter.config.eff60;
+		if (tempavg > 60) value = adapter.config.eff70;
+	}
+
+	adapter.setStateAsync("statistics.efficiency", {ack: true, val: value});
+}
+
+function read_statistics() {
+
+	const end = Date.now();
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: 'none'}
+	}, function (result) {
+		const count = result.result.length;
+		if (count > 0) {
+			const value = result.result[count-1].val-result.result[0].val + 1;
+			adapter.setStateAsync("statistics.boiler-starts-1h", {ack: true, val: value});
+		}
+	});
+
+
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: 'none'}
+	}, function (result) {
+		const count = result.result.length;
+		let value = 0;
+		if (count > 0) {
+			const value = result.result[count-1].val-result.result[0].val + 1;
+			adapter.setStateAsync("statistics.boiler-starts-24h", {ack: true, val: value});
+		}
+	});
+
+
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: 'none'}
+	}, function (result) {
+		const count = result.result.length;
+		let on = 0;
+		for (let i = 0; i < result.result.length; i++) {
+			if (result.result[i].val == 1) on += 1;
+		}
+		let value = 0;
+		if (count !== 0 && count != undefined) value = on / count * 100;
+		value = Math.round(value*10)/10;
+		adapter.setStateAsync("statistics.boiler-on-1h", {ack: true, val: value});
+	});
+
+}
 
 
 async function init_states_km200() {
@@ -331,11 +432,11 @@ async function init_states_emsesp() {
 		const system = JSON.parse(data).System;
 
 		for (const [key, value] of Object.entries(status)) {
-			if (typeof value !== "object") write_state("ems-status."+key,value,"");
+			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
 		for (const [key, value] of Object.entries(system)) {
-			if (typeof value !== "object") write_state("ems-system."+key,value,"");
+			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
 		for (let i=0; i < devices.length; i++) {
@@ -382,6 +483,7 @@ async function init_states_emsesp() {
 
 
 async function ems_read() {
+	const t1 = new Date().getTime();
 	const url = emsesp +  "/api/system";
 	let data = "";
 	try {data = await ems_get(url); }
@@ -397,11 +499,11 @@ async function ems_read() {
 		const system = JSON.parse(data).System;
 
 		for (const [key, value] of Object.entries(status)) {
-			if (typeof value !== "object") write_state("ems-status."+key,value,"");
+			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
 		for (const [key, value] of Object.entries(system)) {
-			if (typeof value !== "object") write_state("ems-system."+key,value,"");
+			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
 		for (let i=0; i < devices.length; i++) {
@@ -429,13 +531,16 @@ async function ems_read() {
 			}
 			await sleep(100);
 		}
+		const t2 = new Date().getTime();
+		const t3 = (t2-t1) / 1000;
+		adapter.setStateAsync("statistics.ems-read", {ack: true, val: t3});
 	}
 }
 
 
 
 async function km200_read(result){
-	//adapter.log.info("km200 read start");
+	const t1 = new Date().getTime();
 	for (let i=1; i < result.length; i++) {
 		if (result[i].ems_field == "" && result[i].km200 != "") {
 			let body;
@@ -459,7 +564,9 @@ async function km200_read(result){
 			}
 		}
 	}
-	//adapter.log.info("km200 read stop");
+	const t2 = new Date().getTime();
+	const t3 = (t2-t1) / 1000;
+	adapter.setStateAsync("statistics.km200-read", {ack: true, val: t3});
 }
 
 
@@ -494,7 +601,7 @@ function read_file(data) {
 	// Eingelesenen Text in ein Array splitten (\r\n, \n und\r sind die Trennzeichen für verschiedene Betriebssysteme wie Windows, Linux, OS X)
 	const textArray = data.split(/(\n|\r)/gm);
 
-	for (let i = 0; i < textArray.length; i++) {
+	for (let i = 1; i < textArray.length; i++) {
 		if (textArray[i].length > 1) {
 			const element ={};
 			let km200,ems_device,ems_device_new,ems_id,ems_field;
@@ -520,6 +627,23 @@ function read_file(data) {
 	adapter.log.info("End reading csv-file: " + km200_count + " km200-fields found");
 	return results;
 }
+
+function write_file(fnw,datafields) {
+	adapter.log.info("write km200 file:" + fnw);
+
+	let data = "km200 (equivalent) field;ems_device_new;ems_device;ems_id;ems_field;\n";
+	for (let i = 0; i < datafields.length; i++) {
+		data += datafields[i].km200 +";;;;;"+ "\n";
+	}
+
+	try { fs.writeFileSync(fnw, data, "utf8");
+	}
+	catch (err) {adapter.log.info(err);}
+
+}
+
+
+
 
 
 async function read_km200structure() {
@@ -652,6 +776,7 @@ async function write_state(statename,value,def) {
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
+		
 
 }
 
@@ -722,7 +847,7 @@ async function recs(field,daten) {
 
 	if (db.substring(0,3) == "sql" ) {
 		await adapter.sendToAsync(db, "deleteAll", {id: field});
-		await sleep(100);
+		await sleep(1000);
 		adapter.sendTo(db,"storeState", daten);
 	}
 
