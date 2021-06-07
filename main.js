@@ -323,9 +323,9 @@ async function read_efficiency() {
 
 	if (adapter.config.emsesp_active){
 		try {
-			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val != undefined) power = state.val;} ); 
-			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val != undefined) temp = state.val;} ); 
-			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val != undefined) tempr = state.val;} ); 
+			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val !== null) power = state.val;} ); 
+			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val !== null) temp = state.val;} ); 
+			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val !== null) tempr = state.val;} ); 
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
