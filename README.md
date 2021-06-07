@@ -14,59 +14,51 @@
 ## ems-esp adapter for ioBroker
 
 The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter 
-and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.0.3 b4 and the ESP32 chip.
+and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with tested version > 3.1.x  and the ESP32 chip.
+
+The ems-esp adapter can read and write data from the km200 gateway and/or the ems-esp hardware. 
+It can be used for the original Bosch-group gateways or the ems-esp or both in parallel when an IP-gateway like km200 / ip 
+inside is available.
 
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. 
 The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc.
+When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields are within same location within object structure.
 
-When an IP-gateway like km200 / ip inside is available, the gateway can be integrated as well (read & write).
-Unlike the km200 adapter the fields to be used has to be defined in an csv file (standard ems.csv) within the iobroker-data directory.
-KM200 datafields can be selected using a csv-file within iobroker-data directory. When filename is empty only ems-esp data will be read.
-Using a wildcard * within csv-file parameter field will read all available km200 datapoints.
+Unlike the km200 adapter the fields to be used can be defined by the respective csv-file within the adapter instance parameters.
+For 1st adapter start it is recommended to use a "*" so select all km200 data-fields.
+The adapter then creates a km200.csv file within ../iobroker-data/ems-esp directory. This file can be used for next start of adapter-instance. 
 
-This adapter then reads values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send 
+
+This adapter reads after start values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send 
 the respective http (post) commands back to ems-esp hardware and km200. 
 
 ems-esp read polling is fixed to 15 seconds and to 90 seconds for km200.
  
 
-The ems.csv file contains the following status information per datapoint: (separated by ";")
-
-column 1: km200 field (e.g. iobroker state like: heatingCircuits.hc1.actualSupplyTemperature or km200 style heatingCircuits/hc1/actualSupplyTemperature)
-
-column 2: ioBroker device new for state tree (e.g. heatSources instead of boiler) - actually not used since managed within adapter code
-
-column 3: ems-esp device
-
-column 4: ems-esp id like hc1 / hc2 
-
-column 5: ems-esp field
-
-
-By start of the adapter all ems-esp states will be initialized by by reading the devices by using the system info command and then getting all fields available 
-by device info and device field command. Therefore any ems.csv is not used for ems-esp states and therefore not needed.
-
-The km200 datafields are initialized and processed when the column 1 within ems.csv file contains data and the column 5 (ems-esp field) is empty.
-Whenever ems-esp field is available this one is used, when not available then km200 field is used and the respective state is generated.
-Usi´ng the wildcard option will override this logic and all km200 fields will be read.
-
-Most modern heating systems have ip-inside integrated and support energy statistics (recording for total power consmption and warm water (dhw)).
+Most modern heating systems have ip-inside integrated and support energy statistics (recording for total power consumption and warm water (dhw)).
 For these systems the powerconsumption statistics for total power consumtion and warm water power consumption can be read (hourly / dayly / monthly).
 
-The checkbox recordings has to be enabled and the database instance (sql - mySQL -  or influxdb) has to be defined. 
-SQL History adapter need to be installed with mySQL. Since v0.8 influxdb instances are supported as well.
+The checkbox recordings has to be enabled and the database instance (mySQL or influxdb) has to be defined. 
+SQL or InfluxDB History adapter need to be installed to use this option.
 
 *** This is only tested yet for mySQL and influxdb v1.8 databases ***
 
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
 Update is every hour. The values can then be shown by using e.g. the Flot Charts adapter.
 
+Since v 0.9.0 there are statistics states within the objects. The polling time read duration for ems-esp and/or km200 gateway are shown.
+Additionally the number of boiler starts per hour / 24 hours and the boiler utilization per hour (0-100%).
+If values are filled the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2
 
+For future use (under development) a controls section is created. This is not used yet in v 0.9.0.
 
 
 ## Changelog
+
+### 0.9.0
+* (Thomas Petrick) Rework Adapter for some statistics and prepare for heating control (under development)
 
 ### 0.8.0
 * (Thomas Petrick) REST API V3 and js-controller v3.3.x and support of influxdb for recordings
