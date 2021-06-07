@@ -111,7 +111,7 @@ class EmsEsp extends utils.Adapter {
 
 		//const results = [];
 		if (this.config.control_file !== "*") {datafields = read_file(data);}
-		else {
+		else if (this.config.km200_active === true) {
 			datafields = await read_km200structure();
 			const fnw = dataDir+"/ems-esp/km200.csv";
 			write_file(fnw,datafields);
