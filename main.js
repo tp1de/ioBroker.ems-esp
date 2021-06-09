@@ -291,13 +291,13 @@ async function state_change(id,state) {
 async function init_controls() {
 
 	await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
-		common: {type: "boolean", name: "optimization of takting time", unit: "", read: true, write: true}, native: {}});
+		common: {type: "boolean", name: "optimization of takting time", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
-		common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", read: true, write: true}, native: {}});
+		common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("controls.minimum_boilerpower",{type: "state",
-		common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", read: true, write: true}, native: {}});
+		common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
-		common: {type: "number", name: "heating demand from external source", unit: "kW", read: true, write: true}, native: {}});
+		common: {type: "number", name: "heating demand from external source", unit: "kW", role: "value", read: true, write: true}, native: {}});
 
 }
 
@@ -305,17 +305,21 @@ async function init_controls() {
 async function init_statistics() {
 
 	await adapter.setObjectNotExistsAsync("statistics.ems-read",{type: "state",
-		common: {type: "number", name: "ems read time for polling", unit: "seconds", read: true, write: true}, native: {}});
+		common: {type: "number", name: "ems read time for polling", unit: "seconds", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.km200-read",{type: "state",
-		common: {type: "number", name: "km200 read time for polling", unit: "seconds", read: true, write: true}, native: {}});
+		common: {type: "number", name: "km200 read time for polling", unit: "seconds",  role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.boiler-on-1h",{type: "state",
-		common: {type: "number", name: "percentage boiler on per hour", unit: "%", read: true, write: true}, native: {}});
+		common: {type: "number", name: "percentage boiler on per hour", unit: "%", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.boiler-starts-1h",{type: "state",
-		common: {type: "number", name: "boiler starts per hour", unit: "", read: true, write: true}, native: {}});
+		common: {type: "number", name: "boiler starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.boiler-starts-24h",{type: "state",
-		common: {type: "number", name: "boiler starts per 24 hours", unit: "", read: true, write: true}, native: {}});
+		common: {type: "number", name: "boiler starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.ww-starts-1h",{type: "state",
+		common: {type: "number", name: "ww starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("statistics.ww-starts-24h",{type: "state",
+		common: {type: "number", name: "ww starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
-		common: {type: "number", name: "boiler efficiency", unit: "%", read: true, write: true}, native: {}});
+		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 }
 
 async function read_efficiency() {
@@ -324,9 +328,9 @@ async function read_efficiency() {
 
 	if (adapter.config.emsesp_active){
 		try {
-			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val != null) power = state.val;} ); 
-			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} ); 
-			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} ); 
+			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val != null) power = state.val;} );
+			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} );
+			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} );
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
@@ -353,7 +357,7 @@ async function read_efficiency() {
 function read_statistics() {
 
 	const end = Date.now();
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: 'none'}
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		if (count > 0) {
@@ -363,7 +367,7 @@ function read_statistics() {
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: 'none'}
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let value = 0;
@@ -374,7 +378,28 @@ function read_statistics() {
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: 'none'}
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
+	}, function (result) {
+		const count = result.result.length;
+		if (count > 0) {
+			const value = result.result[count-1].val-result.result[0].val + 1;
+			adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
+		}
+	});
+
+
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
+	}, function (result) {
+		const count = result.result.length;
+		let value = 0;
+		if (count > 0) {
+			const value = result.result[count-1].val-result.result[0].val + 1;
+			adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
+		}
+	});
+
+
+	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let on = 0;
