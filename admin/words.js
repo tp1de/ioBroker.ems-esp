@@ -14,6 +14,10 @@ systemDictionary = {
 		"en": "EMSESP active",
 		"de": "EMSESP aktiv"
 	},
+	"ems_http_wait": {
+		"en": "msec delay",
+		"de": "mSek delay"
+	},
 	"emsesp_ip": {
 		"en": "IP address",
 		"de": "IP Adresse"

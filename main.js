@@ -26,7 +26,7 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
 let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
-let emsesp,recordings=false, ems_token ="";
+let emsesp,recordings=false, ems_token ="",ems_http_wait = 100;
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -73,6 +73,7 @@ class EmsEsp extends utils.Adapter {
 
 		emsesp = this.config.emsesp_ip ;
 		ems_token = this.config.ems_token;
+		ems_http_wait = this.config.ems_http_wait;
 
 		function decrypt(key, value) {
 			let result = "";
@@ -471,10 +472,10 @@ async function init_states_emsesp() {
 								write_state(device+"."+key1+"."+key2,value2,def);
 							}
 							catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
-							await sleep(100);
+							await sleep(ems_http_wait);
 						}
 					}
-					await sleep(100);
+					await sleep(ems_http_wait);
 				}
 			}
 		}

@@ -89,6 +89,7 @@
     "emsesp_active": false,
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
+    "ems_http_wait":100,
     "ems_token": "",
     "recordings": false,
     "database_instance": "sql.0",
