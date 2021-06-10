@@ -120,6 +120,7 @@ class EmsEsp extends utils.Adapter {
 
 		if (this.config.emsesp_active) await init_states_emsesp();
 		if (this.config.km200_active) await init_states_km200();
+
 		await init_statistics();
 		await init_controls();
 
@@ -155,8 +156,6 @@ class EmsEsp extends utils.Adapter {
 
 		// ems and km200 read schedule
 		if (recordings && this.config.km200_active) km200_recordings();
-		read_statistics();
-		read_efficiency();
 
 		let interval1,interval2,interval3,interval4,interval5;;
 		adapter.log.info("start polling intervals now.");
@@ -168,6 +167,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 300000); // 5 minutes
+		await sleep(120000);
 		setInterval(function() {read_efficiency();}, 60000); // 60 sec
 	}
 
@@ -367,7 +367,7 @@ async function read_efficiency() {
 	adapter.setStateAsync("statistics.efficiency", {ack: true, val: value});
 }
 
-function read_statistics() {
+async function read_statistics() {
 
 	let id = "";
 	const end = Date.now();
