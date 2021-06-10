@@ -139,12 +139,12 @@ class EmsEsp extends utils.Adapter {
 
 			adapter.getState(root+"created", function(err, state) {
 				if(state == null || state.val === false) {
-					enable_state(root+hh,0);
-					enable_state(root+hhdhw,0);
-					enable_state(root+dd,0);
+					enable_state(root+hh,0,0);
+					enable_state(root+hhdhw,0,0);
+					enable_state(root+dd,0,0);
 					enable_state(root+dddhw,0);
-					enable_state(root+mm,0);
-					enable_state(root+mmdhw,0);
+					enable_state(root+mm,0,0);
+					enable_state(root+mmdhw,0,0);
 					adapter.setState(root+"created", {ack: true, val: true});
 				}
 			});
@@ -236,10 +236,10 @@ if (require.main !== module) {
 
 //---------functions ---------------------------------------------------------------------------------------------------------
 
-function enable_state(stateid,retention) {
+function enable_state(stateid,retention,interval) {
 	const id =  adapter.namespace  + "." + stateid;
 	adapter.sendTo(db, "enableHistory", {id: id, options:
-		{changesOnly: false,debounce: 0,retention: retention,
+		{changesOnly: false,debounce: 0,retention: retention,changesRelogInterval: interval,
 			maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 		if (result.error) { console.log(result.error); }
 		if (result.success) {
@@ -321,12 +321,16 @@ async function init_statistics() {
 	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
 		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 
-
-	if (adapter.config.emsesp_active) enable_state("heatSources.hs1.burnstarts",86400);
-	if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400);
-	if (adapter.config.emsesp_active) enable_state("dhwCircuits.dhw1.wwstarts",86400);
-	if (adapter.config.emsesp_active)  enable_state("heatSources.hs1.burngas",86400);
-	if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400);
+	adapter.getState("statistics.created", function(err, state) {
+		if(state == null || state.val === false) {
+			if (adapter.config.emsesp_active) enable_state("heatSources.hs1.burnstarts",86400,15);
+			if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400,15);
+			if (adapter.config.emsesp_active) enable_state("dhwCircuits.dhw1.wwstarts",86400,15);
+			if (adapter.config.emsesp_active)  enable_state("heatSources.hs1.burngas",86400,15);
+			if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400,15);
+			adapter.setState("statistics.created", {ack: true, val: true});
+		}
+	});
 
 }
 
