@@ -167,7 +167,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 120000); // 2 minutes
-		await sleep(120000);
+		await sleep(60000);
 		setInterval(function() {read_efficiency();}, 60000); // 60 sec
 	}
 
@@ -465,7 +465,8 @@ async function init_states_km200() {
 						//obj1.native.source = "km200";
 						obj1.native.ems_km200 = r.km200;
 						await adapter.setObjectNotExistsAsync(obj1._id, obj1);
-					} catch (err) {adapter.log.info(statename+":"+err);}
+						await adapter.setStateChangedAsync(r.km200, {ack: true, val: value});
+					} catch (err) {adapter.log.error(r.km200+":"+err);}
 				}
 			}
 		}
