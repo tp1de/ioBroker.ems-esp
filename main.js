@@ -357,49 +357,49 @@ async function read_efficiency() {
 function read_statistics() {
 
 	const end = Date.now();
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val + 1;
+			const value = result.result[count-1].val-result.result[0].val;
 			adapter.setStateAsync("statistics.boiler-starts-1h", {ack: true, val: value});
 		}
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let value = 0;
 		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val + 1;
+			const value = result.result[count-1].val-result.result[0].val;
 			adapter.setStateAsync("statistics.boiler-starts-24h", {ack: true, val: value});
 		}
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val + 1;
+			const value = result.result[count-1].val-result.result[0].val;
 			adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
 		}
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let value = 0;
 		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val + 1;
+			const value = result.result[count-1].val-result.result[0].val;
 			adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
 		}
 	});
 
 
-	adapter.sendTo("sql.0", "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let on = 0;
