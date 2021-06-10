@@ -459,14 +459,21 @@ async function init_states_km200() {
 				catch(error) {adapter.log.warn("http km200 datafield not existing:"+r.km200);}
 				if (o != undefined) {
 					const obj1 = km200_obj(r.km200,o);
-					const value = o.value;
 					try {obj1._id = r.km200;
 						obj1.common.name= "km200:"+r.km200;
 						//obj1.native.source = "km200";
 						obj1.native.ems_km200 = r.km200;
 						await adapter.setObjectNotExistsAsync(obj1._id, obj1);
-						await adapter.setStateChangedAsync(r.km200, {ack: true, val: value});
 					} catch (err) {adapter.log.error(r.km200+":"+err);}
+
+					let val = o.value;
+					if (o.type == "stringValue" && o.allowedValues != undefined){
+						val = o.allowedValues.indexOf(o.value);
+					}
+					if (o.type == "switchProgram" && o.switchPoints != undefined){
+						val = JSON.stringify(o.switchPoints);
+					}
+					adapter.setStateChangedAsync(r.km200, {ack: true, val: val});
 				}
 			}
 		}
