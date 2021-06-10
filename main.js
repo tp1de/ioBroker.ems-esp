@@ -320,6 +320,8 @@ async function init_statistics() {
 		common: {type: "number", name: "ww starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
 		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExists("statistics.created",{type: "state",
+		common: {type: "boolean", name: "sql enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
 
 	adapter.getState("statistics.created", function(err, state) {
 		if(state == null || state.val === false) {
