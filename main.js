@@ -118,11 +118,10 @@ class EmsEsp extends utils.Adapter {
 			write_file(fnw,datafields);
 		}
 
-		await init_statistics();
-		await init_controls();
 		if (this.config.emsesp_active) await init_states_emsesp();
 		if (this.config.km200_active) await init_states_km200();
-
+		await init_statistics();
+		await init_controls();
 
 		// Recording states
 
