@@ -166,7 +166,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
 		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
-		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 300000); // 5 minutes
+		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 120000); // 2 minutes
 		await sleep(120000);
 		setInterval(function() {read_efficiency();}, 60000); // 60 sec
 	}
@@ -324,10 +324,13 @@ async function init_statistics() {
 
 	adapter.getState("statistics.created", function(err, state) {
 		if(state == null || state.val === false) {
-			if (adapter.config.emsesp_active) enable_state("heatSources.hs1.burnstarts",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,15);
 			if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400,15);
-			if (adapter.config.emsesp_active) enable_state("dhwCircuits.dhw1.wwstarts",86400,15);
-			if (adapter.config.emsesp_active)  enable_state("heatSources.hs1.burngas",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
 			if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400,15);
 			adapter.setState("statistics.created", {ack: true, val: true});
 		}
@@ -336,14 +339,21 @@ async function init_statistics() {
 }
 
 async function read_efficiency() {
-	let value = 0;
-	let power = 0,temp = 0,tempr = 0, tempavg = 0;
+	let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0;
 
-	if (adapter.config.emsesp_active){
+	if (adapter.config.emsesp_active && adapter.config.km200_structure){
 		try {
 			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val != null) power = state.val;} );
 			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} );
 			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} );
+		}
+		catch (err) {adapter.log.error("error read efficiency:"+err);}
+	}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
+		try {
+			adapter.getState("boiler.curburnpow", function (err, state) { if (state.val != null) power = state.val;} );
+			adapter.getState("boiler.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} );
+			adapter.getState("boiler.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} );
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
@@ -372,8 +382,9 @@ async function read_statistics() {
 	let id = "";
 	const end = Date.now();
 
-	if (adapter.config.emsesp_active) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
-	else if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.numberOfStarts";}
+	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.numberOfStarts";}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure === false) {id = adapter.namespace + ".boiler.burnstarts";}
 
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
@@ -395,7 +406,8 @@ async function read_statistics() {
 	});
 
 	if (adapter.config.emsesp_active) {
-		id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
+		id = adapter.namespace + ".boiler.wwstarts";
+		if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
 		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 		}, function (result) {
 			const count = result.result.length;
@@ -415,9 +427,9 @@ async function read_statistics() {
 			}
 		});
 	}
-
-	if (adapter.config.emsesp_active) {id = adapter.namespace + ".heatSources.hs1.burngas";}
-	else if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
+	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
 
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
