@@ -470,7 +470,7 @@ async function init_states_km200() {
 					if (o.type == "stringValue" && o.allowedValues != undefined){val = o.allowedValues.indexOf(o.value);}
 					if (o.type == "switchProgram" && o.switchPoints != undefined){val = JSON.stringify(o.switchPoints);}
 					try {adapter.setStateChangedAsync(r.km200, {ack: true, val: val});}
-					catch (error) {{adapter.log.error(r.km200+":"+error);}
+					catch (error) {adapter.log.error(r.km200+":"+error);}
 				}
 			}
 		}
