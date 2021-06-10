@@ -51,12 +51,12 @@ systemDictionary = {
 		"de": "Privates Passwort"
 	},
 	"recordings": {
-		"en": "power consumption recordings",
-		"de": "Energieverbrauch recordings"
+		"en": "power recordings (km200 only)",
+		"de": "Energie recordings (nur km200)"
 	},
 	"database_instance": {
-		"en": "database instance (mySQL or influxdb)",
-		"de": "Datenbank Instanz (mySQL oder influxdb)"
+		"en": "db instance (mySQL or influxdb) for recordings & statistics",
+		"de": "DB Instanz (mySQL oder influxdb) für recordings & Statistik"
 	},
 	"database": {
 		"en": "database name (iobroker)",

@@ -139,12 +139,12 @@ class EmsEsp extends utils.Adapter {
 
 			adapter.getState(root+"created", function(err, state) {
 				if(state == null || state.val === false) {
-					enable_state(root+hh);
-					enable_state(root+hhdhw);
-					enable_state(root+dd);
-					enable_state(root+dddhw);
-					enable_state(root+mm);
-					enable_state(root+mmdhw);
+					enable_state(root+hh,0);
+					enable_state(root+hhdhw,0);
+					enable_state(root+dd,0);
+					enable_state(root+dddhw,0);
+					enable_state(root+mm,0);
+					enable_state(root+mmdhw,0);
 					adapter.setState(root+"created", {ack: true, val: true});
 				}
 			});
@@ -236,10 +236,10 @@ if (require.main !== module) {
 
 //---------functions ---------------------------------------------------------------------------------------------------------
 
-function enable_state(stateid) {
+function enable_state(stateid,retention) {
 	const id =  adapter.namespace  + "." + stateid;
 	adapter.sendTo(db, "enableHistory", {id: id, options:
-		{changesOnly: false,debounce: 0,retention: 0,
+		{changesOnly: false,debounce: 0,retention: retention,
 			maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 		if (result.error) { console.log(result.error); }
 		if (result.success) {
@@ -320,6 +320,14 @@ async function init_statistics() {
 		common: {type: "number", name: "ww starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
 		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
+
+
+	if (adapter.config.emsesp_active) enable_state("heatSources.hs1.burnstarts",86400);
+	if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400);
+	if (adapter.config.emsesp_active) enable_state("dhwCircuits.dhw1.wwstarts",86400);
+	if (adapter.config.emsesp_active)  enable_state("heatSources.hs1.burngas",86400);
+	if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400);
+
 }
 
 async function read_efficiency() {
@@ -356,8 +364,13 @@ async function read_efficiency() {
 
 function read_statistics() {
 
+	let id = "";
 	const end = Date.now();
-	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
+
+	if (adapter.config.emsesp_active) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
+	else if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.numberOfStarts";}
+
+	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		if (count > 0) {
@@ -366,8 +379,7 @@ function read_statistics() {
 		}
 	});
 
-
-	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burnstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let value = 0;
@@ -377,29 +389,32 @@ function read_statistics() {
 		}
 	});
 
+	if (adapter.config.emsesp_active) {
+		id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
+		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+		}, function (result) {
+			const count = result.result.length;
+			if (count > 0) {
+				const value = result.result[count-1].val-result.result[0].val;
+				adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
+			}
+		});
 
-	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 3600000, end: end, aggregate: "none"}
-	}, function (result) {
-		const count = result.result.length;
-		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val;
-			adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
-		}
-	});
+		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
+		}, function (result) {
+			const count = result.result.length;
+			let value = 0;
+			if (count > 0) {
+				const value = result.result[count-1].val-result.result[0].val;
+				adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
+			}
+		});
+	}
 
+	if (adapter.config.emsesp_active) {id = adapter.namespace + ".heatSources.hs1.burngas";}
+	else if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
 
-	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.dhwCircuits.dhw1.wwstarts",	options: {start: end - 86400000, end: end, aggregate: "none"}
-	}, function (result) {
-		const count = result.result.length;
-		let value = 0;
-		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val;
-			adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
-		}
-	});
-
-
-	adapter.sendTo(db, "getHistory", {	id: "ems-esp.0.heatSources.hs1.burngas",	options: {start: end - 3600000, end: end, aggregate: "none"}
+	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let on = 0;
