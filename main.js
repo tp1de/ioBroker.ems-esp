@@ -324,11 +324,11 @@ async function init_statistics() {
 
 	adapter.getState("statistics.created", function(err, state) {
 		if(state == null || state.val === false) {
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,15);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,15);
-			if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400,15);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,15);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,0);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,0);
+			if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400,0);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,0);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,0);
 			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
 			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
 			if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400,15);
@@ -389,20 +389,23 @@ async function read_statistics() {
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
-		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val;
-			adapter.setStateAsync("statistics.boiler-starts-1h", {ack: true, val: value});
+		let value = 0;
+		if (count == 1) value = 1;
+		if (count > 1) {
+			value = result.result[count-1].val-result.result[0].val;
 		}
+		adapter.setStateAsync("statistics.boiler-starts-1h", {ack: true, val: value});
 	});
 
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let value = 0;
-		if (count > 0) {
-			const value = result.result[count-1].val-result.result[0].val;
-			adapter.setStateAsync("statistics.boiler-starts-24h", {ack: true, val: value});
+		if (count == 1) value = 1;
+		if (count > 1) {
+			value = result.result[count-1].val-result.result[0].val;
 		}
+		adapter.setStateAsync("statistics.boiler-starts-24h", {ack: true, val: value});
 	});
 
 	if (adapter.config.emsesp_active) {
@@ -411,20 +414,23 @@ async function read_statistics() {
 		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 		}, function (result) {
 			const count = result.result.length;
-			if (count > 0) {
-				const value = result.result[count-1].val-result.result[0].val;
-				adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
+			let value = 0;
+			if (count == 1) value = 1;
+			if (count > 1) {
+				value = result.result[count-1].val-result.result[0].val;
 			}
+			adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
 		});
 
 		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
 		}, function (result) {
 			const count = result.result.length;
 			let value = 0;
-			if (count > 0) {
-				const value = result.result[count-1].val-result.result[0].val;
-				adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
+			if (count == 1) value = 1;
+			if (count > 1) {
+				value = result.result[count-1].val-result.result[0].val;
 			}
+			adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
 		});
 	}
 	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
