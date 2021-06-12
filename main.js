@@ -386,70 +386,48 @@ async function read_statistics() {
 	if (adapter.config.emsesp_active && adapter.config.km200_structure) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
 	if (adapter.config.emsesp_active && adapter.config.km200_structure === false) {id = adapter.namespace + ".boiler.burnstarts";}
 
-	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-	}, function (result) {
-		const count = result.result.length;
-		let value = 0;
-		if (count == 1) value = 1;
-		if (count > 1) {
-			value = result.result[count-1].val-result.result[0].val;
-		}
-		adapter.setStateAsync("statistics.boiler-starts-1h", {ack: true, val: value});
-	});
-
-	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
-	}, function (result) {
-		const count = result.result.length;
-		let value = 0;
-		if (count == 1) value = 1;
-		if (count > 1) {
-			value = result.result[count-1].val-result.result[0].val;
-		}
-		adapter.setStateAsync("statistics.boiler-starts-24h", {ack: true, val: value});
-	});
+	stat(db,id,1,"statistics.boiler-starts-1h");
+	stat(db,id,24,"statistics.boiler-starts-24h");
 
 	if (adapter.config.emsesp_active) {
 		id = adapter.namespace + ".boiler.wwstarts";
 		if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
-		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-		}, function (result) {
-			const count = result.result.length;
-			let value = 0;
-			if (count == 1) value = 1;
-			if (count > 1) {
-				value = result.result[count-1].val-result.result[0].val;
-			}
-			adapter.setStateAsync("statistics.ww-starts-1h", {ack: true, val: value});
-		});
 
-		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 86400000, end: end, aggregate: "none"}
-		}, function (result) {
-			const count = result.result.length;
-			let value = 0;
-			if (count == 1) value = 1;
-			if (count > 1) {
-				value = result.result[count-1].val-result.result[0].val;
-			}
-			adapter.setStateAsync("statistics.ww-starts-24h", {ack: true, val: value});
-		});
+		stat(db,id,1,"statistics.ww-starts-1h");
+		stat(db,id,24,"statistics.ww-starts-24h");
 	}
+
+
 	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
 	if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
+	if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
 		let on = 0;
-		for (let i = 0; i < result.result.length; i++) {
-			if (result.result[i].val == 1) on += 1;
-		}
+		for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
 		let value = 0;
 		if (count !== 0 && count != undefined) value = on / count * 100;
 		value = Math.round(value*10)/10;
 		adapter.setStateAsync("statistics.boiler-on-1h", {ack: true, val: value});
 	});
 
+}
+
+
+async function stat(db,id,hour,state) {
+	const end = Date.now();
+	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
+	}, function (result) {
+		let value = 0;
+		const c = result.result.length;
+		if (c == 0) value = 0;
+	    if (c == 1) value = 1;
+		if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
+		if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+		adapter.setStateAsync(state, {ack: true, val: value});
+	});
 }
 
 
