@@ -799,7 +799,7 @@ async function write_state(statename,value,def) {
 			obj.common.states = "";
 			obj.native.ems_enum = defj.enum;
 			for (let ii = 0; ii< defj.enum.length;ii++) {
-				if (defj.min = 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
+				if (defj.min == 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
 				else {obj.common.states += ii+":"+defj.enum[ii];}
 				//obj.common.states += ii+":"+defj.enum[ii];
 				if (ii< defj.enum.length-1) obj.common.states += ";";
