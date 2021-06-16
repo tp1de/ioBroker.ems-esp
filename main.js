@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.0
+ * ems-esp adapter version v0.9.0 Test
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -122,7 +122,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active) await init_states_km200();
 
 		await init_statistics();
-		//await init_controls();
+		await init_controls();
 
 		// Recording states
 
