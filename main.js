@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.0
+ * ems-esp adapter version v0.9.0 Test
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
