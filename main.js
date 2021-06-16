@@ -784,7 +784,7 @@ async function write_state(statename,value,def) {
 	obj.common.role = "value";
 
 	if (def != "" && def != "Invalid") {
-		const defj = JSON.parse(def);
+		const defj = JSON.parse(def); 
 
 		if (defj.writeable == true) {obj.common.write = true;}
 		obj.common.unit = defj.unit;
