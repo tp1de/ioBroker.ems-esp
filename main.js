@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.0 Test
+ * ems-esp adapter version v0.9.0
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -122,7 +122,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active) await init_states_km200();
 
 		await init_statistics();
-		await init_controls();
+		//await init_controls();
 
 		// Recording states
 
@@ -157,7 +157,7 @@ class EmsEsp extends utils.Adapter {
 		// ems and km200 read schedule
 		if (recordings && this.config.km200_active) km200_recordings();
 
-		let interval1,interval2,interval3,interval4,interval5;;
+		let interval1,interval2,interval3,interval4,interval5;
 		adapter.log.info("start polling intervals now.");
 		adapter.log.info("ems  :"+this.config.emsesp_active+" 15 secs");
 		adapter.log.info("km200:"+this.config.km200_active+" 90 secs");
@@ -168,7 +168,7 @@ class EmsEsp extends utils.Adapter {
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 120000); // 2 minutes
 		await sleep(60000);
-		setInterval(function() {read_efficiency();}, 60000); // 60 sec
+		interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 	}
 
 	/**
