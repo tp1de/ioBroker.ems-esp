@@ -813,6 +813,10 @@ async function write_state(statename,value,def) {
 			obj.common.states = "0:Off;1:On";
 		}
 	}
+	if (def == "") {
+		if (value == true || value == "on" || value == "ON") value = 1;
+		if (value == false || value == "off" || value == "OFF") value = 0;
+	}
 
 	//obj.native.source = "ems-esp";
 	obj.native.ems_command = command;
