@@ -895,19 +895,19 @@ async function recs(field,daten) {
 
 	if (db.substring(0,3) == "sql" ) {
 		await adapter.sendToAsync(db, "deleteAll", {id: field});
-		await sleep(1000);
-		adapter.sendTo(db,"storeState", daten);
+		await sleep(100);
 	}
-
-
 	if (db.substring(0,8) == "influxdb" ) {
 		const query = 'drop series from "' +  field + '";';
 		await adapter.sendToAsync(db, "query", query);
-		await sleep(100);
-		for (let i = 0; i < daten.length;i++){
-			adapter.sendTo(db,"storeState", daten[i]);
-		}
+		await sleep(2000);
 	}
+
+	for (let i = 0; i < daten.length;i++){
+		await adapter.sendToAsync(db,"storeState", daten[i]);
+		await sleep(20);
+	}
+
 }
 
 
