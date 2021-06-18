@@ -808,8 +808,8 @@ async function write_state(statename,value,def) {
 
 		if(defj.type == "boolean") {
 			obj.common.type = "number";
-			if (value == true) value = 1;
-			if (value == false) value = 0;
+			if (value == true || value == "on" || value == "ON") value = 1;
+			if (value == false || value == "off" || value == "OFF") value = 0;
 			obj.common.states = "0:Off;1:On";
 		}
 	}
@@ -824,7 +824,7 @@ async function write_state(statename,value,def) {
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
-		
+
 
 }
 
@@ -895,19 +895,19 @@ async function recs(field,daten) {
 
 	if (db.substring(0,3) == "sql" ) {
 		await adapter.sendToAsync(db, "deleteAll", {id: field});
-		await sleep(1000);
-		adapter.sendTo(db,"storeState", daten);
+		await sleep(100);
 	}
-
-
 	if (db.substring(0,8) == "influxdb" ) {
 		const query = 'drop series from "' +  field + '";';
 		await adapter.sendToAsync(db, "query", query);
-		await sleep(100);
-		for (let i = 0; i < daten.length;i++){
-			adapter.sendTo(db,"storeState", daten[i]);
-		}
+		await sleep(2000);
 	}
+
+	for (let i = 0; i < daten.length;i++){
+		await adapter.sendToAsync(db,"storeState", daten[i]);
+		await sleep(20);
+	}
+
 }
 
 
