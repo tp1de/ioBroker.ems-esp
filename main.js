@@ -822,6 +822,8 @@ async function write_state(statename,value,def) {
 			if (value === true || value === "on" || value === "ON") value = 1;
 			if (value === false || value === "off" || value === "OFF") value = 0;
 			obj.common.states = "0:Off;1:On";
+			obj.common.min = 0;
+			obj.common.max = 1;
 		}
 		obj.native.ems_type = defj.type;
 
