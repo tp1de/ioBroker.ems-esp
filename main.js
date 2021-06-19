@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.0
+ * ems-esp adapter version v0.9.0 Test
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -122,7 +122,7 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active) await init_states_km200();
 
 		await init_statistics();
-		//await init_controls();
+		await init_controls();
 
 		// Recording states
 
@@ -808,10 +808,14 @@ async function write_state(statename,value,def) {
 
 		if(defj.type == "boolean") {
 			obj.common.type = "number";
-			if (value == true) value = 1;
-			if (value == false) value = 0;
+			if (value === true || value === "on" || value === "ON") value = 1;
+			if (value === false || value === "off" || value === "OFF") value = 0;
 			obj.common.states = "0:Off;1:On";
 		}
+	}
+	if (def == "") {
+		if (value === true || value === "on" || value === "ON") value = 1;
+		if (value === false || value === "off" || value === "OFF") value = 0;
 	}
 
 	//obj.native.source = "ems-esp";
@@ -824,7 +828,7 @@ async function write_state(statename,value,def) {
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
-		
+
 
 }
 
@@ -901,6 +905,7 @@ async function recs(field,daten) {
 		const query = 'drop series from "' +  field + '";';
 		await adapter.sendToAsync(db, "query", query);
 		await sleep(2000);
+<<<<<<< HEAD
 	}
 
 	for (let i = 0; i < daten.length;i++){
@@ -908,6 +913,15 @@ async function recs(field,daten) {
 		await sleep(20);
 	}
 
+=======
+	}
+
+	for (let i = 0; i < daten.length;i++){
+		await adapter.sendToAsync(db,"storeState", daten[i]);
+		await sleep(20);
+	}
+
+>>>>>>> dev
 }
 
 

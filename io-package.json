@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.1": {
+        "en": "Adjustments for boolean formats",
+        "de": "Adjustments for boolean formats"
+      },
       "0.9.0": {
         "en": "Rest API V3 - js-controller 3.x and influxdb support and heating demand",
         "de": "Rest API V3 - js-controller 3.x and influxdb support and heating demand"
