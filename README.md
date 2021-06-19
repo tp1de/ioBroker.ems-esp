@@ -53,9 +53,10 @@ Update is every hour. The values can then be shown by using e.g. the Flot Charts
 
 Since v 0.9.0 there are statistics states within the objects. The polling time read duration for ems-esp and/or km200 gateway are shown.
 Additionally the number of boiler starts per hour / 24 hours and the boiler utilization per hour (0-100%).
-If values are filled the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2
+If values are filled the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
+Since return temp is not available anymore in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 
-For future use (under development) a controls section is created. This is not used yet in v 0.9.0.
+For future use (under development) a controls section is created. This is not used yet in v 0.9.1.
 
 
 ## Changelog
