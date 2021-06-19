@@ -358,6 +358,17 @@ async function read_efficiency() {
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
 
+	if (adapter.config.emsesp_active === false && adapter.config.km200_active){
+		try {
+			adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state.val != null) power = state.val;} );
+			adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state.val != null) temp = state.val;} );
+			tempr = temp - 10; // return temp not available in km200
+		}
+		catch (err) {adapter.log.error("error read efficiency:"+err);}
+	}
+
+
+
 	await sleep(1000);
 	//adapter.log.info(power+ " "+ temp + " " +tempr);
 	if (power > 0) {
@@ -812,6 +823,8 @@ async function write_state(statename,value,def) {
 			if (value === false || value === "off" || value === "OFF") value = 0;
 			obj.common.states = "0:Off;1:On";
 		}
+		obj.native.ems_type = defj.type;
+
 	}
 	if (def == "") {
 		if (value === true || value === "on" || value === "ON") value = 1;
