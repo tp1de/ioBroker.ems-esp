@@ -61,7 +61,7 @@ For future use (under development) a controls section is created. This is not us
 ## Changelog
 
 ### 0.9.1
-* (Thomas Petrick) Adjust for different bolean formats
+* (Thomas Petrick) Adjust for different boolean formats
 
 ### 0.9.0
 * (Thomas Petrick) Rework Adapter for some statistics and prepare for heating control (under development)
