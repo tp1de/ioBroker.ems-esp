@@ -905,7 +905,6 @@ async function recs(field,daten) {
 		const query = 'drop series from "' +  field + '";';
 		await adapter.sendToAsync(db, "query", query);
 		await sleep(2000);
-<<<<<<< HEAD
 	}
 
 	for (let i = 0; i < daten.length;i++){
@@ -913,15 +912,6 @@ async function recs(field,daten) {
 		await sleep(20);
 	}
 
-=======
-	}
-
-	for (let i = 0; i < daten.length;i++){
-		await adapter.sendToAsync(db,"storeState", daten[i]);
-		await sleep(20);
-	}
-
->>>>>>> dev
 }
 
 
