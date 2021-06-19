@@ -808,14 +808,14 @@ async function write_state(statename,value,def) {
 
 		if(defj.type == "boolean") {
 			obj.common.type = "number";
-			if (value == true || value == "on" || value == "ON") value = 1;
-			if (value == false || value == "off" || value == "OFF") value = 0;
+			if (value === true || value === "on" || value === "ON") value = 1;
+			if (value === false || value === "off" || value === "OFF") value = 0;
 			obj.common.states = "0:Off;1:On";
 		}
 	}
 	if (def == "") {
-		if (value == true || value == "on" || value == "ON") value = 1;
-		if (value == false || value == "off" || value == "OFF") value = 0;
+		if (value === true || value === "on" || value === "ON") value = 1;
+		if (value === false || value === "off" || value === "OFF") value = 0;
 	}
 
 	//obj.native.source = "ems-esp";
