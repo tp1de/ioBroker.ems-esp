@@ -343,26 +343,25 @@ async function read_efficiency() {
 
 	if (adapter.config.emsesp_active && adapter.config.km200_structure){
 		try {
-			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state.val != null) power = state.val;} );
-			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} );
-			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} );
+			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state != null) power = state.val;} );
+			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
+			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
 	if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
 		try {
-			adapter.getState("boiler.curburnpow", function (err, state) { if (state.val != null) power = state.val;} );
-			adapter.getState("boiler.curflowtemp", function (err, state) {if (state.val != null) temp = state.val;} );
-			adapter.getState("boiler.rettemp", function (err, state) {if (state.val != null) tempr = state.val;} );
+			adapter.getState("boiler.curburnpow", function (err, state) { if (state != null) power = state.val;} );
+			adapter.getState("boiler.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
+			adapter.getState("boiler.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
 
 	if (adapter.config.emsesp_active === false && adapter.config.km200_active){
 		try {
-			adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state.val != null) power = state.val;} );
-			adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state.val != null) temp = state.val;} );
-			tempr = temp - 10; // return temp not available in km200
+			adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state != null) power = state.val;} );
+			adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state != null) temp = state.val;} );
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
@@ -372,6 +371,8 @@ async function read_efficiency() {
 	await sleep(1000);
 	//adapter.log.info(power+ " "+ temp + " " +tempr);
 	if (power > 0) {
+		if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
+
 		tempavg = (temp+tempr) / 2;
 		if (tempavg <= 20) value = adapter.config.eff20;
 		if (tempavg > 20) value = adapter.config.eff25;
