@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.2": {
+        "en": "Adjustments for enum formats",
+        "de": "Adjustments for enum formats"
+      },
       "0.9.1": {
         "en": "Adjustments for boolean formats",
         "de": "Adjustments for boolean formats"

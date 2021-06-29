@@ -61,6 +61,9 @@ For future use (under development) a controls section is created. This is not us
 
 ## Changelog
 
+### 0.9.2
+* (Thomas Petrick) Adjust for enum formats
+
 ### 0.9.1
 * (Thomas Petrick) Adjust for different boolean formats
 
