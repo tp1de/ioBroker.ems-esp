@@ -548,7 +548,7 @@ async function ems_read() {
 	let data = "";
 	try {data = await ems_get(url); }
 	catch(error) {
-		adapter.log.debug("ems read system error:" +url+ " - wrong ip address?");
+		adapter.log.error("ems read system error:" +url+ " - wrong ip address?");
 		data = "Invalid";
 	}
 	await sleep(100);
