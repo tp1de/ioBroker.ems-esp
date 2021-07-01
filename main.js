@@ -566,6 +566,8 @@ async function ems_read() {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
+		if (devices.length == 0) adapter.log.error("no ems devices found - ems-esp gateway rebooting?");
+
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
