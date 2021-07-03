@@ -25,8 +25,8 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
-let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher;
-let emsesp,recordings=false, ems_token ="",ems_http_wait = 100;
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,km200_polling = 300;
+let emsesp,recordings=false, ems_token ="",ems_http_wait = 100, ems_polling = 60;
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -65,6 +65,8 @@ class EmsEsp extends utils.Adapter {
 	async onReady() {
 
 		km200_server = this.config.km200_ip;
+		km200_polling = this.config.km200_polling;
+		if (km200_polling < 90) km200_polling = 90;
 		km200_gatewaypassword = this.config.gateway_pw;
 		km200_privatepassword = this.config.private_pw;
 		recordings = this.config.recordings;
@@ -74,6 +76,8 @@ class EmsEsp extends utils.Adapter {
 		emsesp = this.config.emsesp_ip ;
 		ems_token = this.config.ems_token;
 		ems_http_wait = this.config.ems_http_wait;
+		ems_polling = this.config.ems_polling;
+		if (ems_polling < 15) ems_polling = 15;
 
 		function decrypt(key, value) {
 			let result = "";
@@ -159,12 +163,12 @@ class EmsEsp extends utils.Adapter {
 
 		let interval1,interval2,interval3,interval4,interval5;
 		adapter.log.info("start polling intervals now.");
-		adapter.log.info("ems  :"+this.config.emsesp_active+" 15 secs");
-		adapter.log.info("km200:"+this.config.km200_active+" 90 secs");
-		adapter.log.info("recordings:"+this.config.recordings+" hour");
+		if (this.config.emsesp_active) adapter.log.info("ems  :"+this.config.emsesp_active + " " + ems_polling + " secs");
+		if (this.config.km200_active) adapter.log.info("km200:"+this.config.km200_active + " " + km200_polling + " secs");
+		if (this.config.recordings) adapter.log.info("recordings:"+this.config.recordings+" hour");
 
-		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, 90000); // 90 sec
-		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, 15000); // 15 sec
+		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, km200_polling*1000); // 90 sec
+		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, ems_polling*1000);
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 120000); // 2 minutes
 		await sleep(60000);
@@ -551,7 +555,7 @@ async function ems_read() {
 		adapter.log.error("ems read system error:" +url+ " - wrong ip address?");
 		data = "Invalid";
 	}
-	await sleep(100);
+	await sleep(ems_http_wait);
 
 	if (data != "Invalid") {
 		const devices = JSON.parse(data).Devices;
@@ -591,7 +595,7 @@ async function ems_read() {
 				}
 				catch(error) {adapter.log.debug("ems http read polling error:"+url1);}
 			}
-			await sleep(100);
+			await sleep(ems_http_wait);
 		}
 		const t2 = new Date().getTime();
 		const t3 = (t2-t1) / 1000;
@@ -844,7 +848,13 @@ async function write_state(statename,value,def) {
 	obj.native.ems_id = device_id;
 
 	// @ts-ignore
-	await adapter.setObjectNotExistsAsync(statename1, obj);
+	if (def =="") {
+		await adapter.setObjectNotExistsAsync(statename1, obj);
+	}
+	else {
+		await adapter.setObjectAsync(statename1, obj);
+	}
+
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });

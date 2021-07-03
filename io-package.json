@@ -4,6 +4,10 @@
     "version": "0.9.2",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.3": {
+        "en": "API polling as parameter",
+        "de": "API polling as parameter"
+      },
       "0.9.2": {
         "en": "Adjustments for enum formats",
         "de": "Adjustments for enum formats"
@@ -92,6 +96,7 @@
     "control_file": "*",
     "km200_active": false,
     "km200_ip": "http://192.168.178.x",
+    "km200_polling":300,
     "gateway_pw": "",
     "private_pw": "",
     "emsesp_active": false,
@@ -99,6 +104,7 @@
     "ems_apiv3": true,
     "ems_http_wait":100,
     "ems_token": "",
+    "ems_polling":60,
     "recordings": false,
     "database_instance": "sql.0",
     "database": "iobroker",

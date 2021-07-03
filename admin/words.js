@@ -18,6 +18,10 @@ systemDictionary = {
 		"en": "msec delay",
 		"de": "mSek delay"
 	},
+	"ems_polling": {
+		"en": "polling in sec",
+		"de": "Polling in Sek"
+	},
 	"emsesp_ip": {
 		"en": "IP address",
 		"de": "IP Adresse"
@@ -37,6 +41,10 @@ systemDictionary = {
 	"km200_ip": {
 		"en": "IP address",
 		"de": "IP Adresse"
+	},
+	"km200_polling": {
+		"en": "polling in sec",
+		"de": "Polling in Sek"
 	},
 	"control_file": {
 		"en": "csv-file for km200 | empty: no km200 data    *: read all km200 fields",
