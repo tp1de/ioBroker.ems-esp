@@ -13,18 +13,19 @@
 
 ## ems-esp adapter for ioBroker
 
-The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. ESP32 is mandatory to support Rest API V3 !
+The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
+The old ESP8266 gateways are now support as well starting with version 0.9.4 !
 
 The ems-esp adapter can read and write data from the km200 gateway and/or the ems-esp hardware. 
 It can be used for the original Bosch-group gateways or the ems-esp or both in parallel when an IP-gateway like km200 / ip inside is available.
 
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-The Adapter is only working with the latest Firmware: https://github.com/emsesp/EMS-ESP32/releases/tag/latest
+The adapter is tested with latest development versions of ESP32  https://github.com/emsesp/EMS-ESP32/releases/tag/latest
+and with ESP8266  v2.2.3b0.
 MQTT Settings have to be boolean format 1/0 ! (actual bug in the firmware of ems-esp)
 
-While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc.
-When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields (states) are within same location within ioBroker's object structure.
+While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original devices are kept: boiler, thermostat, mixer etc. When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields (states) are within same location within ioBroker's object structure.
 
 Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. For 1st adapter start it is recommended to use a "*" so select all km200 data-fields.
 The adapter then creates a km200.csv file within ../iobroker-data/ems-esp directory. This file can be used for next start of adapter-instance. I needed lines can be deleted to reduce the numer of km200-fields to be read.  
@@ -44,8 +45,7 @@ SQL or InfluxDB History adapter need to be installed to use this option.
 
 *** This is only tested yet for mySQL and influxdb v1.8 databases ***
 
-This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
-Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter.
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter.
 
 Since v0.9.0 there are statistics states within the objects. The polling cycle processing time for ems-esp and/or km200 gateway reads and state processing are shown.
 
@@ -53,14 +53,16 @@ Additionally the number of boiler starts per hour / 24 hours and the boiler util
 If values are filled the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2. Since return temp is not available anymore in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
 A database instance (see above) is needed to calculate the statistics.
 
-For future use (under development) a controls section is created. This is not used yet in v 0.9.3.
-
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run.
 Nevertheless obsolete datafields are not deleted by the adapter !!!
 
 
 
 ## Changelog
+
+### 0.9.4
+* (Thomas Petrick) Support for old ESP8266 EMS-ESP gateways and API V2
+                   and new ESP32 with API V3
 
 ### 0.9.3
 * (Thomas Petrick) Polling time for EMS-ESP and KM200 is now a parameter

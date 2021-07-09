@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+       "0.9.4": {
+        "en": "Support now for old ESP8266 EMS-ESP gateways (API V2) and new ESP32 with API V3",
+        "de": "Unterstützung für alte ESP8266 EMS-ESP gateways (API V2) und neue ESP32 mit API V3"
+      },
       "0.9.3": {
         "en": "API polling as parameter",
         "de": "API polling as parameter"
@@ -109,7 +113,7 @@
     "database_instance": "sql.0",
     "database": "iobroker",
     "km200_structure": true,
-    "eff_activive":false,
+    "eff_active":false,
     "eff20": 109.5,
     "eff25": 109.3,
     "eff30": 108.3,

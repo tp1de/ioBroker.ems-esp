@@ -25,8 +25,9 @@ const km200_crypt_md5_salt = new Uint8Array([
 	0x15, 0x2b, 0xff, 0xad, 0xdd, 0xbe, 0xd7, 0xf5,
 	0xff, 0xd8, 0x42, 0xe9, 0x89, 0x5a, 0xd1, 0xe4
 ]);
-let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher,km200_polling = 300;
+let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher, km200_polling = 300;
 let emsesp,recordings=false, ems_token ="",ems_http_wait = 100, ems_polling = 60;
+let ems_version = "V2";
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -74,18 +75,10 @@ class EmsEsp extends utils.Adapter {
 		km200_structure= this.config.km200_structure;
 
 		emsesp = this.config.emsesp_ip ;
-		ems_token = this.config.ems_token;
+		ems_token = this.config.ems_token.trim();
 		ems_http_wait = this.config.ems_http_wait;
 		ems_polling = this.config.ems_polling;
 		if (ems_polling < 15) ems_polling = 15;
-
-		function decrypt(key, value) {
-			let result = "";
-			for (let i = 0; i < value.length; ++i) {
-			 result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-			}
-			return result;
-		}
 
 		adapter.getForeignObject("system.config", function (err, obj) {
 			//adapter.log.info(JSON.stringify(obj));
@@ -122,11 +115,27 @@ class EmsEsp extends utils.Adapter {
 			write_file(fnw,datafields);
 		}
 
-		if (this.config.emsesp_active) await init_states_emsesp();
+		// Testing API Version
+		if (this.config.emsesp_active) {
+			let url = emsesp +  "/api/system";
+			try {
+				let data = await ems_get(url);
+				ems_version = "V3";
+			}
+			catch(error) {ems_version = "V2"}
+			this.log.info("EMS-ESP: API Version identified " + ems_version);	
+		}
+
+		const version = ems_version;
+
+		if (this.config.emsesp_active) await init_states_emsesp(version);
 		if (this.config.km200_active) await init_states_km200();
 
+		await sleep(5000);
+		if (version == "V2") v2_readwrite();
+
 		await init_statistics();
-		await init_controls();
+		//await init_controls();	
 
 		// Recording states
 
@@ -162,17 +171,20 @@ class EmsEsp extends utils.Adapter {
 		if (recordings && this.config.km200_active) km200_recordings();
 
 		let interval1,interval2,interval3,interval4,interval5;
-		adapter.log.info("start polling intervals now.");
+
 		if (this.config.emsesp_active) adapter.log.info("ems  :"+this.config.emsesp_active + " " + ems_polling + " secs");
 		if (this.config.km200_active) adapter.log.info("km200:"+this.config.km200_active + " " + km200_polling + " secs");
 		if (this.config.recordings) adapter.log.info("recordings:"+this.config.recordings+" hour");
 
 		if (this.config.km200_active) interval1 = setInterval(function() {km200_read(datafields);}, km200_polling*1000); // 90 sec
-		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read();}, ems_polling*1000);
+		if (this.config.emsesp_active) interval2 = setInterval(function() {ems_read(version);}, ems_polling*1000);
+
+
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
-		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 120000); // 2 minutes
-		await sleep(60000);
-		interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
+		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 60000); // 60 sec
+		if (this.config.eff_active) interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
+
+		
 	}
 
 	/**
@@ -239,6 +251,16 @@ if (require.main !== module) {
 
 //---------functions ---------------------------------------------------------------------------------------------------------
 
+function decrypt(key, value) {
+	let result = "";
+	for (let i = 0; i < value.length; ++i) {
+	 result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+	}
+	return result;
+}
+
+
+
 function enable_state(stateid,retention,interval) {
 	const id =  adapter.namespace  + "." + stateid;
 	adapter.sendTo(db, "enableHistory", {id: id, options:
@@ -257,21 +279,41 @@ async function state_change(id,state) {
 	let value = state.val;
 	const obj = await adapter.getObjectAsync(id);
 
+	// Testing API Version
+
+	ems_version = "V2";
+	let url1 = emsesp +  "/api/system";
+	try {let data = await ems_get(url1);ems_version = "V3";} catch(error) {}
+
+
 	if (obj.native.ems_device != null){
-		let url = emsesp + "/api/" + obj.native.ems_device;
-		if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
-		else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
+		if (ems_version == "V3") {
+			let url = emsesp + "/api/" + obj.native.ems_device;
+			if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
+			else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
 
-		adapter.log.debug("ems-esp write: "+ id + ": "+value);
+			adapter.log.info("ems-esp write V3: "+ id + ": "+value);
 
-		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
-		const body =JSON.stringify({"value": value});
+			const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
+			const body =JSON.stringify({"value": value});
 
-		request.post({url, headers: headers, body}, function(error,response) {
-			const status= JSON.parse(response.body).statusCode;
-			const resp= JSON.parse(response.body).message;
-			if (resp != "OK") adapter.log.error("ems-esp http write error:" + url);
-		});
+			request.post({url, headers: headers, body}, function(error,response) {
+				const status= JSON.parse(response.body).statusCode;
+				const resp= JSON.parse(response.body).message;
+				if (resp != "OK") adapter.log.error("ems-esp http write error: " + status + " " + resp + "  " + url);
+			});
+		}
+		if (ems_version == "V2") {
+			let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + value;
+			if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}			
+			adapter.log.info("ems-esp write V2: "+ id + ": "+value);
+			request(url , function(error,response) {
+				const status = response.statusCode;
+				const resp= response.body;
+				if (resp != "OK") adapter.log.error("ems-esp http write error: " + status + " " + resp + "  " + url);
+			});
+		}
+		
 
 	} else {
 		if (obj.native.ems_km200 != null) {
@@ -318,24 +360,24 @@ async function init_statistics() {
 	await adapter.setObjectNotExistsAsync("statistics.boiler-starts-24h",{type: "state",
 		common: {type: "number", name: "boiler starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.ww-starts-1h",{type: "state",
-		common: {type: "number", name: "ww starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
+		common: {type: "number", name: "ww starts per hour (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.ww-starts-24h",{type: "state",
-		common: {type: "number", name: "ww starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
+		common: {type: "number", name: "ww starts per 24 hours (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("statistics.efficiency",{type: "state",
 		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExists("statistics.created",{type: "state",
-		common: {type: "boolean", name: "sql enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
+		common: {type: "boolean", name: "Database (mySQL/InfluxDB) enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
 
 	adapter.getState("statistics.created", function(err, state) {
 		if(state == null || state.val === false) {
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,0);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,0);
-			if (adapter.config.km200_active)  enable_state("heatSources.numberOfStarts",86400,0);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,0);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,0);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,60);
+			if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts",86400,60);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
 			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
 			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
-			if (adapter.config.km200_active)   enable_state("heatSources.hs1.flameStatus",86400,15);
+			if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus",86400,15);
 			adapter.setState("statistics.created", {ack: true, val: true});
 		}
 	});
@@ -366,11 +408,10 @@ async function read_efficiency() {
 		try {
 			adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state != null) power = state.val;} );
 			adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state != null) temp = state.val;} );
+			tempr = 0;
 		}
 		catch (err) {adapter.log.error("error read efficiency:"+err);}
 	}
-
-
 
 	await sleep(1000);
 	//adapter.log.info(power+ " "+ temp + " " +tempr);
@@ -390,7 +431,7 @@ async function read_efficiency() {
 		if (tempavg > 60) value = adapter.config.eff70;
 	}
 
-	adapter.setStateAsync("statistics.efficiency", {ack: true, val: value});
+	await adapter.setStateAsync("statistics.efficiency", {ack: true, val: value});
 }
 
 async function read_statistics() {
@@ -480,9 +521,12 @@ async function init_states_km200() {
 
 
 
-async function init_states_emsesp() {
+async function init_states_emsesp(version) {
 	adapter.log.info("start initializing ems states");
-	const url = emsesp +  "/api/system";
+	let url = emsesp +  "/api?device=system&cmd=info";
+	if (ems_version == "V3") url = emsesp +  "/api/system";
+
+	adapter.log.info(version+"  url:" +url);
 	let data ="";
 	try {data = await ems_get(url); }
 	catch(error) {
@@ -506,10 +550,14 @@ async function init_states_emsesp() {
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
-				const url1 = emsesp +  "/api/"+device;
+				let url1 = "";
+				url1 = emsesp + "/api?device=" + device + "&cmd=info";
+				if (version == "V3") url1 = emsesp +  "/api/"+device;
+
+				adapter.log.info(version + "  url1:" + url1);
 				data="";
 				try {data = await ems_get(url1); }
-				catch(error) {adapter.log.error("ems http read error init:" + error + " - " + url1);}
+				catch(error) {adapter.log.error("ems http read error init:" + device + " --> " + error + " - " + url1);}
 				let fields = {};
 				if (data != "") fields = JSON.parse(data);
 
@@ -521,7 +569,8 @@ async function init_states_emsesp() {
 							def = await ems_get(url2);
 							write_state(device+"."+key,value,def);
 						}
-						catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
+						catch(error) {write_state(device+"."+key,value,"");} // V2
+						
 					}
 					else {
 						const key1 = key;
@@ -533,7 +582,7 @@ async function init_states_emsesp() {
 								def = await ems_get(url2);
 								write_state(device+"."+key1+"."+key2,value2,def);
 							}
-							catch(error) {adapter.log.error("ems http read error init:"+ error + " - " + url2);}
+							catch(error) {write_state(device+"."+key1+"."+key2,value2,"");}  // V2
 							await sleep(ems_http_wait);
 						}
 					}
@@ -545,14 +594,59 @@ async function init_states_emsesp() {
 	adapter.log.info("end of initializing ems states");
 }
 
+async function v2_readwrite() {
+    let fields = [];
+	let select = adapter.namespace+".*";
+	
+	let states = await adapter.getStatesAsync(select);
+	for (var id in states) {fields.push(id);}
+	
 
-async function ems_read() {
+    for (let i = 0; i < fields.length; i++) {
+        await test_v2(fields[i]);
+        await sleep(ems_http_wait);
+    }
+}
+
+
+async function test_v2(id) {
+    let obj = await adapter.getObjectAsync(id); 
+    if (obj.native.write == null  && obj.native.ems_device != null) {
+        let state = await adapter.getStateAsync(id);
+        if (state != null) {
+            let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + state.val;
+		    if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}	
+            
+            request(url , function(error,response) {
+				const status = response.statusCode;
+				const resp= response.body;
+				if (resp != "OK") {
+                    obj.common.write = false;
+                    obj.native.write = false;
+                    adapter.setObjectAsync(id,obj);
+                }
+                if (resp == "OK") {
+                    obj.common.write = true;
+                    obj.native.write = true;
+                    adapter.setObjectAsync(id,obj);
+                }
+            });
+        }
+    }
+}
+
+
+
+async function ems_read(version) {
 	const t1 = new Date().getTime();
-	const url = emsesp +  "/api/system";
+	let url = emsesp +  "/api?device=system&cmd=info";
+	if (version == "V3") url = emsesp +  "/api/system";
+
+	//adapter.log.info(version + "  " + url);
 	let data = "";
 	try {data = await ems_get(url); }
 	catch(error) {
-		adapter.log.error("ems read system error:" +url+ " - wrong ip address?");
+		adapter.log.debug("ems read system error:" +url+ " - wrong ip address?");
 		data = "Invalid";
 	}
 	await sleep(ems_http_wait);
@@ -570,12 +664,12 @@ async function ems_read() {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
-		if (devices.length == 0) adapter.log.error("no ems devices found - ems-esp gateway rebooting?");
-
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != "") {
 				const device = devices[i].type.toLowerCase();
-				const url1 = emsesp +  "/api/"+device;
+				let url1 = emsesp + "/api?device=" + device +"&cmd=info";
+				if (version == "V3") url1 = emsesp +  "/api/"+device;
+
 				try {
 					data = await ems_get(url1);
 					const fields = JSON.parse(data);
@@ -645,7 +739,11 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 	});
 });}
 
-
+async function ems_apiversion(emsesp) {
+    let ems_version;
+	try {let data = await ems_get(emsesp+"/api/system");ems_version = "V3";}catch(error) {ems_version = "V2";}
+    return(ems_version);
+}
 
 async function ems_put(url,value)  {
 	const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
@@ -774,8 +872,8 @@ async function write_state(statename,value,def) {
 		if (array[0] == "mixer") device = "heatingCircuits";
 		if (array[0] == "solar") device = "solarCircuits.sc1";
 		if (array[0] == "boiler") {
-			if (array[1].substring(0,2) == "ww") device = "dhwCircuits.dhw1";
-			if (array[1].substring(0,2) != "ww") device = "heatSources.hs1";
+			device = "heatSources.hs1";
+			if (array[1].substring(0,2) == "ww" || array[1].substring(0,2) == "wW" ) device = "dhwCircuits.dhw1";
 		}
 	}
 
@@ -799,6 +897,7 @@ async function write_state(statename,value,def) {
 	obj.common.unit = "";
 	obj.common.read = true;
 	obj.common.write = false;
+
 	obj.common.role = "value";
 
 	if (def != "" && def != "Invalid") {
@@ -817,12 +916,10 @@ async function write_state(statename,value,def) {
 			obj.common.states = "";
 			obj.native.ems_enum = defj.enum;
 			for (let ii = 0; ii< defj.enum.length;ii++) {
-				if (defj.enum[ii] != "") {
-					if (defj.min == 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
-					else {obj.common.states += ii+":"+defj.enum[ii];}
-					//obj.common.states += ii+":"+defj.enum[ii];
-					if (ii< defj.enum.length-1) obj.common.states += ";";
-				}
+				if (defj.min == 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
+				else {obj.common.states += ii+":"+defj.enum[ii];}
+				//obj.common.states += ii+":"+defj.enum[ii];
+				if (ii< defj.enum.length-1) obj.common.states += ";";
 			}
 		}
 
@@ -837,24 +934,32 @@ async function write_state(statename,value,def) {
 		obj.native.ems_type = defj.type;
 
 	}
+
 	if (def == "") {
 		if (value === true || value === "on" || value === "ON") value = 1;
 		if (value === false || value === "off" || value === "OFF") value = 0;
+	}
+
+	if (device_ems == "ems") obj.common.write = false;
+
+	if (ems_version == "V2") {
+		if (device_ems == "mixer") obj.common.write = false;
+		if (device_ems == "thermostat") obj.common.write = true;
+		if (device_ems == "boiler") obj.common.write = true;
+		if (device_ems == "heatpump") obj.common.write = true;
+		if (device_ems == "solar") obj.common.write = true;
+		if (statename.indexOf("temp") > -1) obj.common.unit = "°C";
+		if (statename.indexOf("Temp") > -1) obj.common.unit = "°C";
 	}
 
 	//obj.native.source = "ems-esp";
 	obj.native.ems_command = command;
 	obj.native.ems_device = device_ems;
 	obj.native.ems_id = device_id;
+	obj.native.ems_api = ems_version;
 
 	// @ts-ignore
-	if (def =="") {
-		await adapter.setObjectNotExistsAsync(statename1, obj);
-	}
-	else {
-		await adapter.setObjectAsync(statename1, obj);
-	}
-
+	await adapter.setObjectNotExistsAsync(statename1, obj);
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
@@ -939,7 +1044,7 @@ async function recs(field,daten) {
 
 	for (let i = 0; i < daten.length;i++){
 		await adapter.sendToAsync(db,"storeState", daten[i]);
-		await sleep(50);
+		await sleep(20);
 	}
 
 }
