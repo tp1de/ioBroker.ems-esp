@@ -525,6 +525,7 @@ async function init_states_emsesp(version) {
 	adapter.log.info("start initializing ems states");
 	let url = emsesp +  "/api?device=system&cmd=info";
 	if (ems_version == "V3") url = emsesp +  "/api/system";
+	write_state("esp.api",ems_version,"");
 
 	adapter.log.info(version+"  url:" +url);
 	let data ="";
@@ -877,6 +878,8 @@ async function write_state(statename,value,def) {
 		}
 	}
 
+
+
 	command = array[1];
 	if (array[1] == "hc1" || array[1] == "hc2" || array[1] == "hc3" ) {
 		device_id = array[1];
@@ -889,6 +892,8 @@ async function write_state(statename,value,def) {
 	} else {
 		statename1 = device+"."+device_id+"."+command;
 	}
+
+	statename1 = statename1.replace("#","");
 
 	const obj={_id:statename1,type:"state",common:{},native:{}};
 	obj.common.id = statename;
@@ -940,7 +945,9 @@ async function write_state(statename,value,def) {
 		if (value === false || value === "off" || value === "OFF") value = 0;
 	}
 
-	if (device_ems == "ems") obj.common.write = false;
+	if (device_ems == "ems") {
+		obj.common.write = false;
+	}
 
 	if (ems_version == "V2") {
 		if (device_ems == "mixer") obj.common.write = false;
