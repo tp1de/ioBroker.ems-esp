@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.4",
+    "version": "0.9.5",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.5": {
+        "en": "Adjustments for different Enum formats in API V3",
+        "de": "Anpassungen fpür unterschiedliche Enum Formate in API V3"
+      },
        "0.9.4": {
         "en": "Support now for old ESP8266 EMS-ESP gateways (API V2) and new ESP32 with API V3",
         "de": "Unterstützung für alte ESP8266 EMS-ESP gateways (API V2) und neue ESP32 mit API V3"

@@ -916,16 +916,18 @@ async function write_state(statename,value,def) {
 
 		if(defj.type == "text") defj.type = "string";
 		obj.common.type = defj.type;
+		
 		if(defj.type == "enum") {
-			obj.common.type = "number";
+			obj.common.type = "mixed";
 			obj.common.states = "";
 			obj.native.ems_enum = defj.enum;
 			for (let ii = 0; ii< defj.enum.length;ii++) {
 				if (defj.min == 1) {obj.common.states += (ii+1)+":"+defj.enum[ii];}
 				else {obj.common.states += ii+":"+defj.enum[ii];}
-				//obj.common.states += ii+":"+defj.enum[ii];
 				if (ii< defj.enum.length-1) obj.common.states += ";";
 			}
+
+	
 		}
 
 		if(defj.type == "boolean") {
@@ -967,6 +969,25 @@ async function write_state(statename,value,def) {
 
 	// @ts-ignore
 	await adapter.setObjectNotExistsAsync(statename1, obj);
+
+	if (def != "" && def != "Invalid" && ems_version == "V3") {
+		const defj = JSON.parse(def); 
+		if (defj.type == "enum") await adapter.setObjectAsync(statename1, obj); // always rewrite enum attributes on init
+		if (obj.native.ems_command == "seltemp") {
+			obj.common.min = -1;
+			await adapter.setObjectAsync(statename1, obj); // reset min value for seltemp
+		}
+	}
+	
+	if (ems_version == "V3") {
+		let obj = await adapter.getObjectAsync(statename1); 
+		if (obj.native.ems_type == "enum") {
+			for (let iii = 0; iii < obj.native.ems_enum.length;iii++) {
+				if (obj.native.ems_enum[iii] == value) value = iii;	// When field value is returned as text --> transform into number	
+			}
+		}
+	}
+
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename1, {ack: true, val: value});} });
