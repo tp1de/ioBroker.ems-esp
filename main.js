@@ -979,14 +979,18 @@ async function write_state(statename,value,def) {
 		}
 	}
 	
+	/*
 	if (ems_version == "V3") {
-		let obj = await adapter.getObjectAsync(statename1); 
-		if (obj.native.ems_type == "enum") {
-			for (let iii = 0; iii < obj.native.ems_enum.length;iii++) {
-				if (obj.native.ems_enum[iii] == value) value = iii;	// When field value is returned as text --> transform into number	
+		let obj = await adapter.getObjectAsync(statename1);
+		if (obj != undefined) {
+			if (obj.native.ems_type == "enum") {
+				for (let iii = 0; iii < obj.native.ems_enum.length;iii++) {
+					if (obj.native.ems_enum[iii] == value) value = iii;	// When field value is returned as text --> transform into number	
+				}
 			}
 		}
 	}
+	*/
 
 	await adapter.getStateAsync(statename1, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename1, {ack: true, val: value});}
