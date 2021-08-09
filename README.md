@@ -13,8 +13,7 @@
 
 ## ems-esp adapter for ioBroker
 
-The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
-The old ESP8266 gateways are now suppored as well.
+The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. The old ESP8266 gateways are now suppored as well.
 
 The ems-esp adapter can read and write data from the km200 gateway and/or the ems-esp hardware. 
 It can be used for the original Bosch-group gateways or the ems-esp or both in parallel when an IP-gateway like km200 / ip inside is available.
@@ -26,6 +25,7 @@ The adapter is tested with latest versions of ESP32 >= v3.2.x and with ESP8266  
 IMPORTANT SETTINGS in EMS-ESP:
 
 API V2: MQTT Settings have to be boolean format 1/0 ! 
+
 API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number
 
 
