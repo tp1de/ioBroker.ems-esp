@@ -14,20 +14,19 @@
 ## ems-esp adapter for ioBroker
 
 The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
-The old ESP8266 gateways are now support as well starting with version 0.9.4 !
+The old ESP8266 gateways are now suppored as well.
 
 The ems-esp adapter can read and write data from the km200 gateway and/or the ems-esp hardware. 
 It can be used for the original Bosch-group gateways or the ems-esp or both in parallel when an IP-gateway like km200 / ip inside is available.
 
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-The adapter is tested with latest development versions of ESP32  https://github.com/emsesp/EMS-ESP32/releases/tag/latest
-and with ESP8266  v2.2.3b0.
+The adapter is tested with latest versions of ESP32 >= v3.2.x and with ESP8266  v2.2.3b0.
 
 IMPORTANT SETTINGS in EMS-ESP:
 
-V2: MQTT Settings have to be boolean format 1/0 ! 
-V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number
+API V2: MQTT Settings have to be boolean format 1/0 ! 
+API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number
 
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original EMS-ESP device view is kept: boiler, thermostat, mixer etc. When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields (states) are within same location within ioBroker's object structure.
