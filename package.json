@@ -30,6 +30,7 @@
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
     "rijndael-js": "^2.0.0",
+    "simple-syslog-server": "^1.0.0",
     "user": "0.0.0"
   },
   "deprecated": false,

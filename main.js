@@ -13,6 +13,7 @@ const utils = require("@iobroker/adapter-core");
 const adapter = utils.adapter("ems-esp");
 const fs = require("fs");
 const request = require("request");
+const Syslog = require("simple-syslog-server") ;
 let datafields = [];
 
 
@@ -123,7 +124,7 @@ class EmsEsp extends utils.Adapter {
 				ems_version = "V3";
 			}
 			catch(error) {ems_version = "V2"}
-			this.log.info("EMS-ESP: API Version identified " + ems_version);	
+			this.log.info("EMS-ESP: API Version identified " + ems_version);
 		}
 
 		const version = ems_version;
@@ -135,7 +136,7 @@ class EmsEsp extends utils.Adapter {
 		if (version == "V2") v2_readwrite();
 
 		await init_statistics();
-		//await init_controls();	
+		//await init_controls();
 
 		// Recording states
 
@@ -161,8 +162,6 @@ class EmsEsp extends utils.Adapter {
 					adapter.setState(root+"created", {ack: true, val: true});
 				}
 			});
-
-
 		}
 
 		this.subscribeStates("*");
@@ -184,7 +183,6 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 60000); // 60 sec
 		if (this.config.eff_active) interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-		
 	}
 
 	/**
@@ -322,10 +320,10 @@ async function state_change(id,state) {
 				if(obj.native.km200.allowedValues != undefined) {
 					value= obj.native.km200.allowedValues[value];
 				}
-				adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": "+value);
+				adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": " + value);
 
-				const resp = await km200_put(obj.native.ems_km200 , value);
-				if (resp.statusCode == 403) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
+				const resp = await km200_put(obj.native.ems_km200 , value, obj.native.km200.type);
+				if (resp.statusCode != 200 && resp.statusCode != 204) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
 			}
 			catch(error) {adapter.log.warn("km200 http write error "+ error + ":" + obj.native.ems_km200);}
 		}
@@ -896,6 +894,7 @@ async function write_state(statename,value,def) {
 	statename1 = statename1.replace("#","");
 
 	const obj={_id:statename1,type:"state",common:{},native:{}};
+	const obj1={_id:statename1,type:"state",common:{},native:{}};
 	obj.common.id = statename;
 	obj.common.name= "ems:"+statename;
 	obj.common.type = "mixed";
@@ -916,7 +915,7 @@ async function write_state(statename,value,def) {
 
 		if(defj.type == "text") defj.type = "string";
 		obj.common.type = defj.type;
-		
+
 		if(defj.type == "enum") {
 			obj.common.type = "mixed";
 			obj.common.states = "";
@@ -926,8 +925,6 @@ async function write_state(statename,value,def) {
 				else {obj.common.states += ii+":"+defj.enum[ii];}
 				if (ii< defj.enum.length-1) obj.common.states += ";";
 			}
-
-	
 		}
 
 		if(defj.type == "boolean") {
@@ -971,14 +968,14 @@ async function write_state(statename,value,def) {
 	await adapter.setObjectNotExistsAsync(statename1, obj);
 
 	if (def != "" && def != "Invalid" && ems_version == "V3") {
-		const defj = JSON.parse(def); 
-		if (defj.type == "enum") await adapter.setObjectAsync(statename1, obj); // always rewrite enum attributes on init
+		const defj = JSON.parse(def);
+		await adapter.setObjectAsync(statename1, obj);
 		if (obj.native.ems_command == "seltemp") {
 			obj.common.min = -1;
 			await adapter.setObjectAsync(statename1, obj); // reset min value for seltemp
 		}
 	}
-	
+
 	/*
 	if (ems_version == "V3") {
 		let obj = await adapter.getObjectAsync(statename1);
@@ -1027,8 +1024,15 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
 });
 }
 
-async function km200_put(url,value) {return new Promise(function(resolve,reject) {
-	const data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
+async function km200_put(url,value,type) {return new Promise(function(resolve,reject) {
+	let data;
+	if (type == "switchProgram") {
+		data= km200_encrypt( Buffer.from(value));
+	}
+	else {
+		data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
+	}
+
 	const urls = km200_server +"/" + url.split(".").join("/");
 	request.put({headers: {"Accept": '"application/json',"User-Agent": "TeleHeater/2.2.3"},url: urls, body: data},
 		function(error, response){
