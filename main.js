@@ -1563,7 +1563,7 @@ function km200_obj(n,o) {
 		case "arrayData":
 			v = o.values; //*****
 			o.valIs = "values";
-			t = "object";
+			t = "string";
 			//w = false;
 			break;
 		case "switchProgram":
