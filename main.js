@@ -468,7 +468,7 @@ async function syslog_server() {
 					hexValue = hexValue + 0x0100;
 					type = hexValue.toString(16).toUpperCase();
 					tdata = "";
-					for (let i = 6; i < tg.length-1; i++) {tdata += tg[i]+"";}
+					for (let i = 6; i < tg.length-1; i++) {tdata += tg[i]+" ";}
 				}
 				if (ftype == type || ftype == "") p4 =true;
 
