@@ -24,15 +24,14 @@ The adapter is tested with latest versions of ESP32 >= v3.2.x and with ESP8266  
 
 IMPORTANT SETTINGS in EMS-ESP:
 
-API V2: MQTT Settings have to be boolean format 1/0 ! 
-
-API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number
-
+*** API V2: MQTT Settings have to be boolean format 1/0 ! ***
+*** API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number ***
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original EMS-ESP device view is kept: boiler, thermostat, mixer etc. When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields (states) are within same location within ioBroker's object structure.
 
 Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. For 1st adapter start it is recommended to use a "*" so select all km200 data-fields.
-The adapter then creates a km200.csv file within ../iobroker-data/ems-esp directory. This file can be used for next start of adapter-instance. Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read.  
+The adapter then creates a km200.csv file within ../iobroker-data/ems-esp directory. This file can be used for next start of adapter-instance.
+Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy)  
 
 
 This adapter reads after start values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send the respective http (post) commands back to either ems-esp hardware or the km200 gateway. 
@@ -40,70 +39,73 @@ This adapter reads after start values from ems-esp and km200 by http get request
 EMS-ESP read polling is now a parameter (standard 60 secs) and can not be set below 15 seconds.
 KM200 polling is a parameter (standard 300 secs) too and minimum value which can be set is 90 seconds.
  
-
 Most modern heating systems have an ip-inside gateway and support energy statistics (recording for total power consumption and warm water (dhw)).
-For these systems and where this data is available the powerconsumption statistics for total power consumtion and warm water power consumption can be read (hourly / dayly / monthly).
+For these systems and where this data is available the powerconsumption statistics for total and warm water power consumption can be read (hourly / dayly / monthly).
 
-The checkbox recordings has to be enabled and the database instance (mySQL or influxdb) has to be defined. 
-SQL or InfluxDB History adapter need to be installed to use this option.
+The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. 
+SQL or InfluxDB History adapter need to be installed and active to use this option.
 
-*** This is only tested yet for mySQL and influxdb v1.8 databases ***
+*** This is only tested yet for mySQL and InfluxDB v1.8 databases ***
+*** For InfluxDB the Retention Policy has to be set to a minimum of 170 weeks ***
+    (alter retention policy global on iobroker duration 170w;)
 
-This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter.
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
+Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter or Grafana.
 
 Since v0.9.0 there are statistics states within the objects. The polling cycle processing time for ems-esp and/or km200 gateway reads and state processing are shown. Additionally the number of boiler starts per hour / 24 hours and the boiler utilization per hour (0-100%) are available.
 
-If values are filled the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
+If values are filled, the boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
 Since return temp is not available anymore in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
 A database instance (see above) is needed to calculate the statistics.
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run.
-Nevertheless obsolete datafields are not deleted by the adapter. This has to be done manually !!!
-
+Nevertheless obsolete datafields are not deleted automatically by the adapter. This has to be done manually !!!
 
 
 ## Changelog
 
+### 0.9.6
+* Corrections for writing switchpoints and array-data back to km200
+
 ### 0.9.5
-* (Thomas Petrick) Adjustments for different enum-formats in API V3 (text and numbers)
+* Corrections for different enum-formats in API V3 (text and numbers)
 
 ### 0.9.4
-* (Thomas Petrick) Support for old ESP8266 EMS-ESP gateways and API V2
-                   and new ESP32 with API V3
+* Support for old ESP8266 EMS-ESP gateways and API V2 and new ESP32 with API V3
 
 ### 0.9.3
-* (Thomas Petrick) Polling time for EMS-ESP and KM200 is now a parameter
+* Polling time for EMS-ESP and KM200 is now a parameter
 
 ### 0.9.2
-* (Thomas Petrick) Adjust for enum formats
+* Adjust for enum formats
 
 ### 0.9.1
-* (Thomas Petrick) Adjust for different boolean formats
+* Adjust for different boolean formats
 
 ### 0.9.0
-* (Thomas Petrick) Rework Adapter for some statistics and prepare for heating control (under development)
+* Rework Adapter for some statistics and prepare for heating control (under development)
 
 ### 0.8.0
-* (Thomas Petrick) REST API V3 and js-controller v3.3.x and support of influxdb for recordings
+* REST API V3 and js-controller v3.3.x and support of influxdb for recordings
 
 ### 0.7.5
-* (Thomas Petrick) REST API V3 and js-controller v3.3.x
+* REST API V3 and js-controller v3.3.x
 
 ### 0.7.0
-* (Thomas Petrick) REST API V3
+* REST API V3
 
 ### 0.6.3
-* (Thomas Petrick) Encrypted password
+* Encrypted password
 
 ### 0.6.2
-* (Thomas Petrick) Select all km200 datapoints without csv file (*)
+* Select all km200 datapoints without csv file (*)
 
 ### 0.6.1
-* (Thomas Petrick) New parameters & selection to use km200 or ems-esp device tree structure
+* New parameters & selection to use km200 or ems-esp device tree structure
 
 ### 0.6.0
-* (Thomas Petrick) 1st working adapter with rest api
+* 1st working adapter with rest api
 
 ## License
 MIT License
@@ -126,4 +128,5 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE."# iobroker.ems-esp" 
+SOFTWARE."
+# iobroker.ems-esp" 

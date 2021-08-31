@@ -1,12 +1,16 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.5",
+    "version": "0.9.6",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.6": {
+        "en": "Fixes for switchpoint writes ",
+        "de": "Korrekturen für das Schreiben der Zeitprogramme"
+      },
       "0.9.5": {
         "en": "Adjustments for different Enum formats in API V3",
-        "de": "Anpassungen fpür unterschiedliche Enum Formate in API V3"
+        "de": "Anpassungen für unterschiedliche Enum Formate in API V3"
       },
        "0.9.4": {
         "en": "Support now for old ESP8266 EMS-ESP gateways (API V2) and new ESP32 with API V3",
@@ -127,7 +131,8 @@
     "eff50": 103,
     "eff55": 100,
     "eff60": 98,
-    "eff70": 97
+    "eff70": 97,
+    "syslog":false
   },
   "objects": [],
   "instanceObjects": []

@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.0 Test
+ * ems-esp adapter version v0.9.6
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -28,7 +28,7 @@ const km200_crypt_md5_salt = new Uint8Array([
 ]);
 let km200_server,km200_gatewaypassword,km200_privatepassword,km200_key,km200_aeskey,cipher, km200_polling = 300;
 let emsesp,recordings=false, ems_token ="",ems_http_wait = 100, ems_polling = 60;
-let ems_version = "V2";
+let ems_version = "V2",enable_syslog = false;
 
 // -------- energy recordings parameters ------------------------------------
 const root = "recordings.";
@@ -74,6 +74,7 @@ class EmsEsp extends utils.Adapter {
 		recordings = this.config.recordings;
 		db = this.config.database_instance;
 		km200_structure= this.config.km200_structure;
+		enable_syslog = this.config.syslog;
 
 		emsesp = this.config.emsesp_ip ;
 		ems_token = this.config.ems_token.trim();
@@ -95,6 +96,9 @@ class EmsEsp extends utils.Adapter {
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
 		cipher = new Rijndael(km200_aeskey, "ecb");
+		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		// Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
@@ -102,6 +106,12 @@ class EmsEsp extends utils.Adapter {
 
 		const fn = dataDir+"/ems-esp/"+this.config.control_file;
 		let data = "";
+
+		if (enable_syslog == true) {
+			await init_syslog();
+			try {await syslog_server();}
+			catch (err) {this.log.info(err);}
+		}
 
 		if (this.config.control_file !== "" &&  this.config.control_file !== "*") {
 			try {data = fs.readFileSync(fn, "utf8");}
@@ -118,13 +128,13 @@ class EmsEsp extends utils.Adapter {
 
 		// Testing API Version
 		if (this.config.emsesp_active) {
-			let url = emsesp +  "/api/system";
+			const url = emsesp +  "/api/system";
 			try {
-				let data = await ems_get(url);
+				const data = await ems_get(url);
 				ems_version = "V3";
 			}
-			catch(error) {ems_version = "V2"}
-			this.log.info("EMS-ESP: API Version identified " + ems_version);
+			catch(error) {ems_version = "V2";}
+			this.log.info("API version identified " + ems_version);
 		}
 
 		const version = ems_version;
@@ -137,6 +147,8 @@ class EmsEsp extends utils.Adapter {
 
 		await init_statistics();
 		//await init_controls();
+
+
 
 		// Recording states
 
@@ -213,6 +225,7 @@ class EmsEsp extends utils.Adapter {
 				state_change(id,state);
 			}
 		} else adapter.log.info("state "+id+" deleted");
+
 	}
 
 
@@ -280,8 +293,8 @@ async function state_change(id,state) {
 	// Testing API Version
 
 	ems_version = "V2";
-	let url1 = emsesp +  "/api/system";
-	try {let data = await ems_get(url1);ems_version = "V3";} catch(error) {}
+	const url1 = emsesp +  "/api/system";
+	try {const data = await ems_get(url1);ems_version = "V3";} catch(error) {}
 
 
 	if (obj.native.ems_device != null){
@@ -290,7 +303,7 @@ async function state_change(id,state) {
 			if (obj.native.ems_id =="") {url+= "/"+ obj.native.ems_command;}
 			else {url+= "/"+ obj.native.ems_id + "/" +obj.native.ems_command;}
 
-			adapter.log.info("ems-esp write V3: "+ id + ": "+value);
+			adapter.log.info("write change to ems-esp V3: "+ id + ": "+value);
 
 			const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
 			const body =JSON.stringify({"value": value});
@@ -303,25 +316,21 @@ async function state_change(id,state) {
 		}
 		if (ems_version == "V2") {
 			let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + value;
-			if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}			
-			adapter.log.info("ems-esp write V2: "+ id + ": "+value);
+			if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}
+			adapter.log.info("write change to ems-esp V2: "+ id + ": "+value);
 			request(url , function(error,response) {
 				const status = response.statusCode;
 				const resp= response.body;
 				if (resp != "OK") adapter.log.error("ems-esp http write error: " + status + " " + resp + "  " + url);
 			});
 		}
-		
+
 
 	} else {
 		if (obj.native.ems_km200 != null) {
+			adapter.log.info("write change to km200: "+ id + ": "+value);
 			try {
-				//adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": "+value);
-				if(obj.native.km200.allowedValues != undefined) {
-					value= obj.native.km200.allowedValues[value];
-				}
-				adapter.log.debug("km200 write: "+ obj.native.ems_km200 + ": " + value);
-
+				if(typeof obj.native.km200.allowedValues != "undefined" && obj.native.km200.type == "stringValue" ) value= obj.native.km200.allowedValues[value];				
 				const resp = await km200_put(obj.native.ems_km200 , value, obj.native.km200.type);
 				if (resp.statusCode != 200 && resp.statusCode != 204) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
 			}
@@ -379,8 +388,222 @@ async function init_statistics() {
 			adapter.setState("statistics.created", {ack: true, val: true});
 		}
 	});
+}
+
+async function syslog_server() {
+
+	const separator = " ";
+	const output = true;
+	let active = false;
+	let active_old = false;
+
+	const options = {type: "udp4"} ;
+	const address = "" ; // Any
+	let port = 0;
+	let state = await adapter.getStateAsync("syslog.server.port");
+	if (state != null) port = state.val;
+	if (port == 0) return;
+
+	const listen = {host: address, port: port} ;
+	const server = Syslog.UDP(options);
+
+	state = await adapter.getStateAsync("syslog.activated");
+	if (state != null) active = state.val;
+
+	let telegrams = [], syslog = [];
+	adapter.setStateAsync("syslog.server.active",false);
+	let fsrc ="",fdest="",ftype="",fpolling=false;
+
+
+	server.on("msg", data => {
+		//let fsrc ="",fdest="",ftype="",fpolling=false;
+		adapter.getState("syslog.activated", function (err, state) { if (state != null) active = state.val;} );
+		if (active_old == false && active == true) {
+			telegrams = [];syslog = [];
+			const time = new Date();
+			const d = {"time" : time.toLocaleString(),"telegram": "Start"};
+			telegrams.unshift(d);
+			adapter.setStateAsync("syslog.telegrams",JSON.stringify(telegrams));
+			adapter.setStateAsync("syslog.telegram.dest","");
+			adapter.setStateAsync("syslog.telegram.type","");
+			adapter.setStateAsync("syslog.telegram.type_text","");
+			adapter.setStateAsync("syslog.telegram.type_raw","");
+			adapter.setStateAsync("syslog.telegram.data","");
+			adapter.setStateAsync("syslog.telegram.offset","");
+			adapter.setStateAsync("syslog.telegram.telegram_raw","");
+		}
+		active_old = active;
+		adapter.setStateAsync("syslog.server.active",true);
+		if (active) {
+			adapter.setStateAsync("syslog.server.data",JSON.stringify(data));
+			s_list(syslog,data);
+			adapter.getState("syslog.filter.src", function (err, state) { if (state != null) fsrc = state.val;} );
+			adapter.getState("syslog.filter.dest", function (err, state) { if (state != null) fdest = state.val;} );
+			adapter.getState("syslog.filter.type", function (err, state) { if (state != null) ftype = state.val;} );
+			adapter.getState("syslog.filter.polling", function (err, state) { if (state != null) fpolling = state.val;} );
+			let p1= false,p2=false,p3=false,p4=false,src="",dest="",type="",typet="",typer="",offset="",tdata="",tg=[];
+
+			if (data.msg.substr(0,3) == "Rx:") {
+				const pos1 = data.msg.indexOf(":");
+				if (pos1 > -1) data.msg = data.msg.substring(pos1+2);
+				tg = data.msg.split(" ");
+				src = tg[0];
+				dest = tg[1];
+				type = tg[2];
+				typer = type;
+				offset = tg[3];
+				tdata = "";
+				for (let i = 4; i < tg.length-1; i++) {tdata += tg[i]+" ";}
+
+				if (fsrc == src || fsrc == "") p1 =true;
+				if (fdest == dest || fdest == "") p2 =true;
+				const bits = ("00000000" + (parseInt(dest, 16)).toString(2)).substr(-8);
+				const bit8 = bits.substring(0,1);
+				p3 = true;
+				if ( bit8 == "1" && fpolling == false) p3 = false;
+				if (type == "FF") {
+					typer = tg[4]+tg[5];
+					if (typer.substr(0,1) == "0") typer = typer.substr(1,3);
+					let hexValue = parseInt(typer , 16);
+					hexValue = hexValue + 0x0100;
+					type = hexValue.toString(16).toUpperCase();
+					tdata = "";
+					for (let i = 6; i < tg.length-1; i++) {tdata += tg[i]+"";}
+				}
+				if (ftype == type || ftype == "") p4 =true;
+
+			}
+			const m1 = data.msg.search("->");
+			const m2 = data.msg.search("<-");
+			if (m1>  -1 || m2 > -1) {
+				p3 = true;
+				if (m2 > -1 && fpolling == false) p3 = false;
+				let d = data.msg;
+				let p11 = d.search(/\(/);
+				let p12 = d.search(/\)/);
+				src = d.substring(p11+3,p12);
+				if (fsrc == src || fsrc == "") p1 =true;
+				d = d.substring(p12 + 1);
+
+				p11 = d.search(/\(/);
+				p12 = d.search(/\)/);
+				dest = d.substring(p11+3,p12);
+				if (m2 > -1) {
+					if (dest == "08") dest = "88";
+					if (dest == "10") dest = "90";
+				}
+				if (fdest == dest || fdest == "") p2 =true;
+				d = d.substring(p12 + 1);
+
+				p11 = d.search(/\(/);
+				typet = d.substring(1,p11);
+				p12 = d.search(/\)/);
+				type = d.substring(p11+3,p12);
+				typer="";
+				if (ftype == type || ftype == "") p4 =true;
+				d = d.substring(p12 + 1);
+
+				p11 = d.search(/\(/);
+				p12 = d.search(/\)/);
+				offset = 0;
+				if (p11> -1 && p12 > -1) offset = d.substring(p11+8,p12);
+
+				if (p11 == -1) tdata = d.substring(8);
+				if (p11 > -1)  tdata = d.substring(8,p11);
+			}
+			if(p1 && p2 && p3 && p4) {
+				//console.log(data.msg);
+				adapter.setStateAsync("syslog.telegram.telegram_raw",data.msg);
+				adapter.setStateAsync("syslog.telegram.src",src);
+				adapter.setStateAsync("syslog.telegram.dest",dest);
+				adapter.setStateAsync("syslog.telegram.type",type);
+				adapter.setStateAsync("syslog.telegram.type_text",typet);
+				adapter.setStateAsync("syslog.telegram.type_raw",typer);
+				adapter.setStateAsync("syslog.telegram.offset",offset);
+				adapter.setStateAsync("syslog.telegram.data",tdata);
+				t_list(telegrams,data.msg);
+			}
+
+		}
+	})
+		.on("error", err => {adapter.log.error("Syslog error :" + err);server.close();return;})
+		.listen(listen)
+		.then(() => {adapter.log.info("syslog server now listening on port:" + port);})
+		.catch(err => {})
+}
+
+
+function t_list(telegrams,t) {
+	const max = 250;
+	const time = new Date();
+	const d = {"time" : time.toLocaleString(),"telegram": t};
+	telegrams.unshift(d);
+	if (telegrams.length > max) telegrams.pop();
+	adapter.setStateAsync("syslog.telegrams",JSON.stringify(telegrams));
+}
+
+function s_list(syslog,s) {
+	const max = 250;
+	syslog.unshift(s);
+	if (syslog.length > max) syslog.pop();
+	adapter.setStateAsync("syslog.server.syslog",JSON.stringify(syslog));
+}
+
+
+async function init_syslog() {
+	await adapter.setObjectNotExistsAsync("syslog.filter.src",{type: "state",
+		common: {type: "string", name: "syslog source filter", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.filter.src", function(err,state){if (state == null) adapter.setState("syslog.filter.src", {ack: true, val: ""});});
+
+	await adapter.setObjectNotExistsAsync("syslog.filter.dest",{type: "state",
+		common: {type: "string", name: "syslog destination filter", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.filter.dest", function(err,state){if (state == null) adapter.setState("syslog.filter.dest", {ack: true, val: ""});});
+
+	await adapter.setObjectNotExistsAsync("syslog.filter.type",{type: "state",
+		common: {type: "string", name: "syslog type filter", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.filter.type", function(err,state){if (state == null) adapter.setState("syslog.filter.type", {ack: true, val: ""});});
+
+	await adapter.setObjectNotExistsAsync("syslog.filter.polling",{type: "state",
+		common: {type: "boolean", name: "syslog polling filter", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.filter.polling", function(err,state){if (state == null) adapter.setState("syslog.filter.polling", {ack: true, val: false});});
+
+	await adapter.setObjectNotExistsAsync("syslog.server.active",{type: "state",
+		common: {type: "boolean", name: "syslog server active?", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.server.data",{type: "state",
+		common: {type: "object", name: "syslog data", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.server.port",{type: "state",
+		common: {type: "number", name: "syslog port number", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.server.port", function(err,state){
+		if (state == null) adapter.setState("syslog.server.port", {ack: true, val: 20516});	});
+	await adapter.setObjectNotExistsAsync("syslog.server.syslog",{type: "state",
+		common: {type: "json", name: "syslog json-list", role: "value", read: true, write: true}, native: {}});
+
+	await adapter.setObjectNotExistsAsync("syslog.telegram.src",{type: "state",
+		common: {type: "string", name: "telegram source", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.dest",{type: "state",
+		common: {type: "string", name: "telegram destination", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.type",{type: "state",
+		common: {type: "string", name: "telegram type-id", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.type_text",{type: "state",
+		common: {type: "string", name: "telegram type-id text", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.offset",{type: "state",
+		common: {type: "mixed", name: "telegram offset", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.data",{type: "state",
+		common: {type: "string", name: "telegram data", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.type_raw",{type: "state",
+		common: {type: "string", name: "telegram type raw (as in telegram)", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.telegram.telegram_raw",{type: "state",
+		common: {type: "string", name: "telegram", role: "value", read: true, write: true}, native: {}});
+	await adapter.setObjectNotExistsAsync("syslog.activated",{type: "state",
+		common: {type: "boolean", name: "syslog telegram analysis active?", role: "value", read: true, write: true}, native: {}});
+	adapter.getState("syslog.activated", function(err,state){if (state == null) adapter.setState("syslog.activated", {ack: true, val: false});});
+
+	await adapter.setObjectNotExistsAsync("syslog.telegrams",{type: "state",
+		common: {type: "json", name: "telegrams json-list", role: "value", read: true, write: true}, native: {}});
 
 }
+
+
 
 async function read_efficiency() {
 	let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0;
@@ -508,6 +731,7 @@ async function init_states_km200() {
 					let val = o.value;
 					if (o.type == "stringValue" && o.allowedValues != undefined){val = o.allowedValues.indexOf(o.value);}
 					if (o.type == "switchProgram" && o.switchPoints != undefined){val = JSON.stringify(o.switchPoints);}
+					if (o.type == "arrayData" && o.values != undefined){val = JSON.stringify(o.values);}
 					try {adapter.setStateChangedAsync(r.km200, {ack: true, val: val});}
 					catch (error) {adapter.log.error(r.km200+":"+error);}
 				}
@@ -569,7 +793,7 @@ async function init_states_emsesp(version) {
 							write_state(device+"."+key,value,def);
 						}
 						catch(error) {write_state(device+"."+key,value,"");} // V2
-						
+
 					}
 					else {
 						const key1 = key;
@@ -594,44 +818,44 @@ async function init_states_emsesp(version) {
 }
 
 async function v2_readwrite() {
-    let fields = [];
-	let select = adapter.namespace+".*";
-	
-	let states = await adapter.getStatesAsync(select);
-	for (var id in states) {fields.push(id);}
-	
+	const fields = [];
+	const select = adapter.namespace+".*";
 
-    for (let i = 0; i < fields.length; i++) {
-        await test_v2(fields[i]);
-        await sleep(ems_http_wait);
-    }
+	const states = await adapter.getStatesAsync(select);
+	for (const id in states) {fields.push(id);}
+
+
+	for (let i = 0; i < fields.length; i++) {
+		await test_v2(fields[i]);
+		await sleep(ems_http_wait);
+	}
 }
 
 
 async function test_v2(id) {
-    let obj = await adapter.getObjectAsync(id); 
-    if (obj.native.write == null  && obj.native.ems_device != null) {
-        let state = await adapter.getStateAsync(id);
-        if (state != null) {
-            let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + state.val;
-		    if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}	
-            
-            request(url , function(error,response) {
+	const obj = await adapter.getObjectAsync(id);
+	if (obj.native.write == null  && obj.native.ems_device != null) {
+		const state = await adapter.getStateAsync(id);
+		if (state != null) {
+			let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + state.val;
+		    if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}
+
+			request(url , function(error,response) {
 				const status = response.statusCode;
 				const resp= response.body;
 				if (resp != "OK") {
-                    obj.common.write = false;
-                    obj.native.write = false;
-                    adapter.setObjectAsync(id,obj);
-                }
-                if (resp == "OK") {
-                    obj.common.write = true;
-                    obj.native.write = true;
-                    adapter.setObjectAsync(id,obj);
-                }
-            });
-        }
-    }
+					obj.common.write = false;
+					obj.native.write = false;
+					adapter.setObjectAsync(id,obj);
+				}
+				if (resp == "OK") {
+					obj.common.write = true;
+					obj.native.write = true;
+					adapter.setObjectAsync(id,obj);
+				}
+			});
+		}
+	}
 }
 
 
@@ -715,6 +939,10 @@ async function km200_read(result){
 					if (body.type == "switchProgram" && body.switchPoints != undefined){
 						val = JSON.stringify(body.switchPoints);
 					}
+					if (body.type == "arrayData" && body.values != undefined){
+						val = JSON.stringify(body.values);
+					}
+
 					adapter.setStateChangedAsync(result[i].km200, {ack: true, val: val});
 				}
 				catch(error) {
@@ -739,9 +967,9 @@ async function ems_get(url) {return new Promise(function(resolve,reject) {
 });}
 
 async function ems_apiversion(emsesp) {
-    let ems_version;
-	try {let data = await ems_get(emsesp+"/api/system");ems_version = "V3";}catch(error) {ems_version = "V2";}
-    return(ems_version);
+	let ems_version;
+	try {const data = await ems_get(emsesp+"/api/system");ems_version = "V3";}catch(error) {ems_version = "V2";}
+	return(ems_version);
 }
 
 async function ems_put(url,value)  {
@@ -905,7 +1133,7 @@ async function write_state(statename,value,def) {
 	obj.common.role = "value";
 
 	if (def != "" && def != "Invalid") {
-		const defj = JSON.parse(def); 
+		const defj = JSON.parse(def);
 
 		if (defj.writeable == true) {obj.common.write = true;}
 		obj.common.unit = defj.unit;
@@ -982,7 +1210,7 @@ async function write_state(statename,value,def) {
 		if (obj != undefined) {
 			if (obj.native.ems_type == "enum") {
 				for (let iii = 0; iii < obj.native.ems_enum.length;iii++) {
-					if (obj.native.ems_enum[iii] == value) value = iii;	// When field value is returned as text --> transform into number	
+					if (obj.native.ems_enum[iii] == value) value = iii;	// When field value is returned as text --> transform into number
 				}
 			}
 		}
@@ -1026,11 +1254,16 @@ async function km200_get(url) {return new Promise(function(resolve,reject) {
 
 async function km200_put(url,value,type) {return new Promise(function(resolve,reject) {
 	let data;
-	if (type == "switchProgram") {
-		data= km200_encrypt( Buffer.from(value));
-	}
-	else {
-		data= km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
+	switch (type) {
+		case "switchProgram":
+			data = km200_encrypt( Buffer.from(value));
+			break;
+		case "arrayData":
+			data = '{"values":' + value +'}';
+			data = km200_encrypt( Buffer.from(data) );  
+			break;
+		default:
+			data =km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
 	}
 
 	const urls = km200_server +"/" + url.split(".").join("/");
@@ -1330,8 +1563,8 @@ function km200_obj(n,o) {
 		case "arrayData":
 			v = o.values; //*****
 			o.valIs = "values";
-			t = "string";
-			w = false;
+			t = "object";
+			//w = false;
 			break;
 		case "switchProgram":
 			v = o.switchPoints; //*****
