@@ -192,6 +192,9 @@ class EmsEsp extends utils.Adapter {
 
 
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
+
+
+
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 60000); // 60 sec
 		if (this.config.eff_active) interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
@@ -1303,7 +1306,7 @@ async function recs(field,daten) {
 
 	if (db.substring(0,3) == "sql" ) {
 		await adapter.sendToAsync(db, "deleteAll", {id: field});
-		await sleep(100);
+		await sleep(2000);
 	}
 	if (db.substring(0,8) == "influxdb" ) {
 		const query = 'drop series from "' +  field + '";';
@@ -1313,7 +1316,7 @@ async function recs(field,daten) {
 
 	for (let i = 0; i < daten.length;i++){
 		await adapter.sendToAsync(db,"storeState", daten[i]);
-		await sleep(20);
+		await sleep(50);
 	}
 
 }
