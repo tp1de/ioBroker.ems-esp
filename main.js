@@ -1139,7 +1139,7 @@ async function write_state(statename,value,def) {
 		const defj = JSON.parse(def);
 
 		if (defj.writeable == true) {obj.common.write = true;}
-		obj.common.unit = defj.unit;
+		obj.common.unit = defj.uom;
 
 		if(defj.writeable == true) obj.common.min = defj.min;
 		if(defj.writeable == true) obj.common.max = defj.max;
