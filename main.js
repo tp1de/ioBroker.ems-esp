@@ -774,7 +774,7 @@ async function init_states_emsesp(version) {
 		}
 
 		for (let i=0; i < devices.length; i++) {
-			if (devices[i].handlers != "") {
+			if (devices[i].handlers != undefined) {
 				const device = devices[i].type.toLowerCase();
 				let url1 = "";
 				url1 = emsesp + "/api?device=" + device + "&cmd=info";
