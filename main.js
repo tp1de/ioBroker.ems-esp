@@ -1073,7 +1073,7 @@ async function read_km200structure() {
 				const element=data.id.substring(1).split("/").join(".");
 				results.push({"km200":element,"ems_device_new":"","ems_device":"","ems_id":"","ems_field":""});
 			} else await refEnum(data);
-		} catch(error) {adapter.log.warn("http error reading km200 tree:"+error);}
+		} catch(error) {adapter.log.warn("http error reading km200 tree entry "+ reference + " : " + error);}
 	}
 
 	async function refEnum(data){
