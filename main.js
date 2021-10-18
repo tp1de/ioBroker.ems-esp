@@ -849,7 +849,7 @@ async function test_v2(id) {
 
 			try {
 				request(url , function(error,response) {
-					const status = response.statusCode;
+					//const status = response.statusCode;
 					const resp= response.body;
 					if (resp != "OK") {
 						obj.common.write = false;
