@@ -1064,7 +1064,7 @@ async function read_km200structure() {
 
 	let c = results.length - 1;
 
-	adapter.log.info("End reading km200 data-structure: " + c + " fields found");
+	adapter.log.info(`End reading km200 data-structure: ${c} fields found`);
 	return results;
 
 
