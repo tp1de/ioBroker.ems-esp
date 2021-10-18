@@ -67,6 +67,8 @@ class EmsEsp extends utils.Adapter {
 	async onReady() {
 
 		km200_server = this.config.km200_ip;
+		if (km200_server.substr(0,7) != "http://") km200_server = "http://" + km200_server;
+
 		km200_polling = this.config.km200_polling;
 		if (km200_polling < 90) km200_polling = 90;
 		km200_gatewaypassword = this.config.gateway_pw;
@@ -77,6 +79,8 @@ class EmsEsp extends utils.Adapter {
 		enable_syslog = this.config.syslog;
 
 		emsesp = this.config.emsesp_ip ;
+		if (emsesp.substr(0,7) != "http://") emsesp = "http://" + emsesp;
+
 		ems_token = this.config.ems_token.trim();
 		ems_http_wait = this.config.ems_http_wait;
 		ems_polling = this.config.ems_polling;
@@ -843,20 +847,23 @@ async function test_v2(id) {
 			let url = emsesp + "/api?device=" + obj.native.ems_device + "&cmd=" + obj.native.ems_command + "&data=" + state.val;
 		    if (obj.native.ems_id != "") {url+= "&id="+ obj.native.ems_id;}
 
-			request(url , function(error,response) {
-				const status = response.statusCode;
-				const resp= response.body;
-				if (resp != "OK") {
-					obj.common.write = false;
-					obj.native.write = false;
-					adapter.setObjectAsync(id,obj);
-				}
-				if (resp == "OK") {
-					obj.common.write = true;
-					obj.native.write = true;
-					adapter.setObjectAsync(id,obj);
-				}
-			});
+			try {
+				request(url , function(error,response) {
+					const status = response.statusCode;
+					const resp= response.body;
+					if (resp != "OK") {
+						obj.common.write = false;
+						obj.native.write = false;
+						adapter.setObjectAsync(id,obj);
+					}
+					if (resp == "OK") {
+						obj.common.write = true;
+						obj.native.write = true;
+						adapter.setObjectAsync(id,obj);
+					}
+				});
+			}
+			catch (error) {}
 		}
 	}
 }

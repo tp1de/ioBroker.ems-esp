@@ -1,9 +1,14 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "news": {
+      "0.9.7": {
+        "en": "Fixes for IP Adresses ",
+        "de": "Korrekturen für falsche IP-Adressen"
+      },
       "0.9.6": {
         "en": "Fixes for switchpoint writes ",
         "de": "Korrekturen für das Schreiben der Zeitprogramme"

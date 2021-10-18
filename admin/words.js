@@ -31,8 +31,8 @@ systemDictionary = {
 		"de": "verwende REST API V3"
 	},
 	"ems_token": {
-		"en": "ems access token",
-		"de": "ems access token"
+		"en": "ems access token (V3 only)",
+		"de": "ems access token (nur V3)"
 	},
 	"km200_active": {
 		"en": "KM200 active",
