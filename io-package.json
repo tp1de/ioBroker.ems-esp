@@ -4,7 +4,6 @@
     "version": "0.9.7",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "news": {
       "0.9.7": {
         "en": "Fixes for IP Adresses ",
         "de": "Korrekturen für falsche IP-Adressen"
