@@ -849,17 +849,19 @@ async function test_v2(id) {
 
 			try {
 				request(url , function(error,response) {
-					//const status = response.statusCode;
-					const resp= response.body;
-					if (resp != "OK") {
-						obj.common.write = false;
-						obj.native.write = false;
-						adapter.setObjectAsync(id,obj);
-					}
-					if (resp == "OK") {
-						obj.common.write = true;
-						obj.native.write = true;
-						adapter.setObjectAsync(id,obj);
+					if (response != undefined) {
+						const status = response.statusCode;
+						const resp= response.body;
+						if (resp != "OK") {
+							obj.common.write = false;
+							obj.native.write = false;
+							adapter.setObjectAsync(id,obj);
+						}
+						if (resp == "OK") {
+							obj.common.write = true;
+							obj.native.write = true;
+							adapter.setObjectAsync(id,obj);
+						}
 					}
 				});
 			}
