@@ -1062,7 +1062,7 @@ async function read_km200structure() {
 	await tree("gateway");
 	await tree("solarCircuits");
 
-	adapter.log.info("End reading km200 data-structure: " + results.length + " fields found");
+	adapter.log.info("End reading km200 data-structure: " + results.length - 1 + " fields found");
 	return results;
 
 
