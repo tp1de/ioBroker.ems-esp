@@ -15,6 +15,7 @@ const fs = require("fs");
 const request = require("request");
 const Syslog = require("simple-syslog-server") ;
 let datafields = [];
+let tt = "aa";
 
 
 // ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
