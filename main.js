@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v0.9.7
+ * ems-esp adapter version v0.9.7a
  *
  * Created with @iobroker/create-adapter v1.33.0
  */
@@ -15,6 +15,7 @@ const fs = require("fs");
 const request = require("request");
 const Syslog = require("simple-syslog-server") ;
 let datafields = [];
+let tt = "aa";
 
 
 // ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
