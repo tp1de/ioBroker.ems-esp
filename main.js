@@ -143,6 +143,8 @@ class EmsEsp extends utils.Adapter {
 
 		const version = ems_version;
 
+
+		//if (this.config.emsesp_active) await delete_states_emsesp();
 		if (this.config.emsesp_active) await init_states_emsesp(version);
 		if (this.config.km200_active) await init_states_km200();
 
@@ -749,6 +751,21 @@ async function init_states_km200() {
 }
 
 
+async function delete_states_emsesp() {
+
+	adapter.delObject("boiler",function (err,objects) {
+		adapter.log.info(objects);
+		/*
+		let d = 0;
+		for(d = 0; d < objects.length; d++) {
+			adapter.log.info("ID to delete: " + objects[d]._id);
+			//adapter.deleteDevice(devices[d]._id);
+		}
+		*/
+	});
+
+
+}
 
 async function init_states_emsesp(version) {
 	adapter.log.info("start initializing ems states");
@@ -900,7 +917,7 @@ async function ems_read(version) {
 		}
 
 		for (let i=0; i < devices.length; i++) {
-			if (devices[i].handlers != "") {
+			if (devices[i].handlers != undefined) {
 				const device = devices[i].type.toLowerCase();
 				let url1 = emsesp + "/api?device=" + device +"&cmd=info";
 				if (version == "V3") url1 = emsesp +  "/api/"+device;
