@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.7",
+    "version": "0.9.8",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.8": {
+        "en": "Dallas Sensors supported",
+        "de": "Dallas Sensoren werden unterstützt"
+      },
       "0.9.7": {
         "en": "Fixes for IP Adresses ",
         "de": "Korrekturen für falsche IP-Adressen"
@@ -16,7 +20,7 @@
         "en": "Adjustments for different Enum formats in API V3",
         "de": "Anpassungen für unterschiedliche Enum Formate in API V3"
       },
-       "0.9.4": {
+      "0.9.4": {
         "en": "Support now for old ESP8266 EMS-ESP gateways (API V2) and new ESP32 with API V3",
         "de": "Unterstützung für alte ESP8266 EMS-ESP gateways (API V2) und neue ESP32 mit API V3"
       },
@@ -106,37 +110,39 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/ioBroker.ems-esp#1998b90f4eea88dfa1cfac9fd1189b3422deb9db"
+    "installedFrom": "tp1de/ioBroker.ems-esp#fa3961b727e1b4f542c5ab9d086a720b99a85cab"
   },
   "native": {
     "control_file": "*",
     "km200_active": false,
     "km200_ip": "http://192.168.178.x",
-    "km200_polling":300,
+    "km200_polling": 300,
     "gateway_pw": "",
     "private_pw": "",
-    "emsesp_active": false,
+    "emsesp_active": true,
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
-    "ems_http_wait":100,
+    "ems_http_wait": 100,
     "ems_token": "",
-    "ems_polling":60,
+    "ems_polling": 60,
     "recordings": false,
     "database_instance": "sql.0",
     "database": "iobroker",
-    "km200_structure": true,
-    "eff_active":false,
+    "km200_structure": false,
+    "eff_active": false,
     "eff20": 109.5,
     "eff25": 109.3,
     "eff30": 108.3,
-    "eff35": 108.0,
+    "eff35": 108,
     "eff40": 106.5,
     "eff45": 105.2,
     "eff50": 103,
     "eff55": 100,
     "eff60": 98,
     "eff70": 97,
-    "syslog":false
+    "syslog": false,
+    "syslog_port": 20516,
+    "states_reorg": false
   },
   "objects": [],
   "instanceObjects": []

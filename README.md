@@ -65,6 +65,12 @@ Nevertheless obsolete datafields are not deleted automatically by the adapter. T
 
 ## Changelog
 
+### 0.9.8
+* Supporting Dallas Sensors on ems-esp gateway
+
+### 0.9.7
+* Fixes for IP-adresses
+
 ### 0.9.6
 * Corrections for writing switchpoints and array-data back to km200
 

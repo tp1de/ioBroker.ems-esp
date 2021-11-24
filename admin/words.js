@@ -6,6 +6,10 @@ systemDictionary = {
 		"en": "Adapter settings for ems-esp",
 		"de": "Adaptereinstellungen für ems-esp"
 	},
+	"Additional settings": {
+		"en": "Additional settings",
+		"de": "Zusätzliche Einstellungen"
+	},
 	"km200_structure": {
 		"en": "km200 structure",
 		"de": "km200 Struktur"
@@ -113,5 +117,17 @@ systemDictionary = {
 	"eff70": {
 		"en": "boiler < 70°C",
 		"de": "HZG < 70°C"
+	},
+	"syslog": {
+		"en": "syslog server active?",
+		"de": "Syslog Server aktiv?"
+	},
+	"syslog_port": {
+		"en": "syslog port",
+		"de": "Syslog Port"
+	},
+	"states_reorg": {
+		"en": "states reorg ",
+		"de": "States Reorg "
 	}
 };

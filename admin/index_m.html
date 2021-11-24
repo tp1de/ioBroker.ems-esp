@@ -17,23 +17,39 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script type="text/javascript" src="words.js"></script>
 
+	<style>
+		.table_header {
+			background-color: blue;
+			color: white;
+		}
+		.ip {
+			width: 150px;
+			text-align: right;
+		}
+	</style>
+
+
+
 	<script type="text/javascript">
 		// This will be called by the admin adapter when the settings page loads
-			var secret;
-				function encrypt(key, value) {
-					var result = '';
-					for(var i = 0; i < value.length; ++i) {
-						result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-					}
-					return result;
-				}
-				function decrypt(key, value) {
-					var result = '';
-					for(var i = 0; i < value.length; ++i) {
-						result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-					}
-					return result;
-				}
+		var secret;
+		var devices = [];
+
+		function encrypt(key, value) {
+			var result = '';
+			for (var i = 0; i < value.length; ++i) {
+				result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+			}
+			return result;
+		}
+
+		function decrypt(key, value) {
+			var result = '';
+			for (var i = 0; i < value.length; ++i) {
+				result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
+			}
+			return result;
+		}
 
 
 		function loadHelper(settings, onChange) {
@@ -45,20 +61,18 @@
 				var $key = $(this);
 				var id = $key.attr('id');
 				if (id === 'private_pw') {
-                	settings[id] = decrypt(secret, settings[id]);
-             	}
+					settings[id] = decrypt(secret, settings[id]);
+				}
 
 				if ($key.attr('type') === 'checkbox') {
 					// do not call onChange direct, because onChange could expect some arguments
 					$key.prop('checked', settings[id])
-						.on('change', () => onChange())
-						;
+						.on('change', () => onChange());
 				} else {
 					// do not call onChange direct, because onChange could expect some arguments
 					$key.val(settings[id])
 						.on('change', () => onChange())
-						.on('keyup', () => onChange())
-						;
+						.on('keyup', () => onChange());
 				}
 			});
 			onChange(false);
@@ -68,12 +82,16 @@
 
 		// This will be called by the admin adapter when the settings page loads
 		function load(settings, onChange) {
-				socket.emit('getObject', 'system.config', function (err, obj) {
-					secret = (obj.native ? obj.native.secret : '') || 'Zgfr56gFe87jJOM';
-					loadHelper(settings, onChange);
-		});
-		onChange(false);
-			}
+			socket.emit('getObject', 'system.config', function (err, obj) {
+				secret = (obj.native ? obj.native.secret : '') || 'Zgfr56gFe87jJOM';
+				loadHelper(settings, onChange);
+			});
+
+			devices    = settings.devices    || [];
+			onChange(false);
+			values2table('devices', devices, onChange);
+
+		}
 
 
 
@@ -90,12 +108,14 @@
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
 					var value = $this.val();
-                 	if (id === 'private_pw') {
-                     	value = encrypt(secret, value);
-                 	}
-                 	obj[$this.attr('id')] = value;
+					if (id === 'private_pw') {
+						value = encrypt(secret, value);
+					}
+					obj[$this.attr('id')] = value;
 				}
 			});
+
+			obj.devices = table2values('devices');
 			callback(obj);
 		}
 	</script>
@@ -106,16 +126,19 @@
 
 	<div class="m adapter-container">
 
-		<div class="row">
-			<div class="col s12 m4 l2">
-				<img src="ems-esp.png" class="logo">
-			</div>
+		<div class="col s12">
+			<ul class="tabs">
+				<li class="tab col s5 m4"><a href="#tab-main" class="translate active">Main settings</a></li>
+				
+			</ul>
 		</div>
+		<div id="tab-main" class="col s12 page">
 
-		<!-- Put your content here -->
-
-		<!-- For example columns with settings: -->
-		<div class="row">
+			<div class="row">
+				<div class="col s12 m4 l2">
+					<img src="ems-esp.png" class="logo">
+				</div>
+			</div>
 
 			<div class="row">
 				<div class="col s1 input-field">
@@ -123,7 +146,7 @@
 					<label for="emsesp_active" class="translate">emsesp_active</label>
 				</div>
 
-				<div class="col s1 input-field">
+				<div class="col s2 input-field">
 					<input type="text" class="value" id="emsesp_ip" />
 					<label for="emsesp_ip" class="translate">emsesp_ip</label>
 				</div>
@@ -136,11 +159,6 @@
 				<div class="col s1 input-field">
 					<input type="number" class="value" id="ems_polling" />
 					<label for="ems_polling" class="translate">ems_polling</label>
-				</div>
-
-				<div class="col s1 input-field">
-					<input type="number" class="value" id="ems_http_wait" />
-					<label for="ems_http_wait" class="translate">ems_http_wait</label>
 				</div>
 
 				<div class="col s6 input-field">
@@ -179,7 +197,7 @@
 				<div class="col s2 input-field">
 					<input type="password" class="value" id="private_pw" />
 					<label for="private_pw" class="translate">private_pw</label>
-				</div>			
+				</div>
 
 			</div>
 
@@ -197,7 +215,15 @@
 			</div>
 
 			<div class="row">
-				<div class="col s1 input-field">
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="states_reorg" />
+					<label for="states_reorg" class="translate">states_reorg</label>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col s2 input-field">
 					<input type="checkbox" class="value" id="eff_active" />
 					<label for="eff_active" class="translate">eff_active</label>
 				</div>
@@ -254,9 +280,9 @@
 
 			</div>
 
-
 		</div>
 
+		
 
 	</div>
 

@@ -14,7 +14,9 @@ const adapter = utils.adapter("ems-esp");
 const fs = require("fs");
 const request = require("request");
 const Syslog = require("simple-syslog-server") ;
+
 let datafields = [];
+let own_states = [];
 
 
 // ---------km200 en- and decryption parameters -----------------------------------------------------------------------------------------------------------------------
@@ -100,16 +102,25 @@ class EmsEsp extends utils.Adapter {
 		km200_key = km200_getAccesskey(km200_gatewaypassword,km200_privatepassword);
 		km200_aeskey = Buffer.from(km200_key,"hex");
 		cipher = new Rijndael(km200_aeskey, "ecb");
-		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Read own States for syslog-analysis
+		try {
+			for (let i = 0;i < this.config.devices.length;i++) {
+				if (this.config.devices[i].state !== "" && this.config.devices[i].type !== "" && this.config.devices[i].offset !== "")
+					own_states.push(this.config.devices[i]);
+			}
+		} catch(error) {}
 
+		// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Read csv-file:
 		const dataDir = utils.getAbsoluteDefaultDataDir(); // /opt/iobroker/iobroker-data
 		await fs.promises.mkdir(dataDir+"/ems-esp", { recursive: true });
 
 		const fn = dataDir+"/ems-esp/"+this.config.control_file;
 		let data = "";
+
+		if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
 		if (enable_syslog == true) {
 			await init_syslog();
@@ -143,8 +154,6 @@ class EmsEsp extends utils.Adapter {
 
 		const version = ems_version;
 
-
-		//if (this.config.emsesp_active) await delete_states_emsesp();
 		if (this.config.emsesp_active) await init_states_emsesp(version);
 		if (this.config.km200_active) await init_states_km200();
 
@@ -153,8 +162,7 @@ class EmsEsp extends utils.Adapter {
 
 		await init_statistics();
 		//await init_controls();
-
-
+		
 
 		// Recording states
 
@@ -198,8 +206,6 @@ class EmsEsp extends utils.Adapter {
 
 
 		if (recordings && this.config.km200_active ) interval3 = setInterval(function() {km200_recordings();}, 3600000); // 1 hour = 3600 secs
-
-
 
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 60000); // 60 sec
 		if (this.config.eff_active) interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
@@ -301,9 +307,59 @@ async function state_change(id,state) {
 
 	// Testing API Version
 
-	ems_version = "V2";
-	const url1 = emsesp +  "/api/system";
-	try {const data = await ems_get(url1);ems_version = "V3";} catch(error) {}
+	//ems_version = "V2";
+	//const url1 = emsesp +  "/api/system";
+	//try {const data = await ems_get(url1);ems_version = "V3";} catch(error) {}
+
+	ems_version = obj.native.ems_api;
+
+	
+	if (ems_version == "raw") {
+		let vc = "";
+
+		if (obj.native.ems_multi != "") {			
+			let multi = 1 / obj.native.ems_multi;
+			value = value * multi;
+			vc = value.toString(16);
+		} else vc = value.toString(16);
+
+		if (vc.length == 1) vc = "0" + vc;
+		if (vc.length == 3) vc = "0" + vc;
+		
+		let type = obj.native.ems_type;
+
+		if (type.substring(0,2) == "0x") type = type.substring(2);	
+		let telegram = "0B " + obj.native.ems_src + " ";
+
+		if (type.length == 2) {
+			telegram += type + " " + obj.native.ems_offset + " " + vc;
+		}
+		if (type.length == 3) {
+			telegram += "FF " + obj.native.ems_offset + " 0" + type.substring(0,1);
+			telegram += " " + type.substring(1,2) + " " + vc;	
+		}
+		if (obj.native.ems_type.length == 4) {
+			telegram += "FF " + obj.native.ems_offset + " " + type.substring(0,2);
+			telegram += " " + type.substring(2,4) + " " + vc;	
+
+		}
+
+		adapter.log.info(type + " " + type.length + " " + telegram);
+
+		let url = emsesp + "/api/system/send ";
+		adapter.log.info("write change to ems-esp raw telegram: "+ id + ": "+value);
+
+		const headers = {"Content-Type": "application/json","Authorization": "Bearer " + ems_token};
+		const body =JSON.stringify({"value": telegram});
+
+		request.post({url, headers: headers, body}, function(error,response) {
+			const status= JSON.parse(response.body).statusCode;
+			const resp= JSON.parse(response.body).message;
+			if (resp != "OK") adapter.log.error("ems-esp http write error: " + status + " " + resp + "  " + url);
+		});
+
+
+	}
 
 
 	if (obj.native.ems_device != null){
@@ -443,7 +499,8 @@ async function syslog_server() {
 		}
 		active_old = active;
 		adapter.setStateAsync("syslog.server.active",true);
-		if (active) {
+		//if (active) {
+		if (true) {	
 			adapter.setStateAsync("syslog.server.data",JSON.stringify(data));
 			s_list(syslog,data);
 			adapter.getState("syslog.filter.src", function (err, state) { if (state != null) fsrc = state.val;} );
@@ -472,7 +529,7 @@ async function syslog_server() {
 				if ( bit8 == "1" && fpolling == false) p3 = false;
 				if (type == "FF") {
 					typer = tg[4]+tg[5];
-					if (typer.substr(0,1) == "0") typer = typer.substr(1,3);
+					//if (typer.substr(0,1) == "0") typer = typer.substr(1,3);
 					let hexValue = parseInt(typer , 16);
 					hexValue = hexValue + 0x0100;
 					type = hexValue.toString(16).toUpperCase();
@@ -520,16 +577,78 @@ async function syslog_server() {
 				if (p11 == -1) tdata = d.substring(8);
 				if (p11 > -1)  tdata = d.substring(8,p11);
 			}
-			if(p1 && p2 && p3 && p4) {
+
+			adapter.setStateAsync("syslog.telegram.telegram_raw",data.msg);
+			adapter.setStateAsync("syslog.telegram.src",src);
+			adapter.setStateAsync("syslog.telegram.dest",dest);
+			adapter.setStateAsync("syslog.telegram.type",type);
+			adapter.setStateAsync("syslog.telegram.type_text",typet);
+			adapter.setStateAsync("syslog.telegram.type_raw",typer);
+			adapter.setStateAsync("syslog.telegram.offset",offset);
+			adapter.setStateAsync("syslog.telegram.data",tdata);
+
+
+			// look for own states
+
+
+			let index = -1;
+			for (let i=0;i < own_states.length;i++){
+				if (typer == own_states[i].type && src == own_states[i].src) {index = i;break;}
+			}
+
+			try {
+				if (index !== -1) {
+					let o1 = parseInt(offset,16);
+					let o2 = parseInt(own_states[index].offset,16);
+					let d  = tdata.split(" ");
+
+					if (o1 <= o2 && (o1+d.length) >= o2) {
+						//adapter.log.info(data.msg);
+
+						let bytes = own_states[index].bytes;
+						let bit = own_states[index].bit;
+						let state_type = own_states[index].state_type;
+
+						if(state_type == "number" & bit == "") {
+							let wb = "";
+							for (let i = 0;i < bytes;i++) {
+								wb += d[o2-o1+i]
+							}	
+
+							//if (bytes == 1) wb = d[o2-o1];
+							//if (bytes == 2) wb = d[o2-o1] + d[o2+1-o1];
+							let w = parseInt(wb,16);
+							let m = 1;
+							if ( own_states[index].multi !== "") m = own_states[index].multi;
+							w = w / m;
+							write_ownstate(own_states[index].state,w,own_states[index]);
+						}
+
+						if(state_type == "number" & bit != "") {
+							let wb = "";
+							let wbb ="";
+							wb = d[o2-o1];
+							wbb = parseInt(wb, 16).toString(2).padStart(8, '0');
+							let w = wbb.substr(7-bit,1);
+							//adapter.log.info(w+"   "+wbb);
+							write_ownstate(own_states[index].state,w,own_states[index]);
+						}
+
+						if(own_states[index].state_type != "number") {
+							let wb = "";
+							if (bytes == 1) wb = d[o2-o1];
+							for (let i = 0;i < bytes;i++) {
+								wb += d[o2-o1+i]
+							}				
+							write_ownstate(own_states[index].state,wb,own_states[index]);
+						}
+
+					}
+				}
+			} catch(error) {}
+
+			if(p1 && p2 && p3 && p4 && active) {
 				//console.log(data.msg);
-				adapter.setStateAsync("syslog.telegram.telegram_raw",data.msg);
-				adapter.setStateAsync("syslog.telegram.src",src);
-				adapter.setStateAsync("syslog.telegram.dest",dest);
-				adapter.setStateAsync("syslog.telegram.type",type);
-				adapter.setStateAsync("syslog.telegram.type_text",typet);
-				adapter.setStateAsync("syslog.telegram.type_raw",typer);
-				adapter.setStateAsync("syslog.telegram.offset",offset);
-				adapter.setStateAsync("syslog.telegram.data",tdata);
 				t_list(telegrams,data.msg);
 			}
 
@@ -582,8 +701,8 @@ async function init_syslog() {
 		common: {type: "object", name: "syslog data", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("syslog.server.port",{type: "state",
 		common: {type: "number", name: "syslog port number", role: "value", read: true, write: true}, native: {}});
-	adapter.getState("syslog.server.port", function(err,state){
-		if (state == null) adapter.setState("syslog.server.port", {ack: true, val: 20516});	});
+	adapter.setState("syslog.server.port", {ack: true, val: adapter.config.syslog_port});
+	
 	await adapter.setObjectNotExistsAsync("syslog.server.syslog",{type: "state",
 		common: {type: "json", name: "syslog json-list", role: "value", read: true, write: true}, native: {}});
 
@@ -753,17 +872,13 @@ async function init_states_km200() {
 
 async function delete_states_emsesp() {
 
-	adapter.delObject("boiler",function (err,objects) {
-		adapter.log.info(objects);
-		/*
-		let d = 0;
-		for(d = 0; d < objects.length; d++) {
-			adapter.log.info("ID to delete: " + objects[d]._id);
-			//adapter.deleteDevice(devices[d]._id);
-		}
-		*/
-	});
+	const pattern = adapter.namespace + ".*";
+	const states = await adapter.getStatesAsync(pattern);
 
+	for (let id in states) {
+		const obj = await adapter.getObjectAsync(id);
+		if (obj.common.custom == undefined) adapter.delObjectAsync(id);
+	}
 
 }
 
@@ -838,6 +953,7 @@ async function init_states_emsesp(version) {
 			}
 		}
 	}
+
 	adapter.log.info("end of initializing ems states");
 }
 
@@ -947,6 +1063,26 @@ async function ems_read(version) {
 		const t3 = (t2-t1) / 1000;
 		adapter.setStateAsync("statistics.ems-read", {ack: true, val: t3});
 	}
+	
+	url = emsesp +  "/api?device=dallassensor&cmd=info";
+	if (version == "V3") url = emsesp +  "/api/dallassensor";
+
+	data = "";
+	try {data = await ems_get(url); }
+	catch(error) {
+		adapter.log.debug("ems read dallassensor error:" +url);
+		data = "Invalid";
+	}
+	await sleep(ems_http_wait);	
+
+	let sensors = {};
+	try {sensors = JSON.parse(data);}
+	catch(error) {adapter.log.info("ems read dallassensor parse error: "+ url + "->" + data);}
+	
+	for (const [key, value] of Object.entries(sensors)) {
+		write_state("dallas."+key,value.temp,"");
+	}
+
 }
 
 
@@ -1113,7 +1249,37 @@ async function read_km200structure() {
 
 }
 
+async function write_ownstate(statename,value,own) {
+	const obj={_id:statename,type:"state",common:{},native:{}};
+	obj.common.id = statename;
+	obj.common.name= "own ems:"+statename;
+	obj.common.type = "mixed";
+	if (own.state_type !== "") obj.common.type = own.state_type;
+	if (own.states !== "") obj.common.states = own.states;
+	if (own.min !== "") obj.common.min = own.min;
+	if (own.max !== "") obj.common.max = own.max;
 
+	obj.common.unit = own.uom;
+	obj.common.read = true;
+	obj.common.write = false;
+	if (own.writable === true) obj.common.write = true;
+	obj.common.role = "value";
+
+	obj.native.ems_command = "own";
+	obj.native.ems_api = "raw";
+	obj.native.ems_src = own.src;
+	obj.native.ems_type = own.type;
+	obj.native.ems_offset = own.offset;
+	obj.native.ems_multi = own.multi;
+
+ 	
+	// @ts-ignore
+	await adapter.setObjectNotExistsAsync(statename, obj);
+
+	await adapter.getStateAsync(statename, function(err, state) {
+		if(state == null) {adapter.setStateAsync(statename, {ack: true, val: value});}
+		else {if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});} });
+}
 
 
 async function write_state(statename,value,def) {
@@ -1165,6 +1331,8 @@ async function write_state(statename,value,def) {
 
 	if (def != "" && def != "Invalid") {
 		const defj = JSON.parse(def);
+
+		obj.common.name= "ems: "+defj.fullname;
 
 		if (defj.writeable == true) {obj.common.write = true;}
 		obj.common.unit = defj.uom;
@@ -1321,6 +1489,7 @@ function km200_encrypt(input) {
 	return output;
 }
 
+
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async function km200_recordings(){
@@ -1366,7 +1535,7 @@ async function hours() {
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
 					const wert = Math.round(data.recording[ii].y / 6) / 10;
-					const ts = ut1 + ((ii+2) * 3600000 );
+					const ts = ut1 + ((ii) * 3600000 );
 					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
@@ -1389,7 +1558,7 @@ async function hours() {
 			for (let ii = 0; ii < data.recording.length; ii++){
 				if (data.recording[ii] !== null){
 					const wert = Math.round(data.recording[ii].y / 6) / 10;
-					const ts = ut1 + ((ii+2) * 3600000 );
+					const ts = ut1 + ((ii) * 3600000 );
 					daten.push({id: field,state: {ts: + ts ,val: wert,ack: true}});
 				}
 			}
