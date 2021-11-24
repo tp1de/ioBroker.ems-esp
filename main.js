@@ -419,7 +419,6 @@ async function init_controls() {
 }
 
 
-
 async function init_statistics() {
 
 	await adapter.setObjectNotExistsAsync("statistics.ems-read",{type: "state",
@@ -1081,7 +1080,8 @@ async function ems_read(version) {
 	catch(error) {adapter.log.info("ems read dallassensor parse error: "+ url + "->" + data);}
 	
 	for (const [key, value] of Object.entries(sensors)) {
-		write_state("dallas."+key,value.temp,"");
+		if (value.temp == undefined) write_state("dallas."+key,value,"");
+		else write_state("dallas."+key,value.temp,"");
 	}
 
 }
