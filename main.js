@@ -419,6 +419,7 @@ async function init_controls() {
 }
 
 
+
 async function init_statistics() {
 
 	await adapter.setObjectNotExistsAsync("statistics.ems-read",{type: "state",
