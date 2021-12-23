@@ -1076,13 +1076,18 @@ async function ems_read(version) {
 	await sleep(ems_http_wait);	
 
 	let sensors = {};
-	try {sensors = JSON.parse(data);}
-	catch(error) {adapter.log.info("ems read dallassensor parse error: "+ url + "->" + data);}
-	
-	for (const [key, value] of Object.entries(sensors)) {
-		if (value.temp == undefined) write_state("dallas."+key,value,"");
-		else write_state("dallas."+key,value.temp,"");
+	try {
+		sensors = JSON.parse(data);
+		for (const [key, value] of Object.entries(sensors)) {
+			if (value.temp == undefined) write_state("dallas."+key,value,"");
+			else write_state("dallas."+key,value.temp,"");
+		}
 	}
+	catch(error) {
+		//adapter.log.info("ems read dallassensor parse error: "+ url + "->" + data);
+	}
+	
+
 
 }
 
