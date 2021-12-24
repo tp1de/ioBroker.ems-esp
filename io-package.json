@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "0.9.8",
+    "version": "0.9.9",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "0.9.9": {
+        "en": "Dallas Sensors read as parameter",
+        "de": "Dallas Sensoren Lesen als Parameter"
+      },
       "0.9.8": {
         "en": "Dallas Sensors supported",
         "de": "Dallas Sensoren werden unterstützt"
@@ -110,7 +114,7 @@
         "js-controller": ">=2.0.0"
       }
     ],
-    "installedFrom": "tp1de/ioBroker.ems-esp#fa3961b727e1b4f542c5ab9d086a720b99a85cab"
+    "installedFrom": "tp1de/ioBroker.ems-esp#ae63b6203209165d17ef5b9fbb4a8737f7758244"
   },
   "native": {
     "control_file": "*",
@@ -125,6 +129,7 @@
     "ems_http_wait": 100,
     "ems_token": "",
     "ems_polling": 60,
+    "ems_dallas":false,
     "recordings": false,
     "database_instance": "sql.0",
     "database": "iobroker",

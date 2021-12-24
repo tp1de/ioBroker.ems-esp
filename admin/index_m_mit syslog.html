@@ -285,8 +285,71 @@
 
 			</div>
 
+
+
 		</div>
-	
+
+		<div id="tab-advanced" class="col s12 page">
+
+			<div class="row">
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="syslog" />
+					<label for="syslog" class="translate">syslog</label>
+				</div>
+
+				<div class="col s1 input-field">
+					<input type="number" class="value" id="syslog_port" />
+					<label for="syslog_port" class="translate">syslog_port</label>
+				</div>
+
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="states_undefined" />
+					<label for="states_undefined" class="translate">states_undefined</label>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col s12 "></div>
+					*****  IMPORTANT: src, type offset are hex values without 0x ! bit (0-7) where 0 is right bit. All other values are decimal. state_type number or text !
+				</div>
+				
+
+				<div class="col s12" id="devices">
+					<a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+							<tr>
+								<th data-name="state"        style="width: 25%" data-type="text" class="translate">state</th>
+								<th data-name="src"          style="width: 3%" data-type="hex" class="translate">src</th>
+								<th data-name="type"         style="width: 4%" data-type="hex" class="translate">type</th>
+								<th data-name="offset"       style="width: 3%" data-type="hex" class="translate">offset</th>
+								<th data-name="bit"          style="width: 3%" data-type="number" class="translate">bit</th>
+								<th data-name="bytes"        style="width: 3%" data-type="number" class="translate">bytes</th>
+								<th data-name="multi"        style="width: 3%" data-type="number" class="translate">multi</th>
+								<th data-name="signed"       style="width: 3%" data-type="checkbox" class="translate">signed</th>
+								
+								<th data-name="state_type"   style="width: 10%" data-type="select"  
+									data-default="number"data-options="number;text" class="translate">state_type</th>
+
+								<th data-name="states"       style="width: 15%" data.type="text" class="translate">states</th>
+								<th data-name="min"          style="width: 3%" data-type="number" class="translate">min</th>
+								<th data-name="max"          style="width: 3%" data-type="number" class="translate">max</th>
+								<th data-name="uom"          style="width: 10%" data-tye="text" class="translate">uom</th>
+								<th data-name="writable"     style="width: 3px" data-type="checkbox" class="translate">writable</th>
+								<th data-buttons="delete up down" style="width: 120px"></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			
+
+
+		</div>
 
 	</div>
 

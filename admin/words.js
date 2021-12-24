@@ -22,6 +22,10 @@ systemDictionary = {
 		"en": "msec delay",
 		"de": "mSek delay"
 	},
+	"ems_dallas": {
+		"en": "read dallas",
+		"de": "Dallas lesen"
+	},
 	"ems_polling": {
 		"en": "polling in sec",
 		"de": "Polling in Sek"
