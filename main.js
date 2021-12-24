@@ -970,9 +970,9 @@ async function init_states_emsesp(version) {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
-		for (const [key, value] of Object.entries(network)) {
-			if (typeof value !== "object") write_state("esp."+key,value,"");
-		}
+		//for (const [key, value] of Object.entries(network)) {
+		//	if (typeof value !== "object") write_state("esp."+key,value,"");
+		//}
 
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != undefined) {
