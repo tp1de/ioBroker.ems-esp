@@ -169,7 +169,7 @@ class EmsEsp extends utils.Adapter {
 
 		await init_statistics();
 		//await init_controls();
-		
+
 
 		// Recording states
 
@@ -323,11 +323,11 @@ async function state_change(id,state) {
 
 	ems_version = obj.native.ems_api;
 
-	
+
 	if (ems_version == "raw") {
 		let vc = "";
 
-		if (obj.native.ems_multi != "") {			
+		if (obj.native.ems_multi != "") {
 			let multi = 1 / obj.native.ems_multi;
 			value = value * multi;
 			vc = value.toString(16);
@@ -335,10 +335,10 @@ async function state_change(id,state) {
 
 		if (vc.length == 1) vc = "0" + vc;
 		if (vc.length == 3) vc = "0" + vc;
-		
+
 		let type = obj.native.ems_type;
 
-		if (type.substring(0,2) == "0x") type = type.substring(2);	
+		if (type.substring(0,2) == "0x") type = type.substring(2);
 		let telegram = "0B " + obj.native.ems_src + " ";
 
 		if (type.length == 2) {
@@ -346,11 +346,11 @@ async function state_change(id,state) {
 		}
 		if (type.length == 3) {
 			telegram += "FF " + obj.native.ems_offset + " 0" + type.substring(0,1);
-			telegram += " " + type.substring(1,2) + " " + vc;	
+			telegram += " " + type.substring(1,2) + " " + vc;
 		}
 		if (obj.native.ems_type.length == 4) {
 			telegram += "FF " + obj.native.ems_offset + " " + type.substring(0,2);
-			telegram += " " + type.substring(2,4) + " " + vc;	
+			telegram += " " + type.substring(2,4) + " " + vc;
 
 		}
 
@@ -405,7 +405,7 @@ async function state_change(id,state) {
 		if (obj.native.ems_km200 != null) {
 			adapter.log.info("write change to km200: "+ id + ": "+value);
 			try {
-				if(typeof obj.native.km200.allowedValues != "undefined" && obj.native.km200.type == "stringValue" ) value= obj.native.km200.allowedValues[value];				
+				if(typeof obj.native.km200.allowedValues != "undefined" && obj.native.km200.type == "stringValue" ) value= obj.native.km200.allowedValues[value];
 				const resp = await km200_put(obj.native.ems_km200 , value, obj.native.km200.type);
 				if (resp.statusCode != 200 && resp.statusCode != 204) {adapter.log.warn("km200 http write error " + resp.statusCode + ":" + obj.native.ems_km200);}
 			}
@@ -511,7 +511,7 @@ async function syslog_server() {
 		active_old = active;
 		adapter.setStateAsync("syslog.server.active",true);
 		//if (active) {
-		if (true) {	
+		if (true) {
 			adapter.setStateAsync("syslog.server.data",JSON.stringify(data));
 			s_list(syslog,data);
 			adapter.getState("syslog.filter.src", function (err, state) { if (state != null) fsrc = state.val;} );
@@ -562,7 +562,7 @@ async function syslog_server() {
 				p5 = false;
 				if (fvalue == "") p5=true;
 				if (fvalue != "" && tdata.indexOf(fvalue) >= 0) p5=true;
-				
+
 			}
 			const m1 = data.msg.search("->");
 			const m2 = data.msg.search("<-");
@@ -600,7 +600,7 @@ async function syslog_server() {
 					}
 				}
 
-				
+
 				if (ftype == type || ftype == "" || ftype == typer || ftype == typet) p4 =true;
 				d = d.substring(p12 + 1);
 
@@ -641,19 +641,19 @@ async function syslog_server() {
 							let o1 = parseInt(offset,16);
 							let o2 = parseInt(own_states[index].offset,16);
 							let d  = tdata.split(" ");
-		
+
 							if (o1 <= o2 && (o1+d.length) >= o2) {
 								//adapter.log.info(data.msg);
-		
+
 								let bytes = own_states[index].bytes;
 								let bit = own_states[index].bit;
 								let state_type = own_states[index].state_type;
-		
+
 								if(state_type == "number" & bit == "") {
 									let wb = "";
 									for (let i = 0;i < bytes;i++) {
 										wb += d[o2-o1+i]
-									}	
+									}
 									let s = own_states[index].signed;
 									let w = parseInt(wb,16);
 									if (s == true) w = hexToSignedInt(wb);
@@ -662,7 +662,7 @@ async function syslog_server() {
 									w = w / m;
 									write_ownstate(own_states[index].state,w,own_states[index]);
 								}
-		
+
 								if(state_type == "number" & bit != "") {
 									let wb = "";
 									let wbb ="";
@@ -672,19 +672,19 @@ async function syslog_server() {
 									//adapter.log.info(w+"   "+wbb);
 									write_ownstate(own_states[index].state,w,own_states[index]);
 								}
-		
+
 								if(own_states[index].state_type != "number") {
 									let wb = "";
 									if (bytes == 1) wb = d[o2-o1];
 									for (let i = 0;i < bytes;i++) {
 										wb += d[o2-o1+i]
-									}				
+									}
 									write_ownstate(own_states[index].state,wb,own_states[index]);
 								}
-		
+
 							}
 						}
-					} catch(error) {}				
+					} catch(error) {}
 				}
 			}
 
@@ -707,11 +707,11 @@ async function ems_poll() {
 	for (let i=0;i < own_states.length;i++){
 		if (own_states[i].polling) {
 			let telegram = "0B ";
-			if (own_states[i].src == "10") telegram += "90 "; 
+			if (own_states[i].src == "10") telegram += "90 ";
 			if (own_states[i].src == "08") telegram += "88 ";
 
 			if (own_states[i].type.length > 2) {
-				telegram += "FF "; 
+				telegram += "FF ";
 				telegram += own_states[i].offset + " ";
 				telegram += own_states[i].bytes + " ";
 				telegram += own_states[i].type.substr(0,2) + " ";
@@ -724,7 +724,7 @@ async function ems_poll() {
 			//adapter.log.info(telegram);
 
 			var url = "http://ems-esp/api/system/send ";
-        
+
 			try {var response = await ems_put(url,telegram,ems_token);}
 			catch (error) { console.log(error);}
 		}
@@ -779,7 +779,7 @@ async function init_syslog() {
 
 	await adapter.setObjectNotExistsAsync("syslog.filter.value",{type: "state",
 		common: {type: "string", name: "syslog value filter", role: "value", read: true, write: true}, native: {}});
-	adapter.getState("syslog.filter.value", function(err,state){if (state == null) adapter.setState("syslog.filter.value", {ack: true, val: ""});});		
+	adapter.getState("syslog.filter.value", function(err,state){if (state == null) adapter.setState("syslog.filter.value", {ack: true, val: ""});});
 
 	await adapter.setObjectNotExistsAsync("syslog.filter.polling",{type: "state",
 		common: {type: "boolean", name: "syslog polling filter", role: "value", read: true, write: true}, native: {}});
@@ -792,7 +792,7 @@ async function init_syslog() {
 	await adapter.setObjectNotExistsAsync("syslog.server.port",{type: "state",
 		common: {type: "number", name: "syslog port number", role: "value", read: true, write: true}, native: {}});
 	adapter.setState("syslog.server.port", {ack: true, val: adapter.config.syslog_port});
-	
+
 	await adapter.setObjectNotExistsAsync("syslog.server.syslog",{type: "state",
 		common: {type: "json", name: "syslog json-list", role: "value", read: true, write: true}, native: {}});
 
@@ -997,7 +997,7 @@ async function init_states_emsesp(version) {
 		}
 		catch(error) {adapter.log.error("*** error can't read system information " + error)};
 
-		try { 
+		try {
 			network = JSON.parse(data).Network;
 			for (const [key, value] of Object.entries(network)) {
 				if (typeof value !== "object") write_state("esp."+key,value,"");
@@ -1137,7 +1137,7 @@ async function ems_read(version) {
 		}
 		catch(error) {adapter.log.error("*** error can't read system information")};
 
-		try { 
+		try {
 			network = JSON.parse(data).Network;
 			for (const [key, value] of Object.entries(network)) {
 				if (typeof value !== "object") write_state("esp."+key,value,"");
@@ -1186,7 +1186,7 @@ async function ems_read(version) {
 		const t3 = (t2-t1) / 1000;
 		adapter.setStateAsync("statistics.ems-read", {ack: true, val: t3});
 	}
-	
+
 	if (adapter.config.ems_dallas) {
 
 		url = emsesp +  "/api?device=dallassensor&cmd=info";
@@ -1198,14 +1198,14 @@ async function ems_read(version) {
 			adapter.log.debug("ems read dallassensor error:" +url);
 			data = "Invalid";
 		}
-		await sleep(ems_http_wait);	
+		await sleep(ems_http_wait);
 
 		let sensors = {};
 		try {sensors = JSON.parse(data);}
 		catch(error) {
 			adapter.log.info("ems read dallassensor parse error: "+ url + "->" + data);
 		}
-		
+
 		for (const [key, value] of Object.entries(sensors)) {
 			if (value.temp == undefined) write_state("dallas."+key,value,"");
 			else write_state("dallas."+key,value.temp,"");
@@ -1401,14 +1401,14 @@ async function write_ownstate(statename,value,own) {
 	obj.native.ems_offset = own.offset;
 	obj.native.ems_multi = own.multi;
 
- 	
+
 	// @ts-ignore
 	await adapter.setObjectNotExistsAsync(statename, obj);
 
 	await adapter.getStateAsync(statename, function(err, state) {
 		if(state == null) {adapter.setStateAsync(statename, {ack: true, val: value});}
 		else {if (state.val != value) adapter.setStateAsync(statename, {ack: true, val: value});} });
-		
+
 }
 
 async function write_undefinedstate(src,typer,offset,tdata) {
@@ -1428,12 +1428,12 @@ async function write_undefinedstate(src,typer,offset,tdata) {
 		obj.common.read = true;
 		obj.common.write = false;
 		await adapter.setObjectNotExistsAsync(statename, obj);
-		
+
 		try {let dec = parseInt(d[i],16);adapter.setStateAsync(statename, {ack: true, val: dec});}
 		catch(error) {adapter.setStateAsync(statename, {ack: true, val: d[i]});    }
 
 
-		//adapter.setStateAsync(statename, {ack: true, val: d[i]});	
+		//adapter.setStateAsync(statename, {ack: true, val: d[i]});
 
 	}
 
@@ -1631,7 +1631,7 @@ async function km200_put(url,value,type) {return new Promise(function(resolve,re
 			break;
 		case "arrayData":
 			data = '{"values":' + value +'}';
-			data = km200_encrypt( Buffer.from(data) );  
+			data = km200_encrypt( Buffer.from(data) );
 			break;
 		default:
 			data =km200_encrypt( Buffer.from(JSON.stringify({value: value })) );
@@ -1697,7 +1697,7 @@ async function hours() {
 	let datum= new Date();
 	let daten = [], data;
 	let field = adapt+root+hh;
-	
+
 	for (let i=0;i<3;i++) {
 		const url1 = feld + datum.getFullYear()+"-"+ (datum.getMonth()+1) +"-"+datum.getDate();
 		try {data = await km200_get(url1);}
