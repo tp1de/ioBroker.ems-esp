@@ -202,7 +202,7 @@ class EmsEsp extends utils.Adapter {
 		// ems and km200 read schedule
 		if (recordings && this.config.km200_active) km200_recordings();
 
-		let interval1,interval2,interval3,interval4,interval5;
+		let interval1,interval2,interval3,interval4,interval5,interval6;
 
 		if (this.config.emsesp_active) adapter.log.info("ems  :"+this.config.emsesp_active + " " + ems_polling + " secs");
 		if (this.config.km200_active) adapter.log.info("km200:"+this.config.km200_active + " " + km200_polling + " secs");
@@ -217,6 +217,8 @@ class EmsEsp extends utils.Adapter {
 		if (this.config.km200_active || this.config.emsesp_active) interval4 = setInterval(function() {read_statistics();}, 60000); // 60 sec
 		if (this.config.eff_active) interval5 = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
+		interval6 = setInterval(function() {ems_poll();}, 60000); // 60 sec
+
 	}
 
 	/**
@@ -228,7 +230,8 @@ class EmsEsp extends utils.Adapter {
 			// Here you must clear all timeouts or intervals that may still be active
 			// clearTimeout(timeout1);
 			// ...
-			clearInterval(interval1);clearInterval(interval2);clearInterval(interval3);clearInterval(interval4);clearInterval(interval5);
+			clearInterval(interval1);clearInterval(interval2);clearInterval(interval3);
+			clearInterval(interval4);clearInterval(interval5);clearInterval(interval6);
 			callback();
 		} catch (e) {
 			callback();
@@ -461,6 +464,7 @@ async function init_statistics() {
 		}
 	});
 }
+
 
 async function syslog_server() {
 
@@ -699,7 +703,33 @@ async function syslog_server() {
 		.catch(err => {})
 }
 
+async function ems_poll() {
+	for (let i=0;i < own_states.length;i++){
+		if (own_states[i].polling) {
+			let telegram = "0B ";
+			if (own_states[i].src == "10") telegram += "90 "; 
+			if (own_states[i].src == "08") telegram += "88 ";
 
+			if (own_states[i].type.length > 2) {
+				telegram += "FF "; 
+				telegram += own_states[i].offset + " ";
+				telegram += own_states[i].bytes + " ";
+				telegram += own_states[i].type.substr(0,2) + " ";
+				telegram += own_states[i].type.substr(2,2) + " ";
+			} else {
+				telegram += own_states[i].type + " ";
+				telegram += own_states[i].offset + " ";
+				telegram += own_states[i].bytes ;
+			}
+			//adapter.log.info(telegram);
+
+			var url = "http://ems-esp/api/system/send ";
+        
+			try {var response = await ems_put(url,telegram,ems_token);}
+			catch (error) { console.log(error);}
+		}
+	}
+}
 
 
 
@@ -957,10 +987,23 @@ async function init_states_emsesp(version) {
 	}
 
 	if (data != "Invalid") {
-		const devices = JSON.parse(data).Devices;
-		const status = JSON.parse(data).Status;
-		const system = JSON.parse(data).System;
-		const network = JSON.parse(data).Network;
+
+		let devices = {}, status = {}, system = {}, network = {};
+		try {
+			devices = JSON.parse(data).Devices;
+			status = JSON.parse(data).Status;
+			system = JSON.parse(data).System;
+			adapter.log.info("ems-esp-version identified:" + system.version);
+		}
+		catch(error) {adapter.log.error("*** error can't read system information " + error)};
+
+		try { 
+			network = JSON.parse(data).Network;
+			for (const [key, value] of Object.entries(network)) {
+				if (typeof value !== "object") write_state("esp."+key,value,"");
+			}
+		}
+		catch (error) {}
 
 		for (const [key, value] of Object.entries(status)) {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
@@ -970,9 +1013,6 @@ async function init_states_emsesp(version) {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
-		//for (const [key, value] of Object.entries(network)) {
-		//	if (typeof value !== "object") write_state("esp."+key,value,"");
-		//}
 
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != undefined) {
@@ -1089,10 +1129,22 @@ async function ems_read(version) {
 	await sleep(ems_http_wait);
 
 	if (data != "Invalid") {
-		const devices = JSON.parse(data).Devices;
-		const status = JSON.parse(data).Status;
-		const system = JSON.parse(data).System;
-		const network = JSON.parse(data).Network;
+		let devices = {}, status = {}, system = {}, network = {};
+		try {
+			devices = JSON.parse(data).Devices;
+			status = JSON.parse(data).Status;
+			system = JSON.parse(data).System;
+		}
+		catch(error) {adapter.log.error("*** error can't read system information")};
+
+		try { 
+			network = JSON.parse(data).Network;
+			for (const [key, value] of Object.entries(network)) {
+				if (typeof value !== "object") write_state("esp."+key,value,"");
+			}
+		}
+		catch (error) {}
+
 
 		for (const [key, value] of Object.entries(status)) {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
@@ -1102,9 +1154,6 @@ async function ems_read(version) {
 			if (typeof value !== "object") write_state("esp."+key,value,"");
 		}
 
-		for (const [key, value] of Object.entries(network)) {
-			if (typeof value !== "object") write_state("esp."+key,value,"");
-		}
 
 		for (let i=0; i < devices.length; i++) {
 			if (devices[i].handlers != undefined) {

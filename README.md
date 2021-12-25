@@ -65,7 +65,7 @@ Nevertheless obsolete datafields are not deleted automatically by the adapter. T
 
 ## Changelog
 
-### 0.9.8
+### 0.9.8 and 0.9.9
 * Supporting Dallas Sensors on ems-esp gateway
 
 ### 0.9.7
