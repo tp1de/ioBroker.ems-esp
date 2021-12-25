@@ -1,4 +1,4 @@
-// Specialized tsconfig for type-checking js files
+// Specialized tsconfig for type-checking js files 
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {},
