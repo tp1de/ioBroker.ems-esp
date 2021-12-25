@@ -1376,7 +1376,8 @@ async function read_km200structure() {
 		}
 	}
 
-}
+} 
+
 
 async function write_ownstate(statename,value,own) {
 	const obj={_id:statename,type:"state",common:{},native:{}};
