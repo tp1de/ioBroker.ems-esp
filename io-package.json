@@ -135,7 +135,7 @@
     "database": "iobroker",
     "km200_structure": false,
     "eff_active": false,
-    "eff20": 109.5,
+    "eff20": 109.4,
     "eff25": 109.3,
     "eff30": 108.3,
     "eff35": 108,
