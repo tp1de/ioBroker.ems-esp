@@ -113,7 +113,7 @@
       {
         "js-controller": ">=2.0.0"
       }
-    ],
+    ]
   },
   "native": {
     "control_file": "*",
