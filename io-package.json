@@ -113,8 +113,7 @@
       {
         "js-controller": ">=2.0.0"
       }
-    ],
-    "installedFrom": "tp1de/ioBroker.ems-esp#ae63b6203209165d17ef5b9fbb4a8737f7758244"
+    ]
   },
   "native": {
     "control_file": "*",
