@@ -3,7 +3,11 @@
 
 systemDictionary = {
 	"ems-esp adapter settings": {
-		"en": "Adapter settings for ems-esp",
+		"en": "adapter settings for ems-esp",
+		"de": "Adaptereinstellungen für ems-esp"
+	},
+	"Main settings":{
+		"en": "adapter settings for ems-esp",
 		"de": "Adaptereinstellungen für ems-esp"
 	},
 	"Additional settings": {
