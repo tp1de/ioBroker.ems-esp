@@ -734,15 +734,15 @@ async function ems_poll() {
 
 
 function hexToSignedInt(hex) {
-    if (hex.length % 2 != 0) {
-        hex = "0" + hex;
-    }
-    let num = parseInt(hex, 16);
-    let maxVal = Math.pow(2, hex.length / 2 * 8);
-    if (num > maxVal / 2 - 1) {
-        num = num - maxVal
-    }
-    return num;
+	if (hex.length % 2 != 0) {
+		hex = "0" + hex;
+	}
+	let num = parseInt(hex, 16);
+	let maxVal = Math.pow(2, hex.length / 2 * 8);
+	if (num > maxVal / 2 - 1) {
+		num = num - maxVal
+	}
+	return num;
 }
 
 
