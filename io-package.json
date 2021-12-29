@@ -5,85 +5,42 @@
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
       "0.9.9": {
-        "en": "Dallas Sensors read as parameter",
-        "de": "Dallas Sensoren Lesen als Parameter"
-      },
-      "0.9.8": {
-        "en": "Dallas Sensors supported",
-        "de": "Dallas Sensoren werden unterstützt"
-      },
-      "0.9.7": {
-        "en": "Fixes for IP Adresses ",
-        "de": "Korrekturen für falsche IP-Adressen"
-      },
-      "0.9.6": {
-        "en": "Fixes for switchpoint writes ",
-        "de": "Korrekturen für das Schreiben der Zeitprogramme"
-      },
-      "0.9.5": {
-        "en": "Adjustments for different Enum formats in API V3",
-        "de": "Anpassungen für unterschiedliche Enum Formate in API V3"
-      },
-      "0.9.4": {
-        "en": "Support now for old ESP8266 EMS-ESP gateways (API V2) and new ESP32 with API V3",
-        "de": "Unterstützung für alte ESP8266 EMS-ESP gateways (API V2) und neue ESP32 mit API V3"
-      },
-      "0.9.3": {
-        "en": "API polling as parameter",
-        "de": "API polling as parameter"
-      },
-      "0.9.2": {
-        "en": "Adjustments for enum formats",
-        "de": "Adjustments for enum formats"
-      },
-      "0.9.1": {
-        "en": "Adjustments for boolean formats",
-        "de": "Adjustments for boolean formats"
-      },
-      "0.9.0": {
-        "en": "Rest API V3 - js-controller 3.x and influxdb support and heating demand",
-        "de": "Rest API V3 - js-controller 3.x and influxdb support and heating demand"
-      },
-      "0.8.0": {
-        "en": "Rest API V3 - js-controller 3.x and influxdb support",
-        "de": "Rest API V3 - js-controller 3.x and influxdb support"
-      },
-      "0.7.5": {
-        "en": "Rest API V3 - js-controller 3.x",
-        "de": "Rest API V3 - js-controller 3.x"
-      },
-      "0.7.0": {
-        "en": "Test version Rest API V3",
-        "de": "Rest API V3 Test"
-      },
-      "0.6.4": {
-        "en": "Prepare Rest Api V3",
-        "de": "Rest Api V3 Vorbereitung"
-      },
-      "0.6.3": {
-        "en": "password encryption",
-        "de": "Kennwort Verschlüsselung"
-      },
-      "0.6.2": {
-        "en": "Select all km200 entries without cs file",
-        "de": "Lesen aller km200 Datenpunkte ohne csv File"
-      },
-      "0.6.1": {
-        "en": "new parameters & selection of ems or km200 device structure",
-        "de": "Neue Parameter und Wahl zwischen EMS- oder km200-Anlagenstruktur"
-      },
-      "0.6.0": {
-        "en": "first tested working release",
-        "de": "Erste getestete Version"
+        "en": "prepare for ioBroker repository",
+        "de": "Vorbereitung für das ioBroker-Repository",
+        "ru": "подготовить репозиторий ioBroker",
+        "pt": "prepare-se para o repositório ioBroker",
+        "nl": "bereid je voor op de ioBroker-repository",
+        "fr": "préparer le référentiel ioBroker",
+        "it": "prepararsi per il repository ioBroker",
+        "es": "prepararse para el repositorio de ioBroker",
+        "pl": "przygotuj się na repozytorium ioBroker",
+        "zh-cn": "准备 ioBroker 存储库"
       }
+ 
     },
     "titleLang": {
       "en": "EMS-ESP (ems-esp & km200)",
-      "de": "EMS-ESP (ems-esp & km200)"
+      "de": "EMS-ESP (ems-esp & km200)",
+      "ru": "EMS-ESP (ems-esp и km200)",
+      "pt": "EMS-ESP (ems-esp & km200)",
+      "nl": "EMS-ESP (ems-esp & km200)",
+      "fr": "EMS-ESP (EMS-ESP & km200)",
+      "it": "EMS-ESP (ems-esp e km200)",
+      "es": "EMS-ESP (ems-esp y km200)",
+      "pl": "EMS-ESP (ems-esp i km200)",
+      "zh-cn": "EMS-ESP (ems-esp & km200)"
     },
     "desc": {
       "en": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger.",
-      "de": "EMS (Energy Management System) based equipment from manufacturers like Bosch, Buderus, Nefit, Junkers, Worcester and Sieger."
+      "de": "EMS (Energy Management System) basierte Geräte von Herstellern wie Bosch, Buderus, Nefit, Junkers, Worcester und Sieger.",
+      "ru": "Оборудование на базе EMS (системы управления энергопотреблением) от таких производителей, как Bosch, Buderus, Nefit, Junkers, Worcester и Sieger.",
+      "pt": "Equipamentos baseados em EMS (Sistema de Gerenciamento de Energia) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
+      "nl": "Op EMS (Energy Management System) gebaseerde apparatuur van fabrikanten als Bosch, Buderus, Nefit, Junkers, Worcester en Sieger.",
+      "fr": "Équipements basés sur EMS (Energy Management System) de fabricants tels que Bosch, Buderus, Nefit, Junkers, Worcester et Sieger.",
+      "it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
+      "es": "Equipos basados en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
+      "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
+      "zh-cn": "来自 Bosch、Buderus、Nefit、Junkers、Worcester 和 Sieger 等制造商的基于 EMS（能源管理系统）的设备。" 
     },
     "authors": [
       "Thomas Petrick <tp1degit@gmail.com>"
