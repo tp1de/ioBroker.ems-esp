@@ -67,9 +67,27 @@
     "mode": "daemon",
     "type": "climate-control",
     "compact": true,
+    "materialize": true,
+    "materializeTab": true,
+    "adminTab": {
+        "singleton": true,
+        "name": {
+            "en": "EMS-ESP and KM200 Interface ",
+            "de": "EMS-ESP- und KM200-Schnittstelle",
+            "ru": "EMS-ESP и интерфейс KM200",
+            "pt": "Interface EMS-ESP e KM200",
+            "nl": "EMS-ESP- en KM200-interface",
+            "fr": "Interface EMS-ESP et KM200",
+            "it": "Interfaccia EMS-ESP e KM200",
+            "es": "Interfaz EMS-ESP y KM200",
+            "pl": "Interfejs EMS-ESP i KM200",
+            "zh-cn": "EMS-ESP 和 KM200 接口"
+        },
+        "link": "",
+        "fa-icon": "info"
+    },
     "connectionType": "local",
     "dataSource": "push",
-    "materialize": true,
     "dependencies": [
       {
         "js-controller": ">=2.0.0"
