@@ -409,5 +409,17 @@ systemDictionary = {
 		"es": "eliminar-estados",
 		"pl": "usuwanie stanów",
 		"zh-cn": "删除状态"
+	},
+	"states_undefined": {
+		"en": "create states for undefined telegrams",
+		"de": "States für undefinierte Telegramme erstellen",
+		"ru": "создавать состояния для неопределенных телеграмм",
+		"pt": "criar estados para telegramas indefinidos",
+		"nl": "maak staten voor ongedefinieerde telegrammen",
+		"fr": "créer des états pour les télégrammes non définis",
+		"it": "creare stati per telegrammi non definiti",
+		"es": "crear estados para telegramas indefinidos",
+		"pl": "tworzyć stany dla niezdefiniowanych telegramów",
+		"zh-cn": "为未定义的电报创建状态"
 	}
 };
