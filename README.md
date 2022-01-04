@@ -20,7 +20,7 @@ It can be used for the original Bosch-group gateways or the ems-esp or both in p
 
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-The adapter is tested with latest versions of ESP32 >= v3.2.x and with ESP8266  v2.2.3b0.
+The adapter is tested with latest versions of ESP32 >= v3.3.0 and with ESP8266  v2.2.3b0.
 
 IMPORTANT SETTINGS in EMS-ESP:
 
@@ -60,11 +60,13 @@ Look at the datasheet of your boiler to adjust the efficiency table accordingly.
 A database instance (see above) is needed to calculate the statistics.
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run.
-Nevertheless obsolete datafields are not deleted automatically by the adapter. This has to be done manually !!!
+Nevertheless obsolete datafields are not deleted automatically by the adapter. 
+There is an option to re-build the state-structure by deleting states on adapter re-start (states witf history / db entries are kept)
 
 
 ## Changelog
-
+### 1.0.0 
+* prepare for compact-mode, re-write code 
 ### 0.9.8 and 0.9.9
 * Supporting Dallas Sensors on ems-esp gateway
 
