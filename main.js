@@ -126,7 +126,7 @@ function enable_state(stateid,retention,interval) {
 
 
 async function init_controls() {
-
+	try {
 	await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
 		common: {type: "boolean", name: "optimization of takting time", unit: "", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
@@ -135,12 +135,12 @@ async function init_controls() {
 		common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", role: "value", read: true, write: true}, native: {}});
 	await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
 		common: {type: "number", name: "heating demand from external source", unit: "kW", role: "value", read: true, write: true}, native: {}});
-
+	} catch(e) {}
 }
 
 
 async function init_statistics() {
-	
+	try {
 	await adapter.setObjectNotExistsAsync("statistics.created",{type: "state",
 		common: {type: "boolean", name: "Database (mySQL/InfluxDB) enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
 	adapter.setObjectNotExists("statistics.ems-read",{type: "state",
@@ -174,6 +174,7 @@ async function init_statistics() {
 			adapter.setState("statistics.created", {ack: true, val: true});
 		}
 	});
+	} catch(e) {}
 }
 
 
@@ -254,6 +255,7 @@ async function read_statistics() {
 	if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
 	if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
+	try {
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 	}, function (result) {
 		const count = result.result.length;
@@ -264,12 +266,13 @@ async function read_statistics() {
 		value = Math.round(value*10)/10;
 		adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
 	});
-
+	} catch(e) {}
 }
 
 
 async function stat(db,id,hour,state) {
 	const end = Date.now();
+	try {
 	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
 	}, function (result) {
 		let value = 0;
@@ -280,6 +283,7 @@ async function stat(db,id,hour,state) {
 		if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
 		adapter.setState(state, {ack: true, val: value});
 	});
+	} catch(e) {}
 }
 
 
@@ -298,10 +302,7 @@ async function delete_states_emsesp() {
 
 
 async function sleep(ms) {
-	if (unloaded) return; 
-	let timer;
-	await sleep_(ms);clearTimeout(timer); 
-	return;
-
-	async function sleep_(ms) {return new Promise(resolve => timer=setTimeout(resolve, ms));}	
-}
+    return new Promise(resolve => {
+        setTimeout(() => !unloaded && resolve(), ms);
+    });
+} 
