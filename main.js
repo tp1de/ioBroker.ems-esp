@@ -208,6 +208,7 @@ async function read_efficiency() {
 	}
 
 	await sleep(1000);
+	
 	//adapter.log.info(power+ " "+ temp + " " +tempr);
 	if (power > 0) {
 		if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
@@ -295,7 +296,12 @@ async function delete_states_emsesp() {
 }
 
 
+
 async function sleep(ms) {
 	if (unloaded) return; 
-	else return new Promise(resolve => setTimeout(resolve, ms));
+	let timer;
+	await sleep_(ms);clearTimeout(timer); 
+	return;
+
+	async function sleep_(ms) {return new Promise(resolve => timer=setTimeout(resolve, ms));}	
 }
