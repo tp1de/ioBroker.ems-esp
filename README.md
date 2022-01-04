@@ -118,7 +118,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 ## License
 MIT License
 
-Copyright (c) 2021 Thomas Petrick 
+Copyright (c) 2022 Thomas Petrick <tp1degit@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
