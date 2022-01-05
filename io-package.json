@@ -1,10 +1,10 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "1.0.0": {
+      "1.0.1": {
         "en": "prepare for ioBroker repository",
         "de": "Vorbereitung für das ioBroker-Repository",
         "ru": "подготовить репозиторий ioBroker",

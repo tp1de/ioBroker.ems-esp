@@ -10,7 +10,6 @@
 
 const utils = require("@iobroker/adapter-core");
 const adapterName = require('./package.json').name.split('.').pop();
-const request = require("request");
 
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
@@ -21,9 +20,7 @@ let datafields = [];
 const adapterIntervals = {};
 let own_states = [];
 let adapter, unloaded = false;
-let aliveState, alive = true;
 let db = "sql.0";
-
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -33,12 +30,15 @@ function startAdapter(options) {
 	Object.assign(options, {
 		name: adapterName,
 		unload: function (callback) {
+			K.unload(true);
+			E.unload(true);
+			S.unload(true);
+			unloaded = true;
 			try {
-				unloaded = true;
 				Object.keys(adapterIntervals).forEach(interval => adapter.log.debug("Interval cleared: " + adapterIntervals[interval]));
 				Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-				callback();
-				//setTimeout(callback(), 3000);
+				setTimeout(callback(), 1000);
+				//callback();
 			} catch (e) {
 				callback();
 			}
@@ -79,7 +79,6 @@ if (module && module.parent) {
 async function main () {
 
 	adapter.log.info("start");
-	aliveState = "system.adapter."+adapter.namespace + ".alive";
 	db = adapter.config.database_instance;
 
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
@@ -96,17 +95,16 @@ async function main () {
 	}
 	
 
-	if (adapter.config.emsesp_active) await E.init(adapter,own_states,adapterIntervals);
-	if (adapter.config.km200_active)  await K.init(adapter,utils,adapterIntervals);
+	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
+	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
-	await init_statistics();
+	if (!unloaded) await init_statistics();
 	//await init_controls();
 
-	adapter.subscribeStates("*");
-
-	if (adapter.config.km200_active || adapter.config.emsesp_active) adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
-	if (adapter.config.eff_active) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
-
+	if (!unloaded) adapter.subscribeStates("*");
+	if (!unloaded &&  (adapter.config.km200_active || adapter.config.emsesp_active)) adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
+	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
+	
 }
 
 //--------- functions ---------------------------------------------------------------------------------------------------------
@@ -180,110 +178,120 @@ async function init_statistics() {
 
 
 async function read_efficiency() {
-	let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0;
+	if (!unloaded) {
+		let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0;
 
-	if (adapter.config.emsesp_active && adapter.config.km200_structure){
-		try {
-			adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state != null) power = state.val;} );
-			adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
-			adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
+		if (adapter.config.emsesp_active && adapter.config.km200_structure){
+			try {
+				adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state != null) power = state.val;} );
+				adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
+				adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
+			}
+			catch (err) {adapter.log.error("error read efficiency:"+err);}
 		}
-		catch (err) {adapter.log.error("error read efficiency:"+err);}
-	}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
-		try {
-			adapter.getState("boiler.curburnpow", function (err, state) { if (state != null) power = state.val;} );
-			adapter.getState("boiler.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
-			adapter.getState("boiler.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
+		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
+			try {
+				adapter.getState("boiler.curburnpow", function (err, state) { if (state != null) power = state.val;} );
+				adapter.getState("boiler.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
+				adapter.getState("boiler.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
+			}
+			catch (err) {adapter.log.error("error read efficiency:"+err);}
 		}
-		catch (err) {adapter.log.error("error read efficiency:"+err);}
-	}
 
-	if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-		try {
-			adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state != null) power = state.val;} );
-			adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state != null) temp = state.val;} );
-			tempr = 0;
+		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
+			try {
+				adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state != null) power = state.val;} );
+				adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state != null) temp = state.val;} );
+				tempr = 0;
+			}
+			catch (err) {adapter.log.error("error read efficiency:"+err);}
 		}
-		catch (err) {adapter.log.error("error read efficiency:"+err);}
-	}
 
-	await sleep(1000);
-	
-	//adapter.log.info(power+ " "+ temp + " " +tempr);
-	if (power > 0) {
-		if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
+		await sleep(1000);
+		
+		//adapter.log.info(power+ " "+ temp + " " +tempr);
+		if (power > 0) {
+			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
 
-		tempavg = (temp+tempr) / 2;
-		if (tempavg <= 20) value = adapter.config.eff20;
-		if (tempavg > 20) value = adapter.config.eff25;
-		if (tempavg > 25) value = adapter.config.eff30;
-		if (tempavg > 30) value = adapter.config.eff35;
-		if (tempavg > 35) value = adapter.config.eff40;
-		if (tempavg > 40) value = adapter.config.eff45;
-		if (tempavg > 45) value = adapter.config.eff50;
-		if (tempavg > 50) value = adapter.config.eff55;
-		if (tempavg > 55) value = adapter.config.eff60;
-		if (tempavg > 60) value = adapter.config.eff70;
+			tempavg = (temp+tempr) / 2;
+			if (tempavg <= 20) value = adapter.config.eff20;
+			if (tempavg > 20) value = adapter.config.eff25;
+			if (tempavg > 25) value = adapter.config.eff30;
+			if (tempavg > 30) value = adapter.config.eff35;
+			if (tempavg > 35) value = adapter.config.eff40;
+			if (tempavg > 40) value = adapter.config.eff45;
+			if (tempavg > 45) value = adapter.config.eff50;
+			if (tempavg > 50) value = adapter.config.eff55;
+			if (tempavg > 55) value = adapter.config.eff60;
+			if (tempavg > 60) value = adapter.config.eff70;
+		}
+		adapter.setState("statistics.efficiency", {ack: true, val: value});
 	}
-	adapter.setState("statistics.efficiency", {ack: true, val: value});
 }
 
 
 async function read_statistics() {
 
-	let id = "";
-	const end = Date.now();
+	if (!unloaded) {
+		let id = "";
+		const end = Date.now();
 
-	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.numberOfStarts";}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure === false) {id = adapter.namespace + ".boiler.burnstarts";}
+		if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.numberOfStarts";}
+		if (adapter.config.emsesp_active && adapter.config.km200_structure) {id = adapter.namespace + ".heatSources.hs1.burnstarts";}
+		if (adapter.config.emsesp_active && adapter.config.km200_structure === false) {id = adapter.namespace + ".boiler.burnstarts";}
 
-	stat(db,id,1,"statistics.boiler-starts-1h");
-	stat(db,id,24,"statistics.boiler-starts-24h");
+		stat(db,id,1,"statistics.boiler-starts-1h");
+		stat(db,id,24,"statistics.boiler-starts-24h");
 
-	if (adapter.config.emsesp_active) {
-		id = adapter.namespace + ".boiler.wwstarts";
-		if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
+		if (adapter.config.emsesp_active) {
+			id = adapter.namespace + ".boiler.wwstarts";
+			if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
 
-		stat(db,id,1,"statistics.ww-starts-1h");
-		stat(db,id,24,"statistics.ww-starts-24h");
+			stat(db,id,1,"statistics.ww-starts-1h");
+			stat(db,id,24,"statistics.ww-starts-24h");
+		}
+
+
+		if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
+		if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
+		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
+
+		try {
+		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+		}, function (result) {
+			if (!unloaded) {
+				const count = result.result.length;
+				let on = 0;
+				for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
+				let value = 0;
+				if (count !== 0 && count != undefined) value = on / count * 100;
+				value = Math.round(value*10)/10;
+				adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
+			}
+		});
+		} catch(e) {}
 	}
-
-
-	if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
-	if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
-
-	try {
-	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-	}, function (result) {
-		const count = result.result.length;
-		let on = 0;
-		for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
-		let value = 0;
-		if (count !== 0 && count != undefined) value = on / count * 100;
-		value = Math.round(value*10)/10;
-		adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
-	});
-	} catch(e) {}
 }
 
 
 async function stat(db,id,hour,state) {
 	const end = Date.now();
-	try {
-	adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
-	}, function (result) {
-		let value = 0;
-		const c = result.result.length;
-		if (c == 0) value = 0;
-	    if (c == 1) value = 1;
-		if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
-		if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
-		adapter.setState(state, {ack: true, val: value});
-	});
-	} catch(e) {}
+	if (!unloaded) {
+		try {
+		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
+		}, function (result) {
+			if (!unloaded) {
+				let value = 0;
+				const c = result.result.length;
+				if (c == 0) value = 0;
+				if (c == 1) value = 1;
+				if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
+				if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+				adapter.setState(state, {ack: true, val: value});
+			}
+		});
+		} catch(e) {}
+	}
 }
 
 
