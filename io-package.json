@@ -4,7 +4,7 @@
     "version": "1.0.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "1.0.1": {
+      "1.0.2": {
         "en": "prepare for ioBroker repository",
         "de": "Vorbereitung für das ioBroker-Repository",
         "ru": "подготовить репозиторий ioBroker",

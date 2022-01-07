@@ -65,6 +65,8 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 
 ## Changelog
+### 1.0.2
+* Corrections on km200 energy consumptions 
 ### 1.0.1 
 * prepare for compact-mode, re-write code 
 ### 0.9.8 and 0.9.9
