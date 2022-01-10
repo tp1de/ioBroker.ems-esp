@@ -92,12 +92,11 @@ async function main () {
 		} catch(error) {}
 		S.init(adapter,own_states,adapterIntervals);
 	}
-
+	if (!unloaded && adapter.config.statistics) await init_statistics();
 
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
-	if (!unloaded && adapter.config.statistics) await init_statistics();
 	//await init_controls();
 
 	if (!unloaded) adapter.subscribeStates("*");
