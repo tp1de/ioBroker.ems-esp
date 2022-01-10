@@ -68,7 +68,6 @@
     "type": "climate-control",
     "compact": true,
     "materialize": true,
-    "materializeTab": true,
     "connectionType": "local",
     "dataSource": "push",
     "dependencies": [
