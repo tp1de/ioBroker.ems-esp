@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 /*global systemDictionary:true */
 "use strict";
 
@@ -217,6 +218,18 @@ systemDictionary = {
 		"es": "registros de energía (solo km200)",
 		"pl": "zapisy energii (tylko km200)",
 		"zh-cn": "能量记录（仅限km200）"
+	},
+	"statistics" :{
+		  "en": "Create statistics on  boiler starts",
+		  "de": "Statistiken zu Kesselstarts erstellen",
+		  "ru": "Создавать статистику запусков котла",
+		  "pt": "Criar estatísticas sobre o início da caldeira",
+		  "nl": "Statistieken maken over het starten van de ketel",
+		  "fr": "Créer des statistiques sur les démarrages de chaudières",
+		  "it": "Crea statistiche sugli avviamenti della caldaia",
+		  "es": "Crear estadísticas sobre arranques de calderas",
+		  "pl": "Tworzenie statystyk startów kotła",
+		  "zh-cn": "创建锅炉启动的统计信息"
 	},
 	"database_instance": {
 		"en": "db instance (mySQL or influxdb) for recordings & statistics",

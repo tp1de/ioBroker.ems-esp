@@ -4,21 +4,21 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v1.0.1
+ * ems-esp adapter version v1.0.3
  *
 */
 
 const utils = require("@iobroker/adapter-core");
-const adapterName = require('./package.json').name.split('.').pop();
+const adapterName = require("./package.json").name.split(".").pop();
 
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
 const S = require("./lib/syslog.js");
 
-let datafields = [];
+const datafields = [];
 
 const adapterIntervals = {};
-let own_states = [];
+const own_states = [];
 let adapter, unloaded = false;
 let db = "sql.0";
 
@@ -50,14 +50,14 @@ function startAdapter(options) {
 			if (state && state.from !== "system.adapter."+adapter.namespace) {
 				// The state was changed but not from own adapter
 				adapter.getObject(id, function (err, obj) {
-					// check if state was writable 
+					// check if state was writable
 					if (obj.common.write) {
-						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);	
-						else E.state_change(id,state,obj);						
+						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
+						else E.state_change(id,state,obj);
 					}
 					else adapter.log.warn("state is not writable:"+id);
 				});
-			} 
+			}
 		}
 	});
 	adapter = new utils.Adapter(options);
@@ -81,7 +81,7 @@ async function main () {
 	db = adapter.config.database_instance;
 
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
-	
+
 	if (adapter.config.syslog == true) {
 		// Read own States for syslog-analysis
 		try {
@@ -92,18 +92,21 @@ async function main () {
 		} catch(error) {}
 		S.init(adapter,own_states,adapterIntervals);
 	}
-	
+
 
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
-	if (!unloaded) await init_statistics();
+	if (!unloaded && adapter.config.statistics) await init_statistics();
 	//await init_controls();
 
 	if (!unloaded) adapter.subscribeStates("*");
-	if (!unloaded &&  (adapter.config.km200_active || adapter.config.emsesp_active)) adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
+
+	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
+		adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
+	}
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
-	
+
 }
 
 //--------- functions ---------------------------------------------------------------------------------------------------------
@@ -124,53 +127,53 @@ function enable_state(stateid,retention,interval) {
 
 async function init_controls() {
 	try {
-	await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
-		common: {type: "boolean", name: "optimization of takting time", unit: "", role: "value", read: true, write: true}, native: {}});
-	await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
-		common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", role: "value", read: true, write: true}, native: {}});
-	await adapter.setObjectNotExistsAsync("controls.minimum_boilerpower",{type: "state",
-		common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", role: "value", read: true, write: true}, native: {}});
-	await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
-		common: {type: "number", name: "heating demand from external source", unit: "kW", role: "value", read: true, write: true}, native: {}});
+		await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
+			common: {type: "boolean", name: "optimization of takting time", unit: "", role: "value", read: true, write: true}, native: {}});
+		await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
+			common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", role: "value", read: true, write: true}, native: {}});
+		await adapter.setObjectNotExistsAsync("controls.minimum_boilerpower",{type: "state",
+			common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", role: "value", read: true, write: true}, native: {}});
+		await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
+			common: {type: "number", name: "heating demand from external source", unit: "kW", role: "value", read: true, write: true}, native: {}});
 	} catch(e) {}
 }
 
 
 async function init_statistics() {
 	try {
-	await adapter.setObjectNotExistsAsync("statistics.created",{type: "state",
-		common: {type: "boolean", name: "Database (mySQL/InfluxDB) enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.ems-read",{type: "state",
-		common: {type: "number", name: "ems read time for polling", unit: "seconds", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.km200-read",{type: "state",
-		common: {type: "number", name: "km200 read time for polling", unit: "seconds",  role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.boiler-on-1h",{type: "state",
-		common: {type: "number", name: "percentage boiler on per hour", unit: "%", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.boiler-starts-1h",{type: "state",
-		common: {type: "number", name: "boiler starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.boiler-starts-24h",{type: "state",
-		common: {type: "number", name: "boiler starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.ww-starts-1h",{type: "state",
-		common: {type: "number", name: "ww starts per hour (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.ww-starts-24h",{type: "state",
-		common: {type: "number", name: "ww starts per 24 hours (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
-	adapter.setObjectNotExists("statistics.efficiency",{type: "state",
-		common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
-	
+		await adapter.setObjectNotExistsAsync("statistics.created",{type: "state",
+			common: {type: "boolean", name: "Database (mySQL/InfluxDB) enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.ems-read",{type: "state",
+			common: {type: "number", name: "ems read time for polling", unit: "seconds", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.km200-read",{type: "state",
+			common: {type: "number", name: "km200 read time for polling", unit: "seconds",  role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.boiler-on-1h",{type: "state",
+			common: {type: "number", name: "percentage boiler on per hour", unit: "%", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.boiler-starts-1h",{type: "state",
+			common: {type: "number", name: "boiler starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.boiler-starts-24h",{type: "state",
+			common: {type: "number", name: "boiler starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.ww-starts-1h",{type: "state",
+			common: {type: "number", name: "ww starts per hour (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.ww-starts-24h",{type: "state",
+			common: {type: "number", name: "ww starts per 24 hours (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObjectNotExists("statistics.efficiency",{type: "state",
+			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 
-	adapter.getState("statistics.created", function(err, state) {
-		if(state == null || state.val === false) {
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,60);
-			if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts",86400,60);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
-			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
-			if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus",86400,15);
-			adapter.setState("statistics.created", {ack: true, val: true});
-		}
-	});
+
+		adapter.getState("statistics.created", function(err, state) {
+			if(state == null || state.val === false) {
+				if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
+				if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,60);
+				if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts",86400,60);
+				if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
+				if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
+				if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
+				if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
+				if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus",86400,15);
+				adapter.setState("statistics.created", {ack: true, val: true});
+			}
+		});
 	} catch(e) {}
 }
 
@@ -207,7 +210,7 @@ async function read_efficiency() {
 		}
 
 		await sleep(1000);
-		
+
 		//adapter.log.info(power+ " "+ temp + " " +tempr);
 		if (power > 0) {
 			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
@@ -224,6 +227,8 @@ async function read_efficiency() {
 			if (tempavg > 55) value = adapter.config.eff60;
 			if (tempavg > 60) value = adapter.config.eff70;
 		}
+		await adapter.setObjectNotExists("statistics.efficiency",{type: "state",
+			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 		adapter.setState("statistics.efficiency", {ack: true, val: value});
 	}
 }
@@ -256,18 +261,18 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
 		try {
-		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-		}, function (result) {
-			if (!unloaded) {
-				const count = result.result.length;
-				let on = 0;
-				for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
-				let value = 0;
-				if (count !== 0 && count != undefined) value = on / count * 100;
-				value = Math.round(value*10)/10;
-				adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
-			}
-		});
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+			}, function (result) {
+				if (!unloaded) {
+					const count = result.result.length;
+					let on = 0;
+					for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
+					let value = 0;
+					if (count !== 0 && count != undefined) value = on / count * 100;
+					value = Math.round(value*10)/10;
+					adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
+				}
+			});
 		} catch(e) {}
 	}
 }
@@ -277,18 +282,18 @@ async function stat(db,id,hour,state) {
 	const end = Date.now();
 	if (!unloaded) {
 		try {
-		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
-		}, function (result) {
-			if (!unloaded) {
-				let value = 0;
-				const c = result.result.length;
-				if (c == 0) value = 0;
-				if (c == 1) value = 1;
-				if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
-				if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
-				adapter.setState(state, {ack: true, val: value});
-			}
-		});
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
+			}, function (result) {
+				if (!unloaded) {
+					let value = 0;
+					const c = result.result.length;
+					if (c == 0) value = 0;
+					if (c == 1) value = 1;
+					if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
+					if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+					adapter.setState(state, {ack: true, val: value});
+				}
+			});
 		} catch(e) {}
 	}
 }
@@ -300,7 +305,7 @@ async function delete_states_emsesp() {
 	const pattern = adapter.namespace + ".*";
 	const states = await adapter.getStatesAsync(pattern);
 
-	for (let id in states) {
+	for (const id in states) {
 		const obj = await adapter.getObjectAsync(id);
 		if (obj.common.custom == undefined) await adapter.delObjectAsync(id);
 	}
@@ -309,7 +314,7 @@ async function delete_states_emsesp() {
 
 
 async function sleep(ms) {
-    return new Promise(resolve => {
-        setTimeout(() => !unloaded && resolve(), ms);
-    });
-} 
+	return new Promise(resolve => {
+		setTimeout(() => !unloaded && resolve(), ms);
+	});
+}

@@ -1,10 +1,10 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "1.0.2": {
+      "1.0.3": {
         "en": "prepare for ioBroker repository",
         "de": "Vorbereitung für das ioBroker-Repository",
         "ru": "подготовить репозиторий ioBroker",
@@ -92,6 +92,7 @@
     "ems_polling": 60,
     "ems_dallas":false,
     "recordings": false,
+    "statistics": false,
     "database_instance": "sql.0",
     "database": "iobroker",
     "km200_structure": false,
