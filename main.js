@@ -53,7 +53,10 @@ function startAdapter(options) {
 					// check if state was writable
 					if (obj.common.write) {
 						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
-						else E.state_change(id,state,obj);
+						else {
+							if (obj.native.ems_api == "raw") S.state_change(id,state,obj);
+							else E.state_change(id,state,obj);
+						}
 					}
 					else adapter.log.warn("state is not writable:"+id);
 				});
