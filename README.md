@@ -45,12 +45,11 @@ For these systems and where this data is available the powerconsumption statisti
 The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. 
 SQL or InfluxDB History adapter need to be installed and active to use this option.
 
-*** This is only tested yet for mySQL and InfluxDB v1.8 databases ***
-*** For InfluxDB the Retention Policy has to be set to a minimum of 170 weeks ***
+*** This is only tested yet for mySQL and InfluxDB databases ***
+*** For InfluxDB < V2 the retention policy has to be set to a minimum of 170 weeks ***
     (alter retention policy global on iobroker duration 170w;)
 
-This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
-Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter or Grafana.
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter or Grafana.
 
 Since v0.9.0 there are statistics states within the objects. The polling cycle processing time for ems-esp and/or km200 gateway reads and state processing are shown. Additionally the number of boiler starts per hour / 24 hours and the boiler utilization per hour (0-100%) are available.
 
@@ -61,10 +60,14 @@ A database instance (see above) is needed to calculate the statistics.
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run.
 Nevertheless obsolete datafields are not deleted automatically by the adapter. 
-There is an option to re-build the state-structure by deleting states on adapter re-start (states witf history / db entries are kept)
+There is an option to re-build the state-structure by deleting states on adapter re-start (states with history / db entries are kept)
 
 
 ## Changelog
+### 1.0.4
+* Prepare for ioBroker repository 
+### 1.0.3
+* Corrections within statistics module
 ### 1.0.2
 * Corrections on km200 energy consumptions 
 ### 1.0.1 
