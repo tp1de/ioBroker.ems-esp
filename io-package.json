@@ -1,7 +1,7 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
       "1.0.4": {
