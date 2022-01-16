@@ -20,7 +20,8 @@ It can be used for the original Bosch-group gateways or the ems-esp or both in p
 
 The ems-esp adapter reads values from the hardware EMS-bus with installed ems-esp hardware and the adapter is using the REST API V3 interface. The Enable API write commands settings within ems-esp has to be enabled for writing values.
 
-The adapter is tested with latest versions of ESP32 >= v3.3.0 and with ESP8266  v2.2.3b0.
+The adapter is tested with latest versions of ESP32 >= v3.3.0. 
+API V2 (ESP 8266) is not supported officially anymore, but might still work.
 
 IMPORTANT SETTINGS in EMS-ESP:
 
@@ -64,6 +65,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 
 ## Changelog
+### **WORK IN PROGRESS**
+Adjustments for non-UTF-8 json data from ems-esp
+Recalculate km200 recordings based on actual no of samples vs. theroretical max. samples
 ### 1.0.4
 * Prepare for ioBroker repository 
 ### 1.0.3
@@ -74,51 +78,25 @@ There is an option to re-build the state-structure by deleting states on adapter
 * prepare for compact-mode, re-write code 
 ### 0.9.8 and 0.9.9
 * Supporting Dallas Sensors on ems-esp gateway
-
 ### 0.9.7
 * Fixes for IP-adresses
-
 ### 0.9.6
 * Corrections for writing switchpoints and array-data back to km200
-
 ### 0.9.5
 * Corrections for different enum-formats in API V3 (text and numbers)
-
 ### 0.9.4
 * Support for old ESP8266 EMS-ESP gateways and API V2 and new ESP32 with API V3
-
 ### 0.9.3
 * Polling time for EMS-ESP and KM200 is now a parameter
-
 ### 0.9.2
 * Adjust for enum formats
-
 ### 0.9.1
 * Adjust for different boolean formats
-
 ### 0.9.0
 * Rework Adapter for some statistics and prepare for heating control (under development)
-
 ### 0.8.0
 * REST API V3 and js-controller v3.3.x and support of influxdb for recordings
 
-### 0.7.5
-* REST API V3 and js-controller v3.3.x
-
-### 0.7.0
-* REST API V3
-
-### 0.6.3
-* Encrypted password
-
-### 0.6.2
-* Select all km200 datapoints without csv file (*)
-
-### 0.6.1
-* New parameters & selection to use km200 or ems-esp device tree structure
-
-### 0.6.0
-* 1st working adapter with rest api
 
 ## License
 MIT License
