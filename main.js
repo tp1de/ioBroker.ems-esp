@@ -38,7 +38,6 @@ function startAdapter(options) {
 				Object.keys(adapterIntervals).forEach(interval => adapter.log.debug("Interval cleared: " + adapterIntervals[interval]));
 				Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
 				callback();
-				//setTimeout(callback(), 1000);
 			} catch (e) {
 				callback();
 			}
