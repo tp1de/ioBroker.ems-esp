@@ -69,7 +69,7 @@
     "compact": true,
     "materialize": true,
     "connectionType": "local",
-    "stopTimeout" : 2500,
+    "stopTimeout" : 1000,
     "dataFolder": "ems-esp.%INSTANCE%",
     "dataSource": "push",
     "dependencies": [

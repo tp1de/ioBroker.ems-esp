@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v1.0.3
+ * ems-esp adapter version v1.0.4
  *
 */
 
@@ -37,8 +37,8 @@ function startAdapter(options) {
 			try {
 				Object.keys(adapterIntervals).forEach(interval => adapter.log.debug("Interval cleared: " + adapterIntervals[interval]));
 				Object.keys(adapterIntervals).forEach(interval => clearInterval(adapterIntervals[interval]));
-				setTimeout(callback(), 1000);
-				//callback();
+				callback();
+				//setTimeout(callback(), 1000);
 			} catch (e) {
 				callback();
 			}
@@ -213,9 +213,6 @@ async function read_efficiency() {
 			catch (err) {adapter.log.error("error read efficiency:"+err);}
 		}
 
-		await sleep(1000);
-
-		//adapter.log.info(power+ " "+ temp + " " +tempr);
 		if (power > 0) {
 			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
 
@@ -313,12 +310,4 @@ async function delete_states_emsesp() {
 		const obj = await adapter.getObjectAsync(id);
 		if (obj.common.custom == undefined) await adapter.delObjectAsync(id);
 	}
-}
-
-
-
-async function sleep(ms) {
-	return new Promise(resolve => {
-		setTimeout(() => !unloaded && resolve(), ms);
-	});
 }
