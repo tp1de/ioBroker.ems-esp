@@ -32,7 +32,7 @@ function startAdapter(options) {
 		unload: function (callback) {
 			K.unload(true);
 			E.unload(true);
-			S.unload(true);
+			if (adapter.config.syslog) S.unload(true);
 			unloaded = true;
 			try {
 				Object.keys(adapterIntervals).forEach(interval => adapter.log.debug("Interval cleared: " + adapterIntervals[interval]));
