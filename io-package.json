@@ -16,19 +16,7 @@
         "pl": "pierwsza wersja stabilnego repozytorium ioBroker",
         "zh-cn": "稳定 ioBroker 存储库的第一个版本"
         }
-      },
-      "1.0.4": {
-        "en": "prepare for ioBroker repository",
-        "de": "Vorbereitung für das ioBroker-Repository",
-        "ru": "подготовить репозиторий ioBroker",
-        "pt": "prepare-se para o repositório ioBroker",
-        "nl": "bereid je voor op de ioBroker-repository",
-        "fr": "préparer le référentiel ioBroker",
-        "it": "prepararsi per il repository ioBroker",
-        "es": "prepararse para el repositorio de ioBroker",
-        "pl": "przygotuj się na repozytorium ioBroker",
-        "zh-cn": "准备 ioBroker 存储库"
-      } 
+      }
     },
     "titleLang": {
       "en": "EMS-ESP (ems-esp & km200)",
