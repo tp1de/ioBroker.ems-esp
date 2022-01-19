@@ -69,6 +69,8 @@
     "compact": true,
     "materialize": true,
     "connectionType": "local",
+    "stopTimeout" : 2500,
+    "dataFolder": "ems-esp.%INSTANCE%",
     "dataSource": "push",
     "dependencies": [
       {
@@ -87,7 +89,7 @@
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
     "ems_http_wait": 100,
-    "ems_poll_wait": 500,
+    "ems_poll_wait": 300,
     "ems_token": "",
     "ems_polling": 60,
     "ems_dallas":false,

@@ -65,7 +65,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 
 ## Changelog
-### **WORK IN PROGRESS**
+### **WORK IN PROGRESS** 
 Adjustments for non-UTF-8 json data from ems-esp
 Recalculate km200 recordings based on actual no of samples vs. theroretical max. samples
 ### 1.0.4
