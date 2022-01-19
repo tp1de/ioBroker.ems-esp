@@ -47,10 +47,7 @@ function startAdapter(options) {
 			main();
 		},
 		stateChange:  (id, state) => {
-			//if (state && state.from !== "system.adapter."+adapter.namespace) {
 			if (state && !state.ack) {
-
-				// The state was changed but not from own adapter
 				adapter.getObject(id, function (err, obj) {
 					// check if state was writable
 					if (obj.common.write) {
