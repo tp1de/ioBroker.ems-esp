@@ -68,6 +68,8 @@ There is an option to re-build the state-structure by deleting states on adapter
 ### **WORK IN PROGRESS** 
 Adjustments for non-UTF-8 json data from ems-esp
 Recalculate km200 recordings based on actual no of samples vs. theroretical max. samples
+### 1.0.5
+* first stable version for ioBroker repository 
 ### 1.0.4
 * Prepare for ioBroker repository 
 ### 1.0.3

@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.5": {
+        "en": "first version for stable ioBroker repository",
+        "de": "erste Version für stabiles ioBroker-Repository",
+        "ru": "первая версия стабильного репозитория ioBroker",
+        "pt": "primeira versão para repositório ioBroker estável",
+        "nl": "eerste versie voor stabiele ioBroker-repository",
+        "fr": "première version pour le référentiel ioBroker stable",
+        "it": "prima versione per repository ioBroker stabile",
+        "es": "primera versión para el repositorio estable de ioBroker",
+        "pl": "pierwsza wersja stabilnego repozytorium ioBroker",
+        "zh-cn": "稳定 ioBroker 存储库的第一个版本"
+        }
+      },
       "1.0.4": {
         "en": "prepare for ioBroker repository",
         "de": "Vorbereitung für das ioBroker-Repository",
@@ -15,8 +28,7 @@
         "es": "prepararse para el repositorio de ioBroker",
         "pl": "przygotuj się na repozytorium ioBroker",
         "zh-cn": "准备 ioBroker 存储库"
-      }
- 
+      } 
     },
     "titleLang": {
       "en": "EMS-ESP (ems-esp & km200)",
