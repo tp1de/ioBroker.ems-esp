@@ -6,7 +6,7 @@
     "news": {
       "1.0.6": {
         "en": "test",
-        "de": "test",
+        "de": "test"
         },
       "1.0.5": {
         "en": "first version for stable ioBroker repository",
