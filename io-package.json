@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.6": {
+        "en": "test",
+        "de": "test",
+        },
       "1.0.5": {
         "en": "first version for stable ioBroker repository",
         "de": "erste Version für stabiles ioBroker-Repository",
@@ -70,14 +74,26 @@
     "connectionType": "local",
     "stopTimeout" : 1000,
     "dataFolder": "ems-esp.%INSTANCE%",
-    "dataSource": "push",
+    "dataSource": "poll",
     "dependencies": [
       {
-        "js-controller": ">=2.0.0"
+        "js-controller": ">=3.0.0"
+      }
+    ],
+    "globalDependencies": [
+      {
+          "admin": ">=4.0.9"
       }
     ]
   },
+  "encryptedNative": [
+    "password"
+  ],
+  "protectedNative": [
+    "password"
+  ],
   "native": {
+    "password": "",
     "control_file": "*",
     "km200_active": false,
     "km200_ip": "http://192.168.178.x",
