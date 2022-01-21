@@ -1,13 +1,9 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.6",
+    "version": "1.0.5",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
-      "1.0.6": {
-        "en": "test",
-        "de": "test"
-        },
       "1.0.5": {
         "en": "first version for stable ioBroker repository",
         "de": "erste Version für stabiles ioBroker-Repository",
