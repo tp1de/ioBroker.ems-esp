@@ -65,40 +65,54 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 
 ## Changelog
-### **WORK IN PROGRESS** 
+### 1.0.6 (2022-01-21) 
 Adjustments for non-UTF-8 json data from ems-esp
 Recalculate km200 recordings based on actual no of samples vs. theroretical max. samples
+
 ### 1.0.5
-* first stable version for ioBroker repository 
+* first stable version for ioBroker repository
+
 ### 1.0.4
-* Prepare for ioBroker repository 
+* Prepare for ioBroker repository
+
 ### 1.0.3
 * Corrections within statistics module
+
 ### 1.0.2
-* Corrections on km200 energy consumptions 
+* Corrections on km200 energy consumptions
+
 ### 1.0.1 
-* prepare for compact-mode, re-write code 
+* prepare for compact-mode, re-write code
+
 ### 0.9.8 and 0.9.9
 * Supporting Dallas Sensors on ems-esp gateway
+
 ### 0.9.7
 * Fixes for IP-adresses
+
 ### 0.9.6
 * Corrections for writing switchpoints and array-data back to km200
+
 ### 0.9.5
 * Corrections for different enum-formats in API V3 (text and numbers)
+
 ### 0.9.4
 * Support for old ESP8266 EMS-ESP gateways and API V2 and new ESP32 with API V3
+
 ### 0.9.3
 * Polling time for EMS-ESP and KM200 is now a parameter
+
 ### 0.9.2
 * Adjust for enum formats
+
 ### 0.9.1
 * Adjust for different boolean formats
+
 ### 0.9.0
 * Rework Adapter for some statistics and prepare for heating control (under development)
+
 ### 0.8.0
 * REST API V3 and js-controller v3.3.x and support of influxdb for recordings
-
 
 ## License
 MIT License
@@ -122,4 +136,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
-# iobroker.ems-esp" 
+# iobroker.ems-esp"

@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.6": {
+        "en": "Adjustments for non-UTF-8 json data from ems-esp\nRecalculate km200 recordings based on actual no of samples vs. theroretical max. samples",
+        "de": "Anpassungen für Nicht-UTF-8-json-Daten von ems-esp\nBerechnen Sie km200-Aufzeichnungen basierend auf der tatsächlichen Anzahl von Proben im Vergleich zum theoretischen Maximum. Proben",
+        "ru": "Корректировки для данных json, отличных от UTF-8, из ems-esp.\nПересчитайте записи km200 на основе фактического количества образцов по сравнению с теоретическим максимальным значением. образцы",
+        "pt": "Ajustes para dados json não UTF-8 do ems-esp\nRecalcular os registros de km200 com base no número real de amostras vs. máx. teórico. amostras",
+        "nl": "Aanpassingen voor niet-UTF-8 json-gegevens van ems-esp\nHerbereken km200-opnames op basis van het werkelijke aantal monsters versus theoretische max. monsters",
+        "fr": "Ajustements pour les données json non-UTF-8 d'ems-esp\nRecalculer les enregistrements km200 en fonction du nombre réel d'échantillons par rapport au max théorique. échantillons",
+        "it": "Adeguamenti per dati json non UTF-8 da ems-esp\nRicalcola le registrazioni di km200 in base al numero effettivo di campioni rispetto al massimo teorico. campioni",
+        "es": "Ajustes para datos json no UTF-8 de ems-esp\nVuelva a calcular los registros de km200 en función del número real de muestras frente al máx. teórico. muestras",
+        "pl": "Poprawki dla danych json innych niż UTF-8 z ems-esp\nPrzelicz km200 nagrań na podstawie rzeczywistej liczby próbek vs. teoretyczne max. próbki",
+        "zh-cn": "来自 ems-esp 的非 UTF-8 json 数据的调整\n根据实际样本数与理论最大值重新计算 km200 记录。样品"
+      },
       "1.0.5": {
         "en": "first version for stable ioBroker repository",
         "de": "erste Version für stabiles ioBroker-Repository",
@@ -15,7 +27,7 @@
         "es": "primera versión para el repositorio estable de ioBroker",
         "pl": "pierwsza wersja stabilnego repozytorium ioBroker",
         "zh-cn": "稳定 ioBroker 存储库的第一个版本"
-        }
+      }
     },
     "titleLang": {
       "en": "EMS-ESP (ems-esp & km200)",
@@ -39,7 +51,7 @@
       "it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
       "es": "Equipos basados en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
       "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
-      "zh-cn": "来自 Bosch、Buderus、Nefit、Junkers、Worcester 和 Sieger 等制造商的基于 EMS（能源管理系统）的设备。" 
+      "zh-cn": "来自 Bosch、Buderus、Nefit、Junkers、Worcester 和 Sieger 等制造商的基于 EMS（能源管理系统）的设备。"
     },
     "authors": [
       "Thomas Petrick <tp1degit@gmail.com>"
@@ -68,7 +80,7 @@
     "compact": true,
     "materialize": true,
     "connectionType": "local",
-    "stopTimeout" : 1000,
+    "stopTimeout": 1000,
     "dataFolder": "ems-esp.%INSTANCE%",
     "dataSource": "poll",
     "dependencies": [
@@ -78,7 +90,7 @@
     ],
     "globalDependencies": [
       {
-          "admin": ">=4.0.9"
+        "admin": ">=4.0.9"
       }
     ]
   },
@@ -103,7 +115,7 @@
     "ems_poll_wait": 300,
     "ems_token": "",
     "ems_polling": 60,
-    "ems_dallas":false,
+    "ems_dallas": false,
     "recordings": false,
     "statistics": false,
     "database_instance": "sql.0",
