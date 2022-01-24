@@ -68,9 +68,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.0.8 (2022-01-24)
 * Adjustments for ems-esp firmware 3.4 part 2
+
 ### 1.0.7 (2022-01-24)
 * Adjustments for ems-esp firmware 3.4
 

@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.8": {
+        "en": "Adjustments for ems-esp firmware 3.4 part 2",
+        "de": "Anpassungen für ems-esp Firmware 3.4 Teil 2",
+        "ru": "Настройки для прошивки ems-esp 3.4 часть 2",
+        "pt": "Ajustes para firmware ems-esp 3.4 parte 2",
+        "nl": "Aanpassingen voor ems-esp firmware 3.4 deel 2",
+        "fr": "Ajustements pour ems-esp firmware 3.4 partie 2",
+        "it": "Adeguamenti per il firmware ems-esp 3.4 parte 2",
+        "es": "Ajustes para ems-esp firmware 3.4 parte 2",
+        "pl": "Regulacje dla oprogramowania układowego ems-esp 3.4 część 2",
+        "zh-cn": "EMS-ESP 固件 3.4 第 2 部分的调整"
+      },
       "1.0.7": {
         "en": "Adjustments for ems-esp firmware 3.4",
         "de": "Anpassungen für ems-esp Firmware 3.4",
