@@ -4,7 +4,7 @@
 //"esversion":"6";
 
 /*
- * ems-esp adapter version v1.0.4
+ * ems-esp adapter
  *
 */
 
