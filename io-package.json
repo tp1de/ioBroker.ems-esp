@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.7": {
+        "en": "Adjustments for ems-esp firmware 3.4",
+        "de": "Anpassungen für ems-esp Firmware 3.4",
+        "ru": "Настройки для прошивки ems-esp 3.4",
+        "pt": "Ajustes para firmware ems-esp 3.4",
+        "nl": "Aanpassingen voor ems-esp firmware 3.4",
+        "fr": "Ajustements pour ems-esp firmware 3.4",
+        "it": "Regolazioni per il firmware ems-esp 3.4",
+        "es": "Ajustes para ems-esp firmware 3.4",
+        "pl": "Regulacje dla oprogramowania układowego ems-esp 3.4",
+        "zh-cn": "EMS-ESP 固件 3.4 的调整"
+      },
       "1.0.6": {
         "en": "Adjustments for non-UTF-8 json data from ems-esp\nRecalculate km200 recordings based on actual no of samples vs. theroretical max. samples",
         "de": "Anpassungen für Nicht-UTF-8-json-Daten von ems-esp\nBerechnen Sie km200-Aufzeichnungen basierend auf der tatsächlichen Anzahl von Proben im Vergleich zum theoretischen Maximum. Proben",
