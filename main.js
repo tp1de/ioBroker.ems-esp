@@ -93,8 +93,8 @@ async function main () {
 		} catch(error) {}
 		S.init(adapter,own_states,adapterIntervals);
 	}
+	
 	if (!unloaded && adapter.config.statistics) await init_statistics();
-
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
@@ -103,7 +103,7 @@ async function main () {
 	if (!unloaded) adapter.subscribeStates("*");
 
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
-		adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
+		adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
 	}
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
@@ -160,7 +160,12 @@ async function init_statistics() {
 		adapter.setObjectNotExists("statistics.efficiency",{type: "state",
 			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
 
+	} catch(e) {}
+}
 
+
+async function init_statistics2() {
+	try {
 		adapter.getState("statistics.created", function(err, state) {
 			if(state == null || state.val === false) {
 				if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
