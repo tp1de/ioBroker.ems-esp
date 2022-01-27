@@ -25,8 +25,8 @@ API V2 (ESP 8266) is not supported officially anymore, but might still work.
 
 IMPORTANT SETTINGS in EMS-ESP:
 
-*** API V2: MQTT Settings have to be boolean format 1/0 ! ***
-*** API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number ***
+* API V2: MQTT Settings have to be boolean format 1/0 ! ***
+* API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number ***
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original EMS-ESP device view is kept: boiler, thermostat, mixer etc. When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all datafields (states) are within same location within ioBroker's object structure.
 
@@ -68,6 +68,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* New code to avoid mysql duplicate key errors
+* Further adjustments for ems firmware 3.4
 ### 1.0.8 (2022-01-24)
 * Adjustments for ems-esp firmware 3.4 part 2
 
