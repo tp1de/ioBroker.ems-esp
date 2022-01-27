@@ -13,7 +13,8 @@
 
 ## ems-esp and km200 / IP-inside adapter 
 
-The adapter supports an interface towards the heating systems from Bosch Group using EMS or EMS+ bus. (Buderus / Junkers /Netfit etc). 
+The adapter supports an interface towards the heating systems from Bosch Group using EMS or EMS+ bus. 
+(Buderus / Junkers /Netfit etc). 
 
 It can interface towards the heating system with use of Web-API calls toward:
 * km200, km100, km50 or IP-inside (from Bosch Group)
