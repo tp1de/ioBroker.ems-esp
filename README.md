@@ -11,17 +11,19 @@
 
 **Tests:** ![Test and Release](https://github.com/tp1de/ioBroker.ems-esp/workflows/Test%20and%20Release/badge.svg)
 
-## km200 and ems-esp adapter 
+## ems-esp and km200 / IP-inside adapter 
 
-The adapter supports an interface towards the heating systems from Bosch Group (Buderus / Junkers /Netfit etc). It can interface towards the heating system with use or Web-API calls toward:
+The adapter supports an interface towards the heating systems from Bosch Group using EMS or EMS+ bus. (Buderus / Junkers /Netfit etc). 
+
+It can interface towards the heating system with use of Web-API calls toward:
 * km200, km100, km50 or IP-inside (from Bosch Group)
 * ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. The old ESP8266 gateways are partially supported as well.
 
-The ems-esp adapter can read and write data to the ems-bus. 
+The ems-esp adapter can read and write data to the ems-bus steering all heating components. 
 It can be used either for the original Bosch-group gateways or the ems-esp or both in parallel.
 
-The adapter is tested with latest versions of ESP32 >= v3.3.0. 
-API V2 (ESP 8266) is not supported officially anymore, but might still work.
+The adapter is tested for the ems-esp gateway with latest firmware versions of ESP32 >= v3.3.0. 
+Old systems with an ESP 8266 are not supported officially anymore, but might still work.
 
 IMPORTANT SETTINGS in EMS-ESP:
 
@@ -45,8 +47,8 @@ Most modern heating systems have an ip-inside gateway and support energy statist
 * The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. 
 SQL or InfluxDB History adapter need to be installed and active to use this option.
 * This is only tested yet for mySQL and InfluxDB databases
-* For InfluxDB < V2 the retention policy has to be set to a minimum of 170 weeks
-    (alter retention policy global on iobroker duration 170w;)
+* For InfluxDB < V2 the retention policy has to be set to a minimum of 170 weeks. 
+* (alter retention policy global on iobroker duration 170w;)
 
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using charting tools e.g. the Flot Charts adapter or Grafana.
 
