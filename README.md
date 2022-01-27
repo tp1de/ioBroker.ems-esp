@@ -11,9 +11,11 @@
 
 **Tests:** ![Test and Release](https://github.com/tp1de/ioBroker.ems-esp/workflows/Test%20and%20Release/badge.svg)
 
-## ems-esp adapter for ioBroker
+## km200 and ems-esp adapter 
 
-The adapter supports the heating systems from Bosch Group (Buderus / Junkers /Netfit etc) as supported by the iobroker km200 adapter and the ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. The old ESP8266 gateways are now suppored as well.
+The adapter supports an interface towards the heating systems from Bosch Group (Buderus / Junkers /Netfit etc). It can interface towards the heating system with use or wer-api calls toward:
+* km200, km50, km100 or IP-inside (from Bosch Group)
+* ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. The old ESP8266 gateways are partially suppored as well.
 
 The ems-esp adapter can read and write data from the km200 gateway and/or the ems-esp hardware. 
 It can be used for the original Bosch-group gateways or the ems-esp or both in parallel when an IP-gateway like km200 / ip inside is available.
@@ -46,8 +48,8 @@ For these systems and where this data is available the powerconsumption statisti
 The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. 
 SQL or InfluxDB History adapter need to be installed and active to use this option.
 
-*** This is only tested yet for mySQL and InfluxDB databases ***
-*** For InfluxDB < V2 the retention policy has to be set to a minimum of 170 weeks ***
+* This is only tested yet for mySQL and InfluxDB databases
+* For InfluxDB < V2 the retention policy has to be set to a minimum of 170 weeks
     (alter retention policy global on iobroker duration 170w;)
 
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using e.g. the Flot Charts adapter or Grafana.
