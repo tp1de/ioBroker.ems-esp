@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.10": {
+        "en": "Further adjustments for ems firmware 3.4 and error corrections 1.0.9",
+        "de": "Weitere Anpassungen für ems Firmware 3.4 und Fehlerkorrekturen 1.0.9",
+        "ru": "Дальнейшие корректировки для прошивки ems 3.4 и исправления ошибок 1.0.9",
+        "pt": "Ajustes adicionais para firmware ems 3.4 e correções de erros 1.0.9",
+        "nl": "Verdere aanpassingen voor ems firmware 3.4 en foutcorrecties 1.0.9",
+        "fr": "Autres ajustements pour le firmware ems 3.4 et les corrections d'erreurs 1.0.9",
+        "it": "Ulteriori regolazioni per il firmware ems 3.4 e correzioni di errori 1.0.9",
+        "es": "Más ajustes para ems firmware 3.4 y correcciones de errores 1.0.9",
+        "pl": "Dalsze poprawki dla oprogramowania układowego ems 3.4 i poprawki błędów 1.0.9",
+        "zh-cn": "对 ems 固件 3.4 和错误更正 1.0.9 的进一步调整"
+      },
       "1.0.9": {
         "en": "New code to avoid mysql duplicate key errors\nFurther adjustments for ems firmware 3.4",
         "de": "Neuer Code, um mysql-Fehler durch doppelte Schlüssel zu vermeiden\nWeitere Anpassungen für ems Firmware 3.4",
