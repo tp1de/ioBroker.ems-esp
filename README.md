@@ -73,6 +73,8 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Further adjustments for ems firmware 3.4 and error corrections 1.0.9
 ### 1.0.9 (2022-01-27)
 * New code to avoid mysql duplicate key errors
 * Further adjustments for ems firmware 3.4
