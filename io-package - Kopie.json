@@ -140,8 +140,7 @@
       {
         "admin": ">=4.0.9"
       }
-    ],
-    "installedFrom": "tp1de/ioBroker.ems-esp"
+    ]
   },
   "encryptedNative": [
     "password"
@@ -155,7 +154,6 @@
     "km200_active": false,
     "km200_ip": "http://192.168.178.x",
     "km200_polling": 300,
-    "km200_entry": "",
     "gateway_pw": "",
     "private_pw": "",
     "emsesp_active": true,

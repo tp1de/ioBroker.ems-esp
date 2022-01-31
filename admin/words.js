@@ -171,6 +171,18 @@ systemDictionary = {
 		"pl": "odpytywanie w sek",
 		"zh-cn": "秒轮询"
 	},
+	"km200_entry": {
+		"en": "new km200 entry-point",
+		"de": "neuer km200 Einstiegspunkt",
+		"ru": "new km200 entry-point",
+		"pt": "new km200 entry-point",
+		"nl": "new km200 entry-point",
+		"fr": "new km200 entry-point",
+		"it": "new km200 entry-point",
+		"es": "new km200 entry-point",
+		"pl": "new km200 entry-point",
+		"zh-cn": "new km200 entry-point"
+	},
 	"control_file": {
 		"en": "csv-file for km200 | empty: no km200 data    *: read all km200 fields",
 		"de": "csv-Datei für km200 | leer: keine km200-Daten *: alle km200-Felder lesen",
