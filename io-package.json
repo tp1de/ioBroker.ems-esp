@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.11": {
+        "en": "support for KM200 HRV (ventilation)\ncorrections on recordings for 1st day of month",
+        "de": "Unterstützung für KM200 HRV (Lüftung)\nKorrekturen an Aufzeichnungen für den 1. Tag des Monats",
+        "ru": "опора для KM200 HRV (вентиляция)\nисправления по записям за 1 число месяца",
+        "pt": "suporte para KM200 HRV (ventilação)\ncorreções nas gravações para o 1º dia do mês",
+        "nl": "ondersteuning voor KM200 HRV (ventilatie)\ncorrecties op opnames voor de 1e dag van de maand",
+        "fr": "prise en charge du KM200 HRV (ventilation)\ncorrections sur les enregistrements du 1er jour du mois",
+        "it": "supporto per KM200 HRV (ventilazione)\ncorrezioni sulle registrazioni per il 1° giorno del mese",
+        "es": "soporte para KM200 HRV (ventilación)\ncorrecciones en grabaciones para el 1er día del mes",
+        "pl": "wsparcie dla KM200 HRV (wentylacja)\nkorekty nagrań na 1 dzień miesiąca",
+        "zh-cn": "支持 KM200 HRV（通风）\n每月第一天的录音更正"
+      },
       "1.0.10": {
         "en": "Further adjustments for ems firmware 3.4 and error corrections 1.0.9",
         "de": "Weitere Anpassungen für ems Firmware 3.4 und Fehlerkorrekturen 1.0.9",
