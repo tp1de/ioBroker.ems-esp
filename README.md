@@ -17,7 +17,7 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 (Buderus / Junkers /Netfit etc). 
 
 It can interface towards the heating system with use of Web-API calls toward:
-* km200, km100, km50 or IP-inside (from Bosch Group)
+* km200, km200 hrv, km100, km50 or IP-inside (from Bosch Group) 
 * ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. The old ESP8266 gateways are partially supported as well.
 
 The ems-esp adapter can read and write data to the ems-bus steering all heating components. 
