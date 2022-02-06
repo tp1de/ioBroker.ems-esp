@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.12": {
+        "en": "update statistics states",
+        "de": "Statistikstatus aktualisieren",
+        "ru": "состояние статистики обновления",
+        "pt": "atualizar estados de estatísticas",
+        "nl": "update statistieken staten",
+        "fr": "mettre à jour les états des statistiques",
+        "it": "aggiornare gli stati delle statistiche",
+        "es": "actualizar estados de estadísticas",
+        "pl": "zaktualizuj stany statystyk",
+        "zh-cn": "更新统计状态"
+      },
       "1.0.11": {
         "en": "support for KM200 HRV (ventilation)\ncorrections on recordings for 1st day of month",
         "de": "Unterstützung für KM200 HRV (Lüftung)\nKorrekturen an Aufzeichnungen für den 1. Tag des Monats",
@@ -75,18 +87,6 @@
         "es": "Ajustes para datos json no UTF-8 de ems-esp\nVuelva a calcular los registros de km200 en función del número real de muestras frente al máx. teórico. muestras",
         "pl": "Poprawki dla danych json innych niż UTF-8 z ems-esp\nPrzelicz km200 nagrań na podstawie rzeczywistej liczby próbek vs. teoretyczne max. próbki",
         "zh-cn": "来自 ems-esp 的非 UTF-8 json 数据的调整\n根据实际样本数与理论最大值重新计算 km200 记录。样品"
-      },
-      "1.0.5": {
-        "en": "first version for stable ioBroker repository",
-        "de": "erste Version für stabiles ioBroker-Repository",
-        "ru": "первая версия стабильного репозитория ioBroker",
-        "pt": "primeira versão para repositório ioBroker estável",
-        "nl": "eerste versie voor stabiele ioBroker-repository",
-        "fr": "première version pour le référentiel ioBroker stable",
-        "it": "prima versione per repository ioBroker stabile",
-        "es": "primera versión para el repositorio estable de ioBroker",
-        "pl": "pierwsza wersja stabilnego repozytorium ioBroker",
-        "zh-cn": "稳定 ioBroker 存储库的第一个版本"
       }
     },
     "titleLang": {
