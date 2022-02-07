@@ -1,11 +1,23 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.0.13": {
+        "en": "last tested version for old ems-esp ESP8266 with API V2.\nNo support for future adapter versions anymore - please upgrade to ESP32.\nsupport for KM200 HRV (ventilation)\ncorrections for km200 recordings and statistics module\nprepare for ems-esp firmware 3.4",
+        "de": "letzte getestete Version für altes ems-esp ESP8266 mit API V2.\nKeine Unterstützung für zukünftige Adapterversionen mehr - bitte upgraden Sie auf ESP32.\nUnterstützung für KM200 HRV (Lüftung)\nKorrekturen für km200 Aufzeichnungen und Statistikmodul\nVorbereitung für ems-esp Firmware 3.4",
+        "ru": "последняя протестированная версия для старого ems-esp ESP8266 с API V2.\nПоддержка будущих версий адаптера больше не поддерживается — обновите до ESP32.\nопора для KM200 HRV (вентиляция)\nисправления для модуля записи и статистики km200\nподготовиться к прошивке ems-esp 3.4",
+        "pt": "última versão testada para o antigo ems-esp ESP8266 com API V2.\nNão há mais suporte para versões futuras do adaptador - atualize para o ESP32.\nsuporte para KM200 HRV (ventilação)\ncorreções para o módulo de registros e estatísticas do km200\nprepare-se para o firmware ems-esp 3.4",
+        "nl": "laatst geteste versie voor oude ems-esp ESP8266 met API V2.\nGeen ondersteuning meer voor toekomstige adapterversies - upgrade naar ESP32.\nondersteuning voor KM200 HRV (ventilatie)\ncorrecties voor km200 registraties en statistieken module\nbereid je voor op ems-esp firmware 3.4",
+        "fr": "dernière version testée pour l'ancien ems-esp ESP8266 avec API V2.\nPlus de support pour les futures versions de l'adaptateur - veuillez passer à ESP32.\nprise en charge du KM200 HRV (ventilation)\ncorrections pour les enregistrements km200 et module de statistiques\npréparer pour ems-esp firmware 3.4",
+        "it": "ultima versione testata per il vecchio ems-esp ESP8266 con API V2.\nNessun supporto per le versioni future dell'adattatore: eseguire l'aggiornamento a ESP32.\nsupporto per KM200 HRV (ventilazione)\ncorrezioni per il modulo registrazioni e statistiche km200\nprepararsi per il firmware ems-esp 3.4",
+        "es": "última versión probada para el antiguo ems-esp ESP8266 con API V2.\nYa no es compatible con futuras versiones de adaptadores; actualice a ESP32.\nsoporte para KM200 HRV (ventilación)\ncorrecciones para km200 registros y modulo de estadisticas\nprepararse para ems-esp firmware 3.4",
+        "pl": "ostatnia testowana wersja dla starego ems-esp ESP8266 z API V2.\nBrak wsparcia dla przyszłych wersji adapterów — uaktualnij do ESP32.\nwsparcie dla KM200 HRV (wentylacja)\nkorekty dla modułu rejestracji i statystyk km200\nprzygotuj się na firmware ems-esp 3.4",
+        "zh-cn": "带有 API V2 的旧 ems-esp ESP8266 的最后测试版本。\n不再支持未来的适配器版本 - 请升级到 ESP32。\n支持 KM200 HRV（通风）\nkm200 记录和统计模块的更正\n准备 ems-esp 固件 3.4"
+      },
       "1.0.12": {
-        "en": "update statistics states" ,
+        "en": "update statistics states",
         "de": "Statistikstatus aktualisieren",
         "ru": "состояние статистики обновления",
         "pt": "atualizar estados de estatísticas",
@@ -75,18 +87,6 @@
         "es": "Ajustes para ems-esp firmware 3.4",
         "pl": "Regulacje dla oprogramowania układowego ems-esp 3.4",
         "zh-cn": "EMS-ESP 固件 3.4 的调整"
-      },
-      "1.0.6": {
-        "en": "Adjustments for non-UTF-8 json data from ems-esp\nRecalculate km200 recordings based on actual no of samples vs. theroretical max. samples",
-        "de": "Anpassungen für Nicht-UTF-8-json-Daten von ems-esp\nBerechnen Sie km200-Aufzeichnungen basierend auf der tatsächlichen Anzahl von Proben im Vergleich zum theoretischen Maximum. Proben",
-        "ru": "Корректировки для данных json, отличных от UTF-8, из ems-esp.\nПересчитайте записи km200 на основе фактического количества образцов по сравнению с теоретическим максимальным значением. образцы",
-        "pt": "Ajustes para dados json não UTF-8 do ems-esp\nRecalcular os registros de km200 com base no número real de amostras vs. máx. teórico. amostras",
-        "nl": "Aanpassingen voor niet-UTF-8 json-gegevens van ems-esp\nHerbereken km200-opnames op basis van het werkelijke aantal monsters versus theoretische max. monsters",
-        "fr": "Ajustements pour les données json non-UTF-8 d'ems-esp\nRecalculer les enregistrements km200 en fonction du nombre réel d'échantillons par rapport au max théorique. échantillons",
-        "it": "Adeguamenti per dati json non UTF-8 da ems-esp\nRicalcola le registrazioni di km200 in base al numero effettivo di campioni rispetto al massimo teorico. campioni",
-        "es": "Ajustes para datos json no UTF-8 de ems-esp\nVuelva a calcular los registros de km200 en función del número real de muestras frente al máx. teórico. muestras",
-        "pl": "Poprawki dla danych json innych niż UTF-8 z ems-esp\nPrzelicz km200 nagrań na podstawie rzeczywistej liczby próbek vs. teoretyczne max. próbki",
-        "zh-cn": "来自 ems-esp 的非 UTF-8 json 数据的调整\n根据实际样本数与理论最大值重新计算 km200 记录。样品"
       }
     },
     "titleLang": {
