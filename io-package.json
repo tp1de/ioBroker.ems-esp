@@ -152,8 +152,7 @@
       {
         "admin": ">=4.0.9"
       }
-    ],
-    "installedFrom": "tp1de/ioBroker.ems-esp"
+    ]
   },
   "encryptedNative": [
     "password"
