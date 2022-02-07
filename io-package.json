@@ -5,7 +5,7 @@
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
       "1.0.12": {
-        "en": "update statistics states",
+        "en": "update statistics states" ,
         "de": "Statistikstatus aktualisieren",
         "ru": "состояние статистики обновления",
         "pt": "atualizar estados de estatísticas",
