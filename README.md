@@ -74,7 +74,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.0.14 (2022-02-07)
 * adjust paths in io-package.json
 
 ### 1.0.13 (2022-02-07)
