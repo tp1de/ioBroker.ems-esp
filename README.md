@@ -74,6 +74,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* adjust paths in io-package.json
+
 ### 1.0.13 (2022-02-07)
 * last tested version for old ems-esp ESP8266 with API V2.
 * No support for future adapter versions anymore - please upgrade to ESP32.
