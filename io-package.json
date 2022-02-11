@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.1.1": {
+        "en": "Improve tests on km200 ip-address and passwords",
+        "de": "Verbesserte Tests auf km200 IP-Adresse und Passwörtern",
+        "ru": "Улучшить тесты на ip-адрес и пароли km200",
+        "pt": "Melhore os testes no endereço IP e senhas do km200",
+        "nl": "Verbeter tests op km200 ip-adres en wachtwoorden",
+        "fr": "Améliorer les tests sur l'adresse IP et les mots de passe km200",
+        "it": "Migliora i test su indirizzo IP e password km200",
+        "es": "Mejorar las pruebas en la dirección IP y contraseñas de km200",
+        "pl": "Popraw testy adresu ip km200 i haseł",
+        "zh-cn": "改进对 km200 ip 地址和密码的测试"
+      },
       "1.1.0": {
         "en": "last tested version for old ems-esp ESP8266 with API V2.\nsupport for KM200 HRV (ventilation)\ncorrections for km200 recordings and statistics module\nprepare for ems-esp firmware 3.4",
         "de": "letzte getestete Version für altes ems-esp ESP8266 mit API V2.\nUnterstützung für KM200 HRV (Lüftung)\nKorrekturen für km200 Aufzeichnungen und Statistikmodul\nVorbereitung für ems-esp Firmware 3.4",
@@ -75,18 +87,6 @@
         "es": "Más ajustes para ems firmware 3.4 y correcciones de errores 1.0.9",
         "pl": "Dalsze poprawki dla oprogramowania układowego ems 3.4 i poprawki błędów 1.0.9",
         "zh-cn": "对 ems 固件 3.4 和错误更正 1.0.9 的进一步调整"
-      },
-      "1.0.9": {
-        "en": "New code to avoid mysql duplicate key errors\nFurther adjustments for ems firmware 3.4",
-        "de": "Neuer Code, um mysql-Fehler durch doppelte Schlüssel zu vermeiden\nWeitere Anpassungen für ems Firmware 3.4",
-        "ru": "Новый код, чтобы избежать дублирующих ошибок ключей mysql\nДальнейшие корректировки для прошивки ems 3.4",
-        "pt": "Novo código para evitar erros de chave duplicada do mysql\nAjustes adicionais para firmware ems 3.4",
-        "nl": "Nieuwe code om fouten met dubbele mysql-sleutels te voorkomen\nVerdere aanpassingen voor ems firmware 3.4",
-        "fr": "Nouveau code pour éviter les erreurs de clé en double mysql\nAutres ajustements pour ems firmware 3.4",
-        "it": "Nuovo codice per evitare errori di chiave duplicata mysql\nUlteriori modifiche per il firmware ems 3.4",
-        "es": "Nuevo código para evitar errores de clave duplicada de mysql\nMás ajustes para el firmware ems 3.4",
-        "pl": "Nowy kod, aby uniknąć błędów zduplikowanych kluczy mysql\nDalsze poprawki dla oprogramowania układowego ems 3.4",
-        "zh-cn": "避免mysql重复键错误的新代码\nems固件3.4的进一步调整"
       }
     },
     "titleLang": {

@@ -74,7 +74,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.1.1 (2022-02-11)
 * Improve tests on km200 ip-address and passwords
 
 ### 1.1.0 (2022-02-07)
