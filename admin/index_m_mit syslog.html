@@ -35,23 +35,6 @@
 		var secret;
 		var devices = [];
 
-		function encrypt(key, value) {
-			var result = '';
-			for (var i = 0; i < value.length; ++i) {
-				result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-			}
-			return result;
-		}
-
-		function decrypt(key, value) {
-			var result = '';
-			for (var i = 0; i < value.length; ++i) {
-				result += String.fromCharCode(key[i % key.length].charCodeAt(0) ^ value.charCodeAt(i));
-			}
-			return result;
-		}
-
-
 		function loadHelper(settings, onChange) {
 
 			// example: select elements with id=key and class=value and insert value
@@ -80,20 +63,32 @@
 			if (M) M.updateTextFields();
 		}
 
-		// This will be called by the admin adapter when the settings page loads
 		function load(settings, onChange) {
-			socket.emit('getObject', 'system.config', function (err, obj) {
-				secret = (obj.native ? obj.native.secret : '') || 'Zgfr56gFe87jJOM';
-				loadHelper(settings, onChange);
+			// example: select elements with id=key and class=value and insert value
+			if (!settings) return;
+			$('.value').each(function () {
+				var $key = $(this);
+				var id = $key.attr('id');
+				if ($key.attr('type') === 'checkbox') {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.prop('checked', settings[id])
+						.on('change', () => onChange())
+						;
+				} else {
+					// do not call onChange direct, because onChange could expect some arguments
+					$key.val(settings[id])
+						.on('change', () => onChange())
+						.on('keyup', () => onChange())
+						;
+				}
 			});
 
 			devices    = settings.devices    || [];
 			onChange(false);
 			values2table('devices', devices, onChange);
-
+			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+			if (M) M.updateTextFields();
 		}
-
-
 
 		// This will be called by the admin adapter when the user presses the save button
 		function save(callback) {
@@ -101,23 +96,18 @@
 			var obj = {};
 			$('.value').each(function () {
 				var $this = $(this);
-				var id = $this.attr('id')
 				if ($this.attr('type') === 'checkbox') {
 					obj[$this.attr('id')] = $this.prop('checked');
 				} else if ($this.attr('type') === 'number') {
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
-					var value = $this.val();
-					if (id === 'private_pw') {
-						value = encrypt(secret, value);
-					}
-					obj[$this.attr('id')] = value;
+					obj[$this.attr('id')] = $this.val();
 				}
 			});
-
 			obj.devices = table2values('devices');
 			callback(obj);
 		}
+
 	</script>
 
 </head>
@@ -288,12 +278,10 @@
 					<input type="number" class="value" id="eff70" />
 					<label for="eff70" class="translate">eff70</label>
 				</div>
-
 			</div>
-
-
-
 		</div>
+
+
 
 		<div id="tab-advanced" class="col s12 page">
 
@@ -353,11 +341,9 @@
 					</div>
 				</div>
 			</div>
-
-			
-
-
 		</div>
+
+		
 
 	</div>
 

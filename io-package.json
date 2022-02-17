@@ -155,10 +155,10 @@
     ]
   },
   "encryptedNative": [
-    "password"
+    "private_pw"
   ],
   "protectedNative": [
-    "password"
+    "private_pw"
   ],
   "native": {
     "password": "",
@@ -168,7 +168,6 @@
     "km200_polling": 300,
     "km200_entry": "",
     "gateway_pw": "",
-    "private_pw": "",
     "emsesp_active": true,
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
