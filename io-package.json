@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.2.0": {
+        "en": "Adjust for js-controller v4\nprivate password encryption by admin instead of own code (if necessary please re-enter pw)",
+        "de": "Anpassen für js-controller v4\nprivate Passwortverschlüsselung durch Admin statt eigenem Code (ggf. bitte pw neu eingeben)",
+        "ru": "Настройка для js-контроллера v4\nшифрование приватного пароля администратором вместо собственного кода (при необходимости повторно введите pw)",
+        "pt": "Ajuste para js-controller v4\ncriptografia de senha privada pelo administrador em vez do próprio código (se necessário, digite novamente pw)",
+        "nl": "Aanpassen voor js-controller v4\nprivé wachtwoord encryptie door admin in plaats van eigen code (indien nodig gelieve opnieuw pw in te voeren)",
+        "fr": "Ajuster pour js-controller v4\ncryptage du mot de passe privé par l'administrateur au lieu de son propre code (si nécessaire, veuillez ressaisir pw)",
+        "it": "Regola per js-controller v4\ncrittografia della password privata da parte dell'amministratore invece del proprio codice (se necessario reinserire pw)",
+        "es": "Ajuste para js-controller v4\nCifrado de contraseña privada por administrador en lugar de código propio (si es necesario, vuelva a ingresar pw)",
+        "pl": "Dostosuj do kontrolera js v4\nprywatne szyfrowanie hasła przez administratora zamiast własnego kodu (w razie potrzeby proszę ponownie wpisać pw)",
+        "zh-cn": "调整 js-controller v4\n由管理员而不是自己的密码加密的私人密码（如有必要请重新输入密码）"
+      },
       "1.1.1": {
         "en": "Improve tests on km200 ip-address and passwords",
         "de": "Verbesserte Tests auf km200 IP-Adresse und Passwörtern",
@@ -75,18 +87,6 @@
         "es": "soporte para KM200 HRV (ventilación)\ncorrecciones en grabaciones para el 1er día del mes",
         "pl": "wsparcie dla KM200 HRV (wentylacja)\nkorekty nagrań na 1 dzień miesiąca",
         "zh-cn": "支持 KM200 HRV（通风）\n每月第一天的录音更正"
-      },
-      "1.0.10": {
-        "en": "Further adjustments for ems firmware 3.4 and error corrections 1.0.9",
-        "de": "Weitere Anpassungen für ems Firmware 3.4 und Fehlerkorrekturen 1.0.9",
-        "ru": "Дальнейшие корректировки для прошивки ems 3.4 и исправления ошибок 1.0.9",
-        "pt": "Ajustes adicionais para firmware ems 3.4 e correções de erros 1.0.9",
-        "nl": "Verdere aanpassingen voor ems firmware 3.4 en foutcorrecties 1.0.9",
-        "fr": "Autres ajustements pour le firmware ems 3.4 et les corrections d'erreurs 1.0.9",
-        "it": "Ulteriori regolazioni per il firmware ems 3.4 e correzioni di errori 1.0.9",
-        "es": "Más ajustes para ems firmware 3.4 y correcciones de errores 1.0.9",
-        "pl": "Dalsze poprawki dla oprogramowania układowego ems 3.4 i poprawki błędów 1.0.9",
-        "zh-cn": "对 ems 固件 3.4 和错误更正 1.0.9 的进一步调整"
       }
     },
     "titleLang": {
