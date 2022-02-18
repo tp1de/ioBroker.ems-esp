@@ -74,8 +74,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.2.1 (2022-02-18)
 * Adjust for js-controller v4 - part 2
 * private password encryption by admin instead of own code (if necessary please re-enter pw)
 
