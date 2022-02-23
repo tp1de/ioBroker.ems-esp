@@ -231,6 +231,54 @@ systemDictionary = {
 		"pl": "zapisy energii (tylko km200)",
 		"zh-cn": "能量记录（仅限km200）"
 	},
+	"recordings_format": {
+	  	"en": "recordings  plain states format without db",
+		"de": "Recordings State-Format ohne Datenbank",
+		"ru": "записи в формате простого состояния без db",
+		"pt": "gravações em formato de estados simples sem db",
+		"nl": "opnames zonder db",
+		"fr": "enregistrements format plain states sans db",
+		"it": "registrazioni in formato stati semplici senza db",
+		"es": "grabaciones formato de estados simples sin db",
+		"pl": "nagrania w formacie stanów czystych bez db",
+		"zh-cn": "录音无 db 的普通状态格式"
+	},
+	"array of values": {
+		"en": "array of values",
+		"de": "Array von Werten",
+		"ru": "массив значений",
+		"pt": "matriz de valores",
+		"nl": "reeks waarden",
+		"fr": "tableau de valeurs",
+		"it": "matrice di valori",
+		"es": "matriz de valores",
+		"pl": "tablica wartości",
+		"zh-cn": "值数组"
+	  },
+	  "array of values with ts": {
+		"en": "array of values with ts",
+		"de": "Array von Werten mit ts",
+		"ru": "массив значений с ts",
+		"pt": "array de valores com ts",
+		"nl": "reeks waarden met ts",
+		"fr": "tableau de valeurs avec ts",
+		"it": "matrice di valori con ts",
+		"es": "matriz de valores con ts",
+		"pl": "tablica wartości z ts",
+		"zh-cn": "带有 ts 的值数组"
+	  },
+	  "array of values with date-format": {
+		"en": "array of values with date-format",
+		"de": "Array von Werten mit Datumsformat",
+		"ru": "массив значений в формате даты",
+		"pt": "array de valores com formato de data",
+		"nl": "reeks waarden met datumnotatie",
+		"fr": "tableau de valeurs au format date",
+		"it": "matrice di valori con formato data",
+		"es": "matriz de valores con formato de fecha",
+		"pl": "tablica wartości z formatem daty",
+		"zh-cn": "日期格式的值数组"
+	  },
 	"statistics" :{
 		  "en": "Create statistics on  boiler starts",
 		  "de": "Statistiken zu Kesselstarts erstellen",
@@ -243,7 +291,7 @@ systemDictionary = {
 		  "pl": "Tworzenie statystyk startów kotła",
 		  "zh-cn": "创建锅炉启动的统计信息"
 	},
-	"database_instance": {
+	"db_instance": {
 		"en": "db instance (mySQL or influxdb) for recordings & statistics",
 		"de": "db-Instanz (mySQL oder influxdb) für Aufzeichnungen & Statistiken",
 		"ru": "экземпляр db (mySQL или Influxdb) для записи и статистики",
@@ -256,28 +304,40 @@ systemDictionary = {
 		"zh-cn": "用于记录和统计的数据库实例（mySQL 或 influxdb）"
 	},
 	"database": {
-		"en": "database name (iobroker)",
-		"de": "Datenbankname (iobroker)",
-		"ru": "имя базы данных (iobroker)",
-		"pt": "nome do banco de dados (iobroker)",
-		"nl": "databasenaam (iobroker)",
-		"fr": "nom de la base de données (iobroker)",
-		"it": "nome del database (iobroker)",
-		"es": "nombre de la base de datos (iobroker)",
-		"pl": "nazwa bazy danych (iobroker)",
-		"zh-cn": "数据库名称（iobroker）"
+		"en": "database",
+		"de": "Datenbank",
+		"ru": "база данных",
+		"pt": "base de dados",
+		"nl": "database",
+		"fr": "base de données",
+		"it": "Banca dati",
+		"es": "base de datos",
+		"pl": "Baza danych",
+		"zh-cn": "数据库"
 	},
+	"db_instance": {
+		"en": "db instance",
+		"de": "db-Instanz",
+		"ru": "экземпляр базы данных",
+		"pt": "instância de banco de dados",
+		"nl": "db-instantie",
+		"fr": "instance de base de données",
+		"it": "istanza db",
+		"es": "instancia de base de datos",
+		"pl": "instancja bazy danych",
+		"zh-cn": "数据库实例"
+    },
 	"eff_active": {
-		"en": "efficiency in %",
-		"de": "Wirkungsgrad in %",
-		"ru": "КПД в%",
-		"pt": "eficiência em%",
-		"nl": "efficiëntie in %",
-		"fr": "efficacité en %",
-		"it": "efficienza in %",
-		"es": "eficiencia en%",
-		"pl": "wydajność w %",
-		"zh-cn": "效率（%）"
+		"en": "efficiency in % (Gas- and Oilboilers only)",
+		"de": "Wirkungsgrad in % (nur Gas- und Ölkessel)",
+		"ru": "КПД в % (только для газовых и жидкотопливных котлов)",
+		"pt": "eficiência em % (somente caldeiras a gás e óleo)",
+		"nl": "rendement in % (alleen Gas- en Olieketels)",
+		"fr": "Efficacité en % (chaudières gaz et fioul uniquement)",
+		"it": "efficienza in % (solo caldaie a gas e olio)",
+		"es": "eficiencia en % (solo calderas de gas y de aceite)",
+		"pl": "sprawność w % (tylko kotły gazowe i olejowe)",
+		"zh-cn": "以 % 为单位的效率（仅限燃气和燃油锅炉）"
 	},
 	"eff20": {
 		"en": "< 20°C",

@@ -34,6 +34,7 @@
 		// This will be called by the admin adapter when the settings page loads
 		var secret;
 		var devices = [];
+		hide_();
 
 		function loadHelper(settings, onChange) {
 
@@ -67,19 +68,24 @@
 			// example: select elements with id=key and class=value and insert value
 			if (!settings) return;
 			$('.value').each(function () {
-				var $key = $(this);
-				var id = $key.attr('id');
+				let $key = $(this);
+				let id = $key.attr('id');
+
+				// check which type of html element
+				// do not call onChange direct, because onChange could expect some arguments
+				// Rufen Sie onChange nicht direkt auf, da onChange einige Argumente erwarten kann
 				if ($key.attr('type') === 'checkbox') {
-					// do not call onChange direct, because onChange could expect some arguments
-					$key.prop('checked', settings[id])
-						.on('change', () => onChange())
-						;
+					$key.prop('checked', settings[id])  // read setting value from adapter config object and set checkbox in config page => Lesen Sie den Einstellungswert aus dem Adapterkonfigurationsobjekt und setzen Sie das Kontrollkästchen auf der Konfigurationsseite
+						.on('change', () => {
+							hide_();
+							onChange(); // set listener to checkbox and call onChange if the value has changed => setze listener auf checkbox und rufe onChange auf, wenn sich der Wert geändert hat
+						})
+					;
 				} else {
-					// do not call onChange direct, because onChange could expect some arguments
 					$key.val(settings[id])
 						.on('change', () => onChange())
 						.on('keyup', () => onChange())
-						;
+					;
 				}
 			});
 
@@ -88,6 +94,7 @@
 			values2table('devices', devices, onChange);
 			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
 			if (M) M.updateTextFields();
+			hide_();
 		}
 
 		// This will be called by the admin adapter when the user presses the save button
@@ -98,6 +105,7 @@
 				var $this = $(this);
 				if ($this.attr('type') === 'checkbox') {
 					obj[$this.attr('id')] = $this.prop('checked');
+
 				} else if ($this.attr('type') === 'number') {
 					obj[$this.attr('id')] = parseFloat($this.val());
 				} else {
@@ -106,6 +114,21 @@
 			});
 			obj.devices = table2values('devices');
 			callback(obj);
+		}
+
+		function hide_(callback) {
+			let div = document.getElementById('eff_active');
+			div.style.visibility = "hidden";
+			div.style.display = "none";
+			$('#eff_active').hide();
+			$('.eff_active').hide();
+			/*
+			if ($('#emsesp_active').prop('checked')) {
+				$('.tab-advanced').show();
+    		} else {
+        		$('.tab-advanced').hide();
+    		}
+			*/
 		}
 
 	</script>
@@ -202,18 +225,35 @@
 					<label for="recordings" class="translate">recordings</label>
 				</div>
 
-				<div class="col s3 input-field">
-					<input type="text" class="value" id="database_instance" />
-					<label for="database_instance" class="translate">database_instance</label>
+
+				<div class="input-field col s12 m8 l2">
+                    <select  class="value" id="recordings_format">
+                        <option value="0" class="translate">array of values</option>
+                        <option value="1" class="translate">array of values with ts</option>
+                        <option value="2" class="translate">array of values with date-format</option>
+                    </select>
+					<label class="translate" for="recordings_format">recordings_format</label>
+                </div>
+
+				<div class="input-field col s2 m1 l2">
+                    <select  class="value" id="db">
+                        <option value="" class="translate">no database</option>
+                        <option value="sql" class="translate">mySQL</option>
+                        <option value="influxdb" class="translate">InfluxDB</option>
+                    </select>
+					<label class="translate" for="db">database</label>
+                </div>
+
+
+
+				<div class="col s1 input-field">
+					<input type="text" class="value" id="db_instance" />
+					<label for="db_instance" class="translate">db_instance</label>
 				</div>
 
 			</div>
 
 			<div class="row">
-				<div class="col s2 input-field">
-					<input type="checkbox" class="value" id="states_reorg" />
-					<label for="states_reorg" class="translate">states_reorg</label>
-				</div>
 
 				<div class="col s2 input-field">
 					<input type="checkbox" class="value" id="statistics" />
@@ -279,6 +319,14 @@
 					<label for="eff70" class="translate">eff70</label>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="states_reorg" />
+					<label for="states_reorg" class="translate">states_reorg</label>
+				</div>
+			</div>
+
 		</div>
 
 	</div>

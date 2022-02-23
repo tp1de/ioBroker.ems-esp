@@ -59,11 +59,11 @@ Boiler statistics can be enabled showing:
 * The number of boiler & ww starts per hour / 24 hours 
 * Boiler utilization per hour (0-100%).
 
-Boiler efficiency can be calculated if parameters are filled.
+Boiler efficiency can be calculated if parameters are filled. (Gas- and Oilboilers only)
 * The boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
-* Since return temp is not available anymore in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
+* When return temp is not available in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 * Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
-* A database instance (see above) is needed to calculate the statistics.
+* An active database instance (see above) is needed to calculate the statistics.
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run. Nevertheless obsolete datafields are not deleted automatically by the adapter. 
 There is an option to re-build the state-structure by deleting states on adapter re-start (states with history / db entries are kept)
@@ -76,7 +76,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 -->
 ### **WORK IN PROGRESS**
 * new logic and state-structure for km200 recordings
-* support Buderus heatpump with Logamatic HMC300 IP-Inside
+* recordings stored in states [array of values] and within database
+* please adjust adapter configuration
+* support of Buderus heatpump with Logamatic HMC300 IP-Inside
 
 ### 1.2.1 (2022-02-18)
 * adjust for js-controller v4 - part 2

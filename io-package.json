@@ -152,7 +152,8 @@
       {
         "admin": ">=4.0.9"
       }
-    ]
+    ],
+    "installedFrom": "tp1de/ioBroker.ems-esp"
   },
   "encryptedNative": [
     "private_pw"
@@ -177,8 +178,10 @@
     "ems_polling": 60,
     "ems_dallas": false,
     "recordings": false,
+    "recordings_format":0,
     "statistics": false,
-    "database_instance": "sql.0",
+    "db":"",
+    "db_instance":0,
     "database": "iobroker",
     "km200_structure": false,
     "eff_active": false,
