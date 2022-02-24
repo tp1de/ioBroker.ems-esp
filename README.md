@@ -11,12 +11,13 @@
 
 **Tests:** ![Test and Release](https://github.com/tp1de/ioBroker.ems-esp/workflows/Test%20and%20Release/badge.svg)
 
-## ems-esp and km200 / IP-inside adapter 
+## Bosch / Buderus heating systems with km200 / IP-inside and/or ems-esp interface 
 
 The adapter supports an interface towards the heating systems from Bosch Group using EMS or EMS+ bus. 
-(Buderus / Junkers /Netfit etc). 
+(Buderus / Junkers / Netfit etc). 
 
-It can interface towards the heating system with use of Web-API calls toward:
+# It can interface towards the heating system with use of Web-API calls toward:
+
 * km200, km200 hrv, km100, km50 or IP-inside (from Bosch Group) 
 * ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
 * The old ESP8266 gateways with API V2 are supported until this version as well.
@@ -27,7 +28,7 @@ It can be used either for the original Bosch-group gateways or the ems-esp or bo
 The adapter is tested for the ems-esp gateway with latest firmware versions of ESP32 >= v3.3.1. 
 Old systems with an ESP 8266 are only supported until this adapter version.
 
-IMPORTANT SETTINGS in EMS-ESP:
+# IMPORTANT SETTINGS in EMS-ESP:
 
 * API V2: MQTT Settings have to be boolean format 1/0 !
 * API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number 
@@ -36,14 +37,17 @@ IMPORTANT SETTINGS in EMS-ESP:
 
 While selecting the checkbox either km200-like device structure is used for ems-esp datafields or the original EMS-ESP device view is kept: boiler, thermostat, mixer etc. When using the km200 gateway in parallel it is recommended to use the km200 data structure. Then all entities / states are within same location within ioBroker's object structure.
 
-Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. For 1st adapter start it is recommended to use a "*" so select all km200 data-fields. The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory. This file can be used for next start of adapter-instance.Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy)  
-
 This adapter reads after start values from ems-esp and km200 by http get requests and is capable to subscribe on state changes and send the respective http (post) commands back to either ems-esp hardware or the km200 gateway. 
 
 * EMS-ESP read polling is a parameter (standard 60 secs) and can not be set below 15 seconds.
 * KM200 polling is a parameter (standard 300 secs) too and minimum value which can be set is 90 seconds.
  
+# km200 
+
+Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. For 1st adapter start it is recommended to use a "*" so select all km200 data-fields. The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory. This file can be used for next start of adapter-instance.Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy) 
+
 Most modern heating systems have an ip-inside gateway and support energy statistics:
+
 * recording for total power consumption and warm water (dhw)
 * For these systems and where this data is available the powerconsumption statistics for total and warm water power consumption can be read (hourly / dayly / monthly).
 * The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. 
@@ -54,16 +58,22 @@ SQL or InfluxDB History adapter need to be installed and active to use this opti
 
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using charting tools e.g. the Flot Charts adapter or Grafana.
 
+# statistics
+
 Boiler statistics can be enabled showing:
 * The polling cycle processing time for ems-esp and/or km200 gateway reads and state processing 
 * The number of boiler & ww starts per hour / 24 hours 
 * Boiler utilization per hour (0-100%).
+
+# Boiler efficiency 
 
 Boiler efficiency can be calculated if parameters are filled. (Gas- and Oilboilers only)
 * The boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
 * When return temp is not available in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 * Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
 * An active database instance (see above) is needed to calculate the statistics.
+
+# changes in state-structure
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run. Nevertheless obsolete datafields are not deleted automatically by the adapter. 
 There is an option to re-build the state-structure by deleting states on adapter re-start (states with history / db entries are kept)
