@@ -22,7 +22,7 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 * ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
 * The old ESP8266 gateways with API V2 are supported until this version as well.
 
-The ems-esp adapter can read and write data to the ems-bus steering all heating components. 
+The ems-esp adapter can read and write data to both gateways to steer all heating components. 
 It can be used either for the original Bosch-group gateways or the ems-esp or both in parallel.
 
 The adapter is tested for the ems-esp gateway with latest firmware versions of ESP32 >= v3.3.1. 
