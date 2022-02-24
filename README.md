@@ -75,6 +75,28 @@ Available are hourly, dayly and monthly statistics and stored as array data in s
 This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
 Update frequency is every hour. 
 
+## km200 recordings - an explanation
+
+Some field-values are set as "recordable". These fields will then have "recordings".
+Depending on the type of heating system these recordings are stored under  recordings/... or energyMonitoring/...
+
+For recorded states every minute a sample is collected within the km200 gateway. 
+An hourly value should have 60 samples, a daily 24*60=1440 samples, a monthly 1440 x #days. 
+Every timeperiod has to be read within the adapter by 3 api-calls:
+
+* Hourly values: today, yesterday, day before yesterday
+* Dayly values: actual month, last months, month -2
+* Monthly values: actual year, last year, year -2
+
+Within the read data-field by web-api the sum of sample-values is stored within y-value, no of samples within c-value.
+(see original values within json-data in km200... fields.)
+
+Since sometimes samples are missing the value has to be interpolated.
+For some months (> 12 months ago) some data might be missing. (Bosch errors within code?)
+
+For the actual months energy consumption the adapter calculates the sum of daily values and uses this sum to get more acurate data.
+
+
 ## statistics
 
 Boiler statistics can be enabled showing:
