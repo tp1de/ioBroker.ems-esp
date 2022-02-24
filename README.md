@@ -52,9 +52,11 @@ The web-api calls toward/from the km200 gateway is encrypted. For the en-/decryp
 * the gateway password on an albel on the gateway in the form: xxxx-xxxx-xxxx-xxxx (case sensitive)
 * the private password set by using the Buderus **MyDevice** App (do not use myBuderus or similar apps !) 
 
-Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. 
-For 1st adapter start it is recommended to use a "*" so select all km200 data-fields. 
-The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory. 
+The fields to be used could be defined by polling the km200-structure (*) or the respective csv-file within the adapter instance parameters. 
+
+For 1st adapter start it is recommended to use a "*" so select all km200 data-fields.
+The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory.
+
 This file can be used for next start of adapter-instance.
 Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy & rename the file) 
 
