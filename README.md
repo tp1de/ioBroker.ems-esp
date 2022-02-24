@@ -47,7 +47,11 @@ This adapter reads after start values from ems-esp and km200 by http get request
  
 ## km200 
 
-Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. For 1st adapter start it is recommended to use a "*" so select all km200 data-fields. The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory. This file can be used for next start of adapter-instance.Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy) 
+Unlike the km200 adapter the fields to be used could be defined by the respective csv-file within the adapter instance parameters. 
+For 1st adapter start it is recommended to use a "*" so select all km200 data-fields. 
+The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory. 
+This file can be used for next start of adapter-instance.
+Not needed lines (fields) can be deleted to reduce the number of km200-fields to be read. (Make a copy & rename the file) 
 
 ## km200 recordings (energy and temperature statistics)
 
