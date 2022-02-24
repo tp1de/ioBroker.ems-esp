@@ -54,7 +54,7 @@ The web-api calls toward/from the km200 gateway is encrypted. For the en-/decryp
 
 The fields to be used could be defined by polling the km200-structure (*) or the respective csv-file within the adapter instance parameters. 
 
-For 1st adapter start it is recommended to use a "*" so select all km200 data-fields.
+For 1st adapter start it is recommended to use a "*" to select all km200 data-fields.
 The adapter then creates a km200.csv file within ../iobroker-data/ems-esp/{instance} directory.
 
 This file can be used for next start of adapter-instance.
