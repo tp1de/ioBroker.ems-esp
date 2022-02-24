@@ -73,9 +73,10 @@ Boiler statistics can be enabled showing:
 * The number of boiler & ww starts per hour / 24 hours 
 * Boiler utilization per hour (0-100%).
 
-## Boiler efficiency 
+## boiler efficiency 
 
 Boiler efficiency can be calculated if parameters are filled. (Gas- and Oilboilers only)
+
 * The boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
 * When return temp is not available in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 * Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
