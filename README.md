@@ -28,7 +28,7 @@ It can be used either for the original Bosch-group gateways or the ems-esp or bo
 The adapter is tested for the ems-esp gateway with latest firmware versions of ESP32 >= v3.3.1. 
 Old systems with an ESP 8266 are only supported until this adapter version.
 
-## IMPORTANT SETTINGS in EMS-ESP:
+## important settings in EMS-ESP:
 
 * API V2: MQTT Settings have to be boolean format 1/0 !
 * API V3: Formatting Options for Boolean Format has to be 1/0 and for Enum Format Number 
