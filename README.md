@@ -64,14 +64,16 @@ Not needed lines (fields) can be deleted to reduce the number of km200-fields to
 
 Most modern heating systems have an ip-inside gateway and support energy statistics:
 
-* recording for power consumptions and temperatuere statistics
-* For these systems and where this recordings data is available the respective statistics are poööed and stored in states. 
-Available are hourly, dayly and monthly statistics and stored as array data in states and if an db-sinstance is selected as well in states filled with db-entries.
+* recording for power consumptions and temperature statistics
+* For these systems and where this recordings data is available the respective statistics are polled and stored in states. 
+Available are hourly, dayly and monthly statistics and stored as array data in states and if an db-instance is selected as well in states filled with db-entries.(statenames start with "_")
 * The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. SQL or InfluxDB History adapter need to be installed and active to use this option.
-* This is only available yet for mySQL and InfluxDB databases
+* the original recording data read by web-api calls are stored under statestructure km200.
+* DB-statistics to be shown in flot graphs or grafana are only available yet for mySQL and InfluxDB databases.
 * For InfluxDB V1 the retention policy has to be set to a minimum of 170 weeks. (alter retention policy global on iobroker duration 170w;)
 
-This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. The values can then be shown by using charting tools e.g. the Flot Charts adapter or Grafana.
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
+Update frequency is every hour. 
 
 ## statistics
 
