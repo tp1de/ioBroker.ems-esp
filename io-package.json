@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.3.1": {
+        "en": "correction on temperature recordings (months and days)",
+        "de": "Korrektur bei Temperaturaufzeichnungen (Monate und Tage)",
+        "ru": "поправка на записи температуры (месяцы и дни)",
+        "pt": "correção nos registros de temperatura (meses e dias)",
+        "nl": "correctie op temperatuurregistraties (maanden en dagen)",
+        "fr": "correction sur les relevés de température (mois et jours)",
+        "it": "correzione sulle registrazioni di temperatura (mesi e giorni)",
+        "es": "corrección en registros de temperatura (meses y días)",
+        "pl": "korekta zapisów temperatury (miesiące i dni)",
+        "zh-cn": "温度记录校正（月和日）"
+      },
       "1.3.0": {
         "en": "new logic and state-structure for km200 recordings\nrecordings stored in states [array of values] and within database\nplease adjust adapter configuration\nsupport of Buderus heatpump with Logamatic HMC300 IP-Inside",
         "de": "neue Logik und Zustandsstruktur für km200-Aufzeichnungen\nAufzeichnungen, die in Zuständen [Array von Werten] und in der Datenbank gespeichert sind\nBitte passen Sie die Adapterkonfiguration an\nUnterstützung der Buderus Wärmepumpe mit Logamatic HMC300 IP-Inside",
@@ -75,18 +87,6 @@
         "es": "ajustar rutas en io-package.json",
         "pl": "dostosuj ścieżki w io-package.json",
         "zh-cn": "调整 io-package.json 中的路径"
-      },
-      "1.0.13": {
-        "en": "last tested version for old ems-esp ESP8266 with API V2.\nNo support for future adapter versions anymore - please upgrade to ESP32.\nsupport for KM200 HRV (ventilation)\ncorrections for km200 recordings and statistics module\nprepare for ems-esp firmware 3.4",
-        "de": "letzte getestete Version für altes ems-esp ESP8266 mit API V2.\nKeine Unterstützung für zukünftige Adapterversionen mehr - bitte upgraden Sie auf ESP32.\nUnterstützung für KM200 HRV (Lüftung)\nKorrekturen für km200 Aufzeichnungen und Statistikmodul\nVorbereitung für ems-esp Firmware 3.4",
-        "ru": "последняя протестированная версия для старого ems-esp ESP8266 с API V2.\nПоддержка будущих версий адаптера больше не поддерживается — обновите до ESP32.\nопора для KM200 HRV (вентиляция)\nисправления для модуля записи и статистики km200\nподготовиться к прошивке ems-esp 3.4",
-        "pt": "última versão testada para o antigo ems-esp ESP8266 com API V2.\nNão há mais suporte para versões futuras do adaptador - atualize para o ESP32.\nsuporte para KM200 HRV (ventilação)\ncorreções para o módulo de registros e estatísticas do km200\nprepare-se para o firmware ems-esp 3.4",
-        "nl": "laatst geteste versie voor oude ems-esp ESP8266 met API V2.\nGeen ondersteuning meer voor toekomstige adapterversies - upgrade naar ESP32.\nondersteuning voor KM200 HRV (ventilatie)\ncorrecties voor km200 registraties en statistieken module\nbereid je voor op ems-esp firmware 3.4",
-        "fr": "dernière version testée pour l'ancien ems-esp ESP8266 avec API V2.\nPlus de support pour les futures versions de l'adaptateur - veuillez passer à ESP32.\nprise en charge du KM200 HRV (ventilation)\ncorrections pour les enregistrements km200 et module de statistiques\npréparer pour ems-esp firmware 3.4",
-        "it": "ultima versione testata per il vecchio ems-esp ESP8266 con API V2.\nNessun supporto per le versioni future dell'adattatore: eseguire l'aggiornamento a ESP32.\nsupporto per KM200 HRV (ventilazione)\ncorrezioni per il modulo registrazioni e statistiche km200\nprepararsi per il firmware ems-esp 3.4",
-        "es": "última versión probada para el antiguo ems-esp ESP8266 con API V2.\nYa no es compatible con futuras versiones de adaptadores; actualice a ESP32.\nsoporte para KM200 HRV (ventilación)\ncorrecciones para km200 registros y modulo de estadisticas\nprepararse para ems-esp firmware 3.4",
-        "pl": "ostatnia testowana wersja dla starego ems-esp ESP8266 z API V2.\nBrak wsparcia dla przyszłych wersji adapterów — uaktualnij do ESP32.\nwsparcie dla KM200 HRV (wentylacja)\nkorekty dla modułu rejestracji i statystyk km200\nprzygotuj się na firmware ems-esp 3.4",
-        "zh-cn": "带有 API V2 的旧 ems-esp ESP8266 的最后测试版本。\n不再支持未来的适配器版本 - 请升级到 ESP32。\n支持 KM200 HRV（通风）\nkm200 记录和统计模块的更正\n准备 ems-esp 固件 3.4"
       }
     },
     "titleLang": {
