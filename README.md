@@ -81,6 +81,7 @@ Boiler statistics can be enabled showing:
 * The polling cycle processing time for ems-esp and/or km200 gateway reads and state processing 
 * The number of boiler & ww starts per hour / 24 hours 
 * Boiler utilization per hour (0-100%).
+* An active database instance (see above) is needed to calculate the statistics.
 
 ## boiler efficiency 
 
@@ -89,7 +90,6 @@ Boiler efficiency can be calculated if parameters are filled. (Gas- and Oilboile
 * The boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
 * When return temp is not available in km200 the return temp is calculated with boilertemp -10 °C when no ems-esp is available. 
 * Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
-* An active database instance (see above) is needed to calculate the statistics.
 
 ## changes in state-structure
 
