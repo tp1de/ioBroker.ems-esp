@@ -64,7 +64,7 @@ Not needed lines (fields) can be deleted to reduce the number of km200-fields to
 
 Most modern heating systems have an ip-inside gateway and support energy statistics:
 
-* recording forpower consumptions and temperatuere statistics
+* recording for power consumptions and temperatuere statistics
 * For these systems and where this recordings data is available the respective statistics are poööed and stored in states. 
 Available are hourly, dayly and monthly statistics and stored as array data in states and if an db-sinstance is selected as well in states filled with db-entries.
 * The checkbox recordings has to be enabled and the database instance (mySQL or InfluxDB) has to be defined. SQL or InfluxDB History adapter need to be installed and active to use this option.
