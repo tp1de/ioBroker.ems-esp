@@ -74,6 +74,9 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* correction on temperature recordings (months and days)
+
 ### 1.3.0 (2022-02-23)
 * new logic and state-structure for km200 recordings
 * recordings stored in states [array of values] and within database
