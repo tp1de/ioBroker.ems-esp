@@ -85,7 +85,7 @@ An hourly value should have 60 samples, a daily 24*60=1440 samples, a monthly 14
 Every timeperiod has to be read within the adapter by 3 api-calls:
 
 * Hourly values: today, yesterday, day before yesterday
-* Dayly values: actual month, last months, month -2
+* Daily values: actual month, last months, month -2
 * Monthly values: actual year, last year, year -2
 
 Within the read data-field by web-api the sum of sample-values is stored within y-value, no of samples within c-value.
