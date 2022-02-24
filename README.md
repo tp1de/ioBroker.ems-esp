@@ -94,7 +94,7 @@ Within the read data-field by web-api the sum of sample-values is stored within 
 Since sometimes samples are missing the value has to be interpolated.
 For some months (> 12 months ago) some data might be missing. (Bosch errors within code?)
 
-For the actual months energy consumption the adapter calculates the sum of daily values and uses this sum to get more acurate data.
+For the actual months energy consumption the adapter calculates the sum of daily values and uses this sum to get more accurate data.
 
 
 ## statistics
