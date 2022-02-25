@@ -124,7 +124,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.3.2 (2022-02-25)
 * correction for recordings without reference object
 * corrections for mySQL recordings
 
