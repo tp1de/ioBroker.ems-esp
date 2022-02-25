@@ -124,6 +124,10 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* correction for recordings without reference object
+* corrections for mySQL recordings
+
 ### 1.3.1 (2022-02-24)
 * correction on temperature recordings (months and days)
 
