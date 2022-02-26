@@ -127,6 +127,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 ### **WORK IN PROGRESS**
 * avoid null values in recordings
+
 ### 1.3.2 (2022-02-25)
 * correction for recordings without reference object
 * corrections for mySQL recordings
