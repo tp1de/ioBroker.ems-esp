@@ -109,7 +109,7 @@ async function main () {
 		await init_controls();
 		await heatdemand();
 		adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
-	}
+	} else control_state("active","boolean", "hc control active", false);
 
 }
 
