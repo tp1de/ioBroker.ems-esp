@@ -53,7 +53,7 @@ function startAdapter(options) {
 						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
 						if (obj.native.ems_api == "raw") S.state_change(id,state,obj);
 						if (obj.native.ems_api == "V3" || obj.native.ems_api == "V2" ) E.state_change(id,state,obj);
-						if ( id == adapter.namespace + ".controls.active" && !state.val) control_reset();
+						if ( id == adapter.namespace + ".controls.active" && (state.val == false || state.val == 0)) control_reset();
 					}
 					else adapter.log.warn("state is not writable:"+id);
 				});
