@@ -201,11 +201,8 @@ async function heatdemand() {
 	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
 	try {
 		const active = await adapter.getStateAsync("controls.active");
-		if (!active.val) {
-			return;
-		}
-	}
-	catch (e) {return;}
+		if (active.val == false || active.val == 0) return;
+	} catch (e) {return;}
 
 	for (let i = 0;i < adapter.config.thermostats.length;i++) {
 		const state = "controls."+adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
