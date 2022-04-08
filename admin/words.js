@@ -27,17 +27,17 @@ systemDictionary = {
 		"pl": "Ustawienia główne",
 		"zh-cn": "主要设置"
 	},
-	"Additional settings": {
-		"en": "Additional settings",
-		"de": "Zusätzliche Einstellungen",
-		"ru": "Дополнительные настройки",
-		"pt": "Configurações adicionais",
-		"nl": "Aanvullende instellingen",
-		"fr": "Paramètres additionnels",
-		"it": "Altre impostazioni",
-		"es": "Ajustes adicionales",
-		"pl": "Dodatkowe ustawienia",
-		"zh-cn": "其他设置"
+	"ems expert settings": {
+		  "en": "ems expert settings",
+		  "de": "EMS-Experteneinstellungen",
+		  "ru": "EMS экспертные настройки",
+		  "pt": "configurações especializadas ems",
+		  "nl": "ems-expertinstellingen",
+		  "fr": "paramètres experts ems",
+		  "it": "impostazioni esperte",
+		  "es": "configuración experta ems",
+		  "pl": "ustawienia eksperckie ems",
+		  "zh-cn": "ems专家设置"
 	},
 	"km200_structure": {
 		"en": "km200 structure",
@@ -506,5 +506,17 @@ systemDictionary = {
 		"es": "crear estados para telegramas indefinidos",
 		"pl": "tworzyć stany dla niezdefiniowanych telegramów",
 		"zh-cn": "为未定义的电报创建状态"
-	}
+	},
+	"heat demand": {
+		"en": "heat demand",
+		"de": "Wärmebedarf",
+		"ru": "потребность в тепле",
+		"pt": "demanda de calor",
+		"nl": "warmtevraag",
+		"fr": "demande de chaleur",
+		"it": "richiesta di calore",
+		"es": "demanda de calor",
+		"pl": "zapotrzebowanie na ciepło",
+		"zh-cn": "热量需求"
+	  }
 };

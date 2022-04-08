@@ -30,3 +30,12 @@ label > i[title] {
 }
 
 /* Add your styles here */
+
+.table_header {
+	background-color: blue;
+	color: white;
+}
+.ip {
+	width: 150px;
+	text-align: right;
+}

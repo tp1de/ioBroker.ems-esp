@@ -51,10 +51,9 @@ function startAdapter(options) {
 					// check if state was writable
 					if (obj.common.write) {
 						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
-						else {
-							if (obj.native.ems_api == "raw") S.state_change(id,state,obj);
-							else E.state_change(id,state,obj);
-						}
+						if (obj.native.ems_api == "raw") S.state_change(id,state,obj);
+						if (obj.native.ems_api == "V3" || obj.native.ems_api == "V2" ) E.state_change(id,state,obj);
+						if ( id == adapter.namespace + ".controls.active" && !state.val) control_reset();
 					}
 					else adapter.log.warn("state is not writable:"+id);
 				});
@@ -84,7 +83,7 @@ async function main () {
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
 	if (adapter.config.syslog == true) {
-		// Read own States for syslog-analysis
+		// Read own states for syslog-analysis
 		try {
 			for (let i = 0;i < adapter.config.devices.length;i++) {
 				if (adapter.config.devices[i].state !== "" && adapter.config.devices[i].type !== "" && adapter.config.devices[i].offset !== "")
@@ -94,11 +93,10 @@ async function main () {
 		S.init(adapter,own_states,adapterIntervals);
 	}
 
+
 	if (!unloaded && adapter.config.statistics) await init_statistics();
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
-
-	//await init_controls();
 
 	if (!unloaded) adapter.subscribeStates("*");
 
@@ -106,6 +104,12 @@ async function main () {
 		adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
 	}
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
+
+	if (adapter.config.heatdemand && !unloaded) {
+		await init_controls();
+		await heatdemand();
+		adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
+	}
 
 }
 
@@ -127,15 +131,175 @@ function enable_state(stateid,retention,interval) {
 
 async function init_controls() {
 	try {
-		await adapter.setObjectNotExistsAsync("controls.optimize_takt",{type: "state",
-			common: {type: "boolean", name: "optimization of takting time", unit: "", role: "value", read: true, write: true}, native: {}});
-		await adapter.setObjectNotExistsAsync("controls.use_heatingdemand",{type: "state",
-			common: {type: "boolean", name: "use calculated heating demand for boiler control", unit: "", role: "value", read: true, write: true}, native: {}});
-		await adapter.setObjectNotExistsAsync("controls.minimum_boilerpower",{type: "state",
-			common: {type: "number", name: "minimum boiler power (min modulation x boiler power)", unit: "kW", role: "value", read: true, write: true}, native: {}});
-		await adapter.setObjectNotExistsAsync("controls.heatingdemand",{type: "state",
-			common: {type: "number", name: "heating demand from external source", unit: "kW", role: "value", read: true, write: true}, native: {}});
+
+		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {			
+			let state = adapter.config.heatingcircuits[i].hc+".";
+			control_state(state+"weighton","number", "hc weight for switching on", parseFloat(adapter.config.heatingcircuits[i].weighton));
+			control_state(state+"weightoff","number", "hc weight for switching off", parseFloat(adapter.config.heatingcircuits[i].weightoff));
+			control_state(state+"weight","number", "hc weight actual", 99);
+			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state);
+			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on);
+			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
+			control_state(state+"status","boolean", "hc control status", true);
+			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -99);
+			control_state("active","boolean", "hc control active", true);
+		}
 	} catch(e) {}
+
+	for (let i = 0;i < adapter.config.thermostats.length;i++) {	
+		let state = adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
+		let value = 0;
+		try {
+			let state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);	
+			value = state1.val;
+		} catch(e) {value = -99;}	
+		control_state(state+"settemp","number", "set temperature", value);
+		try {
+			state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+			value = state1.val;
+		} catch(e) {value = -99;}
+		control_state(state+"actualtemp","number", "actual temperature", value);
+		
+		control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
+		control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
+
+	}
+	
+}
+
+async function control_state(state,type,name,value) {
+	await adapter.setObjectNotExistsAsync("controls."+state,{type: "state",
+	common: {type: type, name: name, unit: "", role: "value", read: true, write: true}, native: {}});
+	adapter.setState("controls."+state, {ack: true, val: value});
+}
+
+
+async function control_reset() {  // heat demand control switched off - reset control states for hc's
+
+	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {	
+		let hc = adapter.config.heatingcircuits[i].hc;
+		if (adapter.config.heatingcircuits[i].savesettemp) {
+			let state = "controls."+hc+".savesettemp";
+			let savetemp = 0;
+			try {
+				let state1 = await adapter.getStateAsync(state);
+				savetemp = state1.val;
+			} catch(e) {}
+			if (savetemp != 0) {
+				adapter.log.info("heat demand control switched off for "+ hc + " --> reset old control value: "+savetemp );
+				adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: savetemp});
+			}
+		} else {
+			let on = parseInt(adapter.config.heatingcircuits[i].on);
+			adapter.log.info("heat demand control switched off for "+ hc + " --> reset to on control value: "+on );
+			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
+		}
+	}
+}
+
+async function heatdemand() {
+	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
+	let active = await adapter.getStateAsync("controls.active");
+	if (!active.val) {
+		
+		return;
+	}
+
+	for (let i = 0;i < adapter.config.thermostats.length;i++) {	
+		let state = "controls."+adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
+		let value1 = 0, value2 = 0;
+		try {
+			let state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
+			value1 = state1.val;
+		} catch(e) {value1 = -99;}	
+		adapter.setState(state+"settemp", {ack: true, val: value1});
+
+		let state2 = "controls."+adapter.config.thermostats[i].hc+".savesettemp";
+		try {
+			let state1 = await adapter.getStateAsync(state2);
+			if (state1.val > value1) value1 = state1.val;
+		} catch(e) {}
+
+		try {
+			state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+			value2 = state1.val;
+		} catch(e) {value2 = -99;}
+		adapter.setState(state+"actualtemp", {ack: true, val: value2});
+
+		if ((value1 - value2) > parseFloat(adapter.config.thermostats[i].deltam)) {
+			if (adapter.config.thermostats[i].hc == "hc1") w1 += parseInt(adapter.config.thermostats[i].weight);
+			if (adapter.config.thermostats[i].hc == "hc2") w2 += parseInt(adapter.config.thermostats[i].weight);
+			if (adapter.config.thermostats[i].hc == "hc3") w3 += parseInt(adapter.config.thermostats[i].weight);
+			if (adapter.config.thermostats[i].hc == "hc4") w4 += parseInt(adapter.config.thermostats[i].weight);
+		}
+	}
+
+	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {	
+		let hc = adapter.config.heatingcircuits[i].hc;
+		let state = "controls."+hc+".";
+		let value3;
+		try {
+			let state1 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);	
+			value3 = state1.val;
+		} catch(e) {value3 = "";}	
+
+		let w = 99;
+		if (hc == "hc1") w = w1;
+		if (hc == "hc2") w = w2;
+		if (hc == "hc3") w = w3;
+		if (hc == "hc4") w = w4;
+		adapter.setState(state+"weight", {ack: true, val: w});
+
+		if (w >= adapter.config.heatingcircuits[i].weighton) {
+			adapter.setState(state+"status", {ack: true, val: true});
+			let state2 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+			let v = state2.val;
+			let vn = parseInt(adapter.config.heatingcircuits[i].on);
+			if (v != vn) {
+				let vo = parseInt(adapter.config.heatingcircuits[i].off);
+				if (v == vo) {
+					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
+					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: vn});
+					if (adapter.config.heatingcircuits[i].savesettemp) {
+						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {	
+							if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
+						}
+					}
+				} else {
+					//adapter.log.info("heat demand manually set for "+ hc + " --> no action");
+				}
+			}
+		}
+
+		if (w <= adapter.config.heatingcircuits[i].weightoff) {
+			adapter.setState(state+"status", {ack: true, val: false});
+			let state2 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+			let v = state2.val;
+			let vn = parseInt(adapter.config.heatingcircuits[i].off);
+			if (v != vn) {
+				let vo = parseInt(adapter.config.heatingcircuits[i].on);
+				if (v == vo ||adapter.config.heatingcircuits[i].override) {
+
+					if (adapter.config.heatingcircuits[i].savesettemp) {
+						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {	
+							if (adapter.config.thermostats[ii].hc == hc) {
+								try {
+									let state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
+									value1 = state1.val;
+								} catch(e) {value1 = -99;}	
+								adapter.setState(state+"savesettemp", {ack: true, val: value1});
+							}
+						}
+					}
+
+					adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
+					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: vn});
+				} else {					
+					//adapter.log.info("heat demand manually set for "+ hc + " --> no action");
+				}
+			}
+		}
+	}
 }
 
 

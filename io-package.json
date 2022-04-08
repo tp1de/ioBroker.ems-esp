@@ -1,9 +1,13 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.4.0",
+    "version": "1.9.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.9.0": {
+        "en": "beta test new version",
+        "de": "beta test neue version"
+      },
       "1.4.0": {
         "en": "recordings new logic and now working without database",
         "de": "zeichnet neue Logik auf und arbeitet jetzt ohne Datenbank",
@@ -196,7 +200,8 @@
     "eff70": 97,
     "syslog": false,
     "syslog_port": 20516,
-    "states_reorg": false
+    "states_reorg": false,
+    "heatdemand":false
   },
   "objects": [],
   "instanceObjects": []

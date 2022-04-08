@@ -17,121 +17,6 @@
 	<link rel="stylesheet" type="text/css" href="style.css" />
 	<script type="text/javascript" src="words.js"></script>
 
-	<style>
-		.table_header {
-			background-color: blue;
-			color: white;
-		}
-		.ip {
-			width: 150px;
-			text-align: right;
-		}
-	</style>
-
-
-
-	<script type="text/javascript">
-		// This will be called by the admin adapter when the settings page loads
-		var secret;
-		var devices = [];
-		hide_();
-
-		function loadHelper(settings, onChange) {
-
-			// example: select elements with id=key and class=value and insert value
-			if (!settings) return;
-			if (settings.electricityPollingInterval === undefined) settings.electricityPollingInterval = 20;
-			$('.value').each(function () {
-				var $key = $(this);
-				var id = $key.attr('id');
-				if (id === 'private_pw') {
-					settings[id] = decrypt(secret, settings[id]);
-				}
-
-				if ($key.attr('type') === 'checkbox') {
-					// do not call onChange direct, because onChange could expect some arguments
-					$key.prop('checked', settings[id])
-						.on('change', () => onChange());
-				} else {
-					// do not call onChange direct, because onChange could expect some arguments
-					$key.val(settings[id])
-						.on('change', () => onChange())
-						.on('keyup', () => onChange());
-				}
-			});
-			onChange(false);
-			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
-			if (M) M.updateTextFields();
-		}
-
-		function load(settings, onChange) {
-			// example: select elements with id=key and class=value and insert value
-			if (!settings) return;
-			$('.value').each(function () {
-				let $key = $(this);
-				let id = $key.attr('id');
-
-				// check which type of html element
-				// do not call onChange direct, because onChange could expect some arguments
-				// Rufen Sie onChange nicht direkt auf, da onChange einige Argumente erwarten kann
-				if ($key.attr('type') === 'checkbox') {
-					$key.prop('checked', settings[id])  // read setting value from adapter config object and set checkbox in config page => Lesen Sie den Einstellungswert aus dem Adapterkonfigurationsobjekt und setzen Sie das Kontrollkästchen auf der Konfigurationsseite
-						.on('change', () => {
-							hide_();
-							onChange(); // set listener to checkbox and call onChange if the value has changed => setze listener auf checkbox und rufe onChange auf, wenn sich der Wert geändert hat
-						})
-					;
-				} else {
-					$key.val(settings[id])
-						.on('change', () => onChange())
-						.on('keyup', () => onChange())
-					;
-				}
-			});
-
-			devices    = settings.devices    || [];
-			onChange(false);
-			values2table('devices', devices, onChange);
-			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
-			if (M) M.updateTextFields();
-			hide_();
-		}
-
-		// This will be called by the admin adapter when the user presses the save button
-		function save(callback) {
-			// example: select elements with class=value and build settings object
-			var obj = {};
-			$('.value').each(function () {
-				var $this = $(this);
-				if ($this.attr('type') === 'checkbox') {
-					obj[$this.attr('id')] = $this.prop('checked');
-
-				} else if ($this.attr('type') === 'number') {
-					obj[$this.attr('id')] = parseFloat($this.val());
-				} else {
-					obj[$this.attr('id')] = $this.val();
-				}
-			});
-			obj.devices = table2values('devices');
-			callback(obj);
-		}
-
-		function hide_(callback) {
-			let div = document.getElementById('eff_active');
-			div.style.visibility = "hidden";
-			div.style.display = "none";
-			$('#eff_active').hide();
-			$('.eff_active').hide();
-			/*
-			if ($('#emsesp_active').prop('checked')) {
-				$('.tab-advanced').show();
-    		} else {
-        		$('.tab-advanced').hide();
-    		}
-			*/
-		}
-
-	</script>
 
 </head>
 
@@ -141,7 +26,9 @@
 
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s5 m4"><a href="#tab-main" class="translate active">Main settings</a></li>
+				<li class="tab col s5 m4 tab-main"><a href="#tab-main" class="translate active">Main settings</a></li>
+				<li class="tab col s5 m4 tab-heatdemand"><a href="#tab-heatdemand" class="translate">heat demand</a></li>
+				<li class="tab col s5 m4 tab-advanced"><a href="#tab-advanced" class="translate">ems expert settings</a></li>
 			</ul>
 		</div>
 		<div id="tab-main" class="col s12 page">
@@ -328,7 +215,157 @@
 
 		</div>
 
+
+		<div id="tab-heatdemand" class="col s12 page">
+
+			<div class="row">
+
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="heatdemand" />
+					<label for="heatdemand" class="translate">heatdemand</label>
+				</div>
+
+			</div>
+
+			<div class="row">>	
+				<div class="col s12" id="thermostats">
+					<a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+							<tr>
+								<th data-name="room"            style="width: 10%" data-type="text" 	class="translate">room</th>
+								<th data-name="settemp"      	style="width: 25%" data-type="text" 	class="translate">set temp</th>
+								<th data-name="actualtemp"      style="width: 25%" data-type="text" 	class="translate">actual temp</th>
+
+								<th data-name="deltam"   style="width: 5%" data-type="select"  
+									data-default="1.0" data-options="-3.0;-2.5;-2.0;-1.5;-1.0;-0.5;0.0;0.5;1.0;1.5;2.0;2.5;3.0" class="translate">minimum delta</th>
+
+								<th data-name="hc" style="width: 5%" data-type="select" 
+									data-default="hc1" data-options="hc1;hc2;hc3;hc4"	class="translate">hc</th>
+								
+								<th data-name="weight"   style="width: 5%" data-type="select"  
+									data-default="1" data-options="1;2;3;4;5" class="translate">weight</th>
+
+								<th data-buttons="delete up down" style="width: 120px"></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">>	
+				<div class="col s12" id="heatingcircuits">
+					<a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+							<tr>
+								<th data-name="hc" style="width: 10%" data-type="select" 
+									data-default="hc1" data-options="hc1;hc2;hc3;hc4" class="translate">hc</th>
+
+								<th data-name="weighton"   style="width: 10%" data-type="select"  
+									data-default="1" data-options="1;2;3;4;5" class="translate">weighton</th>	
+
+								<th data-name="weightoff"   style="width: 10%" data-type="select"  
+									data-default="0" data-options="0;1;2;3;4;5" class="translate">weightoff</th>	
+
+								<th data-name="state"   	style="width: 30%" data-type="text" 	class="translate">state</th>
+								<th data-name="on"     		style="width: 5%"  data-type="number" 	class="translate">on</th>
+								<th data-name="off"    		style="width: 5%"  data-type="number" 	class="translate">off</th>
+								<th data-name="override"	style="width: 5%"  data-type="checkbox"	class="translate">override</th>
+								<th data-name="savesettemp"	style="width: 5%"  data-type="checkbox"	class="translate">savesettemp</th>
+
+								<th data-buttons="delete up down" style="width: 120px"></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+
+		<div id="tab-advanced" class="col s12 page">
+
+			<div class="row">
+				****************************************************************************
+			</div>
+			<div class="row">
+				***** SETTINGS ON RAW EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!
+			</div>
+			<div class="row">
+				****************************************************************************
+			</div>
+
+
+			<div class="row">
+
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="syslog" />
+					<label for="syslog" class="translate">syslog</label>
+				</div>
+
+				<div class="col s1 input-field">
+					<input type="number" class="value" id="syslog_port" />
+					<label for="syslog_port" class="translate">syslog_port</label>
+				</div>
+
+				<div class="col s2 input-field">
+					<input type="checkbox" class="value" id="states_undefined" />
+					<label for="states_undefined" class="translate">states_undefined</label>
+				</div>
+
+			</div>
+
+			<div class="row">			
+
+				<div class="col s12" id="devices">
+					<a class="btn-floating waves-effect waves-light blue table-button-add"><i class="material-icons">add</i></a>
+					<div class="table-values-div">
+						<table class="table-values">
+							<thead>
+							<tr>
+								<th data-name="state"        style="width: 20%" data-type="text" 	class="translate">state</th>
+								<th data-name="src"          style="width: 3%" data-type="hex" 	class="translate">src</th>
+								<th data-name="type"         style="width: 3%" data-type="hex" 	class="translate">type</th>
+								<th data-name="offset"       style="width: 2%" data-type="hex" 	class="translate">hex</th>
+
+								<th data-name="polling"      style="width: 3px" data-type="checkbox" class="translate">polling</th>
+
+								<th data-name="bit"          style="width: 3%" data-type="select" 
+									data-default=""data-options=";0;1;2;3;4;5;6;7"	class="translate">bit</th>
+
+								<th data-name="bytes"        style="width: 3%" data-type="number" class="translate">bytes</th>
+								<th data-name="multi"        style="width: 3%" data-type="number" class="translate">multi</th>
+								<th data-name="signed"       style="width: 3%" data-type="checkbox" class="translate">signed</th>
+								
+								<th data-name="state_type"   style="width: 10%" data-type="select"  
+									data-default="number"data-options="number;hex;string;switchPrograms;holidayModes" class="translate">state_type</th>
+
+								<th data-name="states"       style="width: 25%" data.type="text" class="translate">states</th>
+								<th data-name="min"          style="width: 3%" data-type="number" class="translate">min</th>
+								<th data-name="max"          style="width: 3%" data-type="number" class="translate">max</th>
+								<th data-name="uom"          style="width: 5%" data-tye="text" class="translate">uom</th>
+								<th data-name="writable"     style="width: 3px" data-type="checkbox" class="translate">writable</th>
+								<th data-buttons="delete up down" style="width: 120px"></th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+
 	</div>
+    <!-- Load our own files when the Dom is loaded (jQuery) -->
+	<script type="text/javascript" src="index_m.js"></script>
 
 </body>
 
