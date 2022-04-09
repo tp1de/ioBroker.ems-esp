@@ -372,10 +372,16 @@ async function read_efficiency() {
 		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
 			try {
 				state = await adapter.getStateAsync("heatSources.hs1.actualModulation");power = state.val;
+			}
+			catch (err) {adapter.log.error("Efficieny: heatSources.hs1.actualModulation  not available" );}
+			try  {
 				state = await adapter.getStateAsync("heatSources.actualSupplyTemperature");temp = state.val;
+			}
+			catch (err) {adapter.log.error("Efficieny: heatSources.actualSupplyTemperature not available" );}
+			try {
 				state = await adapter.getStateAsync("heatSources.returnTemperature");tempr = state.val;
 			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
+			catch (err) {adapter.log.info("Efficieny: heatSources.returnTemperature not available"); tempr = temp -10;}
 		}
 
 		if (power > 0) {
@@ -416,75 +422,6 @@ async function read_efficiency() {
 	}
 }
 
-async function read_efficiency1() {
-	if (!unloaded) {
-		let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0;
-
-		if (adapter.config.emsesp_active && adapter.config.km200_structure){
-			try {
-				adapter.getState("heatSources.hs1.curburnpow", function (err, state) { if (state != null) power = state.val;} );
-				adapter.getState("heatSources.hs1.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
-				adapter.getState("heatSources.hs1.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
-			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
-		}
-		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
-			try {
-				adapter.getState("boiler.curburnpow", function (err, state) { if (state != null) power = state.val;} );
-				adapter.getState("boiler.curflowtemp", function (err, state) {if (state != null) temp = state.val;} );
-				adapter.getState("boiler.rettemp", function (err, state) {if (state != null) tempr = state.val;} );
-			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
-		}
-
-		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-			try {
-				adapter.getState("heatSources.hs1.actualModulation", function (err, state) { if (state != null) power = state.val;});
-				adapter.getState("heatSources.actualSupplyTemperature", function (err, state) {if (state != null) temp = state.val;});
-				adapter.getState("heatSources.returnTemperature", function (err, state) {if (state != null) tempr = state.val;});
-			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
-		}
-
-		adapter.log.info(power+ " "+temp+" "+tempr);
-
-		if (power > 0) {
-			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
-			tempavg = (temp+tempr) / 2;
-			if (tempavg > 60) value = adapter.config.eff70;
-			else {
-				if (tempavg > 55) value = adapter.config.eff60;
-				else {
-					if (tempavg > 50) value = adapter.config.eff55;
-					else {
-						if (tempavg > 45) value = adapter.config.eff50;
-						else {
-							if (tempavg > 40) value = adapter.config.eff45;
-							else {
-								if (tempavg > 35) value = adapter.config.eff40;
-								else {
-									if (tempavg > 30) value = adapter.config.eff35;
-									else {
-										if (tempavg > 25) value = adapter.config.eff30;
-										else {
-											if (tempavg > 20) value = adapter.config.eff25;
-											else {
-												if (tempavg <= 20) value = adapter.config.eff20;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		await adapter.setObjectNotExists("statistics.efficiency",{type: "state",
-			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
-		adapter.setState("statistics.efficiency", {ack: true, val: value});
-	}
-}
 
 
 async function read_statistics() {
