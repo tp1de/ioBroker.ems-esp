@@ -182,7 +182,6 @@ async function control_reset() {  // heat demand control switched off - reset co
 
 		adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
 		adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
-		}
 	}
 }
 
