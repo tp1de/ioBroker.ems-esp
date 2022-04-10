@@ -178,6 +178,18 @@ async function control_reset() {  // heat demand control switched off - reset co
 
 	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 		const hc = adapter.config.heatingcircuits[i].hc;
+		const on = parseInt(adapter.config.heatingcircuits[i].on);
+
+		adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
+		adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
+		}
+	}
+}
+
+async function control_reset1() {  // heat demand control switched off - reset control states for hc's
+
+	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
+		const hc = adapter.config.heatingcircuits[i].hc;
 		if (adapter.config.heatingcircuits[i].savesettemp) {
 			const state = "controls."+hc+".savesettemp";
 			let savetemp = 0;
