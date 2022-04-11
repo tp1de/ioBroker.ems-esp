@@ -279,6 +279,19 @@ systemDictionary = {
 		"pl": "tablica wartości z formatem daty",
 		"zh-cn": "日期格式的值数组"
 	  },
+
+	"r_multi": {
+		"en": "multiplicator ",
+		"de": "Multiplikator",
+		"ru": "множитель",
+		"pt": "multiplicador",
+		"nl": "vermenigvuldiger",
+		"fr": "multiplicateur",
+		"it": "moltiplicatore",
+		"es": "multiplicador",
+		"pl": "mnożnik",
+		"zh-cn": "乘数"
+	},
 	"statistics" :{
 		  "en": "Create statistics on  boiler starts",
 		  "de": "Statistiken zu Kesselstarts erstellen",

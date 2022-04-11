@@ -141,7 +141,7 @@ async function init_controls() {
 			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on);
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
 			control_state(state+"status","boolean", "hc control status", true);
-			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -99);
+			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1);
 			control_state("active","boolean", "hc control active", true);
 		}
 	} catch(e) {}
@@ -185,28 +185,7 @@ async function control_reset() {  // heat demand control switched off - reset co
 	}
 }
 
-async function control_reset1() {  // heat demand control switched off - reset control states for hc's
 
-	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
-		const hc = adapter.config.heatingcircuits[i].hc;
-		if (adapter.config.heatingcircuits[i].savesettemp) {
-			const state = "controls."+hc+".savesettemp";
-			let savetemp = 0;
-			try {
-				const state1 = await adapter.getStateAsync(state);
-				savetemp = state1.val;
-			} catch(e) {}
-			if (savetemp != 0) {
-				adapter.log.info("heat demand control switched on for "+ hc + " --> reset old control value: "+savetemp );
-				adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: savetemp});
-			}
-		} else {
-			const on = parseInt(adapter.config.heatingcircuits[i].on);
-			adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
-			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
-		}
-	}
-}
 
 async function heatdemand() {
 	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
@@ -217,26 +196,27 @@ async function heatdemand() {
 
 	for (let i = 0;i < adapter.config.thermostats.length;i++) {
 		const state = "controls."+adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
-		let value1 = 0, value2 = 0;
+		let settemp = 0, acttemp = 0, savetemp = 0;
 		try {
 			const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
-			value1 = state1.val;
-		} catch(e) {value1 = -99;}
-		adapter.setState(state+"settemp", {ack: true, val: value1});
+			settemp = state1.val;
+		} catch(e) {settemp = -1;}
+		adapter.setState(state+"settemp", {ack: true, val: settemp});
 
 		const state2 = "controls."+adapter.config.thermostats[i].hc+".savesettemp";
 		try {
-			const state1 = await adapter.getStateAsync(state2);
-			if (state1.val > value1) value1 = state1.val;
+			const state3 = await adapter.getStateAsync(state2);
+			savetemp = state3.val;
+			if (savetemp > settemp) settemp = savetemp;
 		} catch(e) {}
 
 		try {
-			state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
-			value2 = state1.val;
-		} catch(e) {value2 = -99;}
-		adapter.setState(state+"actualtemp", {ack: true, val: value2});
+			state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+			acttemp = state4.val;
+		} catch(e) {acttemp = -99;}
+		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
 
-		if ((value1 - value2) > parseFloat(adapter.config.thermostats[i].deltam)) {
+		if ((settemp - acttemp) > parseFloat(adapter.config.thermostats[i].deltam)) {
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += parseInt(adapter.config.thermostats[i].weight);
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += parseInt(adapter.config.thermostats[i].weight);
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += parseInt(adapter.config.thermostats[i].weight);
@@ -247,11 +227,6 @@ async function heatdemand() {
 	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 		const hc = adapter.config.heatingcircuits[i].hc;
 		const state = "controls."+hc+".";
-		let value3;
-		try {
-			const state1 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
-			value3 = state1.val;
-		} catch(e) {value3 = "";}
 
 		let w = 99;
 		if (hc == "hc1") w = w1;
@@ -260,52 +235,38 @@ async function heatdemand() {
 		if (hc == "hc4") w = w4;
 		adapter.setState(state+"weight", {ack: true, val: w});
 
-		if (w >= adapter.config.heatingcircuits[i].weighton) {
+		const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+		const v = state5.val;
+		const von = parseInt(adapter.config.heatingcircuits[i].on);
+		const voff = parseInt(adapter.config.heatingcircuits[i].off);
+
+
+		if (w >= adapter.config.heatingcircuits[i].weighton && v == voff) {
 			adapter.setState(state+"status", {ack: true, val: true});
-			const state2 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
-			const v = state2.val;
-			const vn = parseInt(adapter.config.heatingcircuits[i].on);
-			if (v != vn) {
-				const vo = parseInt(adapter.config.heatingcircuits[i].off);
-				if (v == vo) {
-					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
-					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: vn});
-					if (adapter.config.heatingcircuits[i].savesettemp) {
-						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
-							if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
-						}
-					}
-				} else {
-					//adapter.log.info("heat demand manually set for "+ hc + " --> no action");
+			adapter.log.info("new heat demand for "+ hc + " --> switching on" );
+			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
+
+			if (adapter.config.heatingcircuits[i].savesettemp) {
+				for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
+					if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
 				}
 			}
 		}
 
-		if (w <= adapter.config.heatingcircuits[i].weightoff) {
+		if (w <= adapter.config.heatingcircuits[i].weightoff && v == von) {
 			adapter.setState(state+"status", {ack: true, val: false});
-			const state2 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
-			const v = state2.val;
-			const vn = parseInt(adapter.config.heatingcircuits[i].off);
-			if (v != vn) {
-				const vo = parseInt(adapter.config.heatingcircuits[i].on);
-				if (v == vo ||adapter.config.heatingcircuits[i].override) {
+			adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
+			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
 
-					if (adapter.config.heatingcircuits[i].savesettemp) {
-						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
-							if (adapter.config.thermostats[ii].hc == hc) {
-								try {
-									const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
-									value1 = state1.val;
-								} catch(e) {value1 = -99;}
-								adapter.setState(state+"savesettemp", {ack: true, val: value1});
-							}
-						}
+			if (adapter.config.heatingcircuits[i].savesettemp) {
+				for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
+					if (adapter.config.thermostats[ii].hc == hc) {
+						try {
+							const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
+							settemp = state6.val;
+						} catch(e) {settemp = -1;}			
+						adapter.setState(state+"savesettemp", {ack: true, val: settemp});
 					}
-
-					adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
-					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: vn});
-				} else {
-					//adapter.log.info("heat demand manually set for "+ hc + " --> no action");
 				}
 			}
 		}
@@ -381,18 +342,16 @@ async function read_efficiency() {
 		}
 
 		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-			try {
-				state = await adapter.getStateAsync("heatSources.hs1.actualModulation");power = state.val;
+			try {state = await adapter.getStateAsync("heatSources.hs1.actualModulation");power = state.val;}
+			catch (err) {
+				try {state = await adapter.getStateAsync("heatSources.actualModulation");power = state.val;}
+				catch (err) {adapter.log.error("Efficieny: heatSources actualModulation  not available" );}
 			}
-			catch (err) {adapter.log.error("Efficieny: heatSources.hs1.actualModulation  not available" );}
-			try  {
-				state = await adapter.getStateAsync("heatSources.actualSupplyTemperature");temp = state.val;
-			}
+
+			try  {state = await adapter.getStateAsync("heatSources.actualSupplyTemperature");temp = state.val;}
 			catch (err) {adapter.log.error("Efficieny: heatSources.actualSupplyTemperature not available" );}
-			try {
-				state = await adapter.getStateAsync("heatSources.returnTemperature");tempr = state.val;
-			}
-			catch (err) {adapter.log.info("Efficieny: heatSources.returnTemperature not available"); tempr = temp -10;}
+			try {state = await adapter.getStateAsync("heatSources.returnTemperature");tempr = state.val;}
+			catch (err) {adapter.log.debug("Efficieny: heatSources.returnTemperature not available");}
 		}
 
 		if (power > 0) {

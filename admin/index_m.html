@@ -130,11 +130,14 @@
 					<label class="translate" for="db">database</label>
                 </div>
 
-
-
 				<div class="col s1 input-field">
 					<input type="text" class="value" id="db_instance" />
 					<label for="db_instance" class="translate">db_instance</label>
+				</div>
+
+				<div class="col s1 input-field">
+					<input type="number" class="value" id="r_multi" />
+					<label for="r_multi" class="translate">r_multi</label>
 				</div>
 
 			</div>
@@ -235,8 +238,8 @@
 							<thead>
 							<tr>
 								<th data-name="room"            style="width: 10%" data-type="text" 	class="translate">room</th>
-								<th data-name="settemp"      	style="width: 25%" data-type="text" 	class="translate">set temp</th>
-								<th data-name="actualtemp"      style="width: 25%" data-type="text" 	class="translate">actual temp</th>
+								<th data-name="settemp"      	style="width: 30%" data-type="text" 	class="translate">set temp</th>
+								<th data-name="actualtemp"      style="width: 30%" data-type="text" 	class="translate">actual temp</th>
 
 								<th data-name="deltam"   style="width: 5%" data-type="select"  
 									data-default="1.0" data-options="-3.0;-2.5;-2.0;-1.5;-1.0;-0.5;0.0;0.5;1.0;1.5;2.0;2.5;3.0" class="translate">minimum delta</th>
@@ -274,7 +277,7 @@
 								<th data-name="state"   	style="width: 30%" data-type="text" 	class="translate">state</th>
 								<th data-name="on"     		style="width: 5%"  data-type="number" 	class="translate">on</th>
 								<th data-name="off"    		style="width: 5%"  data-type="number" 	class="translate">off</th>
-								<th data-name="override"	style="width: 5%"  data-type="checkbox"	class="translate">override</th>
+
 								<th data-name="savesettemp"	style="width: 5%"  data-type="checkbox"	class="translate">savesettemp</th>
 
 								<th data-buttons="delete up down" style="width: 120px"></th>

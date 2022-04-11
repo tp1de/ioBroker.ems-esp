@@ -182,6 +182,7 @@
     "ems_dallas": false,
     "recordings": false,
     "recordings_format": 0,
+    "r_multi": 1,
     "statistics": false,
     "db": "",
     "db_instance": 0,
@@ -201,7 +202,7 @@
     "syslog": false,
     "syslog_port": 20516,
     "states_reorg": false,
-    "heatdemand":false
+    "heatdemand": false
   },
   "objects": [],
   "instanceObjects": []
