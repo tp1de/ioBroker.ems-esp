@@ -264,7 +264,7 @@ async function heatdemand() {
 						try {
 							const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
 							settemp = state6.val;
-						} catch(e) {settemp = -1;}			
+						} catch(e) {settemp = -1;}
 						adapter.setState(state+"savesettemp", {ack: true, val: settemp});
 					}
 				}
@@ -342,16 +342,16 @@ async function read_efficiency() {
 		}
 
 		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-			let m = adapter.config.modulation;
-			let s = adapter.config.supplytemp;
-			let r = adapter.config.returntemp;
+			const m = adapter.config.modulation;
+			const s = adapter.config.supplytemp;
+			const r = adapter.config.returntemp;
 
 			try {state = await adapter.getStateAsync(m);power = state.val;}
 			catch (err) {adapter.log.error("Efficieny: boiler modulation state not available" );}
-			
+
 			try  {state = await adapter.getStateAsync(s);temp = state.val;}
 			catch (err) {adapter.log.error("Efficieny: supply temperature state not available" );}
-			
+
 			try {state = await adapter.getStateAsync(r);tempr = state.val;}
 			catch (err) {adapter.log.debug("Efficieny: return temperature state not available");}
 		}
