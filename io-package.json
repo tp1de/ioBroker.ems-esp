@@ -202,7 +202,10 @@
     "syslog": false,
     "syslog_port": 20516,
     "states_reorg": false,
-    "heatdemand": false
+    "heatdemand": false,
+    "modulation": "heatSources.hs1.actualModulation",
+    "supplytemp": "heatSources.actualSupplyTemperature",
+    "returntemp": "heatSources.returnTemperature"
   },
   "objects": [],
   "instanceObjects": []

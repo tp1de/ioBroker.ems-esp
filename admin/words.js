@@ -472,6 +472,42 @@ systemDictionary = {
 		"pl": "<70°C",
 		"zh-cn": "< 70°C"
 	},
+	"modulation": {
+		  "en": "km200 state modulation",
+		  "de": "km200 State Modulation",
+		  "ru": "km200 государственная модуляция",
+		  "pt": "Modulação de estado km200",
+		  "nl": "km200 staat modulatie",
+		  "fr": "modulation d'état km200",
+		  "it": "modulazione di stato km200",
+		  "es": "modulación de estado km200",
+		  "pl": "modulacja stanu km200",
+		  "zh-cn": "km200状态调制"
+		},
+	"supplytemp": {
+		  "en": "km200 state supplytemp",
+		  "de": "km200 State Vorlauftemp",
+		  "ru": "km200 состояние поставкиtemp",
+		  "pt": "km200 estado de abastecimentotemp",
+		  "nl": "km200 staat toevoertemp",
+		  "fr": "km200 état supplytemp",
+		  "it": "km200 statale temp",
+		  "es": "km200 estado suministrotemp",
+		  "pl": "km200 stan zasilania temp",
+		  "zh-cn": "km200 国家供应温度"
+	},
+	"returntemp": {
+		  "en": "km200 state returntemp",
+		  "de": "km200 State Rücklauftemp",
+		  "ru": "km200 состояние returntemp",
+		  "pt": "km200 estado returntemp",
+		  "nl": "km200 staat retourtemp",
+		  "fr": "km200 état retour temp",
+		  "it": "km200 stato ritorno temp",
+		  "es": "km200 estado temperatura retorno",
+		  "pl": "km200 stan powrotu temp",
+		  "zh-cn": "km200 状态返回温度"
+	},
 	"syslog": {
 		"en": "syslog server active?",
 		"de": "Syslog-Server aktiv?",

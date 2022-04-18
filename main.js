@@ -342,16 +342,18 @@ async function read_efficiency() {
 		}
 
 		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-			try {state = await adapter.getStateAsync("heatSources.hs1.actualModulation");power = state.val;}
-			catch (err) {
-				try {state = await adapter.getStateAsync("heatSources.actualModulation");power = state.val;}
-				catch (err) {adapter.log.error("Efficieny: heatSources actualModulation  not available" );}
-			}
+			let m = adapter.config.modulation;
+			let s = adapter.config.supplytemp;
+			let r = adapter.config.returntemp;
 
-			try  {state = await adapter.getStateAsync("heatSources.actualSupplyTemperature");temp = state.val;}
-			catch (err) {adapter.log.error("Efficieny: heatSources.actualSupplyTemperature not available" );}
-			try {state = await adapter.getStateAsync("heatSources.returnTemperature");tempr = state.val;}
-			catch (err) {adapter.log.debug("Efficieny: heatSources.returnTemperature not available");}
+			try {state = await adapter.getStateAsync(m);power = state.val;}
+			catch (err) {adapter.log.error("Efficieny: boiler modulation state not available" );}
+			
+			try  {state = await adapter.getStateAsync(s);temp = state.val;}
+			catch (err) {adapter.log.error("Efficieny: supply temperature state not available" );}
+			
+			try {state = await adapter.getStateAsync(r);tempr = state.val;}
+			catch (err) {adapter.log.debug("Efficieny: return temperature state not available");}
 		}
 
 		if (power > 0) {
