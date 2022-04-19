@@ -21,6 +21,7 @@ const adapterIntervals = {};
 const own_states = [];
 let adapter, unloaded = false;
 let db = "sql.0";
+let database = "iobroker";
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -79,6 +80,7 @@ if (module && module.parent) {
 async function main () {
 
 	db = adapter.config.database_instance;
+	database = adapter.config.database;
 
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
@@ -422,20 +424,22 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
-		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 			}, function (result) {
 				if (!unloaded) {
-					const count = result.result.length;
+					let count = 0;
 					let on = 0;
-					for (let i = 0; i < result.result.length; i++) {if (result.result[i].val == 1) on += 1;}
+					try {
+						count = result.result.length;
+						for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
+					} catch(e) {}
+
 					let value = 0;
 					if (count !== 0 && count != undefined) value = on / count * 100;
 					value = Math.round(value*10)/10;
 					adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
 				}
-			});
-		} catch(e) {}
+		});
 	}
 }
 
@@ -448,11 +452,15 @@ async function stat(db,id,hour,state) {
 			}, function (result) {
 				if (!unloaded) {
 					let value = 0;
-					const c = result.result.length;
+					let c = 0;
+					try {c = result.result.length;} catch(e) {}
+
 					if (c == 0) value = 0;
 					if (c == 1) value = 1;
-					if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
-					if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+					try {
+						if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
+						if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
 				}
 			});
