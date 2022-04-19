@@ -1,5 +1,5 @@
 //eslint-disable no-empty */
-/* eslint-disable no-mixed-spaces-and-tabs */
+//"eslint-disable no-mixed-spaces-and-tabs" 
 //"use strict";
 //"esversion":"6";
 
@@ -21,7 +21,6 @@ const adapterIntervals = {};
 const own_states = [];
 let adapter, unloaded = false;
 let db = "sql.0";
-let database = "iobroker";
 
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -80,8 +79,7 @@ if (module && module.parent) {
 async function main () {
 
 	db = adapter.config.database_instance;
-	database = adapter.config.database;
-
+	
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
 	if (adapter.config.syslog == true) {
