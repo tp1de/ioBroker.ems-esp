@@ -105,11 +105,10 @@ async function main () {
 	}
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-	if (adapter.config.heatdemand && !unloaded) {
-		await init_controls();
-		await heatdemand();
-		adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
-	} else control_state("active","boolean", "hc control active", false);
+	
+	await init_controls();
+	adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
+	control_state("active","boolean", "hc control active", adapter.config.heatdemand);
 
 }
 
@@ -140,9 +139,9 @@ async function init_controls() {
 			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state);
 			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on);
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
-			control_state(state+"status","boolean", "hc control status", true);
+			control_state(state+"status","boolean", "hc control status", false);
 			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1);
-			control_state("active","boolean", "hc control active", true);
+			control_state("active","boolean", "hc control active", adapter.config.heatdemand);
 		}
 	} catch(e) {}
 
@@ -189,6 +188,7 @@ async function control_reset() {  // heat demand control switched off - reset co
 
 async function heatdemand() {
 	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
+
 	try {
 		const active = await adapter.getStateAsync("controls.active");
 		if (active.val == false || active.val == 0) return;
@@ -215,8 +215,10 @@ async function heatdemand() {
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
 		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
+		let deltam = parseFloat(adapter.config.thermostats[i].deltam);
+		let delta = settemp - acttemp;
 
-		if ((settemp - acttemp) > parseFloat(adapter.config.thermostats[i].deltam)) {
+		if (delta > deltam) {
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += parseInt(adapter.config.thermostats[i].weight);
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += parseInt(adapter.config.thermostats[i].weight);
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += parseInt(adapter.config.thermostats[i].weight);
@@ -233,6 +235,7 @@ async function heatdemand() {
 		if (hc == "hc2") w = w2;
 		if (hc == "hc3") w = w3;
 		if (hc == "hc4") w = w4;
+
 		adapter.setState(state+"weight", {ack: true, val: w});
 
 		const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
