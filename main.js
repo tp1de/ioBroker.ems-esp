@@ -213,12 +213,13 @@ async function heatdemand() {
 		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
 		const deltam = parseFloat(adapter.config.thermostats[i].deltam);
 		const delta = settemp - acttemp;
+		const weight = parseInt(adapter.config.thermostats[i].weight);
 
 		if (delta > deltam) {
-			if (adapter.config.thermostats[i].hc == "hc1") w1 += parseInt(adapter.config.thermostats[i].weight);
-			if (adapter.config.thermostats[i].hc == "hc2") w2 += parseInt(adapter.config.thermostats[i].weight);
-			if (adapter.config.thermostats[i].hc == "hc3") w3 += parseInt(adapter.config.thermostats[i].weight);
-			if (adapter.config.thermostats[i].hc == "hc4") w4 += parseInt(adapter.config.thermostats[i].weight);
+			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
+			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
+			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;
+			if (adapter.config.thermostats[i].hc == "hc4") w4 += weight;
 		}
 	}
 
@@ -247,7 +248,7 @@ async function heatdemand() {
 		const voff = parseInt(adapter.config.heatingcircuits[i].off);
 
 
-		if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd == true) {
+		if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd ) {
 			adapter.setState(state+"status", {ack: true, val: true});
 			adapter.log.info("new heat demand for "+ hc + " --> switching on" );
 			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
