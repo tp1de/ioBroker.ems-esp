@@ -141,7 +141,8 @@ async function init_controls() {
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
 			control_state(state+"status","boolean", "hc control status", false);
 			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1);
-			control_state("active","boolean", "hc control active", adapter.config.heatdemand);
+			if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) control_state("active","boolean", "hc control active", true);
+			else control_state("active","boolean", "hc control active", false);
 		}
 	} catch(e) {}
 
