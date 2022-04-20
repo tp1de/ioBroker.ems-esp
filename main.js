@@ -1,5 +1,5 @@
 //eslint-disable no-empty */
-//"eslint-disable no-mixed-spaces-and-tabs" 
+//"eslint-disable no-mixed-spaces-and-tabs"
 //"use strict";
 //"esversion":"6";
 
@@ -79,7 +79,7 @@ if (module && module.parent) {
 async function main () {
 
 	db = adapter.config.database_instance;
-	
+
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
 	if (adapter.config.syslog == true) {
@@ -105,7 +105,7 @@ async function main () {
 	}
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-	
+
 	await init_controls();
 	adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
 	control_state("active","boolean", "hc control active", adapter.config.heatdemand);
@@ -189,11 +189,6 @@ async function control_reset() {  // heat demand control switched off - reset co
 async function heatdemand() {
 	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
 
-	try {
-		const active = await adapter.getStateAsync("controls.active");
-		if (active.val == false || active.val == 0) return;
-	} catch (e) {return;}
-
 	for (let i = 0;i < adapter.config.thermostats.length;i++) {
 		const state = "controls."+adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
 		let settemp = 0, acttemp = 0, savetemp = 0;
@@ -215,8 +210,8 @@ async function heatdemand() {
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
 		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
-		let deltam = parseFloat(adapter.config.thermostats[i].deltam);
-		let delta = settemp - acttemp;
+		const deltam = parseFloat(adapter.config.thermostats[i].deltam);
+		const delta = settemp - acttemp;
 
 		if (delta > deltam) {
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += parseInt(adapter.config.thermostats[i].weight);
@@ -225,6 +220,13 @@ async function heatdemand() {
 			if (adapter.config.thermostats[i].hc == "hc4") w4 += parseInt(adapter.config.thermostats[i].weight);
 		}
 	}
+
+	let hd = false;
+	try {
+		const active = await adapter.getStateAsync("controls.active");
+		if (active.val == true || active.val == 1) hd = true;
+	} catch (e) {}
+
 
 	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 		const hc = adapter.config.heatingcircuits[i].hc;
@@ -244,7 +246,7 @@ async function heatdemand() {
 		const voff = parseInt(adapter.config.heatingcircuits[i].off);
 
 
-		if (w >= adapter.config.heatingcircuits[i].weighton && v == voff) {
+		if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd == true) {
 			adapter.setState(state+"status", {ack: true, val: true});
 			adapter.log.info("new heat demand for "+ hc + " --> switching on" );
 			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
@@ -256,7 +258,7 @@ async function heatdemand() {
 			}
 		}
 
-		if (w <= adapter.config.heatingcircuits[i].weightoff && v == von) {
+		if (w <= adapter.config.heatingcircuits[i].weightoff && v == von && hd == true) {
 			adapter.setState(state+"status", {ack: true, val: false});
 			adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
 			adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
@@ -426,20 +428,20 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
 		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-			}, function (result) {
-				if (!unloaded) {
-					let count = 0;
-					let on = 0;
-					try {
-						count = result.result.length;
-						for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
-					} catch(e) {}
+		}, function (result) {
+			if (!unloaded) {
+				let count = 0;
+				let on = 0;
+				try {
+					count = result.result.length;
+					for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
+				} catch(e) {}
 
-					let value = 0;
-					if (count !== 0 && count != undefined) value = on / count * 100;
-					value = Math.round(value*10)/10;
-					adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
-				}
+				let value = 0;
+				if (count !== 0 && count != undefined) value = on / count * 100;
+				value = Math.round(value*10)/10;
+				adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
+			}
 		});
 	}
 }
