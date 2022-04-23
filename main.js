@@ -139,7 +139,7 @@ async function init_controls() {
 			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state);
 			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on);
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
-			control_state(state+"status","boolean", "hc control status", false);
+			control_state(state+"status","boolean", "hc control status");
 			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1);
 			if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) control_state("active","boolean", "hc control active", true);
 			else control_state("active","boolean", "hc control active", false);
@@ -182,6 +182,7 @@ async function control_reset() {  // heat demand control switched off - reset co
 
 		adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
 		adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
+		adapter.setState("controls."+hc+".status", {ack: true, val: true});
 	}
 }
 
