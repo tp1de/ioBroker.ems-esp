@@ -432,22 +432,24 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
-		adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
-		}, function (result) {
-			if (!unloaded) {
-				let count = 0;
-				let on = 0;
-				try {
-					count = result.result.length;
-					for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
-				} catch(e) {}
+		try {
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+			}, function (result) {
+				if (!unloaded) {
+					let count = 0;
+					let on = 0;
+					try {
+						count = result.result.length;
+						for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
+					} catch(e) {}
 
-				let value = 0;
-				if (count !== 0 && count != undefined) value = on / count * 100;
-				value = Math.round(value*10)/10;
-				adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
-			}
-		});
+					let value = 0;
+					if (count !== 0 && count != undefined) value = on / count * 100;
+					value = Math.round(value*10)/10;
+					adapter.setState("statistics.boiler-on-1h", {ack: true, val: value});
+				}
+			});
+		} catch(e) {}
 	}
 }
 
