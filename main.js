@@ -144,26 +144,28 @@ async function init_controls() {
 			if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) control_state("active","boolean", "hc control active", true);
 			else control_state("active","boolean", "hc control active", false);
 		}
+
+
+		for (let i = 0;i < adapter.config.thermostats.length;i++) {
+			const state = adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
+			let value = 0;
+			try {
+				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
+				value = state1.val;
+			} catch(e) {value = -99;}
+			control_state(state+"settemp","number", "set temperature", value);
+			try {
+				state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+				value = state1.val;
+			} catch(e) {value = -99;}
+			control_state(state+"actualtemp","number", "actual temperature", value);
+
+			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
+			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
+
+		}
+
 	} catch(e) {}
-
-	for (let i = 0;i < adapter.config.thermostats.length;i++) {
-		const state = adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
-		let value = 0;
-		try {
-			const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
-			value = state1.val;
-		} catch(e) {value = -99;}
-		control_state(state+"settemp","number", "set temperature", value);
-		try {
-			state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
-			value = state1.val;
-		} catch(e) {value = -99;}
-		control_state(state+"actualtemp","number", "actual temperature", value);
-
-		control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
-		control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
-
-	}
 
 }
 
