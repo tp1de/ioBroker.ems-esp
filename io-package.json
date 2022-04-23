@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.10.0": {
+        "en": "add heatdemand customization & calculation with automatic switch (on/off) per heating circuit \nerror corrections on efficiency calculation - make fields used configurable\nsome other error corrections",
+        "de": "Heizbedarfsanpassung & -berechnung mit automatischer Ein-/Ausschaltung pro Heizkreis hinzufügen\nFehlerkorrekturen bei der Effizienzberechnung - verwendete Felder konfigurierbar machen\neinige andere Fehlerkorrekturen",
+        "ru": "добавить настройку и расчет потребности в тепле с автоматическим переключением (вкл./выкл.) для каждого отопительного контура\nисправления ошибок при расчете эффективности - сделать используемые поля настраиваемыми\nнекоторые другие исправления ошибок",
+        "pt": "adicionar personalização e cálculo de demanda de calor com interruptor automático (ligar/desligar) por circuito de aquecimento\ncorreções de erros no cálculo de eficiência - torne os campos usados configuráveis\nalgumas outras correções de erros",
+        "nl": "voeg warmtevraag maatwerk & berekening toe met automatische omschakeling (aan/uit) per verwarmingscircuit\nfoutcorrecties op efficiëntieberekening - maak gebruikte velden configureerbaar\nenkele andere foutcorrecties",
+        "fr": "ajouter la personnalisation et le calcul de la demande de chaleur avec interrupteur automatique (marche/arrêt) par circuit de chauffage\ncorrections d'erreurs sur le calcul de l'efficacité - rendre les champs utilisés configurables\nquelques autres corrections d'erreurs",
+        "it": "aggiungi la personalizzazione e il calcolo della richiesta di calore con l'accensione/spegnimento automatico per circuito di riscaldamento\ncorrezioni di errori sul calcolo dell'efficienza - rendi configurabili i campi utilizzati\nalcune altre correzioni di errore",
+        "es": "agregue personalización y cálculo de demanda de calor con interruptor automático (encendido/apagado) por circuito de calefacción\ncorrecciones de errores en el cálculo de la eficiencia: haga que los campos utilizados sean configurables\nalgunas otras correcciones de errores",
+        "pl": "dodaj dostosowywanie i obliczanie zapotrzebowania na ciepło z automatycznym włączaniem/wyłączaniem dla każdego obwodu grzewczego\nkorekty błędów przy obliczaniu wydajności - konfigurowalne używane pola\nkilka innych poprawek błędów",
+        "zh-cn": "通过每个加热电路的自动开关（开/关）添加热量需求定制和计算\n效率计算的错误更正 - 使使用的字段可配置\n其他一些错误更正"
+      },
       "1.9.0": {
         "en": "beta test new version",
         "de": "beta test neue version"
@@ -67,30 +79,6 @@
         "es": "nueva lógica y estructura de estado para grabaciones de km200\ngrabaciones almacenadas en estados [matriz de valores] y dentro de la base de datos\npor favor ajuste la configuración del adaptador\nsoporte de bomba de calor Buderus con Logamatic HMC300 IP-Inside",
         "pl": "nowa logika i struktura stanu dla nagrań km200\nnagrania przechowywane w stanach [tablica wartości] oraz w bazie danych\nproszę dostosować konfigurację adaptera\nobsługa pompy ciepła Buderus z Logamatic HMC300 IP-Inside",
         "zh-cn": "km200 记录的新逻辑和状态结构\n存储在状态 [值数组] 和数据库中的记录\n请调整适配器配置\n使用 Logamatic HMC300 IP-Inside 支持 Buderus 热泵"
-      },
-      "1.2.1": {
-        "en": "Adjust for js-controller v4 - part 2\nprivate password encryption by admin instead of own code (if necessary please re-enter pw)",
-        "de": "Anpassung für js-controller v4 – Teil 2\nprivate Passwortverschlüsselung durch Admin statt eigenem Code (ggf. bitte pw neu eingeben)",
-        "ru": "Настройка для js-controller v4 - часть 2\nшифрование приватного пароля администратором вместо собственного кода (при необходимости повторно введите pw)",
-        "pt": "Ajuste para js-controller v4 - parte 2\ncriptografia de senha privada pelo administrador em vez do próprio código (se necessário, digite novamente pw)",
-        "nl": "Aanpassen voor js-controller v4 - deel 2\nprivé wachtwoord encryptie door admin in plaats van eigen code (indien nodig gelieve opnieuw pw in te voeren)",
-        "fr": "Ajuster pour js-controller v4 - partie 2\ncryptage du mot de passe privé par l'administrateur au lieu de son propre code (si nécessaire, veuillez ressaisir pw)",
-        "it": "Regola per js-controller v4 - parte 2\ncrittografia della password privata da parte dell'amministratore invece del proprio codice (se necessario reinserire pw)",
-        "es": "Ajuste para js-controller v4 - parte 2\nCifrado de contraseña privada por administrador en lugar de código propio (si es necesario, vuelva a ingresar pw)",
-        "pl": "Dostosowanie do kontrolera js v4 - część 2\nprywatne szyfrowanie hasła przez administratora zamiast własnego kodu (w razie potrzeby proszę ponownie wpisać pw)",
-        "zh-cn": "调整 js-controller v4 - 第 2 部分\n由管理员而不是自己的密码加密的私人密码（如有必要请重新输入密码）"
-      },
-      "1.2.0": {
-        "en": "Adjust for js-controller v4\nprivate password encryption by admin instead of own code (if necessary please re-enter pw)",
-        "de": "Anpassen für js-controller v4\nprivate Passwortverschlüsselung durch Admin statt eigenem Code (ggf. bitte pw neu eingeben)",
-        "ru": "Настройка для js-контроллера v4\nшифрование приватного пароля администратором вместо собственного кода (при необходимости повторно введите pw)",
-        "pt": "Ajuste para js-controller v4\ncriptografia de senha privada pelo administrador em vez do próprio código (se necessário, digite novamente pw)",
-        "nl": "Aanpassen voor js-controller v4\nprivé wachtwoord encryptie door admin in plaats van eigen code (indien nodig gelieve opnieuw pw in te voeren)",
-        "fr": "Ajuster pour js-controller v4\ncryptage du mot de passe privé par l'administrateur au lieu de son propre code (si nécessaire, veuillez ressaisir pw)",
-        "it": "Regola per js-controller v4\ncrittografia della password privata da parte dell'amministratore invece del proprio codice (se necessario reinserire pw)",
-        "es": "Ajuste para js-controller v4\nCifrado de contraseña privada por administrador en lugar de código propio (si es necesario, vuelva a ingresar pw)",
-        "pl": "Dostosuj do kontrolera js v4\nprywatne szyfrowanie hasła przez administratora zamiast własnego kodu (w razie potrzeby proszę ponownie wpisać pw)",
-        "zh-cn": "调整 js-controller v4\n由管理员而不是自己的密码加密的私人密码（如有必要请重新输入密码）"
       }
     },
     "titleLang": {
