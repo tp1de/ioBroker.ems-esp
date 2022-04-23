@@ -134,7 +134,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 
 ### **WORK IN PROGRESS**
-* add heatdemand customization & calculation with automatic switch (on/off) per heating circuit (beta test for version 2.0)
+* add heatdemand customization & calculation with automatic switch (on/off) per heating circuit 
 * error corrections on efficiency calculation - make fields used configurable
 * some other error corrections
 
