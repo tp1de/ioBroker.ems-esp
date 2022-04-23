@@ -73,8 +73,10 @@ Available are hourly, dayly and monthly statistics and stored as array data in s
 * For InfluxDB V1 the retention policy has to be set to a minimum of 170 weeks. (alter retention policy global on iobroker duration 170w;)
 * For InfluxDB V2 the global retention policy is set by the influxdb adapter - please set within influxdb adapter the storage retention time to "no automatic deletion" !
 
-This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. 
-Update frequency is every hour. 
+This adapter then creates the respective recording states, enables sql statistics and writes historic database entries using sql commands and is updating the recordings. Update frequency is every hour. 
+
+IMPORTANT: PLEASE DON'T BE IRRITATED IF THE RESPECTIVE STATES VALUES SHOW NULL() VALUES. 
+IN SOME CASES THE VALUES ARE NOT SHOWN CORRECTLY WITHIN THE ADMIN OBJECT BROWSER - PLEASE USE FLOT OR GRAFANA TO DISPLAY !!!
 
 ## km200 recordings - an explanation
 
