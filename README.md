@@ -113,11 +113,18 @@ Boiler efficiency can be calculated if parameters are filled. (Gas- and Oilboile
 * The boiler efficiency can be calculated based on average boiler temp: (boiler temp + return temp) / 2.
 * When return temp is not available in km200/ems-esp the efficiency caclulation does not make sense - please disable to avoid errors 
 * Look at the datasheet of your boiler to adjust the efficiency table accordingly. 
+* On some heating systems this function produces errors - please switch off !!!
 
 ## changes in state-structure
 
 Whenever a new EMS-ESP firmware adds new datafields and/or changes datafield names they are processed during adapter run. Nevertheless obsolete datafields are not deleted automatically by the adapter. 
 There is an option to re-build the state-structure by deleting states on adapter re-start (states with history / db entries are kept)
+
+## heatdemand control 
+
+V1.9.x beta - Explanation to heat demand calculation and configuration. Available in German language only:
+https://github.com/tp1de/ioBroker.ems-esp/wiki
+
 
 
 ## Changelog
@@ -125,6 +132,12 @@ There is an option to re-build the state-structure by deleting states on adapter
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* add heatdemand customization & calculation with automatic switch (on/off) per heating circuit (beta test for version 2.0)
+* error corrections on efficiency calculation - make fields used configurable
+* some other error corrections
+
 ### 1.9.0 (2022-04-18)
 * beta test new version (github only)
 * add heatdemand customization & calculation with automatic switch (on/off) per heating circuit
