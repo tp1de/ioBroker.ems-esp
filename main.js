@@ -193,6 +193,9 @@ async function control_reset() {  // heat demand control switched off - reset co
 async function heatdemand() {
 	let w1 = 0, w2 = 0, w3 = 0, w4 = 0;
 
+	try {if (adapter.config.thermostats.length == 0 || adapter.config.thermostats.length == undefined) return;}
+	catch(e) {return;}
+
 	for (let i = 0;i < adapter.config.thermostats.length;i++) {
 		const state = "controls."+adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
 		let settemp = 0, acttemp = 0, savetemp = 0;

@@ -171,6 +171,8 @@
     "recordings": false,
     "recordings_format": 0,
     "r_multi": 1,
+    "r_month":true,
+    "r_c": true,
     "statistics": false,
     "db": "",
     "db_instance": 0,

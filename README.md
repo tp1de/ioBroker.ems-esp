@@ -94,7 +94,7 @@ Every timeperiod has to be read within the adapter by 3 api-calls:
 Within the read data-field by web-api the sum of sample-values is stored within y-value, no of samples within c-value.
 (see original values within json-data in km200... fields.)
 
-Since sometimes samples are missing the value has to be interpolated.
+Since sometimes samples are missing the energy values can be interpolated. Interpolation is configurable (on/off).
 For some months (> 12 months ago) some data might be missing. (Bosch errors within code?)
 
 For the actual months energy consumption the adapter calculates the sum of daily values and uses this sum to get more accurate data.
@@ -136,6 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * corrections on hourly recordings for temperature
+* make interpolation (missing of c-counts) in energy recordings configurable (on/off)
+* error corrections on heatdemand with empty data
 
 ### 1.10.0 (2022-04-23)
 * add heatdemand customization & calculation with automatic switch (on/off) per heating circuit 
