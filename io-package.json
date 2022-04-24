@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.11.0": {
+        "en": "corrections on hourly recordings for temperature\nmake interpolation (missing of c-counts) in energy recordings configurable (on/off)\nerror corrections on heatdemand with empty data",
+        "de": "Korrekturen an stündlichen Temperaturaufzeichnungen\nInterpolation (fehlende c-counts) in Energieaufzeichnungen konfigurierbar machen (ein/aus)\nFehlerkorrekturen bei Wärmebedarf mit leeren Daten",
+        "ru": "поправки на почасовые записи для температуры\nсделать интерполяцию (отсутствие c-счетчиков) в записях энергии настраиваемой (вкл./выкл.)\nисправления ошибок по потреблению тепла с пустыми данными",
+        "pt": "correções em registros de hora em hora para temperatura\nfazer interpolação (falta de c-counts) em registros de energia configuráveis (on/off)\ncorreções de erros no heatdemand com dados vazios",
+        "nl": "correcties op uurregistraties voor temperatuur\nmaak interpolatie (ontbreken van c-counts) in energieregistraties configureerbaar (aan/uit)\nfoutcorrecties op warmtevraag met lege data",
+        "fr": "corrections sur les enregistrements horaires pour la température\nrendre l'interpolation (absence de c-counts) dans les enregistrements d'énergie configurable (on/off)\ncorrections d'erreurs sur la demande de chaleur avec des données vides",
+        "it": "correzioni sulle registrazioni orarie per la temperatura\nrendere l'interpolazione (mancanza di c-counts) nelle registrazioni di energia configurabile (on/off)\ncorrezioni di errori su richiesta di calore con dati vuoti",
+        "es": "correcciones en registros horarios de temperatura\nhacer que la interpolación (falta de cuentas c) en los registros de energía sea configurable (activar/desactivar)\ncorrecciones de errores en la demanda de calor con datos vacíos",
+        "pl": "korekty zapisów godzinowych dla temperatury\nskonfigurować interpolację (brak zliczeń c) w zapisach energii (on/off)\nkorekty błędów na żądanie ciepła z pustymi danymi",
+        "zh-cn": "温度每小时记录的修正\n使能量记录中的插值（缺少 c 计数）可配置（开/关）\n使用空数据对热量需求进行错误更正"
+      },
       "1.10.0": {
         "en": "add heatdemand customization & calculation with automatic switch (on/off) per heating circuit \nerror corrections on efficiency calculation - make fields used configurable\nsome other error corrections",
         "de": "Heizbedarfsanpassung & -berechnung mit automatischer Ein-/Ausschaltung pro Heizkreis hinzufügen\nFehlerkorrekturen bei der Effizienzberechnung - verwendete Felder konfigurierbar machen\neinige andere Fehlerkorrekturen",
@@ -67,18 +79,6 @@
         "es": "corrección en registros de temperatura (meses y días)",
         "pl": "korekta zapisów temperatury (miesiące i dni)",
         "zh-cn": "温度记录校正（月和日）"
-      },
-      "1.3.0": {
-        "en": "new logic and state-structure for km200 recordings\nrecordings stored in states [array of values] and within database\nplease adjust adapter configuration\nsupport of Buderus heatpump with Logamatic HMC300 IP-Inside",
-        "de": "neue Logik und Zustandsstruktur für km200-Aufzeichnungen\nAufzeichnungen, die in Zuständen [Array von Werten] und in der Datenbank gespeichert sind\nBitte passen Sie die Adapterkonfiguration an\nUnterstützung der Buderus Wärmepumpe mit Logamatic HMC300 IP-Inside",
-        "ru": "новая логика и структура состояний для записей km200\nзаписи, хранящиеся в состояниях [массив значений] и в базе данных\nпожалуйста, отрегулируйте конфигурацию адаптера\nподдержка теплового насоса Buderus с Logamatic HMC300 IP-Inside",
-        "pt": "nova lógica e estrutura de estado para gravações de km200\ngravações armazenadas em estados [array of values] e no banco de dados\npor favor ajuste a configuração do adaptador\nsuporte da bomba de calor Buderus com Logamatic HMC300 IP-Inside",
-        "nl": "nieuwe logica en statusstructuur voor km200-opnames\nopnames opgeslagen in toestanden [array van waarden] en binnen database\npas de adapterconfiguratie aan\nondersteuning van Buderus warmtepomp met Logamatic HMC300 IP-Inside",
-        "fr": "nouvelle logique et structure d'état pour les enregistrements km200\nenregistrements stockés dans des états [tableau de valeurs] et dans la base de données\nveuillez ajuster la configuration de l'adaptateur\nprise en charge de la pompe à chaleur Buderus avec Logamatic HMC300 IP-Inside",
-        "it": "nuova logica e struttura degli stati per le registrazioni di km200\nregistrazioni memorizzate negli stati [matrice di valori] e all'interno del database\nsi prega di regolare la configurazione dell'adattatore\nsupporto della pompa di calore Buderus con Logamatic HMC300 IP-Inside",
-        "es": "nueva lógica y estructura de estado para grabaciones de km200\ngrabaciones almacenadas en estados [matriz de valores] y dentro de la base de datos\npor favor ajuste la configuración del adaptador\nsoporte de bomba de calor Buderus con Logamatic HMC300 IP-Inside",
-        "pl": "nowa logika i struktura stanu dla nagrań km200\nnagrania przechowywane w stanach [tablica wartości] oraz w bazie danych\nproszę dostosować konfigurację adaptera\nobsługa pompy ciepła Buderus z Logamatic HMC300 IP-Inside",
-        "zh-cn": "km200 记录的新逻辑和状态结构\n存储在状态 [值数组] 和数据库中的记录\n请调整适配器配置\n使用 Logamatic HMC300 IP-Inside 支持 Buderus 热泵"
       }
     },
     "titleLang": {
@@ -171,7 +171,7 @@
     "recordings": false,
     "recordings_format": 0,
     "r_multi": 1,
-    "r_month":true,
+    "r_month": true,
     "r_c": true,
     "statistics": false,
     "db": "",
