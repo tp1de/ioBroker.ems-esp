@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.11.0",
+    "version": "1.11.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.11.1": {
+        "en": "error corrections on invalid heatdemand states",
+        "de": "Fehlerkorrekturen bei ungültigen Wärmebedarfszuständen",
+        "ru": "исправления ошибок в недопустимых состояниях тепловой нагрузки",
+        "pt": "correções de erros em estados inválidos de demanda de calor",
+        "nl": "foutcorrecties op ongeldige warmtevraagstatussen",
+        "fr": "corrections d'erreurs sur les états de demande de chaleur invalides",
+        "it": "correzioni di errori su stati di richiesta di calore non validi",
+        "es": "correcciones de errores en estados de demanda de calor no válidos",
+        "pl": "korekty błędów w nieprawidłowych stanach zapotrzebowania na ciepło",
+        "zh-cn": "对无效热需求状态的纠错"
+      },
       "1.11.0": {
         "en": "corrections on hourly recordings for temperature\nmake interpolation (missing of c-counts) in energy recordings configurable (on/off)\nerror corrections on heatdemand with empty data",
         "de": "Korrekturen an stündlichen Temperaturaufzeichnungen\nInterpolation (fehlende c-counts) in Energieaufzeichnungen konfigurierbar machen (ein/aus)\nFehlerkorrekturen bei Wärmebedarf mit leeren Daten",
@@ -67,18 +79,6 @@
         "es": "corrección para grabaciones sin objeto de referencia\ncorrecciones para grabaciones mySQL",
         "pl": "poprawka dla nagrań bez obiektu referencyjnego\npoprawki dla nagrań mySQL",
         "zh-cn": "校正无参照物的记录\n对 mySQL 记录的更正"
-      },
-      "1.3.1": {
-        "en": "correction on temperature recordings (months and days)",
-        "de": "Korrektur bei Temperaturaufzeichnungen (Monate und Tage)",
-        "ru": "поправка на записи температуры (месяцы и дни)",
-        "pt": "correção nos registros de temperatura (meses e dias)",
-        "nl": "correctie op temperatuurregistraties (maanden en dagen)",
-        "fr": "correction sur les relevés de température (mois et jours)",
-        "it": "correzione sulle registrazioni di temperatura (mesi e giorni)",
-        "es": "corrección en registros de temperatura (meses y días)",
-        "pl": "korekta zapisów temperatury (miesiące i dni)",
-        "zh-cn": "温度记录校正（月和日）"
       }
     },
     "titleLang": {
