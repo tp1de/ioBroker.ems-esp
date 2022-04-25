@@ -134,6 +134,10 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* error corrections on invalid heatdemand states
+
 ### 1.11.0 (2022-04-24)
 * corrections on hourly recordings for temperature
 * make interpolation (missing of c-counts) in energy recordings configurable (on/off)
