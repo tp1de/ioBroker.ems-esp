@@ -285,7 +285,7 @@ async function heatdemand() {
 					}
 				}
 			}
-		} catch(e) {adapter.log.error("can not process heatdemand state: " + adapter.config.heatingcircuits[i].state);}
+		} catch(e) {adapter.log.warn("can not process heatdemand state: " + adapter.config.heatingcircuits[i].state);}
 	}
 }
 
