@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* code optimization and error processing for ems-esp gateway
+
 ### 1.11.1 (2022-04-25)
 * error corrections on invalid heatdemand states
 
