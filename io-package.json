@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.11.2",
+    "version": "1.12.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.12.0": {
+        "en": "add analog sensors for ems-esp gateway, remove ems-esp settings",
+        "de": "analoge Sensoren für ems-esp-Gateway hinzufügen, ems-esp-Einstellungen entfernen",
+        "ru": "добавить аналоговые датчики для шлюза ems-esp, удалить настройки ems-esp",
+        "pt": "adicionar sensores analógicos para gateway ems-esp, remover configurações ems-esp",
+        "nl": "voeg analoge sensoren toe voor ems-esp gateway, verwijder ems-esp instellingen",
+        "fr": "ajouter des capteurs analogiques pour la passerelle ems-esp, supprimer les paramètres ems-esp",
+        "it": "aggiungi sensori analogici per gateway ems-esp, rimuovi le impostazioni ems-esp",
+        "es": "agregue sensores analógicos para la puerta de enlace ems-esp, elimine la configuración de ems-esp",
+        "pl": "dodaj czujniki analogowe dla bramki ems-esp, usuń ustawienia ems-esp",
+        "zh-cn": "为 ems-esp 网关添加模拟传感器，删除 ems-esp 设置"
+      },
       "1.11.2": {
         "en": "code optimization and error processing for ems-esp gateway",
         "de": "Codeoptimierung und Fehlerbehandlung für ems-esp Gateway",
@@ -67,18 +79,6 @@
         "es": "graba nueva lógica y ahora funciona sin base de datos",
         "pl": "nagrywa nową logikę i działa teraz bez bazy danych",
         "zh-cn": "记录新逻辑，现在无需数据库即可工作"
-      },
-      "1.3.3": {
-        "en": "avoid null values in recordings",
-        "de": "Vermeiden Sie Nullwerte in Aufzeichnungen",
-        "ru": "избегайте нулевых значений в записях",
-        "pt": "evitar valores nulos nas gravações",
-        "nl": "vermijd null-waarden in opnamen",
-        "fr": "éviter les valeurs nulles dans les enregistrements",
-        "it": "evitare valori nulli nelle registrazioni",
-        "es": "evitar valores nulos en las grabaciones",
-        "pl": "unikaj wartości zerowych w nagraniach",
-        "zh-cn": "避免记录中的空值"
       }
     },
     "titleLang": {
