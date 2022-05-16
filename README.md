@@ -136,6 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### 1.12.1 (2022-05-16)
 * corrections for heatdemand function
+* enable expert view
+* vis views for syslog analysis in expert views
 
 ### 1.12.0 (2022-05-15)
 * add analog sensors for ems-esp gateway, remove ems-esp settings
