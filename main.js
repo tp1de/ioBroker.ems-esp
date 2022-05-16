@@ -236,56 +236,58 @@ async function heatdemand() {
 	} catch (e) {}
 
 
-	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
-		const hc = adapter.config.heatingcircuits[i].hc;
-		const state = "controls."+hc+".";
+	if (hd) {
+		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
+			const hc = adapter.config.heatingcircuits[i].hc;
+			const state = "controls."+hc+".";
 
-		let w = 99;
-		if (hc == "hc1") w = w1;
-		if (hc == "hc2") w = w2;
-		if (hc == "hc3") w = w3;
-		if (hc == "hc4") w = w4;
+			let w = 99;
+			if (hc == "hc1") w = w1;
+			if (hc == "hc2") w = w2;
+			if (hc == "hc3") w = w3;
+			if (hc == "hc4") w = w4;
 
-		adapter.setState(state+"weight", {ack: true, val: w});
+			adapter.setState(state+"weight", {ack: true, val: w});
 
-		const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+			const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
 
-		try {
-			const v = state5.val;
-			const von = parseInt(adapter.config.heatingcircuits[i].on);
-			const voff = parseInt(adapter.config.heatingcircuits[i].off);
+			try {
+				const v = state5.val;
+				const von = parseInt(adapter.config.heatingcircuits[i].on);
+				const voff = parseInt(adapter.config.heatingcircuits[i].off);
 
 
-			if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd ) {
-				adapter.setState(state+"status", {ack: true, val: true});
-				adapter.log.info("new heat demand for "+ hc + " --> switching on" );
-				adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
+				if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd ) {
+					adapter.setState(state+"status", {ack: true, val: true});
+					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
+					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
 
-				if (adapter.config.heatingcircuits[i].savesettemp) {
-					for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
-						if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
-					}
-				}
-			}
-
-			if (w <= adapter.config.heatingcircuits[i].weightoff && v == von && hd == true) {
-				adapter.setState(state+"status", {ack: true, val: false});
-				adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
-				adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
-
-				if (adapter.config.heatingcircuits[i].savesettemp) {
-					for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
-						if (adapter.config.thermostats[ii].hc == hc) {
-							try {
-								const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
-								settemp = state6.val;
-							} catch(e) {settemp = -1;}
-							adapter.setState(state+"savesettemp", {ack: true, val: settemp});
+					if (adapter.config.heatingcircuits[i].savesettemp) {
+						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
+							if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
 						}
 					}
 				}
-			}
-		} catch(e) {adapter.log.warn("can not process heatdemand state: " + adapter.config.heatingcircuits[i].state);}
+
+				if (w <= adapter.config.heatingcircuits[i].weightoff && v == von && hd == true) {
+					adapter.setState(state+"status", {ack: true, val: false});
+					adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
+					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
+
+					if (adapter.config.heatingcircuits[i].savesettemp) {
+						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
+							if (adapter.config.thermostats[ii].hc == hc) {
+								try {
+									const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
+									settemp = state6.val;
+								} catch(e) {settemp = -1;}
+								adapter.setState(state+"savesettemp", {ack: true, val: settemp});
+							}
+						}
+					}
+				}
+			} catch(e) {adapter.log.warn("can not process heatdemand state: " + adapter.config.heatingcircuits[i].state);}
+		}
 	}
 }
 
