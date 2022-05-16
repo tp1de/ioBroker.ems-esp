@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.12.0",
+    "version": "1.12.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.12.1": {
+        "en": "corrections for heatdemand function",
+        "de": "Korrekturen für die Wärmebedarfsfunktion",
+        "ru": "поправки на функцию теплопотребления",
+        "pt": "correções para a função de demanda de calor",
+        "nl": "correcties voor warmtevraagfunctie",
+        "fr": "corrections pour la fonction de demande de chaleur",
+        "it": "correzioni per la funzione di richiesta di calore",
+        "es": "correcciones para la función de demanda de calor",
+        "pl": "poprawki dla funkcji zapotrzebowania na ciepło",
+        "zh-cn": "热量需求函数的修正"
+      },
       "1.12.0": {
         "en": "add analog sensors for ems-esp gateway, remove ems-esp settings",
         "de": "analoge Sensoren für ems-esp-Gateway hinzufügen, ems-esp-Einstellungen entfernen",
@@ -67,18 +79,6 @@
       "1.9.0": {
         "en": "beta test new version",
         "de": "beta test neue version"
-      },
-      "1.4.0": {
-        "en": "recordings new logic and now working without database",
-        "de": "zeichnet neue Logik auf und arbeitet jetzt ohne Datenbank",
-        "ru": "записывает новую логику и теперь работает без базы данных",
-        "pt": "grava nova lógica e agora funcionando sem banco de dados",
-        "nl": "neemt nieuwe logica op en werkt nu zonder database",
-        "fr": "enregistre une nouvelle logique et fonctionne maintenant sans base de données",
-        "it": "registra una nuova logica e ora funziona senza database",
-        "es": "graba nueva lógica y ahora funciona sin base de datos",
-        "pl": "nagrywa nową logikę i działa teraz bez bazy danych",
-        "zh-cn": "记录新逻辑，现在无需数据库即可工作"
       }
     },
     "titleLang": {
