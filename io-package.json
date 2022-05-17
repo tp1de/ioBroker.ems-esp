@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.12.1",
+    "version": "1.13.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.13.0": {
+        "en": "add visibility attributes within ems-esp states\nerror processing dallas / analog sensors of ems-esp",
+        "de": "fügen Sie Sichtbarkeitsattribute innerhalb von ems-esp-Zuständen hinzu\nfehlerverarbeitung dallas / analoge sensoren von ems-esp",
+        "ru": "добавить атрибуты видимости в состояниях ems-esp\nобработка ошибок dallas/аналоговых датчиков ems-esp",
+        "pt": "adicionar atributos de visibilidade nos estados ems-esp\nerro de processamento dallas/sensores analógicos do ems-esp",
+        "nl": "voeg zichtbaarheidsattributen toe binnen ems-esp-statussen\nfoutverwerking dallas / analoge sensoren van ems-esp",
+        "fr": "ajouter des attributs de visibilité dans les états ems-esp\nerreur de traitement dallas / capteurs analogiques de ems-esp",
+        "it": "aggiungi attributi di visibilità negli stati ems-esp\nerrore di elaborazione dallas / sensori analogici di ems-esp",
+        "es": "agregue atributos de visibilidad dentro de los estados ems-esp\nerror procesando dallas/sensores analogicos de ems-esp",
+        "pl": "dodać atrybuty widoczności w stanach ems-esp\nprzetwarzanie błędów dallas / czujniki analogowe ems-esp",
+        "zh-cn": "在 EMS-ESP 状态中添加可见性属性\n错误处理达拉斯/ EMS-ESP的模拟传感器"
+      },
       "1.12.1": {
         "en": "corrections for heatdemand function",
         "de": "Korrekturen für die Wärmebedarfsfunktion",
@@ -75,10 +87,6 @@
         "es": "agregue personalización y cálculo de demanda de calor con interruptor automático (encendido/apagado) por circuito de calefacción\ncorrecciones de errores en el cálculo de la eficiencia: haga que los campos utilizados sean configurables\nalgunas otras correcciones de errores",
         "pl": "dodaj dostosowywanie i obliczanie zapotrzebowania na ciepło z automatycznym włączaniem/wyłączaniem dla każdego obwodu grzewczego\nkorekty błędów przy obliczaniu wydajności - konfigurowalne używane pola\nkilka innych poprawek błędów",
         "zh-cn": "通过每个加热电路的自动开关（开/关）添加热量需求定制和计算\n效率计算的错误更正 - 使使用的字段可配置\n其他一些错误更正"
-      },
-      "1.9.0": {
-        "en": "beta test new version",
-        "de": "beta test neue version"
       }
     },
     "titleLang": {
