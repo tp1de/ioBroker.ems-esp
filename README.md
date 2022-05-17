@@ -20,13 +20,13 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 
 * km200, km200 hrv, km100, km50, HMC300 or IP-inside (from Bosch Group) 
 * ems-esp interface (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
-* The old ESP8266 gateways with API V2 are supported until this version as well.
+* The old ESP8266 gateways with API V2 are supported with limited functionality as well. But it is strobgly advised to upgrade to ESP32.
 
 The ems-esp adapter can read and write data to both gateways to steer all heating components. 
 It can be used either for the original Bosch-group gateways or the ems-esp or both in parallel.
 
 The adapter is tested for the ems-esp gateway with latest firmware versions of ESP32 >= v3.3.1. 
-Old systems with an ESP 8266 are only supported until this adapter version.
+
 
 ## important settings in EMS-ESP:
 
@@ -124,7 +124,7 @@ There is an option to re-build the state-structure by deleting states on adapter
 
 ## heatdemand control 
 
-V1.9.x beta - Explanation to heat demand calculation and configuration. Available in German language only:
+Explanation to heat demand calculation and configuration. Available in German language only:
 https://github.com/tp1de/ioBroker.ems-esp/wiki
 
 
@@ -136,8 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 
 ### **WORK IN PROGRESS**
-* visibility attribute within ems-esp states
-
+* add visibility attributes within ems-esp states
+* error processing dallas / analog sensors of ems-esp
 
 ### 1.12.1 (2022-05-16)
 * corrections for heatdemand function
