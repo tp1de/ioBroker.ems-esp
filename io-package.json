@@ -1,9 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.13.0",
+    "version": "1.14.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.14.0": {
+        "en": "split parameters for dallas & analog sensors\nimprove warning messages if sensors are missing",
+        "de": "Split-Parameter für Dallas & analoge Sensoren\nWarnmeldungen bei fehlenden Sensoren verbessern",
+        "ru": "раздельные параметры для Далласа и аналоговых датчиков\nулучшить предупреждающие сообщения, если датчики отсутствуют",
+        "pt": "parâmetros divididos para dallas e sensores analógicos\nmelhorar as mensagens de aviso se os sensores estiverem ausentes",
+        "nl": "split parameters voor dallas & analoge sensoren\nwaarschuwingsberichten verbeteren als sensoren ontbreken",
+        "fr": "paramètres partagés pour les capteurs dallas et analogiques\naméliorer les messages d'avertissement en cas d'absence de capteurs",
+        "it": "parametri divisi per dallas e sensori analogici\nmigliorare i messaggi di avviso se mancano i sensori",
+        "es": "parámetros divididos para dallas y sensores analógicos\nmejorar los mensajes de advertencia si faltan sensores",
+        "pl": "podzielone parametry dla czujników Dallas i analogowych\npoprawić komunikaty ostrzegawcze w przypadku braku czujników",
+        "zh-cn": "达拉斯和模拟传感器的拆分参数\n如果传感器丢失，改进警告消息"
+      },
       "1.13.0": {
         "en": "add visibility attributes within ems-esp states\nerror processing dallas / analog sensors of ems-esp",
         "de": "fügen Sie Sichtbarkeitsattribute innerhalb von ems-esp-Zuständen hinzu\nfehlerverarbeitung dallas / analoge sensoren von ems-esp",
@@ -75,18 +87,6 @@
         "es": "correcciones en registros horarios de temperatura\nhacer que la interpolación (falta de cuentas c) en los registros de energía sea configurable (activar/desactivar)\ncorrecciones de errores en la demanda de calor con datos vacíos",
         "pl": "korekty zapisów godzinowych dla temperatury\nskonfigurować interpolację (brak zliczeń c) w zapisach energii (on/off)\nkorekty błędów na żądanie ciepła z pustymi danymi",
         "zh-cn": "温度每小时记录的修正\n使能量记录中的插值（缺少 c 计数）可配置（开/关）\n使用空数据对热量需求进行错误更正"
-      },
-      "1.10.0": {
-        "en": "add heatdemand customization & calculation with automatic switch (on/off) per heating circuit \nerror corrections on efficiency calculation - make fields used configurable\nsome other error corrections",
-        "de": "Heizbedarfsanpassung & -berechnung mit automatischer Ein-/Ausschaltung pro Heizkreis hinzufügen\nFehlerkorrekturen bei der Effizienzberechnung - verwendete Felder konfigurierbar machen\neinige andere Fehlerkorrekturen",
-        "ru": "добавить настройку и расчет потребности в тепле с автоматическим переключением (вкл./выкл.) для каждого отопительного контура\nисправления ошибок при расчете эффективности - сделать используемые поля настраиваемыми\nнекоторые другие исправления ошибок",
-        "pt": "adicionar personalização e cálculo de demanda de calor com interruptor automático (ligar/desligar) por circuito de aquecimento\ncorreções de erros no cálculo de eficiência - torne os campos usados configuráveis\nalgumas outras correções de erros",
-        "nl": "voeg warmtevraag maatwerk & berekening toe met automatische omschakeling (aan/uit) per verwarmingscircuit\nfoutcorrecties op efficiëntieberekening - maak gebruikte velden configureerbaar\nenkele andere foutcorrecties",
-        "fr": "ajouter la personnalisation et le calcul de la demande de chaleur avec interrupteur automatique (marche/arrêt) par circuit de chauffage\ncorrections d'erreurs sur le calcul de l'efficacité - rendre les champs utilisés configurables\nquelques autres corrections d'erreurs",
-        "it": "aggiungi la personalizzazione e il calcolo della richiesta di calore con l'accensione/spegnimento automatico per circuito di riscaldamento\ncorrezioni di errori sul calcolo dell'efficienza - rendi configurabili i campi utilizzati\nalcune altre correzioni di errore",
-        "es": "agregue personalización y cálculo de demanda de calor con interruptor automático (encendido/apagado) por circuito de calefacción\ncorrecciones de errores en el cálculo de la eficiencia: haga que los campos utilizados sean configurables\nalgunas otras correcciones de errores",
-        "pl": "dodaj dostosowywanie i obliczanie zapotrzebowania na ciepło z automatycznym włączaniem/wyłączaniem dla każdego obwodu grzewczego\nkorekty błędów przy obliczaniu wydajności - konfigurowalne używane pola\nkilka innych poprawek błędów",
-        "zh-cn": "通过每个加热电路的自动开关（开/关）添加热量需求定制和计算\n效率计算的错误更正 - 使使用的字段可配置\n其他一些错误更正"
       }
     },
     "titleLang": {
