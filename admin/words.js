@@ -76,16 +76,28 @@ systemDictionary = {
 		"zh-cn": "毫秒延迟"
 	},
 	"ems_dallas": {
-		"en": "read dallas",
-		"de": "lese Dallas",
-		"ru": "читать Даллас",
-		"pt": "ler Dallas",
-		"nl": "lees dallas",
-		"fr": "lire dallas",
-		"it": "leggi dallas",
-		"es": "leer dallas",
-		"pl": "przeczytaj Dallas",
+		"en": "dallas",
+		"de": "Dallas",
+		"ru": "Даллас",
+		"pt": "Dallas",
+		"nl": "dallas",
+		"fr": "dallas",
+		"it": "dallas",
+		"es": "dallas",
+		"pl": "Dallas",
 		"zh-cn": "读达拉斯"
+	},
+	"ems_analog": {
+		"en": "analog",
+		"de": "Analog",
+		"ru": "analog",
+		"pt": "Analog",
+		"nl": "analog",
+		"fr": "analog",
+		"it": "analog",
+		"es": "analog",
+		"pl": "Analog",
+		"zh-cn": ""
 	},
 	"ems_polling": {
 		"en": "polling in sec",
