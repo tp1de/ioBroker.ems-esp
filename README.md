@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* adjustments for ems-esp RC310 holiday modes 
+
 ### 1.14.0 (2022-05-18)
 * split parameters for dallas & analog sensors
 * improve warning messages if sensors are missing
