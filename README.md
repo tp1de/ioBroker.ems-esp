@@ -134,6 +134,13 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* pepare for enum as v alues and not just index
+* ioBroker and Home Assistant can be used in parallel
+* new parameters for "Room" and "Function" for adapter states
+* adjust roles of generated states
+
 ### 1.15.0 (2022-06-06)
 * adjustments for ems-esp RC310 holiday modes
 

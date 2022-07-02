@@ -15,6 +15,7 @@
 
  	// This will be called by the admin adapter when the settings page loads
 let secret;
+let roles = [];
 let devices = [];
 let thermostats = [];
 
@@ -75,11 +76,13 @@ function load(settings, onChange) {
 		}
 	});
 
+	roles        	= settings.roles      		|| [];
 	devices        	= settings.devices      	|| [];
 	thermostats    	= settings.thermostats  	|| [];
 	heatingcircuits	= settings.heatingcircuits 	|| [];
 
 	onChange(false);
+	values2table("roles", roles, onChange);
 	values2table("devices", devices, onChange);
 	values2table("thermostats", thermostats, onChange);
 	values2table("heatingcircuits", heatingcircuits, onChange);
@@ -103,6 +106,7 @@ function save(callback) {
 			obj[$this.attr("id")] = $this.val();
 		}
 	});
+	obj.roles = table2values("roles");
 	obj.devices = table2values("devices");
 	obj.thermostats = table2values("thermostats");
 	obj.heatingcircuits = table2values("heatingcircuits");

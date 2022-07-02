@@ -602,5 +602,55 @@ systemDictionary = {
 		"es": "demanda de calor",
 		"pl": "zapotrzebowanie na ciepło",
 		"zh-cn": "热量需求"
+	  },
+	"room": {
+		"en": "room",
+		"de": "Zimmer",
+		"ru": "комната",
+		"pt": "quarto",
+		"nl": "kamer",
+		"fr": "chambre",
+		"it": "camera",
+		"es": "habitación",
+		"pl": "room",
+		"zh-cn": "会议室"
+	},
+	"function": {
+		"en": "Function",
+		"de": "Funktion",
+		"ru": "функция",
+		"pt": "Função",
+		"nl": "Functie",
+		"fr": "Fonction",
+		"it": "Funzione",
+		"es": "Función",
+		"pl": "Funkcja funkcji",
+		"zh-cn": "职能"
+	  },
+	  "lovelace": {
+		"en": "generate lovelace attributes?",
+		"de": "Lovelace Attribute generieren?",
+		"ru": "генерировать атрибуты lovelace?",
+		"pt": "gerar atributos lovelace?",
+		"nl": "genereerde liefdesaanklachten?",
+		"fr": "générer des attributs lovelace?",
+		"it": "generare attributi lovelace?",
+		"es": "generar atributos lovelace?",
+		"pl": "generowanie atrybutów miłosnych?",
+		"zh-cn": "产生爱好的归属"
+	  },
+	  "lovelace_instance": {
+		"en": "lovelace instance",
+		"de": "Lovelace-Instanz",
+		"ru": "lovelace пример",
+		"pt": "instância do lovelace",
+		"nl": "lovelace instance",
+		"fr": "lovelace instance",
+		"it": "esempio lovelace",
+		"es": "lovelace instance",
+		"pl": "lovelace instance",
+		"zh-cn": "亲爱"
 	  }
+
+
 };

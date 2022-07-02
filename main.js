@@ -14,6 +14,7 @@ const adapterName = require("./package.json").name.split(".").pop();
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
 const S = require("./lib/syslog.js");
+const F = require("./lib/functions.js");
 
 const datafields = [];
 

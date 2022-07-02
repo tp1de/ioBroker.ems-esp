@@ -204,7 +204,11 @@
     "heatdemand": false,
     "modulation": "heatSources.hs1.actualModulation",
     "supplytemp": "heatSources.actualSupplyTemperature",
-    "returntemp": "heatSources.returnTemperature"
+    "returntemp": "heatSources.returnTemperature",
+    "room": "boiler_room",
+    "function": "heating",
+    "lovelace": false,
+    "lovelace_instance": 0
   },
   "objects": [],
   "instanceObjects": []
