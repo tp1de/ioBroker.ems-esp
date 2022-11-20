@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.16.0",
+    "version": "1.16.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.16.1": {
+        "en": "error correction sensors",
+        "de": "fehlerkorrektursensoren",
+        "ru": "датчики коррекции ошибок",
+        "pt": "sensores de correção de erro",
+        "nl": "error correctie sensoren",
+        "fr": "capteurs de correction d'erreur",
+        "it": "sensori di correzione errore",
+        "es": "sensores de corrección de errores",
+        "pl": "sensor",
+        "uk": "датчики виправлення помилок",
+        "zh-cn": "错误的传感器"
+      },
       "1.16.0": {
         "en": "ems-esp V2 NOT SUPPORTED ANYMORE !!!!\npepare for enum as values and not just index\nnew parameters for \"Room\" and \"Function\" for adapter states\nadjust for latest ems-esp dev version 3.5 \nunits of measument for ems-esp sensors\nsupport name changes within ems-esp for sensors",
         "de": "ems-esp V2 NICHT SUPPORTed ANYMORE!!!!\npepare für enum als werte und nicht nur index\nneue Parameter für Raum und Funktion für Adapterzustände\nanpassung für die neueste ems-esp dev version 3,5\nmesseinheiten für ems-esp-sensoren\nunterstützung namensänderungen im ems-esp für sensoren",
@@ -76,18 +89,6 @@
         "es": "agregue sensores analógicos para la puerta de enlace ems-esp, elimine la configuración de ems-esp",
         "pl": "dodaj czujniki analogowe dla bramki ems-esp, usuń ustawienia ems-esp",
         "zh-cn": "为 ems-esp 网关添加模拟传感器，删除 ems-esp 设置"
-      },
-      "1.11.2": {
-        "en": "code optimization and error processing for ems-esp gateway",
-        "de": "Codeoptimierung und Fehlerbehandlung für ems-esp Gateway",
-        "ru": "оптимизация кода и обработка ошибок для шлюза ems-esp",
-        "pt": "otimização de código e processamento de erros para gateway ems-esp",
-        "nl": "code-optimalisatie en foutverwerking voor ems-esp gateway",
-        "fr": "optimisation du code et traitement des erreurs pour la passerelle ems-esp",
-        "it": "ottimizzazione del codice ed elaborazione degli errori per il gateway ems-esp",
-        "es": "optimización de código y procesamiento de errores para puerta de enlace ems-esp",
-        "pl": "optymalizacja kodu i przetwarzanie błędów dla bramki ems-esp",
-        "zh-cn": "EMS-esp网关的代码优化和错误处理"
       }
     },
     "titleLang": {
