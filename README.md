@@ -136,11 +136,12 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 
 ### **WORK IN PROGRESS**
-* ems-esp V2 NOT SUPPORTED ANYMORE
+* ems-esp V2 NOT SUPPORTED ANYMORE !!!!
 * pepare for enum as values and not just index
 * new parameters for "Room" and "Function" for adapter states
 * adjust for latest ems-esp dev version 3.5 
 * units of measument for ems-esp sensors
+* support name changes within ems-esp for sensors
 
 ### 1.15.0 (2022-06-06)
 * adjustments for ems-esp RC310 holiday modes
