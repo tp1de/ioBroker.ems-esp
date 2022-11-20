@@ -134,8 +134,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.16.0 (2022-11-20)
 * ems-esp V2 NOT SUPPORTED ANYMORE !!!!
 * pepare for enum as values and not just index
 * new parameters for "Room" and "Function" for adapter states

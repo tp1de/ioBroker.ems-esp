@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.15.0",
+    "version": "1.16.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.16.0": {
+        "en": "ems-esp V2 NOT SUPPORTED ANYMORE !!!!\npepare for enum as values and not just index\nnew parameters for \"Room\" and \"Function\" for adapter states\nadjust for latest ems-esp dev version 3.5 \nunits of measument for ems-esp sensors\nsupport name changes within ems-esp for sensors",
+        "de": "ems-esp V2 NICHT SUPPORTed ANYMORE!!!!\npepare für enum als werte und nicht nur index\nneue Parameter für Raum und Funktion für Adapterzustände\nanpassung für die neueste ems-esp dev version 3,5\nmesseinheiten für ems-esp-sensoren\nunterstützung namensänderungen im ems-esp für sensoren",
+        "ru": "ems-esp V2 НЕ ПОДДЕРЖИВАЕТСЯ БОЛЬШЕ !!!!\npepare для enum как значения и не только индекс\nновые параметры для комнаты и функции для штатов адаптера\nнастроить для последней версии ems-esp dev 3,5\nединицы измерения для датчиков ems-esp\nимя поддержки меняется в пределах ems-esp для датчиков",
+        "pt": "ems-esp V2 NÃO APOIO A QUALQUER!!!!\npepare para enum como valores e não apenas index\nnovos parâmetros para quarto e função para estados do adaptador\najustar para a versão mais recente ems-esp dev 3.5\nunidades de medida para sensores ems-esp\nmudanças de nome de suporte dentro de ems-esp para sensores",
+        "nl": "nergens meer!\npepare for enum als waarden en niet alleen index\nnieuwe parameters voor kamer en Function voor adapter staten\n_ 3,5\neenheden van measument voor keizersnedes\nvertaling:",
+        "fr": "ems-esp V2 NOT SUPPORTED ANYMORE !!!!\npepare for enum as values and not just index\nnouveaux paramètres pour Salle et Fonction pour les états adaptateurs\najuster pour la dernière version ems-esp dev 3.5\nunités de measument pour capteurs ems-esp\nchangement de nom de support dans ems-esp pour capteurs",
+        "it": "ems-esp V2 NON SOSTEGNO!!!!\npepare per enum come valori e non solo indice\nnuovi parametri per gli stati dell'adattatore\nregolare per l'ultima versione ems-esp dev 3.5\nunità di misura per sensori ems-esp\ncambia nome di supporto all'interno di ems-esp per sensori",
+        "es": "ems-esp V2 NO SE APOYO MÁS!!!!\npepare for enum as values and not just index\nnuevos parámetros para la sala y función para los estados de adaptador\najuste para la última versión de emsp dev 3.5\nunidades de measumento para sensores ems-esp\ncambios de nombre de soporte en ems-esp para sensores",
+        "pl": "nOT SUPPORTED ANYMORE!! (ang.)!\nwspomnienia o wartościach i nie tylko wskaźniki\nnowe parametry pokoju i funkcjonowania stanów adaptacyjnych\nnajnowsza wersja ems-esp dev. 3,5\noddziały measumentu dla czujników emsa\nzmiana nazwy wsparcia zmienia się w ems-esp dla czujników",
+        "uk": "нЕ ПІДТРИМКА В2!\nпіпа для енму як значення і не просто індекс\nнові параметри для номерів і функцій для станів адаптера\nналаштування для останньої версії ems-esp dev 3.5 км\nблоки меасументу для датчиків емс-esp\nпідтримка змін ім'я в смс-esp для датчиків",
+        "zh-cn": "!\n扩大价值,而不是仅仅指数\n适应国会议室和职能的新参数\n对最新版本的调整 3.5\n传感传感器的监督单位\n传感器内名变动"
+      },
       "1.15.0": {
         "en": "adjustments for ems-esp RC310 holiday modes",
         "de": "Anpassungen für ems-esp RC310 Urlaubsmodi",
@@ -75,18 +88,6 @@
         "es": "optimización de código y procesamiento de errores para puerta de enlace ems-esp",
         "pl": "optymalizacja kodu i przetwarzanie błędów dla bramki ems-esp",
         "zh-cn": "EMS-esp网关的代码优化和错误处理"
-      },
-      "1.11.1": {
-        "en": "error corrections on invalid heatdemand states",
-        "de": "Fehlerkorrekturen bei ungültigen Wärmebedarfszuständen",
-        "ru": "исправления ошибок в недопустимых состояниях тепловой нагрузки",
-        "pt": "correções de erros em estados inválidos de demanda de calor",
-        "nl": "foutcorrecties op ongeldige warmtevraagstatussen",
-        "fr": "corrections d'erreurs sur les états de demande de chaleur invalides",
-        "it": "correzioni di errori su stati di richiesta di calore non validi",
-        "es": "correcciones de errores en estados de demanda de calor no válidos",
-        "pl": "korekty błędów w nieprawidłowych stanach zapotrzebowania na ciepło",
-        "zh-cn": "对无效热需求状态的纠错"
       }
     },
     "titleLang": {
