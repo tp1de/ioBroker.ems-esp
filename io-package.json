@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.16.1",
+    "version": "1.16.2",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.16.2": {
+        "en": "adjustments for ems-esp sensors v3.5",
+        "de": "einstellungen für ems-esp sensoren v3.5",
+        "ru": "настройки для датчиков ems-esp v3.5",
+        "pt": "ajustes para sensores ems-esp v3.5",
+        "nl": "aanpassingen voor noodsituatie sensoren v3.5",
+        "fr": "réglages pour capteurs ems-esp v3.5",
+        "it": "regolazioni per sensori ems-esp v3.5",
+        "es": "ajustes para sensores ems-esp v3.5",
+        "pl": "dostosowywanie czujników ems-esp / 3,5",
+        "uk": "налаштування датчиків емс-esp v3.5",
+        "zh-cn": "对传感器的调整"
+      },
       "1.16.1": {
         "en": "error correction sensors",
         "de": "fehlerkorrektursensoren",
@@ -77,18 +90,6 @@
         "es": "correcciones para la función de demanda de calor",
         "pl": "poprawki dla funkcji zapotrzebowania na ciepło",
         "zh-cn": "热量需求函数的修正"
-      },
-      "1.12.0": {
-        "en": "add analog sensors for ems-esp gateway, remove ems-esp settings",
-        "de": "analoge Sensoren für ems-esp-Gateway hinzufügen, ems-esp-Einstellungen entfernen",
-        "ru": "добавить аналоговые датчики для шлюза ems-esp, удалить настройки ems-esp",
-        "pt": "adicionar sensores analógicos para gateway ems-esp, remover configurações ems-esp",
-        "nl": "voeg analoge sensoren toe voor ems-esp gateway, verwijder ems-esp instellingen",
-        "fr": "ajouter des capteurs analogiques pour la passerelle ems-esp, supprimer les paramètres ems-esp",
-        "it": "aggiungi sensori analogici per gateway ems-esp, rimuovi le impostazioni ems-esp",
-        "es": "agregue sensores analógicos para la puerta de enlace ems-esp, elimine la configuración de ems-esp",
-        "pl": "dodaj czujniki analogowe dla bramki ems-esp, usuń ustawienia ems-esp",
-        "zh-cn": "为 ems-esp 网关添加模拟传感器，删除 ems-esp 设置"
       }
     },
     "titleLang": {
