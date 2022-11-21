@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* adjustments for ems-esp sensors v3.5 
+
 ### 1.16.1 (2022-11-20)
 * error correction sensors
 
