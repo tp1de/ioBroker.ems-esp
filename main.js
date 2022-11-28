@@ -160,7 +160,7 @@ async function init_controls() {
 				value = state1.val;
 			} catch(e) {value = -99;}
 			control_state(state+"actualtemp","number", "actual temperature", value);
-			control_state(state+"actualweight","number", "actual weight", value);
+			control_state(state+"actualweight","number", "actual weight", 0);
 
 			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
 			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
