@@ -160,6 +160,7 @@ async function init_controls() {
 				value = state1.val;
 			} catch(e) {value = -99;}
 			control_state(state+"actualtemp","number", "actual temperature", value);
+			control_state(state+"actualweight","number", "actual weight", value);
 
 			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
 			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
@@ -218,11 +219,13 @@ async function heatdemand() {
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
 		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
+		adapter.setState(state+"actualweight", {ack: true, val: 0});
 		const deltam = parseFloat(adapter.config.thermostats[i].deltam);
 		const delta = settemp - acttemp;
 		const weight = parseInt(adapter.config.thermostats[i].weight);
 
 		if (delta > deltam) {
+			adapter.setState(state+"actualweight", {ack: true, val: weight});
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;

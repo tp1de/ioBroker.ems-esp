@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* add actual weight per thermostat in heatdemand object structure
+
 ### 1.16.2 (2022-11-21)
 * adjustments for ems-esp sensors v3.5
 
