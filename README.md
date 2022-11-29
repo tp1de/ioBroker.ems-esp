@@ -136,6 +136,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * add actual weight per thermostat in heatdemand object structure
+* add heatdeamnd difference values
 
 ### 1.16.2 (2022-11-21)
 * adjustments for ems-esp sensors v3.5
