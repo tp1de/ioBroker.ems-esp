@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.16.2",
+    "version": "1.17.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.17.0": {
+        "en": "add actual weight per thermostat in heatdemand object structure\nadd heatdemand difference values",
+        "de": "tatsächliches gewicht pro thermostat in heatdemand objektstruktur hinzufügen\nheatdemand differenzwerte hinzufügen",
+        "ru": "добавить фактический вес на термостат в тепломерную структуру объекта\nдобавить значения разницы heatdemand",
+        "pt": "adicionar peso real por termostato em estrutura de objeto de demanda térmica\nadicionar valores de diferença de demanda de calor",
+        "nl": "voeg echt gewicht toe aan de thermostaat van warmte-demand objectstructuur\nvoegt warmtedemand verschillen",
+        "fr": "ajouter le poids réel par thermostat dans la structure de l'objet de la demande de chaleur\najouter les valeurs de différence de la demande de chaleur",
+        "it": "aggiungere peso effettivo per termostato nella struttura dell'oggetto termodemand\naggiungere i valori di differenza del dissipatore di calore",
+        "es": "añadir peso real por termostato en la estructura de objetos de calordemand\nañadir valores de diferencia de calordemand",
+        "pl": "dodawanie właściwej masy na termostat\nwartość cieplna",
+        "uk": "додати фактичну вагу за термостатом в структурі об'єкта теплозахисту\nдодати значення різниці тепла",
+        "zh-cn": "b. 热因和物体结构的实际加权\n增加热量值"
+      },
       "1.16.2": {
         "en": "adjustments for ems-esp sensors v3.5",
         "de": "einstellungen für ems-esp sensoren v3.5",
@@ -78,18 +91,6 @@
         "es": "agregue atributos de visibilidad dentro de los estados ems-esp\nerror procesando dallas/sensores analogicos de ems-esp",
         "pl": "dodać atrybuty widoczności w stanach ems-esp\nprzetwarzanie błędów dallas / czujniki analogowe ems-esp",
         "zh-cn": "在 EMS-ESP 状态中添加可见性属性\n错误处理达拉斯/ EMS-ESP的模拟传感器"
-      },
-      "1.12.1": {
-        "en": "corrections for heatdemand function",
-        "de": "Korrekturen für die Wärmebedarfsfunktion",
-        "ru": "поправки на функцию теплопотребления",
-        "pt": "correções para a função de demanda de calor",
-        "nl": "correcties voor warmtevraagfunctie",
-        "fr": "corrections pour la fonction de demande de chaleur",
-        "it": "correzioni per la funzione di richiesta di calore",
-        "es": "correcciones para la función de demanda de calor",
-        "pl": "poprawki dla funkcji zapotrzebowania na ciepło",
-        "zh-cn": "热量需求函数的修正"
       }
     },
     "titleLang": {
