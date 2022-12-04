@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.17.0",
+    "version": "1.17.1",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.17.1": {
+        "en": "correct actualweight statistics within heatdemand function",
+        "de": "korrekte istgewichtsstatistik der heatdemand-funktion",
+        "ru": "правильную актуальную статистику в функции heatdemand",
+        "pt": "estatísticas de peso real corretas dentro da função de demanda de calor",
+        "nl": "correct gewicht statistieken binnen warmtebemande functie",
+        "fr": "statistiques réelles exactes sur le poids dans la fonction de la demande de chaleur",
+        "it": "corrette statistiche effettive del peso all'interno della funzione heatdemand",
+        "es": "estadísticas de peso real correctas dentro de la función calordemand",
+        "pl": "poprawne statystyki w zakresie ciepłademanda",
+        "uk": "виправлено фактичну статистику ваги в функції heatdemand",
+        "zh-cn": "b. 热能功能中的实际体重统计"
+      },
       "1.17.0": {
         "en": "add actual weight per thermostat in heatdemand object structure\nadd heatdemand difference values",
         "de": "tatsächliches gewicht pro thermostat in heatdemand objektstruktur hinzufügen\nheatdemand differenzwerte hinzufügen",
@@ -79,18 +92,6 @@
         "es": "parámetros divididos para dallas y sensores analógicos\nmejorar los mensajes de advertencia si faltan sensores",
         "pl": "podzielone parametry dla czujników Dallas i analogowych\npoprawić komunikaty ostrzegawcze w przypadku braku czujników",
         "zh-cn": "达拉斯和模拟传感器的拆分参数\n如果传感器丢失，改进警告消息"
-      },
-      "1.13.0": {
-        "en": "add visibility attributes within ems-esp states\nerror processing dallas / analog sensors of ems-esp",
-        "de": "fügen Sie Sichtbarkeitsattribute innerhalb von ems-esp-Zuständen hinzu\nfehlerverarbeitung dallas / analoge sensoren von ems-esp",
-        "ru": "добавить атрибуты видимости в состояниях ems-esp\nобработка ошибок dallas/аналоговых датчиков ems-esp",
-        "pt": "adicionar atributos de visibilidade nos estados ems-esp\nerro de processamento dallas/sensores analógicos do ems-esp",
-        "nl": "voeg zichtbaarheidsattributen toe binnen ems-esp-statussen\nfoutverwerking dallas / analoge sensoren van ems-esp",
-        "fr": "ajouter des attributs de visibilité dans les états ems-esp\nerreur de traitement dallas / capteurs analogiques de ems-esp",
-        "it": "aggiungi attributi di visibilità negli stati ems-esp\nerrore di elaborazione dallas / sensori analogici di ems-esp",
-        "es": "agregue atributos de visibilidad dentro de los estados ems-esp\nerror procesando dallas/sensores analogicos de ems-esp",
-        "pl": "dodać atrybuty widoczności w stanach ems-esp\nprzetwarzanie błędów dallas / czujniki analogowe ems-esp",
-        "zh-cn": "在 EMS-ESP 状态中添加可见性属性\n错误处理达拉斯/ EMS-ESP的模拟传感器"
       }
     },
     "titleLang": {
