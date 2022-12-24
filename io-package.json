@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.17.1",
+    "version": "1.18.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.18.0": {
+        "en": "Statistics\nalternative heat souces (am200)",
+        "de": "Statistik\nalternative wärmeseide (am200)",
+        "ru": "Статистика\nальтернативные тепловые соусы (am200)",
+        "pt": "Estatísticas\nazeitonas de calor alternativas (am200)",
+        "nl": "Statistieken\nalternatieve hitte souces (am200)",
+        "fr": "Statistiques\nsouces thermiques alternatives (am200)",
+        "it": "Statistiche\nsocchi di calore alternativi (am200)",
+        "es": "Estadísticas\nsouces de calor alternativos (am200)",
+        "pl": "Statystyki\nalternatywna souces (am200)",
+        "uk": "Статистика\nальтернативні термосупи (am200)",
+        "zh-cn": "统计\n替代热管(第200号)"
+      },
       "1.17.1": {
         "en": "correct actualweight statistics within heatdemand function",
         "de": "korrekte istgewichtsstatistik der heatdemand-funktion",
@@ -80,18 +93,6 @@
         "es": "ajustes para los modos de vacaciones ems-esp RC310",
         "pl": "korekty dla trybów wakacyjnych ems-esp RC310",
         "zh-cn": "EMS-esp RC310 假期模式的调整"
-      },
-      "1.14.0": {
-        "en": "split parameters for dallas & analog sensors\nimprove warning messages if sensors are missing",
-        "de": "Split-Parameter für Dallas & analoge Sensoren\nWarnmeldungen bei fehlenden Sensoren verbessern",
-        "ru": "раздельные параметры для Далласа и аналоговых датчиков\nулучшить предупреждающие сообщения, если датчики отсутствуют",
-        "pt": "parâmetros divididos para dallas e sensores analógicos\nmelhorar as mensagens de aviso se os sensores estiverem ausentes",
-        "nl": "split parameters voor dallas & analoge sensoren\nwaarschuwingsberichten verbeteren als sensoren ontbreken",
-        "fr": "paramètres partagés pour les capteurs dallas et analogiques\naméliorer les messages d'avertissement en cas d'absence de capteurs",
-        "it": "parametri divisi per dallas e sensori analogici\nmigliorare i messaggi di avviso se mancano i sensori",
-        "es": "parámetros divididos para dallas y sensores analógicos\nmejorar los mensajes de advertencia si faltan sensores",
-        "pl": "podzielone parametry dla czujników Dallas i analogowych\npoprawić komunikaty ostrzegawcze w przypadku braku czujników",
-        "zh-cn": "达拉斯和模拟传感器的拆分参数\n如果传感器丢失，改进警告消息"
       }
     },
     "titleLang": {

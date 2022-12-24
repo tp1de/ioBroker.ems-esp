@@ -134,7 +134,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.18.0 (2022-12-24)
 * Statistics
 * alternative heat souces (am200)
 
