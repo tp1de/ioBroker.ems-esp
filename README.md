@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode
+
 ### 1.19.0 (2022-12-29)
 * am200 - alternative heatsource adjustments
 
