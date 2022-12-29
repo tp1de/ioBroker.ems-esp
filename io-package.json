@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.18.0",
+    "version": "1.19.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.19.0": {
+        "en": "am200 - alternative heatsource adjustments",
+        "de": "am200 - alternative wärmequelleneinstellungen",
+        "ru": "am200 - альтернативные настройки тепла",
+        "pt": "am200 - ajustes alternativos de fontes de calor",
+        "nl": "am200 - alternatieve verwarming aanpassingen",
+        "fr": "am200 - ajustements de sources de chaleur alternatives",
+        "it": "am200 - aggiustamenti alternativi delle risorse di calore",
+        "es": "am200 - ajustes alternativos de fuente de calor",
+        "pl": "am200 – wymiana ciepła alternatywnego",
+        "uk": "am200 - альтернативні налаштування джерела тепла",
+        "zh-cn": "200 - 替代热源调整"
+      },
       "1.18.0": {
         "en": "Statistics\nalternative heat souces (am200)",
         "de": "Statistik\nalternative wärmeseide (am200)",
@@ -81,18 +94,6 @@
         "pl": "nOT SUPPORTED ANYMORE!! (ang.)!\nwspomnienia o wartościach i nie tylko wskaźniki\nnowe parametry pokoju i funkcjonowania stanów adaptacyjnych\nnajnowsza wersja ems-esp dev. 3,5\noddziały measumentu dla czujników emsa\nzmiana nazwy wsparcia zmienia się w ems-esp dla czujników",
         "uk": "нЕ ПІДТРИМКА В2!\nпіпа для енму як значення і не просто індекс\nнові параметри для номерів і функцій для станів адаптера\nналаштування для останньої версії ems-esp dev 3.5 км\nблоки меасументу для датчиків емс-esp\nпідтримка змін ім'я в смс-esp для датчиків",
         "zh-cn": "!\n扩大价值,而不是仅仅指数\n适应国会议室和职能的新参数\n对最新版本的调整 3.5\n传感传感器的监督单位\n传感器内名变动"
-      },
-      "1.15.0": {
-        "en": "adjustments for ems-esp RC310 holiday modes",
-        "de": "Anpassungen für ems-esp RC310 Urlaubsmodi",
-        "ru": "корректировки режимов выходного дня ems-esp RC310",
-        "pt": "ajustes para os modos de férias ems-esp RC310",
-        "nl": "aanpassingen voor ems-esp RC310 vakantiemodi",
-        "fr": "ajustements pour les modes vacances ems-esp RC310",
-        "it": "regolazioni per le modalità vacanze ems-esp RC310",
-        "es": "ajustes para los modos de vacaciones ems-esp RC310",
-        "pl": "korekty dla trybów wakacyjnych ems-esp RC310",
-        "zh-cn": "EMS-esp RC310 假期模式的调整"
       }
     },
     "titleLang": {
