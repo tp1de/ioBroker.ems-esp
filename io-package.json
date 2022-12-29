@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.19.0",
+    "version": "1.20.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.20.0": {
+        "en": "am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode",
+        "de": "am200 von ems-esp - redefine to heatSources/hsa for km200 structure mode",
+        "ru": "am200 от ems-esp - redefine до heatSources/hsa для режима структуры km200",
+        "pt": "am200 de ems-esp - redefine para o calorFontes/hsa para o modo de estrutura km200",
+        "nl": "am200 van de keizersnede naar hittesources/hsa voor de kilometers van 200 structuur",
+        "fr": "am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode",
+        "it": "am200 da ems-esp - ridefinire a caldoSources/hsa per la modalità struttura km200",
+        "es": "am200 de ems-esp - redefinir a calorFuentes/hsa para el modo de estructura km200",
+        "pl": "am200 z ems-esp – redefine to heatSources/hsa for km200 construction mode",
+        "uk": "am200 від ems-esp - redefine до heatSources/hsa за км200 режим структури",
+        "zh-cn": "200个结构模式的原状——对热苏夫/赫萨的重新定性"
+      },
       "1.19.0": {
         "en": "am200 - alternative heatsource adjustments",
         "de": "am200 - alternative wärmequelleneinstellungen",
@@ -81,19 +94,6 @@
         "pl": "sensor",
         "uk": "датчики виправлення помилок",
         "zh-cn": "错误的传感器"
-      },
-      "1.16.0": {
-        "en": "ems-esp V2 NOT SUPPORTED ANYMORE !!!!\npepare for enum as values and not just index\nnew parameters for \"Room\" and \"Function\" for adapter states\nadjust for latest ems-esp dev version 3.5 \nunits of measument for ems-esp sensors\nsupport name changes within ems-esp for sensors",
-        "de": "ems-esp V2 NICHT SUPPORTed ANYMORE!!!!\npepare für enum als werte und nicht nur index\nneue Parameter für Raum und Funktion für Adapterzustände\nanpassung für die neueste ems-esp dev version 3,5\nmesseinheiten für ems-esp-sensoren\nunterstützung namensänderungen im ems-esp für sensoren",
-        "ru": "ems-esp V2 НЕ ПОДДЕРЖИВАЕТСЯ БОЛЬШЕ !!!!\npepare для enum как значения и не только индекс\nновые параметры для комнаты и функции для штатов адаптера\nнастроить для последней версии ems-esp dev 3,5\nединицы измерения для датчиков ems-esp\nимя поддержки меняется в пределах ems-esp для датчиков",
-        "pt": "ems-esp V2 NÃO APOIO A QUALQUER!!!!\npepare para enum como valores e não apenas index\nnovos parâmetros para quarto e função para estados do adaptador\najustar para a versão mais recente ems-esp dev 3.5\nunidades de medida para sensores ems-esp\nmudanças de nome de suporte dentro de ems-esp para sensores",
-        "nl": "nergens meer!\npepare for enum als waarden en niet alleen index\nnieuwe parameters voor kamer en Function voor adapter staten\n_ 3,5\neenheden van measument voor keizersnedes\nvertaling:",
-        "fr": "ems-esp V2 NOT SUPPORTED ANYMORE !!!!\npepare for enum as values and not just index\nnouveaux paramètres pour Salle et Fonction pour les états adaptateurs\najuster pour la dernière version ems-esp dev 3.5\nunités de measument pour capteurs ems-esp\nchangement de nom de support dans ems-esp pour capteurs",
-        "it": "ems-esp V2 NON SOSTEGNO!!!!\npepare per enum come valori e non solo indice\nnuovi parametri per gli stati dell'adattatore\nregolare per l'ultima versione ems-esp dev 3.5\nunità di misura per sensori ems-esp\ncambia nome di supporto all'interno di ems-esp per sensori",
-        "es": "ems-esp V2 NO SE APOYO MÁS!!!!\npepare for enum as values and not just index\nnuevos parámetros para la sala y función para los estados de adaptador\najuste para la última versión de emsp dev 3.5\nunidades de measumento para sensores ems-esp\ncambios de nombre de soporte en ems-esp para sensores",
-        "pl": "nOT SUPPORTED ANYMORE!! (ang.)!\nwspomnienia o wartościach i nie tylko wskaźniki\nnowe parametry pokoju i funkcjonowania stanów adaptacyjnych\nnajnowsza wersja ems-esp dev. 3,5\noddziały measumentu dla czujników emsa\nzmiana nazwy wsparcia zmienia się w ems-esp dla czujników",
-        "uk": "нЕ ПІДТРИМКА В2!\nпіпа для енму як значення і не просто індекс\nнові параметри для номерів і функцій для станів адаптера\nналаштування для останньої версії ems-esp dev 3.5 км\nблоки меасументу для датчиків емс-esp\nпідтримка змін ім'я в смс-esp для датчиків",
-        "zh-cn": "!\n扩大价值,而不是仅仅指数\n适应国会议室和职能的新参数\n对最新版本的调整 3.5\n传感传感器的监督单位\n传感器内名变动"
       }
     },
     "titleLang": {
