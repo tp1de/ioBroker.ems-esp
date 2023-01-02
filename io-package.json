@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.20.0",
+    "version": "1.21.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.21.0": {
+        "en": "am200 from ems-esp adjustments to changed structure",
+        "de": "am200 von ems-esp anpassungen an geänderte struktur",
+        "ru": "am200 от встроений ems-esp к измененной структуре",
+        "pt": "am200 de ajustes ems-esp para estrutura alterada",
+        "nl": "am200 van de keizersnede om de structuur te veranderen",
+        "fr": "am200 from ems-esp adjustments to changed structure",
+        "it": "am200 dalle regolazioni ems-esp alla struttura modificata",
+        "es": "am200 de los ajustes de ems-esp a la estructura cambiada",
+        "pl": "am200 z przystosowania ems-esp do zmiany struktury",
+        "uk": "am200 від ems-esp коригування до змінної структури",
+        "zh-cn": "结构变化的幅度调整"
+      },
       "1.20.0": {
         "en": "am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode",
         "de": "am200 von ems-esp - redefine to heatSources/hsa for km200 structure mode",
@@ -81,19 +94,6 @@
         "pl": "dostosowywanie czujników ems-esp / 3,5",
         "uk": "налаштування датчиків емс-esp v3.5",
         "zh-cn": "对传感器的调整"
-      },
-      "1.16.1": {
-        "en": "error correction sensors",
-        "de": "fehlerkorrektursensoren",
-        "ru": "датчики коррекции ошибок",
-        "pt": "sensores de correção de erro",
-        "nl": "error correctie sensoren",
-        "fr": "capteurs de correction d'erreur",
-        "it": "sensori di correzione errore",
-        "es": "sensores de corrección de errores",
-        "pl": "sensor",
-        "uk": "датчики виправлення помилок",
-        "zh-cn": "错误的传感器"
       }
     },
     "titleLang": {
