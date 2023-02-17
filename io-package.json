@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.21.0",
+    "version": "1.22.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.22.0": {
+        "en": "support multiple mixer devices",
+        "de": "unterstützung mehrerer mischer",
+        "ru": "поддержка нескольких миксерных устройств",
+        "pt": "suporte vários dispositivos de misturador",
+        "nl": "steun meerdere mixer apparaten",
+        "fr": "plusieurs appareils de mixage",
+        "it": "supporta più dispositivi mixer",
+        "es": "soporte múltiples dispositivos de mezclador",
+        "pl": "obsługa multiplexów",
+        "uk": "підтримка декількох пристроїв змішувача",
+        "zh-cn": "支持多种混合装置"
+      },
       "1.21.0": {
         "en": "am200 from ems-esp adjustments to changed structure",
         "de": "am200 von ems-esp anpassungen an geänderte struktur",
@@ -81,19 +94,6 @@
         "pl": "dodawanie właściwej masy na termostat\nwartość cieplna",
         "uk": "додати фактичну вагу за термостатом в структурі об'єкта теплозахисту\nдодати значення різниці тепла",
         "zh-cn": "b. 热因和物体结构的实际加权\n增加热量值"
-      },
-      "1.16.2": {
-        "en": "adjustments for ems-esp sensors v3.5",
-        "de": "einstellungen für ems-esp sensoren v3.5",
-        "ru": "настройки для датчиков ems-esp v3.5",
-        "pt": "ajustes para sensores ems-esp v3.5",
-        "nl": "aanpassingen voor noodsituatie sensoren v3.5",
-        "fr": "réglages pour capteurs ems-esp v3.5",
-        "it": "regolazioni per sensori ems-esp v3.5",
-        "es": "ajustes para sensores ems-esp v3.5",
-        "pl": "dostosowywanie czujników ems-esp / 3,5",
-        "uk": "налаштування датчиків емс-esp v3.5",
-        "zh-cn": "对传感器的调整"
       }
     },
     "titleLang": {
