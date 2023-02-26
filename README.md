@@ -135,9 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* new dependencies
-### 1.23.0 (2023-02-26)
-* correct version 1.22.0 errors for ww-states
+* new dependencies & correct version 1.22.0 errors for ww-states
 
 ### 1.22.0 (2023-02-17)
 * support multiple mixer devices
