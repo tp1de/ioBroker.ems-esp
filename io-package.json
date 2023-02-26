@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.24.0",
+    "version": "1.25.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.25.0": {
+        "en": "set acknowledge to true when re-reading changed values from ems-esp",
+        "de": "set quit to true beim neulesen von geänderten werten von ems-esp",
+        "ru": "установите признаться верно, когда перечитывать измененные значения от ems-esp",
+        "pt": "set recognition to true quando re-leitura valores alterados de ems-esp",
+        "nl": "erkenning aan de waarheid als het herlezen van andere waarden van keizersnedes",
+        "fr": "set acknowledge to true when re-reading changed values from ems-esp",
+        "it": "impostare riconoscere al vero quando rileggere i valori cambiati da ems-esp",
+        "es": "set reconocer a la verdad cuando la relectura de valores cambiados de ems-esp",
+        "pl": "ustalono, że poprawa polega na zmianie wartości od ems-esp",
+        "uk": "визначте, коли перечитування змінених значень від ems-esp",
+        "zh-cn": "当重新形成的价值观偏离成份时,就承认这一点。"
+      },
       "1.24.0": {
         "en": "error corrections for versiosn 1.22 and 1.23",
         "de": "fehlerkorrekturen für versiosn 1.22 und 1.23",
@@ -81,19 +94,6 @@
         "pl": "am200 – wymiana ciepła alternatywnego",
         "uk": "am200 - альтернативні налаштування джерела тепла",
         "zh-cn": "200 - 替代热源调整"
-      },
-      "1.18.0": {
-        "en": "Statistics\nalternative heat souces (am200)",
-        "de": "Statistik\nalternative wärmeseide (am200)",
-        "ru": "Статистика\nальтернативные тепловые соусы (am200)",
-        "pt": "Estatísticas\nazeitonas de calor alternativas (am200)",
-        "nl": "Statistieken\nalternatieve hitte souces (am200)",
-        "fr": "Statistiques\nsouces thermiques alternatives (am200)",
-        "it": "Statistiche\nsocchi di calore alternativi (am200)",
-        "es": "Estadísticas\nsouces de calor alternativos (am200)",
-        "pl": "Statystyki\nalternatywna souces (am200)",
-        "uk": "Статистика\nальтернативні термосупи (am200)",
-        "zh-cn": "统计\n替代热管(第200号)"
       }
     },
     "titleLang": {
