@@ -134,6 +134,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* error corrections for versiosn 1.22 and 1.23
 ### 1.23.0 (2023-02-26)
 * correct ww states from v1.22
 
