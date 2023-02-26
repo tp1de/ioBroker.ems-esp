@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.22.0",
+    "version": "1.23.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.23.0": {
+        "en": "correct ww states from v1.22",
+        "de": "korrekte ww zustände von v1.22",
+        "ru": "правильное состояние ww от v1.22",
+        "pt": "estados ww corretos de v1.22",
+        "nl": "vertaling:",
+        "fr": "ww états corrects de v1.22",
+        "it": "stati ww corretti da v1.22",
+        "es": "correcto ww estados de v1.22",
+        "pl": "poprawne stany v1.22",
+        "uk": "правильні стани ww від v1.22",
+        "zh-cn": "第1.22号正确报"
+      },
       "1.22.0": {
         "en": "support multiple mixer devices",
         "de": "unterstützung mehrerer mischer",
@@ -81,19 +94,6 @@
         "pl": "poprawne statystyki w zakresie ciepłademanda",
         "uk": "виправлено фактичну статистику ваги в функції heatdemand",
         "zh-cn": "b. 热能功能中的实际体重统计"
-      },
-      "1.17.0": {
-        "en": "add actual weight per thermostat in heatdemand object structure\nadd heatdemand difference values",
-        "de": "tatsächliches gewicht pro thermostat in heatdemand objektstruktur hinzufügen\nheatdemand differenzwerte hinzufügen",
-        "ru": "добавить фактический вес на термостат в тепломерную структуру объекта\nдобавить значения разницы heatdemand",
-        "pt": "adicionar peso real por termostato em estrutura de objeto de demanda térmica\nadicionar valores de diferença de demanda de calor",
-        "nl": "voeg echt gewicht toe aan de thermostaat van warmte-demand objectstructuur\nvoegt warmtedemand verschillen",
-        "fr": "ajouter le poids réel par thermostat dans la structure de l'objet de la demande de chaleur\najouter les valeurs de différence de la demande de chaleur",
-        "it": "aggiungere peso effettivo per termostato nella struttura dell'oggetto termodemand\naggiungere i valori di differenza del dissipatore di calore",
-        "es": "añadir peso real por termostato en la estructura de objetos de calordemand\nañadir valores de diferencia de calordemand",
-        "pl": "dodawanie właściwej masy na termostat\nwartość cieplna",
-        "uk": "додати фактичну вагу за термостатом в структурі об'єкта теплозахисту\nдодати значення різниці тепла",
-        "zh-cn": "b. 热因和物体结构的实际加权\n增加热量值"
       }
     },
     "titleLang": {
