@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.23.0",
+    "version": "1.24.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.24.0": {
+        "en": "error corrections for versiosn 1.22 and 1.23",
+        "de": "fehlerkorrekturen für versiosn 1.22 und 1.23",
+        "ru": "исправление ошибок для versiosn 1.22 и 1.23",
+        "pt": "correções de erro para versiosn 1.22 e 1.23",
+        "nl": "vertaling:",
+        "fr": "corrections d'erreurs pour versiosn 1.22 et 1.23",
+        "it": "correzioni di errore per versiosn 1.22 e 1.23",
+        "es": "correcciones de errores para versiosn 1.22 y 1.23",
+        "pl": "poprawki błędów w przekroczeniu 1.22 i 1.23",
+        "uk": "виправлення помилок для версіосну 1.22 та 1.23",
+        "zh-cn": "对 vios1.22和1.23的更正"
+      },
       "1.23.0": {
         "en": "correct ww states from v1.22",
         "de": "korrekte ww zustände von v1.22",
@@ -81,19 +94,6 @@
         "pl": "Statystyki\nalternatywna souces (am200)",
         "uk": "Статистика\nальтернативні термосупи (am200)",
         "zh-cn": "统计\n替代热管(第200号)"
-      },
-      "1.17.1": {
-        "en": "correct actualweight statistics within heatdemand function",
-        "de": "korrekte istgewichtsstatistik der heatdemand-funktion",
-        "ru": "правильную актуальную статистику в функции heatdemand",
-        "pt": "estatísticas de peso real corretas dentro da função de demanda de calor",
-        "nl": "correct gewicht statistieken binnen warmtebemande functie",
-        "fr": "statistiques réelles exactes sur le poids dans la fonction de la demande de chaleur",
-        "it": "corrette statistiche effettive del peso all'interno della funzione heatdemand",
-        "es": "estadísticas de peso real correctas dentro de la función calordemand",
-        "pl": "poprawne statystyki w zakresie ciepłademanda",
-        "uk": "виправлено фактичну статистику ваги в функції heatdemand",
-        "zh-cn": "b. 热能功能中的实际体重统计"
       }
     },
     "titleLang": {
