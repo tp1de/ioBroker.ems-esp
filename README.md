@@ -134,7 +134,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.23.0 (2023-02-26)
 * new dependencies & correct version 1.22.0 errors for ww-states
 
 ### 1.22.0 (2023-02-17)
@@ -248,7 +248,6 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 * support for KM200 HRV (ventilation)
 * corrections for km200 recordings and statistics module
 * prepare for ems-esp firmware 3.4
-
 
 ## License
 MIT License
