@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* set acknowledge to true when re-reading changed values from ems-esp
+
 ### 1.24.0 (2023-02-26)
 * error corrections for version 1.22 and 1.23
 
