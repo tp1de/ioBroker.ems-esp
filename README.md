@@ -135,7 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### 1.24.0 (2023-02-26)
-* error corrections for versiosn 1.22 and 1.23
+* error corrections for version 1.22 and 1.23
 
 ### 1.23.0 (2023-02-26)
 * correct ww states from v1.22
