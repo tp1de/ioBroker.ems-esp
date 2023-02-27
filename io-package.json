@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.25.0",
+    "version": "1.26.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.26.0": {
+        "en": "error corrections due to changes since v1.21",
+        "de": "fehlerkorrekturen aufgrund von änderungen seit v1.21",
+        "ru": "исправление ошибок из-за изменений с v1.21",
+        "pt": "correções de erro devido a alterações desde v1.21",
+        "nl": "error correcties door veranderingen sinds v1.21",
+        "fr": "corrections d'erreur en raison de modifications depuis v1.21",
+        "it": "correzioni di errore dovute a modifiche dal v1.21",
+        "es": "correcciones de errores debidas a cambios desde v1.21",
+        "pl": "poprawki błędów wynikające z zmian wynikających z v1.21",
+        "uk": "виправлення помилок через зміни з v1.21",
+        "zh-cn": "由于自诉1.21年以来发生的变化,错误的纠正"
+      },
       "1.25.0": {
         "en": "set acknowledge to true when re-reading changed values from ems-esp",
         "de": "set quit to true beim neulesen von geänderten werten von ems-esp",
@@ -81,19 +94,6 @@
         "pl": "am200 z ems-esp – redefine to heatSources/hsa for km200 construction mode",
         "uk": "am200 від ems-esp - redefine до heatSources/hsa за км200 режим структури",
         "zh-cn": "200个结构模式的原状——对热苏夫/赫萨的重新定性"
-      },
-      "1.19.0": {
-        "en": "am200 - alternative heatsource adjustments",
-        "de": "am200 - alternative wärmequelleneinstellungen",
-        "ru": "am200 - альтернативные настройки тепла",
-        "pt": "am200 - ajustes alternativos de fontes de calor",
-        "nl": "am200 - alternatieve verwarming aanpassingen",
-        "fr": "am200 - ajustements de sources de chaleur alternatives",
-        "it": "am200 - aggiustamenti alternativi delle risorse di calore",
-        "es": "am200 - ajustes alternativos de fuente de calor",
-        "pl": "am200 – wymiana ciepła alternatywnego",
-        "uk": "am200 - альтернативні налаштування джерела тепла",
-        "zh-cn": "200 - 替代热源调整"
       }
     },
     "titleLang": {
