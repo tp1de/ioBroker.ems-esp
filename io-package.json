@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.28.0",
+    "version": "1.29.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.29.0": {
+        "en": "update dependencies",
+        "de": "aktualisierung der abhängigkeiten",
+        "ru": "обновление зависимостей",
+        "pt": "dependências",
+        "nl": "vertaling:",
+        "fr": "mettre à jour les dépendances",
+        "it": "aggiornamento dipendenze",
+        "es": "dependencias de actualización",
+        "pl": "zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "a. 最新受扶养人"
+      },
       "1.28.0": {
         "en": "update dependencies (part 2)",
         "de": "aktualisierung abhängigkeiten (teil 2)",
@@ -81,19 +94,6 @@
         "pl": "poprawne stany v1.22",
         "uk": "правильні стани ww від v1.22",
         "zh-cn": "第1.22号正确报"
-      },
-      "1.22.0": {
-        "en": "support multiple mixer devices",
-        "de": "unterstützung mehrerer mischer",
-        "ru": "поддержка нескольких миксерных устройств",
-        "pt": "suporte vários dispositivos de misturador",
-        "nl": "steun meerdere mixer apparaten",
-        "fr": "plusieurs appareils de mixage",
-        "it": "supporta più dispositivi mixer",
-        "es": "soporte múltiples dispositivos de mezclador",
-        "pl": "obsługa multiplexów",
-        "uk": "підтримка декількох пристроїв змішувача",
-        "zh-cn": "支持多种混合装置"
       }
     },
     "titleLang": {
