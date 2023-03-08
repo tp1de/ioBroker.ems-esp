@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.26.0",
+    "version": "1.27.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.27.0": {
+        "en": "update dependencies",
+        "de": "aktualisierung der abhängigkeiten",
+        "ru": "обновление зависимостей",
+        "pt": "dependências",
+        "nl": "vertaling:",
+        "fr": "mettre à jour les dépendances",
+        "it": "aggiornamento dipendenze",
+        "es": "dependencias de actualización",
+        "pl": "zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "a. 最新受扶养人"
+      },
       "1.26.0": {
         "en": "error corrections due to changes since v1.21",
         "de": "fehlerkorrekturen aufgrund von änderungen seit v1.21",
@@ -81,19 +94,6 @@
         "pl": "am200 z przystosowania ems-esp do zmiany struktury",
         "uk": "am200 від ems-esp коригування до змінної структури",
         "zh-cn": "结构变化的幅度调整"
-      },
-      "1.20.0": {
-        "en": "am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode",
-        "de": "am200 von ems-esp - redefine to heatSources/hsa for km200 structure mode",
-        "ru": "am200 от ems-esp - redefine до heatSources/hsa для режима структуры km200",
-        "pt": "am200 de ems-esp - redefine para o calorFontes/hsa para o modo de estrutura km200",
-        "nl": "am200 van de keizersnede naar hittesources/hsa voor de kilometers van 200 structuur",
-        "fr": "am200 from ems-esp - redefine to heatSources/hsa for km200 structure mode",
-        "it": "am200 da ems-esp - ridefinire a caldoSources/hsa per la modalità struttura km200",
-        "es": "am200 de ems-esp - redefinir a calorFuentes/hsa para el modo de estructura km200",
-        "pl": "am200 z ems-esp – redefine to heatSources/hsa for km200 construction mode",
-        "uk": "am200 від ems-esp - redefine до heatSources/hsa за км200 режим структури",
-        "zh-cn": "200个结构模式的原状——对热苏夫/赫萨的重新定性"
       }
     },
     "titleLang": {
