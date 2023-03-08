@@ -26,10 +26,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
 
@@ -55,10 +55,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
 
@@ -97,10 +97,10 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v1
+              uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
 
@@ -124,7 +124,7 @@ jobs:
                   npm publish
 
             - name: Create Github Release
-              uses: actions/create-release@v1
+              uses: actions/create-release@v3
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               with:
