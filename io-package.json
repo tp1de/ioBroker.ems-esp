@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.27.0",
+    "version": "1.28.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.28.0": {
+        "en": "update dependencies (part 2)",
+        "de": "aktualisierung abhängigkeiten (teil 2)",
+        "ru": "обновление зависимостей (часть 2)",
+        "pt": "dependências de atualização (parte 2)",
+        "nl": "vertaling:",
+        "fr": "mettre à jour les dépendances (partie 2)",
+        "it": "aggiornamento dipendenze (parte 2)",
+        "es": "(parte 2)",
+        "pl": "uzależnienie od siebie (części 2)",
+        "uk": "оновлення залежностей (частина 2)",
+        "zh-cn": "a. 最新受扶养人(第2部分)"
+      },
       "1.27.0": {
         "en": "update dependencies",
         "de": "aktualisierung der abhängigkeiten",
@@ -81,19 +94,6 @@
         "pl": "obsługa multiplexów",
         "uk": "підтримка декількох пристроїв змішувача",
         "zh-cn": "支持多种混合装置"
-      },
-      "1.21.0": {
-        "en": "am200 from ems-esp adjustments to changed structure",
-        "de": "am200 von ems-esp anpassungen an geänderte struktur",
-        "ru": "am200 от встроений ems-esp к измененной структуре",
-        "pt": "am200 de ajustes ems-esp para estrutura alterada",
-        "nl": "am200 van de keizersnede om de structuur te veranderen",
-        "fr": "am200 from ems-esp adjustments to changed structure",
-        "it": "am200 dalle regolazioni ems-esp alla struttura modificata",
-        "es": "am200 de los ajustes de ems-esp a la estructura cambiada",
-        "pl": "am200 z przystosowania ems-esp do zmiany struktury",
-        "uk": "am200 від ems-esp коригування до змінної структури",
-        "zh-cn": "结构变化的幅度调整"
       }
     },
     "titleLang": {
