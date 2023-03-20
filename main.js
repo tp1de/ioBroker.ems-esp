@@ -372,7 +372,7 @@ async function read_efficiency() {
 		try {state = await adapter.getStateAsync(s); temp  = state.val;} catch(e) {temp  = 0;}
 		try {state = await adapter.getStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
 		if (tempr == 0) {
-			try {state = await adapter.getforeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
+			try {state = await adapter.getForeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
 		}
 		adapter.log.info(m+"  "+s+"  "+r);
 		adapter.log.info(power+"  "+temp+"  "+tempr);
