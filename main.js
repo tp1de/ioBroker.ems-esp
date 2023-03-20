@@ -350,6 +350,13 @@ async function read_efficiency() {
 		let s = adapter.config.supplytemp;
 		let r = adapter.config.returntemp;
 
+		// re-initialize config parameters for previous km200 states - not to be used for ems-esp !
+		if (adapter.config.emsesp_active) {
+			if (m == "heatSources.hs1.actualModulation") m = "";
+			if (s == "heatSources.actualSupplyTemperature") s = "";
+			if (r == "heatSources.returnTemperature") r = "";
+		}
+
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
 			if (m.trim() == "") m = "boiler.curburnpow";
 			if (s.trim() == "") s = "boiler.curflowtemp";
