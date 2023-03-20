@@ -518,7 +518,7 @@ systemDictionary = {
 		  "es": "modulación de estado",
 		  "pl": "modulacja stanu",
 		  "zh-cn": "状态调制"
-		},
+	},
 	"supplytemp": {
 		  "en": "state supplytemp",
 		  "de": "State Vorlauftemp",
