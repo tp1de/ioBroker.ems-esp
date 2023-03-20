@@ -374,9 +374,10 @@ async function read_efficiency() {
 		if (tempr == 0) {
 			try {state = await adapter.getforeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
 		}
+		adapter.log.info(m+"  "+s+"  "+r);
+		adapter.log.info(power+"  "+temp+"  "+tempr);
 
 		if (power > 0) {
-			adapter.log.info(power+"  "+temp+"  "+tempr);
 			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
 			tempavg = (temp+tempr) / 2;
 			if (tempavg > 60) value = adapter.config.eff70;
