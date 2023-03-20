@@ -377,8 +377,8 @@ async function read_efficiency() {
 		try {state = await adapter.getStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
 		if (tempr == 0) {try {state = await adapter.getForeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}}
 
-		adapter.log.info(m+"  "+s+"  "+r);
-		adapter.log.info(power+"  "+temp+"  "+tempr);
+		//adapter.log.info(m+"  "+s+"  "+r);
+		//adapter.log.info(power+"  "+temp+"  "+tempr);
 
 		if (power > 0) {
 			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
@@ -418,79 +418,6 @@ async function read_efficiency() {
 	}
 }
 
-async function read_efficiency1() {
-	if (!unloaded) {
-		let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0,state;
-
-		if (adapter.config.emsesp_active && adapter.config.km200_structure){
-			try {
-				state = await adapter.getStateAsync("heatSources.hs1.curburnpow");power = state.val;
-				state = await adapter.getStateAsync("heatSources.hs1.curflowtemp");temp = state.val;
-				state = await adapter.getStateAsync("heatSources.hs1.rettemp");tempr = state.val;
-			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
-		}
-		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
-			try {
-				state = await adapter.getStateAsync("boiler.curburnpow");power = state.val;
-				state = await adapter.getStateAsync("boiler.curflowtemp");temp = state.val;
-				state = await adapter.getStateAsync("boiler.rettemp");tempr = state.val;
-			}
-			catch (err) {adapter.log.error("error read efficiency:"+err);}
-		}
-
-		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
-			const m = adapter.config.modulation;
-			const s = adapter.config.supplytemp;
-			const r = adapter.config.returntemp;
-
-			try {state = await adapter.getStateAsync(m);power = state.val;}
-			catch (err) {adapter.log.error("Efficieny: boiler modulation state not available" );}
-
-			try  {state = await adapter.getStateAsync(s);temp = state.val;}
-			catch (err) {adapter.log.error("Efficieny: supply temperature state not available" );}
-
-			try {state = await adapter.getStateAsync(r);tempr = state.val;}
-			catch (err) {adapter.log.debug("Efficieny: return temperature state not available");}
-		}
-
-		if (power > 0) {
-			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
-			tempavg = (temp+tempr) / 2;
-			if (tempavg > 60) value = adapter.config.eff70;
-			else {
-				if (tempavg > 55) value = adapter.config.eff60;
-				else {
-					if (tempavg > 50) value = adapter.config.eff55;
-					else {
-						if (tempavg > 45) value = adapter.config.eff50;
-						else {
-							if (tempavg > 40) value = adapter.config.eff45;
-							else {
-								if (tempavg > 35) value = adapter.config.eff40;
-								else {
-									if (tempavg > 30) value = adapter.config.eff35;
-									else {
-										if (tempavg > 25) value = adapter.config.eff30;
-										else {
-											if (tempavg > 20) value = adapter.config.eff25;
-											else {
-												if (tempavg <= 20) value = adapter.config.eff20;
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		await adapter.setObjectNotExists("statistics.efficiency",{type: "state",
-			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
-		adapter.setState("statistics.efficiency", {ack: true, val: value});
-	}
-}
 
 
 async function read_statistics() {
