@@ -346,6 +346,77 @@ async function read_efficiency() {
 	if (!unloaded) {
 		let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0,state;
 
+		let m = adapter.config.modulation;
+		let s = adapter.config.supplytemp;
+		let r = adapter.config.returntemp;
+
+		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
+			if (m.trim() == "") m = "boiler.curburnpow";
+			if (s.trim() == "") s = "boiler.curflowtemp";
+			if (r.trim() == "") r = "boiler.hs1.rettemp";
+		}
+
+		if (adapter.config.emsesp_active && adapter.config.km200_structure){
+			if (m.trim() == "") m = "heatSources.hs1.curburnpow";
+			if (s.trim() == "") s = "heatSources.hs1.curflowtemp";
+			if (r.trim() == "") r = "heatSources.hs1.rettemp";
+		}
+
+		if (adapter.config.emsesp_active === false && adapter.config.km200_active){
+			if (m.trim() == "") m = "heatSources.hs1.actualModulation";
+			if (s.trim() == "") s = "heatSources.actualSupplyTemperature";
+			if (r.trim() == "") r = "heatSources.returnTemperature";
+		}
+
+		try {state = await adapter.getStateAsync(m); power = state.val;} catch(e) {power = 0;}
+		try {state = await adapter.getStateAsync(s); temp  = state.val;} catch(e) {temp  = 0;}
+		try {state = await adapter.getStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
+		if (tempr == 0) {
+			try {state = await adapter.getforeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
+		}
+
+		if (power > 0) {
+			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available
+			tempavg = (temp+tempr) / 2;
+			if (tempavg > 60) value = adapter.config.eff70;
+			else {
+				if (tempavg > 55) value = adapter.config.eff60;
+				else {
+					if (tempavg > 50) value = adapter.config.eff55;
+					else {
+						if (tempavg > 45) value = adapter.config.eff50;
+						else {
+							if (tempavg > 40) value = adapter.config.eff45;
+							else {
+								if (tempavg > 35) value = adapter.config.eff40;
+								else {
+									if (tempavg > 30) value = adapter.config.eff35;
+									else {
+										if (tempavg > 25) value = adapter.config.eff30;
+										else {
+											if (tempavg > 20) value = adapter.config.eff25;
+											else {
+												if (tempavg <= 20) value = adapter.config.eff20;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		await adapter.setObjectNotExists("statistics.efficiency",{type: "state",
+			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
+		adapter.setState("statistics.efficiency", {ack: true, val: value});
+	}
+}
+
+async function read_efficiency1() {
+	if (!unloaded) {
+		let value = 0, power = 0,temp = 0,tempr = 0, tempavg = 0,state;
+
 		if (adapter.config.emsesp_active && adapter.config.km200_structure){
 			try {
 				state = await adapter.getStateAsync("heatSources.hs1.curburnpow");power = state.val;
@@ -415,7 +486,6 @@ async function read_efficiency() {
 		adapter.setState("statistics.efficiency", {ack: true, val: value});
 	}
 }
-
 
 
 async function read_statistics() {

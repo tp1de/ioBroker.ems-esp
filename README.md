@@ -134,6 +134,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* update efficience calculation to support external sensor for return temperature
+
 ### 1.29.0 (2023-03-08)
 * update dependencies
 
