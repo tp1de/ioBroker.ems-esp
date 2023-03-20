@@ -353,7 +353,7 @@ async function read_efficiency() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false){
 			if (m.trim() == "") m = "boiler.curburnpow";
 			if (s.trim() == "") s = "boiler.curflowtemp";
-			if (r.trim() == "") r = "boiler.hs1.rettemp";
+			if (r.trim() == "") r = "boiler.rettemp";
 		}
 
 		if (adapter.config.emsesp_active && adapter.config.km200_structure){
