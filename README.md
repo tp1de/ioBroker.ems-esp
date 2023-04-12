@@ -135,7 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.30.0 (2023-04-12)
 * update efficience calculation to support external sensor for return temperature
 * when 3 state fields are empty then standard fields are used.
 * when state field(s) are filled, than this state(s) are used - e.g. own sensor for return temp

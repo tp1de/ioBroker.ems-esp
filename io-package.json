@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.29.0",
+    "version": "1.30.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.30.0": {
+        "en": "update efficience calculation to support external sensor for return temperature\nwhen 3 state fields are empty then standard fields are used.\nwhen state field(s) are filled, than this state(s) are used - e.g. own sensor for return temp\ncoorect error processing when no ems-esp devices found",
+        "de": "aktualisierung der effizienzberechnung zur unterstützung des externen sensors für rücklauftemperatur\nwenn 3 zustandsfelder leer sind, werden standardfelder verwendet.\nwenn zustandsfeld(en) gefüllt sind, als dieser zustand(en) verwendet wird - z.b. eigener sensor für rücklauftemp\ncoorect fehlerverarbeitung, wenn keine ems-esp-geräte gefunden werden",
+        "ru": "обновление вычисления эффективности для поддержки внешнего датчика для обратной температуры\nкогда 3 поля штата пусты тогда стандартные поля использованы.\nкогда поля штата (ы) заполнены, чем это состояние (ы) использованы - например, собственный датчик для обратного темпа\ncoorect ошибка обработки, когда не найдены устройства ems-esp",
+        "pt": "cálculo de eficiência de atualização para suportar sensor externo para temperatura de retorno\nquando 3 campos de estado estão vazios, então os campos padrão são usados.\nquando o(s) campo(s) do estado(s) é preenchido, do que este(s) estado(s) são usados - por exemplo, o próprio sensor para o retorno temp\nprocessamento de erro coorect quando nenhum dispositivo ems-esp encontrado",
+        "nl": "vertaling:\nals 3 state velden leeg zijn, dan zijn de standaard velden gebruikt.\nals de staat gevuld is, dan deze staat wordt gebruikt - e.g. eigen sensor voor terugkeer\ncoorectfout verwerkt als er geen apparatuur gevonden wordt",
+        "fr": "mettre à jour le calcul d'efficacité pour soutenir le capteur externe pour la température de retour\nlorsque 3 champs d'état sont vides, les champs standard sont utilisés.\nlorsque les champs d'état sont remplis, que ce ou ces états sont utilisés - p.ex. son propre capteur pour la température de retour\ntraitement d'erreur coorect quand aucun périphérique ems-esp n'a trouvé",
+        "it": "aggiornare il calcolo dell'efficienza per supportare il sensore esterno per la temperatura di ritorno\nquando 3 campi di stato sono vuoti, vengono utilizzati campi standard.\nquando i campi di stato(i) sono riempiti, che questo stato(i) sono utilizzati - ad esempio il proprio sensore per la temperatura di ritorno\nl'elaborazione degli errori quando non si trovano dispositivi ems-esp",
+        "es": "actualizar cálculo de eficiencia para soportar sensores externos para temperatura de retorno\ncuando 3 campos estatales están vacíos, se utilizan campos estándar.\ncuando el campo(s) estado(s) se llenan, que este estado(s) se utilizan - por ejemplo sensor propio para el tiempo de retorno\nprocesamiento de errores de coorecto cuando no se encuentran dispositivos ems-esp",
+        "pl": "zaktualizowana kalkulacja efektywności wspiera zewnętrzny czujnik w celu zwrotu temperatury\nw przypadku, gdy używane są pola stanowe są puste, to pola standardowe.\nw przypadku wypełniania się pola stanowego, niż te stany są używane – np. własny czujnik dla zwrotu tempa\nprzetwarzanie błędów, gdy nie znaleziono żadnych emestrów",
+        "uk": "розрахунок ефективності для підтримки зовнішнього датчика температури повернення\nпри використанні 3-х державних полів, потім стандартних полів.\nколи використовується державне поле (и) - наприклад, власний датчик повернення\nобробка помилок кооректу при відсутності емс-esp пристроїв",
+        "zh-cn": "更新有效计算,以支助外部传感器恢复温度\n当3个州空区时,使用了空洞的标准领域。.\n当国家现场充任时,该州使用时,例如使用自己的传感器返回时时时的传感器。\n在没有发现的电器装置的情况下,合用错误处理"
+      },
       "1.29.0": {
         "en": "update dependencies",
         "de": "aktualisierung der abhängigkeiten",
@@ -81,19 +94,6 @@
         "pl": "poprawki błędów w przekroczeniu 1.22 i 1.23",
         "uk": "виправлення помилок для версіосну 1.22 та 1.23",
         "zh-cn": "对 vios1.22和1.23的更正"
-      },
-      "1.23.0": {
-        "en": "correct ww states from v1.22",
-        "de": "korrekte ww zustände von v1.22",
-        "ru": "правильное состояние ww от v1.22",
-        "pt": "estados ww corretos de v1.22",
-        "nl": "vertaling:",
-        "fr": "ww états corrects de v1.22",
-        "it": "stati ww corretti da v1.22",
-        "es": "correcto ww estados de v1.22",
-        "pl": "poprawne stany v1.22",
-        "uk": "правильні стани ww від v1.22",
-        "zh-cn": "第1.22号正确报"
       }
     },
     "titleLang": {
