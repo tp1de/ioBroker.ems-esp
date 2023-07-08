@@ -135,6 +135,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* correction on JSON errors for ems-esp gateway entities (heatpump)
+
 ### 1.30.0 (2023-04-12)
 * update efficience calculation to support external sensor for return temperature
 * when 3 state fields are empty then standard fields are used.
