@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.30.0",
+    "version": "1.31.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.31.0": {
+        "en": "correction on JSON errors for ems-esp gateway entities (heatpump)",
+        "de": "korrektur von JSON-Fehlern für ems-esp-Gateway-Entities (heatpump)",
+        "ru": "исправление ошибок JSON для ems-esp шлюзов (heatpump)",
+        "pt": "correção em erros JSON para entidades de gateway ems-esp (heatpump)",
+        "nl": "correctie over JSON fouten voor ems-esp poort entiteiten (heatpump)",
+        "fr": "correction sur les erreurs JSON pour les entités de passerelle ems-esp (heatpump)",
+        "it": "correzione su errori JSON per entità gateway ems-esp (heatpump)",
+        "es": "corrección sobre errores JSON para las entidades de gateway ems-esp (calor)",
+        "pl": "korektywa JSON dla jednostek typu ems-esp (heatpump)",
+        "uk": "корекція на помилках JSON для емс-esp шлюзу (тепловий)",
+        "zh-cn": "解读会门实体(倾销)的错误"
+      },
       "1.30.0": {
         "en": "update efficience calculation to support external sensor for return temperature\nwhen 3 state fields are empty then standard fields are used.\nwhen state field(s) are filled, than this state(s) are used - e.g. own sensor for return temp\ncoorect error processing when no ems-esp devices found",
         "de": "aktualisierung der effizienzberechnung zur unterstützung des externen sensors für rücklauftemperatur\nwenn 3 zustandsfelder leer sind, werden standardfelder verwendet.\nwenn zustandsfeld(en) gefüllt sind, als dieser zustand(en) verwendet wird - z.b. eigener sensor für rücklauftemp\ncoorect fehlerverarbeitung, wenn keine ems-esp-geräte gefunden werden",
@@ -81,19 +94,6 @@
         "pl": "ustalono, że poprawa polega na zmianie wartości od ems-esp",
         "uk": "визначте, коли перечитування змінених значень від ems-esp",
         "zh-cn": "当重新形成的价值观偏离成份时,就承认这一点。"
-      },
-      "1.24.0": {
-        "en": "error corrections for versiosn 1.22 and 1.23",
-        "de": "fehlerkorrekturen für versiosn 1.22 und 1.23",
-        "ru": "исправление ошибок для versiosn 1.22 и 1.23",
-        "pt": "correções de erro para versiosn 1.22 e 1.23",
-        "nl": "vertaling:",
-        "fr": "corrections d'erreurs pour versiosn 1.22 et 1.23",
-        "it": "correzioni di errore per versiosn 1.22 e 1.23",
-        "es": "correcciones de errores para versiosn 1.22 y 1.23",
-        "pl": "poprawki błędów w przekroczeniu 1.22 i 1.23",
-        "uk": "виправлення помилок для версіосну 1.22 та 1.23",
-        "zh-cn": "对 vios1.22和1.23的更正"
       }
     },
     "titleLang": {

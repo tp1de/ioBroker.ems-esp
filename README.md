@@ -135,7 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.31.0 (2023-07-08)
 * correction on JSON errors for ems-esp gateway entities (heatpump)
 
 ### 1.30.0 (2023-04-12)
