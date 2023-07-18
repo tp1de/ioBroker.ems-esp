@@ -103,9 +103,15 @@ async function main () {
 
 	if (!unloaded) adapter.subscribeStates("*");
 
+
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
-		adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
+		if (adapter.config.db.trim() == "" ) db = "";
+		else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+
+		if (db == "") adapter.log.error("no database instance selected for statistics");
+		else adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
 	}
+
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
 
