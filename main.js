@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-empty */
 //eslint-disable no-empty */
 //"eslint-disable no-mixed-spaces-and-tabs"
 //"use strict";
@@ -158,7 +160,7 @@ async function init_controls() {
 			} catch(e) {value = -99;}
 			control_state(state+"settemp","number", "set temperature", value);
 			try {
-				state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 				value = state1.val;
 			} catch(e) {value = -99;}
 			control_state(state+"actualtemp","number", "actual temperature", value);
@@ -217,7 +219,7 @@ async function heatdemand() {
 		} catch(e) {}
 
 		try {
-			state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
+			const state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
 		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
@@ -283,6 +285,7 @@ async function heatdemand() {
 					if (adapter.config.heatingcircuits[i].savesettemp) {
 						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
 							if (adapter.config.thermostats[ii].hc == hc) {
+								let settemp;
 								try {
 									const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
 									settemp = state6.val;
