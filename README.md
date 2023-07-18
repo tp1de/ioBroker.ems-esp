@@ -136,7 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* ems-esp v3.6 adjustments for dallas/temperature sensors 
+* ems-esp v3.6 adjustments for dallas/temperature 
+* update dependencies 
 
 
 ### 1.31.0 (2023-07-08)
