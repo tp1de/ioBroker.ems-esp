@@ -118,14 +118,16 @@ async function main () {
 
 function enable_state(stateid,retention,interval) {
 	const id =  adapter.namespace  + "." + stateid;
-	adapter.sendTo(db, "enableHistory", {id: id, options:
-		{changesOnly: false,debounce: 0,retention: retention,changesRelogInterval: interval,
-			maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
-		if (result.error) {adapter.log.error("enable history error " + stateid);}
-		if (result.success) {
-			//adapter.setState(stateid, {ack: true, val: 0});
-		}
-	});
+	try {
+		adapter.sendTo(db, "enableHistory", {id: id, options:
+			{changesOnly: false,debounce: 0,retention: retention,changesRelogInterval: interval,
+				maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
+			if (result.error) {adapter.log.error("enable history error " + stateid);}
+			if (result.success) {
+				//adapter.setState(stateid, {ack: true, val: 0});
+			}
+		});
+	} catch (e) {adapter.log.error("enable history error " + stateid + " " + e);}
 }
 
 
