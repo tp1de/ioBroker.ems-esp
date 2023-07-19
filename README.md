@@ -135,6 +135,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Rework instances config 
+
 ### 1.32.0 (2023-07-19)
 * ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)
 * update dependencies 
