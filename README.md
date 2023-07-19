@@ -139,6 +139,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 * ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)
 * update dependencies 
 * improve processing off errors on statistics
+* Small adjustments on parameter screen
 
 
 ### 1.31.0 (2023-07-08)
