@@ -304,28 +304,28 @@ systemDictionary = {
 		"zh-cn": "乘数"
 	},
 	"r_month": {
-	"en": "sum of daily values for actual month",
-    "de": "Summe der Tageswerte für den aktuellen Monat",
-    "ru": "сумма дневных значений за фактический месяц",
-    "pt": "soma dos valores diários para o mês real",
-    "nl": "som van dagelijkse waarden voor de werkelijke maand",
-    "fr": "somme des valeurs quotidiennes pour le mois réel",
-    "it": "somma dei valori giornalieri per il mese effettivo",
-    "es": "suma de valores diarios para el mes real",
-    "pl": "suma wartości dziennych dla aktualnego miesiąca",
-    "zh-cn": "实际月份的日值总和"
+		"en": "sum of daily values for actual month",
+		"de": "Summe der Tageswerte für den aktuellen Monat",
+		"ru": "сумма дневных значений за фактический месяц",
+		"pt": "soma dos valores diários para o mês real",
+		"nl": "som van dagelijkse waarden voor de werkelijke maand",
+		"fr": "somme des valeurs quotidiennes pour le mois réel",
+		"it": "somma dei valori giornalieri per il mese effettivo",
+		"es": "suma de valores diarios para el mes real",
+		"pl": "suma wartości dziennych dla aktualnego miesiąca",
+		"zh-cn": "实际月份的日值总和"
 	},
 	"r_c": {
-	"en": "samples interpolation",
-	"de": "Samples-Interpolation",
-	"ru": "выборки интерполяции",
-	"pt": "interpolação de amostras",
-	"nl": "steekproeven interpolatie:",
-	"fr": "interpolation d'échantillons",
-	"it": "interpolazione dei campioni",
-	"es": "interpolación de muestras",
-	"pl": "interpolacja próbek",
-	"zh-cn": "样本插值"
+		"en": "samples interpolation",
+		"de": "Samples-Interpolation",
+		"ru": "выборки интерполяции",
+		"pt": "interpolação de amostras",
+		"nl": "steekproeven interpolatie:",
+		"fr": "interpolation d'échantillons",
+		"it": "interpolazione dei campioni",
+		"es": "interpolación de muestras",
+		"pl": "interpolacja próbek",
+		"zh-cn": "样本插值"
 	},
 	"statistics" :{
 		  "en": "Create statistics on  boiler starts",
@@ -363,18 +363,6 @@ systemDictionary = {
 		"pl": "Baza danych",
 		"zh-cn": "数据库"
 	},
-	"db_instance": {
-		"en": "db instance",
-		"de": "db-Instanz",
-		"ru": "экземпляр базы данных",
-		"pt": "instância de banco de dados",
-		"nl": "db-instantie",
-		"fr": "instance de base de données",
-		"it": "istanza db",
-		"es": "instancia de base de datos",
-		"pl": "instancja bazy danych",
-		"zh-cn": "数据库实例"
-    },
 	"eff_active": {
 		"en": "efficiency in % (Gas- and Oilboilers only)",
 		"de": "Wirkungsgrad in % (nur Gas- und Ölkessel)",
