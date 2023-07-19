@@ -98,8 +98,8 @@ async function main () {
 
 	if (adapter.config.db.trim() == "" ) {
 		db = "";
-		adapter.config.statistics = false;
 		if (adapter.config.statistics) adapter.log.error("no database instance selected for statistics - statistics disabled");
+		adapter.config.statistics = false;
 	}
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
