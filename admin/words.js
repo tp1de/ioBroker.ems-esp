@@ -27,6 +27,30 @@ systemDictionary = {
 		"pl": "Ustawienia główne",
 		"zh-cn": "主要设置"
 	},
+	"KM200 settings": {
+		"en": "KM200",
+		"de": "KM200",
+		"ru": "KM200",
+		"pt": "KM200",
+		"nl": "KM200",
+		"fr": "KM200",
+		"it": "KM200",
+		"es": "KM200",
+		"pl": "KM200",
+		"zh-cn": "KM200"
+	},
+	"EMS-ESP settings": {
+		"en": "EMS-ESP",
+		"de": "EMS-ESP",
+		"ru": "EMS-ESP",
+		"pt": "EMS-ESP",
+		"nl": "EMS-ESP",
+		"fr": "EMS-ESP",
+		"it": "EMS-ESP",
+		"es": "EMS-ESP",
+		"pl": "EMS-ESP",
+		"zh-cn": "EMS-ESP"
+	},
 	"ems expert settings": {
 		  "en": "ems expert settings",
 		  "de": "EMS-Experteneinstellungen",
