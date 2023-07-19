@@ -499,7 +499,7 @@ async function read_statistics() {
 
 async function stat(db,id,hour,state) {
 	const end = Date.now();
-	if (!unloaded) {
+	if (!unloaded && id != undefined) {
 		try {
 			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
 			}, function (result) {
