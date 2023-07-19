@@ -96,20 +96,23 @@ async function main () {
 		S.init(adapter,own_states,adapterIntervals);
 	}
 
+	if (adapter.config.db.trim() == "" ) {
+		db = "";
+		adapter.config.statistics = false;
+		if (adapter.config.statistics) adapter.log.error("no database instance selected for statistics - statistics disabled");
+	}
+	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
-	if (!unloaded && adapter.config.statistics) await init_statistics();
+	if (!unloaded && adapter.config.statistics) await init_statistics(); // define statistics states
+
+
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
 	if (!unloaded) adapter.subscribeStates("*");
 
-
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
-		if (adapter.config.db.trim() == "" ) db = "";
-		else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
-
-		if (db == "") adapter.log.error("no database instance selected for statistics");
-		else adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
+		adapterIntervals.stat = setInterval(function() {init_statistics2();read_statistics();}, 60000); // 60 sec
 	}
 
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
