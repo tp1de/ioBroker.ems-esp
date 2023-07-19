@@ -135,12 +135,11 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.32.0 (2023-07-19)
 * ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)
 * update dependencies 
 * improve processing off errors on statistics
 * Small adjustments on parameter screen
-
 
 ### 1.31.0 (2023-07-08)
 * correction on JSON errors for ems-esp gateway entities (heatpump)

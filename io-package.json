@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.31.0",
+    "version": "1.32.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.32.0": {
+        "en": "ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)\nupdate dependencies \nimprove processing off errors on statistics\nSmall adjustments on parameter screen",
+        "de": "ems-esp v3.6 einstellungen für dallas/temperatursensoren (noch nicht getestet)\naktualisierung der abhängigkeiten\nverbesserung der verarbeitung von statistiken\nKleine Einstellungen auf dem Parameterbildschirm",
+        "ru": "ems-esp v3.6 настройки для dallas/temperaturesensors ( еще не проверено)\nобновление зависимостей\nулучшить обработку ошибок по статистике\nНебольшие настройки на экране параметров",
+        "pt": "ems-esp v3.6 ajustes para dallas/temperaturesensors (não testado ainda)\ndependências\nmelhorar o processamento de erros nas estatísticas\nPequenos ajustes na tela do parâmetro",
+        "nl": "vertaling:\nvertaling:\nverbeter de fouten op statistieken\nKleine aanpassingen op het parameterscherm",
+        "fr": "ems-esp v3.6 rajustements pour dallas/temperaturesensors (non encore testé)\nmettre à jour les dépendances\naméliorer le traitement des erreurs sur les statistiques\nPetits réglages sur l'écran de paramètres",
+        "it": "ems-esp v3.6 regolazioni per sensori di tipo derivato/temperatura (non ancora testato)\naggiornamento dipendenze\nmigliorare l'elaborazione degli errori nelle statistiche\nPiccole regolazioni sulla schermata dei parametri",
+        "es": "ems-esp v3.6 ajustes para dallas/temperaturesensors (no probado todavía)\ndependencias de actualización\nmejorar el procesamiento de errores sobre estadísticas\nPequeños ajustes en la pantalla del parámetro",
+        "pl": "ems-esp v3,6 przystosowania do dallasu/temperaturowego czujników (nie testowanych)\nzależności\nulepszenie błędów w przetwarzaniu danych\nMała korekta na ekranie parametrów",
+        "uk": "ems-esp v3.6 регулювання для dallas / темпрези (не перевірено ще)\nоновлення залежності\nполіпшення обробки помилок на статистику\nНевеликі налаштування на екрані параметра",
+        "zh-cn": "对dals/temperitysensors(未试验)的编号/esp v3.6调整\na. 最新受扶养人\n改善统计数据错误的处理\n参数筛选小额调整"
+      },
       "1.31.0": {
         "en": "correction on JSON errors for ems-esp gateway entities (heatpump)",
         "de": "korrektur von JSON-Fehlern für ems-esp-Gateway-Entities (heatpump)",
@@ -81,19 +94,6 @@
         "pl": "poprawki błędów wynikające z zmian wynikających z v1.21",
         "uk": "виправлення помилок через зміни з v1.21",
         "zh-cn": "由于自诉1.21年以来发生的变化,错误的纠正"
-      },
-      "1.25.0": {
-        "en": "set acknowledge to true when re-reading changed values from ems-esp",
-        "de": "set quit to true beim neulesen von geänderten werten von ems-esp",
-        "ru": "установите признаться верно, когда перечитывать измененные значения от ems-esp",
-        "pt": "set recognition to true quando re-leitura valores alterados de ems-esp",
-        "nl": "erkenning aan de waarheid als het herlezen van andere waarden van keizersnedes",
-        "fr": "set acknowledge to true when re-reading changed values from ems-esp",
-        "it": "impostare riconoscere al vero quando rileggere i valori cambiati da ems-esp",
-        "es": "set reconocer a la verdad cuando la relectura de valores cambiados de ems-esp",
-        "pl": "ustalono, że poprawa polega na zmianie wartości od ems-esp",
-        "uk": "визначте, коли перечитування змінених значень від ems-esp",
-        "zh-cn": "当重新形成的价值观偏离成份时,就承认这一点。"
       }
     },
     "titleLang": {
