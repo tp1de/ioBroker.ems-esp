@@ -340,15 +340,15 @@ systemDictionary = {
 		  "zh-cn": "创建锅炉启动的统计信息"
 	},
 	"db_instance": {
-		"en": "db instance (mySQL or influxdb) for recordings & statistics",
-		"de": "db-Instanz (mySQL oder influxdb) für Aufzeichnungen & Statistiken",
-		"ru": "экземпляр db (mySQL или Influxdb) для записи и статистики",
-		"pt": "instância db (mySQL ou influxdb) para gravações e estatísticas",
-		"nl": "db-instantie (mySQL of influxdb) voor opnames en statistieken",
-		"fr": "instance db (mySQL ou influxdb) pour les enregistrements et les statistiques",
-		"it": "db instance (mySQL o influxdb) per registrazioni e statistiche",
-		"es": "instancia de db (mySQL o influxdb) para grabaciones y estadísticas",
-		"pl": "instancja db (mySQL lub influxdb) do nagrań i statystyk",
+		"en": "db instance (mySQL or influxdb)",
+		"de": "db-Instanz (mySQL oder influxdb) ",
+		"ru": "экземпляр db (mySQL или Influxdb) ",
+		"pt": "instância db (mySQL ou influxdb) ",
+		"nl": "db-instantie (mySQL of influxdb) v",
+		"fr": "instance db (mySQL ou influxdb) ",
+		"it": "db instance (mySQL o influxdb) ",
+		"es": "instancia de db (mySQL o influxdb) ",
+		"pl": "instancja db (mySQL lub influxdb) ",
 		"zh-cn": "用于记录和统计的数据库实例（mySQL 或 influxdb）"
 	},
 	"database": {
