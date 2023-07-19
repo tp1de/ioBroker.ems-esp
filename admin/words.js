@@ -605,7 +605,7 @@ systemDictionary = {
 	  },
 	"room": {
 		"en": "room",
-		"de": "Zimmer",
+		"de": "Raum",
 		"ru": "комната",
 		"pt": "quarto",
 		"nl": "kamer",
