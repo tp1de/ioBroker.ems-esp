@@ -518,7 +518,7 @@ async function stat(db,id,hour,state) {
 					adapter.setState(state, {ack: true, val: value});
 				}
 			});
-		} catch(e) {}
+		} catch(e) {adapter.log.error("error reading statistics records " +id);}
 	}
 }
 
