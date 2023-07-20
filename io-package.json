@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.32.0",
+    "version": "1.33.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.33.0": {
+        "en": "Rework adapter instance config: Split EMS-ESP and KM200 config pages\nparameters stay the same",
+        "de": "Rework Adapter Instanz config: EMS-ESP und KM200 config Seiten teilen\nparameter bleiben gleich",
+        "ru": "Переработка адаптера пример config: Split EMS-ESP и KM200 конфиг страницы\nпараметры сохраняют то же самое",
+        "pt": "Retrabalhe a instância do adaptador config: Dividir páginas de configuração EMS-ESP e KM200\nparâmetros ficar o mesmo",
+        "nl": "Reageer adapter instance config: Verdeel EMS-ESP en KM200 pagina's\nparameters blijven dezelfde",
+        "fr": "Configuration de l'instance de l'adaptateur de travail: Pages de configuration EMS-ESP et KM200\nles paramètres restent les mêmes",
+        "it": "Configurazione dell'istanza adattatore di rielaborazione: Pagine di configurazione EMS-ESP e KM200\ni parametri rimangono gli stessi",
+        "es": "Rework adapter instance config: Dividir las páginas de configuración EMS-ESP y KM200\nparámetros mantener el mismo",
+        "pl": "Adaptacja Strona domowa EMS-ESP i KM200\nparametry pozostają takie same",
+        "uk": "Налаштування адаптера змінного струму: Розділіть EMS-ESP та KM200 настройкові сторінки\nпараметри залишаються однаковими",
+        "zh-cn": "重新适应工作: Slit EMS-ESP和KM200config页\n参数保持不变"
+      },
       "1.32.0": {
         "en": "ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)\nupdate dependencies \nimprove processing off errors on statistics\nSmall adjustments on parameter screen",
         "de": "ems-esp v3.6 einstellungen für dallas/temperatursensoren (noch nicht getestet)\naktualisierung der abhängigkeiten\nverbesserung der verarbeitung von statistiken\nKleine Einstellungen auf dem Parameterbildschirm",
@@ -81,19 +94,6 @@
         "pl": "zależności",
         "uk": "оновлення залежності",
         "zh-cn": "a. 最新受扶养人"
-      },
-      "1.26.0": {
-        "en": "error corrections due to changes since v1.21",
-        "de": "fehlerkorrekturen aufgrund von änderungen seit v1.21",
-        "ru": "исправление ошибок из-за изменений с v1.21",
-        "pt": "correções de erro devido a alterações desde v1.21",
-        "nl": "error correcties door veranderingen sinds v1.21",
-        "fr": "corrections d'erreur en raison de modifications depuis v1.21",
-        "it": "correzioni di errore dovute a modifiche dal v1.21",
-        "es": "correcciones de errores debidas a cambios desde v1.21",
-        "pl": "poprawki błędów wynikające z zmian wynikających z v1.21",
-        "uk": "виправлення помилок через зміни з v1.21",
-        "zh-cn": "由于自诉1.21年以来发生的变化,错误的纠正"
       }
     },
     "titleLang": {
