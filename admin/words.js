@@ -377,16 +377,17 @@ systemDictionary = {
 		"zh-cn": "数据库"
 	},
 	"eff_active": {
-		"en": "efficiency in % (Gas- and Oilboilers only)",
-		"de": "Wirkungsgrad in % (nur Gas- und Ölkessel)",
-		"ru": "КПД в % (только для газовых и жидкотопливных котлов)",
-		"pt": "eficiência em % (somente caldeiras a gás e óleo)",
-		"nl": "rendement in % (alleen Gas- en Olieketels)",
-		"fr": "Efficacité en % (chaudières gaz et fioul uniquement)",
-		"it": "efficienza in % (solo caldaie a gas e olio)",
-		"es": "eficiencia en % (solo calderas de gas y de aceite)",
-		"pl": "sprawność w % (tylko kotły gazowe i olejowe)",
-		"zh-cn": "以 % 为单位的效率（仅限燃气和燃油锅炉）"
+		"en": "calculate boiler efficieny (gas and oil)",
+		"de": "Kesselwirkungsgrad berechnen (Gas und Öl)",
+		"ru": "рассчитать эффективность котла (газ и масло)",
+		"pt": "calcular a eficiência da caldeira (gás e óleo)",
+		"nl": "bereken de boiler efficiëny (gas en olie)",
+		"fr": "calculer l'efficacité des chaudières (gaz et huile)",
+		"it": "calcolare l'efficienza della caldaia (gas e olio)",
+		"es": "calcular la eficiencia de la caldera (gas y aceite)",
+		"pl": "obliczaj kotłów (gaz i olej)",
+		"uk": "розрахувати ефективність котла (газ і масло)",
+		"zh-cn": "(a) 计算碎片(气体和石油)"
 	},
 	"eff20": {
 		"en": "< 20°C",
