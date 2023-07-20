@@ -513,8 +513,9 @@ async function stat(db,id,hour,state) {
 					if (c == 0) value = 0;
 					if (c == 1) value = 1;
 					try {
-						if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
-						if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
+						value = result.result[c-1].val-result.result[0].val + 1;
+						//if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
+						//if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
 					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
 				}
