@@ -352,16 +352,17 @@ systemDictionary = {
 		  "zh-cn": "创建锅炉启动的统计信息"
 	},
 	"db_instance": {
-		"en": "db instance (mySQL or influxdb)",
-		"de": "db-Instanz (mySQL oder influxdb) ",
-		"ru": "экземпляр db (mySQL или Influxdb) ",
-		"pt": "instância db (mySQL ou influxdb) ",
-		"nl": "db-instantie (mySQL of influxdb) v",
-		"fr": "instance db (mySQL ou influxdb) ",
-		"it": "db instance (mySQL o influxdb) ",
-		"es": "instancia de db (mySQL o influxdb) ",
-		"pl": "instancja db (mySQL lub influxdb) ",
-		"zh-cn": "用于记录和统计的数据库实例（mySQL 或 influxdb）"
+		"en": "db instance",
+		"de": "db Instanz",
+		"ru": "db экземпляр",
+		"pt": "instância db",
+		"nl": "db instituut",
+		"fr": "db instance",
+		"it": "caso db",
+		"es": "db instance",
+		"pl": "instancja db",
+		"uk": "db екземпляр",
+		"zh-cn": "d. 实例"
 	},
 	"database": {
 		"en": "database",
@@ -606,27 +607,29 @@ systemDictionary = {
 		"zh-cn": "积极计算和控制"
 	  },
 	"room": {
-		"en": "room",
-		"de": "Raum",
-		"ru": "комната",
-		"pt": "quarto",
-		"nl": "kamer",
-		"fr": "chambre",
-		"it": "camera",
-		"es": "habitación",
-		"pl": "room",
-		"zh-cn": "会议室"
+		"en": "state attributes: room",
+		"de": "State Attribute: Raum",
+		"ru": "государственные атрибуты: комната",
+		"pt": "atributos de estado: quarto",
+		"nl": "de staat roept:",
+		"fr": "attributs d'état: chambre",
+		"it": "attributi di stato: camera",
+		"es": "atributos estatales: sala",
+		"pl": "atrybuty państwowe: pomieszczenie",
+		"uk": "атрибути держави: номер",
+		"zh-cn": "国家属性:会议室"
 	},
 	"function": {
-		"en": "Function",
-		"de": "Funktion",
-		"ru": "функция",
-		"pt": "Função",
-		"nl": "Functie",
-		"fr": "Fonction",
-		"it": "Funzione",
-		"es": "Función",
-		"pl": "Funkcja funkcji",
-		"zh-cn": "职能"
+		"en": "state attributes: function",
+		"de": "statusattribute: funktion",
+		"ru": "государственные атрибуты: функция",
+		"pt": "atributos de estado: função",
+		"nl": "staatsaanklachten:",
+		"fr": "attributs d'état: fonction",
+		"it": "attributi di stato: funzione",
+		"es": "atributos estatales: función",
+		"pl": "atrybuty państwowe: funkcja",
+		"uk": "атрибути стану: функція",
+		"zh-cn": "国情:职能"
 	  }
 };
