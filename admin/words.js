@@ -621,7 +621,7 @@ systemDictionary = {
 	},
 	"function": {
 		"en": "state attributes: function",
-		"de": "statusattribute: funktion",
+		"de": "State Attribute: Funktion",
 		"ru": "государственные атрибуты: функция",
 		"pt": "atributos de estado: função",
 		"nl": "staatsaanklachten:",
