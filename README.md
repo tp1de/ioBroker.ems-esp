@@ -136,8 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Avoid warnings on statistics processing for new installations without data yet
-* Adjust statistics function 
+* avoid warnings on statistics processing for new installations without data yet
+* allow statistics for polling-time for both gateways without active database
 
 ### 1.33.0 (2023-07-20)
 * Rework adapter instance config: Split EMS-ESP and KM200 config pages
