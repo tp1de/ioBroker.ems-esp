@@ -136,7 +136,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Rework instances config 
+* Rework adapter instance config: Split EMS-ESP and KM200 config pages
+* parameters stay the same
 
 ### 1.32.0 (2023-07-19)
 * ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)
