@@ -148,16 +148,16 @@ systemDictionary = {
 		"zh-cn": "使用 REST API V3"
 	},
 	"ems_token": {
-		"en": "ems access token (V3 only)",
-		"de": "ems-Zugriffstoken (nur V3)",
-		"ru": "токен доступа ems (только V3)",
-		"pt": "token de acesso ems (apenas V3)",
-		"nl": "ems-toegangstoken (alleen V3)",
-		"fr": "jeton d'accès ems (V3 uniquement)",
-		"it": "token di accesso ems (solo V3)",
-		"es": "Token de acceso ems (solo V3)",
-		"pl": "token dostępu ems (tylko V3)",
-		"zh-cn": "ems 访问令牌（仅限 V3）"
+		"en": "ems access token ",
+		"de": "ems-Zugriffstoken ",
+		"ru": "токен доступа ems ",
+		"pt": "token de acesso ems ",
+		"nl": "ems-toegangstoken ",
+		"fr": "jeton d'accès ems ",
+		"it": "token di accesso ems ",
+		"es": "Token de acceso ems ",
+		"pl": "token dostępu ems ",
+		"zh-cn": "ems 访问令牌 "
 	},
 	"km200_active": {
 		"en": "KM200 gateway active",
@@ -591,7 +591,7 @@ systemDictionary = {
 		"pl": "tworzyć stany dla niezdefiniowanych telegramów",
 		"zh-cn": "为未定义的电报创建状态"
 	},
-	"heat demand": {
+	"heatdemand": {
 		"en": "heat demand",
 		"de": "Wärmebedarf",
 		"ru": "потребность в тепле",
