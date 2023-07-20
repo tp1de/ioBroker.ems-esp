@@ -15,18 +15,6 @@ systemDictionary = {
 		"pl": "ustawienia adaptera ems-esp",
 		"zh-cn": "ems-esp 适配器设置"
 	},
-	"Main settings": {
-		"en": "Main settings",
-		"de": "Haupteinstellungen",
-		"ru": "Основные параметры",
-		"pt": "Configurações principais",
-		"nl": "Belangrijkste instellingen",
-		"fr": "Réglages principaux",
-		"it": "Impostazioni principali",
-		"es": "Ajustes principales",
-		"pl": "Ustawienia główne",
-		"zh-cn": "主要设置"
-	},
 	"KM200 settings": {
 		"en": "KM200",
 		"de": "KM200",
@@ -76,15 +64,15 @@ systemDictionary = {
 		"zh-cn": "km200 结构"
 	},
 	"emsesp_active": {
-		"en": "EMS-ESP active",
-		"de": "EMS-ESP aktiv",
-		"ru": "EMS-ESP активен",
-		"pt": "EMS-ESP ativo",
-		"nl": "EMS-ESP actief",
-		"fr": "EMS-ESP actif",
-		"it": "EMS-ESP attivo",
-		"es": "EMS-ESP activo",
-		"pl": "EMS-ESP aktywny",
+		"en": "EMS-ESP gateway active",
+		"de": "EMS-ESP Gateway aktiv",
+		"ru": "EMS-ESP gateway активен",
+		"pt": "EMS-ESP gateway ativo",
+		"nl": "EMS-ESP gateway actief",
+		"fr": "EMS-ESP gateway actif",
+		"it": "EMS-ESP gateway attivo",
+		"es": "EMS-ESP gateway activo",
+		"pl": "EMS-ESP gateway aktywny",
 		"zh-cn": "EMS-ESP 活动"
 	},
 	"ems_http_wait": {
@@ -172,15 +160,15 @@ systemDictionary = {
 		"zh-cn": "ems 访问令牌（仅限 V3）"
 	},
 	"km200_active": {
-		"en": "KM200 active",
-		"de": "KM200 aktiv",
-		"ru": "KM200 активный",
-		"pt": "KM200 ativo",
-		"nl": "KM200 actief",
-		"fr": "KM200 actif",
-		"it": "KM200 attivo",
-		"es": "KM200 activo",
-		"pl": "KM200 aktywny",
+		"en": "KM200 gateway active",
+		"de": "KM200 Gateway aktiv",
+		"ru": "KM200 gateway активный",
+		"pt": "KM200 gateway ativo",
+		"nl": "KM200 gateway actief",
+		"fr": "KM200 gateway actif",
+		"it": "KM200 gateway attivo",
+		"es": "KM200 gateway activo",
+		"pl": "KM200 gateway aktywny",
 		"zh-cn": "KM200有源"
 	},
 	"km200_ip": {
