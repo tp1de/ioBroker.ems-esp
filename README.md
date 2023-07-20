@@ -135,6 +135,10 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Avoid warnings on statistics processing for new installations without data yet
+* Adjust statistics function 
+
 ### 1.33.0 (2023-07-20)
 * Rework adapter instance config: Split EMS-ESP and KM200 config pages
 * parameters stay the same
