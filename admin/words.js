@@ -568,16 +568,17 @@ systemDictionary = {
 		"zh-cn": "系统日志端口"
 	},
 	"states_reorg": {
-		"en": "delete-states ",
-		"de": "Löschen-Zustände",
-		"ru": "удаленные состояния",
-		"pt": "delete-states",
-		"nl": "verwijder-statussen",
-		"fr": "supprimer-états",
-		"it": "elimina-stati",
-		"es": "eliminar-estados",
-		"pl": "usuwanie stanów",
-		"zh-cn": "删除状态"
+		"en": "delete states on startup",
+		"de": "Löschen von States beim Start",
+		"ru": "удалить состояния на startup",
+		"pt": "excluir estados na inicialização",
+		"nl": "delete staten opstarten",
+		"fr": "supprimer les états de démarrage",
+		"it": "eliminare gli stati all'avvio",
+		"es": "eliminar estados en la startup",
+		"pl": "usunięte stany",
+		"uk": "видалити стани на стартапі",
+		"zh-cn": "删除开端国"
 	},
 	"states_undefined": {
 		"en": "create states for undefined telegrams",
@@ -592,16 +593,17 @@ systemDictionary = {
 		"zh-cn": "为未定义的电报创建状态"
 	},
 	"heatdemand": {
-		"en": "heat demand",
-		"de": "Wärmebedarf",
-		"ru": "потребность в тепле",
-		"pt": "demanda de calor",
-		"nl": "warmtevraag",
-		"fr": "demande de chaleur",
-		"it": "richiesta di calore",
-		"es": "demanda de calor",
-		"pl": "zapotrzebowanie na ciepło",
-		"zh-cn": "热量需求"
+		"en": "Heatdemand calculation and control active",
+		"de": "Heizungsbedarf Berechnung und Kontrolle aktiv",
+		"ru": "Расчет тепла и контроль активных",
+		"pt": "Cálculo e controle de calor ativos",
+		"nl": "Heatdemand berekeningen en controle actief",
+		"fr": "Calcul et contrôle de la chaleur active",
+		"it": "Calcolo e controllo attivo",
+		"es": "Calculo y control de calor activo",
+		"pl": "Heatdemand oblicza i kontrola aktywna",
+		"uk": "Розрахунок тепла та контроль активності",
+		"zh-cn": "积极计算和控制"
 	  },
 	"room": {
 		"en": "room",
