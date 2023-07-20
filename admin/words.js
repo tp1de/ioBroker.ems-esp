@@ -340,16 +340,17 @@ systemDictionary = {
 		"zh-cn": "样本插值"
 	},
 	"statistics" :{
-		  "en": "Create statistics on  boiler starts",
-		  "de": "Statistiken zu Kesselstarts erstellen",
-		  "ru": "Создавать статистику запусков котла",
-		  "pt": "Criar estatísticas sobre o início da caldeira",
-		  "nl": "Statistieken maken over het starten van de ketel",
-		  "fr": "Créer des statistiques sur les démarrages de chaudières",
-		  "it": "Crea statistiche sugli avviamenti della caldaia",
-		  "es": "Crear estadísticas sobre arranques de calderas",
-		  "pl": "Tworzenie statystyk startów kotła",
-		  "zh-cn": "创建锅炉启动的统计信息"
+		"en": "create statistics - boiler starts need active database",
+		"de": "Statistiken erstellen - Kesselstarts benötigen aktive Datenbank",
+		"ru": "Создать статистику - бойлеру нужна активная база данных",
+		"pt": "Criar estatísticas - caldeira começa a precisar de banco de dados ativo",
+		"nl": "Creëer statistieken. Boiler heeft actieve database nodig",
+		"fr": "Créer des statistiques - la chaudière commence besoin de base de données active",
+		"it": "Creare statistiche - caldaia inizia bisogno di database attivo",
+		"es": "Crear estadísticas - La caldera comienza a necesitar una base de datos activa",
+		"pl": "Statystyki kreacyjne – kotł zaczyna potrzebować aktywnej bazy danych",
+		"uk": "Створіть статистику - котел починає потрібні активні бази даних",
+		"zh-cn": "D. 创建统计——开端需要积极数据库"
 	},
 	"db_instance": {
 		"en": "db instance",
