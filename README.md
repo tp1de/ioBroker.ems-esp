@@ -135,6 +135,10 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* message about ems-esp version to use for v2 users
+
+
 ### 1.34.0 (2023-07-21)
 * avoid warnings on statistics processing for new installations without historic data yet
 * allow statistics for polling-time for both gateways without active database
