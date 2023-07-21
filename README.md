@@ -136,7 +136,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* avoid warnings on statistics processing for new installations without data yet
+* avoid warnings on statistics processing for new installations without historic data yet
 * allow statistics for polling-time for both gateways without active database
 
 ### 1.33.0 (2023-07-20)

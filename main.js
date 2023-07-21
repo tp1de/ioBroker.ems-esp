@@ -58,7 +58,7 @@ function startAdapter(options) {
 						if (obj.native.ems_api == "V3" || obj.native.ems_api == "V2" ) E.state_change(id,state,obj);
 						if ( id == adapter.namespace + ".controls.active" && (state.val == false || state.val == 0)) control_reset();
 					}
-					else adapter.log.warn("state is not writable:"+id);
+					else adapter.log.warn("state is not writable: "+id);
 				});
 			}
 		}
@@ -512,7 +512,7 @@ async function stat(db,id,hour,state) {
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
 
-					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
+					//adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
 
 					if (c == 0 || c == 1) value = 0;
 					try {value = result.result[c-1].val-result.result[0].val ;} catch(e) {}
