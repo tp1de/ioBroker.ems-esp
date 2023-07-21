@@ -508,7 +508,7 @@ async function stat(db,id,hour,state) {
 					let value = 0;
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
-					adapter.log.info(id + " " +hour + ": "  + result.result.val[0]+" - " + result.result.val[c-1]);
+					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
 
 					if (c == 0) value = 0;
 					//if (c == 1) value = 1;
