@@ -183,6 +183,7 @@
     "ems_token": "",
     "ems_polling": 60,
     "ems_dallas": false,
+    "ems_dallas_old_format": false,
     "ems_analog": false,
     "recordings": false,
     "recordings_format": 0,

@@ -88,16 +88,30 @@ systemDictionary = {
 		"zh-cn": "毫秒延迟"
 	},
 	"ems_dallas": {
-		"en": "dallas",
-		"de": "Dallas",
-		"ru": "Даллас",
-		"pt": "Dallas",
-		"nl": "dallas",
-		"fr": "dallas",
-		"it": "dallas",
-		"es": "dallas",
-		"pl": "Dallas",
-		"zh-cn": "读达拉斯"
+		"en": "temperature sensors",
+		"de": "Temperatursensoren",
+		"ru": "датчики температуры",
+		"pt": "sensores de temperatura",
+		"nl": "Temperatuursensoren",
+		"fr": "capteurs de température",
+		"it": "sensori di temperatura",
+		"es": "sensores de temperatura",
+		"pl": "czujnik temperatury",
+		"uk": "датчики температури",
+		"zh-cn": "温度传感器"
+	},
+	"ems_dallas_old_format": {
+		"en": "use old dallas prefix for sensors",
+		"de": "alten dallas-Präfix für Sensoren verwenden",
+		"ru": "использовать старый префикс Далласа для датчиков",
+		"pt": "usar prefixo de dallas antigo para sensores",
+		"nl": "gebruik oude dallas prefix voor sensoren",
+		"fr": "utiliser le vieux préfixe de dallas pour les capteurs",
+		"it": "utilizzare il vecchio prefisso dallas per i sensori",
+		"es": "utilizar el antiguo prefijo dallas para sensores",
+		"pl": "użycie prefiksu dallas dla czujników",
+		"uk": "використовувати старий префікс dallas для датчиків",
+		"zh-cn": "对传感器使用旧的dallas prefix"
 	},
 	"ems_analog": {
 		"en": "analog",
