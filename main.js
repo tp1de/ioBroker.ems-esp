@@ -502,7 +502,7 @@ async function stat(db,id,hour,state) {
 	if (!unloaded && id != undefined) {
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, aggregate: "none"}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, step:60000, aggregate: "none"}
 			}, function (result) {
 				if (!unloaded) {
 					let value = 0;
