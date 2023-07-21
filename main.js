@@ -498,14 +498,18 @@ async function read_statistics() {
 
 
 async function stat(db,id,hour,state) {
-	const end = Date.now();
+
 	if (!unloaded && id != undefined) {
+		const end = Date.now();
+		const intervall = hour * 3600000;
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - (hour*3600000), end: end, step:60000, aggregate: "none"}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax"}
 			}, function (result) {
 				if (!unloaded) {
-					let value = 0;
+					adapter.log.info(id + " " +hour + ": "  + JSON.stringify(result.result));
+
+					/*let value = 0;
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
 					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
@@ -518,6 +522,7 @@ async function stat(db,id,hour,state) {
 						//if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
 					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
+				*/
 				}
 			});
 		} catch(e) {adapter.log.error("error reading statistics records " +id);}
