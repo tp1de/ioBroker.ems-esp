@@ -507,22 +507,17 @@ async function stat(db,id,hour,state) {
 			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax"}
 			}, function (result) {
 				if (!unloaded) {
-					adapter.log.info(id + " " +hour + ": "  + JSON.stringify(result.result));
 
-					/*let value = 0;
+					let value = 0;
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
+
 					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
 
-					if (c == 0) value = 0;
-					//if (c == 1) value = 1;
-					try {
-						value = result.result[c-1].val-result.result[0].val + 1;
-						//if (c > 1 && result.result[0].val == result.result[1].val) value = result.result[c-1].val-result.result[0].val;
-						//if (c > 1 && result.result[0].val != result.result[1].val) value = result.result[c-1].val-result.result[0].val + 1;
-					} catch(e) {}
+					if (c == 0 || c == 1) value = 0;
+					try {value = result.result[c-1].val-result.result[0].val ;} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
-				*/
+
 				}
 			});
 		} catch(e) {adapter.log.error("error reading statistics records " +id);}
