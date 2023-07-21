@@ -135,7 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 1.34.0 (2023-07-21)
 * avoid warnings on statistics processing for new installations without historic data yet
 * allow statistics for polling-time for both gateways without active database
 * allow old "dallas" prefix instead of "temperaturesensors"

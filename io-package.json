@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "1.33.0",
+    "version": "1.34.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "1.34.0": {
+        "en": "avoid warnings on statistics processing for new installations without historic data yet\nallow statistics for polling-time for both gateways without active database\nallow old \"dallas\" prefix instead of \"temperaturesensors\"",
+        "de": "warnungen bei der statistikverarbeitung für neue anlagen ohne historische daten vermeiden\nstatistiken für die abfragezeit für beide gateways ohne aktive datenbank\nalte dallas prefix anstelle von temperatursensoren",
+        "ru": "избегать предупреждений по обработке статистики для новых установок без исторических данных\nпозволяют статистику загрязнять время как для шлюзов без активной базы данных\nпозвольте старому префиксу dallas вместо температур",
+        "pt": "evitar avisos sobre o processamento de estatísticas para novas instalações sem dados históricos ainda\npermitir estatísticas para o tempo de votação para ambos os gateways sem banco de dados ativo\npermitir o prefixo antigo dallas em vez de sensores de temperatura",
+        "nl": "vermijd waarschuwingen voor nieuwe installaties zonder historische gegevens\nstatistieken voor polling-tijd voor beide poorten zonder actieve databases\nlaat oude dallas prefix in plaats van temperatuur",
+        "fr": "éviter les avertissements sur le traitement des statistiques pour les nouvelles installations sans données historiques\npermettre des statistiques pour le temps de vote pour les deux passerelles sans base de données active\npermettre le préfixe des dallas anciens au lieu des capteurs de température",
+        "it": "evitare avvisi sul trattamento delle statistiche per nuove installazioni senza dati storici\nconsentire le statistiche per l'inquinamento-tempo per entrambi i gateway senza database attivo\nconsentire vecchio dallas prefix invece di sensori di temperatura",
+        "es": "evitar advertencias sobre el procesamiento de estadísticas para nuevas instalaciones sin datos históricos todavía\npermitir estadísticas de tiempo de votación para ambos portales sin base de datos activa\npermitir el antiguo prefijo de dallas en lugar de sensores de temperatura",
+        "pl": "uniknięcie ostrzeżeń dotyczących przetwarzania danych dla nowych instalacji bez danych historycznych\numożliwia ona statystykę zanieczyszczania obu bram bez aktywnej bazy danych\numożliwia to przedrostek zamiast czujników temperatury",
+        "uk": "уникнути попередження про статистичну обробку нових інсталяцій без історичних даних\nдозволяє статистику для занурення на обох шляхах без активної бази даних\nприпуск старої фіксації устілки замість температур",
+        "zh-cn": "避免对新设施的统计处理发出警告,而没有历史数据\n统计数据允许在两个大门上投票时间,没有积极的数据库\n允许旧的达拉预设,而不是温度敏感性"
+      },
       "1.33.0": {
         "en": "Rework adapter instance config: Split EMS-ESP and KM200 config pages\nparameters stay the same",
         "de": "Rework Adapter Instanz config: EMS-ESP und KM200 config Seiten teilen\nparameter bleiben gleich",
@@ -81,19 +94,6 @@
         "pl": "uzależnienie od siebie (części 2)",
         "uk": "оновлення залежностей (частина 2)",
         "zh-cn": "a. 最新受扶养人(第2部分)"
-      },
-      "1.27.0": {
-        "en": "update dependencies",
-        "de": "aktualisierung der abhängigkeiten",
-        "ru": "обновление зависимостей",
-        "pt": "dependências",
-        "nl": "vertaling:",
-        "fr": "mettre à jour les dépendances",
-        "it": "aggiornamento dipendenze",
-        "es": "dependencias de actualización",
-        "pl": "zależności",
-        "uk": "оновлення залежності",
-        "zh-cn": "a. 最新受扶养人"
       }
     },
     "titleLang": {
