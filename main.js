@@ -514,7 +514,7 @@ async function stat(db,id,hour,state) {
 					if (c == 0 || c == 1) value = 0;
 					try {
 						value = Math.round(result.result[c-1].val-result.result[0].val) ;
-						//adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
+						// adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
 					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
 
