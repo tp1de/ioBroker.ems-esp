@@ -104,7 +104,7 @@ async function main () {
 
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
-	
+	if (!unloaded && adapter.config.statistics) await init_statistics();
 
 	if (!unloaded) adapter.subscribeStates("*");
 
@@ -137,7 +137,7 @@ async function enable_state(stateid,retention,interval) {
 		});
 	} catch (e) {adapter.log.error("enable history error " + stateid );}
 	const state = await adapter.getState(stateid);
-	if(state == null || state.val === undefined) await adapter.setState(stateid, {ack: true, val: 0});
+	if(state == null || state.val === undefined) await adapter.setState(stateid, {ack: false, val: 0});
 	else await adapter.setState(stateid, {ack: true, val: state.val});
 }
 
