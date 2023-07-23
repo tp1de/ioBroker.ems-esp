@@ -102,9 +102,9 @@ async function main () {
 	}
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
+	if (!unloaded && adapter.config.statistics) await init_statistics();
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
-	if (!unloaded && adapter.config.statistics) await init_statistics();
 
 	if (!unloaded) adapter.subscribeStates("*");
 
@@ -476,7 +476,7 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none", round: 0}
 			}, function (result) {
 				if (!unloaded) {
 					let count = 0;
@@ -504,7 +504,7 @@ async function stat(db,id,hour,state) {
 		const intervall = hour * 3600000;
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax"}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax", round: 0}
 			}, function (result) {
 				if (!unloaded) {
 
