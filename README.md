@@ -137,6 +137,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * message about ems-esp version to use for v2 users
+* rework statiscs to avoid slowing down admin adapter
 
 
 ### 1.34.0 (2023-07-21)
