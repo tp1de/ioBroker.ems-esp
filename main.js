@@ -131,7 +131,7 @@ async function enable_state(stateid,retention,interval) {
 	const id =  adapter.namespace  + "." + stateid;
 	try {
 		adapter.sendTo(db, "enableHistory", {id: id, options:
-			{changesOnly: false,debounce: 0,retention: retention,changesRelogInterval: interval,
+			{changesOnly: true, debounce: 0,retention: retention,changesRelogInterval: interval,
 				maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 			if (result.error) {adapter.log.error("enable history error " + stateid);}
 		});
