@@ -476,14 +476,14 @@ async function read_statistics() {
 		if (adapter.config.emsesp_active && adapter.config.km200_structure === false ) {id = adapter.namespace + ".boiler.burngas";}
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none", round: 0}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - 3600000, end: end, aggregate: "none"}
 			}, function (result) {
 				if (!unloaded) {
 					let count = 0;
 					let on = 0;
 					try {
 						count = result.result.length;
-						for (let i = 0; i < count; i++) {if (result.result[i].val == 1) on += 1;}
+						for (let i = 0; i < count; i++) {if (Math.round(result.result[i].val) == 1) on += 1;}
 					} catch(e) {}
 
 					let value = 0;
@@ -504,7 +504,7 @@ async function stat(db,id,hour,state) {
 		const intervall = hour * 3600000;
 
 		try {
-			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax", round: 0}
+			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax"}
 			}, function (result) {
 				if (!unloaded) {
 
@@ -513,8 +513,8 @@ async function stat(db,id,hour,state) {
 					try {c = result.result.length;} catch(e) {}
 					if (c == 0 || c == 1) value = 0;
 					try {
-						value = result.result[c-1].val-result.result[0].val ;
-						adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val + " = " + value);
+						value = Math.round(result.result[c-1].val-result.result[0].val) ;
+						adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
 					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
 
