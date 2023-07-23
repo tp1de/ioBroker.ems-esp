@@ -102,9 +102,9 @@ async function main () {
 	}
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
-	if (!unloaded && adapter.config.statistics) await init_statistics(); // define statistics states
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
+	
 
 	if (!unloaded) adapter.subscribeStates("*");
 
@@ -127,18 +127,18 @@ async function main () {
 //--------- functions ---------------------------------------------------------------------------------------------------------
 
 
-function enable_state(stateid,retention,interval) {
+async function enable_state(stateid,retention,interval) {
 	const id =  adapter.namespace  + "." + stateid;
 	try {
 		adapter.sendTo(db, "enableHistory", {id: id, options:
 			{changesOnly: false,debounce: 0,retention: retention,changesRelogInterval: interval,
-				maxLength: 3, changesMinDelta: 1, aliasId: "" } }, function (result) {
+				maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
 			if (result.error) {adapter.log.error("enable history error " + stateid);}
-			if (result.success) {
-				//adapter.setState(stateid, {ack: true, val: 0});
-			}
 		});
 	} catch (e) {adapter.log.error("enable history error " + stateid );}
+	const state = await adapter.getState(stateid);
+	if(state == null || state.val === undefined) await adapter.setState(stateid, {ack: true, val: 0});
+	else await adapter.setState(stateid, {ack: true, val: state.val});
 }
 
 
@@ -512,11 +512,10 @@ async function stat(db,id,hour,state) {
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
 
-					//adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val);
-
 					if (c == 0 || c == 1) value = 0;
 					try {value = result.result[c-1].val-result.result[0].val ;} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
+					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val + " = " + value);
 
 				}
 			});
