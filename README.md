@@ -135,12 +135,11 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.0 (2023-07-23)
 * support for ems-esp version 3.6
 * message about ems-esp adapter version to use for old gateway v2 users
 * rework statistics to avoid slowing down admin adapter
-* some minor improvements 
-
+* some minor improvements
 
 ### 1.34.0 (2023-07-21)
 * avoid warnings on statistics processing for new installations without historic data yet
