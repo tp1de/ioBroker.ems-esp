@@ -511,11 +511,12 @@ async function stat(db,id,hour,state) {
 					let value = 0;
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
-
 					if (c == 0 || c == 1) value = 0;
-					try {value = result.result[c-1].val-result.result[0].val ;} catch(e) {}
+					try {
+						value = result.result[c-1].val-result.result[0].val ;
+						adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val + " = " + value);
+					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
-					adapter.log.info(id + " " +hour + ": "  + result.result[0].val+" - " + result.result[c-1].val + " = " + value);
 
 				}
 			});
