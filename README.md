@@ -137,6 +137,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * without parameters for enum attributes
+* Error correction on v2.0.0 for ems-esp datanames and structure
 
 ### 2.0.0 (2023-07-23)
 * DO NOT USE - DOES NOT Wok correctly !!
