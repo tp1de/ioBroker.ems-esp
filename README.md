@@ -135,6 +135,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* without parameters for enum attributes
+
 ### 2.0.0 (2023-07-23)
 * support for ems-esp version 3.6
 * message about ems-esp adapter version to use for old gateway v2 users

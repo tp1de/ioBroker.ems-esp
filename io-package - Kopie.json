@@ -213,6 +213,8 @@
     "modulation": "",
     "supplytemp": "",
     "returntemp": "",
+    "room": "boiler_room",
+    "function": "heating",
     "lovelace": false,
     "lovelace_instance": 0
   },
