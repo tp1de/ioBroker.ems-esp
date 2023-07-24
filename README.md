@@ -135,12 +135,16 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* re-add parameters for room / function
+
+
 ### 2.0.1 (2023-07-24)
 * without parameters for enum attributes
 * Error correction on v2.0.0 for ems-esp datanames and structure
 
 ### 2.0.0 (2023-07-23)
-* DO NOT USE - DOES NOT Wok correctly !!
+* DO NOT USE - DOES NOT WORK correctly !!
 * support for ems-esp version 3.6
 * message about ems-esp adapter version to use for old gateway v2 users
 * rework statistics to avoid slowing down admin adapter
