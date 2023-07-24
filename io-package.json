@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "2.0.2": {
+        "en": "re-add parameters for room / function\nchange statistics update intervall for number of starts to every 5 minutes",
+        "de": "re-add parameter für raum / funktion\nänderung der statistik update intervall für die anzahl der starts bis alle 5 minuten",
+        "ru": "re-add параметры для комнаты / функции\nизменить интервал обновления статистики для количества начинается каждые 5 минут",
+        "pt": "parâmetros re-add para sala / função\nalterar o intervalo de atualização de estatísticas para o número de inícios a cada 5 minutos",
+        "nl": "vertaling:\nverander de statistieken update intervall voor elk vijf minuten",
+        "fr": "re-add paramètres pour la chambre / fonction\nles statistiques de changement mettre à jour intervalle pour le nombre de démarrages à toutes les 5 minutes",
+        "it": "parametri re-add per stanza / funzione\ncambiare le statistiche aggiorna l'intervallo per il numero di inizia ad ogni 5 minuti",
+        "es": "parámetros re-add para habitación / función\ncambio de estadísticas actualización intervalol para el número de inicios cada 5 minutos",
+        "pl": "re-add parametry pokoju/ funkcji\nliczba zmian rozpoczyna się co 5 minut",
+        "uk": "переадресовані параметри для кімнати / функції\nзмінити інтервал оновлення статистики для кількості починається до 5 хвилин",
+        "zh-cn": "会议室/职务的后参数\nb. 改变统计数据"
+      },
       "2.0.1": {
         "en": "without parameters for enum attributes\nError correction on v2.0.0 for ems-esp datanames and structure",
         "de": "ohne parameter für enum-attribute\nFehlerkorrektur auf v2.0.0 für ems-esp-Datennamen und Struktur",
@@ -81,19 +94,6 @@
         "pl": "korektywa JSON dla jednostek typu ems-esp (heatpump)",
         "uk": "корекція на помилках JSON для емс-esp шлюзу (тепловий)",
         "zh-cn": "解读会门实体(倾销)的错误"
-      },
-      "1.30.0": {
-        "en": "update efficience calculation to support external sensor for return temperature\nwhen 3 state fields are empty then standard fields are used.\nwhen state field(s) are filled, than this state(s) are used - e.g. own sensor for return temp\ncoorect error processing when no ems-esp devices found",
-        "de": "aktualisierung der effizienzberechnung zur unterstützung des externen sensors für rücklauftemperatur\nwenn 3 zustandsfelder leer sind, werden standardfelder verwendet.\nwenn zustandsfeld(en) gefüllt sind, als dieser zustand(en) verwendet wird - z.b. eigener sensor für rücklauftemp\ncoorect fehlerverarbeitung, wenn keine ems-esp-geräte gefunden werden",
-        "ru": "обновление вычисления эффективности для поддержки внешнего датчика для обратной температуры\nкогда 3 поля штата пусты тогда стандартные поля использованы.\nкогда поля штата (ы) заполнены, чем это состояние (ы) использованы - например, собственный датчик для обратного темпа\ncoorect ошибка обработки, когда не найдены устройства ems-esp",
-        "pt": "cálculo de eficiência de atualização para suportar sensor externo para temperatura de retorno\nquando 3 campos de estado estão vazios, então os campos padrão são usados.\nquando o(s) campo(s) do estado(s) é preenchido, do que este(s) estado(s) são usados - por exemplo, o próprio sensor para o retorno temp\nprocessamento de erro coorect quando nenhum dispositivo ems-esp encontrado",
-        "nl": "vertaling:\nals 3 state velden leeg zijn, dan zijn de standaard velden gebruikt.\nals de staat gevuld is, dan deze staat wordt gebruikt - e.g. eigen sensor voor terugkeer\ncoorectfout verwerkt als er geen apparatuur gevonden wordt",
-        "fr": "mettre à jour le calcul d'efficacité pour soutenir le capteur externe pour la température de retour\nlorsque 3 champs d'état sont vides, les champs standard sont utilisés.\nlorsque les champs d'état sont remplis, que ce ou ces états sont utilisés - p.ex. son propre capteur pour la température de retour\ntraitement d'erreur coorect quand aucun périphérique ems-esp n'a trouvé",
-        "it": "aggiornare il calcolo dell'efficienza per supportare il sensore esterno per la temperatura di ritorno\nquando 3 campi di stato sono vuoti, vengono utilizzati campi standard.\nquando i campi di stato(i) sono riempiti, che questo stato(i) sono utilizzati - ad esempio il proprio sensore per la temperatura di ritorno\nl'elaborazione degli errori quando non si trovano dispositivi ems-esp",
-        "es": "actualizar cálculo de eficiencia para soportar sensores externos para temperatura de retorno\ncuando 3 campos estatales están vacíos, se utilizan campos estándar.\ncuando el campo(s) estado(s) se llenan, que este estado(s) se utilizan - por ejemplo sensor propio para el tiempo de retorno\nprocesamiento de errores de coorecto cuando no se encuentran dispositivos ems-esp",
-        "pl": "zaktualizowana kalkulacja efektywności wspiera zewnętrzny czujnik w celu zwrotu temperatury\nw przypadku, gdy używane są pola stanowe są puste, to pola standardowe.\nw przypadku wypełniania się pola stanowego, niż te stany są używane – np. własny czujnik dla zwrotu tempa\nprzetwarzanie błędów, gdy nie znaleziono żadnych emestrów",
-        "uk": "розрахунок ефективності для підтримки зовнішнього датчика температури повернення\nпри використанні 3-х державних полів, потім стандартних полів.\nколи використовується державне поле (и) - наприклад, власний датчик повернення\nобробка помилок кооректу при відсутності емс-esp пристроїв",
-        "zh-cn": "更新有效计算,以支助外部传感器恢复温度\n当3个州空区时,使用了空洞的标准领域。.\n当国家现场充任时,该州使用时,例如使用自己的传感器返回时时时的传感器。\n在没有发现的电器装置的情况下,合用错误处理"
       }
     },
     "titleLang": {

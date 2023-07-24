@@ -135,10 +135,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.0.2 (2023-07-24)
 * re-add parameters for room / function
-* change statistics update intervall for number of starts to every 5 minutes 
-
+* change statistics update intervall for number of starts to every 5 minutes
 
 ### 2.0.1 (2023-07-24)
 * without parameters for enum attributes
