@@ -137,6 +137,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * re-add parameters for room / function
+* change statistics update intervall for number of starts to every 5 minutes 
 
 
 ### 2.0.1 (2023-07-24)

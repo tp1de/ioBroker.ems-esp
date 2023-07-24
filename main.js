@@ -111,7 +111,7 @@ async function main () {
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
 		if (db != "") {
 			await init_statistics2();
-			adapterIntervals.stat = setInterval(function() {read_statistics();}, 60000); // 60 sec
+			adapterIntervals.stat = setInterval(function() {read_statistics();}, 300000); // 300 sec
 		}
 	}
 
