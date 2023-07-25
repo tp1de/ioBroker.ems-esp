@@ -98,7 +98,7 @@ async function main () {
 
 	if (adapter.config.db.trim() == "" ) {
 		db = "";
-		if (adapter.config.statistics) adapter.log.error("no database instance selected for statistics - statistics partly disabled");
+		if (adapter.config.statistics) adapter.log.info("no database instance selected for statistics - statistics partly disabled");
 	}
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
