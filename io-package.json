@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.0.2",
+    "version": "2.0.3",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "2.0.3": {
+        "en": "error corrections for km200 read",
+        "de": "fehlerkorrekturen für km200 lesen",
+        "ru": "исправления ошибок для km200 читать",
+        "pt": "correções de erro para km200 leitura",
+        "nl": "error correcties voor kilometers 200",
+        "fr": "corrections d'erreur pour km200 lire",
+        "it": "correzioni di errore per km200 leggere",
+        "es": "correcciones de errores para km200 read",
+        "pl": "korzyści błędów na km200 odczytują poprawki błędów",
+        "uk": "виправлення помилок для км200 читати",
+        "zh-cn": "改为200公里的更正"
+      },
       "2.0.2": {
         "en": "re-add parameters for room / function\nchange statistics update intervall for number of starts to every 5 minutes",
         "de": "re-add parameter für raum / funktion\nänderung der statistik update intervall für die anzahl der starts bis alle 5 minuten",
@@ -81,19 +94,6 @@
         "pl": "ems-esp v3,6 przystosowania do dallasu/temperaturowego czujników (nie testowanych)\nzależności\nulepszenie błędów w przetwarzaniu danych\nMała korekta na ekranie parametrów",
         "uk": "ems-esp v3.6 регулювання для dallas / темпрези (не перевірено ще)\nоновлення залежності\nполіпшення обробки помилок на статистику\nНевеликі налаштування на екрані параметра",
         "zh-cn": "对dals/temperitysensors(未试验)的编号/esp v3.6调整\na. 最新受扶养人\n改善统计数据错误的处理\n参数筛选小额调整"
-      },
-      "1.31.0": {
-        "en": "correction on JSON errors for ems-esp gateway entities (heatpump)",
-        "de": "korrektur von JSON-Fehlern für ems-esp-Gateway-Entities (heatpump)",
-        "ru": "исправление ошибок JSON для ems-esp шлюзов (heatpump)",
-        "pt": "correção em erros JSON para entidades de gateway ems-esp (heatpump)",
-        "nl": "correctie over JSON fouten voor ems-esp poort entiteiten (heatpump)",
-        "fr": "correction sur les erreurs JSON pour les entités de passerelle ems-esp (heatpump)",
-        "it": "correzione su errori JSON per entità gateway ems-esp (heatpump)",
-        "es": "corrección sobre errores JSON para las entidades de gateway ems-esp (calor)",
-        "pl": "korektywa JSON dla jednostek typu ems-esp (heatpump)",
-        "uk": "корекція на помилках JSON для емс-esp шлюзу (тепловий)",
-        "zh-cn": "解读会门实体(倾销)的错误"
       }
     },
     "titleLang": {
