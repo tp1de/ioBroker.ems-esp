@@ -21,7 +21,6 @@ const F = require("./lib/functions.js");
 const datafields = [];
 
 const adapterIntervals = {};
-const own_states = [];
 let adapter, unloaded = false;
 let db = "sql.0";
 
@@ -87,15 +86,6 @@ async function main () {
 
 	// Read own custom states
 
-	try {
-		for (let i = 0;i < adapter.config.devices.length;i++) {
-			if (adapter.config.devices[i].state !== "" && adapter.config.devices[i].type !== "" && adapter.config.devices[i].offset !== "")
-				own_states.push(adapter.config.devices[i]);
-		}
-	} catch(error) {adapter.log.error("error reading custom states");}
-	O.init(adapter,own_states,adapterIntervals);
-
-
 	if (adapter.config.db.trim() == "" ) {
 		db = "";
 		if (adapter.config.statistics) adapter.log.info("no database instance selected for statistics - statistics partly disabled");
@@ -103,8 +93,11 @@ async function main () {
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
 	if (!unloaded && adapter.config.statistics) await init_statistics();
-	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,own_states,adapterIntervals);
+	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
+
+	if (adapter.config.emsesp_active && !unloaded) await O.init(adapter,adapterIntervals);
+
 
 	if (!unloaded) adapter.subscribeStates("*");
 
