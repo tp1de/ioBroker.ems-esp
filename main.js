@@ -15,7 +15,7 @@ const adapterName = require("./package.json").name.split(".").pop();
 
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
-const S = require("./lib/syslog.js");
+const O = require("./lib/custom.js");
 const F = require("./lib/functions.js");
 
 const datafields = [];
@@ -35,7 +35,7 @@ function startAdapter(options) {
 		unload: function (callback) {
 			K.unload(true);
 			E.unload(true);
-			if (adapter.config.syslog) S.unload(true);
+			O.unload(true);
 			unloaded = true;
 			try {
 				Object.keys(adapterIntervals).forEach(interval => adapter.log.debug("Interval cleared: " + adapterIntervals[interval]));
@@ -54,7 +54,7 @@ function startAdapter(options) {
 					// check if state was writable
 					if (obj.common.write) {
 						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
-						if (obj.native.ems_api == "raw") S.state_change(id,state,obj);
+						if (obj.native.ems_api == "raw")  O.state_change(id,state,obj);
 						if (obj.native.ems_api == "V3" || obj.native.ems_api == "V2" ) E.state_change(id,state,obj);
 						if ( id == adapter.namespace + ".controls.active" && (state.val == false || state.val == 0)) control_reset();
 					}
@@ -85,16 +85,16 @@ async function main () {
 
 	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
-	if (adapter.config.syslog == true) {
-		// Read own states for syslog-analysis
-		try {
-			for (let i = 0;i < adapter.config.devices.length;i++) {
-				if (adapter.config.devices[i].state !== "" && adapter.config.devices[i].type !== "" && adapter.config.devices[i].offset !== "")
-					own_states.push(adapter.config.devices[i]);
-			}
-		} catch(error) {}
-		S.init(adapter,own_states,adapterIntervals);
-	}
+	// Read own custom states
+
+	try {
+		for (let i = 0;i < adapter.config.devices.length;i++) {
+			if (adapter.config.devices[i].state !== "" && adapter.config.devices[i].type !== "" && adapter.config.devices[i].offset !== "")
+				own_states.push(adapter.config.devices[i]);
+		}
+	} catch(error) {adapter.log.error("error reading custom states");}
+	O.init(adapter,own_states,adapterIntervals);
+
 
 	if (adapter.config.db.trim() == "" ) {
 		db = "";

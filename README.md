@@ -135,6 +135,10 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+**WORK IN PROGRESS**
+* ems-esp: enalble customized entities for EMS+ (holidaymodes and swichtimes)
+* works only for newest ems-esp firmware
+
 ### 2.0.3 (2023-07-25)
 * error corrections for km200 read
 
