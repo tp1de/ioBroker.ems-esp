@@ -136,7 +136,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	### **WORK IN PROGRESS**
 -->
 
-**WORK IN PROGRESS**
+### **WORK IN PROGRESS**
 * ems-esp V3.6 release preparation
 * error corrections for ems-esp state changes
 
