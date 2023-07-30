@@ -135,6 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
 **WORK IN PROGRESS**
 * ems-esp V3.6 release preparation
 * error corrections for ems-esp state changes
