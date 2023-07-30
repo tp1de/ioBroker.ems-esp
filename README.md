@@ -139,10 +139,6 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 * ems-esp V3.6 release preparation
 * error corrections for ems-esp state changes
 
-### 2.1.0 (2023-07-30)
-* ems-esp V3.6 release preparation
-* error corrections for ems-esp state changes
-
 ### 2.0.3 (2023-07-25)
 * error corrections for km200 read
 
