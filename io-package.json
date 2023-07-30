@@ -160,7 +160,7 @@
         "admin": ">=4.0.9"
       }
     ],
-    "installedFrom": "iobroker.ems-esp@2.0.3"
+    "installedFrom": "tp1de/ioBroker.ems-esp"
   },
   "encryptedNative": [
     "private_pw"
@@ -180,12 +180,13 @@
     "emsesp_ip": "http://ems-esp",
     "ems_apiv3": true,
     "ems_http_wait": 100,
-    "ems_poll_wait": 3000,
+    "ems_poll_wait": 6000,
     "ems_token": "",
     "ems_polling": 60,
     "ems_dallas": false,
     "ems_dallas_old_format": false,
     "ems_analog": false,
+    "ems_custom": false,
     "recordings": false,
     "recordings_format": 0,
     "r_multi": 1,

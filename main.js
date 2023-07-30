@@ -54,7 +54,7 @@ function startAdapter(options) {
 					if (obj.common.write) {
 						if (obj.native.ems_km200 != null) K.state_change(id,state,obj);
 						if (obj.native.ems_api == "raw")  O.state_change(id,state,obj);
-						if (obj.native.ems_api == "V3" || obj.native.ems_api == "V2" ) E.state_change(id,state,obj);
+						if (obj.native.ems_api != null )  E.state_change(id,state,obj);
 						if ( id == adapter.namespace + ".controls.active" && (state.val == false || state.val == 0)) control_reset();
 					}
 					else adapter.log.warn("state is not writable: "+id);
@@ -96,7 +96,7 @@ async function main () {
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 
-	if (adapter.config.emsesp_active && !unloaded) await O.init(adapter,adapterIntervals);
+	//if (adapter.config.emsesp_active && adapter.config.ems_custom && !unloaded) await O.init(adapter,adapterIntervals);
 
 
 	if (!unloaded) adapter.subscribeStates("*");
