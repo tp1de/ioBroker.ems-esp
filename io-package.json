@@ -1,9 +1,22 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.0.3",
+    "version": "2.1.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "2.1.0": {
+        "en": "ems-esp V3.6 release preparation\nerror corrections for ems-esp state changes",
+        "de": "ems-esp V3.6 Release Vorbereitung\nfehlerkorrekturen für ems-esp zustandsänderungen",
+        "ru": "ems-esp V3.6 подготовка релиза\nисправление ошибок для изменений состояния ems-esp",
+        "pt": "ems-esp V3.6 preparação de lançamento\ncorreções de erro para alterações de estado ems-esp",
+        "nl": "vertaling:\nerror correcties voor keizerlijke staat veranderen",
+        "fr": "ems-esp V3.6 préparation de sortie\ncorrections d'erreur pour les changements d'état ems-esp",
+        "it": "ems-esp V3.6 preparazione di rilascio\ncorrezioni di errore per modifiche dello stato ems-esp",
+        "es": "esp V3.6 preparación de la liberación\ncorrecciones de errores para cambios de estado ems-esp",
+        "pl": "ems-esp V3.6 – wersja przygotowująca się do sprzedaży\npoprawki błędów dla ems-esp state zmieniają się",
+        "uk": "ems-esp V3.6 підготовка релізу\nвиправлення помилок для змін емс-еспа",
+        "zh-cn": "名单\n对口号的更正"
+      },
       "2.0.3": {
         "en": "error corrections for km200 read",
         "de": "fehlerkorrekturen für km200 lesen",
@@ -81,19 +94,6 @@
         "pl": "Adaptacja Strona domowa EMS-ESP i KM200\nparametry pozostają takie same",
         "uk": "Налаштування адаптера змінного струму: Розділіть EMS-ESP та KM200 настройкові сторінки\nпараметри залишаються однаковими",
         "zh-cn": "重新适应工作: Slit EMS-ESP和KM200config页\n参数保持不变"
-      },
-      "1.32.0": {
-        "en": "ems-esp v3.6 adjustments for dallas/temperaturesensors (not tested yet)\nupdate dependencies \nimprove processing off errors on statistics\nSmall adjustments on parameter screen",
-        "de": "ems-esp v3.6 einstellungen für dallas/temperatursensoren (noch nicht getestet)\naktualisierung der abhängigkeiten\nverbesserung der verarbeitung von statistiken\nKleine Einstellungen auf dem Parameterbildschirm",
-        "ru": "ems-esp v3.6 настройки для dallas/temperaturesensors ( еще не проверено)\nобновление зависимостей\nулучшить обработку ошибок по статистике\nНебольшие настройки на экране параметров",
-        "pt": "ems-esp v3.6 ajustes para dallas/temperaturesensors (não testado ainda)\ndependências\nmelhorar o processamento de erros nas estatísticas\nPequenos ajustes na tela do parâmetro",
-        "nl": "vertaling:\nvertaling:\nverbeter de fouten op statistieken\nKleine aanpassingen op het parameterscherm",
-        "fr": "ems-esp v3.6 rajustements pour dallas/temperaturesensors (non encore testé)\nmettre à jour les dépendances\naméliorer le traitement des erreurs sur les statistiques\nPetits réglages sur l'écran de paramètres",
-        "it": "ems-esp v3.6 regolazioni per sensori di tipo derivato/temperatura (non ancora testato)\naggiornamento dipendenze\nmigliorare l'elaborazione degli errori nelle statistiche\nPiccole regolazioni sulla schermata dei parametri",
-        "es": "ems-esp v3.6 ajustes para dallas/temperaturesensors (no probado todavía)\ndependencias de actualización\nmejorar el procesamiento de errores sobre estadísticas\nPequeños ajustes en la pantalla del parámetro",
-        "pl": "ems-esp v3,6 przystosowania do dallasu/temperaturowego czujników (nie testowanych)\nzależności\nulepszenie błędów w przetwarzaniu danych\nMała korekta na ekranie parametrów",
-        "uk": "ems-esp v3.6 регулювання для dallas / темпрези (не перевірено ще)\nоновлення залежності\nполіпшення обробки помилок на статистику\nНевеликі налаштування на екрані параметра",
-        "zh-cn": "对dals/temperitysensors(未试验)的编号/esp v3.6调整\na. 最新受扶养人\n改善统计数据错误的处理\n参数筛选小额调整"
       }
     },
     "titleLang": {
