@@ -125,6 +125,19 @@ systemDictionary = {
 		"pl": "Analog",
 		"zh-cn": ""
 	},
+	"ems_custom": {
+		"en": "enable search for additional EMS+ entities (switchTimes & holidayModes) - write access needed",
+		"de": "Suche nach zusätzlichen EMS+ Entitäten (switchTimes & holidayModes) - Schreibzugriff erforderlich",
+		"ru": "включите поиск дополнительных EMS+ организаций (switchTimes & holidayModes) - напишите нужный доступ",
+		"pt": "ativar a busca por entidades EMS+ adicionais (switchTimes & holidayModes) - escrever o acesso necessário",
+		"nl": "beschikbare zoektocht naar extra EMS + entiteiten (switchTimes & holidayModes) Schrijf toegang nodig",
+		"fr": "activer la recherche d'autres entités EMS+ (switchTimes & holidayModes) - écrire l'accès nécessaire",
+		"it": "abilitare la ricerca di ulteriori entità EMS+ (switchTimes & holidayModes) - accesso di scrittura necessario",
+		"es": "habilitar la búsqueda de nuevas entidades EMS+ (switchTimes & holidayModes) - escritura acceso necesario",
+		"pl": "umożliwia wyszukiwanie dodatkowych podmiotów EMS+ (switchTimes & holidayModes) – pisanie dostępu potrzebnego do informacji",
+		"uk": "увімкніть пошук додаткових сутностей EMS+ (switchTimes & holidayModes) - напишіть доступ до потрібного",
+		"zh-cn": "能够寻找更多的电子信息管理系统+实体(奇怪制度和节假节制)—— 写出需要的准入"
+	},
 	"ems_polling": {
 		"en": "polling in sec",
 		"de": "Polling in Sek",
