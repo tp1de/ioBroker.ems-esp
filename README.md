@@ -135,7 +135,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### 2.2.0 (2023-08-02)
+### **WORK IN PROGRESS**
 * ems-esp gateway: search with raw commands for RC300/RC310 switchPrograms and holidayModes
 * alpha test
 * update dependencies
