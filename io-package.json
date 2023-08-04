@@ -4,6 +4,19 @@
     "version": "2.2.0",
     "title": "EMS-ESP (ems-esp & km200)",
     "news": {
+      "2.2.0": {
+        "en": "ems-esp V3.6 release preparation\nerror corrections for ems-esp state changes",
+        "de": "ems-esp V3.6 Release Vorbereitung\nfehlerkorrekturen für ems-esp zustandsänderungen",
+        "ru": "ems-esp V3.6 подготовка релиза\nисправление ошибок для изменений состояния ems-esp",
+        "pt": "ems-esp V3.6 preparação de lançamento\ncorreções de erro para alterações de estado ems-esp",
+        "nl": "vertaling:\nerror correcties voor keizerlijke staat veranderen",
+        "fr": "ems-esp V3.6 préparation de sortie\ncorrections d'erreur pour les changements d'état ems-esp",
+        "it": "ems-esp V3.6 preparazione di rilascio\ncorrezioni di errore per modifiche dello stato ems-esp",
+        "es": "esp V3.6 preparación de la liberación\ncorrecciones de errores para cambios de estado ems-esp",
+        "pl": "ems-esp V3.6 – wersja przygotowująca się do sprzedaży\npoprawki błędów dla ems-esp state zmieniają się",
+        "uk": "ems-esp V3.6 підготовка релізу\nвиправлення помилок для змін емс-еспа",
+        "zh-cn": "名单\n对口号的更正"
+      },
       "2.1.0": {
         "en": "ems-esp V3.6 release preparation\nerror corrections for ems-esp state changes",
         "de": "ems-esp V3.6 Release Vorbereitung\nfehlerkorrekturen für ems-esp zustandsänderungen",
