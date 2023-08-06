@@ -105,6 +105,7 @@
       "it": "EMS-ESP (ems-esp e km200)",
       "es": "EMS-ESP (ems-esp y km200)",
       "pl": "EMS-ESP (ems-esp i km200)",
+      "uk": "EMS-ESP (ems-esp & км200)",
       "zh-cn": "EMS-ESP (ems-esp & km200)"
     },
     "desc": {
@@ -116,7 +117,8 @@
       "fr": "Équipements basés sur EMS (Energy Management System) de fabricants tels que Bosch, Buderus, Nefit, Junkers, Worcester et Sieger.",
       "it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
       "es": "Equipos basados en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
-      "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
+      "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",  
+      "uk": "EMS (Система енергоменеджменту) на основі обладнання від виробників, таких як Bosch, Buderus, Nefit, Junkers, Worcester та Sieger.",
       "zh-cn": "来自 Bosch、Buderus、Nefit、Junkers、Worcester 和 Sieger 等制造商的基于 EMS（能源管理系统）的设备。"
     },
     "authors": [
