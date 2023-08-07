@@ -159,6 +159,7 @@
 				<div class="input-field col s3 l2">
                     <select  class="value" id="db">
                         <option value="" class="translate">no database</option>
+						<option value="history" class="translate">History</option>
                         <option value="sql" class="translate">mySQL</option>
                         <option value="influxdb" class="translate">InfluxDB</option>
                     </select>
@@ -204,9 +205,10 @@
 				<div class="input-field col s3 l2">
                     <select  class="value" id="db">
                         <option value="" class="translate">no database</option>
+						<option value="history" class="translate">History</option>
                         <option value="sql" class="translate">mySQL</option>
                         <option value="influxdb" class="translate">InfluxDB</option>
-                    </select>
+					</select>
 					<label class="translate" for="db">database</label>
                 </div>
 
@@ -431,7 +433,7 @@
 								<th data-name="state_type"   style="width: 10%" data-type="select"  
 									data-default="number"data-options="number;hex;string;switchPrograms;holidayModes" class="translate">state_type</th>
 
-								<th data-name="states"       style="width: 25%" data.type="text" class="translate">states</th>
+								<th data-name="states"       style="width: 25%" data.type="json" class="translate">states</th>
 								<th data-name="min"          style="width: 3%" data-type="number" class="translate">min</th>
 								<th data-name="max"          style="width: 3%" data-type="number" class="translate">max</th>
 								<th data-name="uom"          style="width: 5%" data-tye="text" class="translate">uom</th>

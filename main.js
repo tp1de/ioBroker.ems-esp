@@ -104,6 +104,7 @@ async function main () {
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
 		if (db != "") {
 			await init_statistics2();
+			read_statistics();
 			adapterIntervals.stat = setInterval(function() {read_statistics();}, 300000); // 300 sec
 		}
 	}
@@ -500,13 +501,12 @@ async function stat(db,id,hour,state) {
 			adapter.sendTo(db, "getHistory", {	id: id,	options: {start: end - intervall, end: end, step:intervall, aggregate: "minmax"}
 			}, function (result) {
 				if (!unloaded) {
-
 					let value = 0;
 					let c = 0;
 					try {c = result.result.length;} catch(e) {}
 					if (c == 0 || c == 1) value = 0;
 					try {
-						value = Math.round(result.result[c-1].val-result.result[0].val) ;
+						if (result.result[0].val != null ) value = Math.round(result.result[c-1].val-result.result[0].val) ;
 						// adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
 					} catch(e) {}
 					adapter.setState(state, {ack: true, val: value});
