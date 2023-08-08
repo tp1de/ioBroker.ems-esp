@@ -139,6 +139,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 ### **WORK IN PROGRESS**
 * ems-esp gateway: search with raw commands for RC300/RC310 switchPrograms and holidayModes
 * enable history adapter for recordings and statistics
+* check km200 values to be in range of min/max
 * update dependencies
 
 ### 2.1.0 (2023-07-30)
