@@ -139,7 +139,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 ### **WORK IN PROGRESS**
 * enable history adapter for recordings and statistics
 * update km200 states for valid range of min/max 
-* avoid warnings from v2.1 related to min/max
+* avoid warnings from v2.1 related to min/max in combination with km200 state-list
 * update dependencies
 
 ### 2.1.0 (2023-07-30)
