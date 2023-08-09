@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "news": {
+      "2.2.0": {
+        "en": "enable history adapter for recordings and statistics\nupdate km200 states for valid range of min/max \navoid warnings from v2.1 related to min/max in combination with km200 state-list\nupdate dependencies",
+        "de": "geschichtsadapter für aufnahmen und statistiken aktivieren\nupdate km200 zustände für gültige reichweite von min/max\nwarnungen von v2.1 im zusammenhang mit min/max in kombination mit km200 state-list\naktualisierung der abhängigkeiten",
+        "ru": "включить адаптер истории для записи и статистики\nобновление km200 состояния для действительного диапазона мин/макс\nизбегать предупреждений от v2.1, связанных с мин/макс в сочетании с государственным списком km200\nобновление зависимостей",
+        "pt": "habilitar o adaptador de histórico para gravações e estatísticas\nupdate km200 estados para uma gama válida de min/max\nevitar avisos de v2.1 relacionados com min/max em combinação com km200 lista estadual\ndependências",
+        "nl": "in staat van geschiedenis adapter voor opnames en statistieken\nquality over quantity (qoq) releases vertaling:\nvermijd waarschuwingen van v2.1 gerelateerd aan min/max in combinatie met kilometers van staatslijst\nvertaling:",
+        "fr": "permettre l'adaptateur historique pour les enregistrements et les statistiques\nmettre à jour les états de km200 pour une plage valide de min/max\néviter les avertissements de v2.1 liés à min/max en combinaison avec la liste d'état km200\nmettre à jour les dépendances",
+        "it": "abilitare l'adattatore di storia per registrazioni e statistiche\naggiornamento km200 stati per una gamma valida di min/max\nevitare avvertenze da v2.1 relative a min/max in combinazione con km200\naggiornamento dipendenze",
+        "es": "adaptador de historia para grabaciones y estadísticas\nactualización km200 estados para rango válido de min/max\nevitar advertencias de v2.1 relacionadas con min/max en combinación con km200 lista estatal\ndependencias de actualización",
+        "pl": "pozwala na dopasowanie do nagrań i statystyk\nuaktualnianie km200 stanów dla prawidłowego zasięgu min/max\nuniknięcie ostrzeżeń z v2.1 powiązanych z min/max w połączeniu z km200 państwową listą\nzależności",
+        "uk": "увімкнути історичний адаптер для запису та статистики\nоновлення км200 штатів для діючого діапазону хв/max\nуникати попередження від v2.1, пов'язаних з хв/максом у поєднанні з км200 держав-лист\nоновлення залежності",
+        "zh-cn": "历史使历史适应者能够记录和统计数据\n图200 有效幅度的州\n避免因与国产200公里的小/米轴线有关的警惕\na. 最新受扶养人"
+      },
       "2.1.0": {
         "en": "ems-esp V3.6 release preparation\nerror corrections for ems-esp state changes",
         "de": "ems-esp V3.6 Release Vorbereitung\nfehlerkorrekturen für ems-esp zustandsänderungen",
@@ -80,19 +93,6 @@
         "pl": "uniknięcie ostrzeżeń dotyczących przetwarzania danych dla nowych instalacji bez danych historycznych\numożliwia ona statystykę zanieczyszczania obu bram bez aktywnej bazy danych\numożliwia to przedrostek zamiast czujników temperatury",
         "uk": "уникнути попередження про статистичну обробку нових інсталяцій без історичних даних\nдозволяє статистику для занурення на обох шляхах без активної бази даних\nприпуск старої фіксації устілки замість температур",
         "zh-cn": "避免对新设施的统计处理发出警告,而没有历史数据\n统计数据允许在两个大门上投票时间,没有积极的数据库\n允许旧的达拉预设,而不是温度敏感性"
-      },
-      "1.33.0": {
-        "en": "Rework adapter instance config: Split EMS-ESP and KM200 config pages\nparameters stay the same",
-        "de": "Rework Adapter Instanz config: EMS-ESP und KM200 config Seiten teilen\nparameter bleiben gleich",
-        "ru": "Переработка адаптера пример config: Split EMS-ESP и KM200 конфиг страницы\nпараметры сохраняют то же самое",
-        "pt": "Retrabalhe a instância do adaptador config: Dividir páginas de configuração EMS-ESP e KM200\nparâmetros ficar o mesmo",
-        "nl": "Reageer adapter instance config: Verdeel EMS-ESP en KM200 pagina's\nparameters blijven dezelfde",
-        "fr": "Configuration de l'instance de l'adaptateur de travail: Pages de configuration EMS-ESP et KM200\nles paramètres restent les mêmes",
-        "it": "Configurazione dell'istanza adattatore di rielaborazione: Pagine di configurazione EMS-ESP e KM200\ni parametri rimangono gli stessi",
-        "es": "Rework adapter instance config: Dividir las páginas de configuración EMS-ESP y KM200\nparámetros mantener el mismo",
-        "pl": "Adaptacja Strona domowa EMS-ESP i KM200\nparametry pozostają takie same",
-        "uk": "Налаштування адаптера змінного струму: Розділіть EMS-ESP та KM200 настройкові сторінки\nпараметри залишаються однаковими",
-        "zh-cn": "重新适应工作: Slit EMS-ESP和KM200config页\n参数保持不变"
       }
     },
     "titleLang": {
@@ -117,7 +117,7 @@
       "fr": "Équipements basés sur EMS (Energy Management System) de fabricants tels que Bosch, Buderus, Nefit, Junkers, Worcester et Sieger.",
       "it": "Apparecchiature basate su EMS (Energy Management System) di produttori come Bosch, Buderus, Nefit, Junkers, Worcester e Sieger.",
       "es": "Equipos basados en EMS (Energy Management System) de fabricantes como Bosch, Buderus, Nefit, Junkers, Worcester y Sieger.",
-      "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",  
+      "pl": "Sprzęt oparty na EMS (Energy Management System) takich producentów jak Bosch, Buderus, Nefit, Junkers, Worcester i Sieger.",
       "uk": "EMS (Система енергоменеджменту) на основі обладнання від виробників, таких як Bosch, Buderus, Nefit, Junkers, Worcester та Sieger.",
       "zh-cn": "来自 Bosch、Buderus、Nefit、Junkers、Worcester 和 Sieger 等制造商的基于 EMS（能源管理系统）的设备。"
     },
