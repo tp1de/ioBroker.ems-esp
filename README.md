@@ -136,6 +136,10 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* enable internal syslog server for ems-esp gateway telegrams
+* enable own states for eme-esp gateway (EMS+ holidayModes & switchTimes for RC300/310 and similar)
+
 ### 2.2.0 (2023-08-09)
 * enable history adapter for recordings and statistics
 * update km200 states for valid range of min/max 

@@ -16,6 +16,7 @@ const adapterName = require("./package.json").name.split(".").pop();
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
 const O = require("./lib/custom.js");
+const S = require("./lib/syslog.js");
 const F = require("./lib/functions.js");
 
 const datafields = [];
@@ -95,9 +96,8 @@ async function main () {
 	if (!unloaded && adapter.config.statistics) await init_statistics();
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
-
 	if (adapter.config.emsesp_active && adapter.config.ems_custom && !unloaded) await O.init(adapter,adapterIntervals);
-
+	if (adapter.config.syslog && !unloaded) await S.init(adapter);
 
 	if (!unloaded) adapter.subscribeStates("*");
 
