@@ -9,9 +9,12 @@ assignees: ''
 **Describe the bug**  
 A clear and concise description of what the bug is.
 
-** Releated to gateway and adapter configuration
+
+
+** Releated to gateway(s) and/or adapter configuration
+
 B Which version of the ems-esp adapter are you using? 
-C is this bug related to the ems-esp or km200 gateway? (which hardware are you using?)
+C is this bug related to the ems-esp or km200 gateway? (which gateway hardware are you using?)
 D please descripe software versions of the ems-esp firmware and/or km200 gateway 
 E please post screenshot(s) of the adapter config
 
