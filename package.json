@@ -24,6 +24,9 @@
     "url": "https://github.com/tp1de/ioBroker.ems-esp/issues"
   },
   "bundleDependencies": [],
+  "engines": {
+    "node": ">=16"
+  },
   "dependencies": {
     "@iobroker/adapter-core": "^3.0.3",
     "buffer": "^6.0.3",
