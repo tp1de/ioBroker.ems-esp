@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "news": {
+      "2.2.1": {
+        "en": "trim km200 passwords\nrequire node version >= 16\nupdate dependencies",
+        "de": "trimm km200 passwörter\ndie node version >= anhang\naktualisierung der abhängigkeiten",
+        "ru": "трим км200 паролей\nтребуется версия node >= 16, 16, 16\nобновление зависимостей",
+        "pt": "trim km200 senhas\nexigem a versão do nó >= 16\ndependências",
+        "nl": "trim km 200 wachtwoorden\nvereist node versie 16\nvertaling:",
+        "fr": "trimestre km200 mots de passe\nrequièrent la version node > 16\nmettre à jour les dépendances",
+        "it": "trim km200 password\nbisogno di nodo versione >= 16\naggiornamento dipendenze",
+        "es": "trim km200 contraseñas\nnecesita la versión de nodo 16\ndependencias de actualización",
+        "pl": "trygon km200 haseł\nwymaga wersji węzłowej >==== 16\nzależności",
+        "uk": "обрізка км200 паролів\nпотрібна версія вершини >= 16 мар\nоновлення залежності",
+        "zh-cn": "三千公里的密码\n要求无纸 16\na. 最新受扶养人"
+      },
       "2.2.0": {
         "en": "enable history adapter for recordings and statistics\nupdate km200 states for valid range of min/max \navoid warnings from v2.1 related to min/max in combination with km200 state-list\nupdate dependencies",
         "de": "geschichtsadapter für aufnahmen und statistiken aktivieren\nupdate km200 zustände für gültige reichweite von min/max\nwarnungen von v2.1 im zusammenhang mit min/max in kombination mit km200 state-list\naktualisierung der abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "wsparcie dla wersji ems-esp 3.6\nwiadomość o adaptatorze ems-esp, która wykorzystuje starą bramę dla użytkowników v2\nstatystyki reworkowe unikanie spowolnienia adminowych adapterów\ndrobne ulepszenia",
         "uk": "support for ems-esp версія 3.6 км\nповідомлення про емс-esp версія адаптера для використання для старих воріт v2 користувачів\nстатистика ремісії, щоб уникнути уповільнення адаптера адміністратора\nдеякі незначні поліпшення",
         "zh-cn": "支持印本 3.6\n关于旧大门路用户的电器版本的信息\nd. 重新编制统计以避免重复适应措施\n某些微小的改进"
-      },
-      "1.34.0": {
-        "en": "avoid warnings on statistics processing for new installations without historic data yet\nallow statistics for polling-time for both gateways without active database\nallow old \"dallas\" prefix instead of \"temperaturesensors\"",
-        "de": "warnungen bei der statistikverarbeitung für neue anlagen ohne historische daten vermeiden\nstatistiken für die abfragezeit für beide gateways ohne aktive datenbank\nalte dallas prefix anstelle von temperatursensoren",
-        "ru": "избегать предупреждений по обработке статистики для новых установок без исторических данных\nпозволяют статистику загрязнять время как для шлюзов без активной базы данных\nпозвольте старому префиксу dallas вместо температур",
-        "pt": "evitar avisos sobre o processamento de estatísticas para novas instalações sem dados históricos ainda\npermitir estatísticas para o tempo de votação para ambos os gateways sem banco de dados ativo\npermitir o prefixo antigo dallas em vez de sensores de temperatura",
-        "nl": "vermijd waarschuwingen voor nieuwe installaties zonder historische gegevens\nstatistieken voor polling-tijd voor beide poorten zonder actieve databases\nlaat oude dallas prefix in plaats van temperatuur",
-        "fr": "éviter les avertissements sur le traitement des statistiques pour les nouvelles installations sans données historiques\npermettre des statistiques pour le temps de vote pour les deux passerelles sans base de données active\npermettre le préfixe des dallas anciens au lieu des capteurs de température",
-        "it": "evitare avvisi sul trattamento delle statistiche per nuove installazioni senza dati storici\nconsentire le statistiche per l'inquinamento-tempo per entrambi i gateway senza database attivo\nconsentire vecchio dallas prefix invece di sensori di temperatura",
-        "es": "evitar advertencias sobre el procesamiento de estadísticas para nuevas instalaciones sin datos históricos todavía\npermitir estadísticas de tiempo de votación para ambos portales sin base de datos activa\npermitir el antiguo prefijo de dallas en lugar de sensores de temperatura",
-        "pl": "uniknięcie ostrzeżeń dotyczących przetwarzania danych dla nowych instalacji bez danych historycznych\numożliwia ona statystykę zanieczyszczania obu bram bez aktywnej bazy danych\numożliwia to przedrostek zamiast czujników temperatury",
-        "uk": "уникнути попередження про статистичну обробку нових інсталяцій без історичних даних\nдозволяє статистику для занурення на обох шляхах без активної бази даних\nприпуск старої фіксації устілки замість температур",
-        "zh-cn": "避免对新设施的统计处理发出警告,而没有历史数据\n统计数据允许在两个大门上投票时间,没有积极的数据库\n允许旧的达拉预设,而不是温度敏感性"
       }
     },
     "titleLang": {
