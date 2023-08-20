@@ -31,10 +31,8 @@
   "dependencies": {
     "@iobroker/adapter-core": "^3.0.3",
     "buffer": "^6.0.3",
-    "jshint": "^2.13.4",
     "rijndael-js": "^2.0.0",
-    "simple-syslog-server": "^1.0.0",
-    "user": "0.0.0"
+    "simple-syslog-server": "^1.0.0"
   },
   "deprecated": false,
   "devDependencies": {
