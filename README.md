@@ -139,6 +139,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 ### **WORK IN PROGRESS**
 * trim km200 passwords
 * require node version >= 16
+* update dependencies
 
 ### 2.2.0 (2023-08-09)
 * enable history adapter for recordings and statistics
