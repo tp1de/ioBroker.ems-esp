@@ -69,6 +69,7 @@ function startAdapter(options) {
 
 
 // If started as allInOne/compact mode => return function to create instance
+// @ts-ignore
 if (module && module.parent) {
 	module.exports = startAdapter;
 } else {
