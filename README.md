@@ -136,6 +136,9 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* eslint code optimization
+
 ### 2.2.1 (2023-08-20)
 * trim km200 passwords
 * require node version >= 16
