@@ -138,6 +138,8 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 -->
 ### **WORK IN PROGRESS**
 * eslint code optimization
+* test ems-esp energy statistics
+
 
 ### 2.2.1 (2023-08-20)
 * trim km200 passwords
