@@ -186,9 +186,7 @@ systemDictionary = {
 		"pl": "token dostępu ems ",
 		"zh-cn": "ems 访问令牌 "
 	},
-
-
-    "ems_energy": {
+	"ems_energy": {
 		"en": "calculate energy statistics",
 		"de": "Energiestatistik berechnen",
 		"ru": "вычислить энергетическую статистику",
@@ -201,7 +199,6 @@ systemDictionary = {
 		"uk": "розрахувати статистику енергії",
 		"zh-cn": "能源统计"
 	},
-	
 	"ems_nominalpower": {
 		"en": "nominal boiler power",
 		"de": "Nennheizleistung",
@@ -215,8 +212,7 @@ systemDictionary = {
 		"uk": "номінальна котельна потужність",
 		"zh-cn": "名义动力"
 	},
-
-    "ems_modulation": {
+	"ems_modulation": {
 		"en": "state for modulation",
 		"de": "State für die Modulation",
 		"ru": "состояние для модуляции",
@@ -229,7 +225,7 @@ systemDictionary = {
 		"uk": "стан модуляції",
 		"zh-cn": "投机状态"
 	},
-    "ems_wwactive": {
+	"ems_wwactive": {
 		"en": "state warm water active",
 		"de": "State warmes Wasser aktiv",
 		"ru": "состояние теплая вода активная",
@@ -242,7 +238,6 @@ systemDictionary = {
 		"uk": "активний стан теплої води",
 		"zh-cn": "a. 国有变暖"
 	},
-
 	"km200_active": {
 		"en": "KM200 gateway active",
 		"de": "KM200 Gateway aktiv",
