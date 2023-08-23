@@ -186,6 +186,63 @@ systemDictionary = {
 		"pl": "token dostępu ems ",
 		"zh-cn": "ems 访问令牌 "
 	},
+
+
+    "ems_energy": {
+		"en": "calculate energy statistics",
+		"de": "Energiestatistik berechnen",
+		"ru": "вычислить энергетическую статистику",
+		"pt": "calcular estatísticas de energia",
+		"nl": "vertaling:",
+		"fr": "calculer les statistiques énergétiques",
+		"it": "calcolo delle statistiche energetiche",
+		"es": "calcular estadísticas de energía",
+		"pl": "dane statystyczne",
+		"uk": "розрахувати статистику енергії",
+		"zh-cn": "能源统计"
+	},
+	
+	"ems_nominalpower": {
+		"en": "nominal boiler power",
+		"de": "Nennheizleistung",
+		"ru": "номинальная мощность котла",
+		"pt": "potência nominal da caldeira",
+		"nl": "nominal boiler power",
+		"fr": "puissance nominale de chaudière",
+		"it": "potenza caldaia nominale",
+		"es": "potencia nominal de caldera",
+		"pl": "nominalna władza kotłów",
+		"uk": "номінальна котельна потужність",
+		"zh-cn": "名义动力"
+	},
+
+    "ems_modulation": {
+		"en": "state for modulation",
+		"de": "State für die Modulation",
+		"ru": "состояние для модуляции",
+		"pt": "estado para modulação",
+		"nl": "staat voor bescheidenheid",
+		"fr": "état de modulation",
+		"it": "stato di modulazione",
+		"es": "estado para modulación",
+		"pl": "stan modulacji",
+		"uk": "стан модуляції",
+		"zh-cn": "投机状态"
+	},
+    "ems_wwactive": {
+		"en": "state warm water active",
+		"de": "State warmes Wasser aktiv",
+		"ru": "состояние теплая вода активная",
+		"pt": "água quente do estado ativo",
+		"nl": "staat warm water",
+		"fr": "eau chaude",
+		"it": "stato acqua calda attiva",
+		"es": "agua caliente estatal activo",
+		"pl": "ciepłe wody",
+		"uk": "активний стан теплої води",
+		"zh-cn": "a. 国有变暖"
+	},
+
 	"km200_active": {
 		"en": "KM200 gateway active",
 		"de": "KM200 Gateway aktiv",
