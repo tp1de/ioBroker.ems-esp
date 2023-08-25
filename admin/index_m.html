@@ -115,7 +115,23 @@
 
 			</div>
 
+			<div class="row">
 
+				<div class="input-field col s3 l2">
+                    <select  class="value" id="db">
+                        <option value="" class="translate">no database</option>
+						<option value="history" class="translate">History</option>
+                        <option value="sql" class="translate">mySQL</option>
+                        <option value="influxdb" class="translate">InfluxDB</option>
+					</select>
+					<label class="translate" for="db">database</label>
+                </div>
+
+				<div class="col s2 input-field">
+					<input type="text" class="value" id="db_instance" />
+					<label for="db_instance" class="translate">db_instance</label>
+				</div>
+			</div>
 
 		</div>
 
