@@ -139,6 +139,7 @@ https://github.com/tp1de/ioBroker.ems-esp/wiki
 ### **WORK IN PROGRESS**
 * eslint code optimization
 * ems-esp energy statistics
+* change sorting order of recordings in array from new to old
 
 
 ### 2.2.1 (2023-08-20)
