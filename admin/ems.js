@@ -9,7 +9,7 @@ let unloaded = false;
 let emsesp,ems_token ="",ems_http_wait = 100, ems_polling = 60;
 let ems_version = "V3";
 let km200_structure = true;
-let recordings_init = true;
+let energy_init = true;
 
 let adapter;
 
@@ -59,8 +59,23 @@ const init = async function(a,i) {
 	}
 
 	if (!unloaded) await init_states_emsesp(version);
+
+	if (!unloaded && adapter.config.ems_energy) {
+		await init_energy();
+		energy_init = false;
+		if (ems_polling != 15) {
+			ems_polling = 15;
+			adapter.log.info("ems  : set polling to 15 seconds due to energy statistics");
+		}
+		await ems_read(version);
+		await read_energy();
+		i.ems_energy = setInterval(function() {read_energy();}, 600 * 1000); // every 10 minutes
+		adapter.log.info("ems  : energy polling every 10 minutes");
+	}
+
 	if (!unloaded) adapter.log.info("ems  : polling every " + ems_polling + " secs");
 	if (!unloaded) i.ems = setInterval(function() {ems_read(version);}, ems_polling*1000);
+
 };
 
 
@@ -355,55 +370,40 @@ async function ems_read(version) {
 			}
 		}
 	}
-
-    // Energy statistics for ems-esp
+	// Energy statistics for ems-esp
 
 	if (adapter.config.ems_energy) {
 
-		let power = adapter.config.ems_nominalpower;
-		let powera = 0; 
+		const power = adapter.config.ems_nominalpower;
+		let powera = 0;
 
 		try {
 			let rec_state = adapter.config.ems_modulation;
 			const array = rec_state.split(".");
 			if (adapter.config.km200_structure == true && array[0] == "boiler") {
-				rec_state = "heatSources.hs1." + array[1]
+				rec_state = "heatSources.hs1." + array[1];
 			}
-			let state = await  adapter.getStateAsync(rec_state);
-			let mod = state.val;
-			
+			const state = await  adapter.getStateAsync(rec_state);
+			const mod = state.val;
 			powera = mod * power / 100;
+
 		} catch(e) {adapter.log.error("State modulation for energy statistics does not exist");adapter.config.ems_energy = false;}
 
-		let statename = "energy.actualPower.power";
-		await adapter.setObjectNotExistsAsync(statename,{type: "state",
-			common: {type: "number", name: "ems: recordings power", unit: "kW", role: "value", read: true, write: false}, native: {}});
-		await adapter.setStateAsync(statename, {ack: true, val: powera});
-		enable_state(statename);
-
-		statename = "energy.actualCHPower.power";
-		await adapter.setObjectNotExistsAsync(statename,{type: "state",
-			common: {type: "number", name: "ems: recordings power", unit: "kW", role: "value", read: true, write: false}, native: {}});
-		enable_state(statename);
-
-		statename = "energy.actualDHWPower.power";
-		await adapter.setObjectNotExistsAsync(statename,{type: "state",
-			common: {type: "number", name: "ems: recordings power", unit: "kW", role: "value", read: true, write: false}, native: {}});
-		enable_state(statename);
-
-		recordings_init = false;
 		let wwa = 0;
 		try {
 			let ww_state = adapter.config.ems_wwactive;
 			const array2 = ww_state.split(".");
 			if (km200_structure && array2[0] == "boiler") {
-				ww_state = "dhwCircuits.dhw1." + array2[1]
+				ww_state = "dhwCircuits.dhw1." + array2[1];
 			}
-			state = await adapter.getStateAsync(ww_state);
+			const state = await adapter.getStateAsync(ww_state);
 			wwa = state.val;
-		} catch(e) {adapter.log.error("State wwactive for energy statistics does not exist");adapter.config.ems_energy = false; wwa = 0}
+		} catch(e) {adapter.log.error("State wwactive for energy statistics does not exist");adapter.config.ems_energy = false; wwa = 0;}
 
-		if (wwa == 1 || wwa == "1" || wwa == "on" || wwa == "ON" || wwa == "true" || wwa == true) {
+		let statename = "energy.actualPower.power";
+		await adapter.setStateAsync(statename, {ack: true, val: powera});
+
+		if (wwa == 1 || wwa.toString() == "1" || wwa.toString() == "on" || wwa.toString() == "ON" || wwa.toString() == "true" ) {
 			statename = "energy.actualDHWPower.power";
 			await adapter.setStateAsync(statename, {ack: true, val: powera});
 			statename = "energy.actualCHPower.power";
@@ -418,15 +418,247 @@ async function ems_read(version) {
 	}
 }
 
-function enable_state(statename) {
+async function init_energy() {
+
+	let statename = "energy.actualPower.power";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy power", unit: "kW", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualCHPower.power";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy power", unit: "kW", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualDHWPower.power";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy power", unit: "kW", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualPower._Hours";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualPower._Days";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualPower._Months";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualCHPower._Hours";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualCHPower._Days";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualCHPower._Months";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualDHWPower._Hours";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualDHWPower._Days";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualDHWPower._Months";
+	await adapter.setObjectAsync(statename,{type: "state",
+		common: {type: "number", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+	enable_state(statename);
+
+	statename = "energy.actualPower.Hours";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualPower.Days";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualPower.Months";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualCHPower.Hours";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualCHPower.Days";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualCHPower.Months";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualDHWPower.Hours";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualDHWPower.Days";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+
+	statename = "energy.actualDHWPower.Months";
+	await adapter.setObjectAsync(statename,{type: "state", common: {type: "json", name: "ems: energy consumption", unit: "kWh", role: "value", read: true, write: false}, native: {}});
+}
+
+async function read_energy() {
+	const hours = 24*60;
+
+	let db;
 	if (adapter.config.db.trim() == "" ) db = "";
 	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
 
-	if (db != "" && recordings_init == true) {
+	let end = Date.now();
+	let end_ = new Date(end);
+	let year = end_.getFullYear();
+	let month = end_.getMonth()+1;
+	const date = end_.getDate();
+	const hour = end_.getHours();
+	end_ = new Date (year + "-" + month + "-" + date + " " + hour + ":00");
+	end = end_.getTime() + 3600000;
+
+
+	let intervall = 24 * 60 * 3600000; // hourly values for 60 days
+	let step = 3600000; // one hour steps
+	await energy(db, "energy.actualPower.power", "energy.actualPower._Hours",end,intervall,step,"hh");
+	await energy(db, "energy.actualCHPower.power", "energy.actualCHPower._Hours",end,intervall,step,"hh");
+	await energy(db, "energy.actualDHWPower.power", "energy.actualDHWPower._Hours",end,intervall,step,"hh");
+
+
+	intervall = 24 * 60 * 3600000; // daily values for 60 days
+	step = 3600000 * 24; // 24 hour steps
+	end_ = new Date (year + "-" + month + "-" + date );
+	end = end_.getTime() + 3600000 * 24;
+	await energy(db, "energy.actualPower.power", "energy.actualPower._Days",end,intervall,step,"dd");
+	await energy(db, "energy.actualCHPower.power", "energy.actualCHPower._Days",end,intervall,step,"dd");
+	await energy(db, "energy.actualDHWPower.power", "energy.actualDHWPower._Days",end,intervall,step,"dd");
+
+	await energy(db, "energy.actualPower.power", "energy.actualPower._Months",0,0,0,"mm");
+	await energy(db, "energy.actualCHPower.power", "energy.actualCHPower._Months",0,0,0,"mm");
+	await energy(db, "energy.actualDHWPower.power", "energy.actualDHWPower._Months",0,0,0,"mm");
+
+}
+
+async function energy(db,idr,idw,end,intervall,step,t) {
+	const adapt = adapter.namespace+".";
+
+	let recs = [], res = [];
+
+    if (t == "hh" || t == "dd") {
+        let result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr, 
+                    options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
+        res = result.result;
+		//adapter.log.info(JSON.stringify(result));
+    } else {
+
+        const datum= new Date();
+        let year = datum.getFullYear();
+        let month = datum.getMonth() + 1;
+
+        let year1 = year;
+        let month1 = month+1;
+        if (month1 == 13) {year1 = year1+1;month1=1;}
+
+        let start,start_;
+        for (let i=0;i<14;i++) {
+            let end_ = new Date (year1 + "-" + month1);
+            end = end_.getTime();
+            start_ = new Date (year + "-" + month);
+            start = start_.getTime();
+            intervall = end - start;
+            step = intervall;
+
+            let result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr, 
+                    options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
+            
+            
+			if (result.result[1] != undefined ) {
+				res.push(result.result[1]);
+				//adapter.log.info(year+"-"+month+ " ---- "+year1+"-"+month1+"  "+JSON.stringify(result.result[1]));
+			}
+            else {
+                let ts = end - intervall/2;
+                res.push({ts: ts ,val: 0});
+            }
+            
+            if (month == 1) {year = year-1;month=12;}
+            else if (month > 1) {month = month-1;}
+            if (month1 == 1) {year1 = year1-1;month1=12;}
+            else if (month1 > 1) {month1 = month1-1;}
+        }  
+		//adapter.log.info(JSON.stringify(res));      
+    }
+    
+
+    for (let i=0; i< res.length;i++) {
+        let ts = res[i].ts;
+        let val = Math.round(res[i].val / 240 * 100) / 100  ;
+        recs.push({ts: ts ,val: val,ack: true});
+    }
+  
+	const start =  (end-intervall);
+	try {await adapter.sendToAsync(db,"deleteRange",[{id: adapt+idw, start: start, end: end}]);} catch(e) {adapter.log.error(e);}
+	try {await adapter.sendToAsync(db,"storeState", {id: adapt+idw, state: recs});} catch(e) {adapter.log.error(e);}
+
+	const v = [];
+	for (let i = 0; i < recs.length;i++){
+		v.push({ts: recs[i].ts, val: recs[i].val});
+	}
+
+	function SortArray(x, y){
+		if (x.ts < y.ts) {return -1;}
+		if (x.ts > y.ts) {return 1;}
+		return 0;
+	}
+	const s = v.sort(SortArray);
+
+	const ss = [],sss = [];
+	for (let i = 0; i < s.length;i++){
+		const date = new Date(s[i].ts);
+		const m = date.getMonth()+1;
+		let mm = m.toString();
+		if ( m < 10) mm = "0"+mm;
+		const d = date.getDate();
+		let dd = d.toString();
+		if ( d < 10) dd = "0"+dd;
+
+		let ddd = "";
+		if (t == "hh") ddd = date.getFullYear() + "-" + mm + "-" + dd +" "+date.getHours()+" hrs";
+		if (t == "dd") ddd = date.getFullYear() + "-" + mm + "-" + dd;
+		if (t == "mm") ddd = date.getFullYear() + "-" + mm;
+		ss.push({date:ddd, val:s[i].val});
+		sss.push(s[i].val);
+	}
+	let field1 = idw;
+	field1 = field1.replace(/_Days/g, "Days");
+	field1 = field1.replace(/_Hours/g, "Hours");
+	field1 = field1.replace(/_Months/g, "Months");
+
+	if (adapter.config.recordings_format == 0) adapter.setStateAsync(field1, {ack:true, val:JSON.stringify(sss)});
+	if (adapter.config.recordings_format == 1) adapter.setStateAsync(field1, {ack:true, val:JSON.stringify(s)});
+	if (adapter.config.recordings_format == 2) adapter.setStateAsync(field1, {ack:true, val:JSON.stringify(ss)});
+
+}
+
+
+
+function enable_state(statename) {
+	let db;
+	if (adapter.config.db.trim() == "" ) db = "";
+	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+
+	if (db != "" && energy_init == true) {
 		const id =  adapter.namespace  + "." + statename;
 		adapter.sendTo(db, "enableHistory", {id: id, options:
-			{changesOnly: true, debounce: 0,retention: 86400*365,changesRelogInterval: 5,
-				maxLength: 3, changesMinDelta: 0, aliasId: "" } }, function (result) {
+			{changesOnly: false, debounce: 0,retention: 86400*365,changesRelogInterval: 0,
+				maxLength: 100, changesMinDelta: 0, aliasId: "" } }, function (result) {
 			if (result.error) {adapter.log.error("enable history error " + id);}
 		});
 	}
