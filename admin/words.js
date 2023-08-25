@@ -335,8 +335,8 @@ systemDictionary = {
 		"zh-cn": "能量记录（仅限km200）"
 	},
 	"recordings_format": {
-	  	"en": "recordings  plain states format without db",
-		"de": "Recordings State-Format ohne Datenbank",
+	  	"en": "plain states format without db",
+		"de": "State-Format ohne Datenbank",
 		"ru": "записи в формате простого состояния без db",
 		"pt": "gravações em formato de estados simples sem db",
 		"nl": "opnames zonder db",
