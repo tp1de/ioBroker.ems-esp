@@ -517,8 +517,8 @@ async function read_energy() {
 
 	let end = Date.now();
 	let end_ = new Date(end);
-	let year = end_.getFullYear();
-	let month = end_.getMonth()+1;
+	const year = end_.getFullYear();
+	const month = end_.getMonth()+1;
 	const date = end_.getDate();
 	const hour = end_.getHours();
 	end_ = new Date (year + "-" + month + "-" + date + " " + hour + ":00");
@@ -549,60 +549,61 @@ async function read_energy() {
 async function energy(db,idr,idw,end,intervall,step,t) {
 	const adapt = adapter.namespace+".";
 
-	let recs = [], res = [];
+	const recs = [];
+	let res = [];
 
-    if (t == "hh" || t == "dd") {
-        let result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr, 
-                    options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
-        res = result.result;
+	if (t == "hh" || t == "dd") {
+		const result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr,
+			options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
+		res = result.result;
 		//adapter.log.info(JSON.stringify(result));
-    } else {
+	} else {
 
-        const datum= new Date();
-        let year = datum.getFullYear();
-        let month = datum.getMonth() + 1;
+		const datum= new Date();
+		let year = datum.getFullYear();
+		let month = datum.getMonth() + 1;
 
-        let year1 = year;
-        let month1 = month+1;
-        if (month1 == 13) {year1 = year1+1;month1=1;}
+		let year1 = year;
+		let month1 = month+1;
+		if (month1 == 13) {year1 = year1+1;month1=1;}
 
-        let start,start_;
-        for (let i=0;i<14;i++) {
-            let end_ = new Date (year1 + "-" + month1);
-            end = end_.getTime();
-            start_ = new Date (year + "-" + month);
-            start = start_.getTime();
-            intervall = end - start;
-            step = intervall;
+		let start,start_;
+		for (let i=0;i<14;i++) {
+			const end_ = new Date (year1 + "-" + month1);
+			end = end_.getTime();
+			start_ = new Date (year + "-" + month);
+			start = start_.getTime();
+			intervall = end - start;
+			step = intervall;
 
-            let result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr, 
-                    options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
-            
-            
+			const result = await adapter.sendToAsync(db, "getHistory", {id: adapt+idr,
+				options: {start: end - intervall, end: end, step:step, integralUnit: 3600, aggregate: "total"}});
+
+
 			if (result.result[1] != undefined ) {
 				res.push(result.result[1]);
 				//adapter.log.info(year+"-"+month+ " ---- "+year1+"-"+month1+"  "+JSON.stringify(result.result[1]));
 			}
-            else {
-                let ts = end - intervall/2;
-                res.push({ts: ts ,val: 0});
-            }
-            
-            if (month == 1) {year = year-1;month=12;}
-            else if (month > 1) {month = month-1;}
-            if (month1 == 1) {year1 = year1-1;month1=12;}
-            else if (month1 > 1) {month1 = month1-1;}
-        }  
-		//adapter.log.info(JSON.stringify(res));      
-    }
-    
+			else {
+				const ts = end - intervall/2;
+				res.push({ts: ts ,val: 0});
+			}
 
-    for (let i=0; i< res.length;i++) {
-        let ts = res[i].ts;
-        let val = Math.round(res[i].val / 240 * 100) / 100  ;
-        recs.push({ts: ts ,val: val,ack: true});
-    }
-  
+			if (month == 1) {year = year-1;month=12;}
+			else if (month > 1) {month = month-1;}
+			if (month1 == 1) {year1 = year1-1;month1=12;}
+			else if (month1 > 1) {month1 = month1-1;}
+		}
+		//adapter.log.info(JSON.stringify(res));
+	}
+
+
+	for (let i=0; i< res.length;i++) {
+		const ts = res[i].ts;
+		const val = Math.round(res[i].val / 240 * 100) / 100  ;
+		recs.push({ts: ts ,val: val,ack: true});
+	}
+
 	const start =  (end-intervall);
 	try {await adapter.sendToAsync(db,"deleteRange",[{id: adapt+idw, start: start, end: end}]);} catch(e) {adapter.log.error(e);}
 	try {await adapter.sendToAsync(db,"storeState", {id: adapt+idw, state: recs});} catch(e) {adapter.log.error(e);}
