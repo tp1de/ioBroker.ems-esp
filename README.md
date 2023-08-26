@@ -33,7 +33,7 @@ It can be used either for the original Bosch-group gateways or the ems-esp or bo
 The adapter is tested for the ems-esp gateway with latest firmware version (V3.6.0) of ESP32  
 
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
-English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es_.pdf
+English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
 
 
 
