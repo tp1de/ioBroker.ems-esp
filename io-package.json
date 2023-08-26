@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.2.1",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "New function: ems-esp gateway energy statistics (consumption)\nchange sorting order of enegry statistics & recordings in array from new to old",
+        "de": "Neue Funktion: ems-esp Gateway Energiestatistik (Verbrauch)\nsortierreihenfolge ändern, z.b. statistiken & aufzeichnungen in array von neu zu alt",
+        "ru": "Новая функция: ems-esp шлюзная энергетическая статистика (потребление)\nизменить порядок сортировки enegry статистика и записи в массиве от нового до старого",
+        "pt": "Nova função: ems-esp gateway estatísticas de energia (consumo)\nmudar a ordem de classificação de estatísticas de enegry & gravações em array de novo para velho",
+        "nl": "Nieuwe functie: gat-energie statistieken\nveranderingsorde van enegry statistieken in array van nieuw tot oude",
+        "fr": "Nouvelle fonction: statistiques énergétiques des passerelles ems-esp (consommation)\nchanger l'ordre de tri des statistiques d'enegry et enregistrements en tableau de nouveaux à anciens",
+        "it": "Nuova funzione: ems-esp gateway statistiche energetiche (consumo)\ncambiare ordine di selezione di enegry statistiche e registrazioni in array da nuovo a vecchio",
+        "es": "Nueva función: ems-esp estadísticas de energía de gateway (consumo)\ncambio orden de clasificación de estadísticas enegry & grabaciones en array de nuevo a viejo",
+        "pl": "Nowe funkcje: ems-esp gateway energy statistics (pol.)\nzmiana rzędu pokrewnych statystyk i nagrań w tablicy z nowego do starego",
+        "uk": "Нова функція: статистика емс-есп шлюзу (споживання)\nзмінити порядок сортування енергій статистика та записи в масиві від нових до старих",
+        "zh-cn": "新的功能:包括大门的能源统计(消费)\nb. 从新到旧的分类统计数据和录制的改变"
+      },
       "2.2.1": {
         "en": "trim km200 passwords\nrequire node version >= 16\nupdate dependencies",
         "de": "trimm km200 passwörter\ndie node version >= anhang\naktualisierung der abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "bez parametrów enum atrybutów\nPoprawka errorowa na v2.0.0 dla ems-esp datanames i struktury",
         "uk": "без параметрів атрибутів enum\nВиправлення помилок на v2.0.0 для емс-esp datanames та структури",
         "zh-cn": "概 述\n输入数据名称和结构"
-      },
-      "2.0.0": {
-        "en": "support for ems-esp version 3.6\nmessage about ems-esp adapter version to use for old gateway v2 users\nrework statistics to avoid slowing down admin adapter\nsome minor improvements",
-        "de": "unterstützung für ems-esp-version 3.6\nnachricht über ems-esp adapter-version für alte gateway v2 benutzer\nrework-statistiken, um die verlangsamung des admin-adapters zu vermeiden\neinige kleinere verbesserungen",
-        "ru": "поддержка версии ems-esp 3,6\nсообщение об ems-esp адаптер версии для использования для старых шлюз v2 пользователей\nпереработает статистику, чтобы избежать замедления админ адаптера\nнекоторые незначительные улучшения",
-        "pt": "suporte para versão ems-esp 3.6\nmensagem sobre a versão do adaptador ems-esp para usar para usuários antigos do gateway v2\nretrabalhe estatísticas para evitar abrandar o adaptador de admin\nalgumas pequenas melhorias",
-        "nl": "ondersteuning voor keizersnede 3,6\neen bericht over de esp-adapter versie die gebruikt wordt voor oude poortgang v2 gebruikers\nrework statistiek vermijden om administratie te vertragen\nwat kleine verbetering",
-        "fr": "support pour la version ems-esp 3.6\nmessage concernant la version adaptateur ems-esp à utiliser pour les anciens utilisateurs de passerelle v2\nretravailler les statistiques pour éviter de ralentir l'adaptateur administrateur\nquelques améliorations mineures",
-        "it": "supporto per la versione ems-esp 3\nmessaggio sulla versione adattatore ems-esp da usare per gli utenti v2 di gateway vecchi\nrielaborare le statistiche per evitare di rallentare l'adattatore di amministrazione\nalcuni miglioramenti minori",
-        "es": "soporte para la versión ems-esp 3.6\nmensaje sobre la versión de adaptador de ems-esp para usuarios antiguos de gateway v2\nrework statistics to avoid slow down admin adapter\nalgunas mejoras menores",
-        "pl": "wsparcie dla wersji ems-esp 3.6\nwiadomość o adaptatorze ems-esp, która wykorzystuje starą bramę dla użytkowników v2\nstatystyki reworkowe unikanie spowolnienia adminowych adapterów\ndrobne ulepszenia",
-        "uk": "support for ems-esp версія 3.6 км\nповідомлення про емс-esp версія адаптера для використання для старих воріт v2 користувачів\nстатистика ремісії, щоб уникнути уповільнення адаптера адміністратора\nдеякі незначні поліпшення",
-        "zh-cn": "支持印本 3.6\n关于旧大门路用户的电器版本的信息\nd. 重新编制统计以避免重复适应措施\n某些微小的改进"
       }
     },
     "titleLang": {
@@ -187,9 +187,9 @@
     "ems_dallas_old_format": false,
     "ems_analog": false,
     "ems_custom": false,
-    "ems_energy" : false,
+    "ems_energy": false,
     "ems_nominalpower": 15,
-    "ems_modulation" : "boiler.curburnpow",
+    "ems_modulation": "boiler.curburnpow",
     "ems_wwactive": "boiler.wwcharging",
     "recordings": false,
     "recordings_format": 0,
