@@ -44,7 +44,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.3.2 (2023-08-27)
 * optimize SQL access for energy statistics
 
 ### 2.3.1 (2023-08-27)

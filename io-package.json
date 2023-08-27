@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "news": {
+      "2.3.2": {
+        "en": "optimize SQL access for energy statistics",
+        "de": "optimieren des SQL-Zugangs zur Energiestatistik",
+        "ru": "оптимизировать SQL доступ для энергетической статистики",
+        "pt": "otimizar o acesso SQL para estatísticas de energia",
+        "nl": "vertaling:",
+        "fr": "optimiser l'accès SQL aux statistiques énergétiques",
+        "it": "ottimizzare l'accesso SQL per le statistiche energetiche",
+        "es": "optimizar el acceso SQL para estadísticas de energía",
+        "pl": "sQL optymalizuje dostęp do statystyk energetycznych",
+        "uk": "оптимізуйте доступ до бази даних SQL",
+        "zh-cn": "最佳可得能源统计"
+      },
       "2.3.1": {
         "en": "avoid sql errors within energy statistics for mySQL",
         "de": "sql Fehler in der Energiestatistik für mySQL vermeiden",
@@ -80,19 +93,6 @@
         "pl": "korzyści błędów na km200 odczytują poprawki błędów",
         "uk": "виправлення помилок для км200 читати",
         "zh-cn": "改为200公里的更正"
-      },
-      "2.0.2": {
-        "en": "re-add parameters for room / function\nchange statistics update intervall for number of starts to every 5 minutes",
-        "de": "re-add parameter für raum / funktion\nänderung der statistik update intervall für die anzahl der starts bis alle 5 minuten",
-        "ru": "re-add параметры для комнаты / функции\nизменить интервал обновления статистики для количества начинается каждые 5 минут",
-        "pt": "parâmetros re-add para sala / função\nalterar o intervalo de atualização de estatísticas para o número de inícios a cada 5 minutos",
-        "nl": "vertaling:\nverander de statistieken update intervall voor elk vijf minuten",
-        "fr": "re-add paramètres pour la chambre / fonction\nles statistiques de changement mettre à jour intervalle pour le nombre de démarrages à toutes les 5 minutes",
-        "it": "parametri re-add per stanza / funzione\ncambiare le statistiche aggiorna l'intervallo per il numero di inizia ad ogni 5 minuti",
-        "es": "parámetros re-add para habitación / función\ncambio de estadísticas actualización intervalol para el número de inicios cada 5 minutos",
-        "pl": "re-add parametry pokoju/ funkcji\nliczba zmian rozpoczyna się co 5 minut",
-        "uk": "переадресовані параметри для кімнати / функції\nзмінити інтервал оновлення статистики для кількості починається до 5 хвилин",
-        "zh-cn": "会议室/职务的后参数\nb. 改变统计数据"
       }
     },
     "titleLang": {
