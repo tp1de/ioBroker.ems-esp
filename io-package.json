@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.3.0",
+    "version": "2.3.1",
     "news": {
+      "2.3.1": {
+        "en": "avoid sql errors within energy statistics for mySQL",
+        "de": "sql Fehler in der Energiestatistik für mySQL vermeiden",
+        "ru": "избегать ошибок sql в энергетической статистике для mySQL",
+        "pt": "evitar erros sql dentro estatísticas de energia para mySQL",
+        "nl": "vermijden sql fouten in energie statistieken voor mySQL",
+        "fr": "éviter les erreurs de sql dans les statistiques énergétiques de mySQL",
+        "it": "evitare errori sql all'interno di statistiche energetiche per mySQL",
+        "es": "evitar errores sql dentro de estadísticas de energía para mySQL",
+        "pl": "unikanie błędów w statystyce energii dla mySQL",
+        "uk": "уникнути помилок квл в енергетичній статистиці для mySQL",
+        "zh-cn": "避免我的SQL公司在能源统计方面的缺陷"
+      },
       "2.3.0": {
         "en": "New function: ems-esp gateway energy statistics (consumption)\nchange sorting order of enegry statistics & recordings in array from new to old",
         "de": "Neue Funktion: ems-esp Gateway Energiestatistik (Verbrauch)\nsortierreihenfolge ändern, z.b. statistiken & aufzeichnungen in array von neu zu alt",
@@ -80,19 +93,6 @@
         "pl": "re-add parametry pokoju/ funkcji\nliczba zmian rozpoczyna się co 5 minut",
         "uk": "переадресовані параметри для кімнати / функції\nзмінити інтервал оновлення статистики для кількості починається до 5 хвилин",
         "zh-cn": "会议室/职务的后参数\nb. 改变统计数据"
-      },
-      "2.0.1": {
-        "en": "without parameters for enum attributes\nError correction on v2.0.0 for ems-esp datanames and structure",
-        "de": "ohne parameter für enum-attribute\nFehlerkorrektur auf v2.0.0 für ems-esp-Datennamen und Struktur",
-        "ru": "без параметров для атрибутов enum\nИсправление ошибки на v2.0.0 для ems-esp datanames и структуры",
-        "pt": "sem parâmetros para atributos enum\nCorreção de erro no v2.0.0 para datanames e estrutura ems-esp",
-        "nl": "zonder parameters voor enum attributen\nError correctie op V2.0 voor ems-esp gegevens en structuur",
-        "fr": "sans paramètres pour les attributs enum\nCorrection d'erreur sur v2.0.0 pour nom de données ems-esp et structure",
-        "it": "senza parametri per attributi enum\nCorrezione errore su v2.0.0 per i nomi di dati ems-esp e la struttura",
-        "es": "sin parámetros para atributos enum\nCorrección de error en v2.0.0 para ems-esp nombres de datos y estructura",
-        "pl": "bez parametrów enum atrybutów\nPoprawka errorowa na v2.0.0 dla ems-esp datanames i struktury",
-        "uk": "без параметрів атрибутів enum\nВиправлення помилок на v2.0.0 для емс-esp datanames та структури",
-        "zh-cn": "概 述\n输入数据名称和结构"
       }
     },
     "titleLang": {
