@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "news": {
+      "2.3.3": {
+        "en": "error correction mySQL too many connections\nread database name from db-instance settings",
+        "de": "fehlerkorrektur mySQL zu viele Verbindungen\ndatenbankname von db-instance-einstellungen lesen",
+        "ru": "исправление ошибок mySQL слишком много соединений\nчитать имя базы данных из db-instance настроек",
+        "pt": "correção de erro mySQL muitas conexões\nler o nome do banco de dados de configurações de db-instance",
+        "nl": "error correctie mySQL te veel connecties\nvertaling:",
+        "fr": "correction d'erreur mySQL trop de connexions\nlire le nom de la base de données des paramètres db-instance",
+        "it": "correzione errore mySQL troppe connessioni\nleggere il nome del database dalle impostazioni db-instance",
+        "es": "corrección de error mySQL demasiadas conexiones\nread database name from db-instance settings",
+        "pl": "poprawka mySQL zbyt wiele połączeń\nnazwa bazy danych pochodzi od db-instance settings",
+        "uk": "виправлення помилок mySQL занадто багато підключень\nчитати ім'я бази даних з налаштувань db-instance",
+        "zh-cn": "错误地纠正了我的SQL过多的联系\n阅读数据库"
+      },
       "2.3.2": {
         "en": "optimize SQL access for energy statistics",
         "de": "optimieren des SQL-Zugangs zur Energiestatistik",
@@ -80,19 +93,6 @@
         "pl": "ems-esp V3.6 – wersja przygotowująca się do sprzedaży\npoprawki błędów dla ems-esp state zmieniają się",
         "uk": "ems-esp V3.6 підготовка релізу\nвиправлення помилок для змін емс-еспа",
         "zh-cn": "名单\n对口号的更正"
-      },
-      "2.0.3": {
-        "en": "error corrections for km200 read",
-        "de": "fehlerkorrekturen für km200 lesen",
-        "ru": "исправления ошибок для km200 читать",
-        "pt": "correções de erro para km200 leitura",
-        "nl": "error correcties voor kilometers 200",
-        "fr": "corrections d'erreur pour km200 lire",
-        "it": "correzioni di errore per km200 leggere",
-        "es": "correcciones de errores para km200 read",
-        "pl": "korzyści błędów na km200 odczytują poprawki błędów",
-        "uk": "виправлення помилок для км200 читати",
-        "zh-cn": "改为200公里的更正"
       }
     },
     "titleLang": {
