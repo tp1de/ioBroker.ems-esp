@@ -45,6 +45,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* error correction mySQL too many connections
 * read database name from db-instance settings
 
 ### 2.3.2 (2023-08-27)
