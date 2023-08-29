@@ -132,8 +132,8 @@ async function enable_state(stateid,retention,interval) {
 		});
 	} catch (e) {adapter.log.error("enable history error " + stateid );}
 	const state = await adapter.getState(stateid);
-	if(state == null || state.val === undefined) await adapter.setState(stateid, {ack: false, val: 0});
-	else await adapter.setState(stateid, {ack: true, val: state.val});
+	if(state == null || state.val === undefined) await await adapter.setStateAsync(stateid, {ack: false, val: 0});
+	else await await adapter.setStateAsync(stateid, {ack: true, val: state.val});
 }
 
 
@@ -182,7 +182,7 @@ async function init_controls() {
 async function control_state(state,type,name,value) {
 	await adapter.setObjectNotExistsAsync("controls."+state,{type: "state",
 		common: {type: type, name: name, role: "value", read: true, write: true}, native: {}});
-	adapter.setState("controls."+state, {ack: true, val: value});
+	await adapter.setStateAsync("controls."+state, {ack: true, val: value});
 }
 
 
@@ -193,8 +193,8 @@ async function control_reset() {  // heat demand control switched off - reset co
 		const on = parseInt(adapter.config.heatingcircuits[i].on);
 
 		adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
-		adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
-		adapter.setState("controls."+hc+".status", {ack: true, val: true});
+		await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
+		await adapter.setStateAsync("controls."+hc+".status", {ack: true, val: true});
 	}
 }
 
@@ -213,7 +213,7 @@ async function heatdemand() {
 			const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
 			settemp = state1.val;
 		} catch(e) {settemp = -1;}
-		adapter.setState(state+"settemp", {ack: true, val: settemp});
+		await adapter.setStateAsync(state+"settemp", {ack: true, val: settemp});
 
 		const state2 = "controls."+adapter.config.thermostats[i].hc+".savesettemp";
 		try {
@@ -226,19 +226,19 @@ async function heatdemand() {
 			const state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
-		adapter.setState(state+"actualtemp", {ack: true, val: acttemp});
+		await adapter.setStateAsync(state+"actualtemp", {ack: true, val: acttemp});
 		const deltam = parseFloat(adapter.config.thermostats[i].deltam);
 		const delta = settemp - acttemp;
 		const weight = parseInt(adapter.config.thermostats[i].weight);
 
 		if (delta > deltam) {
-			adapter.setState(state+"actualweight", {ack: true, val: weight});
+			await adapter.setStateAsync(state+"actualweight", {ack: true, val: weight});
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;
 			if (adapter.config.thermostats[i].hc == "hc4") w4 += weight;
 		}
-		else adapter.setState(state+"actualweight", {ack: true, val: 0});
+		else await adapter.setStateAsync(state+"actualweight", {ack: true, val: 0});
 	}
 
 	let hd = false;
@@ -259,7 +259,7 @@ async function heatdemand() {
 			if (hc == "hc3") w = w3;
 			if (hc == "hc4") w = w4;
 
-			adapter.setState(state+"weight", {ack: true, val: w});
+			await adapter.setStateAsync(state+"weight", {ack: true, val: w});
 
 			const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
 
@@ -270,21 +270,21 @@ async function heatdemand() {
 
 
 				if (w >= adapter.config.heatingcircuits[i].weighton && v == voff && hd ) {
-					adapter.setState(state+"status", {ack: true, val: true});
+					await adapter.setStateAsync(state+"status", {ack: true, val: true});
 					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
-					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
+					await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
 
 					if (adapter.config.heatingcircuits[i].savesettemp) {
 						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
-							if (adapter.config.thermostats[ii].hc == hc) adapter.setState(state+"savesettemp", {ack: true, val: 0});
+							if (adapter.config.thermostats[ii].hc == hc) await adapter.setStateAsync(state+"savesettemp", {ack: true, val: 0});
 						}
 					}
 				}
 
 				if (w <= adapter.config.heatingcircuits[i].weightoff && v == von && hd == true) {
-					adapter.setState(state+"status", {ack: true, val: false});
+					await adapter.setStateAsync(state+"status", {ack: true, val: false});
 					adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
-					adapter.setState(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
+					await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
 
 					if (adapter.config.heatingcircuits[i].savesettemp) {
 						for (let ii = 0;ii < adapter.config.thermostats.length;ii++) {
@@ -294,7 +294,7 @@ async function heatdemand() {
 									const state6 = await adapter.getForeignStateAsync(adapter.config.thermostats[ii].settemp);
 									settemp = state6.val;
 								} catch(e) {settemp = -1;}
-								adapter.setState(state+"savesettemp", {ack: true, val: settemp});
+								await adapter.setStateAsync(state+"savesettemp", {ack: true, val: settemp});
 							}
 						}
 					}
@@ -438,7 +438,7 @@ async function read_efficiency() {
 		}
 		await adapter.setObjectNotExists("statistics.efficiency",{type: "state",
 			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
-		adapter.setState("statistics.efficiency", {ack: true, val: value});
+		await adapter.setStateAsync("statistics.efficiency", {ack: true, val: value});
 	}
 }
 
@@ -510,7 +510,7 @@ async function stat(db,id,hour,state) {
 						if (result.result[0].val != null ) value = Math.round(result.result[c-1].val-result.result[0].val) ;
 						// adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
 					} catch(e) {}
-					adapter.setState(state, {ack: true, val: value});
+					adapter.setStateAsync(state, {ack: true, val: value});
 
 				}
 			});
