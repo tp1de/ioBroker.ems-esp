@@ -98,7 +98,7 @@ async function main () {
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
 	if (adapter.config.emsesp_active && adapter.config.ems_custom && !unloaded) await O.init(adapter,adapterIntervals);
-	if (adapter.config.syslog && !unloaded) await S.init(adapter);
+	if (adapter.config.syslog && !unloaded) await S.init(adapter,utils);
 
 	if (!unloaded) adapter.subscribeStates("*");
 
