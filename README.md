@@ -45,6 +45,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* integrate custom entities from ems-esp gateway
 * integrate syslog server for ems-esp gateway telegrams
 * add view for download (for showing syslog telegrams in vis)
 
