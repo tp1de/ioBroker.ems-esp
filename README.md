@@ -45,9 +45,8 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* integrate custom entities from ems-esp gateway
-* integrate syslog server for ems-esp gateway telegrams
-* add view for download (for showing syslog telegrams in vis)
+* integrate custom entities for ems-esp gateway
+* rework async functions
 
 ### 2.3.3 (2023-08-28)
 * error correction mySQL too many connections
