@@ -44,7 +44,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2023-09-03)
 * integrate custom entities for ems-esp gateway
 * rework async functions
 
