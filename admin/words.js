@@ -138,6 +138,19 @@ systemDictionary = {
 		"uk": "увімкніть пошук додаткових сутностей EMS+ (switchTimes & holidayModes) - напишіть доступ до потрібного",
 		"zh-cn": "能够寻找更多的电子信息管理系统+实体(奇怪制度和节假节制)—— 写出需要的准入"
 	},
+	"ems_custom_elements": {
+		"en": "read ems-esp custom elements",
+		"de": "ems-esp benutzerdefinierte Elemente lesen",
+		"ru": "читать ems-esp пользовательские элементы",
+		"pt": "ler elementos personalizados emsp",
+		"nl": "lees keizersnede elementen",
+		"fr": "lire les éléments personnalisés ems",
+		"it": "leggere ems-esp elementi personalizzati",
+		"es": "leer elementos personalizados emsp",
+		"pl": "czytanie elementów dostosownych",
+		"uk": "читати ems-esp користувальницьких елементів",
+		"zh-cn": "读写成的习俗要素"
+	  },	
 	"ems_polling": {
 		"en": "polling in sec",
 		"de": "Polling in Sek",

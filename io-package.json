@@ -187,6 +187,7 @@
     "ems_dallas_old_format": false,
     "ems_analog": false,
     "ems_custom": false,
+    "ems_custom_elements": false,
     "ems_energy": false,
     "ems_nominalpower": 15,
     "ems_modulation": "boiler.curburnpow",
