@@ -150,7 +150,7 @@ systemDictionary = {
 		"pl": "czytanie elementów dostosownych",
 		"uk": "читати ems-esp користувальницьких елементів",
 		"zh-cn": "读写成的习俗要素"
-	  },	
+	  },
 	"ems_polling": {
 		"en": "polling in sec",
 		"de": "Polling in Sek",
