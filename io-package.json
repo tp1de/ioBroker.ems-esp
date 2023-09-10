@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.4.0",
+    "version": "2.4.1",
     "news": {
+      "2.4.1": {
+        "en": "add parameter to read ems-esp custom elments",
+        "de": "parameter hinzufügen, um ems-esp benutzerdefinierte elments zu lesen",
+        "ru": "добавить параметр для чтения ems-esp custom elments",
+        "pt": "adicionar parâmetro para ler ems-esp personalizado elments",
+        "nl": "vertaling:",
+        "fr": "ajouter le paramètre pour lire les oreillettes personnalisées ems-esp",
+        "it": "aggiungere il parametro per leggere ems-esp",
+        "es": "añadir parámetro para leer elementos personalizados ems-esp",
+        "pl": "dodaje parametr do odczytu ems-espstandard elments",
+        "uk": "додати параметр для читання емс-esp користувацьких відкладень",
+        "zh-cn": "读图"
+      },
       "2.4.0": {
         "en": "integrate custom entities for ems-esp gateway\nrework async functions",
         "de": "individuelle einheiten für ems-esp gateway integrieren\nfunktionen von rework async",
@@ -80,19 +93,6 @@
         "pl": "trygon km200 haseł\nwymaga wersji węzłowej >==== 16\nzależności",
         "uk": "обрізка км200 паролів\nпотрібна версія вершини >= 16 мар\nоновлення залежності",
         "zh-cn": "三千公里的密码\n要求无纸 16\na. 最新受扶养人"
-      },
-      "2.2.0": {
-        "en": "enable history adapter for recordings and statistics\nupdate km200 states for valid range of min/max \navoid warnings from v2.1 related to min/max in combination with km200 state-list\nupdate dependencies",
-        "de": "geschichtsadapter für aufnahmen und statistiken aktivieren\nupdate km200 zustände für gültige reichweite von min/max\nwarnungen von v2.1 im zusammenhang mit min/max in kombination mit km200 state-list\naktualisierung der abhängigkeiten",
-        "ru": "включить адаптер истории для записи и статистики\nобновление km200 состояния для действительного диапазона мин/макс\nизбегать предупреждений от v2.1, связанных с мин/макс в сочетании с государственным списком km200\nобновление зависимостей",
-        "pt": "habilitar o adaptador de histórico para gravações e estatísticas\nupdate km200 estados para uma gama válida de min/max\nevitar avisos de v2.1 relacionados com min/max em combinação com km200 lista estadual\ndependências",
-        "nl": "in staat van geschiedenis adapter voor opnames en statistieken\nquality over quantity (qoq) releases vertaling:\nvermijd waarschuwingen van v2.1 gerelateerd aan min/max in combinatie met kilometers van staatslijst\nvertaling:",
-        "fr": "permettre l'adaptateur historique pour les enregistrements et les statistiques\nmettre à jour les états de km200 pour une plage valide de min/max\néviter les avertissements de v2.1 liés à min/max en combinaison avec la liste d'état km200\nmettre à jour les dépendances",
-        "it": "abilitare l'adattatore di storia per registrazioni e statistiche\naggiornamento km200 stati per una gamma valida di min/max\nevitare avvertenze da v2.1 relative a min/max in combinazione con km200\naggiornamento dipendenze",
-        "es": "adaptador de historia para grabaciones y estadísticas\nactualización km200 estados para rango válido de min/max\nevitar advertencias de v2.1 relacionadas con min/max en combinación con km200 lista estatal\ndependencias de actualización",
-        "pl": "pozwala na dopasowanie do nagrań i statystyk\nuaktualnianie km200 stanów dla prawidłowego zasięgu min/max\nuniknięcie ostrzeżeń z v2.1 powiązanych z min/max w połączeniu z km200 państwową listą\nzależności",
-        "uk": "увімкнути історичний адаптер для запису та статистики\nоновлення км200 штатів для діючого діапазону хв/max\nуникати попередження від v2.1, пов'язаних з хв/максом у поєднанні з км200 держав-лист\nоновлення залежності",
-        "zh-cn": "历史使历史适应者能够记录和统计数据\n图200 有效幅度的州\n避免因与国产200公里的小/米轴线有关的警惕\na. 最新受扶养人"
       }
     },
     "titleLang": {
