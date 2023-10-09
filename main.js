@@ -12,6 +12,7 @@
 
 const utils = require("@iobroker/adapter-core");
 const adapterName = require("./package.json").name.split(".").pop();
+const axios = require("axios");
 
 const K = require("./lib/km200.js");
 const E = require("./lib/ems.js");
