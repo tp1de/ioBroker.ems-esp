@@ -32,6 +32,9 @@ It can be used either for the original Bosch-group gateways or the ems-esp or bo
 
 The adapter is tested for the ems-esp gateway with latest firmware version (V3.6.0) of ESP32  
 
+## Energy recordings and statistics need an active database instance. I strongly recommend not to use InfluxDB V2 !!
+InfluxDB v2 needs the retention period to be set to > 2 years for storing historic values. In V2 this is a global parameter for all states ! 
+
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
 
 English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
@@ -45,6 +48,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* avoid duplicates on ems-esp energy statistics
 * replace request by axios
 * some corrections for ems-esp sensors and custom elements
 * move database config to parameter page
