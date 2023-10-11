@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.4.1",
+    "version": "2.5.0",
     "news": {
+      "2.5.0": {
+        "en": "avoid duplicates on ems-esp energy statistics\nreplace request by axios\nsome corrections for ems-esp sensors and custom elements\nmove database config to parameter page",
+        "de": "vermeidung von duplikaten bei der energiestatistik ems-esp\nersetzen von axios\neinige korrekturen für ems-esp sensoren und benutzerdefinierte elemente\ndatenbank config auf parameterseite verschieben",
+        "ru": "избегайте дубликатов на энергостатистике ems-esp\nзаменить запрос на axios\nнекоторые исправления для датчиков ems-esp и пользовательских элементов\nпереместить базу данных config на страницу параметров",
+        "pt": "evitar duplicatas em estatísticas de energia ems-esp\nsubstituir pedido por axios\nalgumas correções para sensores ems-esp e elementos personalizados\nmover banco de dados config para a página do parâmetro",
+        "nl": "vermijd duplicates op ems-esp energie statistieken\nvertaling:\nwat correcties voor keizersnedesensoren en gebruikelijke elementen\nquality over quantity (qoq) releases vertaling:",
+        "fr": "éviter les doublons sur les statistiques énergétiques ems-esp\nremplacer la demande par axios\nquelques corrections pour les capteurs ems-esp et les éléments personnalisés\ndéplacer la configuration de base de données vers la page de paramètres",
+        "it": "evitare duplicati sulle statistiche energetiche ems-esp\nsostituire la richiesta da assios\nalcune correzioni per sensori ems-esp ed elementi personalizzati\nspostare la configurazione del database nella pagina dei parametri",
+        "es": "evitar duplicados en las estadísticas de energía ems-esp\nsustituir la solicitud por axios\nalgunas correcciones para sensores ems-esp y elementos personalizados\nmover el config de la base de datos a la página del parámetro",
+        "pl": "uniknięcie duplikacji w statystykach energetycznych dotyczących energii\nzastępowanie\nniektóre korekty dla czujników i elementów zwyczajnych\nbaza danych na stronie parametrów",
+        "uk": "уникати дублікатів на емс-esp статистика енергії\nзамінити запит axios\nдеякі виправлення для датчиків емс-esp та користувацьких елементів\nперемістити налаштування бази даних на сторінку параметра",
+        "zh-cn": "避免出现能源统计方面的重复\n更正\n对传感器和习俗要素的一些更正\n移动数据库"
+      },
       "2.4.1": {
         "en": "add parameter to read ems-esp custom elments",
         "de": "parameter hinzufügen, um ems-esp benutzerdefinierte elments zu lesen",
@@ -80,19 +93,6 @@
         "pl": "Nowe funkcje: ems-esp gateway energy statistics (pol.)\nzmiana rzędu pokrewnych statystyk i nagrań w tablicy z nowego do starego",
         "uk": "Нова функція: статистика емс-есп шлюзу (споживання)\nзмінити порядок сортування енергій статистика та записи в масиві від нових до старих",
         "zh-cn": "新的功能:包括大门的能源统计(消费)\nb. 从新到旧的分类统计数据和录制的改变"
-      },
-      "2.2.1": {
-        "en": "trim km200 passwords\nrequire node version >= 16\nupdate dependencies",
-        "de": "trimm km200 passwörter\ndie node version >= anhang\naktualisierung der abhängigkeiten",
-        "ru": "трим км200 паролей\nтребуется версия node >= 16, 16, 16\nобновление зависимостей",
-        "pt": "trim km200 senhas\nexigem a versão do nó >= 16\ndependências",
-        "nl": "trim km 200 wachtwoorden\nvereist node versie 16\nvertaling:",
-        "fr": "trimestre km200 mots de passe\nrequièrent la version node > 16\nmettre à jour les dépendances",
-        "it": "trim km200 password\nbisogno di nodo versione >= 16\naggiornamento dipendenze",
-        "es": "trim km200 contraseñas\nnecesita la versión de nodo 16\ndependencias de actualización",
-        "pl": "trygon km200 haseł\nwymaga wersji węzłowej >==== 16\nzależności",
-        "uk": "обрізка км200 паролів\nпотрібна версія вершини >= 16 мар\nоновлення залежності",
-        "zh-cn": "三千公里的密码\n要求无纸 16\na. 最新受扶养人"
       }
     },
     "titleLang": {
