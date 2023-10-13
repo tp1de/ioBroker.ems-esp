@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "news": {
+      "2.5.1": {
+        "en": "correct hourly recordings timestamps for km200 (timezone difference)",
+        "de": "korrekte stundenaufnahmen zeitstempel für km200 (zeitzone differenz)",
+        "ru": "правильные почасовые записи временные метки для км200 (разница часового пояса)",
+        "pt": "tempos livres para km200 (diferença de fuso horário)",
+        "nl": "vertaling:",
+        "fr": "enregistrements horaires corrects pour le km200 (écart de fuseau horaire)",
+        "it": "corretto ore di registrazione timestamp per km200 (differenza di fuso orario)",
+        "es": "horaria correcta grabaciones timetamps para km200 ( diferencia horaria)",
+        "pl": "poprawne nagranie o długości geograficznej na km200 (różnice czasowe)",
+        "uk": "правильного часу записує часові запаси на км200 (різниця денногозону)",
+        "zh-cn": "正确地记录200公里(区差异)的时间限制"
+      },
       "2.5.0": {
         "en": "avoid duplicates on ems-esp energy statistics\nreplace request by axios\nsome corrections for ems-esp sensors and custom elements\nmove database config to parameter page",
         "de": "vermeidung von duplikaten bei der energiestatistik ems-esp\nersetzen von axios\neinige korrekturen für ems-esp sensoren und benutzerdefinierte elemente\ndatenbank config auf parameterseite verschieben",
@@ -80,19 +93,6 @@
         "pl": "unikanie błędów w statystyce energii dla mySQL",
         "uk": "уникнути помилок квл в енергетичній статистиці для mySQL",
         "zh-cn": "避免我的SQL公司在能源统计方面的缺陷"
-      },
-      "2.3.0": {
-        "en": "New function: ems-esp gateway energy statistics (consumption)\nchange sorting order of enegry statistics & recordings in array from new to old",
-        "de": "Neue Funktion: ems-esp Gateway Energiestatistik (Verbrauch)\nsortierreihenfolge ändern, z.b. statistiken & aufzeichnungen in array von neu zu alt",
-        "ru": "Новая функция: ems-esp шлюзная энергетическая статистика (потребление)\nизменить порядок сортировки enegry статистика и записи в массиве от нового до старого",
-        "pt": "Nova função: ems-esp gateway estatísticas de energia (consumo)\nmudar a ordem de classificação de estatísticas de enegry & gravações em array de novo para velho",
-        "nl": "Nieuwe functie: gat-energie statistieken\nveranderingsorde van enegry statistieken in array van nieuw tot oude",
-        "fr": "Nouvelle fonction: statistiques énergétiques des passerelles ems-esp (consommation)\nchanger l'ordre de tri des statistiques d'enegry et enregistrements en tableau de nouveaux à anciens",
-        "it": "Nuova funzione: ems-esp gateway statistiche energetiche (consumo)\ncambiare ordine di selezione di enegry statistiche e registrazioni in array da nuovo a vecchio",
-        "es": "Nueva función: ems-esp estadísticas de energía de gateway (consumo)\ncambio orden de clasificación de estadísticas enegry & grabaciones en array de nuevo a viejo",
-        "pl": "Nowe funkcje: ems-esp gateway energy statistics (pol.)\nzmiana rzędu pokrewnych statystyk i nagrań w tablicy z nowego do starego",
-        "uk": "Нова функція: статистика емс-есп шлюзу (споживання)\nзмінити порядок сортування енергій статистика та записи в масиві від нових до старих",
-        "zh-cn": "新的功能:包括大门的能源统计(消费)\nb. 从新到旧的分类统计数据和录制的改变"
       }
     },
     "titleLang": {
