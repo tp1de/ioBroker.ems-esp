@@ -48,7 +48,8 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Update energy statistics and recordings for history and influxdb 
+* Update energy statistics and recordings for history and influxdb
+* include warning in log that InfluxDB V2 will not be supported in future versions anymore
 
 ### 2.5.1 (2023-10-13)
 * correct hourly recordings timestamps for km200 (timezone difference)

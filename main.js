@@ -93,7 +93,29 @@ async function main () {
 		db = "";
 		if (adapter.config.statistics) adapter.log.info("no database instance selected for statistics - statistics partly disabled");
 	}
-	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+	else {
+		db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+
+		// Test for InfluxDB V2 - Set warning
+
+		if (adapter.config.db.trim() == "influxdb") {
+
+			let obj = await adapter.getForeignObjectAsync("system.adapter."+db);
+			//adapter.log.info(JSON.stringify(obj));
+			let dbversion = "";
+			try {dbversion = obj.native.dbversion;} catch(e) {}
+			
+			if (dbversion == "2.x") {
+				adapter.log.warn("****************************************************************************");
+				adapter.log.warn("InfluxDB V2 will not be supported in future adapter versions");
+				adapter.log.warn("Database might contain duplicate values - you need to delete yourself");
+				adapter.log.warn("InfluxDB V2 is not fully supported");
+				adapter.log.warn("****************************************************************************");
+			}
+		}
+	}
+
+
 
 	if (!unloaded && adapter.config.statistics) await init_statistics();
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
