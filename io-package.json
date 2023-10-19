@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "news": {
+      "2.5.2": {
+        "en": "Update energy statistics and recordings for history and influxdb\ninclude warning in log that InfluxDB V2 will not be supported in future versions anymore",
+        "de": "Aktualisierung von Energiestatistiken und -aufnahmen für Geschichte und Influxdb\nenthalten Warnung in Protokoll, dass InfluxDB V2 in zukünftigen Versionen nicht mehr unterstützt wird",
+        "ru": "Обновить энергетическую статистику и записи для истории и influxdb\nвключить предупреждение в лог, что InfluxDB V2 больше не будет поддерживаться в будущих версиях",
+        "pt": "Atualizar estatísticas de energia e gravações para história e influuxdb\nincluir aviso no log que o InfluxDB V2 não será suportado em versões futuras",
+        "nl": "Update energie statistieken en opnames voor geschiedenis en influxdb\nin het logboek dat InfluxDB V2 niet meer zal worden ondersteund in toekomstige versies",
+        "fr": "Mettre à jour les statistiques énergétiques et les enregistrements pour l'histoire et l'influxdb\ninclure l'avertissement dans le journal que InfluxDB V2 ne sera plus supporté dans les versions futures",
+        "it": "Aggiornare le statistiche e le registrazioni energetiche per la storia e l'afflusso\nincludere avviso nel registro che InfluxDB V2 non sarà più supportato nelle versioni future",
+        "es": "Actualizar estadísticas y grabaciones energéticas para historia e influxdb\nincluir la advertencia en el registro de que InfluxDB V2 ya no será compatible en versiones futuras",
+        "pl": "Dane statystyczne i nagrania dla historii i napływu\ninfluxDB V2 nie będzie wspierana w przyszłych wersjach",
+        "uk": "Оновити статистику та записи для історії та інфлюкс\nввімкніть попередження в журналі, який InfluxDB V2 не буде підтримуватися в наступних версіях",
+        "zh-cn": "二. 最新能源统计和历史和流感记录\n包括警告,在今后版本中不会支持流落街头的第五2行。"
+      },
       "2.5.1": {
         "en": "correct hourly recordings timestamps for km200 (timezone difference)",
         "de": "korrekte stundenaufnahmen zeitstempel für km200 (zeitzone differenz)",
@@ -80,19 +93,6 @@
         "pl": "sQL optymalizuje dostęp do statystyk energetycznych",
         "uk": "оптимізуйте доступ до бази даних SQL",
         "zh-cn": "最佳可得能源统计"
-      },
-      "2.3.1": {
-        "en": "avoid sql errors within energy statistics for mySQL",
-        "de": "sql Fehler in der Energiestatistik für mySQL vermeiden",
-        "ru": "избегать ошибок sql в энергетической статистике для mySQL",
-        "pt": "evitar erros sql dentro estatísticas de energia para mySQL",
-        "nl": "vermijden sql fouten in energie statistieken voor mySQL",
-        "fr": "éviter les erreurs de sql dans les statistiques énergétiques de mySQL",
-        "it": "evitare errori sql all'interno di statistiche energetiche per mySQL",
-        "es": "evitar errores sql dentro de estadísticas de energía para mySQL",
-        "pl": "unikanie błędów w statystyce energii dla mySQL",
-        "uk": "уникнути помилок квл в енергетичній статистиці для mySQL",
-        "zh-cn": "避免我的SQL公司在能源统计方面的缺陷"
       }
     },
     "titleLang": {
