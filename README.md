@@ -48,7 +48,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Retry http post for KM200 on error
+* Replace axios post by axios put for KM200 gateway to secure that write changes are accepted
  
 ### 2.5.2 (2023-10-19)
 * Update energy statistics and recordings for history and influxdb
