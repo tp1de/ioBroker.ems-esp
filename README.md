@@ -35,6 +35,9 @@ The adapter is tested for the ems-esp gateway with latest firmware version (V3.6
 ## Energy recordings and statistics need an active database instance. I strongly recommend not to use InfluxDB V2 !!
 InfluxDB v2 needs the retention period to be set to > 2 years for storing historic values. In V2 this is a global parameter for all states ! 
 
+## NEW: Connection status shown in instances overview 
+
+
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
 
 English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
@@ -47,6 +50,9 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Add indicator for connection status of the gateways within instances overview
+
 ### 2.5.3 (2023-10-29)
 * Replace axios post by axios put for KM200 gateway to secure that write changes are accepted
 
