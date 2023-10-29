@@ -47,9 +47,9 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.5.3 (2023-10-29)
 * Replace axios post by axios put for KM200 gateway to secure that write changes are accepted
- 
+
 ### 2.5.2 (2023-10-19)
 * Update energy statistics and recordings for history and influxdb
 * include warning in log that InfluxDB V2 will not be supported in future versions anymore

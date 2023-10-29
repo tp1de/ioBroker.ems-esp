@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.5.2",
+    "version": "2.5.3",
     "news": {
+      "2.5.3": {
+        "en": "Replace axios post by axios put for KM200 gateway to secure that write changes are accepted",
+        "de": "Ersetzen axios post von axios für KM200 Gateway gesetzt, um sicherzustellen, dass Schreibänderungen akzeptiert werden",
+        "ru": "Замените axios post by axios положить для KM200 шлюз, чтобы обеспечить, что пишите изменения принимаются",
+        "pt": "Substitua axios post por axios colocado para gateway KM200 para garantir que as alterações de gravação são aceitas",
+        "nl": "Vertaling:",
+        "fr": "Remplacer le poste axios par axios mis pour passerelle KM200 pour s'assurer que les changements d'écriture sont acceptés",
+        "it": "Sostituire l'assios post da assios messo per KM200 gateway per garantire che i cambiamenti di scrittura sono accettati",
+        "es": "Reemplazar el puesto de axios por eje puesto para la puerta de KM200 para asegurar que los cambios de escritura son aceptados",
+        "pl": "Replace axios post by axios put for the KM200 gateway to secure the write changes (ang.)",
+        "uk": "Замініть аксіо-пошту аксіосом, щоб забезпечити, що записуються зміни приймаються",
+        "zh-cn": "将KM200门路的焦虑员额改为一个蓝图,以确保接受修改。"
+      },
       "2.5.2": {
         "en": "Update energy statistics and recordings for history and influxdb\ninclude warning in log that InfluxDB V2 will not be supported in future versions anymore",
         "de": "Aktualisierung von Energiestatistiken und -aufnahmen für Geschichte und Influxdb\nenthalten Warnung in Protokoll, dass InfluxDB V2 in zukünftigen Versionen nicht mehr unterstützt wird",
@@ -80,19 +93,6 @@
         "pl": "poprawka mySQL zbyt wiele połączeń\nnazwa bazy danych pochodzi od db-instance settings",
         "uk": "виправлення помилок mySQL занадто багато підключень\nчитати ім'я бази даних з налаштувань db-instance",
         "zh-cn": "错误地纠正了我的SQL过多的联系\n阅读数据库"
-      },
-      "2.3.2": {
-        "en": "optimize SQL access for energy statistics",
-        "de": "optimieren des SQL-Zugangs zur Energiestatistik",
-        "ru": "оптимизировать SQL доступ для энергетической статистики",
-        "pt": "otimizar o acesso SQL para estatísticas de energia",
-        "nl": "vertaling:",
-        "fr": "optimiser l'accès SQL aux statistiques énergétiques",
-        "it": "ottimizzare l'accesso SQL per le statistiche energetiche",
-        "es": "optimizar el acceso SQL para estadísticas de energía",
-        "pl": "sQL optymalizuje dostęp do statystyk energetycznych",
-        "uk": "оптимізуйте доступ до бази даних SQL",
-        "zh-cn": "最佳可得能源统计"
       }
     },
     "titleLang": {
