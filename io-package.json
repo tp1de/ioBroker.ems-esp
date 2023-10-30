@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.5.3",
+    "version": "2.6.0",
     "news": {
+      "2.6.0": {
+        "en": "Add indicator for connection status of the gateways within instances overview",
+        "de": "Anzeige für den Verbindungsstatus der Gateways innerhalb der Instanzenübersicht hinzufügen",
+        "ru": "Добавьте индикатор для состояния соединения шлюзов в обзор инстанций",
+        "pt": "Adicionar indicador para status de conexão dos gateways dentro da visão geral das instâncias",
+        "nl": "Advocaat indicator voor connectiestatus van de poort binnen de instanties",
+        "fr": "Ajouter un indicateur pour l'état de connexion des passerelles dans les instances aperçu",
+        "it": "Aggiungi indicatore per lo stato di connessione dei gateway all'interno della panoramica delle istanze",
+        "es": "Añadir indicador para el estado de conexión de las pasarelas dentro de las instancias",
+        "pl": "Addd indicator for connection state of the gateways in cases of overview",
+        "uk": "Додавання індикатора стану підключення шлюзів в огляді екземплярів",
+        "zh-cn": "在总括范围内增加大门连接状况的指标"
+      },
       "2.5.3": {
         "en": "Replace axios post by axios put for KM200 gateway to secure that write changes are accepted",
         "de": "Ersetzen axios post von axios für KM200 Gateway gesetzt, um sicherzustellen, dass Schreibänderungen akzeptiert werden",
@@ -80,19 +93,6 @@
         "pl": "zintegrowane konstytucje dla bramy ems-esp\nfunkcja rezonansowa",
         "uk": "інтегрувати користувацькі суб'єкти для емс-esp шлюзу\nфункції асинхронів",
         "zh-cn": "纳入进入大门的习俗实体\n重新编审职能"
-      },
-      "2.3.3": {
-        "en": "error correction mySQL too many connections\nread database name from db-instance settings",
-        "de": "fehlerkorrektur mySQL zu viele Verbindungen\ndatenbankname von db-instance-einstellungen lesen",
-        "ru": "исправление ошибок mySQL слишком много соединений\nчитать имя базы данных из db-instance настроек",
-        "pt": "correção de erro mySQL muitas conexões\nler o nome do banco de dados de configurações de db-instance",
-        "nl": "error correctie mySQL te veel connecties\nvertaling:",
-        "fr": "correction d'erreur mySQL trop de connexions\nlire le nom de la base de données des paramètres db-instance",
-        "it": "correzione errore mySQL troppe connessioni\nleggere il nome del database dalle impostazioni db-instance",
-        "es": "corrección de error mySQL demasiadas conexiones\nread database name from db-instance settings",
-        "pl": "poprawka mySQL zbyt wiele połączeń\nnazwa bazy danych pochodzi od db-instance settings",
-        "uk": "виправлення помилок mySQL занадто багато підключень\nчитати ім'я бази даних з налаштувань db-instance",
-        "zh-cn": "错误地纠正了我的SQL过多的联系\n阅读数据库"
       }
     },
     "titleLang": {

@@ -50,7 +50,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.6.0 (2023-10-30)
 * Add indicator for connection status of the gateways within instances overview
 
 ### 2.5.3 (2023-10-29)
