@@ -83,21 +83,21 @@ if (module && module.parent) {
 
 async function main () {
 
+	if (adapter.config.states_reorg == true) await delete_states_emsesp();
+
 	await adapter.setObjectNotExistsAsync("info.connection",{type: "state",
 		common: {type: "boolean", name: "connected to gateways", role: "indicator.connected", read: true, write: false, def: false}, native: {}});
-	adapter.setState('info.connection', false, true);
+	await adapter.setStateAsync("info.connection", false, true);
 
 	await adapter.setObjectNotExistsAsync("info.connection_km200",{type: "state",
 		common: {type: "boolean", name: "connected to km200 gateway", role: "indicator.connected", read: true, write: false, def: false}, native: {}});
-	adapter.setState('info.connection_km200', null, true);
+	await adapter.setStateAsync("info.connection_km200", null, true);
 
 	await adapter.setObjectNotExistsAsync("info.connection_ems",{type: "state",
-	common: {type: "boolean", name: "connected to ems-esp gateway", role: "indicator.connected", read: true, write: false, def: false}, native: {}});
-	adapter.setState('info.connection_ems', null, true);
+		common: {type: "boolean", name: "connected to ems-esp gateway", role: "indicator.connected", read: true, write: false, def: false}, native: {}});
+	await adapter.setStateAsync("info.connection_ems", null, true);
 
 	db = adapter.config.database_instance;
-
-	if (adapter.config.states_reorg == true) await delete_states_emsesp();
 
 	// Read own custom states
 
@@ -112,11 +112,11 @@ async function main () {
 
 		if (adapter.config.db.trim() == "influxdb") {
 
-			let obj = await adapter.getForeignObjectAsync("system.adapter."+db);
+			const obj = await adapter.getForeignObjectAsync("system.adapter."+db);
 			//adapter.log.info(JSON.stringify(obj));
 			let dbversion = "";
 			try {dbversion = obj.native.dbversion;} catch(e) {}
-			
+
 			if (dbversion == "2.x") {
 				adapter.log.warn("****************************************************************************");
 				adapter.log.warn("InfluxDB V2 will not be supported in future adapter versions");
@@ -132,7 +132,7 @@ async function main () {
 
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
 	if (adapter.config.km200_active && !unloaded)  await K.init(adapter,utils,adapterIntervals);
-	
+
 
 	if (adapter.config.emsesp_active && adapter.config.ems_custom && !unloaded) await O.init(adapter,adapterIntervals);
 	if (adapter.config.syslog && !unloaded) await S.init(adapter,utils);
@@ -159,16 +159,17 @@ async function main () {
 //--------- functions ---------------------------------------------------------------------------------------------------------
 
 async function info() {
+	try {
+		const ems = (await adapter.getStateAsync("info.connection_ems")).val;
+		const km200 = (await adapter.getStateAsync("info.connection_km200")).val;
 
-	const ems = (await adapter.getStateAsync("info.connection_ems")).val;
-	const km200 = (await adapter.getStateAsync("info.connection_km200")).val;
+		if (ems == null && km200 == true) adapter.setState("info.connection", true, true);
+		if (ems == true && km200 == null) adapter.setState("info.connection", true, true);
+		if (ems == true && km200 == true) adapter.setState("info.connection", true, true);
+		if (ems == false || km200 == false) adapter.setState("info.connection", false, true);
+	} catch(e) {}
 
-	if (ems == null && km200 == true) adapter.setState('info.connection', true, true);
-	if (ems == true && km200 == null) adapter.setState('info.connection', true, true);
-	if (ems == true && km200 == true) adapter.setState('info.connection', true, true);
-	if (ems == false || km200 == false) adapter.setState('info.connection', false, true);
-
-} 
+}
 
 
 
