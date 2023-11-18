@@ -53,9 +53,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 ### **WORK IN PROGRESS**
 * correct notifications and systeminfo for km200
 
-### 2.6.2 (2023-11-18)
-* correct notifications and systeminfo for km200
-
 ### 2.6.1 (2023-11-01)
 * Avoid crash on adapter start while delete states is used in parameters
 
