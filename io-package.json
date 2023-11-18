@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.6.1",
+    "version": "2.6.2",
     "news": {
+      "2.6.2": {
+        "en": "correct notifications and systeminfo for km200",
+        "de": "korrekte benachrichtigungen und systeminfo für km200",
+        "ru": "правильные уведомления и системаinfo для km200",
+        "pt": "notificações corretas e systeminfo para km200",
+        "nl": "vertaling:",
+        "fr": "notifications correctes et systeminfo pour km200",
+        "it": "notifiche corrette e systeminfo per km200",
+        "es": "notificaciones correctas y systeminfo para km200",
+        "pl": "poprawne noty i informacja systemowa na km200",
+        "uk": "правильні повідомлення та системаinfo для км200",
+        "zh-cn": "正确通知和系统4 200公里"
+      },
       "2.6.1": {
         "en": "Avoid crash on adapter start while delete states is used in parameters",
         "de": "Vermeiden Sie Crash auf Adapterstart, während Löschzustände in Parametern verwendet werden",
@@ -80,19 +93,6 @@
         "pl": "uniknięcie duplikacji w statystykach energetycznych dotyczących energii\nzastępowanie\nniektóre korekty dla czujników i elementów zwyczajnych\nbaza danych na stronie parametrów",
         "uk": "уникати дублікатів на емс-esp статистика енергії\nзамінити запит axios\nдеякі виправлення для датчиків емс-esp та користувацьких елементів\nперемістити налаштування бази даних на сторінку параметра",
         "zh-cn": "避免出现能源统计方面的重复\n更正\n对传感器和习俗要素的一些更正\n移动数据库"
-      },
-      "2.4.1": {
-        "en": "add parameter to read ems-esp custom elments",
-        "de": "parameter hinzufügen, um ems-esp benutzerdefinierte elments zu lesen",
-        "ru": "добавить параметр для чтения ems-esp custom elments",
-        "pt": "adicionar parâmetro para ler ems-esp personalizado elments",
-        "nl": "vertaling:",
-        "fr": "ajouter le paramètre pour lire les oreillettes personnalisées ems-esp",
-        "it": "aggiungere il parametro per leggere ems-esp",
-        "es": "añadir parámetro para leer elementos personalizados ems-esp",
-        "pl": "dodaje parametr do odczytu ems-espstandard elments",
-        "uk": "додати параметр для читання емс-esp користувацьких відкладень",
-        "zh-cn": "读图"
       }
     },
     "titleLang": {
