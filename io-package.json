@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.6.2",
+    "version": "2.6.3",
     "news": {
+      "2.6.3": {
+        "en": "Update dependencies",
+        "de": "Abhängigkeiten aktualisieren",
+        "ru": "Обновить зависимости",
+        "pt": "Dependências de atualização",
+        "nl": "Update afhankelijkheid",
+        "fr": "Mettre à jour les dépendances",
+        "it": "Dipendenze di aggiornamento",
+        "es": "Actualizar las dependencias",
+        "pl": "Zależności aktualnej",
+        "uk": "Оновлення залежності",
+        "zh-cn": "最新依赖"
+      },
       "2.6.2": {
         "en": "correct notifications and systeminfo for km200",
         "de": "korrekte benachrichtigungen und systeminfo für km200",
@@ -80,19 +93,6 @@
         "pl": "poprawne nagranie o długości geograficznej na km200 (różnice czasowe)",
         "uk": "правильного часу записує часові запаси на км200 (різниця денногозону)",
         "zh-cn": "正确地记录200公里(区差异)的时间限制"
-      },
-      "2.5.0": {
-        "en": "avoid duplicates on ems-esp energy statistics\nreplace request by axios\nsome corrections for ems-esp sensors and custom elements\nmove database config to parameter page",
-        "de": "vermeidung von duplikaten bei der energiestatistik ems-esp\nersetzen von axios\neinige korrekturen für ems-esp sensoren und benutzerdefinierte elemente\ndatenbank config auf parameterseite verschieben",
-        "ru": "избегайте дубликатов на энергостатистике ems-esp\nзаменить запрос на axios\nнекоторые исправления для датчиков ems-esp и пользовательских элементов\nпереместить базу данных config на страницу параметров",
-        "pt": "evitar duplicatas em estatísticas de energia ems-esp\nsubstituir pedido por axios\nalgumas correções para sensores ems-esp e elementos personalizados\nmover banco de dados config para a página do parâmetro",
-        "nl": "vermijd duplicates op ems-esp energie statistieken\nvertaling:\nwat correcties voor keizersnedesensoren en gebruikelijke elementen\nquality over quantity (qoq) releases vertaling:",
-        "fr": "éviter les doublons sur les statistiques énergétiques ems-esp\nremplacer la demande par axios\nquelques corrections pour les capteurs ems-esp et les éléments personnalisés\ndéplacer la configuration de base de données vers la page de paramètres",
-        "it": "evitare duplicati sulle statistiche energetiche ems-esp\nsostituire la richiesta da assios\nalcune correzioni per sensori ems-esp ed elementi personalizzati\nspostare la configurazione del database nella pagina dei parametri",
-        "es": "evitar duplicados en las estadísticas de energía ems-esp\nsustituir la solicitud por axios\nalgunas correcciones para sensores ems-esp y elementos personalizados\nmover el config de la base de datos a la página del parámetro",
-        "pl": "uniknięcie duplikacji w statystykach energetycznych dotyczących energii\nzastępowanie\nniektóre korekty dla czujników i elementów zwyczajnych\nbaza danych na stronie parametrów",
-        "uk": "уникати дублікатів на емс-esp статистика енергії\nзамінити запит axios\nдеякі виправлення для датчиків емс-esp та користувацьких елементів\nперемістити налаштування бази даних на сторінку параметра",
-        "zh-cn": "避免出现能源统计方面的重复\n更正\n对传感器和习俗要素的一些更正\n移动数据库"
       }
     },
     "titleLang": {
