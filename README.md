@@ -293,7 +293,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 ## License
 MIT License
 
-Copyright (c) 2023 Thomas Petrick <tp1degit@gmail.com>
+Copyright (c) 2024 Thomas Petrick <tp1degit@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
