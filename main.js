@@ -231,7 +231,7 @@ async function init_controls() {
 }
 
 async function control_state(state,type,name,value,write) {
-	await adapter.setObjectNotExistsAsync("controls."+state,{type: "state",
+	await adapter.setObjectAsync("controls."+state,{type: "state",
 		common: {type: type, name: name, role: "value", read: true, write: write}, native: {}});
 	await adapter.setStateAsync("controls."+state, {ack: true, val: value});
 }
