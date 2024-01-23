@@ -237,8 +237,8 @@ async function control_state(state,type,name,value,write) {
 		common: {type: type, name: name, role: "value", read: true, write: write}, native: {}});
 	if (value != "") await adapter.setStateAsync("controls."+state, {ack: true, val: value});
 	else {
-		const active = (await adapter.getStateAsync("controls."+state)).val;
-		if (active == undefined) await adapter.setStateAsync("controls."+state, {ack: true, val: true});
+		try {const active = (await adapter.getStateAsync("controls."+state)).val;}
+		catch (e) {await adapter.setStateAsync("controls."+state, {ack: true, val: true});}
 	}
 }
 
