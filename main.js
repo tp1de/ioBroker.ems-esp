@@ -192,7 +192,7 @@ async function enable_state(stateid,retention,interval) {
 async function init_controls() {
 	try {
 
-		const active = control_state("active","boolean", "hc control active", "" ,true);
+		const active = control_state("active","boolean", "heatdemand control active", "" ,true);
 
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 			const state = adapter.config.heatingcircuits[i].hc+".";
