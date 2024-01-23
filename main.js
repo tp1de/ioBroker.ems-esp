@@ -341,8 +341,8 @@ async function heatdemand() {
 				const v = state5.val;
 				const von = parseInt(adapter.config.heatingcircuits[i].on);
 				const voff = parseInt(adapter.config.heatingcircuits[i].off);
-				let weighton =0; try {weighton = (await adapter.getStateAsync(state+"weighton")).val;} catch(e) {adapter.log.error(e);}
-				let weightoff =0; try {weightoff = (await adapter.getStateAsync(state+"weightoff")).val;} catch(e) {adapter.log.error(e);}
+				let weighton = 0; try {weighton = (await adapter.getStateAsync(state+"weighton")).val;} catch(e) {adapter.log.error(e);}
+				let weightoff = 0; try {weightoff = (await adapter.getStateAsync(state+"weightoff")).val;} catch(e) {adapter.log.error(e);}
 
 				if (w >= weighton && v == voff && hd ) {
 					await adapter.setStateAsync(state+"status", {ack: true, val: true});
