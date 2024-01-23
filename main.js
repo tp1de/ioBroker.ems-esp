@@ -349,6 +349,8 @@ async function heatdemand() {
 				let weighton = 0; try {weighton = (await adapter.getStateAsync(state+"weighton")).val;} catch(e) {adapter.log.error(e);}
 				let weightoff = 0; try {weightoff = (await adapter.getStateAsync(state+"weightoff")).val;} catch(e) {adapter.log.error(e);}
 
+				adapter.log.info("von:"+von+ " voff:"+voff+ " weighton:"+weighton+ " weightoff:"+ weightoff+ "hd:"+hd);
+
 				if (w >= weighton && v == voff && hd ) {
 					await adapter.setStateAsync(state+"status", {ack: true, val: true});
 					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
