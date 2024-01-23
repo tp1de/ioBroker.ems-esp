@@ -149,11 +149,10 @@ async function main () {
 
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-
-	await init_controls();
-	control_state("active","boolean", "hc control active", adapter.config.heatdemand,true);
-	await heatdemand();
-	adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
+	if (adapter.config.heatdemand) {
+		await init_controls();
+		await heatdemand(); adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
+	}
 
 
 }
@@ -193,6 +192,8 @@ async function enable_state(stateid,retention,interval) {
 async function init_controls() {
 	try {
 
+		const active = control_state("active","boolean", "hc control active", "" ,true);
+
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 			const state = adapter.config.heatingcircuits[i].hc+".";
 			control_state(state+"weighton","number", "hc weight for switching on", parseFloat(adapter.config.heatingcircuits[i].weighton),true);
@@ -201,10 +202,9 @@ async function init_controls() {
 			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state,false);
 			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on,false);
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off,false);
-			control_state(state+"status","boolean", "hc control status",false);
+			control_state(state+"status","boolean", "hc control status",true,false);
 			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1,false);
-			if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) control_state("active","boolean", "hc control active", true);
-			else control_state("active","boolean", "hc control active", true);
+
 		}
 
 
@@ -235,7 +235,11 @@ async function init_controls() {
 async function control_state(state,type,name,value,write) {
 	await adapter.setObjectAsync("controls."+state,{type: "state",
 		common: {type: type, name: name, role: "value", read: true, write: write}, native: {}});
-	await adapter.setStateAsync("controls."+state, {ack: true, val: value});
+	if (value != "") await adapter.setStateAsync("controls."+state, {ack: true, val: value});
+	else {
+		const active = (await adapter.getStateAsync("controls."+state)).val;
+		if (active == undefined) await adapter.setStateAsync("controls."+state, {ack: true, val: true});
+	}
 }
 
 
