@@ -193,16 +193,16 @@ async function init_controls() {
 
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 			const state = adapter.config.heatingcircuits[i].hc+".";
-			control_state(state+"weighton","number", "hc weight for switching on", parseFloat(adapter.config.heatingcircuits[i].weighton));
-			control_state(state+"weightoff","number", "hc weight for switching off", parseFloat(adapter.config.heatingcircuits[i].weightoff));
-			control_state(state+"weight","number", "hc weight actual", 99);
-			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state);
-			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on);
-			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off);
-			control_state(state+"status","boolean", "hc control status");
-			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1);
+			control_state(state+"weighton","number", "hc weight for switching on", parseFloat(adapter.config.heatingcircuits[i].weighton),true);
+			control_state(state+"weightoff","number", "hc weight for switching off", parseFloat(adapter.config.heatingcircuits[i].weightoff),true);
+			control_state(state+"weight","number", "hc weight actual", 99,false);
+			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state,false);
+			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on,false);
+			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off,false);
+			control_state(state+"status","boolean", "hc control status",false);
+			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1,false);
 			if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) control_state("active","boolean", "hc control active", true);
-			else control_state("active","boolean", "hc control active", false);
+			else control_state("active","boolean", "hc control active", true);
 		}
 
 
@@ -213,16 +213,16 @@ async function init_controls() {
 				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
 				value = state1.val;
 			} catch(e) {value = -99;}
-			control_state(state+"settemp","number", "set temperature", value);
+			control_state(state+"settemp","number", "set temperature", value,false);
 			try {
 				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 				value = state1.val;
 			} catch(e) {value = -99;}
-			control_state(state+"actualtemp","number", "actual temperature", value);
-			control_state(state+"actualweight","number", "actual weight", 0);
+			control_state(state+"actualtemp","number", "actual temperature", value,false);
+			control_state(state+"actualweight","number", "actual weight", 0,false);
 
-			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight));
-			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam));
+			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight),true);
+			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam),true);
 
 		}
 
@@ -230,9 +230,9 @@ async function init_controls() {
 
 }
 
-async function control_state(state,type,name,value) {
+async function control_state(state,type,name,value,write) {
 	await adapter.setObjectNotExistsAsync("controls."+state,{type: "state",
-		common: {type: type, name: name, role: "value", read: true, write: true}, native: {}});
+		common: {type: type, name: name, role: "value", read: true, write: write}, native: {}});
 	await adapter.setStateAsync("controls."+state, {ack: true, val: value});
 }
 
