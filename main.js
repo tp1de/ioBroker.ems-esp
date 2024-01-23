@@ -322,18 +322,19 @@ async function heatdemand() {
 	} catch (e) {}
 
 
-	if (hd) {
-		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
-			const hc = adapter.config.heatingcircuits[i].hc;
-			const state = "controls."+hc+".";
+	for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
+		const hc = adapter.config.heatingcircuits[i].hc;
+		const state = "controls."+hc+".";
 
-			let w = 99;
-			if (hc == "hc1") w = w1;
-			if (hc == "hc2") w = w2;
-			if (hc == "hc3") w = w3;
-			if (hc == "hc4") w = w4;
+		let w = 99;
+		if (hc == "hc1") w = w1;
+		if (hc == "hc2") w = w2;
+		if (hc == "hc3") w = w3;
+		if (hc == "hc4") w = w4;
 
-			await adapter.setStateAsync(state+"weight", {ack: true, val: w});
+		await adapter.setStateAsync(state+"weight", {ack: true, val: w});
+
+		if (hd) {
 
 			const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
 
