@@ -278,18 +278,39 @@ async function heatdemand() {
 			acttemp = state4.val;
 		} catch(e) {acttemp = -99;}
 		await adapter.setStateAsync(state+"actualtemp", {ack: true, val: acttemp});
-		const deltam = parseFloat(adapter.config.thermostats[i].deltam);
-		const delta = settemp - acttemp;
-		const weight = parseInt(adapter.config.thermostats[i].weight);
 
-		if (delta > deltam) {
+		//const deltam = parseFloat(adapter.config.thermostats[i].deltam);
+		let deltam = 0;
+		try{deltam = parseFloat((await adapter.getStateAsync(state+"deltam")).val);} catch(e) {adapter.log.error(e);}
+
+		const delta = settemp - acttemp;
+
+		//const weight = parseInt(adapter.config.thermostats[i].weight);
+		let weight = 0;
+		try {weight = (await adapter.getStateAsync(state+"weight")).val;} catch(e) {adapter.log.error(e);}
+
+		let actualweight = (await adapter.getStateAsync(state+"actualweight")).val;
+		if (delta >= deltam) {
 			await adapter.setStateAsync(state+"actualweight", {ack: true, val: weight});
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;
 			if (adapter.config.thermostats[i].hc == "hc4") w4 += weight;
 		}
-		else await adapter.setStateAsync(state+"actualweight", {ack: true, val: 0});
+
+		if (delta < deltam && delta >= 0 && actualweight > 0) {
+			actualweight = weight;
+			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
+			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
+			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;
+			if (adapter.config.thermostats[i].hc == "hc4") w4 += weight;
+		}
+
+		if (delta < 0) {
+			actualweight = 0;
+			await adapter.setStateAsync(state+"actualweight", {ack: true, val: 0});
+		}
+
 	}
 
 	let hd = false;

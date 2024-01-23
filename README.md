@@ -37,6 +37,11 @@ InfluxDB v2 needs the retention period to be set to > 2 years for storing histor
 
 ## NEW: Connection status shown in instances overview 
 
+## NEW: Heat Demand hysteresis improved. 
+        Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
+		Heat Demand is inactive when actual temp is higher then target temp.
+		Make sure that delta is high enough to avoid too many boiler starts.
+
 
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
 
@@ -50,6 +55,10 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* improve heatdemand hysteresis
+* allow heatdemand paramters to be changed within objects (delta & weight)
+
 ### 2.6.3 (2024-01-04)
 * Update dependencies
 
