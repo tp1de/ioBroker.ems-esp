@@ -149,8 +149,9 @@ async function main () {
 
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-	if (adapter.config.heatdemand) {
+	if (adapter.config.heatdemand ==1 || adapter.config.heatdemand == true) {
 		await init_controls();
+		adapter.log.info("heat demand processing: polling every minute");
 		await heatdemand(); adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
 	}
 
@@ -249,7 +250,7 @@ async function control_reset() {  // heat demand control switched off - reset co
 		const hc = adapter.config.heatingcircuits[i].hc;
 		const on = parseInt(adapter.config.heatingcircuits[i].on);
 
-		adapter.log.info("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
+		adapter.log.debug("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
 		await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
 		await adapter.setStateAsync("controls."+hc+".status", {ack: true, val: true});
 	}
@@ -338,22 +339,22 @@ async function heatdemand() {
 
 		await adapter.setStateAsync(state+"weight", {ack: true, val: w});
 
-		if (hd) {
+		if (hd == true || hd == 1) {
 
 			const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+			const v = state5.val;
+			const weighton = (await adapter.getStateAsync(state+"weighton")).val;
+			const weightoff = (await adapter.getStateAsync(state+"weightoff")).val;
+			const status = (await adapter.getStateAsync(state+"status")).val;
 
 			try {
 				const v = state5.val;
 				const von = parseInt(adapter.config.heatingcircuits[i].on);
 				const voff = parseInt(adapter.config.heatingcircuits[i].off);
-				let weighton = 0; try {weighton = (await adapter.getStateAsync(state+"weighton")).val;} catch(e) {adapter.log.error(e);}
-				let weightoff = 0; try {weightoff = (await adapter.getStateAsync(state+"weightoff")).val;} catch(e) {adapter.log.error(e);}
 
-				adapter.log.info("von:"+von+ " voff:"+voff+ " weighton:"+weighton+ " weightoff:"+ weightoff+ "hd:"+hd);
-
-				if (w >= weighton && v == voff && hd ) {
+				if (w >= weighton && v == voff) {
 					await adapter.setStateAsync(state+"status", {ack: true, val: true});
-					adapter.log.info("new heat demand for "+ hc + " --> switching on" );
+					adapter.log.debug("new heat demand for "+ hc + " --> switching on" );
 					await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: von});
 
 					if (adapter.config.heatingcircuits[i].savesettemp) {
@@ -363,9 +364,9 @@ async function heatdemand() {
 					}
 				}
 
-				if (w <= weightoff && v == von && hd == true) {
+				if (w <= weightoff && v == von) {
 					await adapter.setStateAsync(state+"status", {ack: true, val: false});
-					adapter.log.info("no heat demand anymore for "+ hc + " --> switching off" );
+					adapter.log.debug("no heat demand anymore for "+ hc + " --> switching off" );
 					await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: voff});
 
 					if (adapter.config.heatingcircuits[i].savesettemp) {
@@ -483,8 +484,6 @@ async function read_efficiency() {
 		try {state = await adapter.getStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}
 		if (tempr == 0) {try {state = await adapter.getForeignStateAsync(r); tempr = state.val;} catch(e) {tempr = 0;}}
 
-		//adapter.log.info(m+"  "+s+"  "+r);
-		//adapter.log.info(power+"  "+temp+"  "+tempr);
 
 		if (power > 0) {
 			if (tempr == 0) tempr = temp - 10; // when return flow temp is not available

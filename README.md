@@ -35,19 +35,19 @@ The adapter is tested for the ems-esp gateway with latest firmware version (V3.6
 ## Energy recordings and statistics need an active database instance. I strongly recommend not to use InfluxDB V2 !!
 InfluxDB v2 needs the retention period to be set to > 2 years for storing historic values. In V2 this is a global parameter for all states ! 
 
-## NEW: Connection status shown in instances overview 
-
 ## NEW: Heat Demand hysteresis improved. 
-        Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
-		Heat Demand is inactive when actual temp is higher then target temp.
-		Make sure that delta is high enough to avoid too many boiler starts.
+    Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
+	Heat Demand is inactive when actual temp is higher then target temp.
+	Make sure that delta is high enough to avoid too many boiler starts.
+
+## NEW: Heat Demand paramters can be changed during active instance
+	Heat Demand parameters delta / weight for each thermostat can be changed within objects during active instance
+	Heat Demand parameters weighton / weightoff for each heating circuit can be changed within objects during active instance
 
 
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
 
 English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
-
-
 
 
 ## Changelog
@@ -57,7 +57,8 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 -->
 ### **WORK IN PROGRESS**
 * improve heatdemand hysteresis
-* allow heatdemand paramters to be changed within objects (delta & weight)
+* allow heatdemand parameters to be changed within objects (delta & weight)
+* show log entries in debug mode now for state changes and heat demand switch on / off
 
 ### 2.6.3 (2024-01-04)
 * Update dependencies
