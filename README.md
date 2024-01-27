@@ -56,7 +56,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* improve heatdemand hysteresis
+* improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)
 * allow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits
 * these object changes are lost when adapter restarts.
 * show log entries in debug mode now for state changes and heat demand switch on / off
