@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.6.3",
+    "version": "2.7.0",
     "news": {
+      "2.7.0": {
+        "en": "improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)\nallow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits\nthese object changes are lost when adapter restarts.\nshow log entries in debug mode now for state changes and heat demand switch on / off",
+        "de": "verbesserung der hitze und hysterese (auf: realtemp < settemp -delta / off > settemp)\nermöglicht die änderung von wärmeabfrageparametern innerhalb von objekten (delta & gewicht) für thermostate und (gewicht/gewicht) für heizkreise\ndiese objektänderungen werden beim neustart des adapters verloren.\nlog-einträge im debug-modus jetzt für zustandsänderungen und wärmebedarfsschalter ein- / ausschalten",
+        "ru": "улучшить термодеманд гистерезис (на: фактический темп < settemp -delta / off > settemp)\nпозволяют изменять параметры теплообмена внутри объектов (дельта и вес) для термостатов и (весон/весофф) для отопительных цепей\nэти изменения объекта теряются при перезапуске адаптера.\nпоказать записи журнала в режиме отладки сейчас для изменения состояния и переключатель спроса на тепло на/выключен",
+        "pt": "melhorar a histerese de calor (em: realtemp < settemp -delta / off > settemp)\npermitir que os parâmetros de demanda de calor sejam alterados dentro de objetos (deta & peso) para termostatos e (peso / peso) para circuitos de aquecimento\nestas mudanças de objeto são perdidas quando o adaptador reinicia.\nmostrar entradas de log no modo de depuração agora para mudanças de estado e interruptor de demanda de calor ligar / desligar",
+        "nl": "verbetering van warmtevraaghysterese (op: werkelijke temperatuur < settemp -delta / off > settemp)\nde warmtevraagparameters binnen objecten (delta & gewicht) voor thermostaten en (gewicht/gewicht) voor verwarmingscircuits kunnen worden gewijzigd\ndeze objectwijzigingen verloren gaan wanneer de adapter herstart.\ntonen log items in debug-modus nu voor statusveranderingen en warmtevraagschakelaar aan / uit",
+        "fr": "améliorer l'hystérie de la demande de chaleur (sur: temps réel < settemp -delta / off > settemp)\npermettre de modifier les paramètres de la demande de chaleur dans les objets (delta et poids) pour les thermostats et (poids/poids) pour les circuits de chauffage\nces modifications d'objet sont perdues lorsque l'adaptateur redémarre.\nafficher les entrées de journal en mode de débogage pour les changements d'état et l'activation / désactivation de la demande de chaleur",
+        "it": "migliorare l'isteresi termodemand (su: effettivotemp < settemp -delta / off > settemp)\nconsentono di modificare i parametri di termodemand all'interno di oggetti (delta e peso) per termostati e (weighton/weightoff) per circuiti di riscaldamento\nquesti cambiamenti di oggetto vengono persi quando l'adattatore si riavvia.\nmostra le voci di registro in modalità debug ora per le modifiche dello stato e l'accensione / spegnimento della domanda di calore",
+        "es": "mejorar calordemand hysteresis (en: actualtemp < settemp -delta / off > settemp)\npermite que los parámetros de calordemand se cambien dentro de objetos (delta ' peso) para termostatos y (peso/peso) para circuitos de calefacción\nestos cambios de objeto se pierden cuando el adaptador se reinicia.\nmostrar entradas de registro en modo de depuración ahora para cambios estatales y interruptor de demanda de calor encendido / apagado",
+        "pl": "poprawa histerezy popytu na ciepło (na: temp. aktualna < setem- delta / off > setem-)\npozwala na zmianę parametrów zapotrzebowania na ciepło w obrębie obiektów (delta & waga) dla termostatów i (waga / waga) dla obwodów grzewczych\nzmiany te zostaną utracone po ponownym uruchomieniu adaptera.\npokaż wpisy dziennika w trybie debugowania teraz dla zmian stanu i włączania / wyłączania zapotrzebowania na ciepło",
+        "uk": "поліпшення гістерезу тепла (на: фактичнийtemp < settemp -delta / off > settemp)\nможливість зміни параметрів теплопостачання в об'єктах (delta & вага) для термостатів та (ваговик/ваговик) для опалювальних ланцюгів\nці зміни об'єкта втрачені при перезапускі адаптера.\nпоказати записи журналу в режимі відключення тепер для зміни стану та відключення теплового попиту / вимкнено",
+        "zh-cn": "改进热需求歇斯底里(关于:实际时调 < settemp -delta / off > settemp)\n允许在自动调温器和(加权/加权)加热电路的物体(德尔塔和重量)内改变热需求参数\n当适配器重新启动时,这些对象的更改会丢失.\n在调试模式下显示日志项, 用于状态变化和热需求切换/ 关闭"
+      },
       "2.6.3": {
         "en": "Update dependencies",
         "de": "Abhängigkeiten aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "Dane statystyczne i nagrania dla historii i napływu\ninfluxDB V2 nie będzie wspierana w przyszłych wersjach",
         "uk": "Оновити статистику та записи для історії та інфлюкс\nввімкніть попередження в журналі, який InfluxDB V2 не буде підтримуватися в наступних версіях",
         "zh-cn": "二. 最新能源统计和历史和流感记录\n包括警告,在今后版本中不会支持流落街头的第五2行。"
-      },
-      "2.5.1": {
-        "en": "correct hourly recordings timestamps for km200 (timezone difference)",
-        "de": "korrekte stundenaufnahmen zeitstempel für km200 (zeitzone differenz)",
-        "ru": "правильные почасовые записи временные метки для км200 (разница часового пояса)",
-        "pt": "tempos livres para km200 (diferença de fuso horário)",
-        "nl": "vertaling:",
-        "fr": "enregistrements horaires corrects pour le km200 (écart de fuseau horaire)",
-        "it": "corretto ore di registrazione timestamp per km200 (differenza di fuso orario)",
-        "es": "horaria correcta grabaciones timetamps para km200 ( diferencia horaria)",
-        "pl": "poprawne nagranie o długości geograficznej na km200 (różnice czasowe)",
-        "uk": "правильного часу записує часові запаси на км200 (різниця денногозону)",
-        "zh-cn": "正确地记录200公里(区差异)的时间限制"
       }
     },
     "titleLang": {
