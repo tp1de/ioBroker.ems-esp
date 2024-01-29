@@ -61,6 +61,11 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 * these object changes are lost when adapter restarts.
 * show log entries in debug mode now for state changes and heat demand switch on / off
 
+### **WORK IN PROGRESS**
+* InfluxDB V2 adapter version > 4.0.2 required for correct processing of KM200 recordings
+* InfluxDB V2 retention period is now used for storing KM200 recordings only within retention period
+
+
 ### 2.6.3 (2024-01-04)
 * Update dependencies
 
