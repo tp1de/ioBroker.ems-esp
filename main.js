@@ -339,18 +339,21 @@ async function heatdemand() {
 
 		await adapter.setStateAsync(state+"weight", {ack: true, val: w});
 
-		if (hd == true || hd == 1) {
+		if (hd == true) {
 
-			const state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
-			const v = state5.val;
-			const weighton = (await adapter.getStateAsync(state+"weighton")).val;
-			const weightoff = (await adapter.getStateAsync(state+"weightoff")).val;
-			const status = (await adapter.getStateAsync(state+"status")).val;
+			let state5,v,weighton,weightoff,status,von,voff;
 
 			try {
-				const v = state5.val;
-				const von = parseInt(adapter.config.heatingcircuits[i].on);
-				const voff = parseInt(adapter.config.heatingcircuits[i].off);
+				state5 = await adapter.getForeignStateAsync(adapter.config.heatingcircuits[i].state);
+				v = state5.val;
+				weighton = (await adapter.getStateAsync(state+"weighton")).val;
+				weightoff = (await adapter.getStateAsync(state+"weightoff")).val;
+				status = (await adapter.getStateAsync(state+"status")).val;
+			} catch(e) {adapter.log.error(adapter.config.heatingcircuits[i].state+": "+ e);return; }
+
+			try {
+				von = parseInt(adapter.config.heatingcircuits[i].on);
+				voff = parseInt(adapter.config.heatingcircuits[i].off);
 
 				if (w >= weighton && v == voff) {
 					await adapter.setStateAsync(state+"status", {ack: true, val: true});

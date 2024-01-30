@@ -55,6 +55,9 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* error processing for heat demand states
+
 ### 2.7.0 (2024-01-28)
 * improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)
 * allow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits
