@@ -268,7 +268,7 @@ async function heatdemand() {
 		try {
 			const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
 			settemp = state1.val;
-		} catch(e) {settemp = -1;}
+		} catch(e) {adapter.log.error(adapter.config.thermostats[i].settemp+": thermostat wrongly defined") ;return; }
 		await adapter.setStateAsync(state+"settemp", {ack: true, val: settemp});
 
 		const state2 = "controls."+adapter.config.thermostats[i].hc+".savesettemp";
@@ -281,7 +281,7 @@ async function heatdemand() {
 		try {
 			const state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 			acttemp = state4.val;
-		} catch(e) {acttemp = -99;}
+		} catch(e) {{adapter.log.error(adapter.config.thermostats[i].settemp+": thermostat wrongly defined") ;return;}
 		await adapter.setStateAsync(state+"actualtemp", {ack: true, val: acttemp});
 
 		//const deltam = parseFloat(adapter.config.thermostats[i].deltam);
@@ -347,7 +347,7 @@ async function heatdemand() {
 				weighton = (await adapter.getStateAsync(state+"weighton")).val;
 				weightoff = (await adapter.getStateAsync(state+"weightoff")).val;
 				status = (await adapter.getStateAsync(state+"status")).val;
-			} catch(e) {adapter.log.error(adapter.config.heatingcircuits[i].state+": "+ e);return; }
+			} catch(e) {adapter.log.error(adapter.config.heatingcircuits[i].state+": heating circuit wrongly defined") ;return; }
 
 			try {
 				von = parseInt(adapter.config.heatingcircuits[i].on);
