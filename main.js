@@ -151,8 +151,9 @@ async function main () {
 
 	if (adapter.config.heatdemand ==1 || adapter.config.heatdemand == true) {
 		await init_controls();
+		await heatdemand();
 		adapter.log.info("heat demand processing: polling every minute");
-		await heatdemand(); adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
+		adapterIntervals.heatdemand = setInterval(function() {heatdemand();}, 60000); // 60 sec
 	}
 
 
@@ -192,7 +193,6 @@ async function enable_state(stateid,retention,interval) {
 
 async function init_controls() {
 	try {
-
 		const active = control_state("active","boolean", "heatdemand control active", "" ,true);
 
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
@@ -205,9 +205,7 @@ async function init_controls() {
 			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off,false);
 			control_state(state+"status","boolean", "hc control status",true,false);
 			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1,false);
-
 		}
-
 
 		for (let i = 0;i < adapter.config.thermostats.length;i++) {
 			const state = adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
