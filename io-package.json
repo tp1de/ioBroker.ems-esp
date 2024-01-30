@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.0",
+    "version": "2.7.1",
     "news": {
+      "2.7.1": {
+        "en": "improve error processing for wrongly defined heat demand states",
+        "de": "verbesserung der fehlerverarbeitung für falsch definierte wärmebedarfszustände",
+        "ru": "улучшить обработку ошибок для неправильно определенных состояний спроса на тепло",
+        "pt": "melhorar o processamento de erros para estados de demanda de calor incorretamente definidos",
+        "nl": "verbetering van foutverwerking voor verkeerd gedefinieerde warmtevraagtoestanden",
+        "fr": "améliorer le traitement des erreurs pour les états de demande de chaleur mal définis",
+        "it": "migliorare l'elaborazione degli errori per gli stati della domanda di calore erroneamente definiti",
+        "es": "mejorar el procesamiento de errores para estados de demanda de calor mal definidos",
+        "pl": "poprawić przetwarzanie błędów dla nieprawidłowo zdefiniowanych stanów zapotrzebowania na ciepło",
+        "uk": "поліпшення обробки помилок для не визначених станів теплового попиту",
+        "zh-cn": "改进错误定义的热需求状态的错误处理"
+      },
       "2.7.0": {
         "en": "improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)\nallow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits\nthese object changes are lost when adapter restarts.\nshow log entries in debug mode now for state changes and heat demand switch on / off",
         "de": "verbesserung der hitze und hysterese (auf: realtemp < settemp -delta / off > settemp)\nermöglicht die änderung von wärmeabfrageparametern innerhalb von objekten (delta & gewicht) für thermostate und (gewicht/gewicht) für heizkreise\ndiese objektänderungen werden beim neustart des adapters verloren.\nlog-einträge im debug-modus jetzt für zustandsänderungen und wärmebedarfsschalter ein- / ausschalten",
@@ -80,19 +93,6 @@
         "pl": "Replace axios post by axios put for the KM200 gateway to secure the write changes (ang.)",
         "uk": "Замініть аксіо-пошту аксіосом, щоб забезпечити, що записуються зміни приймаються",
         "zh-cn": "将KM200门路的焦虑员额改为一个蓝图,以确保接受修改。"
-      },
-      "2.5.2": {
-        "en": "Update energy statistics and recordings for history and influxdb\ninclude warning in log that InfluxDB V2 will not be supported in future versions anymore",
-        "de": "Aktualisierung von Energiestatistiken und -aufnahmen für Geschichte und Influxdb\nenthalten Warnung in Protokoll, dass InfluxDB V2 in zukünftigen Versionen nicht mehr unterstützt wird",
-        "ru": "Обновить энергетическую статистику и записи для истории и influxdb\nвключить предупреждение в лог, что InfluxDB V2 больше не будет поддерживаться в будущих версиях",
-        "pt": "Atualizar estatísticas de energia e gravações para história e influuxdb\nincluir aviso no log que o InfluxDB V2 não será suportado em versões futuras",
-        "nl": "Update energie statistieken en opnames voor geschiedenis en influxdb\nin het logboek dat InfluxDB V2 niet meer zal worden ondersteund in toekomstige versies",
-        "fr": "Mettre à jour les statistiques énergétiques et les enregistrements pour l'histoire et l'influxdb\ninclure l'avertissement dans le journal que InfluxDB V2 ne sera plus supporté dans les versions futures",
-        "it": "Aggiornare le statistiche e le registrazioni energetiche per la storia e l'afflusso\nincludere avviso nel registro che InfluxDB V2 non sarà più supportato nelle versioni future",
-        "es": "Actualizar estadísticas y grabaciones energéticas para historia e influxdb\nincluir la advertencia en el registro de que InfluxDB V2 ya no será compatible en versiones futuras",
-        "pl": "Dane statystyczne i nagrania dla historii i napływu\ninfluxDB V2 nie będzie wspierana w przyszłych wersjach",
-        "uk": "Оновити статистику та записи для історії та інфлюкс\nввімкніть попередження в журналі, який InfluxDB V2 не буде підтримуватися в наступних версіях",
-        "zh-cn": "二. 最新能源统计和历史和流感记录\n包括警告,在今后版本中不会支持流落街头的第五2行。"
       }
     },
     "titleLang": {
