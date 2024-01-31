@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.2",
+    "version": "2.7.3",
     "news": {
+      "2.7.3": {
+        "en": "error correction for heat demand function",
+        "de": "fehlerkorrektur für wärmebedarfsfunktion",
+        "ru": "коррекция ошибок для функции теплового спроса",
+        "pt": "correção de erro para a função de demanda de calor",
+        "nl": "foutcorrectie voor warmtevraagfunctie",
+        "fr": "correction d'erreur pour la fonction de demande de chaleur",
+        "it": "correzione di errore per la funzione della domanda di calore",
+        "es": "corrección de error para la función de la demanda de calor",
+        "pl": "korekta błędu dla funkcji zapotrzebowania na ciepło",
+        "uk": "виправлення помилок для функції теплового попиту",
+        "zh-cn": "热需求函数错误校正"
+      },
       "2.7.2": {
         "en": "error correction for heat demand function",
         "de": "fehlerkorrektur für wärmebedarfsfunktion",
@@ -80,19 +93,6 @@
         "pl": "Zanieczyszczona katastrofa na początku adaptatora, podczas gdy usunięte stany są używane w parametrach",
         "uk": "Уникайте аварійного запуску адаптера при видаленні станів використовується в параметрах",
         "zh-cn": "在适应人员开端时用了一张防弹事故,而删除的州在参数中使用。"
-      },
-      "2.6.0": {
-        "en": "Add indicator for connection status of the gateways within instances overview",
-        "de": "Anzeige für den Verbindungsstatus der Gateways innerhalb der Instanzenübersicht hinzufügen",
-        "ru": "Добавьте индикатор для состояния соединения шлюзов в обзор инстанций",
-        "pt": "Adicionar indicador para status de conexão dos gateways dentro da visão geral das instâncias",
-        "nl": "Advocaat indicator voor connectiestatus van de poort binnen de instanties",
-        "fr": "Ajouter un indicateur pour l'état de connexion des passerelles dans les instances aperçu",
-        "it": "Aggiungi indicatore per lo stato di connessione dei gateway all'interno della panoramica delle istanze",
-        "es": "Añadir indicador para el estado de conexión de las pasarelas dentro de las instancias",
-        "pl": "Addd indicator for connection state of the gateways in cases of overview",
-        "uk": "Додавання індикатора стану підключення шлюзів в огляді екземплярів",
-        "zh-cn": "在总括范围内增加大门连接状况的指标"
       }
     },
     "titleLang": {
