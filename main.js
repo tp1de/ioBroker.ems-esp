@@ -149,7 +149,7 @@ async function main () {
 
 	if (adapter.config.eff_active && !unloaded) adapterIntervals.eff = setInterval(function() {read_efficiency();}, 60000); // 60 sec
 
-	if (adapter.config.heatdemand ==1 || adapter.config.heatdemand == true) {
+	if (adapter.config.heatdemand == 1 || adapter.config.heatdemand == true) {
 		await init_controls();
 		await heatdemand();
 		adapter.log.info("heat demand processing: polling every minute");
@@ -193,18 +193,24 @@ async function enable_state(stateid,retention,interval) {
 
 async function init_controls() {
 	try {
-		const active = control_state("active","boolean", "heatdemand control active", "" ,true);
 
+		await adapter.setObjectNotExistsAsync("controls.active",{type: "state",common: {type: "boolean", name:  "heat demand control active", role: "value", 
+		read: true, write: true}, native: {}});
+		
+		try {const active = (await adapter.getStateAsync("controls.active")).val;} 
+		catch (e) {await adapter.setStateAsync("controls.active", {ack: true, val: true});}
+			
+	
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 			const state = adapter.config.heatingcircuits[i].hc+".";
-			control_state(state+"weighton","number", "hc weight for switching on", parseFloat(adapter.config.heatingcircuits[i].weighton),true);
-			control_state(state+"weightoff","number", "hc weight for switching off", parseFloat(adapter.config.heatingcircuits[i].weightoff),true);
-			control_state(state+"weight","number", "hc weight actual", 99,false);
-			control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state,false);
-			control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on,false);
-			control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off,false);
-			control_state(state+"status","boolean", "hc control status",true,false);
-			if(adapter.config.heatingcircuits[i].savesettemp) control_state(state+"savesettemp","number", "saved settemp when switching off", -1,false);
+			val = parseFloat(adapter.config.heatingcircuits[i].weighton);control_state(state+"weighton","number", "hc weight for switching on", val,true);
+			val = parseFloat(adapter.config.heatingcircuits[i].weighton);control_state(state+"weightoff","number", "hc weight for switching off", val,true);
+			await control_state(state+"weight","number", "hc weight actual", 99,false);
+			await control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state,false);
+			await control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on,false);
+			await control_state(state+"off","string", "state value off", adapter.config.heatingcircuits[i].off,false);
+			await control_state(state+"status","boolean", "hc control status",true,false);
+			if(adapter.config.heatingcircuits[i].savesettemp) await control_state(state+"savesettemp","number", "saved settemp when switching off", -1,false);
 		}
 
 		for (let i = 0;i < adapter.config.thermostats.length;i++) {
@@ -214,16 +220,16 @@ async function init_controls() {
 				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
 				value = state1.val;
 			} catch(e) {value = -99;}
-			control_state(state+"settemp","number", "set temperature", value,false);
+			await control_state(state+"settemp","number", "set temperature", value,false);
 			try {
 				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
 				value = state1.val;
 			} catch(e) {value = -99;}
-			control_state(state+"actualtemp","number", "actual temperature", value,false);
-			control_state(state+"actualweight","number", "actual weight", 0,false);
+			await control_state(state+"actualtemp","number", "actual temperature", value,false);
+			await control_state(state+"actualweight","number", "actual weight", 0, false);
 
-			control_state(state+"weight","number", "room weight for switching off", parseFloat(adapter.config.thermostats[i].weight),true);
-			control_state(state+"deltam","number", "minimum room delta temperature for switching off", parseFloat(adapter.config.thermostats[i].deltam),true);
+			value = parseFloat(adapter.config.thermostats[i].weight);await control_state(state+"weight","number", "room weight for switching off", value,true);
+			value = parseFloat(adapter.config.thermostats[i].deltam);await control_state(state+"deltam","number", "minimum room delta temperature for switching off", value,true);
 
 		}
 
@@ -234,11 +240,7 @@ async function init_controls() {
 async function control_state(state,type,name,value,write) {
 	await adapter.setObjectAsync("controls."+state,{type: "state",
 		common: {type: type, name: name, role: "value", read: true, write: write}, native: {}});
-	if (value != "") await adapter.setStateAsync("controls."+state, {ack: true, val: value});
-	else {
-		try {const active = (await adapter.getStateAsync("controls."+state)).val;}
-		catch (e) {await adapter.setStateAsync("controls."+state, {ack: true, val: true});}
-	}
+	await adapter.setStateAsync("controls."+state, {ack: true, val: value});
 }
 
 
@@ -248,12 +250,11 @@ async function control_reset() {  // heat demand control switched off - reset co
 		const hc = adapter.config.heatingcircuits[i].hc;
 		const on = parseInt(adapter.config.heatingcircuits[i].on);
 
-		adapter.log.debug("heat demand control switched on for "+ hc + " --> reset to on control value: "+on );
+		adapter.log.debug("heat demand control switched off for "+ hc + " --> reset to on control value: "+on );
 		await adapter.setStateAsync(adapter.config.heatingcircuits[i].state, {ack: false, val: on});
 		await adapter.setStateAsync("controls."+hc+".status", {ack: true, val: true});
 	}
 }
-
 
 
 async function heatdemand() {
@@ -294,7 +295,9 @@ async function heatdemand() {
 		let weight = 0;
 		try {weight = (await adapter.getStateAsync(state+"weight")).val;} catch(e) {adapter.log.error(e);}
 
-		let actualweight = (await adapter.getStateAsync(state+"actualweight")).val;
+		let actualweight = 0;
+		actualweight = (await adapter.getStateAsync(state+"actualweight")).val;
+
 		if (delta >= deltam) {
 			await adapter.setStateAsync(state+"actualweight", {ack: true, val: weight});
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
