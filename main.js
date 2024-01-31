@@ -194,17 +194,17 @@ async function enable_state(stateid,retention,interval) {
 async function init_controls() {
 	try {
 
-		await adapter.setObjectNotExistsAsync("controls.active",{type: "state",common: {type: "boolean", name:  "heat demand control active", role: "value", 
-		read: true, write: true}, native: {}});
-		
-		try {const active = (await adapter.getStateAsync("controls.active")).val;} 
+		await adapter.setObjectNotExistsAsync("controls.active",{type: "state",common: {type: "boolean", name:  "heat demand control active", role: "value",
+			read: true, write: true}, native: {}});
+
+		try {const active = (await adapter.getStateAsync("controls.active")).val;}
 		catch (e) {await adapter.setStateAsync("controls.active", {ack: true, val: true});}
-			
-	
+
+		let value = 0;
 		for (let i = 0;i < adapter.config.heatingcircuits.length;i++) {
 			const state = adapter.config.heatingcircuits[i].hc+".";
-			val = parseFloat(adapter.config.heatingcircuits[i].weighton);control_state(state+"weighton","number", "hc weight for switching on", val,true);
-			val = parseFloat(adapter.config.heatingcircuits[i].weighton);control_state(state+"weightoff","number", "hc weight for switching off", val,true);
+			value = parseFloat(adapter.config.heatingcircuits[i].weighton);control_state(state+"weighton","number", "hc weight for switching on", value,true);
+			value = parseFloat(adapter.config.heatingcircuits[i].weightoff);control_state(state+"weightoff","number", "hc weight for switching off", value,true);
 			await control_state(state+"weight","number", "hc weight actual", 99,false);
 			await control_state(state+"state","string", "state for heating control", adapter.config.heatingcircuits[i].state,false);
 			await control_state(state+"on","string", "state value on", adapter.config.heatingcircuits[i].on,false);
@@ -215,7 +215,7 @@ async function init_controls() {
 
 		for (let i = 0;i < adapter.config.thermostats.length;i++) {
 			const state = adapter.config.thermostats[i].hc+"."+adapter.config.thermostats[i].room+".";
-			let value = 0;
+			value = 0;
 			try {
 				const state1 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].settemp);
 				value = state1.val;
