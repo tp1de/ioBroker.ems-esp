@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.1",
+    "version": "2.7.2",
     "news": {
+      "2.7.2": {
+        "en": "error correction for heat demand function",
+        "de": "fehlerkorrektur für wärmebedarfsfunktion",
+        "ru": "коррекция ошибок для функции теплового спроса",
+        "pt": "correção de erro para a função de demanda de calor",
+        "nl": "foutcorrectie voor warmtevraagfunctie",
+        "fr": "correction d'erreur pour la fonction de demande de chaleur",
+        "it": "correzione di errore per la funzione della domanda di calore",
+        "es": "corrección de error para la función de la demanda de calor",
+        "pl": "korekta błędu dla funkcji zapotrzebowania na ciepło",
+        "uk": "виправлення помилок для функції теплового попиту",
+        "zh-cn": "热需求函数错误校正"
+      },
       "2.7.1": {
         "en": "improve error processing for wrongly defined heat demand states",
         "de": "verbesserung der fehlerverarbeitung für falsch definierte wärmebedarfszustände",
@@ -80,19 +93,6 @@
         "pl": "Addd indicator for connection state of the gateways in cases of overview",
         "uk": "Додавання індикатора стану підключення шлюзів в огляді екземплярів",
         "zh-cn": "在总括范围内增加大门连接状况的指标"
-      },
-      "2.5.3": {
-        "en": "Replace axios post by axios put for KM200 gateway to secure that write changes are accepted",
-        "de": "Ersetzen axios post von axios für KM200 Gateway gesetzt, um sicherzustellen, dass Schreibänderungen akzeptiert werden",
-        "ru": "Замените axios post by axios положить для KM200 шлюз, чтобы обеспечить, что пишите изменения принимаются",
-        "pt": "Substitua axios post por axios colocado para gateway KM200 para garantir que as alterações de gravação são aceitas",
-        "nl": "Vertaling:",
-        "fr": "Remplacer le poste axios par axios mis pour passerelle KM200 pour s'assurer que les changements d'écriture sont acceptés",
-        "it": "Sostituire l'assios post da assios messo per KM200 gateway per garantire che i cambiamenti di scrittura sono accettati",
-        "es": "Reemplazar el puesto de axios por eje puesto para la puerta de KM200 para asegurar que los cambios de escritura son aceptados",
-        "pl": "Replace axios post by axios put for the KM200 gateway to secure the write changes (ang.)",
-        "uk": "Замініть аксіо-пошту аксіосом, щоб забезпечити, що записуються зміни приймаються",
-        "zh-cn": "将KM200门路的焦虑员额改为一个蓝图,以确保接受修改。"
       }
     },
     "titleLang": {
