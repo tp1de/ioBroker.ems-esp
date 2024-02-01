@@ -1,4 +1,7 @@
 * older changes
+## 2.6.3 (2024-01-04)
+* Update dependencies
+
 ## 2.6.2 (2023-11-18)
 * correct notifications and systeminfo for km200
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.3",
+    "version": "2.7.4",
     "news": {
+      "2.7.4": {
+        "en": "avoid sql errors on instance start",
+        "de": "sql-fehler beim beispielstart vermeiden",
+        "ru": "избегать ошибок в квадрате, например, начать",
+        "pt": "evitar erros sql no início da instância",
+        "nl": "sql-fouten vermijden bij het starten van instantie",
+        "fr": "éviter les erreurs sql lors du démarrage de l'instance",
+        "it": "evitare errori di sql su inizio di istanza",
+        "es": "evitar errores sql por ejemplo empezar",
+        "pl": "uniknąć błędów sql przy uruchomieniu instancji",
+        "uk": "уникнути помилок при запуску екземпляра",
+        "zh-cn": "启动时避免 sql 错误"
+      },
       "2.7.3": {
         "en": "error correction for heat demand function",
         "de": "fehlerkorrektur für wärmebedarfsfunktion",
@@ -80,19 +93,6 @@
         "pl": "poprawne noty i informacja systemowa na km200",
         "uk": "правильні повідомлення та системаinfo для км200",
         "zh-cn": "正确通知和系统4 200公里"
-      },
-      "2.6.1": {
-        "en": "Avoid crash on adapter start while delete states is used in parameters",
-        "de": "Vermeiden Sie Crash auf Adapterstart, während Löschzustände in Parametern verwendet werden",
-        "ru": "Избегайте аварии на запуске адаптера, пока удалять штаты используются в параметрах",
-        "pt": "Evite falhas no início do adaptador enquanto elimina estados é usado em parâmetros",
-        "nl": "Vermijd een ongeluk op adapter start terwijl de staat wordt gebruikt in parameters",
-        "fr": "Éviter le démarrage de l'adaptateur pendant que supprimer les états est utilisé dans les paramètres",
-        "it": "Evitare il crash sull'avvio dell'adattatore mentre eliminare gli stati viene utilizzato nei parametri",
-        "es": "Evite el fallo en el inicio del adaptador mientras que los estados borrados se utilizan en parámetros",
-        "pl": "Zanieczyszczona katastrofa na początku adaptatora, podczas gdy usunięte stany są używane w parametrach",
-        "uk": "Уникайте аварійного запуску адаптера при видаленні станів використовується в параметрах",
-        "zh-cn": "在适应人员开端时用了一张防弹事故,而删除的州在参数中使用。"
       }
     },
     "titleLang": {
