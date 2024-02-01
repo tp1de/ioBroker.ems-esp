@@ -55,6 +55,9 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+## Changelog
+* avoid sql errors on instance start 
+
 ### 2.7.3 (2024-01-31)
 * error correction for heat demand function
 
