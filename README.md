@@ -56,7 +56,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* allow only positive deltam in config
+* allow only positive deltam in config for heat demand function
 
 ### 2.7.4 (2024-02-01)
 * avoid sql errors on instance start
