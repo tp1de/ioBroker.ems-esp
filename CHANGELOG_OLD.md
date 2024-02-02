@@ -1,4 +1,10 @@
 * older changes
+## 2.7.0 (2024-01-28)
+* improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)
+* allow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits
+* these object changes are lost when adapter restarts.
+* show log entries in debug mode now for state changes and heat demand switch on / off
+
 ## 2.6.3 (2024-01-04)
 * Update dependencies
 

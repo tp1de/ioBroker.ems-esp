@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.4",
+    "version": "2.7.5",
     "news": {
+      "2.7.5": {
+        "en": "allow only positive deltam in config for heat demand function",
+        "de": "nur positives deltam in config für die wärmenachfrage funktion",
+        "ru": "разрешить только положительный дельтам в настройке для функции спроса на тепло",
+        "pt": "permitir apenas deltam positivo em config para a função de demanda de calor",
+        "nl": "laat alleen positief deltam in config toe voor warmtevraagfunctie",
+        "fr": "ne permettre que le deltam positif dans la configuration pour la fonction de la demande de chaleur",
+        "it": "consentire solo il deltam positivo in configurazione per la funzione di domanda di calore",
+        "es": "permitir sólo el deltam positivo en el config para la función de la demanda de calor",
+        "pl": "zezwala tylko dodatni deltam w konfigu dla funkcji zapotrzebowania na ciepło",
+        "uk": "дозволити тільки позитивний дельтам в конфігурації для функції теплового попиту",
+        "zh-cn": "在配置中只允许正三角形用于热需求功能"
+      },
       "2.7.4": {
         "en": "avoid sql errors on instance start",
         "de": "sql-fehler beim beispielstart vermeiden",
@@ -80,19 +93,6 @@
         "pl": "Zależności aktualnej",
         "uk": "Оновлення залежності",
         "zh-cn": "最新依赖"
-      },
-      "2.6.2": {
-        "en": "correct notifications and systeminfo for km200",
-        "de": "korrekte benachrichtigungen und systeminfo für km200",
-        "ru": "правильные уведомления и системаinfo для km200",
-        "pt": "notificações corretas e systeminfo para km200",
-        "nl": "vertaling:",
-        "fr": "notifications correctes et systeminfo pour km200",
-        "it": "notifiche corrette e systeminfo per km200",
-        "es": "notificaciones correctas y systeminfo para km200",
-        "pl": "poprawne noty i informacja systemowa na km200",
-        "uk": "правильні повідомлення та системаinfo для км200",
-        "zh-cn": "正确通知和系统4 200公里"
       }
     },
     "titleLang": {
