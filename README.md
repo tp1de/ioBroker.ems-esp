@@ -32,8 +32,12 @@ It can be used either for the original Bosch-group gateways or the ems-esp or bo
 
 The adapter is tested for the ems-esp gateway with latest firmware version (V3.6.0) of ESP32  
 
-## Energy recordings and statistics need an active database instance. I strongly recommend not to use InfluxDB V2 !!
-InfluxDB v2 needs the retention period to be set to > 2 years for storing historic values. In V2 this is a global parameter for all states ! 
+## NEW Energy recordings and statistics need an active database instance. 
+	Recordings require a InfluxDB adapter version >= 4.0.2 which allows deleting of db-records
+	Retition period is now read and recordings are only stored within retention period -- Beta status
+	InfluxDB v2 needs the retention period to be set to > 2 years for storing all historic values. 
+	In V2 this is a global parameter for all states ! 
+	
 
 ## NEW: Heat Demand hysteresis improved. 
     Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
