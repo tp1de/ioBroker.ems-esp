@@ -116,13 +116,19 @@ async function main () {
 			//adapter.log.info(JSON.stringify(obj));
 			let dbversion = "";
 			try {dbversion = obj.native.dbversion;} catch(e) {}
+			let retention = 0;	try {retention = obj.native.retention;} catch(e) {}
+			let retdays;
+			if (retention == 0) retdays = 999999;
+			if (retention == -1) retdays = obj.native.customRetentionDuration;
+			else retdays = retention / (24*60*60);
+			let adapterversion = "";try {adapterversion = obj.common.version;} catch(e) {}
+			adapter.log.info("InfluxDB "+dbversion+" - Retention: "+ retdays+" days --- Adapterversion: "+adapterversion);
 
-			if (dbversion == "2.x") {
-				adapter.log.warn("****************************************************************************");
-				adapter.log.warn("InfluxDB V2 will not be supported in future adapter versions");
-				adapter.log.warn("Database might contain duplicate values - you need to delete yourself");
-				adapter.log.warn("InfluxDB V2 is not fully supported");
-				adapter.log.warn("****************************************************************************");
+			if (dbversion == "2.x" && adapterversion < "4.0.2" && adapter.config.recordings) {
+				adapter.log.warn("************************************************************************************************");
+				adapter.log.warn("KM200 recordings with InfluxDB require adapter version >= 4.0.2");
+				adapter.log.warn("Database entries for recordings will be disabled");
+				adapter.log.warn("************************************************************************************************");
 			}
 		}
 	}
@@ -142,7 +148,6 @@ async function main () {
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
 		if (db != "") {
 			await init_statistics2();
-			read_statistics();
 			adapterIntervals.stat = setInterval(function() {read_statistics();}, 300000); // 300 sec
 		}
 	}
@@ -185,6 +190,7 @@ async function enable_state(stateid,retention,interval) {
 			if (result.error) {adapter.log.error("enable history error " + stateid);}
 		});
 	} catch (e) {adapter.log.error("enable history error " + stateid );}
+	await sleep (500);
 	const state = await adapter.getState(stateid);
 	if(state == null || state.val === undefined) await await adapter.setStateAsync(stateid, {ack: false, val: 0});
 	else await await adapter.setStateAsync(stateid, {ack: true, val: state.val});
@@ -614,4 +620,12 @@ async function delete_states_emsesp() {
 		const obj = await adapter.getObjectAsync(id);
 		if (obj.common.custom == undefined) await adapter.delObjectAsync(id);
 	}
+}
+
+
+async function sleep(ms) {
+	if (unloaded) return;
+	return new Promise(resolve => {
+		setTimeout(() => !unloaded && resolve(true), ms);
+	});
 }
