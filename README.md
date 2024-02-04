@@ -62,11 +62,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 * store km200 recordings only within defined retention period for influxdb
 * delay start of statistics by 5 minutes
 
-### 2.8.0 (2024-02-04)
-* influxdb adapter version >= 4.0.2 required 
-* store km200 recordings only within defined retention period for influxdb
-* delay start of statistics by 5 minutes
-
 ### 2.7.5 (2024-02-02)
 * allow only positive deltam in config for heat demand function
 
