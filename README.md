@@ -57,7 +57,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.8.0 (2024-02-04)
 * influxdb adapter version >= 4.0.2 required 
 * store km200 recordings only within defined retention period for influxdb
 * delay start of statistics by 5 minutes

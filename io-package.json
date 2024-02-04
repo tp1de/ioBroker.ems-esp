@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.7.5",
+    "version": "2.8.0",
     "news": {
+      "2.8.0": {
+        "en": "influxdb adapter version >= 4.0.2 required \nstore km200 recordings only within defined retention period for influxdb\ndelay start of statistics by 5 minutes",
+        "de": "influxdb adapter version >= 4,0.2 erforderlich\nspeichern km200 aufnahmen nur innerhalb einer definierten aufbewahrungsfrist für influxdb\nverzögerungsbeginn der statistiken um 5 minuten",
+        "ru": " influx 4.0.2 требуется\nхранить записи km200 только в течение определенного периода удержания для притокаdb\nзадержка начала статистики на 5 минут",
+        "pt": "versão do adaptador de influxo >= 4.0.2 necessário\narmazenar gravações de km200 apenas dentro do período de retenção definido para influxdb\ninício de estatísticas por 5 minutos",
+        "nl": "influxdb-adapterversie >= 4.0.2 vereist\nalleen km200-opnames bewaren binnen een bepaalde bewaarperiode voor influxdb\nvertraging begin statistieken met 5 minuten",
+        "fr": "adaptateur flowdb version >= 40,2 requis\nstocker des enregistrements en km200 seulement pendant la période de conservation définie pour l'affluxdb\nretard le début des statistiques de 5 minutes",
+        "it": "versione adattatore influxdb >= 4.0.2 richiesto\nmemorizzare le registrazioni km200 solo entro il periodo di conservazione definito per afluxdb\nritardare l'avvio delle statistiche di 5 minuti",
+        "es": "adaptador de influxdb versión 4.0.2\nalmacenar km200 grabaciones sólo dentro del período de retención definido para influxdb\nretraso en el inicio de las estadísticas en 5 minutos",
+        "pl": "wersja adaptera influxdb > = 4.0.2 wymagane\nprzechowywanie nagrań km200 tylko w określonym okresie retencji dla influxdb\nopóźnienie rozpoczęcia statystyki o 5 minut",
+        "uk": "influxdb версія адаптера >= 4.0.2 потрібно\nзберігати км200 записів тільки в визначений період затримки для influxdb\nпочаток затримки статистика за 5 хвилин",
+        "zh-cn": "输入db适配器版本 qq 4.02 所需经费\n仅限在限定的流入保留期内储存平方公里录音b\n5分钟后开始统计"
+      },
       "2.7.5": {
         "en": "allow only positive deltam in config for heat demand function",
         "de": "nur positives deltam in config für die wärmenachfrage funktion",
@@ -80,19 +93,6 @@
         "pl": "poprawa histerezy popytu na ciepło (na: temp. aktualna < setem- delta / off > setem-)\npozwala na zmianę parametrów zapotrzebowania na ciepło w obrębie obiektów (delta & waga) dla termostatów i (waga / waga) dla obwodów grzewczych\nzmiany te zostaną utracone po ponownym uruchomieniu adaptera.\npokaż wpisy dziennika w trybie debugowania teraz dla zmian stanu i włączania / wyłączania zapotrzebowania na ciepło",
         "uk": "поліпшення гістерезу тепла (на: фактичнийtemp < settemp -delta / off > settemp)\nможливість зміни параметрів теплопостачання в об'єктах (delta & вага) для термостатів та (ваговик/ваговик) для опалювальних ланцюгів\nці зміни об'єкта втрачені при перезапускі адаптера.\nпоказати записи журналу в режимі відключення тепер для зміни стану та відключення теплового попиту / вимкнено",
         "zh-cn": "改进热需求歇斯底里(关于:实际时调 < settemp -delta / off > settemp)\n允许在自动调温器和(加权/加权)加热电路的物体(德尔塔和重量)内改变热需求参数\n当适配器重新启动时,这些对象的更改会丢失.\n在调试模式下显示日志项, 用于状态变化和热需求切换/ 关闭"
-      },
-      "2.6.3": {
-        "en": "Update dependencies",
-        "de": "Abhängigkeiten aktualisieren",
-        "ru": "Обновить зависимости",
-        "pt": "Dependências de atualização",
-        "nl": "Update afhankelijkheid",
-        "fr": "Mettre à jour les dépendances",
-        "it": "Dipendenze di aggiornamento",
-        "es": "Actualizar las dependencias",
-        "pl": "Zależności aktualnej",
-        "uk": "Оновлення залежності",
-        "zh-cn": "最新依赖"
       }
     },
     "titleLang": {
