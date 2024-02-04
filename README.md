@@ -21,16 +21,15 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 * km200, km200 hrv, km100, km50, HMC300 or IP-inside (from Bosch Group) 
 
 * ems-esp gateway (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
-  The old ESP8266 gateways with API V2 is NOT SUPPORTED ANYMORE !!
+  The old ESP8266 gateways with API V2 are NOT SUPPORTED ANYMORE !!
+  The adapter is tested for the ems-esp gateway with latest firmware version (> V3.6.0) of ESP32
 
-* New Cloud-Gateways (MX300 ...) are not supported !
+* New Bosch-Group Cloud-Gateways (MX300 / EasyControl ...) are not supported since they do not support LAN API !
 
 The ioBroker ems-esp adapter can read and write data to both gateways to control all heating components. 
-It can be used either for the original Bosch-group gateways or the ems-esp or both in parallel.
+It can be used either for the original Bosch-Group gateways or the ems-esp or both in parallel.
 
 ## All changed states from own scripts or the object browser does have to set acknowledged = false !!!
-
-The adapter is tested for the ems-esp gateway with latest firmware version (V3.6.0) of ESP32  
 
 ## NEW Energy recordings and statistics need an active database instance. 
 	Recordings require a InfluxDB adapter version >= 4.0.2 which allows deleting of db-records
@@ -38,7 +37,6 @@ The adapter is tested for the ems-esp gateway with latest firmware version (V3.6
 	InfluxDB v2 needs the retention period to be set to > 2 years for storing all historic values. 
 	In V2 this is a global parameter for all states ! 
 	
-
 ## NEW: Heat Demand hysteresis improved. 
     Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
 	Heat Demand is inactive when actual temp is higher then target temp.

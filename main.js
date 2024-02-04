@@ -82,8 +82,7 @@ if (module && module.parent) {
 //--------- main ---------------------------------------------------------------------------------------------------------
 
 async function main () {
-
-	if (adapter.config.states_reorg == true) await delete_states_emsesp();
+	if (adapter.config.states_reorg) await delete_states_emsesp();
 
 	await adapter.setObjectNotExistsAsync("info.connection",{type: "state",
 		common: {type: "boolean", name: "connected to gateways", role: "indicator.connected", read: true, write: false, def: false}, native: {}});
