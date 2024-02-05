@@ -28,8 +28,17 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 
 The ioBroker ems-esp adapter can read and write data to both gateways to control all heating components. 
 It can be used either for the original Bosch-Group gateways or the ems-esp or both in parallel.
+All changed states from own scripts or the object browser does have to set acknowledged = false !!!
 
-## All changed states from own scripts or the object browser does have to set acknowledged = false !!!
+
+## NEW EMS+ entities (switchTimes and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
+	The ems-esp gateway firmware does not support switchTimes and holidayModes for EMS+ thermostats (RC310 / RC300 or similar)
+	Enabling this new function will issue raw telegrams toward the ems-esp gateway and then try to read the response
+	Testing is done for switchTimes A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5
+	When a positive response is found then the raw response is decoded and states are created identically to KM200 gateway API data
+	When the km200 gateway is enabled then this function is disabled to avoid double entries with same name
+	The states created consist of JSON structures, enum values or arrays and are writable - Be carefull with the right content
+	I recommend to test by using the Bosch/Buderus apps to identify the right content - especially for holidayModes.
 
 ## NEW Energy recordings and statistics need an active database instance. 
 	Recordings require a InfluxDB adapter version >= 4.0.2 which allows deleting of db-records
@@ -57,6 +66,12 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)
+* Implement raw telegram search for EMS+ entities and create writable objects / states
+* The search is only active when no km200 gateway is selected
+
+
 ### 2.8.0 (2024-02-04)
 * influxdb adapter version >= 4.0.2 required 
 * store km200 recordings only within defined retention period for influxdb
