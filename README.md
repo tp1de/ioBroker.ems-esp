@@ -66,11 +66,10 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0-alpha.0 (2024-02-05)
 * Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)
 * Implement raw telegram search for EMS+ entities and create writable objects / states
 * The search is only active when no km200 gateway is selected
-
 
 ### 2.8.0 (2024-02-04)
 * influxdb adapter version >= 4.0.2 required 
@@ -84,9 +83,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 * avoid sql errors on instance start
 
 ### 2.7.3 (2024-01-31)
-* error correction for heat demand function
-
-### 2.7.2 (2024-01-31)
 * error correction for heat demand function
 
 ## License

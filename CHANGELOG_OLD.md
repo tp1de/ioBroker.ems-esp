@@ -1,4 +1,7 @@
 * older changes
+## 2.7.2 (2024-01-31)
+* error correction for heat demand function
+
 ## 2.7.1 (2024-01-30)
 * improve error processing for wrongly defined heat demand states
 

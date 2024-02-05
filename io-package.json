@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "2.8.0",
+    "version": "3.0.0-alpha.0",
     "news": {
+      "3.0.0-alpha.0": {
+        "en": "Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)\nImplement raw telegram search for EMS+ entities and create writable objects / states\nThe search is only active when no km200 gateway is selected",
+        "de": "Suche nach ems-esp Zuständen für EMS+ Thermostate: switchTimes and HolidayModes (RC310/RC300)\nImplementierung der Rohtelegrammsuche für EMS+-Einheiten und Erstellung von schreibbaren Objekten / Zuständen\nDie Suche ist nur aktiv, wenn kein km200 Gateway ausgewählt wird",
+        "ru": "Поиск ems-esp состояний для EMS + термостатов: SwitchTimes и HolidayModes (RC310/RC300)\nРеализовать необработанный телеграммный поиск объектов EMS+ и создать реальные объекты / состояния\nПоиск активен только тогда, когда не выбран шлюз km200",
+        "pt": "Procurar estados ems-esp para termostatos EMS+: switchTimes and holidayModes (RC310/RC300)\nImplementar pesquisa de telegramas crus para entidades EMS+ e criar objetos / estados\nA pesquisa só está ativa quando nenhum gateway km200 é selecionado",
+        "nl": "Zoek naar ems-esp toestanden voor EMS+ thermostaten: switchTimes en holidayModes (RC310/RC300)\nUitvoeren van ruwe telegram zoeken naar EMS+ entiteiten en maak schrijfbare objecten / staten\nDe zoekopdracht is alleen actief wanneer geen km200-poort is geselecteerd",
+        "fr": "Recherche d'états ems-esp pour les thermostats EMS+: switchTimes and HolidayModes (RC310/RC300)\nImplémenter la recherche de télégramme brut pour les entités EMS+ et créer des objets/états en écriture\nLa recherche n'est active que si aucune passerelle km200 n'est sélectionnée",
+        "it": "Cerca stati ems-esp per termostati EMS+: switchTimes and holidayModes (RC310/RC300)\nImplementare la ricerca del telegramma raw per le entità EMS+ e creare oggetti / stati scrivibili\nLa ricerca è attiva solo quando non viene selezionato alcun gateway km200",
+        "es": "Buscar estados ems-esp para termostatos EMS+: SwitchTimes and holidayModes (RC310/RC300)\nImplementar búsqueda de telegramas crudos para entidades EMS+ y crear objetos / estados\nLa búsqueda sólo es activa cuando no se selecciona la puerta de entrada km200",
+        "pl": "Szukaj stanów ems- esp dla termostatów EMS +: switch Times i holidayModes (RC310 / RC300)\nWdrożenie wyszukiwania telegramu surowego dla jednostek EMS + i tworzenie zapisywalnych obiektów / stanów\nWyszukiwarka jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200",
+        "uk": "Пошук емс-esp станів для термостатів EMS+: перемикання часу та відпочинокМоди (RC310/RC300)\nВпровадження пошуку сирої телеграми для суб’єктів EMS+ та створення життєздатних об’єктів / станів\nПошук діє тільки при відсутності км200 шлюзу",
+        "zh-cn": "搜索 EMS+ 自动调温器的 ems- esp 状态: 切换时间和节假日模式( RC310/ RC300)\n对 EMS+ 实体执行原始电报搜索并创建可写对象 / 状态\n搜索仅在没有选择 km200 网关时激活"
+      },
       "2.8.0": {
         "en": "influxdb adapter version >= 4.0.2 required \nstore km200 recordings only within defined retention period for influxdb\ndelay start of statistics by 5 minutes",
         "de": "influxdb adapter version >= 4,0.2 erforderlich\nspeichern km200 aufnahmen nur innerhalb einer definierten aufbewahrungsfrist für influxdb\nverzögerungsbeginn der statistiken um 5 minuten",
@@ -80,19 +93,6 @@
         "pl": "poprawić przetwarzanie błędów dla nieprawidłowo zdefiniowanych stanów zapotrzebowania na ciepło",
         "uk": "поліпшення обробки помилок для не визначених станів теплового попиту",
         "zh-cn": "改进错误定义的热需求状态的错误处理"
-      },
-      "2.7.0": {
-        "en": "improve heatdemand hysteresis (on: actualtemp < settemp -delta / off > settemp)\nallow heatdemand parameters to be changed within objects (delta & weight) for thermostats and (weighton/weightoff) for heating circuits\nthese object changes are lost when adapter restarts.\nshow log entries in debug mode now for state changes and heat demand switch on / off",
-        "de": "verbesserung der hitze und hysterese (auf: realtemp < settemp -delta / off > settemp)\nermöglicht die änderung von wärmeabfrageparametern innerhalb von objekten (delta & gewicht) für thermostate und (gewicht/gewicht) für heizkreise\ndiese objektänderungen werden beim neustart des adapters verloren.\nlog-einträge im debug-modus jetzt für zustandsänderungen und wärmebedarfsschalter ein- / ausschalten",
-        "ru": "улучшить термодеманд гистерезис (на: фактический темп < settemp -delta / off > settemp)\nпозволяют изменять параметры теплообмена внутри объектов (дельта и вес) для термостатов и (весон/весофф) для отопительных цепей\nэти изменения объекта теряются при перезапуске адаптера.\nпоказать записи журнала в режиме отладки сейчас для изменения состояния и переключатель спроса на тепло на/выключен",
-        "pt": "melhorar a histerese de calor (em: realtemp < settemp -delta / off > settemp)\npermitir que os parâmetros de demanda de calor sejam alterados dentro de objetos (deta & peso) para termostatos e (peso / peso) para circuitos de aquecimento\nestas mudanças de objeto são perdidas quando o adaptador reinicia.\nmostrar entradas de log no modo de depuração agora para mudanças de estado e interruptor de demanda de calor ligar / desligar",
-        "nl": "verbetering van warmtevraaghysterese (op: werkelijke temperatuur < settemp -delta / off > settemp)\nde warmtevraagparameters binnen objecten (delta & gewicht) voor thermostaten en (gewicht/gewicht) voor verwarmingscircuits kunnen worden gewijzigd\ndeze objectwijzigingen verloren gaan wanneer de adapter herstart.\ntonen log items in debug-modus nu voor statusveranderingen en warmtevraagschakelaar aan / uit",
-        "fr": "améliorer l'hystérie de la demande de chaleur (sur: temps réel < settemp -delta / off > settemp)\npermettre de modifier les paramètres de la demande de chaleur dans les objets (delta et poids) pour les thermostats et (poids/poids) pour les circuits de chauffage\nces modifications d'objet sont perdues lorsque l'adaptateur redémarre.\nafficher les entrées de journal en mode de débogage pour les changements d'état et l'activation / désactivation de la demande de chaleur",
-        "it": "migliorare l'isteresi termodemand (su: effettivotemp < settemp -delta / off > settemp)\nconsentono di modificare i parametri di termodemand all'interno di oggetti (delta e peso) per termostati e (weighton/weightoff) per circuiti di riscaldamento\nquesti cambiamenti di oggetto vengono persi quando l'adattatore si riavvia.\nmostra le voci di registro in modalità debug ora per le modifiche dello stato e l'accensione / spegnimento della domanda di calore",
-        "es": "mejorar calordemand hysteresis (en: actualtemp < settemp -delta / off > settemp)\npermite que los parámetros de calordemand se cambien dentro de objetos (delta ' peso) para termostatos y (peso/peso) para circuitos de calefacción\nestos cambios de objeto se pierden cuando el adaptador se reinicia.\nmostrar entradas de registro en modo de depuración ahora para cambios estatales y interruptor de demanda de calor encendido / apagado",
-        "pl": "poprawa histerezy popytu na ciepło (na: temp. aktualna < setem- delta / off > setem-)\npozwala na zmianę parametrów zapotrzebowania na ciepło w obrębie obiektów (delta & waga) dla termostatów i (waga / waga) dla obwodów grzewczych\nzmiany te zostaną utracone po ponownym uruchomieniu adaptera.\npokaż wpisy dziennika w trybie debugowania teraz dla zmian stanu i włączania / wyłączania zapotrzebowania na ciepło",
-        "uk": "поліпшення гістерезу тепла (на: фактичнийtemp < settemp -delta / off > settemp)\nможливість зміни параметрів теплопостачання в об'єктах (delta & вага) для термостатів та (ваговик/ваговик) для опалювальних ланцюгів\nці зміни об'єкта втрачені при перезапускі адаптера.\nпоказати записи журналу в режимі відключення тепер для зміни стану та відключення теплового попиту / вимкнено",
-        "zh-cn": "改进热需求歇斯底里(关于:实际时调 < settemp -delta / off > settemp)\n允许在自动调温器和(加权/加权)加热电路的物体(德尔塔和重量)内改变热需求参数\n当适配器重新启动时,这些对象的更改会丢失.\n在调试模式下显示日志项, 用于状态变化和热需求切换/ 关闭"
       }
     },
     "titleLang": {
