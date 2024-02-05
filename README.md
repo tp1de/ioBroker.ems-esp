@@ -31,10 +31,10 @@ It can be used either for the original Bosch-Group gateways or the ems-esp or bo
 All changed states from own scripts or the object browser does have to set acknowledged = false !!!
 
 
-## NEW EMS+ entities (switchTimes and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
-	The ems-esp gateway firmware does not support switchTimes and holidayModes for EMS+ thermostats (RC310 / RC300 or similar)
+## NEW EMS+ entities (switchPrograms and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
+	The ems-esp gateway firmware does not support switchPrograms and holidayModes for EMS+ thermostats (RC310 / RC300 or similar)
 	Enabling this new function will issue raw telegrams toward the ems-esp gateway and then try to read the response
-	Testing is done for switchTimes A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5
+	Testing is done for switchPrograms A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5
 	When a positive response is found then the raw response is decoded and states are created identically to KM200 gateway API data
 	When the km200 gateway is enabled then this function is disabled to avoid double entries with same name
 	The states created consist of JSON structures, enum values or arrays and are writable - Be carefull with the right content
@@ -67,7 +67,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	### **WORK IN PROGRESS**
 -->
 ### 3.0.0-alpha.0 (2024-02-05)
-* Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)
+* Search for ems-esp states for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
 * Implement raw telegram search for EMS+ entities and create writable objects / states
 * The search is only active when no km200 gateway is selected
 
