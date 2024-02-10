@@ -69,6 +69,11 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
+* create writable objects / states for switchPrograms and holidayModes
+* this function is only active when no km200 gateway is selected - ems-esp gateway only
+
 ### 3.0.0-alpha.0 (2024-02-05)
 * Search for ems-esp states for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
 * Implement raw telegram search for EMS+ entities and create writable objects / states
