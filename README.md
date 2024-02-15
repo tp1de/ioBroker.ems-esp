@@ -41,7 +41,7 @@ All changed states from own scripts or the object browser does have to set ackno
 	When the km200 gateway is enabled then this function is disabled to avoid double entries with same name
 	The states created consist of JSON structures, enum values or arrays and are writable - Be carefull with the right content
 	I recommend to test by using the Bosch/Buderus apps to identify the right content - especially for holidayModes.
-	Polling is set to every 5 minutes.
+	Polling is set to every 2 minutes.
 
 ## NEW Energy recordings and statistics need an active database instance. 
 	Recordings require a InfluxDB adapter version >= 4.0.2 which allows deleting of db-records
