@@ -31,7 +31,7 @@ It can be used either for the original Bosch-Group gateways or the ems-esp or bo
 All changed states from own scripts or the object browser does have to set acknowledged = false !!!
 
 
-## NEW EMS+ entities (switchPrograms and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
+## NEW in Version >= 3.0.0: EMS+ entities (switchPrograms and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
 	The ems-esp gateway firmware does not support switchPrograms and holidayModes for EMS+ thermostats (RC310 / RC300 or similar)
 	Enabling this new function will issue raw telegrams toward the ems-esp gateway and then try to read the response
 	Testing is done for switchPrograms A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5
