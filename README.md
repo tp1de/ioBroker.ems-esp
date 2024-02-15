@@ -69,7 +69,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0-alpha.1 (2024-02-15)
 * ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
 * create writable objects / states for switchPrograms and holidayModes
 * this function is only active when no km200 gateway is selected - ems-esp gateway only
@@ -91,9 +91,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 
 ### 2.7.4 (2024-02-01)
 * avoid sql errors on instance start
-
-### 2.7.3 (2024-01-31)
-* error correction for heat demand function
 
 ## License
 MIT License

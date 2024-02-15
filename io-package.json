@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.0-alpha.0",
+    "version": "3.0.0-alpha.1",
     "news": {
+      "3.0.0-alpha.1": {
+        "en": "ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)\ncreate writable objects / states for switchPrograms and holidayModes\nthis function is only active when no km200 gateway is selected - ems-esp gateway only\nimprove error messages for km200 (wrong ip / passwords)\nsmall changes within PDF adapter documentation",
+        "de": "ems-esp Gateway: Suche nach EMS+ Thermostaten: switchProgramme und UrlaubModes (RC310/RC300)\nschreibbare Objekte / Zustände für Schalter erstellen Programme und Urlaub Moden\ndiese funktion ist nur aktiv, wenn kein km200 gateway ausgewählt wird - ems-esp gateway nur\nverbesserung der fehlermeldungen für km200 (wrong ip / passwörter)\nkleine Änderungen in PDF Adapter Dokumentation",
+        "ru": "ems-esp шлюз: Сырой телеграмма поиска термостатов EMS+: коммутаторПрограммы и праздникиМоды (RC310/RC300)\nсоздание реальных объектов / состояний для переключения Программы и отдых Режимы\nэта функция активна только в том случае, если не выбраны шлюзы km200 - только ems-esp\nулучшить сообщения об ошибках на км200 (неправильные ip / пароли)\nнебольшие изменения в документации адаптера PDF",
+        "pt": "ems-esp gateway: Busca de telegramas crus para termostatos EMS+: switchPrograms and holidayModes (RC310/RC300)\ncriar objetos / estados writable para interruptor Programas e férias Modos\nesta função só está ativa quando não há gateway km200 é selecionado - ems-esp gateway somente\nmelhorar mensagens de erro para km200 (wrong ip / senhas)\npequenas alterações na documentação do adaptador PDF",
+        "nl": "ems-esp gateway: Raw telegram search for EMS+ thermostaten: switchPrograms and holidayModes (RC310/RC300)\nbeschrijfbare objecten / toestanden voor switch aanmaken Programma's en vakantie Modi\ndeze functie is alleen actief als er geen km200 gateway is geselecteerd - alleen ems-esp gateway\nfoutmeldingen voor km200 verbeteren (verkeerde ip / wachtwoorden)\nkleine wijzigingen in PDF-adapterdocumentatie",
+        "fr": "passerelle ems-esp : Recherche de télégrammes bruts pour les thermostats EMS+: switchProgrammes et vacancesModes (RC310/RC300)\ncréer des objets/états en écriture pour switch Programmes et congés Modes\ncette fonction n'est active que si aucune passerelle km200 n'est sélectionnée - passerelle ems-esp seulement\naméliorer les messages d'erreur pour km200 (wrong ip / mots de passe)\npetits changements dans la documentation de l'adaptateur PDF",
+        "it": "ems-esp gateway: Ricerca telegrafica raw per termostati EMS+: switchPrograms and holidayModes (RC310/RC300)\ncreare oggetti / stati scrivibili per l'interruttore Programmi e vacanze Modalità\nquesta funzione è attiva solo quando non viene selezionato alcun gateway km200 - ems-esp gateway only\nmigliorare i messaggi di errore per km200 (wrong ip / password)\npiccoli cambiamenti nella documentazione dell'adattatore PDF",
+        "es": "ems-esp gateway: Búsqueda de telegramas crudos para termostatos EMS+: interruptorProgramas y feriasModes (RC310/RC300)\ncrear objetos / estados para conmutar Programas y vacaciones Modos\nesta función sólo es activa cuando no se selecciona la puerta de entrada de km200 - ems-esp sólo\nmejorar los mensajes de error para km200 (wrong ip / contraseñas)\npequeños cambios en la documentación del adaptador PDF",
+        "pl": "brama ems- esp: Poszukiwanie termostatów EMS +: programy rozdzielcze i momenty świąteczne (RC310 / RC300)\ntworzenie zapisywalnych obiektów / stanów dla przełącznika Programy i wakacje Tryby\nfunkcja ta jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200 - tylko bramka ems- esp\npoprawić komunikaty błędów dla km200 (błędne ip / haseł)\nniewielkie zmiany w dokumentacji adaptera PDF",
+        "uk": "емс-есп шлюз: Пошук сирої телеграми термостатів EMS+: перемикачПрограми та відпочинокМоди (RC310/RC300)\nстворити об'єкти, що містяться в режимі реального часу, Програми та відпочинок Режими\nця функція діє тільки при відсутності км200 шлюзу обраний - емс-esp шлюзу тільки\nполіпшити повідомлення про помилки для км200 (wrong ip / паролі)\nнезначні зміни в документі PDF-адаптер",
+        "zh-cn": "嵌入网关 : 原始电报搜索EMS+恒温器:切换程序与节假日Modes(RC310/RC300)\n创建可写对象/ 切换状态 方案和假日 模式\n3⁄4 ̄ ̧漯b\n改进 km200 的错误信息(错误 ip/ 密码)\npDF 适配器文档中的小变化"
+      },
       "3.0.0-alpha.0": {
         "en": "Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)\nImplement raw telegram search for EMS+ entities and create writable objects / states\nThe search is only active when no km200 gateway is selected",
         "de": "Suche nach ems-esp Zuständen für EMS+ Thermostate: switchTimes and HolidayModes (RC310/RC300)\nImplementierung der Rohtelegrammsuche für EMS+-Einheiten und Erstellung von schreibbaren Objekten / Zuständen\nDie Suche ist nur aktiv, wenn kein km200 Gateway ausgewählt wird",
@@ -80,19 +93,6 @@
         "pl": "korekta błędu dla funkcji zapotrzebowania na ciepło",
         "uk": "виправлення помилок для функції теплового попиту",
         "zh-cn": "热需求函数错误校正"
-      },
-      "2.7.1": {
-        "en": "improve error processing for wrongly defined heat demand states",
-        "de": "verbesserung der fehlerverarbeitung für falsch definierte wärmebedarfszustände",
-        "ru": "улучшить обработку ошибок для неправильно определенных состояний спроса на тепло",
-        "pt": "melhorar o processamento de erros para estados de demanda de calor incorretamente definidos",
-        "nl": "verbetering van foutverwerking voor verkeerd gedefinieerde warmtevraagtoestanden",
-        "fr": "améliorer le traitement des erreurs pour les états de demande de chaleur mal définis",
-        "it": "migliorare l'elaborazione degli errori per gli stati della domanda di calore erroneamente definiti",
-        "es": "mejorar el procesamiento de errores para estados de demanda de calor mal definidos",
-        "pl": "poprawić przetwarzanie błędów dla nieprawidłowo zdefiniowanych stanów zapotrzebowania na ciepło",
-        "uk": "поліпшення обробки помилок для не визначених станів теплового попиту",
-        "zh-cn": "改进错误定义的热需求状态的错误处理"
       }
     },
     "titleLang": {
