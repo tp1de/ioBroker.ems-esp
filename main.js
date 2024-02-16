@@ -313,6 +313,7 @@ async function heatdemand() {
 
 		if (delta < deltam && delta >= 0 && actualweight > 0) {
 			actualweight = weight;
+			await adapter.setStateAsync(state+"actualweight", {ack: true, val: weight});
 			if (adapter.config.thermostats[i].hc == "hc1") w1 += weight;
 			if (adapter.config.thermostats[i].hc == "hc2") w2 += weight;
 			if (adapter.config.thermostats[i].hc == "hc3") w3 += weight;
