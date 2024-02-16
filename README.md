@@ -68,6 +68,10 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
+
+### **WORK IN PROGRESS**
+* Node >= 18 required
+
 -->
 ### 3.0.0-alpha.1 (2024-02-15)
 * ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
