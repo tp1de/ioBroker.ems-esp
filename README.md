@@ -34,7 +34,8 @@ All changed states from own scripts or the object browser does have to set ackno
 ## NEW in Version >= 3.0.0: EMS+ entities (switchPrograms and holidayModes) are implemented for EMS-ESP gateway and if found states are created. 
 	The ems-esp gateway firmware does not support switchPrograms and holidayModes for EMS+ thermostats (RC310 / RC300 or similar)
 	Enabling this new function will issue raw telegrams toward the ems-esp gateway and then try to read the response.
-	Testing is done for switchPrograms A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5
+	Testing is done for switchPrograms A and B for hc1 to hc4, dhw (warm water) and circulation pump (cp) and holidayModes hm1-hm5.
+	The found extended entities are stored within instance settings. Therfore once an adapter instance restart will happen.
 		
 	Then after these found states the raw response is decoded and states are created similar to KM200 gateway API data.
 	When the km200 gateway is enabled then this function is disabled to avoid double entries with same name.
