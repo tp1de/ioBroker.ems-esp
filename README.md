@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.ems-esp.svg)](https://www.npmjs.com/package/iobroker.ems-esp)
 ![Number of Installations (latest)](https://iobroker.live/badges/ems-esp-installed.svg)
 ![Number of Installations (stable)](https://iobroker.live/badges/ems-esp-stable.svg)
-[![Dependency Status](https://img.shields.io/david/tp1de/iobroker.ems-esp.svg)](https://david-dm.org/tp1de/iobroker.ems-esp)
+
 
 [![NPM](https://nodei.co/npm/iobroker.ems-esp.png?downloads=true)](https://nodei.co/npm/iobroker.ems-esp/)
 
@@ -50,13 +50,15 @@ All changed states from own scripts or the object browser does have to set ackno
 	In V2 this is a global parameter for all states ! 
 	
 ## NEW: Heat Demand hysteresis improved. 
-    Heat Demand per thermostat is active when actual temp is lower than (target temp - delta).
-	Heat Demand is inactive when actual temp is higher then target temp.
+	Switch heat demand on when actual temp <= settemp - delta
+	Switch off when settemp < actual temp
+	Do nothing between settemp - delta and settemp
 	Make sure that delta is high enough to avoid too many boiler starts.
 
 ## NEW: Heat Demand paramters can be changed during active instance
-	Heat Demand parameters delta / weight for each thermostat can be changed within objects during active instance
-	Heat Demand parameters weighton / weightoff for each heating circuit can be changed within objects during active instance
+	Heat demand parameters delta / weight for each thermostat can be changed within objects during active instance
+	Remark: Updated weight is only used wen a new Heat Demand is found
+	Heat demand parameters weighton / weightoff for each heating circuit can be changed within objects during active instance
 
 
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
@@ -68,11 +70,11 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
-
+-->
 ### **WORK IN PROGRESS**
 * Node >= 18 required
 
--->
+
 ### 3.0.0-alpha.1 (2024-02-15)
 * ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
 * create writable objects / states for switchPrograms and holidayModes
