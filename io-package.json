@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.0-alpha.1",
+    "version": "3.0.0-alpha.2",
     "news": {
+      "3.0.0-alpha.2": {
+        "en": "Node >= 18 required\nupdate heatdemand weight changes to be effective during active instance",
+        "de": "Node >= 18 erforderlich\naktualisierung von wärmeabfrage-gewichtsänderungen während der aktiven instanz",
+        "ru": "Node >= 18\nобновление изменений в весе теплообмена, чтобы быть эффективным во время активного экземпляра",
+        "pt": "Node >= 18 necessário\natualizar as alterações de peso da demanda de calor para ser eficaz durante a instância ativa",
+        "nl": "Node < 18 vereist\nupdate warmtevraag gewicht wijzigingen effectief tijdens actieve instantie",
+        "fr": "Noeud >= 18 requis\nmettre à jour les modifications du poids de la demande de chaleur pour être efficace en instance active",
+        "it": "Nodo = 18 richiesto\naggiornare le variazioni di peso del dissipatore di calore per essere efficace durante l'istanza attiva",
+        "es": "Nodo = 18 requerido\nactualizar los cambios de peso de la indemnización de calor para ser eficaz durante la instancia activa",
+        "pl": "Węzeł > = 18 wymagany\naktualizacja zmian zapotrzebowania na ciepło, aby były skuteczne podczas aktywnej instancji",
+        "uk": "Node >= 18 потрібно\nоновлюється зміна маси теплової енергії під час активного екземпляра",
+        "zh-cn": "需要18号节点\n更新热需求重量变化以在活动实例中有效"
+      },
       "3.0.0-alpha.1": {
         "en": "ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)\ncreate writable objects / states for switchPrograms and holidayModes\nthis function is only active when no km200 gateway is selected - ems-esp gateway only\nimprove error messages for km200 (wrong ip / passwords)\nsmall changes within PDF adapter documentation",
         "de": "ems-esp Gateway: Suche nach EMS+ Thermostaten: switchProgramme und UrlaubModes (RC310/RC300)\nschreibbare Objekte / Zustände für Schalter erstellen Programme und Urlaub Moden\ndiese funktion ist nur aktiv, wenn kein km200 gateway ausgewählt wird - ems-esp gateway nur\nverbesserung der fehlermeldungen für km200 (wrong ip / passwörter)\nkleine Änderungen in PDF Adapter Dokumentation",
@@ -69,19 +82,6 @@
         "zh-cn": "启动时避免 sql 错误"
       },
       "2.7.3": {
-        "en": "error correction for heat demand function",
-        "de": "fehlerkorrektur für wärmebedarfsfunktion",
-        "ru": "коррекция ошибок для функции теплового спроса",
-        "pt": "correção de erro para a função de demanda de calor",
-        "nl": "foutcorrectie voor warmtevraagfunctie",
-        "fr": "correction d'erreur pour la fonction de demande de chaleur",
-        "it": "correzione di errore per la funzione della domanda di calore",
-        "es": "corrección de error para la función de la demanda de calor",
-        "pl": "korekta błędu dla funkcji zapotrzebowania na ciepło",
-        "uk": "виправлення помилок для функції теплового попиту",
-        "zh-cn": "热需求函数错误校正"
-      },
-      "2.7.2": {
         "en": "error correction for heat demand function",
         "de": "fehlerkorrektur für wärmebedarfsfunktion",
         "ru": "коррекция ошибок для функции теплового спроса",

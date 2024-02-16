@@ -1,4 +1,7 @@
 * older changes
+## 2.7.4 (2024-02-01)
+* avoid sql errors on instance start
+
 ## 2.7.3 (2024-01-31)
 * error correction for heat demand function
 

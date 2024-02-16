@@ -70,10 +70,9 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0-alpha.2 (2024-02-16)
 * Node >= 18 required
-* update heatdemand weight changes to be effective during active instance 
-
+* update heatdemand weight changes to be effective during active instance
 
 ### 3.0.0-alpha.1 (2024-02-15)
 * ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
@@ -94,9 +93,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 
 ### 2.7.5 (2024-02-02)
 * allow only positive deltam in config for heat demand function
-
-### 2.7.4 (2024-02-01)
-* avoid sql errors on instance start
 
 ## License
 MIT License
