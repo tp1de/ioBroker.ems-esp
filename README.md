@@ -73,6 +73,15 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Node >= 18 required
+* update heatdemand weight changes to be effective during active instance
+* ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
+* create writable objects / states for switchPrograms and holidayModes
+* this function is only active when no km200 gateway is selected - ems-esp gateway only
+* improve error messages for km200 (wrong ip / passwords)
+* small changes within PDF adapter documentation
+
 ### 3.0.0-alpha.2 (2024-02-16)
 * Node >= 18 required
 * update heatdemand weight changes to be effective during active instance
