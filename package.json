@@ -61,8 +61,7 @@
     "typescript": "~5.3.3"
   },
   "directories": {
-    "lib": "lib",
-    "test": "test"
+    "lib": "lib"
   },
   "main": "main.js",
   "scripts": {
