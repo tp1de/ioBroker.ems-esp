@@ -72,6 +72,7 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 -->
 ### **WORK IN PROGRESS**
 * Node >= 18 required
+* update heatdemand weight changes to be effective during active instance 
 
 
 ### 3.0.0-alpha.1 (2024-02-15)
