@@ -65,6 +65,8 @@ German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 
 English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
 
+German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-esp-f%C3%BCr-bosch-heizungen
+
 
 ## Changelog
 <!--
