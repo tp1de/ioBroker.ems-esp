@@ -73,7 +73,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.0 (2024-02-17)
 * Node >= 18 required
 * update heatdemand weight changes to be effective during active instance
 * ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
@@ -102,9 +102,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * influxdb adapter version >= 4.0.2 required 
 * store km200 recordings only within defined retention period for influxdb
 * delay start of statistics by 5 minutes
-
-### 2.7.5 (2024-02-02)
-* allow only positive deltam in config for heat demand function
 
 ## License
 MIT License

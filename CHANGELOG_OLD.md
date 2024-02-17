@@ -1,4 +1,7 @@
 * older changes
+## 2.7.5 (2024-02-02)
+* allow only positive deltam in config for heat demand function
+
 ## 2.7.4 (2024-02-01)
 * avoid sql errors on instance start
 
