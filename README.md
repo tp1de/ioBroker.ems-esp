@@ -73,6 +73,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* change KM200 error messages for recordings
+
 ### 3.0.0 (2024-02-17)
 * Node >= 18 required
 * update heatdemand weight changes to be effective during active instance
