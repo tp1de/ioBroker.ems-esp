@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "news": {
+      "3.0.1": {
+        "en": "change KM200 error messages for recordings",
+        "de": "kM200 Fehlermeldungen für Aufnahmen ändern",
+        "ru": "изменение сообщений об ошибках KM200 для записей",
+        "pt": "alterar mensagens de erro KM200 para gravações",
+        "nl": "kM200 foutmeldingen voor opnames wijzigen",
+        "fr": "modifier les messages d'erreur KM200 pour les enregistrements",
+        "it": "cambiare messaggi di errore KM200 per le registrazioni",
+        "es": "cambiar mensajes de error KM200 para grabaciones",
+        "pl": "zmiana komunikatów błędów KM200 dla nagrań",
+        "uk": "змінити повідомлення про помилку KM200 для записів",
+        "zh-cn": "更改 KM200 录音错误消息"
+      },
       "3.0.0": {
         "en": "Node >= 18 required\nupdate heatdemand weight changes to be effective during active instance\nems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)\ncreate writable objects / states for switchPrograms and holidayModes\nthis function is only active when no km200 gateway is selected - ems-esp gateway only\nimprove error messages for km200 (wrong ip / passwords)\nsmall changes within PDF adapter documentation",
         "de": "Node >= 18 erforderlich\naktualisierung von wärmeabfrage-gewichtsänderungen während der aktiven instanz\nems-esp Gateway: Suche nach EMS+ Thermostaten: switchProgramme und UrlaubModes (RC310/RC300)\nschreibbare Objekte / Zustände für Schalter erstellen Programme und Urlaub Moden\ndiese funktion ist nur aktiv, wenn kein km200 gateway ausgewählt wird - ems-esp gateway nur\nverbesserung der fehlermeldungen für km200 (wrong ip / passwörter)\nkleine Änderungen in PDF Adapter Dokumentation",
@@ -80,19 +93,6 @@
         "pl": "zezwala tylko dodatni deltam w konfigu dla funkcji zapotrzebowania na ciepło",
         "uk": "дозволити тільки позитивний дельтам в конфігурації для функції теплового попиту",
         "zh-cn": "在配置中只允许正三角形用于热需求功能"
-      },
-      "2.7.4": {
-        "en": "avoid sql errors on instance start",
-        "de": "sql-fehler beim beispielstart vermeiden",
-        "ru": "избегать ошибок в квадрате, например, начать",
-        "pt": "evitar erros sql no início da instância",
-        "nl": "sql-fouten vermijden bij het starten van instantie",
-        "fr": "éviter les erreurs sql lors du démarrage de l'instance",
-        "it": "evitare errori di sql su inizio di istanza",
-        "es": "evitar errores sql por ejemplo empezar",
-        "pl": "uniknąć błędów sql przy uruchomieniu instancji",
-        "uk": "уникнути помилок при запуску екземпляра",
-        "zh-cn": "启动时避免 sql 错误"
       }
     },
     "titleLang": {
