@@ -73,8 +73,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
-* improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings 
+### 3.0.2 (2024-03-02)
+* improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings
 
 ### 3.0.1 (2024-02-25)
 * change KM200 error messages for recordings
@@ -98,11 +98,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * this function is only active when no km200 gateway is selected - ems-esp gateway only
 * improve error messages for km200 (wrong ip / passwords)
 * small changes within PDF adapter documentation
-
-### 3.0.0-alpha.0 (2024-02-05)
-* Search for ems-esp states for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
-* Implement raw telegram search for EMS+ entities and create writable objects / states
-* The search is only active when no km200 gateway is selected
 
 ## License
 MIT License

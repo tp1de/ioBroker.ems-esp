@@ -1,4 +1,9 @@
 * older changes
+## 3.0.0-alpha.0 (2024-02-05)
+* Search for ems-esp states for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
+* Implement raw telegram search for EMS+ entities and create writable objects / states
+* The search is only active when no km200 gateway is selected
+
 ## 2.8.0 (2024-02-04)
 * influxdb adapter version >= 4.0.2 required 
 * store km200 recordings only within defined retention period for influxdb

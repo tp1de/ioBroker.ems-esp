@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.1",
+    "version": "3.0.2",
     "news": {
+      "3.0.2": {
+        "en": "improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings",
+        "de": "km200 daten lesen, um fehler zu vermeiden - testen sie jetzt http bis zu 3 mal - vor allem für aufnahmen",
+        "ru": "улучшить данные km200 читать, чтобы избежать ошибок - попробуйте http получить до 3 раз сейчас - особенно для записей",
+        "pt": "melhorar a leitura de dados km200 para evitar erros - tente http chegar até 3 vezes agora - especialmente para gravações",
+        "nl": "verbeteren km200 gegevens gelezen om fouten te voorkomen - probeer http krijgen tot 3 keer nu - vooral voor opnames",
+        "fr": "améliorer les données de km200 pour éviter les erreurs - essayez http jusqu'à 3 fois maintenant - surtout pour les enregistrements",
+        "it": "migliorare i dati di km200 letti per evitare errori - provare http ottenere fino a 3 volte ora - soprattutto per le registrazioni",
+        "es": "mejorar km200 datos leídos para evitar errores - intentar http obtener hasta 3 veces ahora - especialmente para grabaciones",
+        "pl": "poprawić odczyt km200 danych, aby uniknąć błędów - spróbuj http dostać się do 3 razy - zwłaszcza dla nagrań",
+        "uk": "поліпшити км200 читання даних, щоб уникнути помилок - спробуйте отримати доступ до 3 разів зараз - особливо для записів",
+        "zh-cn": "改进 km200 数据读取以避免错误 - 尝试 http 现在最多3 次 - 特别是录音"
+      },
       "3.0.1": {
         "en": "change KM200 error messages for recordings",
         "de": "kM200 Fehlermeldungen für Aufnahmen ändern",
@@ -80,19 +93,6 @@
         "pl": "wersja adaptera influxdb > = 4.0.2 wymagane\nprzechowywanie nagrań km200 tylko w określonym okresie retencji dla influxdb\nopóźnienie rozpoczęcia statystyki o 5 minut",
         "uk": "influxdb версія адаптера >= 4.0.2 потрібно\nзберігати км200 записів тільки в визначений період затримки для influxdb\nпочаток затримки статистика за 5 хвилин",
         "zh-cn": "输入db适配器版本 qq 4.02 所需经费\n仅限在限定的流入保留期内储存平方公里录音b\n5分钟后开始统计"
-      },
-      "2.7.5": {
-        "en": "allow only positive deltam in config for heat demand function",
-        "de": "nur positives deltam in config für die wärmenachfrage funktion",
-        "ru": "разрешить только положительный дельтам в настройке для функции спроса на тепло",
-        "pt": "permitir apenas deltam positivo em config para a função de demanda de calor",
-        "nl": "laat alleen positief deltam in config toe voor warmtevraagfunctie",
-        "fr": "ne permettre que le deltam positif dans la configuration pour la fonction de la demande de chaleur",
-        "it": "consentire solo il deltam positivo in configurazione per la funzione di domanda di calore",
-        "es": "permitir sólo el deltam positivo en el config para la función de la demanda de calor",
-        "pl": "zezwala tylko dodatni deltam w konfigu dla funkcji zapotrzebowania na ciepło",
-        "uk": "дозволити тільки позитивний дельтам в конфігурації для функції теплового попиту",
-        "zh-cn": "在配置中只允许正三角形用于热需求功能"
       }
     },
     "titleLang": {
