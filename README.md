@@ -73,6 +73,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* improve km200 data read to avoid errors
+
 ### 3.0.2 (2024-03-02)
 * improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings
 
