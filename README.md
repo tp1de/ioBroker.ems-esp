@@ -55,7 +55,7 @@ All changed states from own scripts or the object browser does have to set ackno
 	Do nothing between settemp - delta and settemp
 	Make sure that delta is high enough to avoid too many boiler starts.
 
-## NEW: Heat Demand paramters can be changed during active instance
+## NEW: Heat Demand parameters can be changed during active instance
 	Heat demand parameters delta / weight for each thermostat can be changed within objects during active instance
 	Remark: Updated weight is only used wen a new Heat Demand is found
 	Heat demand parameters weighton / weightoff for each heating circuit can be changed within objects during active instance
