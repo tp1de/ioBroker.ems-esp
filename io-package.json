@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "news": {
+      "3.0.3": {
+        "en": "improve km200 data read to avoid errors",
+        "de": "km200 daten lesen, um fehler zu vermeiden",
+        "ru": "улучшить данные km200, чтобы избежать ошибок",
+        "pt": "melhorar a leitura de dados km200 para evitar erros",
+        "nl": "verbeteren km200 gegevens gelezen om fouten te voorkomen",
+        "fr": "améliorer les données km200 pour éviter les erreurs",
+        "it": "migliorare i dati di km200 letti per evitare errori",
+        "es": "mejorar km200 datos leídos para evitar errores",
+        "pl": "poprawić odczyt danych km200, aby uniknąć błędów",
+        "uk": "покращувати дані км200, щоб уникнути помилок",
+        "zh-cn": "改进 km200 数据,以避免错误"
+      },
       "3.0.2": {
         "en": "improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings",
         "de": "km200 daten lesen, um fehler zu vermeiden - testen sie jetzt http bis zu 3 mal - vor allem für aufnahmen",
@@ -80,19 +93,6 @@
         "pl": "Szukaj stanów ems- esp dla termostatów EMS +: switch Times i holidayModes (RC310 / RC300)\nWdrożenie wyszukiwania telegramu surowego dla jednostek EMS + i tworzenie zapisywalnych obiektów / stanów\nWyszukiwarka jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200",
         "uk": "Пошук емс-esp станів для термостатів EMS+: перемикання часу та відпочинокМоди (RC310/RC300)\nВпровадження пошуку сирої телеграми для суб’єктів EMS+ та створення життєздатних об’єктів / станів\nПошук діє тільки при відсутності км200 шлюзу",
         "zh-cn": "搜索 EMS+ 自动调温器的 ems- esp 状态: 切换时间和节假日模式( RC310/ RC300)\n对 EMS+ 实体执行原始电报搜索并创建可写对象 / 状态\n搜索仅在没有选择 km200 网关时激活"
-      },
-      "2.8.0": {
-        "en": "influxdb adapter version >= 4.0.2 required \nstore km200 recordings only within defined retention period for influxdb\ndelay start of statistics by 5 minutes",
-        "de": "influxdb adapter version >= 4,0.2 erforderlich\nspeichern km200 aufnahmen nur innerhalb einer definierten aufbewahrungsfrist für influxdb\nverzögerungsbeginn der statistiken um 5 minuten",
-        "ru": " influx 4.0.2 требуется\nхранить записи km200 только в течение определенного периода удержания для притокаdb\nзадержка начала статистики на 5 минут",
-        "pt": "versão do adaptador de influxo >= 4.0.2 necessário\narmazenar gravações de km200 apenas dentro do período de retenção definido para influxdb\ninício de estatísticas por 5 minutos",
-        "nl": "influxdb-adapterversie >= 4.0.2 vereist\nalleen km200-opnames bewaren binnen een bepaalde bewaarperiode voor influxdb\nvertraging begin statistieken met 5 minuten",
-        "fr": "adaptateur flowdb version >= 40,2 requis\nstocker des enregistrements en km200 seulement pendant la période de conservation définie pour l'affluxdb\nretard le début des statistiques de 5 minutes",
-        "it": "versione adattatore influxdb >= 4.0.2 richiesto\nmemorizzare le registrazioni km200 solo entro il periodo di conservazione definito per afluxdb\nritardare l'avvio delle statistiche di 5 minuti",
-        "es": "adaptador de influxdb versión 4.0.2\nalmacenar km200 grabaciones sólo dentro del período de retención definido para influxdb\nretraso en el inicio de las estadísticas en 5 minutos",
-        "pl": "wersja adaptera influxdb > = 4.0.2 wymagane\nprzechowywanie nagrań km200 tylko w określonym okresie retencji dla influxdb\nopóźnienie rozpoczęcia statystyki o 5 minut",
-        "uk": "influxdb версія адаптера >= 4.0.2 потрібно\nзберігати км200 записів тільки в визначений період затримки для influxdb\nпочаток затримки статистика за 5 хвилин",
-        "zh-cn": "输入db适配器版本 qq 4.02 所需经费\n仅限在限定的流入保留期内储存平方公里录音b\n5分钟后开始统计"
       }
     },
     "titleLang": {
