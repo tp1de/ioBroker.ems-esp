@@ -136,8 +136,9 @@
       "central heating",
       "smarthome"
     ],
-    "license": "MIT",
+    "licenseinformation": "MIT",
     "platform": "Javascript/Node.js",
+    "tier": 2,
     "icon": "ems-esp.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/tp1de/ioBroker.ems-esp/main/admin/ems-esp.png",
