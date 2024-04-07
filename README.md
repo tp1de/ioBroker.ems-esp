@@ -74,7 +74,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* avoid json error on start
+* avoid json error on adapter start for field /gateway/firmware
 
 ### 3.0.3 (2024-03-09)
 * improve km200 data read to avoid errors
