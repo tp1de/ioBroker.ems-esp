@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "news": {
+      "3.0.4": {
+        "en": "avoid json error on adapter start for field /gateway/firmware",
+        "de": "json fehler auf adapter start für feld /gateway/firmware vermeiden",
+        "ru": "избегать ошибки json при запуске адаптера для поля /gateway /firmware",
+        "pt": "evitar erro json no início do adaptador para campo /gateway /firmware",
+        "nl": "json-fout vermijden bij het starten van de adapter voor veld /gateway/firmware",
+        "fr": "éviter l'erreur json au démarrage de l'adaptateur pour le champ /gateway/firmware",
+        "it": "evitare l'errore json sull'avvio dell'adattatore per il campo /gateway/firmware",
+        "es": "evitar error json en el inicio del adaptador para campo /gateway /firmware",
+        "pl": "uniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
+        "uk": "уникнути помилки json на адаптері старту для поля /gateway /firmware",
+        "zh-cn": "避免 json 字段/ 出入口/ 软件适配器启动时出错"
+      },
       "3.0.3": {
         "en": "improve km200 data read to avoid errors",
         "de": "km200 daten lesen, um fehler zu vermeiden",
@@ -80,19 +93,6 @@
         "pl": "brama ems- esp: Poszukiwanie termostatów EMS +: programy rozdzielcze i momenty świąteczne (RC310 / RC300)\ntworzenie zapisywalnych obiektów / stanów dla przełącznika Programy i wakacje Tryby\nfunkcja ta jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200 - tylko bramka ems- esp\npoprawić komunikaty błędów dla km200 (błędne ip / haseł)\nniewielkie zmiany w dokumentacji adaptera PDF",
         "uk": "емс-есп шлюз: Пошук сирої телеграми термостатів EMS+: перемикачПрограми та відпочинокМоди (RC310/RC300)\nстворити об'єкти, що містяться в режимі реального часу, Програми та відпочинок Режими\nця функція діє тільки при відсутності км200 шлюзу обраний - емс-esp шлюзу тільки\nполіпшити повідомлення про помилки для км200 (wrong ip / паролі)\nнезначні зміни в документі PDF-адаптер",
         "zh-cn": "嵌入网关 : 原始电报搜索EMS+恒温器:切换程序与节假日Modes(RC310/RC300)\n创建可写对象/ 切换状态 方案和假日 模式\n3⁄4 ̄ ̧漯b\n改进 km200 的错误信息(错误 ip/ 密码)\npDF 适配器文档中的小变化"
-      },
-      "3.0.0-alpha.0": {
-        "en": "Search for ems-esp states for EMS+ thermostats: switchTimes and holidayModes (RC310/RC300)\nImplement raw telegram search for EMS+ entities and create writable objects / states\nThe search is only active when no km200 gateway is selected",
-        "de": "Suche nach ems-esp Zuständen für EMS+ Thermostate: switchTimes and HolidayModes (RC310/RC300)\nImplementierung der Rohtelegrammsuche für EMS+-Einheiten und Erstellung von schreibbaren Objekten / Zuständen\nDie Suche ist nur aktiv, wenn kein km200 Gateway ausgewählt wird",
-        "ru": "Поиск ems-esp состояний для EMS + термостатов: SwitchTimes и HolidayModes (RC310/RC300)\nРеализовать необработанный телеграммный поиск объектов EMS+ и создать реальные объекты / состояния\nПоиск активен только тогда, когда не выбран шлюз km200",
-        "pt": "Procurar estados ems-esp para termostatos EMS+: switchTimes and holidayModes (RC310/RC300)\nImplementar pesquisa de telegramas crus para entidades EMS+ e criar objetos / estados\nA pesquisa só está ativa quando nenhum gateway km200 é selecionado",
-        "nl": "Zoek naar ems-esp toestanden voor EMS+ thermostaten: switchTimes en holidayModes (RC310/RC300)\nUitvoeren van ruwe telegram zoeken naar EMS+ entiteiten en maak schrijfbare objecten / staten\nDe zoekopdracht is alleen actief wanneer geen km200-poort is geselecteerd",
-        "fr": "Recherche d'états ems-esp pour les thermostats EMS+: switchTimes and HolidayModes (RC310/RC300)\nImplémenter la recherche de télégramme brut pour les entités EMS+ et créer des objets/états en écriture\nLa recherche n'est active que si aucune passerelle km200 n'est sélectionnée",
-        "it": "Cerca stati ems-esp per termostati EMS+: switchTimes and holidayModes (RC310/RC300)\nImplementare la ricerca del telegramma raw per le entità EMS+ e creare oggetti / stati scrivibili\nLa ricerca è attiva solo quando non viene selezionato alcun gateway km200",
-        "es": "Buscar estados ems-esp para termostatos EMS+: SwitchTimes and holidayModes (RC310/RC300)\nImplementar búsqueda de telegramas crudos para entidades EMS+ y crear objetos / estados\nLa búsqueda sólo es activa cuando no se selecciona la puerta de entrada km200",
-        "pl": "Szukaj stanów ems- esp dla termostatów EMS +: switch Times i holidayModes (RC310 / RC300)\nWdrożenie wyszukiwania telegramu surowego dla jednostek EMS + i tworzenie zapisywalnych obiektów / stanów\nWyszukiwarka jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200",
-        "uk": "Пошук емс-esp станів для термостатів EMS+: перемикання часу та відпочинокМоди (RC310/RC300)\nВпровадження пошуку сирої телеграми для суб’єктів EMS+ та створення життєздатних об’єктів / станів\nПошук діє тільки при відсутності км200 шлюзу",
-        "zh-cn": "搜索 EMS+ 自动调温器的 ems- esp 状态: 切换时间和节假日模式( RC310/ RC300)\n对 EMS+ 实体执行原始电报搜索并创建可写对象 / 状态\n搜索仅在没有选择 km200 网关时激活"
       }
     },
     "titleLang": {

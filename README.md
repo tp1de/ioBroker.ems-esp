@@ -73,7 +73,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.4 (2024-04-07)
 * avoid json error on adapter start for field /gateway/firmware
 
 ### 3.0.3 (2024-03-09)
@@ -93,10 +93,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * this function is only active when no km200 gateway is selected - ems-esp gateway only
 * improve error messages for km200 (wrong ip / passwords)
 * small changes within PDF adapter documentation
-
-### 3.0.0-alpha.2 (2024-02-16)
-* Node >= 18 required
-* update heatdemand weight changes to be effective during active instance
 
 ## License
 MIT License
