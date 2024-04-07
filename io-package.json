@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.0.5",
+    "version": "3.1.0",
     "news": {
+      "3.1.0": {
+        "en": "Update km200 gateway encryption test for wrong passwords\navoid json error on adapter start for field /gateway/firmware",
+        "de": "Update km200 Gateway Verschlüsselungstest für falsche Passwörter\njson fehler auf adapter start für feld /gateway/firmware vermeiden",
+        "ru": "Тест шифрования шлюза km200 для неправильных паролей\nизбегать ошибки json при запуске адаптера для поля /gateway /firmware",
+        "pt": "Atualizar o teste de criptografia de gateway km200 para senhas erradas\nevitar erro json no início do adaptador para campo /gateway /firmware",
+        "nl": "Km200-gateway encryptietest bijwerken voor verkeerde wachtwoorden\njson-fout vermijden bij het starten van de adapter voor veld /gateway/firmware",
+        "fr": "Mettre à jour le test de chiffrement de la passerelle km200 pour les mauvais mots de passe\néviter l'erreur json au démarrage de l'adaptateur pour le champ /gateway/firmware",
+        "it": "Aggiornare il test di crittografia gateway km200 per password sbagliate\nevitare l'errore json sull'avvio dell'adattatore per il campo /gateway/firmware",
+        "es": "Actualización km200 prueba de cifrado de puerta para contraseñas erróneas\nevitar error json en el inicio del adaptador para campo /gateway /firmware",
+        "pl": "Aktualizacja testu szyfrowania bramki km200 dla błędnych haseł\nuniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
+        "uk": "Update км200 тестування шифрування шлюзу для неправильних паролів\nуникнути помилки json на адаптері старту для поля /gateway /firmware",
+        "zh-cn": "更新 km200 网关加密测试错误密码\n避免 json 字段/ 出入口/ 软件适配器启动时出错"
+      },
       "3.0.5": {
         "en": "avoid json error on adapter start for field /gateway/firmware\nupdate test-and-release worflow\nupdate license info",
         "de": "json fehler auf adapter start für feld /gateway/firmware vermeiden\nupdate test-und-release worflow\nlizenzdaten aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "Węzeł > = 18 wymagany\naktualizacja zmian zapotrzebowania na ciepło, aby były skuteczne podczas aktywnej instancji\nbrama ems- esp: Poszukiwanie termostatów EMS +: programy rozdzielcze i momenty świąteczne (RC310 / RC300)\ntworzenie zapisywalnych obiektów / stanów dla przełącznika Programy i wakacje Tryby\nfunkcja ta jest aktywna tylko wtedy, gdy nie jest zaznaczona bramka km200 - tylko bramka ems- esp\npoprawić komunikaty błędów dla km200 (błędne ip / haseł)\nniewielkie zmiany w dokumentacji adaptera PDF",
         "uk": "Node >= 18 потрібно\nоновлюється зміна маси теплової енергії під час активного екземпляра\nемс-есп шлюз: Пошук сирої телеграми термостатів EMS+: перемикачПрограми та відпочинокМоди (RC310/RC300)\nстворити об'єкти, що містяться в режимі реального часу, Програми та відпочинок Режими\nця функція діє тільки при відсутності км200 шлюзу обраний - емс-esp шлюзу тільки\nполіпшити повідомлення про помилки для км200 (wrong ip / паролі)\nнезначні зміни в документі PDF-адаптер",
         "zh-cn": "需要18号节点\n更新热需求重量变化以在活动实例中有效\n嵌入网关 : 原始电报搜索EMS+恒温器:切换程序与节假日Modes(RC310/RC300)\n创建可写对象/ 切换状态 方案和假日 模式\n3⁄4 ̄ ̧漯b\n改进 km200 的错误信息(错误 ip/ 密码)\npDF 适配器文档中的小变化"
-      },
-      "3.0.0-alpha.2": {
-        "en": "Node >= 18 required\nupdate heatdemand weight changes to be effective during active instance",
-        "de": "Node >= 18 erforderlich\naktualisierung von wärmeabfrage-gewichtsänderungen während der aktiven instanz",
-        "ru": "Node >= 18\nобновление изменений в весе теплообмена, чтобы быть эффективным во время активного экземпляра",
-        "pt": "Node >= 18 necessário\natualizar as alterações de peso da demanda de calor para ser eficaz durante a instância ativa",
-        "nl": "Node < 18 vereist\nupdate warmtevraag gewicht wijzigingen effectief tijdens actieve instantie",
-        "fr": "Noeud >= 18 requis\nmettre à jour les modifications du poids de la demande de chaleur pour être efficace en instance active",
-        "it": "Nodo = 18 richiesto\naggiornare le variazioni di peso del dissipatore di calore per essere efficace durante l'istanza attiva",
-        "es": "Nodo = 18 requerido\nactualizar los cambios de peso de la indemnización de calor para ser eficaz durante la instancia activa",
-        "pl": "Węzeł > = 18 wymagany\naktualizacja zmian zapotrzebowania na ciepło, aby były skuteczne podczas aktywnej instancji",
-        "uk": "Node >= 18 потрібно\nоновлюється зміна маси теплової енергії під час активного екземпляра",
-        "zh-cn": "需要18号节点\n更新热需求重量变化以在活动实例中有效"
       }
     },
     "titleLang": {

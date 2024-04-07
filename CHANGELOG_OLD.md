@@ -1,4 +1,7 @@
 * older changes
+## 3.0.1 (2024-02-25)
+* change KM200 error messages for recordings
+
 ## 3.0.0 (2024-02-17)
 * Node >= 18 required
 * update heatdemand weight changes to be effective during active instance
