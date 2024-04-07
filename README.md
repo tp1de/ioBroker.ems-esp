@@ -73,7 +73,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.0.5 (2024-04-07)
 * avoid json error on adapter start for field /gateway/firmware
 * update test-and-release worflow
 * update license info
@@ -89,15 +89,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 3.0.1 (2024-02-25)
 * change KM200 error messages for recordings
-
-### 3.0.0 (2024-02-17)
-* Node >= 18 required
-* update heatdemand weight changes to be effective during active instance
-* ems-esp gateway: Raw telegram search for EMS+ thermostats: switchPrograms and holidayModes (RC310/RC300)
-* create writable objects / states for switchPrograms and holidayModes
-* this function is only active when no km200 gateway is selected - ems-esp gateway only
-* improve error messages for km200 (wrong ip / passwords)
-* small changes within PDF adapter documentation
 
 ## License
 MIT License
