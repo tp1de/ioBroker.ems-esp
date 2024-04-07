@@ -136,7 +136,10 @@
       "central heating",
       "smarthome"
     ],
-    "licenseinformation": "MIT",
+    "licenseInformation": {
+      "license": "MIT",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "tier": 2,
     "icon": "ems-esp.png",
