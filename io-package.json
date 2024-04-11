@@ -136,8 +136,8 @@
       "central heating",
       "smarthome"
     ],
-     "licenseInformation": {
-      "type": "free"
+    "licenseInformation": {
+      "type": "MIT"
     },
     "platform": "Javascript/Node.js",
     "tier": 2,
