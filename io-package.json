@@ -137,7 +137,8 @@
       "smarthome"
     ],
     "licenseInformation": {
-      "type": "MIT"
+      "license": "MIT",
+      "type": "free"
     },
     "platform": "Javascript/Node.js",
     "tier": 2,
