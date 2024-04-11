@@ -1,4 +1,7 @@
 * older changes
+## 3.0.2 (2024-03-02)
+* improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings
+
 ## 3.0.1 (2024-02-25)
 * change KM200 error messages for recordings
 
