@@ -73,7 +73,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.2.0 (2024-04-17)
 * change for ems-esp firmware 3.7 - add dhw tag
 
 ### 3.1.1 (2024-04-11)
@@ -90,9 +90,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 3.0.4 (2024-04-07)
 * avoid json error on adapter start for field /gateway/firmware
-
-### 3.0.3 (2024-03-09)
-* improve km200 data read to avoid errors
 
 ## License
 MIT License

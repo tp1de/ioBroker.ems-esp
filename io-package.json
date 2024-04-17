@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.1.1",
+    "version": "3.2.0",
     "news": {
+      "3.2.0": {
+        "en": "change for ems-esp firmware 3.7 - add dhw tag",
+        "de": "änderung für ems-esp firmware 3.7 - dhw tag hinzufügen",
+        "ru": "изменение для ems-esp прошивки 3.7 - добавить dhw тег",
+        "pt": "mudança para firmware ems-esp 3.7 - adicionar tag dhw",
+        "nl": "verandering voor ems-esp firmware 3.7 - dhw-tag toevoegen",
+        "fr": "changement pour ems-esp firmware 3.7 - ajouter l'étiquette dhw",
+        "it": "cambiamento per firmware ems-esp 3.7 - aggiungere il tag dhw",
+        "es": "cambio para el firmware de emsp 3.7 - añadir dhw tag",
+        "pl": "zmiana oprogramowania firmowego ems- esp 3.7 - dodać znacznik dhw",
+        "uk": "зміна прошивки ems-esp 3.7 - додати тег dhw",
+        "zh-cn": "对 ems-esp 固件的更改 3.7 - 添加 dhw 标签"
+      },
       "3.1.1": {
         "en": "update dependencies and release  script",
         "de": "aktualisierung von abhängigkeiten und release-skript",
@@ -80,19 +93,6 @@
         "pl": "poprawić odczyt km200 danych, aby uniknąć błędów - spróbuj http dostać się do 3 razy - zwłaszcza dla nagrań",
         "uk": "поліпшити км200 читання даних, щоб уникнути помилок - спробуйте отримати доступ до 3 разів зараз - особливо для записів",
         "zh-cn": "改进 km200 数据读取以避免错误 - 尝试 http 现在最多3 次 - 特别是录音"
-      },
-      "3.0.1": {
-        "en": "change KM200 error messages for recordings",
-        "de": "kM200 Fehlermeldungen für Aufnahmen ändern",
-        "ru": "изменение сообщений об ошибках KM200 для записей",
-        "pt": "alterar mensagens de erro KM200 para gravações",
-        "nl": "kM200 foutmeldingen voor opnames wijzigen",
-        "fr": "modifier les messages d'erreur KM200 pour les enregistrements",
-        "it": "cambiare messaggi di errore KM200 per le registrazioni",
-        "es": "cambiar mensajes de error KM200 para grabaciones",
-        "pl": "zmiana komunikatów błędów KM200 dla nagrań",
-        "uk": "змінити повідомлення про помилку KM200 для записів",
-        "zh-cn": "更改 KM200 录音错误消息"
       }
     },
     "titleLang": {
