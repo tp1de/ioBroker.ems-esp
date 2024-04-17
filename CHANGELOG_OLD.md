@@ -1,4 +1,7 @@
 * older changes
+## 3.0.4 (2024-04-07)
+* avoid json error on adapter start for field /gateway/firmware
+
 ## 3.0.3 (2024-03-09)
 * improve km200 data read to avoid errors
 

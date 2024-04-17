@@ -73,7 +73,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.2.1 (2024-04-17)
 * update release script
 
 ### 3.2.0 (2024-04-17)
@@ -90,9 +90,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * avoid json error on adapter start for field /gateway/firmware
 * update test-and-release worflow
 * update license info
-
-### 3.0.4 (2024-04-07)
-* avoid json error on adapter start for field /gateway/firmware
 
 ## License
 MIT License

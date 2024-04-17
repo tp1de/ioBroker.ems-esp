@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.2.0",
+    "version": "3.2.1",
     "news": {
+      "3.2.1": {
+        "en": "update release script",
+        "de": "veröffentlichungsskript",
+        "ru": "обновление сценария",
+        "pt": "atualização script",
+        "nl": "update release script",
+        "fr": "mettre à jour le script de publication",
+        "it": "aggiornamento script di rilascio",
+        "es": "actualización script",
+        "pl": "aktualizować skrypt wydania",
+        "uk": "скрипт релізу оновлення",
+        "zh-cn": "更新发布脚本"
+      },
       "3.2.0": {
         "en": "change for ems-esp firmware 3.7 - add dhw tag",
         "de": "änderung für ems-esp firmware 3.7 - dhw tag hinzufügen",
@@ -80,19 +93,6 @@
         "pl": "poprawić odczyt danych km200, aby uniknąć błędów",
         "uk": "покращувати дані км200, щоб уникнути помилок",
         "zh-cn": "改进 km200 数据,以避免错误"
-      },
-      "3.0.2": {
-        "en": "improve km200 data read to avoid errors - try http get up to 3 times now - especially for recordings",
-        "de": "km200 daten lesen, um fehler zu vermeiden - testen sie jetzt http bis zu 3 mal - vor allem für aufnahmen",
-        "ru": "улучшить данные km200 читать, чтобы избежать ошибок - попробуйте http получить до 3 раз сейчас - особенно для записей",
-        "pt": "melhorar a leitura de dados km200 para evitar erros - tente http chegar até 3 vezes agora - especialmente para gravações",
-        "nl": "verbeteren km200 gegevens gelezen om fouten te voorkomen - probeer http krijgen tot 3 keer nu - vooral voor opnames",
-        "fr": "améliorer les données de km200 pour éviter les erreurs - essayez http jusqu'à 3 fois maintenant - surtout pour les enregistrements",
-        "it": "migliorare i dati di km200 letti per evitare errori - provare http ottenere fino a 3 volte ora - soprattutto per le registrazioni",
-        "es": "mejorar km200 datos leídos para evitar errores - intentar http obtener hasta 3 veces ahora - especialmente para grabaciones",
-        "pl": "poprawić odczyt km200 danych, aby uniknąć błędów - spróbuj http dostać się do 3 razy - zwłaszcza dla nagrań",
-        "uk": "поліпшити км200 читання даних, щоб уникнути помилок - спробуйте отримати доступ до 3 разів зараз - особливо для записів",
-        "zh-cn": "改进 km200 数据读取以避免错误 - 尝试 http 现在最多3 次 - 特别是录音"
       }
     },
     "titleLang": {
