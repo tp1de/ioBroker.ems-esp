@@ -73,6 +73,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* introduce a new check for ems-esp gateway formatting settings for boolean and enum values
+* stop ems-esp polling if wrong settings are detected !
+
 ### 3.2.1 (2024-04-17)
 * update release script
 
