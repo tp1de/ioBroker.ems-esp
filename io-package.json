@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.2.1",
+    "version": "3.3.0",
     "news": {
+      "3.3.0": {
+        "en": "introduce a new check for ems-esp gateway formatting settings for boolean and enum values\nstop ems-esp polling if wrong settings are detected !",
+        "de": "eine neue überprüfung für ems-esp-gateway-formatierung einstellungen für boolean und enum werte\nstoppen sie die ems-esp-umfrage, wenn falsche einstellungen erkannt werden !",
+        "ru": "ввести новую проверку параметров форматирования ems-esp для болеинов и энумов\nостановите опрос ems-esp, если будут обнаружены неправильные настройки!",
+        "pt": "introduzir uma nova verificação para configurações de formatação de gateway ems-esp para valores booleanos e enum\nparar a votação ems-esp se as configurações erradas forem detectadas!",
+        "nl": "voert een nieuwe controle voor ems-esp gateway formatting instellingen voor booleaanse en enum waarden\nstop met ems-esp polling als er verkeerde instellingen worden gedetecteerd!",
+        "fr": "introduire une nouvelle vérification des paramètres de formatage de passerelle ems-esp pour les valeurs booléennes et enum\narrêtez le vote ems-esp si de mauvais réglages sont détectés !",
+        "it": "introdurre un nuovo controllo per le impostazioni di formattazione del gateway ems-esp per i valori boolean ed enum\narrestare ems-esp polling se vengono rilevate impostazioni sbagliate!",
+        "es": "introducir un nuevo cheque para la configuración de formato de portal ems-esp para valores booleanos y enum\ndetener la encuesta de ems-esp si se detectan ajustes incorrectos!",
+        "pl": "wprowadzić nowy sprawdzian dla ustawień formatowania bramki ems- esp dla wartości boolean i enum\nzatrzymać ems- esp sondażu, jeśli wykryto błędne ustawienia!",
+        "uk": "впровадити нову перевірку на налаштування форматування шлюзу емс-esp для boolean та enum значення\nзупинити емс-esp опитування, якщо виявляються неправильні налаштування !",
+        "zh-cn": "为 布尔值和 enum 值引入 ems- esp 网关格式化设置的新检查\n如果发现设置错误, 请停止投票 !"
+      },
       "3.2.1": {
         "en": "update release script",
         "de": "veröffentlichungsskript",
@@ -80,19 +93,6 @@
         "pl": "uniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
         "uk": "уникнути помилки json на адаптері старту для поля /gateway /firmware",
         "zh-cn": "避免 json 字段/ 出入口/ 软件适配器启动时出错"
-      },
-      "3.0.3": {
-        "en": "improve km200 data read to avoid errors",
-        "de": "km200 daten lesen, um fehler zu vermeiden",
-        "ru": "улучшить данные km200, чтобы избежать ошибок",
-        "pt": "melhorar a leitura de dados km200 para evitar erros",
-        "nl": "verbeteren km200 gegevens gelezen om fouten te voorkomen",
-        "fr": "améliorer les données km200 pour éviter les erreurs",
-        "it": "migliorare i dati di km200 letti per evitare errori",
-        "es": "mejorar km200 datos leídos para evitar errores",
-        "pl": "poprawić odczyt danych km200, aby uniknąć błędów",
-        "uk": "покращувати дані км200, щоб уникнути помилок",
-        "zh-cn": "改进 km200 数据,以避免错误"
       }
     },
     "titleLang": {

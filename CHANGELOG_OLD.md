@@ -1,4 +1,9 @@
 * older changes
+## 3.0.5 (2024-04-07)
+* avoid json error on adapter start for field /gateway/firmware
+* update test-and-release worflow
+* update license info
+
 ## 3.0.4 (2024-04-07)
 * avoid json error on adapter start for field /gateway/firmware
 
