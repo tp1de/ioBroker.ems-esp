@@ -74,7 +74,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* changes for ems-esp firmware > 3.7.0-dev2 
+* changes for ems-esp firmware 3.7.0 
+* introduce warnings in log for using ems-esp dev firmware
 
 ### 3.3.0 (2024-04-20)
 * introduce a new check for ems-esp gateway formatting settings for boolean and enum values
