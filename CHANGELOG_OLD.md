@@ -1,4 +1,8 @@
 * older changes
+## 3.1.0 (2024-04-07)
+* Update km200 gateway encryption test for wrong passwords
+* avoid json error on adapter start for field /gateway/firmware
+
 ## 3.0.5 (2024-04-07)
 * avoid json error on adapter start for field /gateway/firmware
 * update test-and-release worflow

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.3.0",
+    "version": "3.4.0",
     "news": {
+      "3.4.0": {
+        "en": "changes for ems-esp firmware 3.7.0 \nintroduce warnings in log for using ems-esp dev firmware",
+        "de": "änderungen für ems-esp firmware 3.7.0\nwarnhinweise in log für die verwendung von ems-esp dev firmware",
+        "ru": "изменения для ems-esp прошивки 3.7.0\nввести предупреждения в журнале для использования ems-esp dev прошивки",
+        "pt": "alterações para firmware ems-esp 3.7.0\nintroduzir avisos no log para usar ems-esp dev firmware",
+        "nl": "wijzigingen voor ems-esp firmware 3.7.0\ninvoering van waarschuwingen in log voor het gebruik van ems-esp dev firmware",
+        "fr": "changements pour ems-esp firmware 3.7.0\nintroduire des avertissements dans le journal pour l'utilisation du firmware ems-esp dev",
+        "it": "modifiche per firmware ems-esp 3.7.0\nintrodurre avvisi in log per l'utilizzo del firmware ems-esp dev",
+        "es": "cambios para el firmware de emsp 3.7.0\nintroducir advertencias en el registro para utilizar ems-esp dev firmware",
+        "pl": "zmiany oprogramowania firmowego ems- esp 3.7.0\nwprowadzić ostrzeżenia w dzienniku dla korzystania z ems- esp dev firmware",
+        "uk": "зміни для прошивки ems-esp 3.7.0\nвводити попередження в журнал для використання прошивок ems-esp dev",
+        "zh-cn": "ems-esp固件的变化 3.7.0\n在日志中引入使用 ems-esp dev 固件的警告"
+      },
       "3.3.0": {
         "en": "introduce a new check for ems-esp gateway formatting settings for boolean and enum values\nstop ems-esp polling if wrong settings are detected !",
         "de": "eine neue überprüfung für ems-esp-gateway-formatierung einstellungen für boolean und enum werte\nstoppen sie die ems-esp-umfrage, wenn falsche einstellungen erkannt werden !",
@@ -80,19 +93,6 @@
         "pl": "uniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego\nupdate test- and- release worflow\naktualizacja informacji licencyjnych",
         "uk": "уникнути помилки json на адаптері старту для поля /gateway /firmware\nоновлення тестово-випускного worflow\nоновлення інформації про ліцензію",
         "zh-cn": "避免 json 字段/ 出入口/ 软件适配器启动时出错\n更新测试和释放电源\n更新许可证信息"
-      },
-      "3.0.4": {
-        "en": "avoid json error on adapter start for field /gateway/firmware",
-        "de": "json fehler auf adapter start für feld /gateway/firmware vermeiden",
-        "ru": "избегать ошибки json при запуске адаптера для поля /gateway /firmware",
-        "pt": "evitar erro json no início do adaptador para campo /gateway /firmware",
-        "nl": "json-fout vermijden bij het starten van de adapter voor veld /gateway/firmware",
-        "fr": "éviter l'erreur json au démarrage de l'adaptateur pour le champ /gateway/firmware",
-        "it": "evitare l'errore json sull'avvio dell'adattatore per il campo /gateway/firmware",
-        "es": "evitar error json en el inicio del adaptador para campo /gateway /firmware",
-        "pl": "uniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
-        "uk": "уникнути помилки json на адаптері старту для поля /gateway /firmware",
-        "zh-cn": "避免 json 字段/ 出入口/ 软件适配器启动时出错"
       }
     },
     "titleLang": {
