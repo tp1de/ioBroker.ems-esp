@@ -1,4 +1,7 @@
 * older changes
+## 3.1.1 (2024-04-11)
+* update dependencies and release  script
+
 ## 3.1.0 (2024-04-07)
 * Update km200 gateway encryption test for wrong passwords
 * avoid json error on adapter start for field /gateway/firmware

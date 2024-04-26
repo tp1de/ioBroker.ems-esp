@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.4.0",
+    "version": "3.4.1",
     "news": {
+      "3.4.1": {
+        "en": "correct enum settings for ems-esp gateway on adapter start",
+        "de": "korrekte enum-einstellungen für ems-esp-gateway auf adapterstart",
+        "ru": "правильные настройки ems-esp для адаптера",
+        "pt": "configurações enum corretas para gateway ems-esp no início do adaptador",
+        "nl": "correcte enum instellingen voor ems-esp gateway op adapterstart",
+        "fr": "corrects paramètres enum pour la passerelle ems-esp au démarrage de l'adaptateur",
+        "it": "impostazioni enum corrette per il gateway ems-esp all'inizio dell'adattatore",
+        "es": "ajustes de enum correctos para la entrada ems-esp en el arranque del adaptador",
+        "pl": "prawidłowe ustawienia enum dla bramki ems- esp przy uruchomieniu adaptera",
+        "uk": "виправлено налаштування емс-esp шлюзу на старті адаптера",
+        "zh-cn": "适配器启动时 ems- esp 网关的正确enum 设置"
+      },
       "3.4.0": {
         "en": "changes for ems-esp firmware 3.7.0 \nintroduce warnings in log for using ems-esp dev firmware",
         "de": "änderungen für ems-esp firmware 3.7.0\nwarnhinweise in log für die verwendung von ems-esp dev firmware",
@@ -80,19 +93,6 @@
         "pl": "Aktualizacja testu szyfrowania bramki km200 dla błędnych haseł\nuniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
         "uk": "Update км200 тестування шифрування шлюзу для неправильних паролів\nуникнути помилки json на адаптері старту для поля /gateway /firmware",
         "zh-cn": "更新 km200 网关加密测试错误密码\n避免 json 字段/ 出入口/ 软件适配器启动时出错"
-      },
-      "3.0.5": {
-        "en": "avoid json error on adapter start for field /gateway/firmware\nupdate test-and-release worflow\nupdate license info",
-        "de": "json fehler auf adapter start für feld /gateway/firmware vermeiden\nupdate test-und-release worflow\nlizenzdaten aktualisieren",
-        "ru": "избегать ошибки json при запуске адаптера для поля /gateway /firmware\nобновление worflow\nобновление информации о лицензии",
-        "pt": "evitar erro json no início do adaptador para campo /gateway /firmware\natualizar test-and-release worflow\natualizar informações da licença",
-        "nl": "json-fout vermijden bij het starten van de adapter voor veld /gateway/firmware\nupdate test-and-release worflow\nlicentie-informatie bijwerken",
-        "fr": "éviter l'erreur json au démarrage de l'adaptateur pour le champ /gateway/firmware\nmise à jour test-and-release worflow\nmettre à jour les informations de licence",
-        "it": "evitare l'errore json sull'avvio dell'adattatore per il campo /gateway/firmware\naggiornamento test-e-release worflow\naggiornare le informazioni sulla licenza",
-        "es": "evitar error json en el inicio del adaptador para campo /gateway /firmware\nactualización de prueba y liberación de worflow\nactualización de la licencia info",
-        "pl": "uniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego\nupdate test- and- release worflow\naktualizacja informacji licencyjnych",
-        "uk": "уникнути помилки json на адаптері старту для поля /gateway /firmware\nоновлення тестово-випускного worflow\nоновлення інформації про ліцензію",
-        "zh-cn": "避免 json 字段/ 出入口/ 软件适配器启动时出错\n更新测试和释放电源\n更新许可证信息"
       }
     },
     "titleLang": {
