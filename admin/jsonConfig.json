@@ -1,0 +1,1133 @@
+{
+    "i18n": true,
+    "type": "tabs",
+    "items": {
+        "_tab-ems-esp": {
+            "type": "panel",
+            "label": {
+                "en": "EMS-ESP",
+                "de": "EMS-ESP",
+                "ru": "EMS-ESP",
+                "pt": "EMS-ESP",
+                "nl": "EMS-ESP",
+                "fr": "EMS-ESP",
+                "it": "EMS-ESP",
+                "es": "EMS-ESP",
+                "pl": "EMS-ESP",
+                "zh-cn": "EMS-ESP"
+            },
+            "items": {
+                "emsesp_active": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "EMS-ESP gateway active",
+                        "de": "EMS-ESP Gateway aktiv",
+                        "ru": "EMS-ESP gateway активен",
+                        "pt": "EMS-ESP gateway ativo",
+                        "nl": "EMS-ESP gateway actief",
+                        "fr": "EMS-ESP gateway actif",
+                        "it": "EMS-ESP gateway attivo",
+                        "es": "EMS-ESP gateway activo",
+                        "pl": "EMS-ESP gateway aktywny",
+                        "zh-cn": "EMS-ESP 活动"
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "emsesp_ip": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": {
+                        "en": "IP address",
+                        "de": "IP Adresse",
+                        "ru": "айпи адрес",
+                        "pt": "endereço de IP",
+                        "nl": "IP adres",
+                        "fr": "adresse IP",
+                        "it": "indirizzo IP",
+                        "es": "dirección IP",
+                        "pl": "adres IP",
+                        "zh-cn": "IP地址"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "ems_polling": {
+                    "type": "number",
+                    "label": {
+                        "en": "polling in sec",
+                        "de": "Polling in Sek",
+                        "ru": "опрос в секундах",
+                        "pt": "votação em seg",
+                        "nl": "polling in sec",
+                        "fr": "sondage en secondes",
+                        "it": "sondaggio in secondi",
+                        "es": "sondeo en segundos",
+                        "pl": "odpytywanie w sek",
+                        "zh-cn": "秒轮询"
+                    },
+                    "default": "60",
+                    "min": 1,
+                    "max": 65535,
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 2
+                },
+                "km200_structure": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "KM200 structure",
+                        "de": "KM200 Struktur",
+                        "ru": "Строение км200",
+                        "pt": "estrutura km200",
+                        "nl": "km200-structuur",
+                        "fr": "km200 structure",
+                        "it": "km200 struttura",
+                        "es": "estructura km200",
+                        "pl": "km200 struktura",
+                        "zh-cn": "km200 结构"
+                    },
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 2
+                },
+                "ems_dallas": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "temperature sensors",
+                        "de": "Temperatursensoren",
+                        "ru": "датчики температуры",
+                        "pt": "sensores de temperatura",
+                        "nl": "Temperatuursensoren",
+                        "fr": "capteurs de température",
+                        "it": "sensori di temperatura",
+                        "es": "sensores de temperatura",
+                        "pl": "czujnik temperatury",
+                        "uk": "датчики температури",
+                        "zh-cn": "温度传感器"
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_dallas_old_format": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "use old dallas prefix for sensors",
+                        "de": "Alten Dallas-Präfix für Sensoren verwenden",
+                        "ru": "использовать старый префикс Далласа для датчиков",
+                        "pt": "usar prefixo de dallas antigo para sensores",
+                        "nl": "gebruik oude dallas prefix voor sensoren",
+                        "fr": "utiliser le vieux préfixe de dallas pour les capteurs",
+                        "it": "utilizzare il vecchio prefisso dallas per i sensori",
+                        "es": "utilizar el antiguo prefijo dallas para sensores",
+                        "pl": "użycie prefiksu dallas dla czujników",
+                        "uk": "використовувати старий префікс dallas для датчиків",
+                        "zh-cn": "对传感器使用旧的dallas prefix"
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_analog": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "analog",
+                        "de": "Analog",
+                        "ru": "analog",
+                        "pt": "Analog",
+                        "nl": "analog",
+                        "fr": "analog",
+                        "it": "analog",
+                        "es": "analog",
+                        "pl": "Analog",
+                        "zh-cn": ""
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_custom_elements": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "read ems-esp custom elements",
+                        "de": "EMS-ESP benutzerdefinierte Elemente lesen",
+                        "ru": "читать ems-esp пользовательские элементы",
+                        "pt": "ler elementos personalizados emsp",
+                        "nl": "lees keizersnede elementen",
+                        "fr": "lire les éléments personnalisés ems",
+                        "it": "leggere ems-esp elementi personalizzati",
+                        "es": "leer elementos personalizados emsp",
+                        "pl": "czytanie elementów dostosownych",
+                        "uk": "читати ems-esp користувальницьких елементів",
+                        "zh-cn": "读写成的习俗要素"
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_token": {
+                    "type": "text",
+                    "label": {
+                        "en": "ems-esp access token ",
+                        "de": "EMS-ESP Zugriffstoken ",
+                        "ru": "токен доступа ems ",
+                        "pt": "token de acesso ems ",
+                        "nl": "ems-toegangstoken ",
+                        "fr": "jeton d'accès ems ",
+                        "it": "token di accesso ems ",
+                        "es": "Token de acceso ems ",
+                        "pl": "token dostępu ems ",
+                        "zh-cn": "ems 访问令牌 "
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "ems_custom": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "enable search for additional EMS+ entities (switchTimes & holidayModes) - write access needed",
+                        "de": "Suche nach zusätzlichen EMS+ Entitäten (switchTimes & holidayModes) - Schreibzugriff erforderlich",
+                        "ru": "включите поиск дополнительных EMS+ организаций (switchTimes & holidayModes) - напишите нужный доступ",
+                        "pt": "ativar a busca por entidades EMS+ adicionais (switchTimes & holidayModes) - escrever o acesso necessário",
+                        "nl": "beschikbare zoektocht naar extra EMS + entiteiten (switchTimes & holidayModes) Schrijf toegang nodig",
+                        "fr": "activer la recherche d'autres entités EMS+ (switchTimes & holidayModes) - écrire l'accès nécessaire",
+                        "it": "abilitare la ricerca di ulteriori entità EMS+ (switchTimes & holidayModes) - accesso di scrittura necessario",
+                        "es": "habilitar la búsqueda de nuevas entidades EMS+ (switchTimes & holidayModes) - escritura acceso necesario",
+                        "pl": "umożliwia wyszukiwanie dodatkowych podmiotów EMS+ (switchTimes & holidayModes) – pisanie dostępu potrzebnego do informacji",
+                        "uk": "увімкніть пошук додаткових сутностей EMS+ (switchTimes & holidayModes) - напишіть доступ до потрібного",
+                        "zh-cn": "能够寻找更多的电子信息管理系统+实体(奇怪制度和节假节制)—— 写出需要的准入"
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "ems_energy": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "calculate energy statistics",
+                        "de": "Energiestatistik berechnen",
+                        "ru": "вычислить энергетическую статистику",
+                        "pt": "calcular estatísticas de energia",
+                        "nl": "vertaling:",
+                        "fr": "calculer les statistiques énergétiques",
+                        "it": "calcolo delle statistiche energetiche",
+                        "es": "calcular estadísticas de energía",
+                        "pl": "dane statystyczne",
+                        "uk": "розрахувати статистику енергії",
+                        "zh-cn": "能源统计"
+                    },
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 2
+                },
+                "ems_nominalpower": {
+                    "type": "number",
+                    "label": {
+                        "en": "nominal boiler power",
+                        "de": "Nennheizleistung",
+                        "ru": "номинальная мощность котла",
+                        "pt": "potência nominal da caldeira",
+                        "nl": "nominal boiler power",
+                        "fr": "puissance nominale de chaudière",
+                        "it": "potenza caldaia nominale",
+                        "es": "potencia nominal de caldera",
+                        "pl": "nominalna władza kotłów",
+                        "uk": "номінальна котельна потужність",
+                        "zh-cn": "名义动力"
+                    },
+                    "default": "60",
+                    "min": 1,
+                    "max": 65535,
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 2
+                },
+                "ems_modulation": {
+                    "type": "text",
+                    "label": {
+                        "en": "state for modulation",
+                        "de": "State für die Modulation",
+                        "ru": "состояние для модуляции",
+                        "pt": "estado para modulação",
+                        "nl": "staat voor bescheidenheid",
+                        "fr": "état de modulation",
+                        "it": "stato di modulazione",
+                        "es": "estado para modulación",
+                        "pl": "stan modulacji",
+                        "uk": "стан модуляції",
+                        "zh-cn": "投机状态"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "ems_wwactive": {
+                    "type": "text",
+                    "label": {
+                        "en": "state warm water active",
+                        "de": "State warmes Wasser aktiv",
+                        "ru": "состояние теплая вода активная",
+                        "pt": "água quente do estado ativo",
+                        "nl": "staat warm water",
+                        "fr": "eau chaude",
+                        "it": "stato acqua calda attiva",
+                        "es": "agua caliente estatal activo",
+                        "pl": "ciepłe wody",
+                        "uk": "активний стан теплої води",
+                        "zh-cn": "a. 国有变暖"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                }
+            }
+        },
+        "_tab-km200": {
+            "type": "panel",
+            "label": {
+                "en": "KM200",
+                "de": "KM200",
+                "ru": "KM200",
+                "pt": "KM200",
+                "nl": "KM200",
+                "fr": "KM200",
+                "it": "KM200",
+                "es": "KM200",
+                "pl": "KM200",
+                "zh-cn": "KM200"
+            },
+            "items": {
+                "km200_active": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "KM200 gateway active",
+                        "de": "KM200 Gateway aktiv",
+                        "ru": "KM200 gateway активный",
+                        "pt": "KM200 gateway ativo",
+                        "nl": "KM200 gateway actief",
+                        "fr": "KM200 gateway actif",
+                        "it": "KM200 gateway attivo",
+                        "es": "KM200 gateway activo",
+                        "pl": "KM200 gateway aktywny",
+                        "zh-cn": "KM200有源"
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "km200_ip": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": {
+                        "en": "IP address",
+                        "de": "IP Adresse",
+                        "ru": "айпи адрес",
+                        "pt": "endereço de IP",
+                        "nl": "IP adres",
+                        "fr": "adresse IP",
+                        "it": "indirizzo IP",
+                        "es": "dirección IP",
+                        "pl": "adres IP",
+                        "zh-cn": "IP地址"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "km200_polling": {
+                    "type": "number",
+                    "label": {
+                        "en": "polling in sec",
+                        "de": "Polling in Sek",
+                        "ru": "опрос в секундах",
+                        "pt": "votação em seg",
+                        "nl": "polling in sec",
+                        "fr": "sondage en secondes",
+                        "it": "sondaggio in secondi",
+                        "es": "sondeo en segundos",
+                        "pl": "odpytywanie w sek",
+                        "zh-cn": "秒轮询"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "control_file": {
+                    "type": "text",
+                    "label": {
+                        "en": "csv-file for km200 | empty: no km200 data    *: read all km200 fields",
+                        "de": "CSV-Datei für km200 | leer: keine km200-Daten *: alle km200-Felder lesen",
+                        "ru": "csv-файл для км200 | пусто: нет данных км200 *: прочитать все поля км200",
+                        "pt": "arquivo csv para km200 | vazio: sem dados km200 *: ler todos os campos km200",
+                        "nl": "csv-bestand voor km200 | leeg: geen km200-gegevens *: lees alle km200-velden",
+                        "fr": "fichier csv pour km200 | vide : pas de données km200 * : lire tous les champs km200",
+                        "it": "file csv per km200 | vuoto: nessun dato km200 *: leggi tutti i campi km200",
+                        "es": "archivo csv para km200 | vacío: sin datos de km200 *: leer todos los campos de km200",
+                        "pl": "plik csv dla km200 | puste: brak danych km200 *: odczytaj wszystkie pola km200",
+                        "zh-cn": "km200 的 csv 文件 |空：没有 km200 数据 *：读取所有 km200 字段"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "gateway_pw": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": {
+                        "en": "gateway password",
+                        "de": "Gateway-Passwort",
+                        "ru": "пароль шлюза",
+                        "pt": "senha de gateway",
+                        "nl": "gateway wachtwoord",
+                        "fr": "mot de passe passerelle",
+                        "it": "password del gateway",
+                        "es": "contraseña de puerta de enlace",
+                        "pl": "hasło do bramy",
+                        "zh-cn": "网关密码"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "private_pw": {
+                    "type": "text",
+                    "label": {
+                        "en": "private password",
+                        "de": "privates Passwort",
+                        "ru": "личный пароль",
+                        "pt": "senha privada",
+                        "nl": "privé wachtwoord",
+                        "fr": "Mot de passe privé",
+                        "it": "password privata",
+                        "es": "contraseña privada",
+                        "pl": "prywatne hasło",
+                        "zh-cn": "私人密码"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "recordings": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "energy recordings (km200 only)",
+                        "de": "Energieaufzeichnungen (nur km200)",
+                        "ru": "записи энергии (только 200 км)",
+                        "pt": "registros de energia (apenas km200)",
+                        "nl": "energieregistraties (alleen km200)",
+                        "fr": "enregistrements énergétiques (km200 uniquement)",
+                        "it": "rilevazioni energetiche (solo km200)",
+                        "es": "registros de energía (solo km200)",
+                        "pl": "zapisy energii (tylko km200)",
+                        "zh-cn": "能量记录（仅限km200）"
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                }
+            }
+        },
+        "_tab-parameter": {
+            "type": "panel",
+            "label": "Parameter",
+            "items": {
+                "recordings_format": {
+                    "newLine": true,
+                    "type": "select",
+                    "label": {
+                        "en": "plain states format without db",
+                        "de": "State-Format ohne Datenbank",
+                        "ru": "записи в формате простого состояния без db",
+                        "pt": "gravações em formato de estados simples sem db",
+                        "nl": "opnames zonder db",
+                        "fr": "enregistrements format plain states sans db",
+                        "it": "registrazioni in formato stati semplici senza db",
+                        "es": "grabaciones formato de estados simples sin db",
+                        "pl": "nagrania w formacie stanów czystych bez db",
+                        "zh-cn": "录音无 db 的普通状态格式"
+                    },
+                    "options": [
+                        {
+                            "label": {
+                                "en": "array of values",
+                                "de": "Array von Werten",
+                                "ru": "массив значений",
+                                "pt": "matriz de valores",
+                                "nl": "reeks waarden",
+                                "fr": "tableau de valeurs",
+                                "it": "matrice di valori",
+                                "es": "matriz de valores",
+                                "pl": "tablica wartości",
+                                "zh-cn": "值数组"
+                            },
+                            "value": "0"
+                        },
+                        {
+                            "label": {
+                                "en": "array of values with ts",
+                                "de": "Array von Werten mit ts",
+                                "ru": "массив значений с ts",
+                                "pt": "array de valores com ts",
+                                "nl": "reeks waarden met ts",
+                                "fr": "tableau de valeurs avec ts",
+                                "it": "matrice di valori con ts",
+                                "es": "matriz de valores con ts",
+                                "pl": "tablica wartości z ts",
+                                "zh-cn": "带有 ts 的值数组"
+                            },
+                            "value": "1"
+                        },
+                        {
+                            "label": {
+                                "en": "array of values with date-format",
+                                "de": "Array von Werten mit Datumsformat",
+                                "ru": "массив значений в формате даты",
+                                "pt": "array de valores com formato de data",
+                                "nl": "reeks waarden met datumnotatie",
+                                "fr": "tableau de valeurs au format date",
+                                "it": "matrice di valori con formato data",
+                                "es": "matriz de valores con formato de fecha",
+                                "pl": "tablica wartości z formatem daty",
+                                "zh-cn": "日期格式的值数组"
+                            },
+                            "value": "2"
+                        }
+                    ],
+                    "sm": 12,
+                    "md": 5,
+                    "lg": 5
+                },
+                "db": {
+                    "type": "select",
+                    "label": {
+                        "en": "database",
+                        "de": "Datenbank",
+                        "ru": "база данных",
+                        "pt": "base de dados",
+                        "nl": "database",
+                        "fr": "base de données",
+                        "it": "Banca dati",
+                        "es": "base de datos",
+                        "pl": "Baza danych",
+                        "zh-cn": "数据库"
+                    },
+                    "options": [
+                        {
+                            "label": {
+                                "en": "no database",
+                                "de": "keine Datenbank"
+                            },
+                            "value": ""
+                        },
+                        {
+                            "label": {
+                                "en": "history",
+                                "de": "Vergangenheit"
+                            },
+                            "value": "history"
+                        },
+                        {
+                            "label": "mySQL",
+                            "value": "sql"
+                        },
+                        {
+                            "label": "InfluxDB",
+                            "value": "influxdb"
+                        }
+                    ],
+                    "sm": 12,
+                    "md": 5,
+                    "lg": 5
+                },
+                "db_instance": {
+                    "type": "text",
+                    "label": {
+                        "en": "db instance",
+                        "de": "DB Instanz",
+                        "ru": "db экземпляр",
+                        "pt": "instância db",
+                        "nl": "db instituut",
+                        "fr": "db instance",
+                        "it": "caso db",
+                        "es": "db instance",
+                        "pl": "instancja db",
+                        "uk": "db екземпляр",
+                        "zh-cn": "d. 实例"
+                    },
+                    "sm": 12,
+                    "md": 2,
+                    "lg": 2
+                },
+                "states_reorg": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "delete states on startup",
+                        "de": "Löschen von States beim Start",
+                        "ru": "удалить состояния на startup",
+                        "pt": "excluir estados na inicialização",
+                        "nl": "delete staten opstarten",
+                        "fr": "supprimer les états de démarrage",
+                        "it": "eliminare gli stati all'avvio",
+                        "es": "eliminar estados en la startup",
+                        "pl": "usunięte stany",
+                        "uk": "видалити стани на стартапі",
+                        "zh-cn": "删除开端国"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "statistics": {
+                    "type": "checkbox",
+                    "label": {
+                        "en": "create statistics - boiler starts need active database",
+                        "de": "Statistiken erstellen - Kesselstarts benötigen aktive Datenbank",
+                        "ru": "Создать статистику - бойлеру нужна активная база данных",
+                        "pt": "Criar estatísticas - caldeira começa a precisar de banco de dados ativo",
+                        "nl": "Creëer statistieken. Boiler heeft actieve database nodig",
+                        "fr": "Créer des statistiques - la chaudière commence besoin de base de données active",
+                        "it": "Creare statistiche - caldaia inizia bisogno di database attivo",
+                        "es": "Crear estadísticas - La caldera comienza a necesitar una base de datos activa",
+                        "pl": "Statystyki kreacyjne – kotł zaczyna potrzebować aktywnej bazy danych",
+                        "uk": "Створіть статистику - котел починає потрібні активні бази даних",
+                        "zh-cn": "D. 创建统计——开端需要积极数据库"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "room": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": {
+                        "en": "create statistics - boiler starts need active database",
+                        "de": "Statistiken erstellen - Kesselstarts benötigen aktive Datenbank",
+                        "ru": "Создать статистику - бойлеру нужна активная база данных",
+                        "pt": "Criar estatísticas - caldeira começa a precisar de banco de dados ativo",
+                        "nl": "Creëer statistieken. Boiler heeft actieve database nodig",
+                        "fr": "Créer des statistiques - la chaudière commence besoin de base de données active",
+                        "it": "Creare statistiche - caldaia inizia bisogno di database attivo",
+                        "es": "Crear estadísticas - La caldera comienza a necesitar una base de datos activa",
+                        "pl": "Statystyki kreacyjne – kotł zaczyna potrzebować aktywnej bazy danych",
+                        "uk": "Створіть статистику - котел починає потрібні активні бази даних",
+                        "zh-cn": "D. 创建统计——开端需要积极数据库"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "function": {
+                    "type": "text",
+                    "label": {
+                        "en": "state attributes: function",
+                        "de": "State Attribute: Funktion",
+                        "ru": "государственные атрибуты: функция",
+                        "pt": "atributos de estado: função",
+                        "nl": "staatsaanklachten:",
+                        "fr": "attributs d'état: fonction",
+                        "it": "attributi di stato: funzione",
+                        "es": "atributos estatales: función",
+                        "pl": "atrybuty państwowe: funkcja",
+                        "uk": "атрибути стану: функція",
+                        "zh-cn": "国情:职能"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "eff_active": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "calculate boiler efficieny (gas and oil)",
+                        "de": "Kesselwirkungsgrad berechnen (Gas und Öl)",
+                        "ru": "рассчитать эффективность котла (газ и масло)",
+                        "pt": "calcular a eficiência da caldeira (gás e óleo)",
+                        "nl": "bereken de boiler efficiëny (gas en olie)",
+                        "fr": "calculer l'efficacité des chaudières (gaz et huile)",
+                        "it": "calcolare l'efficienza della caldaia (gas e olio)",
+                        "es": "calcular la eficiencia de la caldera (gas y aceite)",
+                        "pl": "obliczaj kotłów (gaz i olej)",
+                        "uk": "розрахувати ефективність котла (газ і масло)",
+                        "zh-cn": "(a) 计算碎片(气体和石油)"
+                    },
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "modulation": {
+                    "newLine": true,
+                    "type": "text",
+                    "label": {
+                        "en": "state modulation",
+                        "de": "State Modulation",
+                        "ru": "государственная модуляция",
+                        "pt": "Modulação de estado",
+                        "nl": "staat modulatie",
+                        "fr": "modulation d'état",
+                        "it": "modulazione di stato",
+                        "es": "modulación de estado",
+                        "pl": "modulacja stanu",
+                        "zh-cn": "状态调制"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "supplytemp": {
+                    "type": "text",
+                    "label": {
+                        "en": "state supplytemp",
+                        "de": "State Vorlauftemp",
+                        "ru": "состояние поставкиtemp",
+                        "pt": "estado de abastecimentotemp",
+                        "nl": "staat toevoertemp",
+                        "fr": "état supplytemp",
+                        "it": "statale temp",
+                        "es": "estado suministrotemp",
+                        "pl": "stan zasilania temp",
+                        "zh-cn": "国家供应温度"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "returntemp": {
+                    "type": "text",
+                    "label": {
+                        "en": "state returntemp",
+                        "de": "State Rücklauftemp",
+                        "ru": "состояние returntemp",
+                        "pt": "estado returntemp",
+                        "nl": "staat retourtemp",
+                        "fr": "état retour temp",
+                        "it": "stato ritorno temp",
+                        "es": "estado temperatura retorno",
+                        "pl": "stan powrotu temp",
+                        "zh-cn": "状态返回温度"
+                    },
+                    "sm": 12,
+                    "md": 4,
+                    "lg": 4
+                },
+                "eff20": {
+                    "newLine": true,
+                    "type": "number",
+                    "label": {
+                        "en": "< 20°C",
+                        "de": "< 20°C",
+                        "ru": "<20 ° С",
+                        "pt": "<20 °C",
+                        "nl": "< 20°C",
+                        "fr": "< 20°C",
+                        "it": "< 20°C",
+                        "es": "<20 °C",
+                        "pl": "<20°C",
+                        "zh-cn": "< 20°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff25": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 25°C",
+                        "de": "< 25°C",
+                        "ru": "<25 ° С",
+                        "pt": "<25 °C",
+                        "nl": "< 25°C",
+                        "fr": "< 25°C",
+                        "it": "< 25°C",
+                        "es": "<25 °C",
+                        "pl": "< 25°C",
+                        "zh-cn": "< 25°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff30": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 30°C",
+                        "de": "< 30°C",
+                        "ru": "<30 ° С",
+                        "pt": "<30 °C",
+                        "nl": "< 30°C",
+                        "fr": "< 30°C",
+                        "it": "< 30°C",
+                        "es": "<30 °C",
+                        "pl": "< 30°C",
+                        "zh-cn": "< 30°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff35": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 35°C",
+                        "de": "< 35°C",
+                        "ru": "<35 ° С",
+                        "pt": "<35 °C",
+                        "nl": "< 35°C",
+                        "fr": "< 35°C",
+                        "it": "< 35°C",
+                        "es": "<35 °C",
+                        "pl": "<35°C",
+                        "zh-cn": "< 35°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff40": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 40°C",
+                        "de": "< 40°C",
+                        "ru": "<40 ° С",
+                        "pt": "<40 °C",
+                        "nl": "< 40°C",
+                        "fr": "< 40°C",
+                        "it": "< 40°C",
+                        "es": "<40 °C",
+                        "pl": "<40°C",
+                        "zh-cn": "< 40°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff45": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 45°C",
+                        "de": "< 45°C",
+                        "ru": "<45 ° С",
+                        "pt": "<45 °C",
+                        "nl": "< 45°C",
+                        "fr": "< 45°C",
+                        "it": "< 45°C",
+                        "es": "<45 °C",
+                        "pl": "<45°C",
+                        "zh-cn": "< 45°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff50": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 50°C",
+                        "de": "< 50°C",
+                        "ru": "<50 ° С",
+                        "pt": "<50 °C",
+                        "nl": "< 50°C",
+                        "fr": "< 50°C",
+                        "it": "< 50°C",
+                        "es": "<50 °C",
+                        "pl": "< 50°C",
+                        "zh-cn": "< 50°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff55": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 55°C",
+                        "de": "< 55°C",
+                        "ru": "<55 ° С",
+                        "pt": "<55 °C",
+                        "nl": "< 55°C",
+                        "fr": "< 55°C",
+                        "it": "< 55°C",
+                        "es": "<55 °C",
+                        "pl": "<55°C",
+                        "zh-cn": "< 55°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff60": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 60°C",
+                        "de": "< 60°C",
+                        "ru": "<60 ° С",
+                        "pt": "<60 °C",
+                        "nl": "< 60°C",
+                        "fr": "< 60°C",
+                        "it": "< 60°C",
+                        "es": "<60 °C",
+                        "pl": "< 60°C",
+                        "zh-cn": "< 60°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                },
+                "eff70": {
+                    "type": "number",
+                    "label": {
+                        "en": "< 70°C",
+                        "de": "< 70°C",
+                        "ru": "<70 ° С",
+                        "pt": "<70 °C",
+                        "nl": "< 70°C",
+                        "fr": "< 70°C",
+                        "it": "< 70°C",
+                        "es": "<70 °C",
+                        "pl": "<70°C",
+                        "zh-cn": "< 70°C"
+                    },
+                    "sm": 12,
+                    "md": 1,
+                    "lg": 1
+                }
+            }
+        },
+        "_tab-heatdemand": {
+            "type": "panel",
+            "label": "Heat Demand",
+            "items": {
+                "heatdemand": {
+                    "newLine": true,
+                    "label": {
+                        "en": "Heatdemand calculation and control active",
+                        "de": "Heizungsbedarf Berechnung und Kontrolle aktiv",
+                        "ru": "Расчет тепла и контроль активных",
+                        "pt": "Cálculo e controle de calor ativos",
+                        "nl": "Heatdemand berekeningen en controle actief",
+                        "fr": "Calcul et contrôle de la chaleur active",
+                        "it": "Calcolo e controllo attivo",
+                        "es": "Calculo y control de calor activo",
+                        "pl": "Heatdemand oblicza i kontrola aktywna",
+                        "uk": "Розрахунок тепла та контроль активності",
+                        "zh-cn": "积极计算和控制"
+                    },
+                    "type": "checkbox",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+                },
+                "thermostats": {
+                    "newLine": true,
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "State Attribute",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "room",
+                            "width": "10%",
+                            "title": "room",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "settemp",
+                            "width": "25%",
+                            "title": "set temp",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "actualtemp",
+                            "width": "25%",
+                            "title": "actual temp",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "deltam",
+                            "width": "10%",
+                            "title": "minimum delta",
+                            "filter": false,
+                            "sort": false,
+                            "default": "1.0",
+                            "options": [
+                                "0.25",
+                                "0.5",
+                                "0.75",
+                                "1.0",
+                                "1.5",
+                                "2.0",
+                                "2.5",
+                                "3.0",
+                                "3.5",
+                                "4.0",
+                                "4.5",
+                                "5.0"
+                            ]
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "hc",
+                            "width": "10%",
+                            "title": "hc",
+                            "filter": false,
+                            "sort": false,
+                            "default": "hc1",
+                            "options": [
+                                "hc1",
+                                "hc2",
+                                "hc3",
+                                "hc4"
+                            ]
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "weight",
+                            "width": "10%",
+                            "title": "weight",
+                            "filter": false,
+                            "sort": false,
+                            "default": "1",
+                            "options": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ]
+                        }
+                    ]
+                },
+                "heatingcircuits": {
+                    "newLine": true,
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "hc",
+                    "items": [
+                        {
+                            "type": "autocomplete",
+                            "attr": "hc",
+                            "width": "10%",
+                            "title": "hc",
+                            "filter": false,
+                            "sort": false,
+                            "default": "hc1",
+                            "options": [
+                                "hc1",
+                                "hc2",
+                                "hc3",
+                                "hc4"
+                            ]
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "weighton",
+                            "width": "10%",
+                            "title": "weighton",
+                            "filter": false,
+                            "sort": false,
+                            "default": "1",
+                            "options": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "weightoff",
+                            "width": "10%",
+                            "title": "weightoff",
+                            "filter": false,
+                            "sort": false,
+                            "default": "1",
+                            "options": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "attr": "state",
+                            "width": "30%",
+                            "title": "state",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "on",
+                            "width": "10%",
+                            "title": {
+                                "en": "on",
+                                "de": ""
+                            },
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "off",
+                            "width": "10%",
+                            "title": {
+                                "en": "off",
+                                "de": ""
+                            },
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "savesettemp",
+                            "width": "10%",
+                            "title": {
+                                "en": "savesettemp",
+                                "de": ""
+                            },
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
