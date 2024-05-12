@@ -150,7 +150,6 @@
     "mode": "daemon",
     "type": "climate-control",
     "compact": true,
-    "materialize": true,
     "connectionType": "local",
     "stopTimeout": 1000,
     "dataFolder": "ems-esp.%INSTANCE%",

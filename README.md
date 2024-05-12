@@ -75,6 +75,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* change to jsonConfig
+* update dependencies
+
 ### 3.4.1 (2024-04-26)
 * correct enum settings for ems-esp gateway on adapter start
 
