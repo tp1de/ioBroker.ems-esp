@@ -155,6 +155,9 @@
     "stopTimeout": 1000,
     "dataFolder": "ems-esp.%INSTANCE%",
     "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
     "dependencies": [
       {
         "js-controller": ">=4.0.0"
