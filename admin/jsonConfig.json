@@ -91,8 +91,34 @@
                         "zh-cn": "km200 结构"
                     },
                     "sm": 12,
-                    "md": 2,
-                    "lg": 2
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_expert_on": {
+                    "type": "checkbox",
+                    "confirm": {
+                        "condition": "!data.warn && data.ems_expert_on",
+                        "title": "Warning!",
+                        "text": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!",
+                        "ok": "Ignore warning",
+                        "cancel": "Disable",
+                        "type": "warning"
+                    },
+                    "label": {
+                        "en": "EMS expert settings",
+                        "de": "EMS Experteneinstellungen",
+                        "ru": "EMS экспертные настройки",
+                        "pt": "configurações especializadas ems",
+                        "nl": "ems-expertinstellingen",
+                        "fr": "paramètres experts ems",
+                        "it": "impostazioni esperte",
+                        "es": "configuración experta ems",
+                        "pl": "ustawienia eksperckie ems",
+                        "zh-cn": "ems专家设置"
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
                 },
                 "ems_dallas": {
                     "newLine": true,
@@ -727,7 +753,7 @@
                     "label": {
                         "en": "< 20°C",
                         "de": "< 20°C",
-                        "ru": "<20 ° С",
+                        "ru": "<20 °С",
                         "pt": "<20 °C",
                         "nl": "< 20°C",
                         "fr": "< 20°C",
@@ -745,7 +771,7 @@
                     "label": {
                         "en": "< 25°C",
                         "de": "< 25°C",
-                        "ru": "<25 ° С",
+                        "ru": "<25 °С",
                         "pt": "<25 °C",
                         "nl": "< 25°C",
                         "fr": "< 25°C",
@@ -763,7 +789,7 @@
                     "label": {
                         "en": "< 30°C",
                         "de": "< 30°C",
-                        "ru": "<30 ° С",
+                        "ru": "<30 °С",
                         "pt": "<30 °C",
                         "nl": "< 30°C",
                         "fr": "< 30°C",
@@ -781,7 +807,7 @@
                     "label": {
                         "en": "< 35°C",
                         "de": "< 35°C",
-                        "ru": "<35 ° С",
+                        "ru": "<35 °С",
                         "pt": "<35 °C",
                         "nl": "< 35°C",
                         "fr": "< 35°C",
@@ -799,7 +825,7 @@
                     "label": {
                         "en": "< 40°C",
                         "de": "< 40°C",
-                        "ru": "<40 ° С",
+                        "ru": "<40 °С",
                         "pt": "<40 °C",
                         "nl": "< 40°C",
                         "fr": "< 40°C",
@@ -817,7 +843,7 @@
                     "label": {
                         "en": "< 45°C",
                         "de": "< 45°C",
-                        "ru": "<45 ° С",
+                        "ru": "<45 °С",
                         "pt": "<45 °C",
                         "nl": "< 45°C",
                         "fr": "< 45°C",
@@ -835,7 +861,7 @@
                     "label": {
                         "en": "< 50°C",
                         "de": "< 50°C",
-                        "ru": "<50 ° С",
+                        "ru": "<50 °С",
                         "pt": "<50 °C",
                         "nl": "< 50°C",
                         "fr": "< 50°C",
@@ -853,7 +879,7 @@
                     "label": {
                         "en": "< 55°C",
                         "de": "< 55°C",
-                        "ru": "<55 ° С",
+                        "ru": "<55 °С",
                         "pt": "<55 °C",
                         "nl": "< 55°C",
                         "fr": "< 55°C",
@@ -871,7 +897,7 @@
                     "label": {
                         "en": "< 60°C",
                         "de": "< 60°C",
-                        "ru": "<60 ° С",
+                        "ru": "<60 °С",
                         "pt": "<60 °C",
                         "nl": "< 60°C",
                         "fr": "< 60°C",
@@ -889,7 +915,7 @@
                     "label": {
                         "en": "< 70°C",
                         "de": "< 70°C",
-                        "ru": "<70 ° С",
+                        "ru": "<70 °С",
                         "pt": "<70 °C",
                         "nl": "< 70°C",
                         "fr": "< 70°C",
@@ -946,7 +972,7 @@
                             "default": ""
                         },
                         {
-                            "type": "text",
+                            "type": "number",
                             "attr": "settemp",
                             "width": "25%",
                             "title": "set temp",
@@ -955,7 +981,7 @@
                             "default": ""
                         },
                         {
-                            "type": "text",
+                            "type": "number",
                             "attr": "actualtemp",
                             "width": "25%",
                             "title": "actual temp",
@@ -1131,6 +1157,7 @@
         },
         "tab-advanced": {
             "type": "panel",
+            "hidden": "!data.ems_expert_on",
             "label": {
                 "en": "EMS expert settings",
                 "de": "EMS Experteneinstellungen",
@@ -1146,7 +1173,10 @@
             "items": {
                 "_text1": {
                     "type": "staticText",
-                    "text": "***** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!"
+                    "text": "*** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!! ***",
+                    "style": {
+                        "fontSize": 24
+                    }
                 },
                 "syslog": {
                     "newLine": true,
@@ -1347,13 +1377,6 @@
                             "default": ""
                         }
                     ]
-                },
-                "showHideSettings": {
-                    "i18n": true,
-                    "type": "custom",
-                    "hidden": "!data.accessLimit",
-                    "newLine": true,
-                    "url": "admin/index_m.js"
                 }
             }
         }
