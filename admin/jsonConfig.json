@@ -2,7 +2,7 @@
     "i18n": true,
     "type": "tabs",
     "items": {
-        "_tab-ems-esp": {
+        "tab-ems-esp": {
             "type": "panel",
             "label": {
                 "en": "EMS-ESP",
@@ -308,7 +308,7 @@
                 }
             }
         },
-        "_tab-km200": {
+        "tab-km200": {
             "type": "panel",
             "label": {
                 "en": "KM200",
@@ -449,7 +449,7 @@
                 }
             }
         },
-        "_tab-parameter": {
+        "tab-parameter": {
             "type": "panel",
             "label": "Parameter",
             "items": {
