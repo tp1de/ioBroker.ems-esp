@@ -1127,226 +1127,233 @@
                         }
                     ]
                 }
+            }
+        },
+        "tab-advanced": {
+            "type": "panel",
+            "label": {
+                "en": "EMS expert settings",
+                "de": "EMS Experteneinstellungen",
+                "ru": "EMS экспертные настройки",
+                "pt": "configurações especializadas ems",
+                "nl": "ems-expertinstellingen",
+                "fr": "paramètres experts ems",
+                "it": "impostazioni esperte",
+                "es": "configuración experta ems",
+                "pl": "ustawienia eksperckie ems",
+                "zh-cn": "ems专家设置"
             },
-            "tab-advanced": {
-                "type": "panel",
-                "label": {
-                    "en": "EMS expert settings",
-                    "de": "EMS Experteneinstellungen",
-                    "ru": "EMS экспертные настройки",
-                    "pt": "configurações especializadas ems",
-                    "nl": "ems-expertinstellingen",
-                    "fr": "paramètres experts ems",
-                    "it": "impostazioni esperte",
-                    "es": "configuración experta ems",
-                    "pl": "ustawienia eksperckie ems",
-                    "zh-cn": "ems专家设置"
+            "items": {
+                "_text1": {
+                    "type": "staticText",
+                    "text": "***** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!"
                 },
-                "items": {
-                    "_text1": {
-                        "type": "staticText",
-                        "text": "***** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!"
+                "syslog": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": {
+                        "en": "syslog server active?",
+                        "de": "Syslog-Server aktiv?",
+                        "ru": "сервер системного журнала активен?",
+                        "pt": "servidor syslog ativo?",
+                        "nl": "syslog-server actief?",
+                        "fr": "serveur syslog actif ?",
+                        "it": "server syslog attivo?",
+                        "es": "servidor syslog activo?",
+                        "pl": "serwer syslog jest aktywny?",
+                        "zh-cn": "系统日志服务器活动？"
                     },
-                    "syslog": {
-                        "newLine": true,
-                        "type": "checkbox",
-                        "label": {
-                            "en": "syslog server active?",
-                            "de": "Syslog-Server aktiv?",
-                            "ru": "сервер системного журнала активен?",
-                            "pt": "servidor syslog ativo?",
-                            "nl": "syslog-server actief?",
-                            "fr": "serveur syslog actif ?",
-                            "it": "server syslog attivo?",
-                            "es": "servidor syslog activo?",
-                            "pl": "serwer syslog jest aktywny?",
-                            "zh-cn": "系统日志服务器活动？"
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
+                },
+                "syslog_port": {
+                    "type": "number",
+                    "label": {
+                        "en": "syslog port",
+                        "de": "Syslog-Port",
+                        "ru": "порт системного журнала",
+                        "pt": "porta syslog",
+                        "nl": "syslog-poort",
+                        "fr": "port syslog",
+                        "it": "porta syslog",
+                        "es": "puerto syslog",
+                        "pl": "port dziennika systemowego",
+                        "zh-cn": "系统日志端口"
+                    },
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6
+                },
+                "devices": {
+                    "newLine": true,
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "Devices",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "state",
+                            "width": "20%",
+                            "title": "state",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
                         },
-                        "sm": 12,
-                        "md": 3,
-                        "lg": 3
-                    },
-                    "syslog_port": {
-                        "type": "number",
-                        "label": {
-                            "en": "syslog port",
-                            "de": "Syslog-Port",
-                            "ru": "порт системного журнала",
-                            "pt": "porta syslog",
-                            "nl": "syslog-poort",
-                            "fr": "port syslog",
-                            "it": "porta syslog",
-                            "es": "puerto syslog",
-                            "pl": "port dziennika systemowego",
-                            "zh-cn": "系统日志端口"
+                        {
+                            "type": "text",
+                            "attr": "src",
+                            "width": "5%",
+                            "title": "src",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
                         },
-                        "sm": 12,
-                        "md": 6,
-                        "lg": 6
-                    },
-                    "devices": {
-                        "newLine": true,
-                        "type": "table",
-                        "sm": 12,
-                        "md": 12,
-                        "lg": 12,
-                        "label": "Devices",
-                        "items": [
-                            {
-                                "type": "text",
-                                "attr": "state",
-                                "width": "20%",
-                                "title": "state",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "text",
-                                "attr": "src",
-                                "width": "5%",
-                                "title": "src",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "text",
-                                "attr": "type",
-                                "width": "5%",
-                                "title": "type",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "text",
-                                "attr": "offset",
-                                "width": "5%",
-                                "title": "hex",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "checkbox",
-                                "attr": "polling",
-                                "width": "5%",
-                                "title": "polling",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "autocomplete",
-                                "attr": "bit",
-                                "width": "10%",
-                                "title": "bit",
-                                "filter": false,
-                                "sort": false,
-                                "default": "",
-                                "options": [
-                                    "",
-                                    "0",
-                                    "1",
-                                    "2",
-                                    "3",
-                                    "4",
-                                    "5",
-                                    "6",
-                                    "7"
-                                ]
-                            },
-                            {
-                                "type": "number",
-                                "attr": "bytes",
-                                "width": "5%",
-                                "title": "bytes",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "number",
-                                "attr": "multi",
-                                "width": "5%",
-                                "title": "multi",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "checkbox",
-                                "attr": "signed",
-                                "width": "5%",
-                                "title": "signed",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "autocomplete",
-                                "attr": "state_type",
-                                "width": "10%",
-                                "title": "state_type",
-                                "filter": false,
-                                "sort": false,
-                                "default": "number",
-                                "options": [
-                                    "number",
-                                    "hex",
-                                    "string",
-                                    "switchPrograms",
-                                    "holidayModes"
-                                ]
-                            },
-                            {
-                                "type": "json",
-                                "attr": "states",
-                                "width": "20%",
-                                "title": "states",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "number",
-                                "attr": "min",
-                                "width": "5%",
-                                "title": "min",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "number",
-                                "attr": "max",
-                                "width": "5%",
-                                "title": "max",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "text",
-                                "attr": "uom",
-                                "width": "5%",
-                                "title": "uom",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            },
-                            {
-                                "type": "checkbox",
-                                "attr": "writable",
-                                "width": "5%",
-                                "title": "writable",
-                                "filter": false,
-                                "sort": false,
-                                "default": ""
-                            }
-                        ]
-                    }
+                        {
+                            "type": "text",
+                            "attr": "type",
+                            "width": "5%",
+                            "title": "type",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "offset",
+                            "width": "5%",
+                            "title": "hex",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "polling",
+                            "width": "5%",
+                            "title": "polling",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "bit",
+                            "width": "10%",
+                            "title": "bit",
+                            "filter": false,
+                            "sort": false,
+                            "default": "",
+                            "options": [
+                                "",
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7"
+                            ]
+                        },
+                        {
+                            "type": "number",
+                            "attr": "bytes",
+                            "width": "5%",
+                            "title": "bytes",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "multi",
+                            "width": "5%",
+                            "title": "multi",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "signed",
+                            "width": "5%",
+                            "title": "signed",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "autocomplete",
+                            "attr": "state_type",
+                            "width": "10%",
+                            "title": "state_type",
+                            "filter": false,
+                            "sort": false,
+                            "default": "number",
+                            "options": [
+                                "number",
+                                "hex",
+                                "string",
+                                "switchPrograms",
+                                "holidayModes"
+                            ]
+                        },
+                        {
+                            "type": "json",
+                            "attr": "states",
+                            "width": "20%",
+                            "title": "states",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "min",
+                            "width": "5%",
+                            "title": "min",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "number",
+                            "attr": "max",
+                            "width": "5%",
+                            "title": "max",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "uom",
+                            "width": "5%",
+                            "title": "uom",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "writable",
+                            "width": "5%",
+                            "title": "writable",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }
+                    ]
+                },
+                "showHideSettings": {
+                    "i18n": true,
+                    "type": "custom",
+                    "hidden": "!data.accessLimit",
+                    "newLine": true,
+                    "url": "admin/index_m.js"
                 }
             }
         }
