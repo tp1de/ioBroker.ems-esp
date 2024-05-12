@@ -31,10 +31,7 @@
                         "es": "EMS-ESP gateway activo",
                         "pl": "EMS-ESP gateway aktywny",
                         "zh-cn": "EMS-ESP 活动"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "emsesp_ip": {
                     "newLine": true,
@@ -210,9 +207,7 @@
                         "pl": "token dostępu ems ",
                         "zh-cn": "ems 访问令牌 "
                     },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    "sm": 12
                 },
                 "ems_custom": {
                     "newLine": true,
@@ -229,10 +224,7 @@
                         "pl": "umożliwia wyszukiwanie dodatkowych podmiotów EMS+ (switchTimes & holidayModes) – pisanie dostępu potrzebnego do informacji",
                         "uk": "увімкніть пошук додаткових сутностей EMS+ (switchTimes & holidayModes) - напишіть доступ до потрібного",
                         "zh-cn": "能够寻找更多的电子信息管理系统+实体(奇怪制度和节假节制)—— 写出需要的准入"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "ems_energy": {
                     "newLine": true,
@@ -345,10 +337,7 @@
                         "es": "KM200 gateway activo",
                         "pl": "KM200 gateway aktywny",
                         "zh-cn": "KM200有源"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "km200_ip": {
                     "newLine": true,
@@ -456,10 +445,7 @@
                         "es": "registros de energía (solo km200)",
                         "pl": "zapisy energii (tylko km200)",
                         "zh-cn": "能量记录（仅限km200）"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 }
             }
         },
@@ -687,10 +673,7 @@
                         "pl": "obliczaj kotłów (gaz i olej)",
                         "uk": "розрахувати ефективність котла (газ і масло)",
                         "zh-cn": "(a) 计算碎片(气体和石油)"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "modulation": {
                     "newLine": true,
@@ -930,12 +913,13 @@
                 }
             }
         },
-        "_tab-heatdemand": {
+        "tab-heatdemand": {
             "type": "panel",
             "label": "Heat Demand",
             "items": {
                 "heatdemand": {
                     "newLine": true,
+                    "type": "checkbox",
                     "label": {
                         "en": "Heatdemand calculation and control active",
                         "de": "Heizungsbedarf Berechnung und Kontrolle aktiv",
@@ -948,11 +932,7 @@
                         "pl": "Heatdemand oblicza i kontrola aktywna",
                         "uk": "Розрахунок тепла та контроль активності",
                         "zh-cn": "积极计算和控制"
-                    },
-                    "type": "checkbox",
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }  
                 },
                 "thermostats": {
                     "newLine": true,
@@ -968,22 +948,22 @@
                             "width": "10%",
                             "title": "room",
                             "filter": false,
-                            "sort": false,
+                            "sort": true,
                             "default": ""
                         },
                         {
-                            "type": "number",
+                            "type": "text",
                             "attr": "settemp",
-                            "width": "25%",
+                            "width": "20%",
                             "title": "set temp",
                             "filter": false,
                             "sort": false,
                             "default": ""
                         },
                         {
-                            "type": "number",
+                            "type": "text",
                             "attr": "actualtemp",
-                            "width": "25%",
+                            "width": "20%",
                             "title": "actual temp",
                             "filter": false,
                             "sort": false,
@@ -992,7 +972,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "deltam",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "minimum delta",
                             "filter": false,
                             "sort": false,
@@ -1015,7 +995,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "hc",
                             "filter": false,
                             "sort": false,
@@ -1056,10 +1036,10 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "hc",
                             "filter": false,
-                            "sort": false,
+                            "sort": true,
                             "default": "hc1",
                             "options": [
                                 "hc1",
@@ -1109,7 +1089,6 @@
                         {
                             "type": "text",
                             "attr": "state",
-                            "width": "30%",
                             "title": "state",
                             "filter": false,
                             "sort": false,
