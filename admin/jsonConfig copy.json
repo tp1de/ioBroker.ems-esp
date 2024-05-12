@@ -1346,6 +1346,13 @@
                                 "default": ""
                             }
                         ]
+                    },
+                    "showHideSettings": {
+                        "i18n": true,
+                        "type": "custom",
+                        "hidden": "!data.accessLimit",
+                        "newLine": true,
+                        "url": "admin/index_m.js"
                     }
                 }
             }
