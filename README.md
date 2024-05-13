@@ -75,7 +75,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.4.2 (2024-05-13)
 * update dependencies
 * replace setTimeout by adapter.delay
 
@@ -92,9 +92,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 3.2.1 (2024-04-17)
 * update release script
-
-### 3.2.0 (2024-04-17)
-* change for ems-esp firmware 3.7 - add dhw tag
 
 ## License
 MIT License

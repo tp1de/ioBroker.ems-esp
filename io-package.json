@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.4.1",
+    "version": "3.4.2",
     "news": {
+      "3.4.2": {
+        "en": "update dependencies\nreplace setTimeout by adapter.delay",
+        "de": "aktualisierung der abhängigkeiten\nersetzen Set Timeout per Adapter. Verzögerung",
+        "ru": "обновление зависимостей\nзаменить Время за адаптером. отсрочка",
+        "pt": "dependências\nsubstituir o conjunto Timeout por adaptador. atraso",
+        "nl": "afhankelijkheden bijwerken\nvervangen set Timeout door adapter. vertraging",
+        "fr": "mettre à jour les dépendances\nremplacer l'ensemble Temps mort par adaptateur. retard",
+        "it": "aggiornamento dipendenze\nset di sostituzione Timeout per adattatore. ritardo",
+        "es": "dependencias de actualización\nreemplazado Timeout por adaptador. demora",
+        "pl": "aktualizacji zależności\nzestaw zastępczy Przerwa przez adapter. opóźnienie",
+        "uk": "оновлення залежності\nзамінний набір Розклад за допомогою адаптера. затримка",
+        "zh-cn": "更新依赖关系\n替换集 适配器暂停. 延迟"
+      },
       "3.4.1": {
         "en": "correct enum settings for ems-esp gateway on adapter start",
         "de": "korrekte enum-einstellungen für ems-esp-gateway auf adapterstart",
@@ -80,19 +93,6 @@
         "pl": "aktualizacja zależności i skrypt wydania",
         "uk": "оновлення залежності та сценарію релізу",
         "zh-cn": "更新依赖关系并发布脚本"
-      },
-      "3.1.0": {
-        "en": "Update km200 gateway encryption test for wrong passwords\navoid json error on adapter start for field /gateway/firmware",
-        "de": "Update km200 Gateway Verschlüsselungstest für falsche Passwörter\njson fehler auf adapter start für feld /gateway/firmware vermeiden",
-        "ru": "Тест шифрования шлюза km200 для неправильных паролей\nизбегать ошибки json при запуске адаптера для поля /gateway /firmware",
-        "pt": "Atualizar o teste de criptografia de gateway km200 para senhas erradas\nevitar erro json no início do adaptador para campo /gateway /firmware",
-        "nl": "Km200-gateway encryptietest bijwerken voor verkeerde wachtwoorden\njson-fout vermijden bij het starten van de adapter voor veld /gateway/firmware",
-        "fr": "Mettre à jour le test de chiffrement de la passerelle km200 pour les mauvais mots de passe\néviter l'erreur json au démarrage de l'adaptateur pour le champ /gateway/firmware",
-        "it": "Aggiornare il test di crittografia gateway km200 per password sbagliate\nevitare l'errore json sull'avvio dell'adattatore per il campo /gateway/firmware",
-        "es": "Actualización km200 prueba de cifrado de puerta para contraseñas erróneas\nevitar error json en el inicio del adaptador para campo /gateway /firmware",
-        "pl": "Aktualizacja testu szyfrowania bramki km200 dla błędnych haseł\nuniknąć błędu json na starcie adaptera dla pola / bramki / oprogramowania firmowego",
-        "uk": "Update км200 тестування шифрування шлюзу для неправильних паролів\nуникнути помилки json на адаптері старту для поля /gateway /firmware",
-        "zh-cn": "更新 km200 网关加密测试错误密码\n避免 json 字段/ 出入口/ 软件适配器启动时出错"
       }
     },
     "titleLang": {

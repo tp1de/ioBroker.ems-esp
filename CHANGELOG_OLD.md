@@ -1,4 +1,7 @@
 * older changes
+## 3.2.0 (2024-04-17)
+* change for ems-esp firmware 3.7 - add dhw tag
+
 ## 3.1.1 (2024-04-11)
 * update dependencies and release  script
 
