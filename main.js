@@ -625,7 +625,5 @@ async function delete_states_emsesp() {
 
 async function sleep(ms) {
 	if (unloaded) return;
-	return new Promise(resolve => {
-		setTimeout(() => !unloaded && resolve(true), ms);
-	});
+	else adapter.delay(ms);
 }

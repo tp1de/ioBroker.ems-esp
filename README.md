@@ -76,9 +76,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* change to jsonConfig
 * update dependencies
-* add expert tab for ems-esp gateway to decode telegram states
+* replace setTimeout by adapter.delay
 
 ### 3.4.1 (2024-04-26)
 * correct enum settings for ems-esp gateway on adapter start
