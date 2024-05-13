@@ -2,7 +2,7 @@
     "i18n": true,
     "type": "tabs",
     "items": {
-        "_tab-ems-esp": {
+        "tab-ems-esp": {
             "type": "panel",
             "label": {
                 "en": "EMS-ESP",
@@ -31,10 +31,7 @@
                         "es": "EMS-ESP gateway activo",
                         "pl": "EMS-ESP gateway aktywny",
                         "zh-cn": "EMS-ESP 活动"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "emsesp_ip": {
                     "newLine": true,
@@ -91,8 +88,34 @@
                         "zh-cn": "km200 结构"
                     },
                     "sm": 12,
-                    "md": 2,
-                    "lg": 2
+                    "md": 3,
+                    "lg": 3
+                },
+                "ems_expert_on": {
+                    "type": "checkbox",
+                    "confirm": {
+                        "condition": "!data.warn && data.ems_expert_on",
+                        "title": "Warning!",
+                        "text": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!",
+                        "ok": "Ignore warning",
+                        "cancel": "Disable",
+                        "type": "warning"
+                    },
+                    "label": {
+                        "en": "EMS expert settings",
+                        "de": "EMS Experteneinstellungen",
+                        "ru": "EMS экспертные настройки",
+                        "pt": "configurações especializadas ems",
+                        "nl": "ems-expertinstellingen",
+                        "fr": "paramètres experts ems",
+                        "it": "impostazioni esperte",
+                        "es": "configuración experta ems",
+                        "pl": "ustawienia eksperckie ems",
+                        "zh-cn": "ems专家设置"
+                    },
+                    "sm": 12,
+                    "md": 3,
+                    "lg": 3
                 },
                 "ems_dallas": {
                     "newLine": true,
@@ -184,9 +207,7 @@
                         "pl": "token dostępu ems ",
                         "zh-cn": "ems 访问令牌 "
                     },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    "sm": 12
                 },
                 "ems_custom": {
                     "newLine": true,
@@ -203,10 +224,7 @@
                         "pl": "umożliwia wyszukiwanie dodatkowych podmiotów EMS+ (switchTimes & holidayModes) – pisanie dostępu potrzebnego do informacji",
                         "uk": "увімкніть пошук додаткових сутностей EMS+ (switchTimes & holidayModes) - напишіть доступ до потрібного",
                         "zh-cn": "能够寻找更多的电子信息管理系统+实体(奇怪制度和节假节制)—— 写出需要的准入"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "ems_energy": {
                     "newLine": true,
@@ -290,7 +308,7 @@
                 }
             }
         },
-        "_tab-km200": {
+        "tab-km200": {
             "type": "panel",
             "label": {
                 "en": "KM200",
@@ -319,10 +337,7 @@
                         "es": "KM200 gateway activo",
                         "pl": "KM200 gateway aktywny",
                         "zh-cn": "KM200有源"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "km200_ip": {
                     "newLine": true,
@@ -430,14 +445,11 @@
                         "es": "registros de energía (solo km200)",
                         "pl": "zapisy energii (tylko km200)",
                         "zh-cn": "能量记录（仅限km200）"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 }
             }
         },
-        "_tab-parameter": {
+        "tab-parameter": {
             "type": "panel",
             "label": "Parameter",
             "items": {
@@ -661,10 +673,7 @@
                         "pl": "obliczaj kotłów (gaz i olej)",
                         "uk": "розрахувати ефективність котла (газ і масло)",
                         "zh-cn": "(a) 计算碎片(气体和石油)"
-                    },
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }
                 },
                 "modulation": {
                     "newLine": true,
@@ -727,7 +736,7 @@
                     "label": {
                         "en": "< 20°C",
                         "de": "< 20°C",
-                        "ru": "<20 ° С",
+                        "ru": "<20 °С",
                         "pt": "<20 °C",
                         "nl": "< 20°C",
                         "fr": "< 20°C",
@@ -745,7 +754,7 @@
                     "label": {
                         "en": "< 25°C",
                         "de": "< 25°C",
-                        "ru": "<25 ° С",
+                        "ru": "<25 °С",
                         "pt": "<25 °C",
                         "nl": "< 25°C",
                         "fr": "< 25°C",
@@ -763,7 +772,7 @@
                     "label": {
                         "en": "< 30°C",
                         "de": "< 30°C",
-                        "ru": "<30 ° С",
+                        "ru": "<30 °С",
                         "pt": "<30 °C",
                         "nl": "< 30°C",
                         "fr": "< 30°C",
@@ -781,7 +790,7 @@
                     "label": {
                         "en": "< 35°C",
                         "de": "< 35°C",
-                        "ru": "<35 ° С",
+                        "ru": "<35 °С",
                         "pt": "<35 °C",
                         "nl": "< 35°C",
                         "fr": "< 35°C",
@@ -799,7 +808,7 @@
                     "label": {
                         "en": "< 40°C",
                         "de": "< 40°C",
-                        "ru": "<40 ° С",
+                        "ru": "<40 °С",
                         "pt": "<40 °C",
                         "nl": "< 40°C",
                         "fr": "< 40°C",
@@ -817,7 +826,7 @@
                     "label": {
                         "en": "< 45°C",
                         "de": "< 45°C",
-                        "ru": "<45 ° С",
+                        "ru": "<45 °С",
                         "pt": "<45 °C",
                         "nl": "< 45°C",
                         "fr": "< 45°C",
@@ -835,7 +844,7 @@
                     "label": {
                         "en": "< 50°C",
                         "de": "< 50°C",
-                        "ru": "<50 ° С",
+                        "ru": "<50 °С",
                         "pt": "<50 °C",
                         "nl": "< 50°C",
                         "fr": "< 50°C",
@@ -853,7 +862,7 @@
                     "label": {
                         "en": "< 55°C",
                         "de": "< 55°C",
-                        "ru": "<55 ° С",
+                        "ru": "<55 °С",
                         "pt": "<55 °C",
                         "nl": "< 55°C",
                         "fr": "< 55°C",
@@ -871,7 +880,7 @@
                     "label": {
                         "en": "< 60°C",
                         "de": "< 60°C",
-                        "ru": "<60 ° С",
+                        "ru": "<60 °С",
                         "pt": "<60 °C",
                         "nl": "< 60°C",
                         "fr": "< 60°C",
@@ -889,7 +898,7 @@
                     "label": {
                         "en": "< 70°C",
                         "de": "< 70°C",
-                        "ru": "<70 ° С",
+                        "ru": "<70 °С",
                         "pt": "<70 °C",
                         "nl": "< 70°C",
                         "fr": "< 70°C",
@@ -904,12 +913,13 @@
                 }
             }
         },
-        "_tab-heatdemand": {
+        "tab-heatdemand": {
             "type": "panel",
             "label": "Heat Demand",
             "items": {
                 "heatdemand": {
                     "newLine": true,
+                    "type": "checkbox",
                     "label": {
                         "en": "Heatdemand calculation and control active",
                         "de": "Heizungsbedarf Berechnung und Kontrolle aktiv",
@@ -922,11 +932,7 @@
                         "pl": "Heatdemand oblicza i kontrola aktywna",
                         "uk": "Розрахунок тепла та контроль активності",
                         "zh-cn": "积极计算和控制"
-                    },
-                    "type": "checkbox",
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12
+                    }  
                 },
                 "thermostats": {
                     "newLine": true,
@@ -942,13 +948,13 @@
                             "width": "10%",
                             "title": "room",
                             "filter": false,
-                            "sort": false,
+                            "sort": true,
                             "default": ""
                         },
                         {
                             "type": "text",
                             "attr": "settemp",
-                            "width": "25%",
+                            "width": "20%",
                             "title": "set temp",
                             "filter": false,
                             "sort": false,
@@ -957,7 +963,7 @@
                         {
                             "type": "text",
                             "attr": "actualtemp",
-                            "width": "25%",
+                            "width": "20%",
                             "title": "actual temp",
                             "filter": false,
                             "sort": false,
@@ -966,7 +972,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "deltam",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "minimum delta",
                             "filter": false,
                             "sort": false,
@@ -989,7 +995,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "hc",
                             "filter": false,
                             "sort": false,
@@ -1030,10 +1036,10 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "hc",
                             "filter": false,
-                            "sort": false,
+                            "sort": true,
                             "default": "hc1",
                             "options": [
                                 "hc1",
@@ -1083,7 +1089,6 @@
                         {
                             "type": "text",
                             "attr": "state",
-                            "width": "30%",
                             "title": "state",
                             "filter": false,
                             "sort": false,
@@ -1131,6 +1136,7 @@
         },
         "tab-advanced": {
             "type": "panel",
+            "hidden": "!data.ems_expert_on",
             "label": {
                 "en": "EMS expert settings",
                 "de": "EMS Experteneinstellungen",
@@ -1146,7 +1152,10 @@
             "items": {
                 "_text1": {
                     "type": "staticText",
-                    "text": "***** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!"
+                    "text": "*** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!! ***",
+                    "style": {
+                        "fontSize": 24
+                    }
                 },
                 "syslog": {
                     "newLine": true,
@@ -1347,13 +1356,6 @@
                             "default": ""
                         }
                     ]
-                },
-                "showHideSettings": {
-                    "i18n": true,
-                    "type": "custom",
-                    "hidden": "!data.accessLimit",
-                    "newLine": true,
-                    "url": "admin/index_m.js"
                 }
             }
         }
