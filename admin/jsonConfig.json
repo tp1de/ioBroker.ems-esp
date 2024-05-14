@@ -95,11 +95,59 @@
                     "type": "checkbox",
                     "confirm": {
                         "condition": "!data.warn && data.ems_expert_on",
-                        "title": "Warning!",
-                        "text": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!!",
-                        "ok": "Ignore warning",
-                        "cancel": "Disable",
-                        "type": "warning"
+                        "title": {
+                            "en": "Warning!",
+                            "de": "Warnung!",
+                            "ru": "Внимание!",
+                            "pt": "Atenção!",
+                            "nl": "Waarschuwing!",
+                            "fr": "Avertissement !",
+                            "it": "Attenzione!",
+                            "es": "¡Atención!",
+                            "pl": "Uwaga!",
+                            "uk": "Про нас!",
+                            "zh-cn": "警告你们!"
+                        },
+                        "type": "warning",
+                        "text": {
+                            "en": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER",
+                            "de": "EINSTELLUNGEN AUF BENUTZERDEFINIERTE EMS-TELEGRAMME --- NUR EXPERTEN --- GEFAHR",
+                            "ru": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- ЭКСПЕРТОВ ТОЛЬКО --- ДАНГЕР",
+                            "pt": "OPÇÕES DE ENTRADA EM EMS-TELEGRAMAS ---- EXPERTAS APENAS --- DANGER",
+                            "nl": "INSTELLINGEN OP DE KUSTEMTELEGRAM'S --- ALLEEN DESKUNDIGEN --- GEVAAR",
+                            "fr": "RÈGLEMENTS SUR LES TÉLÉGRAMS DU SME DOUANIER --- EXPERTS SEULEMENT --- DANGER",
+                            "it": "IMPOSTAZIONI SULLE CONDIZIONI DI LAVORO --- ESPERIENZE SOLO --- DANGER",
+                            "es": "SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTOS SOLO --- ¡DANGER",
+                            "pl": "SETTINGS ON CUSTOM EMS-TELEGRAMS TYLKO EKSPERTY",
+                            "uk": "НАВЧАННЯ НА СУСТОМ EMS-TELEGRAMS --- ЕКСПЕРТИВИ ТІЛЬКИ --- DANGER",
+                            "zh-cn": "关于海关电子设备的设置 只有专家 危险"
+                        },
+                        "ok": {
+                            "en": "Ignore warning",
+                            "de": "Warnung ignorieren",
+                            "ru": "Игнорировать предупреждение",
+                            "pt": "Ignorar aviso",
+                            "nl": "Waarschuwing negeren",
+                            "fr": "Ignorer l'avertissement",
+                            "it": "Ignora l'avvertimento",
+                            "es": "Advertencia de ignorancia",
+                            "pl": "Ignoruj ostrzeżenie",
+                            "uk": "Ігнорувати попередження",
+                            "zh-cn": "忽略警告"
+                        },
+                        "cancel": {
+                            "en": "Cancel",
+                            "de": "Abbrechen",
+                            "ru": "Отмена",
+                            "pt": "Cancelar",
+                            "nl": "Annuleren",
+                            "fr": "Annuler",
+                            "it": "Annulla",
+                            "es": "Cancelar",
+                            "pl": "Anuluj",
+                            "uk": "Зареєструватися",
+                            "zh-cn": "取消"
+                        }
                     },
                     "label": {
                         "en": "EMS expert settings",
@@ -537,15 +585,21 @@
                         {
                             "label": {
                                 "en": "no database",
-                                "de": "keine Datenbank"
+                                "de": "keine datenbank",
+                                "ru": "нет базы данных",
+                                "pt": "sem banco de dados",
+                                "nl": "geen database",
+                                "fr": "pas de base de données",
+                                "it": "nessun database",
+                                "es": "no hay base de datos",
+                                "pl": "brak bazy danych",
+                                "uk": "немає бази даних",
+                                "zh-cn": "无数据库"
                             },
                             "value": ""
                         },
                         {
-                            "label": {
-                                "en": "history",
-                                "de": "Vergangenheit"
-                            },
+                            "label": "history",
                             "value": "history"
                         },
                         {
@@ -915,7 +969,19 @@
         },
         "tab-heatdemand": {
             "type": "panel",
-            "label": "Heat Demand",
+            "label": {
+                "en": "Heat Demand",
+                "de": "Wärmebedarf",
+                "ru": "Спрос на тепло",
+                "pt": "Demanda de calor",
+                "nl": "Warmtevraag",
+                "fr": "Demande de chaleur",
+                "it": "Domanda di calore",
+                "es": "Demanda de calor",
+                "pl": "Popyt cieplny",
+                "uk": "Теплий попит",
+                "zh-cn": "热需求"
+            },
             "items": {
                 "heatdemand": {
                     "newLine": true,
@@ -932,7 +998,7 @@
                         "pl": "Heatdemand oblicza i kontrola aktywna",
                         "uk": "Розрахунок тепла та контроль активності",
                         "zh-cn": "积极计算和控制"
-                    }  
+                    }
                 },
                 "thermostats": {
                     "newLine": true,
@@ -940,13 +1006,37 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "State Attribute",
+                    "label": {
+                        "en": "State Attribute",
+                        "de": "Status",
+                        "ru": "State Attribute",
+                        "pt": "Atributo estatal",
+                        "nl": "Staatsattribuut",
+                        "fr": "Attribut de l'État",
+                        "it": "Attribuzione dello Stato",
+                        "es": "State Attribute",
+                        "pl": "Atrybut państwowy",
+                        "uk": "Статус на сервери",
+                        "zh-cn": "状态属性"
+                    },
                     "items": [
                         {
                             "type": "text",
                             "attr": "room",
                             "width": "10%",
-                            "title": "room",
+                            "title": {
+                                "en": "Room",
+                                "de": "Raum",
+                                "ru": "Комната",
+                                "pt": "Quarto",
+                                "nl": "Kamer",
+                                "fr": "Conférence",
+                                "it": "Camera",
+                                "es": "13.00 horas",
+                                "pl": "Pokój",
+                                "uk": "Полулюкс",
+                                "zh-cn": "会议室"
+                            },
                             "filter": false,
                             "sort": true,
                             "default": ""
@@ -964,7 +1054,19 @@
                             "type": "text",
                             "attr": "actualtemp",
                             "width": "20%",
-                            "title": "actual temp",
+                            "title": {
+                                "en": "actual temp",
+                                "de": "aktuelle temp",
+                                "ru": "фактический темп",
+                                "pt": "realmente temp",
+                                "nl": "werkelijke temperatuur",
+                                "fr": "température réelle",
+                                "it": "temp effettivo",
+                                "es": "tempor real",
+                                "pl": "rzeczywista temperatura",
+                                "uk": "фактичний час",
+                                "zh-cn": "实际临时"
+                            },
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -972,7 +1074,6 @@
                         {
                             "type": "autocomplete",
                             "attr": "deltam",
-                            "width": "15%",
                             "title": "minimum delta",
                             "filter": false,
                             "sort": false,
@@ -995,7 +1096,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "15%",
+                            "width": "10%",
                             "title": "hc",
                             "filter": false,
                             "sort": false,
@@ -1036,7 +1137,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "hc",
-                            "width": "15%",
+                            "width": "10%",
                             "title": "hc",
                             "filter": false,
                             "sort": true,
@@ -1100,7 +1201,16 @@
                             "width": "10%",
                             "title": {
                                 "en": "on",
-                                "de": ""
+                                "de": "an",
+                                "ru": "на",
+                                "pt": "sobre",
+                                "nl": "op",
+                                "fr": "le",
+                                "it": "su",
+                                "es": "on",
+                                "pl": "dnia",
+                                "uk": "на",
+                                "zh-cn": "打开"
                             },
                             "filter": false,
                             "sort": false,
@@ -1112,7 +1222,16 @@
                             "width": "10%",
                             "title": {
                                 "en": "off",
-                                "de": ""
+                                "de": "aus",
+                                "ru": "отключить",
+                                "pt": "fora",
+                                "nl": "uit",
+                                "fr": "départ",
+                                "it": "fuori",
+                                "es": "apagado",
+                                "pl": "wyłączony",
+                                "uk": "з",
+                                "zh-cn": "关"
                             },
                             "filter": false,
                             "sort": false,
@@ -1122,10 +1241,7 @@
                             "type": "checkbox",
                             "attr": "savesettemp",
                             "width": "10%",
-                            "title": {
-                                "en": "savesettemp",
-                                "de": ""
-                            },
+                            "title": "savesettemp",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -1152,7 +1268,19 @@
             "items": {
                 "_text1": {
                     "type": "staticText",
-                    "text": "*** SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER !!! ***",
+                    "text": {
+                        "en": "***SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTS ONLY --- DANGER***",
+                        "de": "***EINSTELLUNGEN AUF BENUTZERDEFINIERTE EMS-TELEGRAMME --- NUR EXPERTEN --- AUF EIGENE GEFAHR***",
+                        "ru": "***SETTINGS ON CUSTOM EMS-TELEGRAMS --- ЭКСПЕРТОВ ТОЛЬКО --- ДАНГЕР***",
+                        "pt": "***OPÇÕES DE ENTRADA EM EMS-TELEGRAMAS ---- EXPERTAS APENAS --- DANGER***",
+                        "nl": "***INSTELLINGEN OP DE KUSTEMTELEGRAM'S --- ALLEEN DESKUNDIGEN --- GEVAAR***",
+                        "fr": "***RÈGLEMENTS SUR LES TÉLÉGRAMS DU SME DOUANIER --- EXPERTS SEULEMENT --- DANGER***",
+                        "it": "***IMPOSTAZIONI SULLE CONDIZIONI DI LAVORO --- ESPERIENZE SOLO --- DANGER***",
+                        "es": "***SETTINGS ON CUSTOM EMS-TELEGRAMS --- EXPERTOS SOLO --- ¡DANGER***",
+                        "pl": "***SETTINGS ON CUSTOM EMS-TELEGRAMS TYLKO EKSPERTY***",
+                        "uk": "***НАВЧАННЯ НА СУСТОМ EMS-TELEGRAMS --- ЕКСПЕРТИВИ ТІЛЬКИ --- DANGER***",
+                        "zh-cn": "***关于海关电子设备的设置 只有专家 危险***"
+                    },
                     "style": {
                         "fontSize": 24
                     }
@@ -1191,21 +1319,19 @@
                         "zh-cn": "系统日志端口"
                     },
                     "sm": 12,
-                    "md": 6,
-                    "lg": 6
+                    "md": 3,
+                    "lg": 3
                 },
                 "devices": {
                     "newLine": true,
                     "type": "table",
                     "sm": 12,
-                    "md": 12,
-                    "lg": 12,
                     "label": "Devices",
                     "items": [
                         {
                             "type": "text",
                             "attr": "state",
-                            "width": "20%",
+                            "width": "15%",
                             "title": "state",
                             "filter": false,
                             "sort": false,
@@ -1250,7 +1376,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "bit",
-                            "width": "10%",
+                            "width": "5%",
                             "title": "bit",
                             "filter": false,
                             "sort": false,
@@ -1297,7 +1423,7 @@
                         {
                             "type": "autocomplete",
                             "attr": "state_type",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "state_type",
                             "filter": false,
                             "sort": false,
@@ -1313,7 +1439,7 @@
                         {
                             "type": "json",
                             "attr": "states",
-                            "width": "20%",
+                            "width": "10%",
                             "title": "states",
                             "filter": false,
                             "sort": false,
