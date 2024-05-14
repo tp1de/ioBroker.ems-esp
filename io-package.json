@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.4.2",
+    "version": "3.4.3",
     "news": {
+      "3.4.3": {
+        "en": "corrections for reading gateway data for km200 gateway",
+        "de": "korrekturen zum lesen von gateway-daten für km200 gateway",
+        "ru": "исправления для чтения данных шлюза km200",
+        "pt": "correções para ler dados de gateway para o gateway km200",
+        "nl": "correcties voor het lezen van gatewaygegevens voor km200 gateway",
+        "fr": "corrections pour la lecture des données de passerelle pour la passerelle km200",
+        "it": "correzioni per la lettura dei dati del gateway per il gateway km200",
+        "es": "correcciones para la lectura de los datos de la puerta de entrada de km200",
+        "pl": "korekty dotyczące odczytu danych bramki dla bramki km200",
+        "uk": "корекція для читання даних шлюзу на км200",
+        "zh-cn": "km200网关读取网关数据的更正"
+      },
       "3.4.2": {
         "en": "update dependencies\nreplace setTimeout by adapter.delay",
         "de": "aktualisierung der abhängigkeiten\nersetzen Set Timeout per Adapter. Verzögerung",
@@ -80,19 +93,6 @@
         "pl": "zmiana oprogramowania firmowego ems- esp 3.7 - dodać znacznik dhw",
         "uk": "зміна прошивки ems-esp 3.7 - додати тег dhw",
         "zh-cn": "对 ems-esp 固件的更改 3.7 - 添加 dhw 标签"
-      },
-      "3.1.1": {
-        "en": "update dependencies and release  script",
-        "de": "aktualisierung von abhängigkeiten und release-skript",
-        "ru": "обновление зависимостей и сценарий выхода",
-        "pt": "dependências de atualização e script de lançamento",
-        "nl": "update afhankelijkheden en release script",
-        "fr": "mettre à jour les dépendances et le script de publication",
-        "it": "aggiornamento dipendenze e rilascio script",
-        "es": "actualizar las dependencias y el script de lanzamiento",
-        "pl": "aktualizacja zależności i skrypt wydania",
-        "uk": "оновлення залежності та сценарію релізу",
-        "zh-cn": "更新依赖关系并发布脚本"
       }
     },
     "titleLang": {

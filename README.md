@@ -75,7 +75,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.4.3 (2024-05-14)
 * corrections for reading gateway data for km200 gateway
 
 ### 3.4.2 (2024-05-13)
@@ -92,9 +92,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 3.3.0 (2024-04-20)
 * introduce a new check for ems-esp gateway formatting settings for boolean and enum values
 * stop ems-esp polling if wrong settings are detected !
-
-### 3.2.1 (2024-04-17)
-* update release script
 
 ## License
 MIT License
