@@ -1,3 +1,4 @@
+/*
 declare let systemDictionary: Record<string, Record<string, string>>;
 
 declare let load: (settings: Record<string, unknown>, onChange: (hasChanges: boolean) => void) => void;
@@ -11,7 +12,7 @@ interface Window {
 
 declare const instance: number;
 declare const adapter: string;
-/** Translates text */
+/
 declare function _(text: string, arg1?: string, arg2?: string, arg3?: string): string;
 declare const socket: ioBrokerSocket;
 declare function sendTo(
@@ -91,3 +92,4 @@ interface ioBrokerSocket {
 
 	// TODO: other events 
 }
+*/
