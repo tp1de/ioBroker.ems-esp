@@ -189,7 +189,7 @@ async function enable_state(stateid,retention,interval) {
 			if (result.error) {adapter.log.error("enable history error " + stateid);}
 		});
 	} catch (e) {adapter.log.error("enable history error " + stateid );}
-	await sleep (500);
+	await adapter.delay(500);
 	const state = await adapter.getState(stateid);
 	if(state == null || state.val === undefined) await await adapter.setStateAsync(stateid, {ack: false, val: 0});
 	else await await adapter.setStateAsync(stateid, {ack: true, val: state.val});
@@ -620,10 +620,4 @@ async function delete_states_emsesp() {
 		const obj = await adapter.getObjectAsync(id);
 		if (obj.common.custom == undefined) await adapter.delObjectAsync(id);
 	}
-}
-
-
-async function sleep(ms) {
-	if (unloaded) return;
-	else adapter.delay(ms);
 }
