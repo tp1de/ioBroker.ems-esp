@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.4.4",
+    "version": "3.5.0",
     "news": {
+      "3.5.0": {
+        "en": "warm water starts not supported anymore within statistics due to namechanges within ems-esp firmware 3.7",
+        "de": "warmes wasser beginnt nicht mehr innerhalb von statistiken aufgrund von namensänderungen in ems-esp firmware 3.7 unterstützt",
+        "ru": "теплая вода больше не поддерживается в статистике из-за изменений названия в ems-esp прошивки 3.7",
+        "pt": "água quente começa não suportado mais dentro de estatísticas devido a alterações de nome dentro ems-esp firmware 3.7",
+        "nl": "warm water begint niet meer ondersteund binnen statistieken als gevolg van naamwijzigingen binnen ems-esp firmware 3.7",
+        "fr": "eau chaude ne commence plus pris en charge dans les statistiques en raison des changements de nom au sein du firmware ems-esp 3.7",
+        "it": "acqua calda non inizia più supportato all'interno delle statistiche a causa dei cambi di nome all'interno del firmware ems-esp 3.7",
+        "es": "agua tibia comienza ya no soportada dentro de las estadísticas debido a cambios de nombre dentro de ems-esp firmware 3.7",
+        "pl": "ciepła woda zaczyna nie wspierane już w statystykach ze względu na nazwy w ems- esp firmware 3.7",
+        "uk": "тепла вода не підтримується в будь-який час в статистиці завдяки обміну повідомленнями в е-esp прошивці 3.7",
+        "zh-cn": "由于ems-esp固件3.7中的名称变化,在统计中不再支持暖水"
+      },
       "3.4.4": {
         "en": "improve delays between axios get requests for km200 and ems-esp to avoid errors",
         "de": "verbesserung der verzögerungen zwischen axios erhalten anfragen für km200 und ems-esp, um fehler zu vermeiden",
@@ -80,19 +93,6 @@
         "pl": "wprowadzić nowy sprawdzian dla ustawień formatowania bramki ems- esp dla wartości boolean i enum\nzatrzymać ems- esp sondażu, jeśli wykryto błędne ustawienia!",
         "uk": "впровадити нову перевірку на налаштування форматування шлюзу емс-esp для boolean та enum значення\nзупинити емс-esp опитування, якщо виявляються неправильні налаштування !",
         "zh-cn": "为 布尔值和 enum 值引入 ems- esp 网关格式化设置的新检查\n如果发现设置错误, 请停止投票 !"
-      },
-      "3.2.1": {
-        "en": "update release script",
-        "de": "veröffentlichungsskript",
-        "ru": "обновление сценария",
-        "pt": "atualização script",
-        "nl": "update release script",
-        "fr": "mettre à jour le script de publication",
-        "it": "aggiornamento script di rilascio",
-        "es": "actualización script",
-        "pl": "aktualizować skrypt wydania",
-        "uk": "скрипт релізу оновлення",
-        "zh-cn": "更新发布脚本"
       }
     },
     "titleLang": {

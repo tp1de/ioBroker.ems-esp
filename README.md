@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.5.0 (2024-05-15)
 * warm water starts not supported anymore within statistics due to namechanges within ems-esp firmware 3.7
 
 ### 3.4.4 (2024-05-15)
@@ -58,10 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 3.4.1 (2024-04-26)
 * correct enum settings for ems-esp gateway on adapter start
-
-### 3.4.0 (2024-04-22)
-* changes for ems-esp firmware 3.7.0 
-* introduce warnings in log for using ems-esp dev firmware
 
 ## License
 MIT License
