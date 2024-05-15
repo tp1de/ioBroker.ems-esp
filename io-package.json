@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "3.4.3",
+    "version": "3.4.4",
     "news": {
+      "3.4.4": {
+        "en": "improve delays between axios get requests for km200 and ems-esp to avoid errors",
+        "de": "verbesserung der verzögerungen zwischen axios erhalten anfragen für km200 und ems-esp, um fehler zu vermeiden",
+        "ru": "улучшить задержки между axios получать запросы на км200 и ems-esp, чтобы избежать ошибок",
+        "pt": "melhorar os atrasos entre axios obter pedidos de km200 e ems-esp para evitar erros",
+        "nl": "verbeteren van vertragingen tussen axio's krijgen verzoeken voor km200 en ems-esp om fouten te voorkomen",
+        "fr": "améliorer les délais entre axios obtenir des demandes pour km200 et ems-esp pour éviter les erreurs",
+        "it": "migliorare i ritardi tra assio ottenere richieste per km200 e ems-esp per evitare errori",
+        "es": "mejorar los retrasos entre axios obtener solicitudes de km200 y ems-esp para evitar errores",
+        "pl": "poprawić opóźnienia między aksjonami uzyskać wnioski o km200 i ems- esp, aby uniknąć błędów",
+        "uk": "поліпшення затримок між axios отримувати запити на км200 і емс-есп, щоб уникнути помилок",
+        "zh-cn": "改善轴之间的延迟 获取 km200 和 ems- esp 的请求以避免错误"
+      },
       "3.4.3": {
         "en": "corrections for reading gateway data for km200 gateway",
         "de": "korrekturen zum lesen von gateway-daten für km200 gateway",
@@ -80,19 +93,6 @@
         "pl": "aktualizować skrypt wydania",
         "uk": "скрипт релізу оновлення",
         "zh-cn": "更新发布脚本"
-      },
-      "3.2.0": {
-        "en": "change for ems-esp firmware 3.7 - add dhw tag",
-        "de": "änderung für ems-esp firmware 3.7 - dhw tag hinzufügen",
-        "ru": "изменение для ems-esp прошивки 3.7 - добавить dhw тег",
-        "pt": "mudança para firmware ems-esp 3.7 - adicionar tag dhw",
-        "nl": "verandering voor ems-esp firmware 3.7 - dhw-tag toevoegen",
-        "fr": "changement pour ems-esp firmware 3.7 - ajouter l'étiquette dhw",
-        "it": "cambiamento per firmware ems-esp 3.7 - aggiungere il tag dhw",
-        "es": "cambio para el firmware de emsp 3.7 - añadir dhw tag",
-        "pl": "zmiana oprogramowania firmowego ems- esp 3.7 - dodać znacznik dhw",
-        "uk": "зміна прошивки ems-esp 3.7 - додати тег dhw",
-        "zh-cn": "对 ems-esp 固件的更改 3.7 - 添加 dhw 标签"
       }
     },
     "titleLang": {

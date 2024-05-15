@@ -1,4 +1,8 @@
 * older changes
+## 3.3.0 (2024-04-20)
+* introduce a new check for ems-esp gateway formatting settings for boolean and enum values
+* stop ems-esp polling if wrong settings are detected !
+
 ## 3.2.1 (2024-04-17)
 * update release script
 

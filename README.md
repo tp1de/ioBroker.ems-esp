@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 3.4.4 (2024-05-15)
 * improve delays between axios get requests for km200 and ems-esp to avoid errors
 
 ### 3.4.3 (2024-05-14)
@@ -59,10 +59,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 3.4.0 (2024-04-22)
 * changes for ems-esp firmware 3.7.0 
 * introduce warnings in log for using ems-esp dev firmware
-
-### 3.3.0 (2024-04-20)
-* introduce a new check for ems-esp gateway formatting settings for boolean and enum values
-* stop ems-esp polling if wrong settings are detected !
 
 ## License
 MIT License
