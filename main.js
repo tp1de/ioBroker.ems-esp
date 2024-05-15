@@ -400,24 +400,25 @@ async function heatdemand() {
 
 async function init_statistics() {
 	try {
-		await adapter.setObjectNotExistsAsync("statistics.created",{type: "state",
+		await adapter.setObjectAsync("statistics.created",{type: "state",
 			common: {type: "boolean", name: "Database (mySQL/InfluxDB) enabled for fields needed for statistics", unit: "", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.ems-read",{type: "state",
+		adapter.setObject("statistics.ems-read",{type: "state",
 			common: {type: "number", name: "ems read time for polling", unit: "seconds", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.km200-read",{type: "state",
+		adapter.setObject("statistics.km200-read",{type: "state",
 			common: {type: "number", name: "km200 read time for polling", unit: "seconds",  role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.boiler-on-1h",{type: "state",
+		adapter.setObject("statistics.boiler-on-1h",{type: "state",
 			common: {type: "number", name: "percentage boiler on per hour", unit: "%", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.boiler-starts-1h",{type: "state",
+		adapter.setObject("statistics.boiler-starts-1h",{type: "state",
 			common: {type: "number", name: "boiler starts per hour", unit: "", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.boiler-starts-24h",{type: "state",
+		adapter.setObject("statistics.boiler-starts-24h",{type: "state",
 			common: {type: "number", name: "boiler starts per 24 hours", unit: "", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.ww-starts-1h",{type: "state",
-			common: {type: "number", name: "ww starts per hour (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.ww-starts-24h",{type: "state",
-			common: {type: "number", name: "ww starts per 24 hours (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
-		adapter.setObjectNotExists("statistics.efficiency",{type: "state",
+		//adapter.setObject("statistics.ww-starts-1h",{type: "state",
+		//	common: {type: "number", name: "ww starts per hour (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
+		//adapter.setObject("statistics.ww-starts-24h",{type: "state",
+		//	common: {type: "number", name: "ww starts per 24 hours (EMS-ESP only)", unit: "", role: "value", read: true, write: true}, native: {}});
+		adapter.setObject("statistics.efficiency",{type: "state",
 			common: {type: "number", name: "boiler efficiency", unit: "%", role: "value", read: true, write: true}, native: {}});
+		await adapter.delay(500);
 
 	} catch(e) {}
 }
@@ -437,14 +438,15 @@ async function init_statistics2() {
 					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
 					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,60);
 					if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts",86400,60);
-					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
-					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
+					//if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
+					//if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
 					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
 					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
 					if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus",86400,15);
 					adapter.setState("statistics.created", {ack: true, val: true});
 				}
 			});
+			await adapter.delay(500);
 		} catch(e) {}
 	}
 }
@@ -548,6 +550,7 @@ async function read_statistics() {
 		stat(db,id,1,"statistics.boiler-starts-1h");
 		stat(db,id,24,"statistics.boiler-starts-24h");
 
+		/*
 		if (adapter.config.emsesp_active) {
 			id = adapter.namespace + ".boiler.wwstarts";
 			if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
@@ -555,7 +558,7 @@ async function read_statistics() {
 			stat(db,id,1,"statistics.ww-starts-1h");
 			stat(db,id,24,"statistics.ww-starts-24h");
 		}
-
+		*/
 
 		if (adapter.config.km200_active) {id = adapter.namespace + ".heatSources.hs1.flameStatus";}
 		if (adapter.config.emsesp_active && adapter.config.km200_structure ) {id = adapter.namespace + ".heatSources.hs1.burngas";}
