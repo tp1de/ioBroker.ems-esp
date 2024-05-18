@@ -43,6 +43,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* prepare for json config
+
 ### 3.5.0 (2024-05-15)
 * warm water starts not supported anymore within statistics due to namechanges within ems-esp firmware 3.7
 

@@ -410,29 +410,30 @@
                             "default": ""
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "deltam",
                             "title": "minimum delta",
+                            "width": "10%",
                             "filter": false,
                             "sort": false,
-                            "default": "1.0",
+                            "default": "1",
                             "options": [
-                                "0.25",
-                                "0.5",
-                                "0.75",
-                                "1.0",
-                                "1.5",
-                                "2.0",
-                                "2.5",
-                                "3.0",
-                                "3.5",
-                                "4.0",
-                                "4.5",
-                                "5.0"
+                                {"label": {"en": "0.25"}, "value": "0.25"},
+                                {"label": {"en": "0.5"}, "value": "0.5"},
+                                {"label": {"en": "0.75"}, "value": "0.75"},
+                                {"label": {"en": "1.0"}, "value": "1.0"},
+                                {"label": {"en": "1.5"}, "value": "1.5"},
+                                {"label": {"en": "2.0"}, "value": "2.0"},
+                                {"label": {"en": "2.5"}, "value": "2.5"},
+                                {"label": {"en": "3.0"}, "value": "3.0"},
+                                {"label": {"en": "3.5"}, "value": "3.5"},
+                                {"label": {"en": "4.0"}, "value": "4.0"},
+                                {"label": {"en": "4.5"}, "value": "4.5"},
+                                {"label": {"en": "5.0"}, "value": "5.0"}
                             ]
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "hc",
                             "width": "10%",
                             "title": "hc",
@@ -440,14 +441,14 @@
                             "sort": false,
                             "default": "hc1",
                             "options": [
-                                "hc1",
-                                "hc2",
-                                "hc3",
-                                "hc4"
+                                {"label": {"en": "hc1"}, "value": "hc1"},
+                                {"label": {"en": "hc2"}, "value": "hc2"},
+                                {"label": {"en": "hc3"}, "value": "hc3"},
+                                {"label": {"en": "hc4"}, "value": "hc4"}
                             ]
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "weight",
                             "width": "10%",
                             "title": "weight",
@@ -455,11 +456,11 @@
                             "sort": false,
                             "default": "1",
                             "options": [
-                                "1",
-                                "2",
-                                "3",
-                                "4",
-                                "5"
+                                {"label": {"en": "1"}, "value": "1"},
+                                {"label": {"en": "2"}, "value": "2"},
+                                {"label": {"en": "3"}, "value": "3"},
+                                {"label": {"en": "4"}, "value": "4"},
+                                {"label": {"en": "5"}, "value": "5"}
                             ]
                         }
                     ]
@@ -473,7 +474,7 @@
                     "label": "hc",
                     "items": [
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "hc",
                             "width": "10%",
                             "title": "hc",
@@ -481,14 +482,14 @@
                             "sort": true,
                             "default": "hc1",
                             "options": [
-                                "hc1",
-                                "hc2",
-                                "hc3",
-                                "hc4"
+                                {"label": {"en": "hc1"}, "value": "hc1"},
+                                {"label": {"en": "hc2"}, "value": "hc2"},
+                                {"label": {"en": "hc3"}, "value": "hc3"},
+                                {"label": {"en": "hc4"}, "value": "hc4"}
                             ]
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "weighton",
                             "width": "10%",
                             "title": "weighton",
@@ -496,18 +497,18 @@
                             "sort": false,
                             "default": "1",
                             "options": [
-                                "1",
-                                "2",
-                                "3",
-                                "4",
-                                "5",
-                                "6",
-                                "7",
-                                "8"
+                                {"label": {"en": "1"}, "value": "1"},
+                                {"label": {"en": "2"}, "value": "2"},
+                                {"label": {"en": "3"}, "value": "3"},
+                                {"label": {"en": "4"}, "value": "4"},
+                                {"label": {"en": "5"}, "value": "5"},
+                                {"label": {"en": "6"}, "value": "6"},
+                                {"label": {"en": "7"}, "value": "7"},
+                                {"label": {"en": "8"}, "value": "8"}
                             ]
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "weightoff",
                             "width": "10%",
                             "title": "weightoff",
@@ -515,14 +516,14 @@
                             "sort": false,
                             "default": "1",
                             "options": [
-                                "1",
-                                "2",
-                                "3",
-                                "4",
-                                "5",
-                                "6",
-                                "7",
-                                "8"
+                                {"label": {"en": "1"}, "value": "1"},
+                                {"label": {"en": "2"}, "value": "2"},
+                                {"label": {"en": "3"}, "value": "3"},
+                                {"label": {"en": "4"}, "value": "4"},
+                                {"label": {"en": "5"}, "value": "5"},
+                                {"label": {"en": "6"}, "value": "6"},
+                                {"label": {"en": "7"}, "value": "7"},
+                                {"label": {"en": "8"}, "value": "8"}
                             ]
                         },
                         {
@@ -643,7 +644,7 @@
                             "default": ""
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "bit",
                             "width": "5%",
                             "title": "bit",
@@ -651,15 +652,15 @@
                             "sort": false,
                             "default": "",
                             "options": [
-                                "",
-                                "0",
-                                "1",
-                                "2",
-                                "3",
-                                "4",
-                                "5",
-                                "6",
-                                "7"
+                                {"label": {"en": ""}, "value": ""},
+                                {"label": {"en": "0"}, "value": "0"},
+                                {"label": {"en": "1"}, "value": "1"},
+                                {"label": {"en": "2"}, "value": "2"},
+                                {"label": {"en": "3"}, "value": "3"},
+                                {"label": {"en": "4"}, "value": "4"},
+                                {"label": {"en": "5"}, "value": "5"},
+                                {"label": {"en": "6"}, "value": "6"},
+                                {"label": {"en": "7"}, "value": "7"}
                             ]
                         },
                         {
@@ -690,7 +691,7 @@
                             "default": ""
                         },
                         {
-                            "type": "autocomplete",
+                            "type": "select",
                             "attr": "state_type",
                             "width": "15%",
                             "title": "state_type",
@@ -698,15 +699,15 @@
                             "sort": false,
                             "default": "number",
                             "options": [
-                                "number",
-                                "hex",
-                                "string",
-                                "switchPrograms",
-                                "holidayModes"
+                                {"label": {"en": "number"}, "value": "number"},
+                                {"label": {"en": "hex"}, "value": "hex"},
+                                {"label": {"en": "string"}, "value": "string"},
+                                {"label": {"en": "switchPrograms"}, "value": "switchPrograms"},
+                                {"label": {"en": "holidayModes"}, "value": "holidayModes"}
                             ]
                         },
                         {
-                            "type": "json",
+                            "type": "text",
                             "attr": "states",
                             "width": "10%",
                             "title": "states",
