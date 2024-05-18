@@ -155,7 +155,7 @@
     "dataFolder": "ems-esp.%INSTANCE%",
     "dataSource": "poll",
     "adminUI": {
-      "config": "materialize"
+      "config": "json"
     },
     "dependencies": [
       {
