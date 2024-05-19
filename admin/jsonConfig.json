@@ -385,7 +385,7 @@
                         {
                             "type": "text",
                             "attr": "room",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "Room",
                             "filter": false,
                             "sort": true,
@@ -413,7 +413,6 @@
                             "type": "select",
                             "attr": "deltam",
                             "title": "minimum delta",
-                            "width": "10%",
                             "filter": false,
                             "sort": false,
                             "default": "1",
