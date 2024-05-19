@@ -708,7 +708,7 @@
                         {
                             "type": "text",
                             "attr": "states",
-                            "width": "10%",
+                            "width": "15%",
                             "title": "states",
                             "filter": false,
                             "sort": false,
@@ -717,7 +717,7 @@
                         {
                             "type": "number",
                             "attr": "min",
-                            "width": "5%",
+                            "width": "3%",
                             "title": "min",
                             "filter": false,
                             "sort": false,
@@ -726,7 +726,7 @@
                         {
                             "type": "number",
                             "attr": "max",
-                            "width": "5%",
+                            "width": "3%",
                             "title": "max",
                             "filter": false,
                             "sort": false,
@@ -735,7 +735,7 @@
                         {
                             "type": "text",
                             "attr": "uom",
-                            "width": "5%",
+                            "width": "3%",
                             "title": "uom",
                             "filter": false,
                             "sort": false,
