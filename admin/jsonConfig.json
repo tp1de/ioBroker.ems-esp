@@ -628,7 +628,7 @@
                             "type": "text",
                             "attr": "offset",
                             "width": "5%",
-                            "title": "hex",
+                            "title": "offset",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -674,8 +674,8 @@
                         {
                             "type": "number",
                             "attr": "multi",
-                            "width": "5%",
-                            "title": "multi",
+                            "width": "10%",
+                            "title": "multiplikator",
                             "filter": false,
                             "sort": false,
                             "default": ""
