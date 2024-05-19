@@ -618,8 +618,8 @@
                         {
                             "type": "text",
                             "attr": "type",
-                            "width": "5%",
-                            "title": "type",
+                            "width": "7%",
+                            "title": "telegram type",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -674,7 +674,7 @@
                         {
                             "type": "number",
                             "attr": "multi",
-                            "width": "10%",
+                            "width": "7%",
                             "title": "multiplikator",
                             "filter": false,
                             "sort": false,
