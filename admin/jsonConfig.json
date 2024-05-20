@@ -73,6 +73,7 @@
                     "md": 3,
                     "lg": 3
                 },
+
                 "ems_custom_elements": {
                     "type": "checkbox",
                     "label": "ems_custom_elements",
@@ -80,6 +81,7 @@
                     "md": 3,
                     "lg": 3
                 },
+
                 "ems_token": {
                     "type": "text",
                     "label": "ems_token",
@@ -159,16 +161,19 @@
                     "newLine": true,
                     "type": "text",
                     "label": "gateway_pw",
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6
+                    "sm": 8,
+                    "md": 4,
+                    "lg": 4
                 },
                 "private_pw": {
-                    "type": "text",
+                    "type": "password",
+                    "repeat": false,
+                    "visible": true,
+                    "maxLength": 20,
                     "label": "private_pw",
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 6
+                    "sm": 8,
+                    "md": 4,
+                    "lg": 4
                 },
                 "recordings": {
                     "newLine": true,

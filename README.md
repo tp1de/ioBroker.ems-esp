@@ -45,7 +45,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * adapter now with json config
-* js controller version 5 and admin version >= 6.3.5 required
+* js controller version >= 4.0.24 and admin version >= 6.3.5 required
 * add expert settings for ems-esp gateway (own states by polling raw telegrams)
 * support different ems-esp bus id's for own states
 * add pdf documentation for new functionality
