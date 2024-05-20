@@ -20,9 +20,9 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 
 * km200, km200 hrv, km100, km50, HMC300 or IP-inside (from Bosch Group) 
 
-* ems-esp gateway (https://github.com/emsesp/EMS-ESP32) with latest dev version (see below) and the ESP32 chip. 
-  The old ESP8266 gateways with API V2 are NOT SUPPORTED ANYMORE !!
-  The adapter is tested for the ems-esp gateway with latest firmware version (> V3.6.0) of ESP32
+* ems-esp gateway (https://github.com/emsesp/EMS-ESP32) with the ESP32 chip. 
+  The old ESP8266 gateways with API V2 are not supported anymore !!
+  The adapter is tested for the ems-esp gateway with latest stable firmware version (V3.6.5)
   Latest dev versions of firmware might not work stable with the ioBroker adapter. Use is on own risk.
 
 * New Bosch-Group Cloud-Gateways (MX300 / EasyControl ...) are not supported since they do not support LAN API !
@@ -51,7 +51,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * add pdf documentation for new functionality
 
 ### 3.5.0 (2024-05-15)
-* warm water starts not supported anymore within statistics due to namechanges within ems-esp firmware 3.7
+* warm water starts not supported anymore within statistics due to name changes within ems-esp firmware 3.7
 
 ### 3.4.4 (2024-05-15)
 * improve delays between axios get requests for km200 and ems-esp to avoid errors
