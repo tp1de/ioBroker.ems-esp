@@ -29,7 +29,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.1.4",
+    "@iobroker/adapter-core": "^2.6.11",
     "@types/node": "^20.12.11",
     "@types/request": "^2.48.12",
     "buffer": "^6.0.3",
