@@ -83,6 +83,7 @@
                 },
 
                 "ems_token": {
+                    "newLine": true,
                     "type": "text",
                     "label": "ems_token",
                     "sm": 12
