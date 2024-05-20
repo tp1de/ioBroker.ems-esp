@@ -385,7 +385,7 @@
                         {
                             "type": "text",
                             "attr": "room",
-                            "width": "15%",
+                            "width": "10%",
                             "title": "Room",
                             "filter": false,
                             "sort": true,
@@ -394,7 +394,7 @@
                         {
                             "type": "text",
                             "attr": "settemp",
-                            "width": "20%",
+                            "width": "25%",
                             "title": "set temp",
                             "filter": false,
                             "sort": false,
@@ -403,7 +403,7 @@
                         {
                             "type": "text",
                             "attr": "actualtemp",
-                            "width": "20%",
+                            "width": "25%",
                             "title": "actual temp",
                             "filter": false,
                             "sort": false,
@@ -600,7 +600,7 @@
                         {
                             "type": "text",
                             "attr": "state",
-                            "width": "15%",
+                            "width": "20%",
                             "title": "state",
                             "filter": false,
                             "sort": false,
@@ -692,7 +692,7 @@
                         {
                             "type": "select",
                             "attr": "state_type",
-                            "width": "15%",
+                            "width": "12%",
                             "title": "state_type",
                             "filter": false,
                             "sort": false,
@@ -701,15 +701,15 @@
                                 {"label": {"en": "number"}, "value": "number"},
                                 {"label": {"en": "hex"}, "value": "hex"},
                                 {"label": {"en": "string"}, "value": "string"},
-                                {"label": {"en": "switchPrograms"}, "value": "switchPrograms"},
-                                {"label": {"en": "holidayModes"}, "value": "holidayModes"}
+                                {"label": {"en": "switchPrograms (EMS+)"}, "value": "switchPrograms"},
+                                {"label": {"en": "holidayModes (EMS+)"}, "value": "holidayModes"}
                             ]
                         },
                         {
                             "type": "text",
                             "attr": "states",
-                            "width": "15%",
-                            "title": "states",
+                            "width": "20%",
+                            "title": "states(enum)",
                             "filter": false,
                             "sort": false,
                             "default": ""
