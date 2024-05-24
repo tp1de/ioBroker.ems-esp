@@ -15,6 +15,7 @@
                     "newLine": true,
                     "type": "text",
                     "label": "emsesp_ip",
+                    "noClearButton": true,
                     "sm": 6,
                     "md": 2,
                     "lg": 2
@@ -115,6 +116,7 @@
                 "ems_modulation": {
                     "type": "text",
                     "label": "ems_modulation",
+                    "noClearButton": true,
                     "sm": 6,
                     "md": 2,
                     "lg": 2
@@ -122,6 +124,7 @@
                 "ems_wwactive": {
                     "type": "text",
                     "label": "ems_wwactive",
+                    "noClearButton": true,
                     "sm": 6,
                     "md": 2,
                     "lg": 2
@@ -140,6 +143,7 @@
                 "km200_ip": {
                     "newLine": true,
                     "type": "text",
+                    "noClearButton": true,
                     "label": "km200_ip",
                     "sm": 6,
                     "md": 2,
@@ -155,6 +159,7 @@
                 "control_file": {
                     "type": "text",
                     "label": "control_file",
+                    "noClearButton": true,
                     "sm": 6,
                     "md": 2,
                     "lg": 2
@@ -163,6 +168,7 @@
                     "newLine": true,
                     "type": "text",
                     "label": "gateway_pw",
+                    "noClearButton": true,
                     "sm": 8,
                     "md": 2,
                     "lg": 2
@@ -173,6 +179,7 @@
                     "visible": true,
                     "maxLength": 20,
                     "label": "private_pw",
+                    "noClearButton": true,
                     "sm": 8,
                     "md": 2,
                     "lg": 2
@@ -392,6 +399,7 @@
                         {
                             "type": "text",
                             "attr": "room",
+                            "noClearButton": true,
                             "width": "15%",
                             "title": "Room",
                             "filter": false,
@@ -401,6 +409,7 @@
                         {
                             "type": "text",
                             "attr": "settemp",
+                            "noClearButton": true,
                             "width": "35%",
                             "title": "set temp",
                             "filter": false,
@@ -410,6 +419,7 @@
                         {
                             "type": "text",
                             "attr": "actualtemp",
+                            "noClearButton": true,
                             "width": "35%",
                             "title": "actual temp",
                             "filter": false,
@@ -536,6 +546,7 @@
                         {
                             "type": "text",
                             "attr": "state",
+                            "noClearButton": true,
                             "title": "state",
                             "filter": false,
                             "sort": false,
@@ -544,6 +555,7 @@
                         {
                             "type": "text",
                             "attr": "on",
+                            "noClearButton": true,
                             "width": "5%",
                             "title": "tit_on",
                             "filter": false,
@@ -553,6 +565,7 @@
                         {
                             "type": "text",
                             "attr": "off",
+                            "noClearButton": true,
                             "width": "5%",
                             "title": "tit_off",
                             "filter": false,
@@ -608,6 +621,7 @@
                         {
                             "type": "text",
                             "attr": "state",
+                            "noClearButton": true,
                             "width": "20%",
                             "title": "state",
                             "filter": false,
@@ -617,6 +631,7 @@
                         {
                             "type": "text",
                             "attr": "src",
+                            "noClearButton": true,
                             "width": "5%",
                             "title": "src",
                             "filter": false,
@@ -626,6 +641,7 @@
                         {
                             "type": "text",
                             "attr": "type",
+                            "noClearButton": true,
                             "width": "7%",
                             "title": "telegram type",
                             "filter": false,
@@ -635,6 +651,7 @@
                         {
                             "type": "text",
                             "attr": "offset",
+                            "noClearButton": true,
                             "width": "5%",
                             "title": "offset",
                             "filter": false,
@@ -716,6 +733,7 @@
                         {
                             "type": "text",
                             "attr": "states",
+                            
                             "width": "25%",
                             "title": "states (enum)",
                             "default": "",
@@ -743,6 +761,7 @@
                         {
                             "type": "text",
                             "attr": "uom",
+                            "noClearButton": true,
                             "width": "10%",
                             "title": "uom",
                             "filter": false,
