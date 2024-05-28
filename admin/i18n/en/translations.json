@@ -8,7 +8,7 @@
   "km200_structure": "KM200 structure",
   "ems_dallas": "temperature sensors",
   "ems_dallas_old_format": "use old dallas prefix for sensors",
-  "ems_analog": "analog",
+  "ems_analog": "analog sensors",
   "ems_custom": "enable search for additional EMS+ entities (switchTimes & holidayModes) - write access needed",
   "ems_custom_elements": "read EMS-ESP custom elements",
   "ems_expert_settings": "EMS expert settings",
