@@ -40,6 +40,7 @@
                 "ems_expert_on": {
                     "type": "checkbox",
                     "label": "ems_expert_settings",
+                    "hidden": "data.emsesp_ip.substr(0,3) != '***' ",
                     "confirm": {
                         "condition": "!data.warn && data.ems_expert_on",
                         "type": "warning",
