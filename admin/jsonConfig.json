@@ -39,6 +39,7 @@
                 },
                 "ems_expert_on": {
                     "type": "checkbox",
+                    "hidden": true,
                     "label": "ems_expert_settings",
                     "confirm": {
                         "condition": "!data.warn && data.ems_expert_on",
