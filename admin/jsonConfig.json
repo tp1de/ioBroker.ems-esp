@@ -271,17 +271,17 @@
                 },
                 "room": {
                     "newLine": true,
-                    "type": "text",
+                    "type": "room",
                     "label": "room",
-                    "noClearButton": true,
+
                     "sm": 6,
                     "md": 2,
                     "lg": 2
                 },
                 "function": {
-                    "type": "text",
+                    "type": "func",
                     "label": "function",
-                    "noClearButton": true,
+
                     "sm": 6,
                     "md": 2,
                     "lg": 2
