@@ -47,7 +47,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * support different ems-esp bus id's for own states polled
 * now with jsonConfig for adapter config
 * rework enum attributes for room and function for all adapter states created 
-* admin adapter version >= 6.13.16 required - better layout with admin version >= 6.17.13
+* admin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13
 
 
 ### 3.5.0 (2024-05-15)
