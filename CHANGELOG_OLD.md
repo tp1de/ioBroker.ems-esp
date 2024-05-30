@@ -1,4 +1,7 @@
 * older changes
+## 3.4.1 (2024-04-26)
+* correct enum settings for ems-esp gateway on adapter start
+
 ## 3.4.0 (2024-04-22)
 * changes for ems-esp firmware 3.7.0 
 * introduce warnings in log for using ems-esp dev firmware

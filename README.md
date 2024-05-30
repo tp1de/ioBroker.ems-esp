@@ -43,12 +43,11 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.0 (2024-05-30)
 * support different ems-esp bus id's for own states polled
 * now with jsonConfig for adapter config
 * rework enum attributes for room and function for all adapter states created 
 * admin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13
-
 
 ### 3.5.0 (2024-05-15)
 * warm water starts not supported anymore within statistics due to name changes within ems-esp firmware 3.7
@@ -62,9 +61,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 3.4.2 (2024-05-13)
 * update dependencies
 * replace setTimeout by adapter.delay
-
-### 3.4.1 (2024-04-26)
-* correct enum settings for ems-esp gateway on adapter start
 
 ## License
 MIT License
