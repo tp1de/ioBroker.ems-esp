@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.0.1 (2024-05-31)
 * jsonConfig optimization for tablets and medium resolution screens
 
 ### 4.0.0 (2024-05-30)
@@ -60,10 +60,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 3.4.3 (2024-05-14)
 * corrections for reading gateway data for km200 gateway
-
-### 3.4.2 (2024-05-13)
-* update dependencies
-* replace setTimeout by adapter.delay
 
 ## License
 MIT License

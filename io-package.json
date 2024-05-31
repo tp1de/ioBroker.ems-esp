@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "news": {
+      "4.0.1": {
+        "en": "jsonConfig optimization for tablets and medium resolution screens",
+        "de": "jsonConfig-Optimierung für Tablets und Bildschirme mit mittlerer Auflösung",
+        "ru": "jsonConfig оптимизация для планшетов и экранов среднего разрешения",
+        "pt": "otimização jsonConfig para tablets e telas de resolução média",
+        "nl": "jsonConfig optimalisatie voor tablets en medium resolutieschermen",
+        "fr": "optimisation jsonConfig pour tablettes et écrans à résolution moyenne",
+        "it": "ottimizzazione jsonConfig per tablet e schermi a media risoluzione",
+        "es": "jsonConfig optimization for tablets and medium resolution screens",
+        "pl": "optymalizacja jsonConfig dla tabletów i ekranów średniej rozdzielczości",
+        "uk": "jsonConfig оптимізація для планшетів та екранів середнього дозволу",
+        "zh-cn": "json 平板电脑和中分辨率屏幕的优化"
+      },
       "4.0.0": {
         "en": "support different ems-esp bus id's for own states polled\nnow with jsonConfig for adapter config\nrework enum attributes for room and function for all adapter states created \nadmin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13",
         "de": "unterstützung verschiedener ems-esp-bus-ids für eigene staaten abgefragt\njetzt mit jsonConfig für Adapter config\nrework enum attribute für raum und funktion für alle erstellten adapterzustände\nadmin adapter version >= 6.13.16 erforderlich - schöneres layout mit admin-version >= 6.17.13",
@@ -80,19 +93,6 @@
         "pl": "prawidłowe ustawienia enum dla bramki ems- esp przy uruchomieniu adaptera",
         "uk": "виправлено налаштування емс-esp шлюзу на старті адаптера",
         "zh-cn": "适配器启动时 ems- esp 网关的正确enum 设置"
-      },
-      "3.4.0": {
-        "en": "changes for ems-esp firmware 3.7.0 \nintroduce warnings in log for using ems-esp dev firmware",
-        "de": "änderungen für ems-esp firmware 3.7.0\nwarnhinweise in log für die verwendung von ems-esp dev firmware",
-        "ru": "изменения для ems-esp прошивки 3.7.0\nввести предупреждения в журнале для использования ems-esp dev прошивки",
-        "pt": "alterações para firmware ems-esp 3.7.0\nintroduzir avisos no log para usar ems-esp dev firmware",
-        "nl": "wijzigingen voor ems-esp firmware 3.7.0\ninvoering van waarschuwingen in log voor het gebruik van ems-esp dev firmware",
-        "fr": "changements pour ems-esp firmware 3.7.0\nintroduire des avertissements dans le journal pour l'utilisation du firmware ems-esp dev",
-        "it": "modifiche per firmware ems-esp 3.7.0\nintrodurre avvisi in log per l'utilizzo del firmware ems-esp dev",
-        "es": "cambios para el firmware de emsp 3.7.0\nintroducir advertencias en el registro para utilizar ems-esp dev firmware",
-        "pl": "zmiany oprogramowania firmowego ems- esp 3.7.0\nwprowadzić ostrzeżenia w dzienniku dla korzystania z ems- esp dev firmware",
-        "uk": "зміни для прошивки ems-esp 3.7.0\nвводити попередження в журнал для використання прошивок ems-esp dev",
-        "zh-cn": "ems-esp固件的变化 3.7.0\n在日志中引入使用 ems-esp dev 固件的警告"
       }
     },
     "titleLang": {

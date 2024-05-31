@@ -1,4 +1,8 @@
 * older changes
+## 3.4.2 (2024-05-13)
+* update dependencies
+* replace setTimeout by adapter.delay
+
 ## 3.4.1 (2024-04-26)
 * correct enum settings for ems-esp gateway on adapter start
 
