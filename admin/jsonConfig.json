@@ -112,10 +112,10 @@
                     "label": "ems_nominalpower",
                     "default": "60",
                     "min": 1,
-                    "max": 99,
-                    "sm": 4,
+                    "max": 65535,
+                    "sm": 6,
                     "md": 2,
-                    "lg": 1
+                    "lg": 2
                 },
                 "ems_modulation": {
                     "type": "objectId",
@@ -161,9 +161,20 @@
                     "lg": 2
                 },
                 "control_file": {
-                    "type": "text",
+                    "type": "select", 
                     "label": "control_file",
-                    "noClearButton": true,
+                    
+                    "options": [
+                        {
+                            "label": "gateway --> km200.csv",
+                            "value": "*"
+                        },
+                        {
+                            "label": "km200.csv",
+                            "value": "km200.csv"
+                        }
+                    ],
+
                     "sm": 8,
                     "md": 4,
                     "lg": 4
@@ -305,14 +316,14 @@
                     "label": "supplytemp",
                     "sm": 6,
                     "md": 4,
-                    "lg": 3
+                    "lg": 32
                 },
                 "returntemp": {
                     "type": "objectId",
                     "label": "returntemp",
                     "sm": 6,
                     "md": 4,
-                    "lg": 3
+                    "lg": 2
                 },
                 "eff20": {
                     "newLine": true,
@@ -416,7 +427,7 @@
                         },
                         {
                             "type": "objectId",
-                            "attr": "settemp",                            
+                            "attr": "settemp",
                             "width": "35%",
                             "title": "set temp",
                             "filter": false,
@@ -425,7 +436,7 @@
                         },
                         {
                             "type": "objectId",
-                            "attr": "actualtemp",                            
+                            "attr": "actualtemp",
                             "width": "35%",
                             "title": "actual temp",
                             "filter": false,
@@ -552,6 +563,7 @@
                         {
                             "type": "objectId",
                             "attr": "state",
+                            "noClearButton": true,
                             "title": "state",
                             "filter": false,
                             "sort": false,

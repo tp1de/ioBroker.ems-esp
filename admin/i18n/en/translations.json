@@ -27,7 +27,7 @@
   "km200_ip": "IP address",
   "km200_polling": "refresh after x seconds",
   "km200_entry": "new KM200 entry-point",
-  "control_file": "CSV-file for KM200 | empty: no KM200 data*: read all KM200 fields",
+  "control_file": "read entities from gateway or km200.csv file",
   "gateway_pw": "gateway password",
   "private_pw": "private password",
   "recordings": "energy recordings (KM200 only)",
