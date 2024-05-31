@@ -27,7 +27,7 @@
                     "min": 15,
                     "max": 600,
                     "sm": 4,
-                    "md": 4,
+                    "md": 2,
                     "lg": 2
                 },
                 "km200_structure": {
@@ -413,7 +413,7 @@
                             "type": "text",
                             "attr": "room",
                             "noClearButton": true,
-                            "width": "15%",
+                            "width": "20%",
                             "title": "Room",
                             "filter": false,
                             "sort": true,
@@ -630,6 +630,7 @@
                     "type": "table",
                     "sm": 12,
                     "label": "Devices",
+                    "style": {"fontSize": 10},
                     "items": [
                         {
                             "type": "text",
