@@ -112,26 +112,24 @@
                     "label": "ems_nominalpower",
                     "default": "60",
                     "min": 1,
-                    "max": 65535,
-                    "sm": 6,
+                    "max": 99,
+                    "sm": 4,
                     "md": 2,
-                    "lg": 2
+                    "lg": 1
                 },
                 "ems_modulation": {
-                    "type": "text",
+                    "type": "objectId",
                     "label": "ems_modulation",
-                    "noClearButton": true,
                     "sm": 6,
-                    "md": 4,
-                    "lg": 2
+                    "md": 5,
+                    "lg": 3
                 },
                 "ems_wwactive": {
-                    "type": "text",
+                    "type": "objectId",
                     "label": "ems_wwactive",
-                    "noClearButton": true,
                     "sm": 6,
-                    "md": 4,
-                    "lg": 2
+                    "md": 5,
+                    "lg": 3
                 }
             }
         },
@@ -296,28 +294,25 @@
                 },
                 "modulation": {
                     "newLine": true,
-                    "type": "text",
+                    "type": "objectId",
                     "label": "modulation",
-                    "noClearButton": true,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 3
                 },
                 "supplytemp": {
-                    "type": "text",
+                    "type": "objectId",
                     "label": "supplytemp",
-                    "noClearButton": true,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 3
                 },
                 "returntemp": {
-                    "type": "text",
+                    "type": "objectId",
                     "label": "returntemp",
-                    "noClearButton": true,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 3
                 },
                 "eff20": {
                     "newLine": true,
@@ -420,9 +415,8 @@
                             "default": ""
                         },
                         {
-                            "type": "text",
-                            "attr": "settemp",
-                            "noClearButton": true,
+                            "type": "objectId",
+                            "attr": "settemp",                            
                             "width": "35%",
                             "title": "set temp",
                             "filter": false,
@@ -430,9 +424,8 @@
                             "default": ""
                         },
                         {
-                            "type": "text",
-                            "attr": "actualtemp",
-                            "noClearButton": true,
+                            "type": "objectId",
+                            "attr": "actualtemp",                            
                             "width": "35%",
                             "title": "actual temp",
                             "filter": false,
@@ -557,9 +550,8 @@
                             ]
                         },
                         {
-                            "type": "text",
+                            "type": "objectId",
                             "attr": "state",
-                            "noClearButton": true,
                             "title": "state",
                             "filter": false,
                             "sort": false,
