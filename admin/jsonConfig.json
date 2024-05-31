@@ -316,14 +316,14 @@
                     "label": "supplytemp",
                     "sm": 6,
                     "md": 4,
-                    "lg": 32
+                    "lg": 3
                 },
                 "returntemp": {
                     "type": "objectId",
                     "label": "returntemp",
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 3
                 },
                 "eff20": {
                     "newLine": true,
