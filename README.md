@@ -44,7 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* jsonConfig for tablets
+* jsonConfig optimization for tablets and medium resolution screens
 
 ### 4.0.0 (2024-05-30)
 * support different ems-esp bus id's for own states polled
