@@ -17,7 +17,7 @@
                     "label": "emsesp_ip",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "ems_polling": {
@@ -27,7 +27,7 @@
                     "min": 15,
                     "max": 600,
                     "sm": 4,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "km200_structure": {
