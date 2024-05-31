@@ -58,21 +58,21 @@
                     "type": "checkbox",
                     "label": "ems_dallas",
                     "sm": 12,
-                    "md": 2,
+                    "md": 3,
                     "lg": 2
                 },
                 "ems_dallas_old_format": {
                     "type": "checkbox",
                     "label": "ems_dallas_old_format",
                     "sm": 12,
-                    "md": 2,
+                    "md": 3,
                     "lg": 2
                 },
                 "ems_analog": {
                     "type": "checkbox",
                     "label": "ems_analog",
                     "sm": 12,
-                    "md": 2,
+                    "md": 3,
                     "lg": 2
                 },
 
@@ -80,7 +80,7 @@
                     "type": "checkbox",
                     "label": "ems_custom_elements",
                     "sm": 12,
-                    "md": 2,
+                    "md": 3,
                     "lg": 2
                 },
 
@@ -88,7 +88,10 @@
                     "newLine": true,
                     "type": "text",
                     "label": "ems_token",
-                    "sm": 12
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12
+
                 },
                 "ems_custom": {
                     "newLine": true,
@@ -100,8 +103,8 @@
                     "type": "checkbox",
                     "label": "ems_energy",
                     "sm": 12,
-                    "md": 2,
-                    "lg": 2
+                    "md": 12,
+                    "lg": 12
                 },
                 "ems_nominalpower": {
                     "newLine": true,
@@ -119,7 +122,7 @@
                     "label": "ems_modulation",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "ems_wwactive": {
@@ -127,7 +130,7 @@
                     "label": "ems_wwactive",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 }
             }
@@ -147,7 +150,7 @@
                     "noClearButton": true,
                     "label": "km200_ip",
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "km200_polling": {
@@ -164,8 +167,8 @@
                     "label": "control_file",
                     "noClearButton": true,
                     "sm": 8,
-                    "md": 3,
-                    "lg": 3
+                    "md": 4,
+                    "lg": 4
                 },
                 "gateway_pw": {
                     "newLine": true,
@@ -173,7 +176,7 @@
                     "label": "gateway_pw",
                     "noClearButton": true,
                     "sm": 8,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "private_pw": {
@@ -184,7 +187,7 @@
                     "label": "private_pw",
 
                     "sm": 8,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "recordings": {
@@ -259,14 +262,14 @@
                     "type": "checkbox",
                     "label": "states_reorg",
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "statistics": {
                     "type": "checkbox",
                     "label": "statistics",
                     "sm": 8,
-                    "md": 4,
+                    "md": 6,
                     "lg": 4
                 },
                 "room": {
@@ -275,7 +278,7 @@
                     "label": "room",
 
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "function": {
@@ -283,7 +286,7 @@
                     "label": "function",
 
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "eff_active": {
@@ -297,7 +300,7 @@
                     "label": "modulation",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "supplytemp": {
@@ -305,7 +308,7 @@
                     "label": "supplytemp",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "returntemp": {
@@ -313,7 +316,7 @@
                     "label": "returntemp",
                     "noClearButton": true,
                     "sm": 6,
-                    "md": 2,
+                    "md": 4,
                     "lg": 2
                 },
                 "eff20": {
