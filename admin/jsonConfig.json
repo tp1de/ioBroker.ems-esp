@@ -630,7 +630,7 @@
                     "type": "table",
                     "sm": 12,
                     "label": "Devices",
-                    "style": {"fontSize": 10},
+                    "style": {"fontSize": 8},
                     "items": [
                         {
                             "type": "text",
