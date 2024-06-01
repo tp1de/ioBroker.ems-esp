@@ -44,8 +44,10 @@
     "emsesp_active": "EMS-ESP-gateway actief",
     "emsesp_ip": "IP adres",
     "function": "statusattributen: functie",
+    "gateway": "lees de statussen van de gateway en maak een km200.csv-bestand",
     "gateway_pw": "gateway-wachtwoord",
     "heatdemand": "Berekening en regeling van de warmtevraag actief",
+    "km200.csv": "lees entiteiten uit het km200.csv-bestand",
     "km200_active": "KM200-gateway actief",
     "km200_entry": "nieuw KM200-instappunt",
     "km200_ip": "IP adres",
@@ -53,6 +55,7 @@
     "km200_structure": "KM200-structuur",
     "modulation": "modulatie",
     "no_db": "geen databank",
+    "own.csv": "lees entiteiten uit het own.csv-bestand",
     "private_pw": "privé wachtwoord",
     "r_c": "interpolatie van monsters",
     "r_month": "som van dagelijkse waarden voor de werkelijke maand",
@@ -70,7 +73,5 @@
     "tit_off": "uit",
     "tit_on": "op",
     "warn_cancel": "Annuleren",
-    "warn_ok": "Negeer waarschuwing",
-    "gateway": "lees de statussen van de gateway en maak een km200.csv-bestand",
-    "km200.csv": "lees entiteiten uit het km200.csv-bestand"
+    "warn_ok": "Negeer waarschuwing"
 }

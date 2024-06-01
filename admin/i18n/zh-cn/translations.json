@@ -44,8 +44,10 @@
     "emsesp_active": "EMS-ESP网关激活",
     "emsesp_ip": "IP地址",
     "function": "状态属性：函数",
+    "gateway": "从网关读取状态并创建 km200.csv 文件",
     "gateway_pw": "网关密码",
     "heatdemand": "热需求计算和控制主动",
+    "km200.csv": "从 km200.csv 文件读取实体",
     "km200_active": "KM200网关激活",
     "km200_entry": "新的 KM200 入口点",
     "km200_ip": "IP地址",
@@ -53,6 +55,7 @@
     "km200_structure": "KM200结构",
     "modulation": "调制",
     "no_db": "没有数据库",
+    "own.csv": "从 own.csv 文件读取实体",
     "private_pw": "私人密码",
     "r_c": "样本插值",
     "r_month": "实际月份每日值的总和",
@@ -70,7 +73,5 @@
     "tit_off": "离开",
     "tit_on": "在",
     "warn_cancel": "取消",
-    "warn_ok": "忽略警告",
-    "gateway": "从网关读取状态并创建 km200.csv 文件",
-    "km200.csv": "从 km200.csv 文件读取实体"
+    "warn_ok": "忽略警告"
 }

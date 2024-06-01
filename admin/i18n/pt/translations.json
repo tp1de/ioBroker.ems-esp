@@ -44,8 +44,10 @@
     "emsesp_active": "Gateway EMS-ESP ativo",
     "emsesp_ip": "endereço de IP",
     "function": "atributos de estado: função",
+    "gateway": "leia os estados do gateway e crie o arquivo km200.csv",
     "gateway_pw": "senha do gateway",
     "heatdemand": "Cálculo e controle de demanda de calor ativos",
+    "km200.csv": "ler entidades do arquivo km200.csv",
     "km200_active": "Gateway KM200 ativo",
     "km200_entry": "novo ponto de entrada KM200",
     "km200_ip": "endereço de IP",
@@ -53,6 +55,7 @@
     "km200_structure": "Estrutura KM200",
     "modulation": "modulação",
     "no_db": "sem banco de dados",
+    "own.csv": "ler entidades do arquivo own.csv",
     "private_pw": "senha privada",
     "r_c": "interpolação de amostras",
     "r_month": "soma dos valores diários do mês real",
@@ -70,7 +73,5 @@
     "tit_off": "desligado",
     "tit_on": "sobre",
     "warn_cancel": "Cancelar",
-    "warn_ok": "Ignorar aviso",
-    "gateway": "leia os estados do gateway e crie o arquivo km200.csv",
-    "km200.csv": "ler entidades do arquivo km200.csv"
+    "warn_ok": "Ignorar aviso"
 }

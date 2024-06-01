@@ -44,8 +44,10 @@
     "emsesp_active": "Passerelle EMS-ESP active",
     "emsesp_ip": "adresse IP",
     "function": "attributs d'état : fonction",
+    "gateway": "lire les états de la passerelle et créer le fichier km200.csv",
     "gateway_pw": "mot de passe de la passerelle",
     "heatdemand": "Calcul et contrôle de la demande de chaleur actifs",
+    "km200.csv": "lire les entités du fichier km200.csv",
     "km200_active": "Passerelle KM200 active",
     "km200_entry": "nouveau point d'entrée KM200",
     "km200_ip": "adresse IP",
@@ -53,6 +55,7 @@
     "km200_structure": "Structure KM200",
     "modulation": "modulation",
     "no_db": "pas de base de données",
+    "own.csv": "lire les entités à partir du fichier own.csv",
     "private_pw": "Mot de passe privé",
     "r_c": "interpolation d'échantillons",
     "r_month": "somme des valeurs quotidiennes pour le mois réel",
@@ -70,7 +73,5 @@
     "tit_off": "désactivé",
     "tit_on": "sur",
     "warn_cancel": "Annuler",
-    "warn_ok": "Ignorer l'avertissement",
-    "gateway": "lire les états de la passerelle et créer le fichier km200.csv",
-    "km200.csv": "lire les entités du fichier km200.csv"
+    "warn_ok": "Ignorer l'avertissement"
 }

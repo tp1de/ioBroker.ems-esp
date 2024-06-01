@@ -44,8 +44,10 @@
     "emsesp_active": "Bramka EMS-ESP aktywna",
     "emsesp_ip": "adres IP",
     "function": "atrybuty stanu: funkcja",
+    "gateway": "odczytaj stany z bramki i utwórz plik km200.csv",
     "gateway_pw": "hasło bramy",
     "heatdemand": "Obliczanie i kontrola zapotrzebowania na ciepło aktywne",
+    "km200.csv": "odczytaj elementy z pliku km200.csv",
     "km200_active": "Bramka KM200 aktywna",
     "km200_entry": "nowy punkt wejścia KM200",
     "km200_ip": "adres IP",
@@ -53,6 +55,7 @@
     "km200_structure": "Konstrukcja KM200",
     "modulation": "modulacja",
     "no_db": "brak bazy danych",
+    "own.csv": "odczytaj encje z pliku own.csv",
     "private_pw": "prywatne hasło",
     "r_c": "interpolacja próbek",
     "r_month": "suma wartości dziennych dla bieżącego miesiąca",
@@ -70,7 +73,5 @@
     "tit_off": "wyłączony",
     "tit_on": "NA",
     "warn_cancel": "Anulować",
-    "warn_ok": "Zignoruj ​​ostrzeżenie",
-    "gateway": "odczytaj stany z bramki i utwórz plik km200.csv",
-    "km200.csv": "odczytaj elementy z pliku km200.csv"
+    "warn_ok": "Zignoruj ​​ostrzeżenie"
 }
