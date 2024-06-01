@@ -47,6 +47,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * use statepicker for jsonConfig (ems-esp energy statistics, boiler efficiency and heating demand)
 * new file location for km200.csv file -- breaking change
 * old file location for km200.csv file(s) will be deleted by adapter
+* new selection for database within parameters
 
 ### 4.0.1 (2024-05-31)
 * jsonConfig optimization for tablets and medium resolution screens

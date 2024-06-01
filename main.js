@@ -105,11 +105,12 @@ async function main () {
 		if (adapter.config.statistics) adapter.log.info("no database instance selected for statistics - statistics partly disabled");
 	}
 	else {
-		db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+		db = adapter.config.db;
+		if (db.search(".") == -1) db += "." + adapter.config.db_instance;
 
 		// Test for InfluxDB V2 - Set warning
 
-		if (adapter.config.db.trim() == "influxdb") {
+		if (adapter.config.db.substring(0,8) == "influxdb") {
 
 			const obj = await adapter.getForeignObjectAsync("system.adapter."+db);
 			//adapter.log.info(JSON.stringify(obj));
@@ -426,7 +427,7 @@ async function init_statistics() {
 
 async function init_statistics2() {
 	if (adapter.config.db.trim() == "" ) db = "";
-	else db = adapter.config.db.trim()+"."+adapter.config.db_instance;
+	else {db = adapter.config.db;if (db.search(".") == -1) db += "." + adapter.config.db_instance;}
 
 	if (db == "") {
 		adapter.log.error("no database instance selected for statistics");

@@ -172,6 +172,10 @@
                         {
                             "label": "km200.csv",
                             "value": "km200.csv"
+                        },
+                        {
+                            "label": "own.csv",
+                            "value": "own.csv"
                         }
                     ],
 
@@ -233,38 +237,15 @@
                     "lg": 3
                 },
                 "db": {
-                    "type": "select",
+                    "type": "instance",
                     "label": "database",
-                    "options": [
-                        {
-                            "label": "no_db",
-                            "value": ""
-                        },
-                        {
-                            "label": "History",
-                            "value": "history"
-                        },
-                        {
-                            "label": "mySQL",
-                            "value": "sql"
-                        },
-                        {
-                            "label": "InfluxDB",
-                            "value": "influxdb"
-                        }
-                    ],
+                    "adapter": "",
+                    "adapters": ["history","influxdb","sql"],
+                    "onlyEnabled": true,
+                    "short": false,
                     "sm": 4,
                     "md": 2,
                     "lg": 2
-                },
-                "db_instance": {
-                    "type": "number",
-                    "label": "db_instance",
-                    "min": 0,
-                    "max":5,
-                    "sm": 6,
-                    "md": 1,
-                    "lg": 1
                 },
                 "states_reorg": {
                     "newLine": true,
