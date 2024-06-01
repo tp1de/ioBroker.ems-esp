@@ -563,7 +563,6 @@
                         {
                             "type": "objectId",
                             "attr": "state",
-                            "noClearButton": true,
                             "title": "state",
                             "filter": false,
                             "sort": false,
