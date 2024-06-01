@@ -166,7 +166,8 @@
       {
         "admin": ">=6.13.16"
       }
-    ]
+    ],
+    "installedFrom": "tp1de/ioBroker.ems-esp"
   },
   "encryptedNative": [
     "private_pw"
@@ -174,6 +175,52 @@
   "protectedNative": [
     "private_pw"
   ],
+
+  "messages": [
+    {
+        "condition": {
+            "operand": "and",
+            "rules": [
+                "oldVersion<4.0.2",
+                "newVersion>=4.0.1"
+            ]
+        },
+        "title": {
+            "en": "Important notice!",
+            "de": "Wichtiger Hinweis!",
+            "ru": "Важное замечание!",
+            "pt": "Notícia importante!",
+            "nl": "Belangrijke mededeling!",
+            "fr": "Avis important!",
+            "it": "Avviso IMPORTANTE!",
+            "es": "Noticia importante!",
+            "pl": "Ważna uwaga!",
+            "zh-cn": "重要通知!",
+            "uk": "Важливе повідомлення!"
+        },
+        "text": {
+            "en": "This update contains a breaking change.",
+            "de": "Dieses Update enthält eine kritische Änderung.",
+            "ru": "Это обновление содержит нарушающие изменения.",
+            "pt": "Esta atualização contém uma mudança de ruptura. ",
+            "nl": "Deze update bevat een breuk verandering.",
+            "fr": "Cette mise à jour contient un changement de rupture. ",
+            "it": "Questo aggiornamento contiene un cambiamento di rottura.",
+            "es": "Esta actualización contiene un cambio de ruptura. ",
+            "pl": "Ta aktualizacja zawiera przełomową zmianę.",
+            "uk": "Цей оновлення містить зміни розриву. ",
+            "zh-cn": "此更新包含一个突破性的更改 "
+        },
+        "level": "warn",
+        "buttons": [
+            "agree",
+            "cancel"
+        ]
+    }
+  ],
+
+
+
   "native": {
     "password": "",
     "control_file": "*",
@@ -233,25 +280,25 @@
   "objects": [],
   "instanceObjects": [
     {
-        "_id": "",
-        "type": "meta",
-        "common": {
-            "name": {
-                "en": "File storage",
-                "de": "Dateispeicher",
-                "ru": "Хранение файлов",
-                "pt": "Armazenamento de arquivos",
-                "nl": "Veldopslag",
-                "fr": "Stockage de fichiers",
-                "it": "Archiviazione file",
-                "es": "Almacenamiento de archivos",
-                "pl": "Storage room",
-                "uk": "Зберігання файлів",
-                "zh-cn": "储存"
-            },
-            "type": "meta.user"
+      "_id": "",
+      "type": "meta",
+      "common": {
+        "name": {
+          "en": "File storage",
+          "de": "Dateispeicher",
+          "ru": "Хранение файлов",
+          "pt": "Armazenamento de arquivos",
+          "nl": "Veldopslag",
+          "fr": "Stockage de fichiers",
+          "it": "Archiviazione file",
+          "es": "Almacenamiento de archivos",
+          "pl": "Storage room",
+          "uk": "Зберігання файлів",
+          "zh-cn": "储存"
         },
-        "native": {}
+        "type": "meta.user"
+      },
+      "native": {}
     }
   ]
 }
