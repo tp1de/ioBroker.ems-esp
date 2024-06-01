@@ -166,7 +166,7 @@
                     
                     "options": [
                         {
-                            "label": "gateway --> km200.csv",
+                            "label": "gateway",
                             "value": "*"
                         },
                         {

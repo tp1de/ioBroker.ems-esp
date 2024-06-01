@@ -70,5 +70,7 @@
     "tit_off": "spento",
     "tit_on": "SU",
     "warn_cancel": "Annulla",
-    "warn_ok": "Ignora l'avviso"
+    "warn_ok": "Ignora l'avviso",
+    "gateway": "leggere gli stati dal gateway e creare il file km200.csv",
+    "km200.csv": "leggere le entità dal file km200.csv"
 }

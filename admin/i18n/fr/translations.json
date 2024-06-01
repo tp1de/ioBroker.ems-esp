@@ -70,5 +70,7 @@
     "tit_off": "désactivé",
     "tit_on": "sur",
     "warn_cancel": "Annuler",
-    "warn_ok": "Ignorer l'avertissement"
+    "warn_ok": "Ignorer l'avertissement",
+    "gateway": "lire les états de la passerelle et créer le fichier km200.csv",
+    "km200.csv": "lire les entités du fichier km200.csv"
 }

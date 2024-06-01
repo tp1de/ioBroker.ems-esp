@@ -70,5 +70,7 @@
     "tit_off": "aus",
     "tit_on": "an",
     "warn_cancel": "Stornieren",
-    "warn_ok": "Warnung ignorieren"
+    "warn_ok": "Warnung ignorieren",
+    "gateway": "Lesen der Zustände vom Gateway und erstellen der Datei km200.csv",
+    "km200.csv": "Lesen der Entitäten aus der km200.csv-Datei"
 }

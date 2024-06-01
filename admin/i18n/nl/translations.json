@@ -70,5 +70,7 @@
     "tit_off": "uit",
     "tit_on": "op",
     "warn_cancel": "Annuleren",
-    "warn_ok": "Negeer waarschuwing"
+    "warn_ok": "Negeer waarschuwing",
+    "gateway": "lees de statussen van de gateway en maak een km200.csv-bestand",
+    "km200.csv": "lees entiteiten uit het km200.csv-bestand"
 }

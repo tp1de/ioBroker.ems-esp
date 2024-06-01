@@ -70,5 +70,7 @@
     "tit_off": "离开",
     "tit_on": "在",
     "warn_cancel": "取消",
-    "warn_ok": "忽略警告"
+    "warn_ok": "忽略警告",
+    "gateway": "从网关读取状态并创建 km200.csv 文件",
+    "km200.csv": "从 km200.csv 文件读取实体"
 }

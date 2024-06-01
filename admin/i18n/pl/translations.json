@@ -70,5 +70,7 @@
     "tit_off": "wyłączony",
     "tit_on": "NA",
     "warn_cancel": "Anulować",
-    "warn_ok": "Zignoruj ​​ostrzeżenie"
+    "warn_ok": "Zignoruj ​​ostrzeżenie",
+    "gateway": "odczytaj stany z bramki i utwórz plik km200.csv",
+    "km200.csv": "odczytaj elementy z pliku km200.csv"
 }

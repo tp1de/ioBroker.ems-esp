@@ -70,5 +70,7 @@
     "tit_off": "apagado",
     "tit_on": "en",
     "warn_cancel": "Cancelar",
-    "warn_ok": "ignorar advertencia"
+    "warn_ok": "ignorar advertencia",
+    "gateway": "leer estados desde la puerta de enlace y crear un archivo km200.csv",
+    "km200.csv": "leer entidades del archivo km200.csv"
 }
