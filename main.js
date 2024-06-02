@@ -84,7 +84,7 @@ if (module && module.parent) {
 async function main () {
 
 	// test for old db config
-	if (adapter.config.db.trim() != "" && adapter.config.db_instance.trim() != ""  && db.search(".") < 1) {
+	if (adapter.config.db.trim() != "" && adapter.config.db_instance.trim() != ""  && adapter.config.db.search(".") < 1) {
 		const db = adapter.config.db.trim()+ "." + adapter.config.db_instance.trim();
 		const obj = await adapter.getForeignObjectAsync("system.adapter." + adapter.namespace);
 		obj.native.db = db;
