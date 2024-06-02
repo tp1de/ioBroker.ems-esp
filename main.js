@@ -84,7 +84,7 @@ if (module && module.parent) {
 async function main () {
 
 	// test for old db config
-	if (adapter.config.db.trim() != "" && adapter.config.db_instance.trim() != ""  && adapter.config.db.search(".") < 1) {
+	if (adapter.config.db.trim() != "" && adapter.config.db_instance.trim() != ""  && adapter.config.db.indexOf(".") < 1) {
 		const db = adapter.config.db.trim()+ "." + adapter.config.db_instance.trim();
 		const obj = await adapter.getForeignObjectAsync("system.adapter." + adapter.namespace);
 		obj.native.db = db;
@@ -117,7 +117,6 @@ async function main () {
 	}
 	else {
 		db = adapter.config.db;
-		if (db.search(".") < 1) db = db.trim()+ "." + adapter.config.db_instance.trim();
 
 		// Test for InfluxDB V2 - Set warning
 
@@ -438,7 +437,7 @@ async function init_statistics() {
 
 async function init_statistics2() {
 	if (adapter.config.db.trim() == "" ) db = "";
-	else {db = adapter.config.db;if (db.search(".") < 1) db = db.trim()+ "." + adapter.config.db_instance.trim();}
+	else db = adapter.config.db;
 
 	if (db == "") {
 		adapter.log.error("no database instance selected for statistics");
