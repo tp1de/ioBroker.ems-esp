@@ -82,6 +82,17 @@ if (module && module.parent) {
 //--------- main ---------------------------------------------------------------------------------------------------------
 
 async function main () {
+
+	// test for old db config
+	if (adapter.config.db.trim() != "" && adapter.config.db_instance.trim() != ""  && db.search(".") < 1) {
+		const db = adapter.config.db.trim()+ "." + adapter.config.db_instance.trim();
+		const obj = await adapter.getForeignObjectAsync("system.adapter." + adapter.namespace);
+		obj.native.db = db;
+		await adapter.setForeignObjectAsync("system.adapter." + adapter.namespace, obj);
+		adapter.log.info("old database parameters are updated to new version .... instance will restart");
+	}
+
+
 	if (adapter.config.states_reorg) await delete_states_emsesp();
 
 	await adapter.setObjectNotExistsAsync("info.connection",{type: "state",
