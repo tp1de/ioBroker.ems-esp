@@ -1,4 +1,7 @@
 * older changes
+## 3.4.3 (2024-05-14)
+* corrections for reading gateway data for km200 gateway
+
 ## 3.4.2 (2024-05-13)
 * update dependencies
 * replace setTimeout by adapter.delay

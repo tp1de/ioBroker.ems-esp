@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.0.1",
+    "version": "4.1.0",
     "news": {
+      "4.1.0": {
+        "en": "BREAKING CHANGES\nuse statepicker for jsonConfig (ems-esp energy statistics, boiler efficiency and heating demand)\nnew file location for km200.csv file -- breaking change\nold file location for km200.csv file(s) will be deleted by adapter\nnew content for selection of database within parameters tab - adpters tries to convert, but please check.",
+        "de": "VERÄNDERUNGEN\nverwendung von statepicker für jsonConfig (Ems-esp-Energiestatistik, Kesseleffizienz und Heizbedarf)\nneue datei-standort für km200.csv-datei -- änderung ändern\nalter dateiort für km200.csv datei(en) wird durch adapter gelöscht\nneue inhalte für die auswahl der datenbank innerhalb der parameter tab - adpter versucht zu konvertieren, aber bitte überprüfen.",
+        "ru": "ИЗМЕНЕНИЯ\nиспользование statepicker для jsonConfig (статистика энергии эмс-эсп, эффективность котла и спрос на отопление)\nновое местоположение файла km200.csv - смена\nстарое местоположение файла km200.csv будет удалено адаптером\nновый контент для выбора базы данных в вкладке параметров - рекламодатели пытаются конвертировать, но пожалуйста, проверьте.",
+        "pt": "ALTERAÇÕES DE TRABALHO\nuso de statepicker para jsonConfig (ems-esp estatísticas de energia, eficiência da caldeira e demanda de aquecimento)\nnova localização do arquivo para km200.csv -- quebra mudança\nlocalização de arquivo antigo para km200.csv arquivo(s) será excluído pelo adaptador\nnovo conteúdo para a seleção de banco de dados dentro da guia parâmetros - adpters tenta converter, mas verifique por favor.",
+        "nl": "BEREIDINGSVERANDERINGEN\ngebruik statepicker voor jsonConfig (ems-esp energiestatistieken, ketelefficiëntie en verwarmingsvraag)\nnieuwe bestandslocatie voor km200.csv-bestand -- verandering breken\noude bestand locatie voor km200.csv bestand(s) zal worden verwijderd door adapter\nnieuwe inhoud voor de selectie van database binnen parameters tab - adpters probeert om te zetten, maar controleer.",
+        "fr": "CHANGEMENTS\nutiliser Statepicker pour jsonConfig (statistiques énergétiques de l'esp, efficacité des chaudières et demande de chauffage)\nnouvel emplacement du fichier km200.csv -- casser le changement\nancien emplacement du fichier pour km200.csv fichier(s) sera supprimé par adaptateur\nnouveau contenu pour la sélection de la base de données dans l'onglet paramètres - adpters tente de convertir, mais veuillez vérifier.",
+        "it": "VARIAZIONI\nutilizzare statepicker per jsonConfig (statistiche sull'energia, efficienza caldaia e domanda di riscaldamento)\nnuova posizione del file per il file km200.csv -- rottura cambiamento\nvecchia posizione del file per km200.csv file(s) verrà cancellato dall'adattatore\nnuovo contenuto per la selezione di database all'interno della scheda parametri - gli inserzionisti tenta di convertire, ma si prega di controllare.",
+        "es": "BREAKING CHANGS\nuse statepicker para jsonConfig (ems-esp estadísticas de energía, eficiencia de caldera y demanda de calefacción)\nnueva ubicación de archivo para el archivo km200.csv -- cambio de ruptura\nantigua ubicación de archivo para km200.csv archivo(s) se eliminará por adaptador\nnuevo contenido para la selección de la base de datos dentro de la pestaña de parámetros - adpters intenta convertir, pero por favor compruebe.",
+        "pl": "ZMIANY ZBIORCZE\nużywać statepicker dla jsonConfig (ems- esp statystyki energii, wydajność kotła i zapotrzebowanie na ogrzewanie)\nnowa lokalizacja pliku dla pliku km200.csv -- zmiana\nstare położenie pliku dla plików km200.csv zostanie usunięte przez adapter\nnowa zawartość do wyboru bazy danych w karcie parametrów - additives próbuje przekonwertować, ale proszę sprawdzić.",
+        "uk": "БРЕАКІНГОВІ ЗМІНИ\nвикористовуйте шпикер для jsonConfig (випадок енергії, ефективність котла та попит на опалення)\nновий файл розташування для км200.csv файл -- зміна перерву\nстарий файл розташування для км200.csv файл(s) буде видалено за допомогою адаптера\nновий вміст для вибору бази даних в вкладці параметрів - рекламні оголошення намагаються конвертувати, але будь ласка, перевірте.",
+        "zh-cn": "裂变\njsonConfig(电力统计、锅炉效率和供热需求)\nkm200.csv 文件的新文件位置 -- 打破更改\nkm200.csv 文件的旧文件位置将被适配器删除\n参数标签内选择数据库的新内容 - 插件尝试转换, 但请检查 ."
+      },
       "4.0.1": {
         "en": "jsonConfig optimization for tablets and medium resolution screens",
         "de": "jsonConfig-Optimierung für Tablets und Bildschirme mit mittlerer Auflösung",
@@ -80,19 +93,6 @@
         "pl": "aktualizacji zależności\nzestaw zastępczy Przerwa przez adapter. opóźnienie",
         "uk": "оновлення залежності\nзамінний набір Розклад за допомогою адаптера. затримка",
         "zh-cn": "更新依赖关系\n替换集 适配器暂停. 延迟"
-      },
-      "3.4.1": {
-        "en": "correct enum settings for ems-esp gateway on adapter start",
-        "de": "korrekte enum-einstellungen für ems-esp-gateway auf adapterstart",
-        "ru": "правильные настройки ems-esp для адаптера",
-        "pt": "configurações enum corretas para gateway ems-esp no início do adaptador",
-        "nl": "correcte enum instellingen voor ems-esp gateway op adapterstart",
-        "fr": "corrects paramètres enum pour la passerelle ems-esp au démarrage de l'adaptateur",
-        "it": "impostazioni enum corrette per il gateway ems-esp all'inizio dell'adattatore",
-        "es": "ajustes de enum correctos para la entrada ems-esp en el arranque del adaptador",
-        "pl": "prawidłowe ustawienia enum dla bramki ems- esp przy uruchomieniu adaptera",
-        "uk": "виправлено налаштування емс-esp шлюзу на старті адаптера",
-        "zh-cn": "适配器启动时 ems- esp 网关的正确enum 设置"
       }
     },
     "titleLang": {
@@ -197,7 +197,7 @@
         "zh-cn": "重要通知!",
         "uk": "Важливе повідомлення!"
       },
-      "text": {        
+      "text": {
         "en": "This update contains a breaking change. Please stop instance before installing and check parameters afterwards.",
         "de": "Dieses Update enthält ein Breaking Change. Bitte stoppen Sie die Instanz vor der Installation und überprüfen Sie die Parameter danach.",
         "ru": "Это обновление содержит нарушающие изменения. Пожалуйста, остановите экземпляр перед установкой и проверьте параметры после.",
@@ -208,7 +208,7 @@
         "es": "Esta actualización contiene un cambio de ruptura. Por favor deje de ejemplo antes de instalar y comprobar los parámetros después.",
         "pl": "Ta aktualizacja zawiera przełomową zmianę. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
         "uk": "Цей оновлення містить зміни розриву. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
-        "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."       
+        "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."
       },
       "level": "warn",
       "buttons": [
