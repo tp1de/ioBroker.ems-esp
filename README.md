@@ -45,6 +45,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### 4.1.1 (2024-06-03)
 * corrections in io-package.json
+* install dependabot
 
 ### 4.1.0 (2024-06-02)
 * BREAKING CHANGES
