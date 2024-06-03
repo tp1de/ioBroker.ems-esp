@@ -140,6 +140,7 @@
       "license": "MIT",
       "type": "free"
     },
+    "stopBeforeUpdate": true,
     "platform": "Javascript/Node.js",
     "tier": 2,
     "icon": "ems-esp.png",
