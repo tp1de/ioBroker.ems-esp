@@ -1,4 +1,7 @@
 * older changes
+## 3.5.0 (2024-05-15)
+* warm water starts not supported anymore within statistics due to name changes within ems-esp firmware 3.7
+
 ## 3.4.4 (2024-05-15)
 * improve delays between axios get requests for km200 and ems-esp to avoid errors
 

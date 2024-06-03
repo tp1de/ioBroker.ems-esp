@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.1.1",
+    "version": "4.1.2",
     "news": {
+      "4.1.2": {
+        "en": "km200 private password might has to be re-entered\nupdate dependencies (dependabot)",
+        "de": "km200 privates passwort muss neu eingesehen werden\naktualisierung abhängigkeiten (dependabot)",
+        "ru": "частный пароль km200 может быть повторно введен\nобновление зависимостей (dependabot)",
+        "pt": "km200 senha privada pode ter que ser reentrada\ndependências de atualização (dependabot)",
+        "nl": "km200 privé-wachtwoord moet mogelijk opnieuw ingevoerd worden\nafhankelijkheden bijwerken (dependabot)",
+        "fr": "km200 mot de passe privé peut devoir être réintroduit\nmettre à jour les dépendances (dependabot)",
+        "it": "km200 password privata potrebbe essere rientro\naggiornamento dipendenze (dependabot)",
+        "es": "km200 contraseña privada podría tener que volver a entrar\ndependencias de actualización (dependabot)",
+        "pl": "km200 prywatne hasło może być wprowadzone ponownie\naktualizacji zależności (zależności)",
+        "uk": "km200 приватний пароль може бути перероблений\nоновлення залежностей",
+        "zh-cn": "km200 私人密码可能要重新输入\n更新依赖性( 依赖性)"
+      },
       "4.1.1": {
         "en": "corrections in io-package.json",
         "de": "korrekturen in io-package.json",
@@ -80,19 +93,6 @@
         "pl": "poprawić opóźnienia między aksjonami uzyskać wnioski o km200 i ems- esp, aby uniknąć błędów",
         "uk": "поліпшення затримок між axios отримувати запити на км200 і емс-есп, щоб уникнути помилок",
         "zh-cn": "改善轴之间的延迟 获取 km200 和 ems- esp 的请求以避免错误"
-      },
-      "3.4.3": {
-        "en": "corrections for reading gateway data for km200 gateway",
-        "de": "korrekturen zum lesen von gateway-daten für km200 gateway",
-        "ru": "исправления для чтения данных шлюза km200",
-        "pt": "correções para ler dados de gateway para o gateway km200",
-        "nl": "correcties voor het lezen van gatewaygegevens voor km200 gateway",
-        "fr": "corrections pour la lecture des données de passerelle pour la passerelle km200",
-        "it": "correzioni per la lettura dei dati del gateway per il gateway km200",
-        "es": "correcciones para la lectura de los datos de la puerta de entrada de km200",
-        "pl": "korekty dotyczące odczytu danych bramki dla bramki km200",
-        "uk": "корекція для читання даних шлюзу на км200",
-        "zh-cn": "km200网关读取网关数据的更正"
       }
     },
     "titleLang": {
