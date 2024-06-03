@@ -43,6 +43,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* km200 private password has to be entered new
+
 ### 4.1.1 (2024-06-03)
 * corrections in io-package.json
 * install dependabot
