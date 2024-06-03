@@ -1,0 +1,1 @@
+npx @iobroker/repochecker https://github.com/tp1de/ioBroker.ems-esp
