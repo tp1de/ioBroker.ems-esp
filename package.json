@@ -59,7 +59,7 @@
     "sinon": "^18.0.0",
     "sinon-chai": "^3.7.0",
     "typescript": "~5.4.5",
-    "gulp": "^4.0.2"
+    "gulp": "^5.0.0"
   },
   "directories": {
     "lib": "lib"
