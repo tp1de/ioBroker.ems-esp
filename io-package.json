@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.1.0",
+    "version": "4.1.1",
     "news": {
+      "4.1.1": {
+        "en": "corrections in io-package.json",
+        "de": "korrekturen in io-package.json",
+        "ru": "исправления в io-package.json",
+        "pt": "correções em io-package.json",
+        "nl": "correcties in jo-package.json",
+        "fr": "corrections dans io-package.json",
+        "it": "correzioni in io-package.json",
+        "es": "correcciones en io-package.json",
+        "pl": "korekty w jo- package.json",
+        "uk": "корекція в io-package.json",
+        "zh-cn": "o-package.json中的更正"
+      },
       "4.1.0": {
         "en": "BREAKING CHANGES\nuse statepicker for jsonConfig (ems-esp energy statistics, boiler efficiency and heating demand)\nnew file location for km200.csv file -- breaking change\nold file location for km200.csv file(s) will be deleted by adapter\nnew content for selection of database within parameters tab - adpters tries to convert, but please check.",
         "de": "VERÄNDERUNGEN\nverwendung von statepicker für jsonConfig (Ems-esp-Energiestatistik, Kesseleffizienz und Heizbedarf)\nneue datei-standort für km200.csv-datei -- änderung ändern\nalter dateiort für km200.csv datei(en) wird durch adapter gelöscht\nneue inhalte für die auswahl der datenbank innerhalb der parameter tab - adpter versucht zu konvertieren, aber bitte überprüfen.",
@@ -80,19 +93,6 @@
         "pl": "korekty dotyczące odczytu danych bramki dla bramki km200",
         "uk": "корекція для читання даних шлюзу на км200",
         "zh-cn": "km200网关读取网关数据的更正"
-      },
-      "3.4.2": {
-        "en": "update dependencies\nreplace setTimeout by adapter.delay",
-        "de": "aktualisierung der abhängigkeiten\nersetzen Set Timeout per Adapter. Verzögerung",
-        "ru": "обновление зависимостей\nзаменить Время за адаптером. отсрочка",
-        "pt": "dependências\nsubstituir o conjunto Timeout por adaptador. atraso",
-        "nl": "afhankelijkheden bijwerken\nvervangen set Timeout door adapter. vertraging",
-        "fr": "mettre à jour les dépendances\nremplacer l'ensemble Temps mort par adaptateur. retard",
-        "it": "aggiornamento dipendenze\nset di sostituzione Timeout per adattatore. ritardo",
-        "es": "dependencias de actualización\nreemplazado Timeout por adaptador. demora",
-        "pl": "aktualizacji zależności\nzestaw zastępczy Przerwa przez adapter. opóźnienie",
-        "uk": "оновлення залежності\nзамінний набір Розклад за допомогою адаптера. затримка",
-        "zh-cn": "更新依赖关系\n替换集 适配器暂停. 延迟"
       }
     },
     "titleLang": {
