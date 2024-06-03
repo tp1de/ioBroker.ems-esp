@@ -44,7 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* km200 private password has to be entered new
+* km200 private password might has to be re-entered
 
 ### 4.1.1 (2024-06-03)
 * corrections in io-package.json
