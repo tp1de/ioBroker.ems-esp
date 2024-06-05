@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	##WORK## ** IN PROGRESS**
 -->
-##WORK## ** IN PROGRESS**
+### **WORK# IN PROGRESS**
 * fix crash on wrong ems-esp ip address
 
 ### 4.1.2 (2024-06-03)
