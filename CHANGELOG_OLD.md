@@ -1,4 +1,10 @@
 * older changes
+## 4.0.0 (2024-05-30)
+* support different ems-esp bus id's for own states polled
+* now with jsonConfig for adapter config
+* rework enum attributes for room and function for all adapter states created 
+* admin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13
+
 ## 3.5.0 (2024-05-15)
 * warm water starts not supported anymore within statistics due to name changes within ems-esp firmware 3.7
 

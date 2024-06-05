@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.1.2",
+    "version": "4.1.3",
     "news": {
+      "4.1.3": {
+        "en": "fix crash on wrong ems-esp ip address",
+        "de": "crash auf falsche ems-esp ip adresse beheben",
+        "ru": "исправить крушение на неправильный адрес ems-esp",
+        "pt": "corrigir acidente no endereço ems-esp ip errado",
+        "nl": "fix crash op verkeerde ems-esp ip adres",
+        "fr": "correction de l'écrasement sur la mauvaise adresse ems-esp ip",
+        "it": "fissare l'incidente sull'indirizzo ems-esp ip sbagliato",
+        "es": "arreglar fallo en la dirección equivocada ems-esp ip",
+        "pl": "naprawić awarię na złym adresie ems- esp ip",
+        "uk": "виправлення аварійної аварії на неправильній е-esp ip-адресі",
+        "zh-cn": "固定错误的 ems- esp ip 地址上的崩溃"
+      },
       "4.1.2": {
         "en": "km200 private password might has to be re-entered\nupdate dependencies (dependabot)",
         "de": "km200 privates passwort muss neu eingesehen werden\naktualisierung abhängigkeiten (dependabot)",
@@ -80,19 +93,6 @@
         "pl": "ciepła woda zaczyna nie wspierane już w statystykach ze względu na nazwy w ems- esp firmware 3.7",
         "uk": "тепла вода не підтримується в будь-який час в статистиці завдяки обміну повідомленнями в е-esp прошивці 3.7",
         "zh-cn": "由于ems-esp固件3.7中的名称变化,在统计中不再支持暖水"
-      },
-      "3.4.4": {
-        "en": "improve delays between axios get requests for km200 and ems-esp to avoid errors",
-        "de": "verbesserung der verzögerungen zwischen axios erhalten anfragen für km200 und ems-esp, um fehler zu vermeiden",
-        "ru": "улучшить задержки между axios получать запросы на км200 и ems-esp, чтобы избежать ошибок",
-        "pt": "melhorar os atrasos entre axios obter pedidos de km200 e ems-esp para evitar erros",
-        "nl": "verbeteren van vertragingen tussen axio's krijgen verzoeken voor km200 en ems-esp om fouten te voorkomen",
-        "fr": "améliorer les délais entre axios obtenir des demandes pour km200 et ems-esp pour éviter les erreurs",
-        "it": "migliorare i ritardi tra assio ottenere richieste per km200 e ems-esp per evitare errori",
-        "es": "mejorar los retrasos entre axios obtener solicitudes de km200 y ems-esp para evitar errores",
-        "pl": "poprawić opóźnienia między aksjonami uzyskać wnioski o km200 i ems- esp, aby uniknąć błędów",
-        "uk": "поліпшення затримок між axios отримувати запити на км200 і емс-есп, щоб уникнути помилок",
-        "zh-cn": "改善轴之间的延迟 获取 km200 和 ems- esp 的请求以避免错误"
       }
     },
     "titleLang": {

@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.1.3 (2024-06-05)
 * fix crash on wrong ems-esp ip address
 
 ### 4.1.2 (2024-06-03)
@@ -63,12 +63,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.0.1 (2024-05-31)
 * jsonConfig optimization for tablets and medium resolution screens
-
-### 4.0.0 (2024-05-30)
-* support different ems-esp bus id's for own states polled
-* now with jsonConfig for adapter config
-* rework enum attributes for room and function for all adapter states created 
-* admin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13
 
 ## License
 MIT License
