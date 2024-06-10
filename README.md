@@ -43,6 +43,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: process double entity names between boiler and thermostat for dhw
+* ems-esp: add original device name to iobroker object name when km200-structure is selected 
+
 ### 4.1.3 (2024-06-05)
 * fix crash on wrong ems-esp ip address
 
