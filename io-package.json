@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.1.3",
+    "version": "4.2.0",
     "news": {
+      "4.2.0": {
+        "en": "ems-esp: process double entity names between boiler and thermostat for dhw\nems-esp: add original device name to iobroker object name when km200-structure is selected",
+        "de": "ems-esp: doppelte entitätsnamen zwischen kessel und thermostat für dhw verarbeiten\nems-esp: fügen sie dem iobroker objektnamen den ursprünglichen gerätenamen hinzu, wenn km200-struktur ausgewählt wird",
+        "ru": "ems-esp: двойные названия между котелом и термостатом для dhw\nems-esp: добавить оригинальное название устройства к имени объекта iobroker, когда выбрана структура km200",
+        "pt": "ems-esp: processar nomes de entidades duplas entre caldeira e termostato para dhw\nems-esp: adicione o nome original do dispositivo ao nome do objeto iobroker quando a estrutura km200 é selecionada",
+        "nl": "ems-esp: naam van dubbele entiteit tussen ketel en thermostaat voor dhw\nems-esp: oorspronkelijke apparaatnaam toevoegen aan iobroker-objectnaam wanneer km200-structuur is geselecteerd",
+        "fr": "ems-esp: procédé à double nom d'entité entre chaudière et thermostat pour dhw\nems-esp: ajouter le nom d'origine de l'appareil au nom de l'objet iobroker lorsque la structure km200 est sélectionnée",
+        "it": "ems-esp: processo doppio entità nomi tra caldaia e termostato per dhw\nems-esp: aggiungi il nome originale del dispositivo al nome dell'oggetto iobroker quando viene selezionata la struttura km200",
+        "es": "ems-esp: procesar nombres de entidad doble entre caldera y termostato para dhw\nems-esp: añadir el nombre original del dispositivo al nombre del objeto iobroker cuando se selecciona",
+        "pl": "ems- esp: przetwarzanie podwójnych nazw jednostek między kotłem a termostatem dla dhw\nems- esp: dodaj oryginalną nazwę urządzenia do nazwy obiektu iobroker, gdy wybrana jest struktura km200-",
+        "uk": "ems-esp: обробляти подвійні імена суб'єктів господарювання між котлом і термостатом для dhw\nems-esp: додати назву оригінального пристрою до назви об'єкта iobroker при км200-структурі",
+        "zh-cn": "ems-esp: dhw 锅炉和恒温器之间处理双实体名称\nems- esp: 选择 km200 架构时将原始设备名称添加到 iobroster 对象名称"
+      },
       "4.1.3": {
         "en": "fix crash on wrong ems-esp ip address",
         "de": "crash auf falsche ems-esp ip adresse beheben",
@@ -80,19 +93,6 @@
         "pl": "wsparcie różnych ems- esp magistrali id dla własnych stanów sondaży\nteraz z jsonConfig dla konfiguracji adaptera\nprzerabianie atrybutów enum dla pokoju i funkcji dla wszystkich utworzonych stanów adaptera\nwersja adaptera admin > = 6.13.16 wymagane - ładniejszy układ z wersją admin > = 6. 17. 13",
         "uk": "підтримка різних емс-еспа автобуса id для власних держав\nтепер з jsonConfig для налаштування адаптера\nпереробити атрибути енму для кімнати та функції для всіх станів адаптера\nверсія адаптера адміністратора >= 6.13.16 потрібних - фантастичний макет з версією адміністратора >= 6.17.13",
         "zh-cn": "支持不同的ems -esp bus id 为自己的州调查\n现在使用 jsonConfig 配置适配器\n为所有适配器状态创建房间和功能的重新工作enum属性\n管理适配器版本qq 6.13.16 需要 - 更好的版式,并配有管理版本qq 6.17.13 联合国"
-      },
-      "3.5.0": {
-        "en": "warm water starts not supported anymore within statistics due to namechanges within ems-esp firmware 3.7",
-        "de": "warmes wasser beginnt nicht mehr innerhalb von statistiken aufgrund von namensänderungen in ems-esp firmware 3.7 unterstützt",
-        "ru": "теплая вода больше не поддерживается в статистике из-за изменений названия в ems-esp прошивки 3.7",
-        "pt": "água quente começa não suportado mais dentro de estatísticas devido a alterações de nome dentro ems-esp firmware 3.7",
-        "nl": "warm water begint niet meer ondersteund binnen statistieken als gevolg van naamwijzigingen binnen ems-esp firmware 3.7",
-        "fr": "eau chaude ne commence plus pris en charge dans les statistiques en raison des changements de nom au sein du firmware ems-esp 3.7",
-        "it": "acqua calda non inizia più supportato all'interno delle statistiche a causa dei cambi di nome all'interno del firmware ems-esp 3.7",
-        "es": "agua tibia comienza ya no soportada dentro de las estadísticas debido a cambios de nombre dentro de ems-esp firmware 3.7",
-        "pl": "ciepła woda zaczyna nie wspierane już w statystykach ze względu na nazwy w ems- esp firmware 3.7",
-        "uk": "тепла вода не підтримується в будь-який час в статистиці завдяки обміну повідомленнями в е-esp прошивці 3.7",
-        "zh-cn": "由于ems-esp固件3.7中的名称变化,在统计中不再支持暖水"
       }
     },
     "titleLang": {

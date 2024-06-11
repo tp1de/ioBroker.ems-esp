@@ -1,4 +1,7 @@
 * older changes
+## 4.0.1 (2024-05-31)
+* jsonConfig optimization for tablets and medium resolution screens
+
 ## 4.0.0 (2024-05-30)
 * support different ems-esp bus id's for own states polled
 * now with jsonConfig for adapter config
