@@ -46,6 +46,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### **WORK IN PROGRESS**
 * improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams
 * support different thermostat id's
+* change ems-esp warning messages to info on start-up for 3.7 dev versions
 
 ### 4.2.0 (2024-06-11)
 * ems-esp: process double entity names between boiler and thermostat for dhw
