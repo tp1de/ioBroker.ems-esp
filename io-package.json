@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.2.0",
+    "version": "4.3.0",
     "news": {
+      "4.3.0": {
+        "en": "improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams\nsupport different thermostat id's\nchange ems-esp warning messages to info on start-up for 3.7 dev versions",
+        "de": "verbesserung der Suche nach EMS+ und EMS 2.0-Entitäten (SwitchTimes & HolidayModes) mit Rohtelegrammen\nverschiedene thermostat-ids unterstützen\nems-esp-warnmeldungen zum start-up für 3.7 dev-versionen ändern",
+        "ru": "улучшить поиск EMS+ и EMS 2.0 сущностей (switchTimes & HolidayModes) с необработанными телеграммами\nподдержка различных термостат id\nизменение ems-esp предупреждающих сообщений на информацию о запуске для 3,7 версии dev",
+        "pt": "melhorar a procura de EMS+ e EMS 2.0 entidades (switchTimes & holidayModes) com telegramas crus\nsuporte diferentes termostato id's\nalterar mensagens de aviso ems-esp para informações sobre start-up para versões 3.7 dev",
+        "nl": "verbetering van het zoeken naar EMS+ en EMS 2.0 entiteiten (switchTimes & holidayModes) met ruwe telegrammen\nondersteuning voor verschillende thermostaat id's\nems-esp-waarschuwingsberichten wijzigen in informatie over het opstarten van 3.7 dev-versies",
+        "fr": "améliorer la recherche d'entités EMS+ et EMS 2.0 (switchTimes & HolidayModes) avec télégrammes bruts\nsoutenir différents thermostats id\nmodifier les messages d'avertissement ems-esp en info sur le démarrage pour les versions 3.7 dev",
+        "it": "migliorare la ricerca di EMS+ e EMS 2.0 entità (switchTimes & holidayModes) con telegrammi grezzi\nsupporto termostato diverso id\ncambiare messaggi di avviso ems-esp a info su start-up per 3.7 versioni di dev",
+        "es": "mejorar la búsqueda de entidades EMS+ y EMS 2.0 (switchTimes & holidayModes) con telegramas crudos\nsoporte diferentes termostatos id\ncambiar ems-esp mensajes de advertencia a información sobre el inicio de 3.7 versiones dev",
+        "pl": "ulepszenie wyszukiwania jednostek EMS + i EMS 2.0 (switchTimes & holidayModes) za pomocą surowych telegramów\nobsługa różnych termostatów id\nzmień ostrzeżenia ems- esp na informacje o start- up dla wersji 3.7 dev",
+        "uk": "поліпшити пошук суб'єктів EMS+ і EMS 2.0 (switchTimes & HolidayModes) з сирими телеграмами\nпідтримка різних термостатів id\nзмінити повідомлення про попередження е-esp для отримання відомостей про початок версії 3.7 dev",
+        "zh-cn": "改进对 EMS+ 和 EMS 2.0 实体的搜索( 开关时间和节假日模式) , 附带原始电报\n支持不同的自动调温器 id\n将 ems- esp 警告消息更改为3. 7 dev 版本的启动信息"
+      },
       "4.2.0": {
         "en": "ems-esp: process double entity names between boiler and thermostat for dhw\nems-esp: add original device name to iobroker object name when km200-structure is selected",
         "de": "ems-esp: doppelte entitätsnamen zwischen kessel und thermostat für dhw verarbeiten\nems-esp: fügen sie dem iobroker objektnamen den ursprünglichen gerätenamen hinzu, wenn km200-struktur ausgewählt wird",
@@ -80,19 +93,6 @@
         "pl": "optymalizacja jsonConfig dla tabletów i ekranów średniej rozdzielczości",
         "uk": "jsonConfig оптимізація для планшетів та екранів середнього дозволу",
         "zh-cn": "json 平板电脑和中分辨率屏幕的优化"
-      },
-      "4.0.0": {
-        "en": "support different ems-esp bus id's for own states polled\nnow with jsonConfig for adapter config\nrework enum attributes for room and function for all adapter states created \nadmin adapter version >= 6.13.16 required - nicer layout with admin version >= 6.17.13",
-        "de": "unterstützung verschiedener ems-esp-bus-ids für eigene staaten abgefragt\njetzt mit jsonConfig für Adapter config\nrework enum attribute für raum und funktion für alle erstellten adapterzustände\nadmin adapter version >= 6.13.16 erforderlich - schöneres layout mit admin-version >= 6.17.13",
-        "ru": "поддержка различных ems-esp bus id для собственных штатов\nтеперь с jsonConfig для настройки адаптера\nдля всех созданных адаптеров\nадмин адаптер версия >= 6.13.16 требуется - более приятный макет с admin-версией >= 6.17.13",
-        "pt": "suporte diferentes ems-esp bus id para os próprios estados pesquisados\nagora com jsonConfig para configuração do adaptador\nrework enum atributos para sala e função para todos os estados do adaptador criados\nadaptador de administração versão >= 6.13.16 necessário - layout mais agradável com versão admin >= 6.17.13",
-        "nl": "ondersteuning van verschillende ems-esp bus id's voor eigen ondervraagde staten\nnu met jsonConfig voor adapterconfiguratie\nrework enum attributen voor ruimte en functie voor alle adapter toestanden aangemaakt\nadmin-adapterversie >= 6.13.16 vereist - mooiere lay-out met admin versie 6,17.13",
-        "fr": "soutenir différents id bus ems-esp pour les états sondés\nmaintenant avec jsonConfig pour configuration d'adaptateur\nretravailler les attributs enum pour la pièce et la fonction pour tous les états d'adaptateur créés\nversion de l'adaptateur d'administration >= 6.13.16 requis - meilleure mise en page avec version admin >= 6.17.13",
-        "it": "sostegno diverso ems-esp bus id per i propri stati inquinati\nora con jsonConfig per adattatore config\nrielaborare gli attributi enum per la stanza e la funzione per tutti gli stati dell'adattatore creati\nadattatore di amministrazione versione >= 6.13.16 richiesto - layout più bello con la versione di admin >= 6.17.13",
-        "es": "soporte diferente ems-esp bus id para estados encuestados\nahora con jsonConfig para configuración de adaptador\nrework enum atributos para espacio y función para todos los estados adaptadores creados\nadecuador de administración de la versión 6.13.16 requerida - diseño más agradable con la versión de administración 6.17.13",
-        "pl": "wsparcie różnych ems- esp magistrali id dla własnych stanów sondaży\nteraz z jsonConfig dla konfiguracji adaptera\nprzerabianie atrybutów enum dla pokoju i funkcji dla wszystkich utworzonych stanów adaptera\nwersja adaptera admin > = 6.13.16 wymagane - ładniejszy układ z wersją admin > = 6. 17. 13",
-        "uk": "підтримка різних емс-еспа автобуса id для власних держав\nтепер з jsonConfig для налаштування адаптера\nпереробити атрибути енму для кімнати та функції для всіх станів адаптера\nверсія адаптера адміністратора >= 6.13.16 потрібних - фантастичний макет з версією адміністратора >= 6.17.13",
-        "zh-cn": "支持不同的ems -esp bus id 为自己的州调查\n现在使用 jsonConfig 配置适配器\n为所有适配器状态创建房间和功能的重新工作enum属性\n管理适配器版本qq 6.13.16 需要 - 更好的版式,并配有管理版本qq 6.17.13 联合国"
       }
     },
     "titleLang": {
