@@ -145,7 +145,6 @@ async function main () {
 		}
 	}
 
-	if (!unloaded && adapter.config.statistics) await init_statistics();
 	if (!unloaded) adapterIntervals.status = setInterval(function() {info();}, 10000); // 10 sec
 
 	if (adapter.config.emsesp_active && !unloaded) await E.init(adapter,adapterIntervals);
@@ -158,6 +157,10 @@ async function main () {
 	if (!unloaded) adapter.subscribeStates("*");
 
 	if (!unloaded && adapter.config.statistics && (adapter.config.km200_active || adapter.config.emsesp_active)) {
+		
+		
+		
+		await init_statistics();
 		if (db != "") {
 			await init_statistics2();
 			adapterIntervals.stat = setInterval(function() {read_statistics();}, 300000); // 300 sec
@@ -451,8 +454,10 @@ async function init_statistics2() {
 					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts",86400,60);
 					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts",86400,60);
 					if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts",86400,60);
+
 					//if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
 					//if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
+
 					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas",86400,15);
 					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas",86400,15);
 					if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus",86400,15);

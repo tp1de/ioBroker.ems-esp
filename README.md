@@ -31,7 +31,6 @@ The ioBroker ems-esp adapter can read and write data to both gateways to control
 It can be used either for the original Bosch-Group gateways or the ems-esp or both in parallel.
 All changed states from own scripts or the object browser does have to set acknowledged = false !!!
 
-## NEW in Version >= 3.3.0: Intoduce warnings for using non-productive ems-esp firmware. 
 
 German  documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-ds.pdf
 English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/ems-esp-es.pdf
@@ -43,6 +42,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* update dependencies
+* test that necessary entities for statistics function are available
+
 ### 4.3.0 (2024-06-26)
 * improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams
 * support different thermostat id's
