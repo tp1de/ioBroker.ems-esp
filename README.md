@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.4.0 (2024-07-08)
 * update dependencies
 * test that necessary entities for statistics function are available
 * km200: ignore values during polling when value is not within min/max range
@@ -65,10 +65,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 4.1.2 (2024-06-03)
 * km200 private password might has to be re-entered
 * update dependencies (dependabot)
-
-### 4.1.1 (2024-06-03)
-* corrections in io-package.json
-* install dependabot
 
 ## License
 MIT License

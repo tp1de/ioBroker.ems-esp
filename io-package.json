@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.3.0",
+    "version": "4.4.0",
     "news": {
+      "4.4.0": {
+        "en": "update dependencies\ntest that necessary entities for statistics function are available\nkm200: ignore values during polling when value is not within min/max range\nkm200: ignore axios read errors on recordings (no error message)\navoid crashes when undefined states are changed (old state names in vis)\nems-esp: restart adapter instance on change of firmware version",
+        "de": "aktualisierung der abhängigkeiten\nprüfen sie, dass notwendige einheiten für die statistikfunktion verfügbar sind\nkm200: ignorieren sie werte während der umfrage, wenn der wert nicht innerhalb von min/max bereich liegt\nkm200: ignorieren axios lesefehler auf aufnahmen (keine fehlermeldung)\nvermeiden sie abstürzen, wenn undefinierte zustände geändert werden (alte staatsnamen in vis)\nems-esp: neustart-adapter-instanz beim wechsel der firmware-version",
+        "ru": "обновление зависимостей\nпроверить, имеются ли необходимые подразделения для выполнения функции статистики\nkm200: игнорировать значения во время голосования, когда значение не находится в пределах диапазона мин/макс\nkm200: проигнорировать ошибки чтения аксиоса на записи (без сообщения об ошибке)\nизбегать крушений при изменении неопределенных состояний (старые названия состояний в vis)\nems-esp: пример перезапуска адаптера при смене версии прошивки",
+        "pt": "dependências\nteste que as entidades necessárias para a função estatística estão disponíveis\nkm200: ignorar valores durante a sondagem quando o valor não está dentro da faixa min/max\nkm200: ignorar axios ler erros nas gravações (sem mensagem de erro)\nevitar falhas quando os estados não definidos são alterados (nomes de estado antigo em vis)\nems-esp: instância do adaptador de reinício na mudança da versão do firmware",
+        "nl": "afhankelijkheden bijwerken\ntest of de voor de statistiekfunctie noodzakelijke entiteiten beschikbaar zijn\nkm200: negeer waarden tijdens de peiling wanneer de waarde niet binnen min/max bereik ligt\nkm200: negeer axio's leesfouten bij opnames (geen foutmelding)\ncrashes vermijden wanneer ongedefinieerde toestanden worden gewijzigd (oude staatnamen in vis)\nems-esp: herstart adapter instance bij verandering van firmware versie",
+        "fr": "mettre à jour les dépendances\ntest que les entités nécessaires pour la fonction statistique sont disponibles\nkm200: ignorer les valeurs pendant le scrutin lorsque la valeur n'est pas dans la plage min/max\nkm200: ignorez les erreurs de lecture des axios sur les enregistrements (pas de message d'erreur)\néviter les crashs lorsque des états non définis sont changés (anciens noms d'état en vis)\nems-esp: redémarrer l'instance de l'adaptateur sur le changement de version du firmware",
+        "it": "aggiornamento dipendenze\nprova che le entità necessarie per la funzione statistica sono disponibili\nkm200: ignorare i valori durante l'inquinamento quando il valore non è all'interno della gamma min/max\nkm200: ignorare gli errori di lettura di assios sulle registrazioni (senza messaggio di errore)\nevitare crash quando gli stati non definiti vengono modificati (vecchi nomi di stato in vis)\nems-esp: riavviare l'istanza dell'adattatore sul cambiamento della versione del firmware",
+        "es": "dependencias de actualización\nprueba de que las entidades necesarias para la función estadística están disponibles\nkm200: ignorar los valores durante la votación cuando el valor no está dentro del rango min/max\nkm200: ignore axios leer errores en las grabaciones (sin mensaje de error)\nevitar fallos cuando los estados no definidos son cambiados (nombres antiguos en vis)\nems-esp: instancia de adaptador de reinicio sobre cambio de la versión de firmware",
+        "pl": "aktualizacji zależności\nsprawdzić, czy dostępne są niezbędne podmioty do pełnienia funkcji statystyki\nkm200: ignorować wartości podczas głosowania, gdy wartość nie mieści się w zakresie min / max\nkm200: ignoruj błędy odczytu axios na nagraniach (brak komunikatu błędu)\nuniknąć awarii po zmianie niezdefiniowanych stanów (stare nazwy stanu w vis)\nems- esp: restart instancji adaptera przy zmianie wersji oprogramowania firmowego",
+        "uk": "оновлення залежності\nтестування, які необхідні суб'єкти для статистичної функції доступні\nкм200: ігнорувати значення під час опитування при значенні не в діапазоні мін/макс\nkm200: ігнорувати axios читати помилки на записах (не повідомлення про помилку)\nуникати аварійних ситуацій при зміні не визначених станів (старих державних імен у в’язках)\nems-esp: перезавантаження екземпляра на зміну версії прошивки",
+        "zh-cn": "更新依赖关系\n测试是否存在统计功能所需的实体\nkm200: 当数值不在分钟/最大范围内时, 投票时忽略数值\nkm200: 忽略在录音中读取错误( 无错误消息)\n避免在未定义状态更改时发生崩溃( 旧状态名称对应)\nems- ep: 在更改固件版本时重新启动适配器实例"
+      },
       "4.3.0": {
         "en": "improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams\nsupport different thermostat id's\nchange ems-esp warning messages to info on start-up for 3.7 dev versions",
         "de": "verbesserung der Suche nach EMS+ und EMS 2.0-Entitäten (SwitchTimes & HolidayModes) mit Rohtelegrammen\nverschiedene thermostat-ids unterstützen\nems-esp-warnmeldungen zum start-up für 3.7 dev-versionen ändern",
@@ -80,19 +93,6 @@
         "pl": "ZMIANY ZBIORCZE\nużywać statepicker dla jsonConfig (ems- esp statystyki energii, wydajność kotła i zapotrzebowanie na ogrzewanie)\nnowa lokalizacja pliku dla pliku km200.csv -- zmiana\nstare położenie pliku dla plików km200.csv zostanie usunięte przez adapter\nnowa zawartość do wyboru bazy danych w karcie parametrów - additives próbuje przekonwertować, ale proszę sprawdzić.",
         "uk": "БРЕАКІНГОВІ ЗМІНИ\nвикористовуйте шпикер для jsonConfig (випадок енергії, ефективність котла та попит на опалення)\nновий файл розташування для км200.csv файл -- зміна перерву\nстарий файл розташування для км200.csv файл(s) буде видалено за допомогою адаптера\nновий вміст для вибору бази даних в вкладці параметрів - рекламні оголошення намагаються конвертувати, але будь ласка, перевірте.",
         "zh-cn": "裂变\njsonConfig(电力统计、锅炉效率和供热需求)\nkm200.csv 文件的新文件位置 -- 打破更改\nkm200.csv 文件的旧文件位置将被适配器删除\n参数标签内选择数据库的新内容 - 插件尝试转换, 但请检查 ."
-      },
-      "4.0.1": {
-        "en": "jsonConfig optimization for tablets and medium resolution screens",
-        "de": "jsonConfig-Optimierung für Tablets und Bildschirme mit mittlerer Auflösung",
-        "ru": "jsonConfig оптимизация для планшетов и экранов среднего разрешения",
-        "pt": "otimização jsonConfig para tablets e telas de resolução média",
-        "nl": "jsonConfig optimalisatie voor tablets en medium resolutieschermen",
-        "fr": "optimisation jsonConfig pour tablettes et écrans à résolution moyenne",
-        "it": "ottimizzazione jsonConfig per tablet e schermi a media risoluzione",
-        "es": "jsonConfig optimization for tablets and medium resolution screens",
-        "pl": "optymalizacja jsonConfig dla tabletów i ekranów średniej rozdzielczości",
-        "uk": "jsonConfig оптимізація для планшетів та екранів середнього дозволу",
-        "zh-cn": "json 平板电脑和中分辨率屏幕的优化"
       }
     },
     "titleLang": {

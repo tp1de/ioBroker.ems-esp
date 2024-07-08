@@ -1,4 +1,8 @@
 * older changes
+## 4.1.1 (2024-06-03)
+* corrections in io-package.json
+* install dependabot
+
 ## 4.1.0 (2024-06-02)
 * BREAKING CHANGES
 * use statepicker for jsonConfig (ems-esp energy statistics, boiler efficiency and heating demand)
