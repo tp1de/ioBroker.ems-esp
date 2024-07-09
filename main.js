@@ -54,7 +54,7 @@ function startAdapter(options) {
 				try {
 					adapter.getObject(id, function (err, obj) {
 						// check if state was writable
-						if (obj.common != undefined) {
+						if (obj != undefined) {
 							if (obj.common.write) {
 								if (obj.native.ems_km200 != null) K.state_change(id, state, obj);
 								if (obj.native.ems_api == "raw") O.state_change(id, state, obj);
