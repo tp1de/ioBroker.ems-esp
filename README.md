@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* avoid crashes when undefined states are changed (old state names in vis)
+
 ### 4.4.0 (2024-07-08)
 * update dependencies
 * test that necessary entities for statistics function are available
