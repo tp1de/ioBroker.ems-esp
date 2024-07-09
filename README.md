@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.4.1 (2024-07-09)
 * avoid crashes when undefined states are changed (old state names in vis)
 
 ### 4.4.0 (2024-07-08)
@@ -64,10 +64,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.1.3 (2024-06-05)
 * fix crash on wrong ems-esp ip address
-
-### 4.1.2 (2024-06-03)
-* km200 private password might has to be re-entered
-* update dependencies (dependabot)
 
 ## License
 MIT License

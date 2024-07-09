@@ -1,4 +1,8 @@
 * older changes
+## 4.1.2 (2024-06-03)
+* km200 private password might has to be re-entered
+* update dependencies (dependabot)
+
 ## 4.1.1 (2024-06-03)
 * corrections in io-package.json
 * install dependabot
