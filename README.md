@@ -44,6 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * ems-esp: update in respect to changes in JSON structure without spaces in System Info
+* ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild. 
 
 ### 4.4.1 (2024-07-09)
 * avoid crashes when undefined states are changed (old state names in vis)
