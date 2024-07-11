@@ -42,9 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.4.2 (2024-07-11)
 * ems-esp: update in respect to changes in JSON structure without spaces in System Info
-* ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild. 
+* ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.
 
 ### 4.4.1 (2024-07-09)
 * avoid crashes when undefined states are changed (old state names in vis)
@@ -65,9 +65,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 4.2.0 (2024-06-11)
 * ems-esp: process double entity names between boiler and thermostat for dhw
 * ems-esp: add original device name to iobroker object name when km200-structure is selected
-
-### 4.1.3 (2024-06-05)
-* fix crash on wrong ems-esp ip address
 
 ## License
 MIT License

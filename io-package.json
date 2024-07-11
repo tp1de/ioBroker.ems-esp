@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.4.1",
+    "version": "4.4.2",
     "news": {
+      "4.4.2": {
+        "en": "ems-esp: update in respect to changes in JSON structure without spaces in System Info\nems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
+        "de": "ems-esp: Aktualisierung in Bezug auf Änderungen der JSON-Struktur ohne Leerzeichen in Systeminfo\nems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
+        "ru": "ems-esp: обновление в отношении изменений в структуре JSON без пробелов в System Info\nems-esp: Удалить объектно-структуру esp в начале экземпляра адаптера. Он будет восстановлен.",
+        "pt": "ems-esp: atualização em relação às mudanças na estrutura JSON sem espaços em System Info\nems-esp: exclua a estrutura do objeto esp no início da instância do adaptador. Vai ser uma reconstrução.",
+        "nl": "ems-esp: update met betrekking tot wijzigingen in JSON structuur zonder spaties in System Info\nems-esp: verwijder de esp objectstructuur bij het begin van de adapter instantie. Het zal worden herbouwd.",
+        "fr": "ems-esp: mise à jour des modifications de la structure JSON sans espaces dans System Info\nems-esp: supprimer la structure objet esp au début de l'instance adaptateur. Il sera reconstruit.",
+        "it": "ems-esp: aggiornamento rispetto alle modifiche della struttura JSON senza spazi in System Info\nems-esp: eliminare la struttura dell'oggetto esp all'inizio dell'istanza dell'adattatore. Sarà ricostruita.",
+        "es": "ems-esp: actualización respecto a los cambios en la estructura JSON sin espacios en System Info\nems-esp: eliminar la estructura del objeto esp en el inicio de la instancia del adaptador. Será reconstruido.",
+        "pl": "ems- esp: aktualizacja w odniesieniu do zmian w strukturze JSON bez spacji w Systemie Info\nems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
+        "uk": "ems-esp: оновлення щодо змін структури JSON без пробілів в System Info\nems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
+        "zh-cn": "ems- ep: 关于系统信息中没有空格的 JSON 结构变化的更新\nems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
+      },
       "4.4.1": {
         "en": "avoid crashes when undefined states are changed (old state names in vis)",
         "de": "vermeiden sie abstürzen, wenn undefinierte zustände geändert werden (alte staatsnamen in vis)",
@@ -80,19 +93,6 @@
         "pl": "km200 prywatne hasło może być wprowadzone ponownie\naktualizacji zależności (zależności)",
         "uk": "km200 приватний пароль може бути перероблений\nоновлення залежностей",
         "zh-cn": "km200 私人密码可能要重新输入\n更新依赖性( 依赖性)"
-      },
-      "4.1.1": {
-        "en": "corrections in io-package.json",
-        "de": "korrekturen in io-package.json",
-        "ru": "исправления в io-package.json",
-        "pt": "correções em io-package.json",
-        "nl": "correcties in jo-package.json",
-        "fr": "corrections dans io-package.json",
-        "it": "correzioni in io-package.json",
-        "es": "correcciones en io-package.json",
-        "pl": "korekty w jo- package.json",
-        "uk": "корекція в io-package.json",
-        "zh-cn": "o-package.json中的更正"
       }
     },
     "titleLang": {
