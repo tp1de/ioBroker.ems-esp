@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* EMS-ESP: update in respect to changes in JSON structure without spaces in System Info.
+* EMS-ESP: update in respect to changes in JSON structure without spaces in System Info
 
 ### 4.4.1 (2024-07-09)
 * avoid crashes when undefined states are changed (old state names in vis)
