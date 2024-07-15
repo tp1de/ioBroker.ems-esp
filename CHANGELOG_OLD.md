@@ -1,4 +1,8 @@
 * older changes
+## 4.2.0 (2024-06-11)
+* ems-esp: process double entity names between boiler and thermostat for dhw
+* ems-esp: add original device name to iobroker object name when km200-structure is selected
+
 ## 4.1.3 (2024-06-05)
 * fix crash on wrong ems-esp ip address
 

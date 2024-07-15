@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.4.2",
+    "version": "4.4.3",
     "news": {
+      "4.4.3": {
+        "en": "ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
+        "de": "ems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
+        "ru": "ems-esp: Удалить объектно-структуру esp в начале экземпляра адаптера. Он будет восстановлен.",
+        "pt": "ems-esp: exclua a estrutura do objeto esp no início da instância do adaptador. Vai ser uma reconstrução.",
+        "nl": "ems-esp: verwijder de esp objectstructuur bij het begin van de adapter instantie. Het zal worden herbouwd.",
+        "fr": "ems-esp: supprimer la structure objet esp au début de l'instance adaptateur. Il sera reconstruit.",
+        "it": "ems-esp: eliminare la struttura dell'oggetto esp all'inizio dell'istanza dell'adattatore. Sarà ricostruita.",
+        "es": "ems-esp: eliminar la estructura del objeto esp en el inicio de la instancia del adaptador. Será reconstruido.",
+        "pl": "ems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
+        "uk": "ems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
+        "zh-cn": "ems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
+      },
       "4.4.2": {
         "en": "ems-esp: update in respect to changes in JSON structure without spaces in System Info\nems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
         "de": "ems-esp: Aktualisierung in Bezug auf Änderungen der JSON-Struktur ohne Leerzeichen in Systeminfo\nems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
@@ -80,19 +93,6 @@
         "pl": "naprawić awarię na złym adresie ems- esp ip",
         "uk": "виправлення аварійної аварії на неправильній е-esp ip-адресі",
         "zh-cn": "固定错误的 ems- esp ip 地址上的崩溃"
-      },
-      "4.1.2": {
-        "en": "km200 private password might has to be re-entered\nupdate dependencies (dependabot)",
-        "de": "km200 privates passwort muss neu eingesehen werden\naktualisierung abhängigkeiten (dependabot)",
-        "ru": "частный пароль km200 может быть повторно введен\nобновление зависимостей (dependabot)",
-        "pt": "km200 senha privada pode ter que ser reentrada\ndependências de atualização (dependabot)",
-        "nl": "km200 privé-wachtwoord moet mogelijk opnieuw ingevoerd worden\nafhankelijkheden bijwerken (dependabot)",
-        "fr": "km200 mot de passe privé peut devoir être réintroduit\nmettre à jour les dépendances (dependabot)",
-        "it": "km200 password privata potrebbe essere rientro\naggiornamento dipendenze (dependabot)",
-        "es": "km200 contraseña privada podría tener que volver a entrar\ndependencias de actualización (dependabot)",
-        "pl": "km200 prywatne hasło może być wprowadzone ponownie\naktualizacji zależności (zależności)",
-        "uk": "km200 приватний пароль може бути перероблений\nоновлення залежностей",
-        "zh-cn": "km200 私人密码可能要重新输入\n更新依赖性( 依赖性)"
       }
     },
     "titleLang": {
