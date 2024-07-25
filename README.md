@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: adjust to name changes
+ 
 ### 4.4.3 (2024-07-15)
 * ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.
 
