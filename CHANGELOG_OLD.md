@@ -1,4 +1,9 @@
 * older changes
+## 4.3.0 (2024-06-26)
+* improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams
+* support different thermostat id's
+* change ems-esp warning messages to info on start-up for 3.7 dev versions
+
 ## 4.2.0 (2024-06-11)
 * ems-esp: process double entity names between boiler and thermostat for dhw
 * ems-esp: add original device name to iobroker object name when km200-structure is selected

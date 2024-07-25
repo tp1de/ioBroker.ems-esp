@@ -42,9 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.4.4 (2024-07-25)
 * ems-esp: adjust to name changes in version 3.7.0-dev.27
- 
+
 ### 4.4.3 (2024-07-15)
 * ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.
 
@@ -62,11 +62,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * km200: ignore axios read errors on recordings (no error message)
 * avoid crashes when undefined states are changed (old state names in vis)
 * ems-esp: restart adapter instance on change of firmware version
-
-### 4.3.0 (2024-06-26)
-* improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams
-* support different thermostat id's
-* change ems-esp warning messages to info on start-up for 3.7 dev versions
 
 ## License
 MIT License

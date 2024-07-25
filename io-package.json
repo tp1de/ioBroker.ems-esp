@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.4.3",
+    "version": "4.4.4",
     "news": {
+      "4.4.4": {
+        "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27",
+        "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27",
+        "ru": "ems-esp: настроить на изменения имени в версии 3.7.0-dev.27",
+        "pt": "ems-esp: ajustar às alterações de nome na versão 3.7.0-dev.27",
+        "nl": "ems-esp: aanpassen aan naamwijzigingen in versie 3.7.0-dev.27",
+        "fr": "ems-esp: ajuster aux changements de nom dans la version 3.7.0-dev.27",
+        "it": "ems-esp: si adatta alle modifiche del nome nella versione 3.7.0-dev.27",
+        "es": "ems-esp: ajuste a los cambios de nombre en la versión 3.7.0-dev.27",
+        "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27",
+        "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27",
+        "zh-cn": "ems-esp:根据3.7.0-dev.27版本中的名称变化进行调整"
+      },
       "4.4.3": {
         "en": "ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
         "de": "ems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: przetwarzanie podwójnych nazw jednostek między kotłem a termostatem dla dhw\nems- esp: dodaj oryginalną nazwę urządzenia do nazwy obiektu iobroker, gdy wybrana jest struktura km200-",
         "uk": "ems-esp: обробляти подвійні імена суб'єктів господарювання між котлом і термостатом для dhw\nems-esp: додати назву оригінального пристрою до назви об'єкта iobroker при км200-структурі",
         "zh-cn": "ems-esp: dhw 锅炉和恒温器之间处理双实体名称\nems- esp: 选择 km200 架构时将原始设备名称添加到 iobroster 对象名称"
-      },
-      "4.1.3": {
-        "en": "fix crash on wrong ems-esp ip address",
-        "de": "crash auf falsche ems-esp ip adresse beheben",
-        "ru": "исправить крушение на неправильный адрес ems-esp",
-        "pt": "corrigir acidente no endereço ems-esp ip errado",
-        "nl": "fix crash op verkeerde ems-esp ip adres",
-        "fr": "correction de l'écrasement sur la mauvaise adresse ems-esp ip",
-        "it": "fissare l'incidente sull'indirizzo ems-esp ip sbagliato",
-        "es": "arreglar fallo en la dirección equivocada ems-esp ip",
-        "pl": "naprawić awarię na złym adresie ems- esp ip",
-        "uk": "виправлення аварійної аварії на неправильній е-esp ip-адресі",
-        "zh-cn": "固定错误的 ems- esp ip 地址上的崩溃"
       }
     },
     "titleLang": {
