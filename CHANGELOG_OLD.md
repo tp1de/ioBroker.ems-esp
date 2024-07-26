@@ -1,4 +1,12 @@
 * older changes
+## 4.4.0 (2024-07-08)
+* update dependencies
+* test that necessary entities for statistics function are available
+* km200: ignore values during polling when value is not within min/max range
+* km200: ignore axios read errors on recordings (no error message)
+* avoid crashes when undefined states are changed (old state names in vis)
+* ems-esp: restart adapter instance on change of firmware version
+
 ## 4.3.0 (2024-06-26)
 * improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams
 * support different thermostat id's

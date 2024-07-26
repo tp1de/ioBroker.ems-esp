@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.4.5 (2024-07-26)
 * ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2
 
 ### 4.4.4 (2024-07-25)
@@ -57,14 +57,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.4.1 (2024-07-09)
 * avoid crashes when undefined states are changed (old state names in vis)
-
-### 4.4.0 (2024-07-08)
-* update dependencies
-* test that necessary entities for statistics function are available
-* km200: ignore values during polling when value is not within min/max range
-* km200: ignore axios read errors on recordings (no error message)
-* avoid crashes when undefined states are changed (old state names in vis)
-* ems-esp: restart adapter instance on change of firmware version
 
 ## License
 MIT License
