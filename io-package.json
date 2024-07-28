@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.4.5",
+    "version": "4.5.0",
     "news": {
+      "4.5.0": {
+        "en": "ems-esp: own entities switchTimes EMS+",
+        "de": "ems-esp: eigene Einheiten wechseln EMS+",
+        "ru": "ems-esp: собственные сущности переключаются Times EMS+",
+        "pt": "ems-esp: switch de entidades próprias Tempos EMS+",
+        "nl": "ems-esp: eigen entiteiten switch Tijden EMS+",
+        "fr": "ems-esp: changement d'entités propres Temps EMS+",
+        "it": "ems-esp: switch di entità proprie Times EMS+",
+        "es": "ems-esp: las propias entidades cambian Times EMS+",
+        "pl": "ems- esp: przełącznik jednostek własnych Czasy EMS +",
+        "uk": "ems-esp: власний комунікатор Терміни EMS+",
+        "zh-cn": "ems- esp: 自有实体切换 时间 EMS+"
+      },
       "4.4.5": {
         "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2",
         "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27 - teil 2",
@@ -80,19 +93,6 @@
         "pl": "aktualizacji zależności\nsprawdzić, czy dostępne są niezbędne podmioty do pełnienia funkcji statystyki\nkm200: ignorować wartości podczas głosowania, gdy wartość nie mieści się w zakresie min / max\nkm200: ignoruj błędy odczytu axios na nagraniach (brak komunikatu błędu)\nuniknąć awarii po zmianie niezdefiniowanych stanów (stare nazwy stanu w vis)\nems- esp: restart instancji adaptera przy zmianie wersji oprogramowania firmowego",
         "uk": "оновлення залежності\nтестування, які необхідні суб'єкти для статистичної функції доступні\nкм200: ігнорувати значення під час опитування при значенні не в діапазоні мін/макс\nkm200: ігнорувати axios читати помилки на записах (не повідомлення про помилку)\nуникати аварійних ситуацій при зміні не визначених станів (старих державних імен у в’язках)\nems-esp: перезавантаження екземпляра на зміну версії прошивки",
         "zh-cn": "更新依赖关系\n测试是否存在统计功能所需的实体\nkm200: 当数值不在分钟/最大范围内时, 投票时忽略数值\nkm200: 忽略在录音中读取错误( 无错误消息)\n避免在未定义状态更改时发生崩溃( 旧状态名称对应)\nems- ep: 在更改固件版本时重新启动适配器实例"
-      },
-      "4.3.0": {
-        "en": "improve search for EMS+ and EMS 2.0 entities (switchTimes & holidayModes) with raw telegrams\nsupport different thermostat id's\nchange ems-esp warning messages to info on start-up for 3.7 dev versions",
-        "de": "verbesserung der Suche nach EMS+ und EMS 2.0-Entitäten (SwitchTimes & HolidayModes) mit Rohtelegrammen\nverschiedene thermostat-ids unterstützen\nems-esp-warnmeldungen zum start-up für 3.7 dev-versionen ändern",
-        "ru": "улучшить поиск EMS+ и EMS 2.0 сущностей (switchTimes & HolidayModes) с необработанными телеграммами\nподдержка различных термостат id\nизменение ems-esp предупреждающих сообщений на информацию о запуске для 3,7 версии dev",
-        "pt": "melhorar a procura de EMS+ e EMS 2.0 entidades (switchTimes & holidayModes) com telegramas crus\nsuporte diferentes termostato id's\nalterar mensagens de aviso ems-esp para informações sobre start-up para versões 3.7 dev",
-        "nl": "verbetering van het zoeken naar EMS+ en EMS 2.0 entiteiten (switchTimes & holidayModes) met ruwe telegrammen\nondersteuning voor verschillende thermostaat id's\nems-esp-waarschuwingsberichten wijzigen in informatie over het opstarten van 3.7 dev-versies",
-        "fr": "améliorer la recherche d'entités EMS+ et EMS 2.0 (switchTimes & HolidayModes) avec télégrammes bruts\nsoutenir différents thermostats id\nmodifier les messages d'avertissement ems-esp en info sur le démarrage pour les versions 3.7 dev",
-        "it": "migliorare la ricerca di EMS+ e EMS 2.0 entità (switchTimes & holidayModes) con telegrammi grezzi\nsupporto termostato diverso id\ncambiare messaggi di avviso ems-esp a info su start-up per 3.7 versioni di dev",
-        "es": "mejorar la búsqueda de entidades EMS+ y EMS 2.0 (switchTimes & holidayModes) con telegramas crudos\nsoporte diferentes termostatos id\ncambiar ems-esp mensajes de advertencia a información sobre el inicio de 3.7 versiones dev",
-        "pl": "ulepszenie wyszukiwania jednostek EMS + i EMS 2.0 (switchTimes & holidayModes) za pomocą surowych telegramów\nobsługa różnych termostatów id\nzmień ostrzeżenia ems- esp na informacje o start- up dla wersji 3.7 dev",
-        "uk": "поліпшити пошук суб'єктів EMS+ і EMS 2.0 (switchTimes & HolidayModes) з сирими телеграмами\nпідтримка різних термостатів id\nзмінити повідомлення про попередження е-esp для отримання відомостей про початок версії 3.7 dev",
-        "zh-cn": "改进对 EMS+ 和 EMS 2.0 实体的搜索( 开关时间和节假日模式) , 附带原始电报\n支持不同的自动调温器 id\n将 ems- esp 警告消息更改为3. 7 dev 版本的启动信息"
       }
     },
     "titleLang": {

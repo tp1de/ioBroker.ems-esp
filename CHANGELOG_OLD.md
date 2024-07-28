@@ -1,4 +1,7 @@
 * older changes
+## 4.4.1 (2024-07-09)
+* avoid crashes when undefined states are changed (old state names in vis)
+
 ## 4.4.0 (2024-07-08)
 * update dependencies
 * test that necessary entities for statistics function are available
