@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: own entities switchTimes EMS+
+
 ### 4.4.5 (2024-07-26)
 * ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2
 
