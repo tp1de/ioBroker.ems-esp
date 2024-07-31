@@ -42,6 +42,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: new config-structure for extended entities
+* ems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats 
+
 ### 4.5.0 (2024-07-28)
 * ems-esp: own entities switchTimes EMS+
 

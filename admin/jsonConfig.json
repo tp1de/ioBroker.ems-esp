@@ -727,7 +727,6 @@
                                 {"label": {"en": "number/enum"}, "value": "number"},
                                 {"label": {"en": "hex"}, "value": "hex"},
                                 {"label": {"en": "string"}, "value": "string"},
-                                {"label": {"en": "switchPrograms"}, "value": "switchPrograms"},
                                 {"label": {"en": "holidayModes"}, "value": "holidayModes"}
                             ]
                         },
@@ -778,6 +777,87 @@
                             "sort": false,
                             "default": ""
                         }
+                    ]
+                }
+                ,
+                "switchTimes": {
+                    "newLine": true,
+                    "type": "table",
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "label": "switchPrograms",
+                    "style": {"fontSize": 8},
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "state",
+                            "noClearButton": true,
+                            "width": "25%",
+                            "title": "state",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "src",
+                            "noClearButton": true,
+                            "width": "6%",
+                            "title": "src",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "typei",
+                            "noClearButton": true,
+                            "width": "7%",
+                            "title": "telegram indicator type",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "offseti",
+                            "noClearButton": true,
+                            "width": "7%",
+                            "title": "indicator offset",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "type1",
+                            "noClearButton": true,
+                            "width": "7%",
+                            "title": "telegram type1",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "text",
+                            "attr": "type2",
+                            "noClearButton": true,
+                            "width": "7%",
+                            "title": "telegram type2",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        },
+                        {
+                            "type": "checkbox",
+                            "attr": "polling",
+                            "width": "2%",
+                            "title": "poll",
+                            "filter": false,
+                            "sort": false,
+                            "default": ""
+                        }  
                     ]
                 }
             }
