@@ -43,7 +43,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* ems-esp: new config-structure for extended entities
+* disable automatic instance re-start on firmware changes
+* ems-esp: new config-structure for extended entities (beta-version)
 * ems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats 
 * update dependencies (dependabot)
 
