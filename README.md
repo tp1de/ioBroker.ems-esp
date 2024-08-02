@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* ems-esp: no version message if actual version can not be read
+* ems-esp: no version change message if actual version can not be read during polling cycle
 
 ### 4.6.0 (2024-08-01)
 * disable automatic instance re-start on firmware changes
