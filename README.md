@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.6.1 (2024-08-02)
 * ems-esp: no version change message if actual version can not be read during polling cycle
 
 ### 4.6.0 (2024-08-01)
@@ -59,9 +59,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.4.4 (2024-07-25)
 * ems-esp: adjust to name changes in version 3.7.0-dev.27
-
-### 4.4.3 (2024-07-15)
-* ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.
 
 ## License
 MIT License

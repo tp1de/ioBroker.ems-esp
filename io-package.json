@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.0",
+    "version": "4.6.1",
     "news": {
+      "4.6.1": {
+        "en": "ems-esp: no version change message if actual version can not be read during polling cycle",
+        "de": "ems-esp: keine versionsänderungsnachricht, wenn die tatsächliche version während des abfragezyklus nicht gelesen werden kann",
+        "ru": "ems-esp: нет сообщения об изменении версии, если реальная версия не может быть прочитана во время цикла голосования",
+        "pt": "ems-esp: nenhuma mensagem de mudança de versão se a versão real não puder ser lida durante o ciclo de votação",
+        "nl": "ems-esp: geen versiewijzigbericht als de werkelijke versie niet kan worden gelezen tijdens de stemcyclus",
+        "fr": "ems-esp: pas de message de changement de version si la version réelle ne peut pas être lue pendant le cycle de vote",
+        "it": "ems-esp: nessun messaggio di cambiamento di versione se la versione reale non può essere letta durante il ciclo di polling",
+        "es": "ems-esp: ningún mensaje de cambio de versión si la versión real no se puede leer durante el ciclo de votación",
+        "pl": "ems- esp: brak wiadomości o zmianie wersji, jeżeli nie można odczytać rzeczywistej wersji podczas cyklu wyborczego",
+        "uk": "ems-esp: не змінить повідомлення, якщо фактична версія не може прочитати під час циклу опитування",
+        "zh-cn": "ems- esp: 如果在投票周期无法读取实际版本, 没有版本更改消息"
+      },
       "4.6.0": {
         "en": "disable automatic instance re-start on firmware changes\nems-esp: new config-structure for extended entities (beta-version)\nems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats \nupdate dependencies (dependabot)",
         "de": "deaktivieren automatische instanz neustart auf firmware-änderungen\nems-esp: neue config-struktur für erweiterte unternehmen (beta-version)\nems-esp: Unterstützungsschalter ProgramModes zwischen Ebene (eco/comfort) und absolute (Temperaturen) für EMS+ Thermostate\naktualisierung abhängigkeiten (dependabot)",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: aktualizacja w odniesieniu do zmian w strukturze JSON bez spacji w Systemie Info\nems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
         "uk": "ems-esp: оновлення щодо змін структури JSON без пробілів в System Info\nems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
         "zh-cn": "ems- ep: 关于系统信息中没有空格的 JSON 结构变化的更新\nems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
-      },
-      "4.4.1": {
-        "en": "avoid crashes when undefined states are changed (old state names in vis)",
-        "de": "vermeiden sie abstürzen, wenn undefinierte zustände geändert werden (alte staatsnamen in vis)",
-        "ru": "избегать крушений при изменении неопределенных состояний (старые названия состояний в vis)",
-        "pt": "evitar falhas quando os estados não definidos são alterados (nomes de estado antigo em vis)",
-        "nl": "crashes vermijden wanneer ongedefinieerde toestanden worden gewijzigd (oude staatnamen in vis)",
-        "fr": "éviter les crashs lorsque des états non définis sont changés (anciens noms d'état en vis)",
-        "it": "evitare crash quando gli stati non definiti vengono modificati (vecchi nomi di stato in vis)",
-        "es": "evitar fallos cuando los estados no definidos son cambiados (nombres antiguos en vis)",
-        "pl": "uniknąć awarii po zmianie niezdefiniowanych stanów (stare nazwy stanu w vis)",
-        "uk": "уникати аварійних ситуацій при зміні не визначених станів (старих державних імен у в’язках)",
-        "zh-cn": "避免在未定义状态更改时发生崩溃( 旧状态名称对应)"
       }
     },
     "titleLang": {
