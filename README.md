@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: no version message if actual version can not be read
+
 ### 4.6.0 (2024-08-01)
 * disable automatic instance re-start on firmware changes
 * ems-esp: new config-structure for extended entities (beta-version)
