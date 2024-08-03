@@ -1,6 +1,6 @@
 {
   "name": "iobroker.ems-esp",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "description": "EMS-ESP and KM200 Interface",
   "author": {
     "name": "Thomas Petrick",

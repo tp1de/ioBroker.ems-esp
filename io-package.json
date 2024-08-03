@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.1",
+    "version": "4.6.2",
     "news": {
+      "4.6.2": {
+        "en": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time",
+        "de": "ems-esp: neustart von ems init/polling nach firmware-versionsänderung und 90 sekunden wartezeit",
+        "ru": "ems-esp: повторно ввести перезапуск ems init/polling после изменения версии прошивки и 90 секунд ожидания",
+        "pt": "ems-esp: re-introduce restart de ems init/polling após a mudança da versão do firmware e 90 segundos tempo de espera",
+        "nl": "ems-esp: herstart van ems init/polling na wijziging van firmwareversie en 90 seconden wachttijd",
+        "fr": "ems-esp: réintroduire le redémarrage de ems init/polling après le changement de version du firmware et 90 secondes de temps d'attente",
+        "it": "ems-esp: re-introdurre il riavvio di ems init/polling dopo il cambiamento della versione del firmware e 90 secondi tempo di attesa",
+        "es": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 segundos waiting time",
+        "pl": "ems- esp: ponownie wprowadzić restart ems init / polling po zmianie wersji firmware i 90 sekund oczekiwania",
+        "uk": "ems-esp: re-introduce перезавантаження емів init/polling після зміни версії прошивки і 90 секунд очікування час",
+        "zh-cn": "ems-esp:在固件版本更改和90秒等待时间后,重新激活ems init/poling"
+      },
       "4.6.1": {
         "en": "ems-esp: no version change message if actual version can not be read during polling cycle",
         "de": "ems-esp: keine versionsänderungsnachricht, wenn die tatsächliche version während des abfragezyklus nicht gelesen werden kann",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
         "uk": "ems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
         "zh-cn": "ems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
-      },
-      "4.4.2": {
-        "en": "ems-esp: update in respect to changes in JSON structure without spaces in System Info\nems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
-        "de": "ems-esp: Aktualisierung in Bezug auf Änderungen der JSON-Struktur ohne Leerzeichen in Systeminfo\nems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
-        "ru": "ems-esp: обновление в отношении изменений в структуре JSON без пробелов в System Info\nems-esp: Удалить объектно-структуру esp в начале экземпляра адаптера. Он будет восстановлен.",
-        "pt": "ems-esp: atualização em relação às mudanças na estrutura JSON sem espaços em System Info\nems-esp: exclua a estrutura do objeto esp no início da instância do adaptador. Vai ser uma reconstrução.",
-        "nl": "ems-esp: update met betrekking tot wijzigingen in JSON structuur zonder spaties in System Info\nems-esp: verwijder de esp objectstructuur bij het begin van de adapter instantie. Het zal worden herbouwd.",
-        "fr": "ems-esp: mise à jour des modifications de la structure JSON sans espaces dans System Info\nems-esp: supprimer la structure objet esp au début de l'instance adaptateur. Il sera reconstruit.",
-        "it": "ems-esp: aggiornamento rispetto alle modifiche della struttura JSON senza spazi in System Info\nems-esp: eliminare la struttura dell'oggetto esp all'inizio dell'istanza dell'adattatore. Sarà ricostruita.",
-        "es": "ems-esp: actualización respecto a los cambios en la estructura JSON sin espacios en System Info\nems-esp: eliminar la estructura del objeto esp en el inicio de la instancia del adaptador. Será reconstruido.",
-        "pl": "ems- esp: aktualizacja w odniesieniu do zmian w strukturze JSON bez spacji w Systemie Info\nems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
-        "uk": "ems-esp: оновлення щодо змін структури JSON без пробілів в System Info\nems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
-        "zh-cn": "ems- ep: 关于系统信息中没有空格的 JSON 结构变化的更新\nems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
       }
     },
     "titleLang": {

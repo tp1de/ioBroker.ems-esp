@@ -1,4 +1,7 @@
 * older changes
+## 4.4.4 (2024-07-25)
+* ems-esp: adjust to name changes in version 3.7.0-dev.27
+
 ## 4.4.3 (2024-07-15)
 * ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.
 
