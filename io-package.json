@@ -168,12 +168,6 @@
         "admin": ">=6.13.16"
       }
     ],
-    "encryptedNative": [
-      "private_pw"
-    ],
-    "protectedNative": [
-      "private_pw"
-    ],
     "messages": [
       {
         "condition": {
@@ -273,5 +267,11 @@
     "function": "heating",
     "devices": []
   },
+  "encryptedNative": [
+      "private_pw"
+    ],
+  "protectedNative": [
+      "private_pw"
+  ],
   "objects": []
 }
