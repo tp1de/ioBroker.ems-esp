@@ -43,7 +43,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* km200: new config for private password - needs to be re-entered
+* small adjustments
+* dependabot updates dependencies
 
 ### 4.6.2 (2024-08-03)
 * ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time

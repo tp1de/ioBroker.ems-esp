@@ -160,19 +160,13 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=4.0.24"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [
       {
         "admin": ">=6.13.16"
       }
-    ],
-    "encryptedNative": [
-      "private_pw"
-    ],
-    "protectedNative": [
-      "private_pw"
     ],
     "messages": [
       {
@@ -215,8 +209,7 @@
           "cancel"
         ]
       }
-    ],
-    "installedFrom": "iobroker.ems-esp@latest"
+    ]
   },
   "native": {
     "private_pw": "",
@@ -274,5 +267,11 @@
     "function": "heating",
     "devices": []
   },
+  "encryptedNative": [
+      "private_pw"
+    ],
+  "protectedNative": [
+      "private_pw"
+  ],
   "objects": []
 }
