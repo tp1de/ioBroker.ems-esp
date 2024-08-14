@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: error correction on polling for 3.6.5
+
 ### 4.6.3 (2024-08-14)
 * small adjustments
 * dependabot updates dependencies
