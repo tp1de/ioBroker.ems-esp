@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.3",
+    "version": "4.6.4",
     "news": {
+      "4.6.4": {
+        "en": "ems-esp: error correction on polling for 3.6.5",
+        "de": "ems-esp: fehlerkorrektur bei der abstimmung für 3.6.5",
+        "ru": "ems-esp: коррекция ошибок на выборах 3.6.5",
+        "pt": "ems-esp: correção de erro na sondagem para 3.6.5",
+        "nl": "ems-esp: foutcorrectie bij peiling voor 3.6.5",
+        "fr": "ems-esp: correction d'erreur lors du vote pour 3.6.5",
+        "it": "ems-esp: correzione di errore sul polling per 3.6.5",
+        "es": "ems-esp: corrección de error en la encuesta por 3.6.5",
+        "pl": "ems- esp: korekta błędów podczas sondażu dla 3.6.5",
+        "uk": "ems-esp: корекція помилок на опитуванні за 3.6.5",
+        "zh-cn": "ems-esp:3.6.5选票错误更正"
+      },
       "4.6.3": {
         "en": "small adjustments\ndependabot updates dependencies",
         "de": "kleine anpassungen\nabhängigabot aktualisiert abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27 - część 2",
         "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27 - частина 2",
         "zh-cn": "ems-esp:根据3.7.0-dev.27 - 第二部分中的名称变化进行调整"
-      },
-      "4.4.4": {
-        "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27",
-        "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27",
-        "ru": "ems-esp: настроить на изменения имени в версии 3.7.0-dev.27",
-        "pt": "ems-esp: ajustar às alterações de nome na versão 3.7.0-dev.27",
-        "nl": "ems-esp: aanpassen aan naamwijzigingen in versie 3.7.0-dev.27",
-        "fr": "ems-esp: ajuster aux changements de nom dans la version 3.7.0-dev.27",
-        "it": "ems-esp: si adatta alle modifiche del nome nella versione 3.7.0-dev.27",
-        "es": "ems-esp: ajuste a los cambios de nombre en la versión 3.7.0-dev.27",
-        "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27",
-        "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27",
-        "zh-cn": "ems-esp:根据3.7.0-dev.27版本中的名称变化进行调整"
       }
     },
     "titleLang": {
