@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.2",
+    "version": "4.6.3",
     "news": {
+      "4.6.3": {
+        "en": "small adjustments\ndependabot updates dependencies",
+        "de": "kleine anpassungen\nabhängigabot aktualisiert abhängigkeiten",
+        "ru": "небольшие корректировки\nзависимости обновлений",
+        "pt": "pequenos ajustes\ndependências de atualizações de dependabot",
+        "nl": "kleine aanpassingen\ndependabot updates afhankelijkheden",
+        "fr": "petits ajustements\ndépendances des mises à jour de dependabot",
+        "it": "piccoli aggiustamenti\naggiornamenti dipendenze",
+        "es": "pequeños ajustes\ndependencias de actualizaciones",
+        "pl": "niewielkie dostosowania\nzależności od aktualizacji zależnościname",
+        "uk": "невеликі настройки\nзалежностей",
+        "zh-cn": "小调整\n依赖性更新"
+      },
       "4.6.2": {
         "en": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time",
         "de": "ems-esp: neustart von ems init/polling nach firmware-versionsänderung und 90 sekunden wartezeit",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27",
         "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27",
         "zh-cn": "ems-esp:根据3.7.0-dev.27版本中的名称变化进行调整"
-      },
-      "4.4.3": {
-        "en": "ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
-        "de": "ems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
-        "ru": "ems-esp: Удалить объектно-структуру esp в начале экземпляра адаптера. Он будет восстановлен.",
-        "pt": "ems-esp: exclua a estrutura do objeto esp no início da instância do adaptador. Vai ser uma reconstrução.",
-        "nl": "ems-esp: verwijder de esp objectstructuur bij het begin van de adapter instantie. Het zal worden herbouwd.",
-        "fr": "ems-esp: supprimer la structure objet esp au début de l'instance adaptateur. Il sera reconstruit.",
-        "it": "ems-esp: eliminare la struttura dell'oggetto esp all'inizio dell'istanza dell'adattatore. Sarà ricostruita.",
-        "es": "ems-esp: eliminar la estructura del objeto esp en el inicio de la instancia del adaptador. Será reconstruido.",
-        "pl": "ems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
-        "uk": "ems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
-        "zh-cn": "ems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
       }
     },
     "titleLang": {

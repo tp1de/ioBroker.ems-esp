@@ -1,4 +1,7 @@
 * older changes
+## 4.4.5 (2024-07-26)
+* ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2
+
 ## 4.4.4 (2024-07-25)
 * ems-esp: adjust to name changes in version 3.7.0-dev.27
 
