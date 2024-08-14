@@ -34,7 +34,7 @@
     "buffer": "^6.0.3",
     "rijndael-js": "^2.0.0",
     "simple-syslog-server": "^1.0.0",
-    "axios": "^1.7.3"
+    "axios": "^1.7.4"
   },
   "deprecated": false,
   "devDependencies": {
