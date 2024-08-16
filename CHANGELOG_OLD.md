@@ -1,4 +1,10 @@
 * older changes
+## 4.6.0 (2024-08-01)
+* disable automatic instance re-start on firmware changes
+* ems-esp: new config-structure for extended entities (beta-version)
+* ems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats 
+* update dependencies (dependabot)
+
 ## 4.5.0 (2024-07-28)
 * ems-esp: own entities switchTimes EMS+
 

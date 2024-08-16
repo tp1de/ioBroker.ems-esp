@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.7.0 (2024-08-16)
 * ems-esp: do not allow more then one thermostat for extended own entities
 * ems-esp: error correction for holidayModes custom entities
 
@@ -58,12 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.6.1 (2024-08-02)
 * ems-esp: no version change message if actual version can not be read during polling cycle
-
-### 4.6.0 (2024-08-01)
-* disable automatic instance re-start on firmware changes
-* ems-esp: new config-structure for extended entities (beta-version)
-* ems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats 
-* update dependencies (dependabot)
 
 ## License
 MIT License

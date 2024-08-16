@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.4",
+    "version": "4.7.0",
     "news": {
+      "4.7.0": {
+        "en": "ems-esp: do not allow more then one thermostat for extended own entities\nems-esp: error correction for holidayModes custom entities",
+        "de": "ems-esp: nicht zulassen mehr als ein thermostat für erweiterte eigene einrichtungen\nems-esp: Fehlerkorrektur für den Urlaub Moden benutzerdefinierte Einheiten",
+        "ru": "ems-esp: не допускайте больше, чем один термостат для расширенных собственных объектов\nems-esp: коррекция ошибок для отпуска Режимы",
+        "pt": "ems-esp: não permita mais um termostato para entidades próprias estendidas\nems-esp: correção de erro para férias Modos de entidades personalizadas",
+        "nl": "ems-esp: niet meer dan één thermostaat toestaan voor uitgebreide eigen entiteiten\nems-esp: foutcorrectie voor vakantie Modi aangepaste entiteiten",
+        "fr": "ems-esp: ne pas autoriser plus d'un thermostat pour les entités propres étendues\nems-esp: correction d'erreur pour les vacances Modes entités personnalisées",
+        "it": "ems-esp: non consentono più di un termostato per entità proprie estese\nems-esp: correzione di errore per le vacanze Modalità entità personalizzate",
+        "es": "ems-esp: no permita más entonces un termostato para entidades propias extendidas\nems-esp: corrección de error para vacaciones Modes custom entities",
+        "pl": "ems- esp: nie pozwól więcej niż jeden termostat dla rozszerzonych jednostek własnych\nems- esp: korekta błędów podczas wakacji Tryby podmiotów niestandardowych",
+        "uk": "ems-esp: не дозволяйте більше, ніж один термостат для розширених власних суб'єктів\nе-есп: виправлення помилок для свята Режими індивідуальних суб'єктів",
+        "zh-cn": "ems- esp : 不允许扩展的自身实体使用一个以上的自动调温器\nems- esp: 节假日错误校正 模式自定义实体"
+      },
       "4.6.4": {
         "en": "ems-esp: error correction on polling for 3.6.5",
         "de": "ems-esp: fehlerkorrektur bei der abstimmung für 3.6.5",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: przełącznik jednostek własnych Czasy EMS +",
         "uk": "ems-esp: власний комунікатор Терміни EMS+",
         "zh-cn": "ems- esp: 自有实体切换 时间 EMS+"
-      },
-      "4.4.5": {
-        "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2",
-        "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27 - teil 2",
-        "ru": "ems-esp: корректируйте на изменения имени в версии 3.7.0-dev.27 - часть 2",
-        "pt": "ems-esp: ajuste para alterações de nome na versão 3.7.0-dev.27 - parte 2",
-        "nl": "ems-esp: aanpassen aan naamwijzigingen in versie 3.7.0-dev.27 - deel 2",
-        "fr": "ems-esp: ajuster aux changements de nom dans la version 3.7.0-dev.27 - partie 2",
-        "it": "ems-esp: regolare le modifiche del nome nella versione 3.7.0-dev.27 - parte 2",
-        "es": "ems-esp: ajuste a los cambios de nombre en la versión 3.7.0-dev.27 - parte 2",
-        "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27 - część 2",
-        "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27 - частина 2",
-        "zh-cn": "ems-esp:根据3.7.0-dev.27 - 第二部分中的名称变化进行调整"
       }
     },
     "titleLang": {
