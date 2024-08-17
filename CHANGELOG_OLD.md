@@ -1,4 +1,7 @@
 * older changes
+## 4.6.1 (2024-08-02)
+* ems-esp: no version change message if actual version can not be read during polling cycle
+
 ## 4.6.0 (2024-08-01)
 * disable automatic instance re-start on firmware changes
 * ems-esp: new config-structure for extended entities (beta-version)

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.7.0",
+    "version": "4.7.1",
     "news": {
+      "4.7.1": {
+        "en": "ems-esp: custom entities are now under object structure \"custom\"",
+        "de": "ems-esp: benutzerdefinierte wesen sind jetzt unter objektstruktur \"custom\"",
+        "ru": "ems-esp: пользовательские сущности в настоящее время находятся под объектной структурой «custom»",
+        "pt": "ems-esp: entidades personalizadas estão agora sob estrutura de objeto \"personalizado\"",
+        "nl": "ems-esp: aangepaste entiteiten staan nu onder objectstructuur \"custom\"",
+        "fr": "ems-esp: les entités personnalisées sont désormais sous la structure de l'objet \"custom\"",
+        "it": "ems-esp: le entità personalizzate sono ora sotto la struttura dell'oggetto \"custom\"",
+        "es": "ems-esp: las entidades personalizadas están ahora bajo la estructura de objetos \"personal\"",
+        "pl": "ems- esp: podmioty niestandardowe są teraz pod strukturą obiektu \"niestandardowe\"",
+        "uk": "ems-esp: суб'єкти господарювання тепер під структурою об'єкта \"кутом\"",
+        "zh-cn": "ems- esp: 自定义实体现在处于对象结构“ custom” 下"
+      },
       "4.7.0": {
         "en": "ems-esp: do not allow more then one thermostat for extended own entities\nems-esp: error correction for holidayModes custom entities",
         "de": "ems-esp: nicht zulassen mehr als ein thermostat für erweiterte eigene einrichtungen\nems-esp: Fehlerkorrektur für den Urlaub Moden benutzerdefinierte Einheiten",
@@ -80,19 +93,6 @@
         "pl": "wyłączenie automatycznego uruchamiania instancji przy zmianie oprogramowania firmowego\nems- esp: nowa struktura konfiguracji rozszerzonych jednostek (wersja beta-)\nems- esp: przełącznik wsparcia Program Modes między poziomem (eco / komfort) a bezwzględnym (temperatura) dla termostatów EMS +\naktualizacji zależności (zależności)",
         "uk": "відключити автоматичний екземпляр re-start на зміни прошивки\nems-esp: новий config-структура для розширених суб'єктів (beta-version)\nems-esp: перемикач підтримки ПрограмаМоди між рівнем (eco/comfort) та абсолютними (температури) для термостатів EMS+\nоновлення залежностей",
         "zh-cn": "在固件更改时禁用自动启动实例\nems- esp: 扩展实体的新配置结构(β版)\nems-esp: 支持开关 EMS+自动调温器的电位(生态/舒适)和绝对(温度)之间的程序模式\n更新依赖性( 依赖性)"
-      },
-      "4.5.0": {
-        "en": "ems-esp: own entities switchTimes EMS+",
-        "de": "ems-esp: eigene Einheiten wechseln EMS+",
-        "ru": "ems-esp: собственные сущности переключаются Times EMS+",
-        "pt": "ems-esp: switch de entidades próprias Tempos EMS+",
-        "nl": "ems-esp: eigen entiteiten switch Tijden EMS+",
-        "fr": "ems-esp: changement d'entités propres Temps EMS+",
-        "it": "ems-esp: switch di entità proprie Times EMS+",
-        "es": "ems-esp: las propias entidades cambian Times EMS+",
-        "pl": "ems- esp: przełącznik jednostek własnych Czasy EMS +",
-        "uk": "ems-esp: власний комунікатор Терміни EMS+",
-        "zh-cn": "ems- esp: 自有实体切换 时间 EMS+"
       }
     },
     "titleLang": {

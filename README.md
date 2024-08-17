@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 4.7.1 (2024-08-17)
 * ems-esp: custom entities are now under object structure "custom"
 
 ### 4.7.0 (2024-08-16)
@@ -58,9 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 4.6.2 (2024-08-03)
 * ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time
-
-### 4.6.1 (2024-08-02)
-* ems-esp: no version change message if actual version can not be read during polling cycle
 
 ## License
 MIT License
