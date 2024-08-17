@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* ems-esp: enable writing on custom entities
+
 ### 4.7.1 (2024-08-17)
 * ems-esp: custom entities are now under object structure "custom"
 
