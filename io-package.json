@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.7.1",
+    "version": "4.7.2",
     "news": {
+      "4.7.2": {
+        "en": "ems-esp: enable writing on custom entities",
+        "de": "ems-esp: aktivieren sie das schreiben von benutzerdefinierten einheiten",
+        "ru": "ems-esp: включить написание на пользовательских объектах",
+        "pt": "ems-esp: permitir escrever em entidades personalizadas",
+        "nl": "ems-esp: schrijven op aangepaste entiteiten inschakelen",
+        "fr": "ems-esp: active l'écriture sur des entités personnalisées",
+        "it": "ems-esp: abilitare la scrittura su entità personalizzate",
+        "es": "ems-esp: habilitar la escritura en entidades personalizadas",
+        "pl": "ems- esp: umożliwia zapis na niestandardowych podmiotach",
+        "uk": "ems-esp: увімкніть написання на користувача",
+        "zh-cn": "ems- ep: 启用自定义实体的写入"
+      },
       "4.7.1": {
         "en": "ems-esp: custom entities are now under object structure \"custom\"",
         "de": "ems-esp: benutzerdefinierte wesen sind jetzt unter objektstruktur \"custom\"",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: brak wiadomości o zmianie wersji, jeżeli nie można odczytać rzeczywistej wersji podczas cyklu wyborczego",
         "uk": "ems-esp: не змінить повідомлення, якщо фактична версія не може прочитати під час циклу опитування",
         "zh-cn": "ems- esp: 如果在投票周期无法读取实际版本, 没有版本更改消息"
-      },
-      "4.6.0": {
-        "en": "disable automatic instance re-start on firmware changes\nems-esp: new config-structure for extended entities (beta-version)\nems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats \nupdate dependencies (dependabot)",
-        "de": "deaktivieren automatische instanz neustart auf firmware-änderungen\nems-esp: neue config-struktur für erweiterte unternehmen (beta-version)\nems-esp: Unterstützungsschalter ProgramModes zwischen Ebene (eco/comfort) und absolute (Temperaturen) für EMS+ Thermostate\naktualisierung abhängigkeiten (dependabot)",
-        "ru": "отключить автоматический пример перезапуск на изменения прошивки\nems-esp: новая конфигурационная структура для расширенных объектов (бета-версия)\nems-esp: коммутатор поддержки ProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats\nобновление зависимостей (dependabot)",
-        "pt": "desativar a instância automática reiniciar em alterações de firmware\nems-esp: nova estrutura de configuração para entidades estendidas (beta-versão)\nems-esp: interruptor de suporte ProgramaModos entre nível (eco/conforto) e absoluto (temperaturas) para termostatos EMS+\ndependências de atualização (dependabot)",
-        "nl": "automatisch opnieuw opstarten van instantie bij wijzigingen in firmware uitschakelen\nems-esp: nieuwe configuratie-structuur voor uitgebreide entiteiten (beta-versie)\nems-esp: ondersteuningsschakelaar ProgrammaModes tussen niveau (eco/comfort) en absolute (temperatuur) voor EMS+ thermostaten\nafhankelijkheden bijwerken (dependabot)",
-        "fr": "désactiver le redémarrage automatique de l'instance sur les modifications du firmware\nems-esp: nouvelle structure de configuration pour les entités étendues (version beta)\nems-esp: commutateur de support ProgrammeModes entre niveau (éco/confort) et absolu (température) pour les thermostats EMS+\nmettre à jour les dépendances (dependabot)",
-        "it": "disattivare il riavvio automatico delle istanze sulle modifiche del firmware\nems-esp: nuova configurazione-struttura per entità estese (beta-version)\nems-esp: interruttore di supporto Modalità di programma tra livello (eco/comfort) e assoluto (temperature) per termostati EMS+\naggiornamento dipendenze (dependabot)",
-        "es": "deshabilitar la instancia automática reiniciar en cambios de firmware\nems-esp: nueva configuración para las entidades extendidas (versión beta)\nems-esp: interruptor de soporte ProgramModes entre nivel (eco/comfort) y absoluto (temperaturas) para termostatos EMS+\ndependencias de actualización (dependabot)",
-        "pl": "wyłączenie automatycznego uruchamiania instancji przy zmianie oprogramowania firmowego\nems- esp: nowa struktura konfiguracji rozszerzonych jednostek (wersja beta-)\nems- esp: przełącznik wsparcia Program Modes między poziomem (eco / komfort) a bezwzględnym (temperatura) dla termostatów EMS +\naktualizacji zależności (zależności)",
-        "uk": "відключити автоматичний екземпляр re-start на зміни прошивки\nems-esp: новий config-структура для розширених суб'єктів (beta-version)\nems-esp: перемикач підтримки ПрограмаМоди між рівнем (eco/comfort) та абсолютними (температури) для термостатів EMS+\nоновлення залежностей",
-        "zh-cn": "在固件更改时禁用自动启动实例\nems- esp: 扩展实体的新配置结构(β版)\nems-esp: 支持开关 EMS+自动调温器的电位(生态/舒适)和绝对(温度)之间的程序模式\n更新依赖性( 依赖性)"
       }
     },
     "titleLang": {

@@ -1,4 +1,7 @@
 * older changes
+## 4.6.2 (2024-08-03)
+* ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time
+
 ## 4.6.1 (2024-08-02)
 * ems-esp: no version change message if actual version can not be read during polling cycle
 
