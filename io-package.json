@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.7.2",
+    "version": "4.8.0",
     "news": {
+      "4.8.0": {
+        "en": "ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway",
+        "de": "ems-esp: deaktivierter Parameter zur Suche nach erweiterten EMS+-Einheiten aufgrund von Speicherbeschränkungen im Gateway",
+        "ru": "ems-esp: отключенный параметр для поиска расширенных EMS+ объектов из-за ограничений памяти в шлюзах",
+        "pt": "ems-esp: parâmetro desativado para procurar entidades EMS+ estendidas devido às limitações de memória no gateway",
+        "nl": "ems-esp: uitgeschakelde parameter om uitgebreide EMS+-entiteiten te zoeken vanwege geheugenbeperkingen in gateway",
+        "fr": "ems-esp: paramètre désactivé pour rechercher des entités EMS+ étendues en raison des limitations de mémoire dans la passerelle",
+        "it": "ems-esp: parametro disabilitato per la ricerca di entità EMS+ estese a causa delle limitazioni di memoria nel gateway",
+        "es": "ems-esp: Parámetro deshabilitado para buscar entidades EMS+ extendidas debido a limitaciones de memoria en gateway",
+        "pl": "ems- esp: nieaktywny parametr do wyszukiwania rozszerzonych jednostek EMS + z powodu ograniczeń pamięci w bramie",
+        "uk": "ems-esp: параметр відключення для пошуку розширених суб'єктів EMS+ через обмеження пам'яті в шлюзу",
+        "zh-cn": "ems- esp: 由于网关内存限制, 无法搜索扩展的EMS+ 实体的参数"
+      },
       "4.7.2": {
         "en": "ems-esp: enable writing on custom entities",
         "de": "ems-esp: aktivieren sie das schreiben von benutzerdefinierten einheiten",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: ponownie wprowadzić restart ems init / polling po zmianie wersji firmware i 90 sekund oczekiwania",
         "uk": "ems-esp: re-introduce перезавантаження емів init/polling після зміни версії прошивки і 90 секунд очікування час",
         "zh-cn": "ems-esp:在固件版本更改和90秒等待时间后,重新激活ems init/poling"
-      },
-      "4.6.1": {
-        "en": "ems-esp: no version change message if actual version can not be read during polling cycle",
-        "de": "ems-esp: keine versionsänderungsnachricht, wenn die tatsächliche version während des abfragezyklus nicht gelesen werden kann",
-        "ru": "ems-esp: нет сообщения об изменении версии, если реальная версия не может быть прочитана во время цикла голосования",
-        "pt": "ems-esp: nenhuma mensagem de mudança de versão se a versão real não puder ser lida durante o ciclo de votação",
-        "nl": "ems-esp: geen versiewijzigbericht als de werkelijke versie niet kan worden gelezen tijdens de stemcyclus",
-        "fr": "ems-esp: pas de message de changement de version si la version réelle ne peut pas être lue pendant le cycle de vote",
-        "it": "ems-esp: nessun messaggio di cambiamento di versione se la versione reale non può essere letta durante il ciclo di polling",
-        "es": "ems-esp: ningún mensaje de cambio de versión si la versión real no se puede leer durante el ciclo de votación",
-        "pl": "ems- esp: brak wiadomości o zmianie wersji, jeżeli nie można odczytać rzeczywistej wersji podczas cyklu wyborczego",
-        "uk": "ems-esp: не змінить повідомлення, якщо фактична версія не може прочитати під час циклу опитування",
-        "zh-cn": "ems- esp: 如果在投票周期无法读取实际版本, 没有版本更改消息"
       }
     },
     "titleLang": {
