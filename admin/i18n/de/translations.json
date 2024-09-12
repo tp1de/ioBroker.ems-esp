@@ -8,7 +8,7 @@
     "array_of_values": "Array von Werten",
     "array_of_values_with_date-format": "Array von Werten mit Datumsformat",
     "array_of_values_with_ts": "Array von Werten mit ts",
-    "control_file": "Enties vom Gateway oder km200.csv File lesen",
+    "control_file": "Entitäten vom Gateway oder km200.csv File lesen",
     "database": "Datenbank",
     "db_instance": "DB-Instanz",
     "eff20": "< 20°C",
