@@ -409,7 +409,7 @@
         },
         "tab-heatdemand": {
             "type": "panel",
-            "label": "heat_demand",
+            "label": "Heat Demand",
             "items": {
                 "heatdemand": {
                     "newLine": true,
@@ -423,7 +423,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "state_attribute",
+                    "label": "State Attribute",
                     "items": [
                         {
                             "type": "text",
@@ -439,7 +439,7 @@
                             "type": "objectId",
                             "attr": "settemp",
                             "width": "35%",
-                            "title": "set_temp",
+                            "title": "set temp",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -448,7 +448,7 @@
                             "type": "objectId",
                             "attr": "actualtemp",
                             "width": "35%",
-                            "title": "actual_temp",
+                            "title": "actual temp",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -621,7 +621,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "heating_circuits",
+                    "label": "heating circuits",
                     "items": [
                         {
                             "type": "select",
@@ -662,7 +662,7 @@
                             "type": "select",
                             "attr": "weighton",
                             "width": "5%",
-                            "title": "weight_on",
+                            "title": "weighton",
                             "filter": false,
                             "sort": false,
                             "default": "1",
@@ -721,7 +721,7 @@
                             "type": "select",
                             "attr": "weightoff",
                             "width": "5%",
-                            "title": "weight_off",
+                            "title": "weightoff",
                             "filter": false,
                             "sort": false,
                             "default": "1",
