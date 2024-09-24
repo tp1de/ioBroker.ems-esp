@@ -73,5 +73,13 @@
     "tit_off": "uit",
     "tit_on": "op",
     "warn_cancel": "Annuleren",
-    "warn_ok": "Negeer waarschuwing"
+    "warn_ok": "Negeer waarschuwing",
+    "heat_demand": "Warmtevraag",
+    "state_attribute": "Staat attribuut",
+    "set_temp": "ingestelde temp",
+    "actual_temp": "werkelijke temp",
+    "weight": "weging",
+    "weight_on": "doorwegen",
+    "weight_off": "afwegen",
+    "heating_circuits": "Verwarmingscircuits"
 }

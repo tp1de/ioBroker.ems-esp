@@ -73,5 +73,13 @@
     "tit_off": "désactivé",
     "tit_on": "sur",
     "warn_cancel": "Annuler",
-    "warn_ok": "Ignorer l'avertissement"
+    "warn_ok": "Ignorer l'avertissement",
+    "heat_demand": "Demande de chaleur",
+    "state_attribute": "Attribut d'état",
+    "set_temp": "régler la température",
+    "actual_temp": "température réelle",
+    "weight": "pondération",
+    "weight_on": "pondération sur",
+    "weight_off": "pondération",
+    "heating_circuits": "Circuits de chauffage"
 }

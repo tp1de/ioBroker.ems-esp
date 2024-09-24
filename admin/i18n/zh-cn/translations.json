@@ -73,5 +73,13 @@
     "tit_off": "离开",
     "tit_on": "在",
     "warn_cancel": "取消",
-    "warn_ok": "忽略警告"
+    "warn_ok": "忽略警告",
+    "heat_demand": "热需求",
+    "state_attribute": "状态属性",
+    "set_temp": "设定温度",
+    "actual_temp": "实际温度",
+    "weight": "加权",
+    "weight_on": "权重于",
+    "weight_off": "减重",
+    "heating_circuits": "加热电路"
 }

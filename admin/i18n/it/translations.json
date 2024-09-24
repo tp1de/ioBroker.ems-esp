@@ -73,5 +73,13 @@
     "tit_off": "spento",
     "tit_on": "SU",
     "warn_cancel": "Annulla",
-    "warn_ok": "Ignora l'avviso"
+    "warn_ok": "Ignora l'avviso",
+    "heat_demand": "Domanda di calore",
+    "state_attribute": "Attributo statale",
+    "set_temp": "impostare la temp",
+    "actual_temp": "temperatura effettiva",
+    "weight": "ponderazione",
+    "weight_on": "pesando su",
+    "weight_off": "ponderazione",
+    "heating_circuits": "Circuiti di riscaldamento"
 }

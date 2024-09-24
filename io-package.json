@@ -168,7 +168,6 @@
         "admin": ">=6.13.16"
       }
     ],
-    
     "messages": [
       {
         "condition": {
@@ -269,10 +268,10 @@
     "devices": []
   },
   "encryptedNative": [
-      "private_pw"
-    ],
-    "protectedNative": [
-      "private_pw"
-    ],
+    "private_pw"
+  ],
+  "protectedNative": [
+    "private_pw"
+  ],
   "objects": []
 }

@@ -73,5 +73,13 @@
     "tit_off": "desligado",
     "tit_on": "sobre",
     "warn_cancel": "Cancelar",
-    "warn_ok": "Ignorar aviso"
+    "warn_ok": "Ignorar aviso",
+    "heat_demand": "Demanda de calor",
+    "state_attribute": "Atributo de estado",
+    "set_temp": "definir temperatura",
+    "actual_temp": "temperatura real",
+    "weight": "ponderação",
+    "weight_on": "ponderando",
+    "weight_off": "pesando",
+    "heating_circuits": "Circuitos de aquecimento"
 }

@@ -73,5 +73,13 @@
     "tit_off": "apagado",
     "tit_on": "en",
     "warn_cancel": "Cancelar",
-    "warn_ok": "ignorar advertencia"
+    "warn_ok": "ignorar advertencia",
+    "heat_demand": "Demanda de calor",
+    "state_attribute": "atributo de estado",
+    "set_temp": "establecer temperatura",
+    "actual_temp": "temperatura real",
+    "weight": "ponderación",
+    "weight_on": "ponderación en",
+    "weight_off": "ponderación",
+    "heating_circuits": "Circuitos de calefacción"
 }

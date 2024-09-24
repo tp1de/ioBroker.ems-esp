@@ -73,5 +73,13 @@
     "tit_off": "wyłączony",
     "tit_on": "NA",
     "warn_cancel": "Anulować",
-    "warn_ok": "Zignoruj ​​ostrzeżenie"
+    "warn_ok": "Zignoruj ​​ostrzeżenie",
+    "heat_demand": "Zapotrzebowanie na ciepło",
+    "state_attribute": "Atrybut stanu",
+    "set_temp": "ustawić temp",
+    "actual_temp": "rzeczywista temp",
+    "weight": "ważenie",
+    "weight_on": "ważenie",
+    "weight_off": "odciążyć",
+    "heating_circuits": "Obiegi grzewcze"
 }
