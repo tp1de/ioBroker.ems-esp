@@ -208,6 +208,46 @@
           "agree",
           "cancel"
         ]
+      },
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<5.0.0",
+            "newVersion>=5.0.0"
+          ]
+        },
+        "title": {
+          "en": "Important notice!",
+          "de": "Wichtiger Hinweis!",
+          "ru": "Важное замечание!",
+          "pt": "Notícia importante!",
+          "nl": "Belangrijke mededeling!",
+          "fr": "Avis important!",
+          "it": "Avviso IMPORTANTE!",
+          "es": "Noticia importante!",
+          "pl": "Ważna uwaga!",
+          "zh-cn": "重要通知!",
+          "uk": "Важливе повідомлення!"
+        },
+        "text": {
+          "en": "This update contains a breaking change. Please stop instance before installing and check parameters afterwards.",
+          "de": "Dieses Update enthält ein Breaking Change. Bitte stoppen Sie die Instanz vor der Installation und überprüfen Sie die Parameter danach.",
+          "ru": "Это обновление содержит нарушающие изменения. Пожалуйста, остановите экземпляр перед установкой и проверьте параметры после.",
+          "pt": "Esta atualização contém uma mudança de ruptura. Por favor, pare a instância antes de instalar e verificar os parâmetros depois.",
+          "nl": "Deze update bevat een breuk verandering. Stop instance voor het installeren en controleer parameters achteraf.",
+          "fr": "Cette mise à jour contient un changement de rupture. Veuillez arrêter l'instance avant d'installer et vérifier les paramètres après.",
+          "it": "Questo aggiornamento contiene un cambiamento di rottura. Si prega di interrompere l'istanza prima di installare e controllare i parametri in seguito.",
+          "es": "Esta actualización contiene un cambio de ruptura. Por favor deje de ejemplo antes de instalar y comprobar los parámetros después.",
+          "pl": "Ta aktualizacja zawiera przełomową zmianę. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
+          "uk": "Цей оновлення містить зміни розриву. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
+          "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
       }
     ]
   },

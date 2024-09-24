@@ -43,9 +43,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* km200: change encryption for private password - pw has to be re-entered 
+* breaking change for km200: new encryption for private password - pw has to be re-entered 
 * support small screens
-* update dependencies and translations
+* update dependencies
+* update translations
 
 ### 4.8.0 (2024-08-27)
 * ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway
