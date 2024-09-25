@@ -43,7 +43,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* breaking change for km200: new encryption for private password - pw has to be re-entered 
+* breaking change for km200: new encryption for private password - pw has to be re-entered
+* ems-esp: improve reading for temperatureSensors
 * support small screens
 * update dependencies
 * update translations
