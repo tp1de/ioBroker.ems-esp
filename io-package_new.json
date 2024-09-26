@@ -1,8 +1,86 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.6.2",
+    "version": "4.8.0",
     "news": {
+      "4.8.0": {
+        "en": "ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway",
+        "de": "ems-esp: deaktivierter Parameter zur Suche nach erweiterten EMS+-Einheiten aufgrund von Speicherbeschränkungen im Gateway",
+        "ru": "ems-esp: отключенный параметр для поиска расширенных EMS+ объектов из-за ограничений памяти в шлюзах",
+        "pt": "ems-esp: parâmetro desativado para procurar entidades EMS+ estendidas devido às limitações de memória no gateway",
+        "nl": "ems-esp: uitgeschakelde parameter om uitgebreide EMS+-entiteiten te zoeken vanwege geheugenbeperkingen in gateway",
+        "fr": "ems-esp: paramètre désactivé pour rechercher des entités EMS+ étendues en raison des limitations de mémoire dans la passerelle",
+        "it": "ems-esp: parametro disabilitato per la ricerca di entità EMS+ estese a causa delle limitazioni di memoria nel gateway",
+        "es": "ems-esp: Parámetro deshabilitado para buscar entidades EMS+ extendidas debido a limitaciones de memoria en gateway",
+        "pl": "ems- esp: nieaktywny parametr do wyszukiwania rozszerzonych jednostek EMS + z powodu ograniczeń pamięci w bramie",
+        "uk": "ems-esp: параметр відключення для пошуку розширених суб'єктів EMS+ через обмеження пам'яті в шлюзу",
+        "zh-cn": "ems- esp: 由于网关内存限制, 无法搜索扩展的EMS+ 实体的参数"
+      },
+      "4.7.2": {
+        "en": "ems-esp: enable writing on custom entities",
+        "de": "ems-esp: aktivieren sie das schreiben von benutzerdefinierten einheiten",
+        "ru": "ems-esp: включить написание на пользовательских объектах",
+        "pt": "ems-esp: permitir escrever em entidades personalizadas",
+        "nl": "ems-esp: schrijven op aangepaste entiteiten inschakelen",
+        "fr": "ems-esp: active l'écriture sur des entités personnalisées",
+        "it": "ems-esp: abilitare la scrittura su entità personalizzate",
+        "es": "ems-esp: habilitar la escritura en entidades personalizadas",
+        "pl": "ems- esp: umożliwia zapis na niestandardowych podmiotach",
+        "uk": "ems-esp: увімкніть написання на користувача",
+        "zh-cn": "ems- ep: 启用自定义实体的写入"
+      },
+      "4.7.1": {
+        "en": "ems-esp: custom entities are now under object structure \"custom\"",
+        "de": "ems-esp: benutzerdefinierte wesen sind jetzt unter objektstruktur \"custom\"",
+        "ru": "ems-esp: пользовательские сущности в настоящее время находятся под объектной структурой «custom»",
+        "pt": "ems-esp: entidades personalizadas estão agora sob estrutura de objeto \"personalizado\"",
+        "nl": "ems-esp: aangepaste entiteiten staan nu onder objectstructuur \"custom\"",
+        "fr": "ems-esp: les entités personnalisées sont désormais sous la structure de l'objet \"custom\"",
+        "it": "ems-esp: le entità personalizzate sono ora sotto la struttura dell'oggetto \"custom\"",
+        "es": "ems-esp: las entidades personalizadas están ahora bajo la estructura de objetos \"personal\"",
+        "pl": "ems- esp: podmioty niestandardowe są teraz pod strukturą obiektu \"niestandardowe\"",
+        "uk": "ems-esp: суб'єкти господарювання тепер під структурою об'єкта \"кутом\"",
+        "zh-cn": "ems- esp: 自定义实体现在处于对象结构“ custom” 下"
+      },
+      "4.7.0": {
+        "en": "ems-esp: do not allow more then one thermostat for extended own entities\nems-esp: error correction for holidayModes custom entities",
+        "de": "ems-esp: nicht zulassen mehr als ein thermostat für erweiterte eigene einrichtungen\nems-esp: Fehlerkorrektur für den Urlaub Moden benutzerdefinierte Einheiten",
+        "ru": "ems-esp: не допускайте больше, чем один термостат для расширенных собственных объектов\nems-esp: коррекция ошибок для отпуска Режимы",
+        "pt": "ems-esp: não permita mais um termostato para entidades próprias estendidas\nems-esp: correção de erro para férias Modos de entidades personalizadas",
+        "nl": "ems-esp: niet meer dan één thermostaat toestaan voor uitgebreide eigen entiteiten\nems-esp: foutcorrectie voor vakantie Modi aangepaste entiteiten",
+        "fr": "ems-esp: ne pas autoriser plus d'un thermostat pour les entités propres étendues\nems-esp: correction d'erreur pour les vacances Modes entités personnalisées",
+        "it": "ems-esp: non consentono più di un termostato per entità proprie estese\nems-esp: correzione di errore per le vacanze Modalità entità personalizzate",
+        "es": "ems-esp: no permita más entonces un termostato para entidades propias extendidas\nems-esp: corrección de error para vacaciones Modes custom entities",
+        "pl": "ems- esp: nie pozwól więcej niż jeden termostat dla rozszerzonych jednostek własnych\nems- esp: korekta błędów podczas wakacji Tryby podmiotów niestandardowych",
+        "uk": "ems-esp: не дозволяйте більше, ніж один термостат для розширених власних суб'єктів\nе-есп: виправлення помилок для свята Режими індивідуальних суб'єктів",
+        "zh-cn": "ems- esp : 不允许扩展的自身实体使用一个以上的自动调温器\nems- esp: 节假日错误校正 模式自定义实体"
+      },
+      "4.6.4": {
+        "en": "ems-esp: error correction on polling for 3.6.5",
+        "de": "ems-esp: fehlerkorrektur bei der abstimmung für 3.6.5",
+        "ru": "ems-esp: коррекция ошибок на выборах 3.6.5",
+        "pt": "ems-esp: correção de erro na sondagem para 3.6.5",
+        "nl": "ems-esp: foutcorrectie bij peiling voor 3.6.5",
+        "fr": "ems-esp: correction d'erreur lors du vote pour 3.6.5",
+        "it": "ems-esp: correzione di errore sul polling per 3.6.5",
+        "es": "ems-esp: corrección de error en la encuesta por 3.6.5",
+        "pl": "ems- esp: korekta błędów podczas sondażu dla 3.6.5",
+        "uk": "ems-esp: корекція помилок на опитуванні за 3.6.5",
+        "zh-cn": "ems-esp:3.6.5选票错误更正"
+      },
+      "4.6.3": {
+        "en": "small adjustments\ndependabot updates dependencies",
+        "de": "kleine anpassungen\nabhängigabot aktualisiert abhängigkeiten",
+        "ru": "небольшие корректировки\nзависимости обновлений",
+        "pt": "pequenos ajustes\ndependências de atualizações de dependabot",
+        "nl": "kleine aanpassingen\ndependabot updates afhankelijkheden",
+        "fr": "petits ajustements\ndépendances des mises à jour de dependabot",
+        "it": "piccoli aggiustamenti\naggiornamenti dipendenze",
+        "es": "pequeños ajustes\ndependencias de actualizaciones",
+        "pl": "niewielkie dostosowania\nzależności od aktualizacji zależnościname",
+        "uk": "невеликі настройки\nзалежностей",
+        "zh-cn": "小调整\n依赖性更新"
+      },
       "4.6.2": {
         "en": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time",
         "de": "ems-esp: neustart von ems init/polling nach firmware-versionsänderung und 90 sekunden wartezeit",
@@ -15,84 +93,6 @@
         "pl": "ems- esp: ponownie wprowadzić restart ems init / polling po zmianie wersji firmware i 90 sekund oczekiwania",
         "uk": "ems-esp: re-introduce перезавантаження емів init/polling після зміни версії прошивки і 90 секунд очікування час",
         "zh-cn": "ems-esp:在固件版本更改和90秒等待时间后,重新激活ems init/poling"
-      },
-      "4.6.1": {
-        "en": "ems-esp: no version change message if actual version can not be read during polling cycle",
-        "de": "ems-esp: keine versionsänderungsnachricht, wenn die tatsächliche version während des abfragezyklus nicht gelesen werden kann",
-        "ru": "ems-esp: нет сообщения об изменении версии, если реальная версия не может быть прочитана во время цикла голосования",
-        "pt": "ems-esp: nenhuma mensagem de mudança de versão se a versão real não puder ser lida durante o ciclo de votação",
-        "nl": "ems-esp: geen versiewijzigbericht als de werkelijke versie niet kan worden gelezen tijdens de stemcyclus",
-        "fr": "ems-esp: pas de message de changement de version si la version réelle ne peut pas être lue pendant le cycle de vote",
-        "it": "ems-esp: nessun messaggio di cambiamento di versione se la versione reale non può essere letta durante il ciclo di polling",
-        "es": "ems-esp: ningún mensaje de cambio de versión si la versión real no se puede leer durante el ciclo de votación",
-        "pl": "ems- esp: brak wiadomości o zmianie wersji, jeżeli nie można odczytać rzeczywistej wersji podczas cyklu wyborczego",
-        "uk": "ems-esp: не змінить повідомлення, якщо фактична версія не може прочитати під час циклу опитування",
-        "zh-cn": "ems- esp: 如果在投票周期无法读取实际版本, 没有版本更改消息"
-      },
-      "4.6.0": {
-        "en": "disable automatic instance re-start on firmware changes\nems-esp: new config-structure for extended entities (beta-version)\nems-esp: support switchProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats \nupdate dependencies (dependabot)",
-        "de": "deaktivieren automatische instanz neustart auf firmware-änderungen\nems-esp: neue config-struktur für erweiterte unternehmen (beta-version)\nems-esp: Unterstützungsschalter ProgramModes zwischen Ebene (eco/comfort) und absolute (Temperaturen) für EMS+ Thermostate\naktualisierung abhängigkeiten (dependabot)",
-        "ru": "отключить автоматический пример перезапуск на изменения прошивки\nems-esp: новая конфигурационная структура для расширенных объектов (бета-версия)\nems-esp: коммутатор поддержки ProgramModes between level (eco/comfort) and absolute (temperatures) for EMS+ thermostats\nобновление зависимостей (dependabot)",
-        "pt": "desativar a instância automática reiniciar em alterações de firmware\nems-esp: nova estrutura de configuração para entidades estendidas (beta-versão)\nems-esp: interruptor de suporte ProgramaModos entre nível (eco/conforto) e absoluto (temperaturas) para termostatos EMS+\ndependências de atualização (dependabot)",
-        "nl": "automatisch opnieuw opstarten van instantie bij wijzigingen in firmware uitschakelen\nems-esp: nieuwe configuratie-structuur voor uitgebreide entiteiten (beta-versie)\nems-esp: ondersteuningsschakelaar ProgrammaModes tussen niveau (eco/comfort) en absolute (temperatuur) voor EMS+ thermostaten\nafhankelijkheden bijwerken (dependabot)",
-        "fr": "désactiver le redémarrage automatique de l'instance sur les modifications du firmware\nems-esp: nouvelle structure de configuration pour les entités étendues (version beta)\nems-esp: commutateur de support ProgrammeModes entre niveau (éco/confort) et absolu (température) pour les thermostats EMS+\nmettre à jour les dépendances (dependabot)",
-        "it": "disattivare il riavvio automatico delle istanze sulle modifiche del firmware\nems-esp: nuova configurazione-struttura per entità estese (beta-version)\nems-esp: interruttore di supporto Modalità di programma tra livello (eco/comfort) e assoluto (temperature) per termostati EMS+\naggiornamento dipendenze (dependabot)",
-        "es": "deshabilitar la instancia automática reiniciar en cambios de firmware\nems-esp: nueva configuración para las entidades extendidas (versión beta)\nems-esp: interruptor de soporte ProgramModes entre nivel (eco/comfort) y absoluto (temperaturas) para termostatos EMS+\ndependencias de actualización (dependabot)",
-        "pl": "wyłączenie automatycznego uruchamiania instancji przy zmianie oprogramowania firmowego\nems- esp: nowa struktura konfiguracji rozszerzonych jednostek (wersja beta-)\nems- esp: przełącznik wsparcia Program Modes między poziomem (eco / komfort) a bezwzględnym (temperatura) dla termostatów EMS +\naktualizacji zależności (zależności)",
-        "uk": "відключити автоматичний екземпляр re-start на зміни прошивки\nems-esp: новий config-структура для розширених суб'єктів (beta-version)\nems-esp: перемикач підтримки ПрограмаМоди між рівнем (eco/comfort) та абсолютними (температури) для термостатів EMS+\nоновлення залежностей",
-        "zh-cn": "在固件更改时禁用自动启动实例\nems- esp: 扩展实体的新配置结构(β版)\nems-esp: 支持开关 EMS+自动调温器的电位(生态/舒适)和绝对(温度)之间的程序模式\n更新依赖性( 依赖性)"
-      },
-      "4.5.0": {
-        "en": "ems-esp: own entities switchTimes EMS+",
-        "de": "ems-esp: eigene Einheiten wechseln EMS+",
-        "ru": "ems-esp: собственные сущности переключаются Times EMS+",
-        "pt": "ems-esp: switch de entidades próprias Tempos EMS+",
-        "nl": "ems-esp: eigen entiteiten switch Tijden EMS+",
-        "fr": "ems-esp: changement d'entités propres Temps EMS+",
-        "it": "ems-esp: switch di entità proprie Times EMS+",
-        "es": "ems-esp: las propias entidades cambian Times EMS+",
-        "pl": "ems- esp: przełącznik jednostek własnych Czasy EMS +",
-        "uk": "ems-esp: власний комунікатор Терміни EMS+",
-        "zh-cn": "ems- esp: 自有实体切换 时间 EMS+"
-      },
-      "4.4.5": {
-        "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27 - part 2",
-        "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27 - teil 2",
-        "ru": "ems-esp: корректируйте на изменения имени в версии 3.7.0-dev.27 - часть 2",
-        "pt": "ems-esp: ajuste para alterações de nome na versão 3.7.0-dev.27 - parte 2",
-        "nl": "ems-esp: aanpassen aan naamwijzigingen in versie 3.7.0-dev.27 - deel 2",
-        "fr": "ems-esp: ajuster aux changements de nom dans la version 3.7.0-dev.27 - partie 2",
-        "it": "ems-esp: regolare le modifiche del nome nella versione 3.7.0-dev.27 - parte 2",
-        "es": "ems-esp: ajuste a los cambios de nombre en la versión 3.7.0-dev.27 - parte 2",
-        "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27 - część 2",
-        "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27 - частина 2",
-        "zh-cn": "ems-esp:根据3.7.0-dev.27 - 第二部分中的名称变化进行调整"
-      },
-      "4.4.4": {
-        "en": "ems-esp: adjust to name changes in version 3.7.0-dev.27",
-        "de": "ems-esp: anpassung an namensänderungen in version 3.7.0-dev.27",
-        "ru": "ems-esp: настроить на изменения имени в версии 3.7.0-dev.27",
-        "pt": "ems-esp: ajustar às alterações de nome na versão 3.7.0-dev.27",
-        "nl": "ems-esp: aanpassen aan naamwijzigingen in versie 3.7.0-dev.27",
-        "fr": "ems-esp: ajuster aux changements de nom dans la version 3.7.0-dev.27",
-        "it": "ems-esp: si adatta alle modifiche del nome nella versione 3.7.0-dev.27",
-        "es": "ems-esp: ajuste a los cambios de nombre en la versión 3.7.0-dev.27",
-        "pl": "ems- esp: dostosować do zmian nazwy w wersji 3.7.0- dev.27",
-        "uk": "ems-esp: налаштувати зміни назв в версії 3.7.0-dev.27",
-        "zh-cn": "ems-esp:根据3.7.0-dev.27版本中的名称变化进行调整"
-      },
-      "4.4.3": {
-        "en": "ems-esp: delete the esp object-structure on start of the adapter instance. It will be rebuild.",
-        "de": "ems-esp: Löschen Sie die esp-Objektstruktur beim Start der Adapterinstanz. Es wird wieder aufgebaut.",
-        "ru": "ems-esp: Удалить объектно-структуру esp в начале экземпляра адаптера. Он будет восстановлен.",
-        "pt": "ems-esp: exclua a estrutura do objeto esp no início da instância do adaptador. Vai ser uma reconstrução.",
-        "nl": "ems-esp: verwijder de esp objectstructuur bij het begin van de adapter instantie. Het zal worden herbouwd.",
-        "fr": "ems-esp: supprimer la structure objet esp au début de l'instance adaptateur. Il sera reconstruit.",
-        "it": "ems-esp: eliminare la struttura dell'oggetto esp all'inizio dell'istanza dell'adattatore. Sarà ricostruita.",
-        "es": "ems-esp: eliminar la estructura del objeto esp en el inicio de la instancia del adaptador. Será reconstruido.",
-        "pl": "ems- esp: usuń strukturę obiektu esp na początku instancji adaptera. To będzie odbudowa.",
-        "uk": "ems-esp: видалення об'єкта-структури запобіжника на старті екземпляра адаптера. Це буде перебудувати.",
-        "zh-cn": "ems-esp:在适配器实例启动时删除 esp 对象结构 。 它将重建."
       }
     },
     "titleLang": {
@@ -208,6 +208,46 @@
           "agree",
           "cancel"
         ]
+      },
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<5.0.0",
+            "newVersion>=5.0.0"
+          ]
+        },
+        "title": {
+          "en": "Important notice!",
+          "de": "Wichtiger Hinweis!",
+          "ru": "Важное замечание!",
+          "pt": "Notícia importante!",
+          "nl": "Belangrijke mededeling!",
+          "fr": "Avis important!",
+          "it": "Avviso IMPORTANTE!",
+          "es": "Noticia importante!",
+          "pl": "Ważna uwaga!",
+          "zh-cn": "重要通知!",
+          "uk": "Важливе повідомлення!"
+        },
+        "text": {
+          "en": "This update contains a breaking change. Please stop instance before installing and check parameters afterwards.",
+          "de": "Dieses Update enthält ein Breaking Change. Bitte stoppen Sie die Instanz vor der Installation und überprüfen Sie die Parameter danach.",
+          "ru": "Это обновление содержит нарушающие изменения. Пожалуйста, остановите экземпляр перед установкой и проверьте параметры после.",
+          "pt": "Esta atualização contém uma mudança de ruptura. Por favor, pare a instância antes de instalar e verificar os parâmetros depois.",
+          "nl": "Deze update bevat een breuk verandering. Stop instance voor het installeren en controleer parameters achteraf.",
+          "fr": "Cette mise à jour contient un changement de rupture. Veuillez arrêter l'instance avant d'installer et vérifier les paramètres après.",
+          "it": "Questo aggiornamento contiene un cambiamento di rottura. Si prega di interrompere l'istanza prima di installare e controllare i parametri in seguito.",
+          "es": "Esta actualización contiene un cambio de ruptura. Por favor deje de ejemplo antes de instalar y comprobar los parámetros después.",
+          "pl": "Ta aktualizacja zawiera przełomową zmianę. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
+          "uk": "Цей оновлення містить зміни розриву. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
+          "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
       }
     ]
   },
@@ -268,10 +308,10 @@
     "devices": []
   },
   "encryptedNative": [
-      "private_pw"
-    ],
+    "private_pw"
+  ],
   "protectedNative": [
-      "private_pw"
+    "private_pw"
   ],
   "objects": []
 }
