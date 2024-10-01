@@ -215,8 +215,7 @@
           "cancel"
         ]
       }
-    ],
-    "installedFrom": "iobroker.ems-esp@4.8.0"
+    ]
   },
   "native": {
     "private_pw": "",
