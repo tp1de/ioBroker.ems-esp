@@ -547,29 +547,25 @@
                             "options": [
                                 {
                                     "label": {
-                                        "en": "hc1",
-                                        "de": "HK1"
+                                        "en": "hc1"
                                     },
                                     "value": "hc1"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc2",
-                                        "de": "HK2"
+                                        "en": "hc2"
                                     },
                                     "value": "hc2"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc3",
-                                        "de": "HK3"
+                                        "en": "hc3"
                                     },
                                     "value": "hc3"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc4",
-                                        "de": "HK4"
+                                        "en": "hc4"
                                     },
                                     "value": "hc4"
                                 }
@@ -638,29 +634,25 @@
                             "options": [
                                 {
                                     "label": {
-                                        "en": "hc1",
-                                        "de": "HK1"
+                                        "en": "hc1"
                                     },
                                     "value": "hc1"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc2",
-                                        "de": "HK2"
+                                        "en": "hc2"
                                     },
                                     "value": "hc2"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc3",
-                                        "de": "HK3"
+                                        "en": "hc3"
                                     },
                                     "value": "hc3"
                                 },
                                 {
                                     "label": {
-                                        "en": "hc4",
-                                        "de": "HK4"
+                                        "en": "hc4"
                                     },
                                     "value": "hc4"
                                 }
@@ -816,7 +808,7 @@
                             "type": "checkbox",
                             "attr": "savesettemp",
                             "width": "5%",
-                            "title": "save_settemp",
+                            "title": "savesettemp",
                             "filter": false,
                             "sort": false,
                             "default": ""
@@ -1104,7 +1096,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
-                    "label": "switch_programs",
+                    "label": "switchPrograms",
                     "style": {
                         "fontSize": 8
                     },
