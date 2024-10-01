@@ -1,4 +1,8 @@
 * older changes
+## 4.7.0 (2024-08-16)
+* ems-esp: do not allow more then one thermostat for extended own entities
+* ems-esp: error correction for holidayModes custom entities
+
 ## 4.6.4 (2024-08-14)
 * ems-esp: error correction on polling for 3.6.5
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.9.0",
+    "version": "4.9.1",
     "news": {
+      "4.9.1": {
+        "en": "update dependencies\nupdate translations",
+        "de": "aktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
+        "ru": "обновление зависимостей\nобновление переводов",
+        "pt": "dependências\ntraduções de atualização",
+        "nl": "afhankelijkheden bijwerken\nvertalingen bijwerken",
+        "fr": "mettre à jour les dépendances\nmettre à jour les traductions",
+        "it": "aggiornamento dipendenze\naggiornare le traduzioni",
+        "es": "dependencias de actualización\ntraducción actualizada",
+        "pl": "aktualizacji zależności\naktualizacja tłumaczeń",
+        "uk": "оновлення залежності\nоновлення перекладів",
+        "zh-cn": "更新依赖关系\n更新翻译"
+      },
       "4.9.0": {
         "en": "ems-esp: improve reading for temperatureSensors\nsupport small screens\nupdate dependencies\nupdate translations",
         "de": "ems-esp: das Lesen der Temperatur verbessern Sensoren\nkleine bildschirme unterstützen\naktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: korekta błędów podczas sondażu dla 3.6.5",
         "uk": "ems-esp: корекція помилок на опитуванні за 3.6.5",
         "zh-cn": "ems-esp:3.6.5选票错误更正"
-      },
-      "4.6.3": {
-        "en": "small adjustments\ndependabot updates dependencies",
-        "de": "kleine anpassungen\nabhängigabot aktualisiert abhängigkeiten",
-        "ru": "небольшие корректировки\nзависимости обновлений",
-        "pt": "pequenos ajustes\ndependências de atualizações de dependabot",
-        "nl": "kleine aanpassingen\ndependabot updates afhankelijkheden",
-        "fr": "petits ajustements\ndépendances des mises à jour de dependabot",
-        "it": "piccoli aggiustamenti\naggiornamenti dipendenze",
-        "es": "pequeños ajustes\ndependencias de actualizaciones",
-        "pl": "niewielkie dostosowania\nzależności od aktualizacji zależnościname",
-        "uk": "невеликі настройки\nзалежностей",
-        "zh-cn": "小调整\n依赖性更新"
       }
     },
     "titleLang": {
