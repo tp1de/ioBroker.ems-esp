@@ -1,47 +1,8 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.9.2",
+    "version": "4.8.0",
     "news": {
-      "4.9.2": {
-        "en": "update translations\nresponsive design added",
-        "de": "übersetzungen aktualisieren\nansprechendes design hinzugefügt",
-        "ru": "обновление переводов\nадаптивный дизайн добавлен",
-        "pt": "traduções de atualização\ndesign responsivo adicionado",
-        "nl": "vertalingen bijwerken\nresponsief ontwerp toegevoegd",
-        "fr": "mettre à jour les traductions\ndesign adapté ajouté",
-        "it": "aggiornare le traduzioni\ndesign reattivo aggiunto",
-        "es": "traducción actualizada\ndiseño sensible añadido",
-        "pl": "aktualizacja tłumaczeń\nresponsible design added",
-        "uk": "оновлення перекладів\nдодано адаптивний дизайн",
-        "zh-cn": "更新翻译\n添加应答设计"
-      },
-      "4.9.1": {
-        "en": "update dependencies\nupdate translations",
-        "de": "aktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
-        "ru": "обновление зависимостей\nобновление переводов",
-        "pt": "dependências\ntraduções de atualização",
-        "nl": "afhankelijkheden bijwerken\nvertalingen bijwerken",
-        "fr": "mettre à jour les dépendances\nmettre à jour les traductions",
-        "it": "aggiornamento dipendenze\naggiornare le traduzioni",
-        "es": "dependencias de actualización\ntraducción actualizada",
-        "pl": "aktualizacji zależności\naktualizacja tłumaczeń",
-        "uk": "оновлення залежності\nоновлення перекладів",
-        "zh-cn": "更新依赖关系\n更新翻译"
-      },
-      "4.9.0": {
-        "en": "ems-esp: improve reading for temperatureSensors\nsupport small screens\nupdate dependencies\nupdate translations",
-        "de": "ems-esp: das Lesen der Temperatur verbessern Sensoren\nkleine bildschirme unterstützen\naktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
-        "ru": "ems-esp: улучшение чтения для температуры Датчики\nподдержка небольших экранов\nобновление зависимостей\nобновление переводов",
-        "pt": "ems-esp: melhorar a leitura da temperatura Sensores\nsuporte telas pequenas\ndependências\ntraduções de atualização",
-        "nl": "ems-esp: verbeteren van het lezen voor temperatuur Sensoren\nkleine schermen ondersteunen\nafhankelijkheden bijwerken\nvertalingen bijwerken",
-        "fr": "ems-esp: améliorer la lecture pour la température Capteurs\nsoutenir les petits écrans\nmettre à jour les dépendances\nmettre à jour les traductions",
-        "it": "ems-esp: migliorare la lettura per la temperatura Sensori\nsupporto piccoli schermi\naggiornamento dipendenze\naggiornare le traduzioni",
-        "es": "ems-esp: mejorar la lectura para la temperatura Sensores\nsoporte pantallas pequeñas\ndependencias de actualización\ntraducción actualizada",
-        "pl": "ems- esp: poprawić odczyt temperatury Czujniki\nwsparcie dla małych ekranów\naktualizacji zależności\naktualizacja tłumaczeń",
-        "uk": "ems-esp: поліпшення читання для температури Датчики\nпідтримка невеликих екранів\nоновлення залежності\nоновлення перекладів",
-        "zh-cn": "ems-esp: 改善温度读取 传感器\n支持小屏幕\n更新依赖关系\n更新翻译"
-      },
       "4.8.0": {
         "en": "ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway",
         "de": "ems-esp: deaktivierter Parameter zur Suche nach erweiterten EMS+-Einheiten aufgrund von Speicherbeschränkungen im Gateway",
@@ -93,6 +54,45 @@
         "pl": "ems- esp: nie pozwól więcej niż jeden termostat dla rozszerzonych jednostek własnych\nems- esp: korekta błędów podczas wakacji Tryby podmiotów niestandardowych",
         "uk": "ems-esp: не дозволяйте більше, ніж один термостат для розширених власних суб'єктів\nе-есп: виправлення помилок для свята Режими індивідуальних суб'єктів",
         "zh-cn": "ems- esp : 不允许扩展的自身实体使用一个以上的自动调温器\nems- esp: 节假日错误校正 模式自定义实体"
+      },
+      "4.6.4": {
+        "en": "ems-esp: error correction on polling for 3.6.5",
+        "de": "ems-esp: fehlerkorrektur bei der abstimmung für 3.6.5",
+        "ru": "ems-esp: коррекция ошибок на выборах 3.6.5",
+        "pt": "ems-esp: correção de erro na sondagem para 3.6.5",
+        "nl": "ems-esp: foutcorrectie bij peiling voor 3.6.5",
+        "fr": "ems-esp: correction d'erreur lors du vote pour 3.6.5",
+        "it": "ems-esp: correzione di errore sul polling per 3.6.5",
+        "es": "ems-esp: corrección de error en la encuesta por 3.6.5",
+        "pl": "ems- esp: korekta błędów podczas sondażu dla 3.6.5",
+        "uk": "ems-esp: корекція помилок на опитуванні за 3.6.5",
+        "zh-cn": "ems-esp:3.6.5选票错误更正"
+      },
+      "4.6.3": {
+        "en": "small adjustments\ndependabot updates dependencies",
+        "de": "kleine anpassungen\nabhängigabot aktualisiert abhängigkeiten",
+        "ru": "небольшие корректировки\nзависимости обновлений",
+        "pt": "pequenos ajustes\ndependências de atualizações de dependabot",
+        "nl": "kleine aanpassingen\ndependabot updates afhankelijkheden",
+        "fr": "petits ajustements\ndépendances des mises à jour de dependabot",
+        "it": "piccoli aggiustamenti\naggiornamenti dipendenze",
+        "es": "pequeños ajustes\ndependencias de actualizaciones",
+        "pl": "niewielkie dostosowania\nzależności od aktualizacji zależnościname",
+        "uk": "невеликі настройки\nзалежностей",
+        "zh-cn": "小调整\n依赖性更新"
+      },
+      "4.6.2": {
+        "en": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 seconds waiting time",
+        "de": "ems-esp: neustart von ems init/polling nach firmware-versionsänderung und 90 sekunden wartezeit",
+        "ru": "ems-esp: повторно ввести перезапуск ems init/polling после изменения версии прошивки и 90 секунд ожидания",
+        "pt": "ems-esp: re-introduce restart de ems init/polling após a mudança da versão do firmware e 90 segundos tempo de espera",
+        "nl": "ems-esp: herstart van ems init/polling na wijziging van firmwareversie en 90 seconden wachttijd",
+        "fr": "ems-esp: réintroduire le redémarrage de ems init/polling après le changement de version du firmware et 90 secondes de temps d'attente",
+        "it": "ems-esp: re-introdurre il riavvio di ems init/polling dopo il cambiamento della versione del firmware e 90 secondi tempo di attesa",
+        "es": "ems-esp: re-introduce restart of ems init/polling after firmware version change and 90 segundos waiting time",
+        "pl": "ems- esp: ponownie wprowadzić restart ems init / polling po zmianie wersji firmware i 90 sekund oczekiwania",
+        "uk": "ems-esp: re-introduce перезавантаження емів init/polling після зміни версії прошивки і 90 секунд очікування час",
+        "zh-cn": "ems-esp:在固件版本更改和90秒等待时间后,重新激活ems init/poling"
       }
     },
     "titleLang": {
@@ -208,6 +208,46 @@
           "agree",
           "cancel"
         ]
+      },
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<5.0.0",
+            "newVersion>=5.0.0"
+          ]
+        },
+        "title": {
+          "en": "Important notice!",
+          "de": "Wichtiger Hinweis!",
+          "ru": "Важное замечание!",
+          "pt": "Notícia importante!",
+          "nl": "Belangrijke mededeling!",
+          "fr": "Avis important!",
+          "it": "Avviso IMPORTANTE!",
+          "es": "Noticia importante!",
+          "pl": "Ważna uwaga!",
+          "zh-cn": "重要通知!",
+          "uk": "Важливе повідомлення!"
+        },
+        "text": {
+          "en": "Encryption for private password (km200) has changed and needs to be re-entered.\n",
+          "de": "Die Verschlüsselung für privates Passwort (km200) hat sich geändert und muss neu eingesehen werden.\n",
+          "ru": "Шифрование для частного пароля (км200) изменилось и должно быть повторно введено.\n",
+          "pt": "A criptografia para senha privada (km200) mudou e precisa ser reinserida.\n",
+          "nl": "Versleuteling voor privé-wachtwoord (km200) is veranderd en moet opnieuw worden ingevoerd.\n",
+          "fr": "Le chiffrement du mot de passe privé (km200) a changé et doit être réintroduit.\n",
+          "it": "Crittografia per password privata (km200) è cambiato e ha bisogno di essere ri-entrato.\n",
+          "es": "El cifrado para contraseña privada (km200) ha cambiado y necesita ser reiniciado.\n",
+          "pl": "Szyfrowanie prywatnego hasła (km200) zmieniło się i wymaga ponownego wprowadzenia.\n",
+          "uk": "Зашифрування для приватного пароля (km200) змінено та потребує повторного оновлення.\n",
+          "zh-cn": "私密密码(km200)的加密已经改变,需要重新输入.\n"
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
       }
     ]
   },
@@ -267,5 +307,11 @@
     "function": "heating",
     "devices": []
   },
+  "encryptedNative": [
+    "private_pw"
+  ],
+  "protectedNative": [
+    "private_pw"
+  ],
   "objects": []
 }
