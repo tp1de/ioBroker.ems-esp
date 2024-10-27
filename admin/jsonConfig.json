@@ -1,6 +1,9 @@
 {
     "i18n": true,
     "type": "tabs",
+    "tabsStyle": {
+        "width": "calc(100% - 100px)"
+    },
     "items": {
         "tab-ems-esp": {
             "type": "panel",
@@ -19,7 +22,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_polling": {
                     "type": "number",
@@ -30,7 +34,8 @@
                     "xs": 12,
                     "sm": 4,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "km200_structure": {
                     "type": "checkbox",
@@ -38,7 +43,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_expert_on": {
                     "type": "checkbox",
@@ -55,7 +61,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_dallas": {
                     "newLine": true,
@@ -64,7 +71,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_dallas_old_format": {
                     "type": "checkbox",
@@ -72,7 +80,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_analog": {
                     "type": "checkbox",
@@ -80,7 +89,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_custom_elements": {
                     "type": "checkbox",
@@ -88,7 +98,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_token": {
                     "newLine": true,
@@ -97,7 +108,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 12,
-                    "lg": 12
+                    "lg": 12,
+                    "xl": 12
                 },
                 "ems_energy": {
                     "newLine": true,
@@ -106,7 +118,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 12,
-                    "lg": 12
+                    "lg": 12,
+                    "xl": 12
                 },
                 "ems_nominalpower": {
                     "newLine": true,
@@ -118,7 +131,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "ems_modulation": {
                     "type": "objectId",
@@ -126,7 +140,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 5,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "ems_wwactive": {
                     "type": "objectId",
@@ -134,7 +149,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 5,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 }
             }
         },
@@ -155,7 +171,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "km200_polling": {
                     "type": "number",
@@ -165,7 +182,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "control_file": {
                     "type": "select",
@@ -187,7 +205,8 @@
                     "xs": 12,
                     "sm": 8,
                     "md": 4,
-                    "lg": 4
+                    "lg": 4,
+                    "xl": 4
                 },
                 "gateway_pw": {
                     "newLine": true,
@@ -197,7 +216,8 @@
                     "xs": 12,
                     "sm": 8,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "private_pw": {
                     "type": "password",
@@ -208,7 +228,8 @@
                     "xs": 12,
                     "sm": 8,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "recordings": {
                     "newLine": true,
@@ -242,7 +263,8 @@
                     "xs": 12,
                     "sm": 9,
                     "md": 3,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "db": {
                     "type": "instance",
@@ -258,7 +280,8 @@
                     "xs": 12,
                     "sm": 4,
                     "md": 2,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "states_reorg": {
                     "newLine": true,
@@ -267,7 +290,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "statistics": {
                     "type": "checkbox",
@@ -275,7 +299,8 @@
                     "xs": 12,
                     "sm": 8,
                     "md": 6,
-                    "lg": 4
+                    "lg": 4,
+                    "xl": 4
                 },
                 "room": {
                     "newLine": true,
@@ -284,7 +309,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "function": {
                     "type": "func",
@@ -292,7 +318,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 2
+                    "lg": 2,
+                    "xl": 2
                 },
                 "eff_active": {
                     "newLine": true,
@@ -306,7 +333,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "supplytemp": {
                     "type": "objectId",
@@ -314,7 +342,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "returntemp": {
                     "type": "objectId",
@@ -322,7 +351,8 @@
                     "xs": 12,
                     "sm": 6,
                     "md": 4,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "eff20": {
                     "newLine": true,
@@ -331,7 +361,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff25": {
                     "type": "number",
@@ -339,7 +370,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff30": {
                     "type": "number",
@@ -347,7 +379,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff35": {
                     "type": "number",
@@ -355,7 +388,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff40": {
                     "type": "number",
@@ -363,7 +397,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff45": {
                     "type": "number",
@@ -371,7 +406,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff50": {
                     "type": "number",
@@ -379,7 +415,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff55": {
                     "type": "number",
@@ -387,7 +424,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff60": {
                     "type": "number",
@@ -395,7 +433,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 },
                 "eff70": {
                     "type": "number",
@@ -403,7 +442,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 1,
-                    "lg": 1
+                    "lg": 1,
+                    "xl": 1
                 }
             }
         },
@@ -423,6 +463,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "state_attribute",
                     "items": [
                         {
@@ -625,6 +666,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "heating_circuits",
                     "items": [
                         {
@@ -844,7 +886,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "syslog_port": {
                     "type": "number",
@@ -852,7 +895,8 @@
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
-                    "lg": 3
+                    "lg": 3,
+                    "xl": 3
                 },
                 "ems_custom": {
                     "newLine": true,
@@ -866,6 +910,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "Devices",
                     "style": {
                         "fontSize": 8
@@ -1104,6 +1149,7 @@
                     "sm": 12,
                     "md": 12,
                     "lg": 12,
+                    "xl": 12,
                     "label": "switch_programs",
                     "style": {
                         "fontSize": 8
