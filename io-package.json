@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.9.1",
+    "version": "4.9.2",
     "news": {
+      "4.9.2": {
+        "en": "update translations\nresponsive design added",
+        "de": "übersetzungen aktualisieren\nansprechendes design hinzugefügt",
+        "ru": "обновление переводов\nадаптивный дизайн добавлен",
+        "pt": "traduções de atualização\ndesign responsivo adicionado",
+        "nl": "vertalingen bijwerken\nresponsief ontwerp toegevoegd",
+        "fr": "mettre à jour les traductions\ndesign adapté ajouté",
+        "it": "aggiornare le traduzioni\ndesign reattivo aggiunto",
+        "es": "traducción actualizada\ndiseño sensible añadido",
+        "pl": "aktualizacja tłumaczeń\nresponsible design added",
+        "uk": "оновлення перекладів\nдодано адаптивний дизайн",
+        "zh-cn": "更新翻译\n添加应答设计"
+      },
       "4.9.1": {
         "en": "update dependencies\nupdate translations",
         "de": "aktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: nie pozwól więcej niż jeden termostat dla rozszerzonych jednostek własnych\nems- esp: korekta błędów podczas wakacji Tryby podmiotów niestandardowych",
         "uk": "ems-esp: не дозволяйте більше, ніж один термостат для розширених власних суб'єктів\nе-есп: виправлення помилок для свята Режими індивідуальних суб'єктів",
         "zh-cn": "ems- esp : 不允许扩展的自身实体使用一个以上的自动调温器\nems- esp: 节假日错误校正 模式自定义实体"
-      },
-      "4.6.4": {
-        "en": "ems-esp: error correction on polling for 3.6.5",
-        "de": "ems-esp: fehlerkorrektur bei der abstimmung für 3.6.5",
-        "ru": "ems-esp: коррекция ошибок на выборах 3.6.5",
-        "pt": "ems-esp: correção de erro na sondagem para 3.6.5",
-        "nl": "ems-esp: foutcorrectie bij peiling voor 3.6.5",
-        "fr": "ems-esp: correction d'erreur lors du vote pour 3.6.5",
-        "it": "ems-esp: correzione di errore sul polling per 3.6.5",
-        "es": "ems-esp: corrección de error en la encuesta por 3.6.5",
-        "pl": "ems- esp: korekta błędów podczas sondażu dla 3.6.5",
-        "uk": "ems-esp: корекція помилок на опитуванні за 3.6.5",
-        "zh-cn": "ems-esp:3.6.5选票错误更正"
       }
     },
     "titleLang": {
