@@ -44,6 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * update translations
+* responsive design added
 
 ### 4.9.1 (2024-10-01)
 * update dependencies
