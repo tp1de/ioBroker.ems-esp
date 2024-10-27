@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "4.9.2",
+    "version": "5.0.0",
     "news": {
+      "5.0.0": {
+        "en": "change encryption for private passwort (km200) - needs to be re-entered",
+        "de": "änderung der verschlüsselung für privatpasswort (km200) - muss neu eingesehen werden",
+        "ru": "изменить шифрование для частных пассивов (км200) - необходимо повторно ввести",
+        "pt": "mudar a criptografia para a passwort privada (km200) - precisa ser re-entrada",
+        "nl": "wijzigen encryptie voor privé passwort (km200) - moet opnieuw worden ingevoerd",
+        "fr": "cryptage de changement pour passwort privé (km200) - doit être à nouveau entré",
+        "it": "cambiamento di crittografia per passwort privato (km200) - ha bisogno di essere rientrato",
+        "es": "cambio de cifrado para pólvora privada (km200) - necesita ser reiniciado",
+        "pl": "zmiana szyfrowania dla prywatnych passwortów (km200) - musi zostać ponownie wprowadzona",
+        "uk": "змінити шифрування для приватного пасту (km200) - потрібно бути повторним",
+        "zh-cn": "更改私人密码加密( km200) - 需要重新输入"
+      },
       "4.9.2": {
         "en": "update translations\nresponsive design added",
         "de": "übersetzungen aktualisieren\nansprechendes design hinzugefügt",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: podmioty niestandardowe są teraz pod strukturą obiektu \"niestandardowe\"",
         "uk": "ems-esp: суб'єкти господарювання тепер під структурою об'єкта \"кутом\"",
         "zh-cn": "ems- esp: 自定义实体现在处于对象结构“ custom” 下"
-      },
-      "4.7.0": {
-        "en": "ems-esp: do not allow more then one thermostat for extended own entities\nems-esp: error correction for holidayModes custom entities",
-        "de": "ems-esp: nicht zulassen mehr als ein thermostat für erweiterte eigene einrichtungen\nems-esp: Fehlerkorrektur für den Urlaub Moden benutzerdefinierte Einheiten",
-        "ru": "ems-esp: не допускайте больше, чем один термостат для расширенных собственных объектов\nems-esp: коррекция ошибок для отпуска Режимы",
-        "pt": "ems-esp: não permita mais um termostato para entidades próprias estendidas\nems-esp: correção de erro para férias Modos de entidades personalizadas",
-        "nl": "ems-esp: niet meer dan één thermostaat toestaan voor uitgebreide eigen entiteiten\nems-esp: foutcorrectie voor vakantie Modi aangepaste entiteiten",
-        "fr": "ems-esp: ne pas autoriser plus d'un thermostat pour les entités propres étendues\nems-esp: correction d'erreur pour les vacances Modes entités personnalisées",
-        "it": "ems-esp: non consentono più di un termostato per entità proprie estese\nems-esp: correzione di errore per le vacanze Modalità entità personalizzate",
-        "es": "ems-esp: no permita más entonces un termostato para entidades propias extendidas\nems-esp: corrección de error para vacaciones Modes custom entities",
-        "pl": "ems- esp: nie pozwól więcej niż jeden termostat dla rozszerzonych jednostek własnych\nems- esp: korekta błędów podczas wakacji Tryby podmiotów niestandardowych",
-        "uk": "ems-esp: не дозволяйте більше, ніж один термостат для розширених власних суб'єктів\nе-есп: виправлення помилок для свята Режими індивідуальних суб'єктів",
-        "zh-cn": "ems- esp : 不允许扩展的自身实体使用一个以上的自动调温器\nems- esp: 节假日错误校正 模式自定义实体"
       }
     },
     "titleLang": {

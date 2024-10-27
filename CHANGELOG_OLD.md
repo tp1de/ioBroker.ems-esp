@@ -1,4 +1,7 @@
 * older changes
+## 4.7.2 (2024-08-17)
+* ems-esp: enable writing on custom entities
+
 ## 4.7.1 (2024-08-17)
 * ems-esp: custom entities are now under object structure "custom"
 
