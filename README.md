@@ -42,6 +42,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* update translations
+
 ### 4.9.1 (2024-10-01)
 * update dependencies
 * update translations
