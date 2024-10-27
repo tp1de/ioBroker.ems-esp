@@ -174,7 +174,7 @@
     "protectedNative": [
       "private_pw"
     ],
-    "messages": [
+  "messages": [
       {
         "condition": {
           "operand": "and",
@@ -208,6 +208,46 @@
           "pl": "Ta aktualizacja zawiera przełomową zmianę. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
           "uk": "Цей оновлення містить зміни розриву. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
           "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
+      },
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<5.0.0",
+            "newVersion>=5.0.0"
+          ]
+        },
+        "title": {
+          "en": "Important notice!",
+          "de": "Wichtiger Hinweis!",
+          "ru": "Важное замечание!",
+          "pt": "Notícia importante!",
+          "nl": "Belangrijke mededeling!",
+          "fr": "Avis important!",
+          "it": "Avviso IMPORTANTE!",
+          "es": "Noticia importante!",
+          "pl": "Ważna uwaga!",
+          "zh-cn": "重要通知!",
+          "uk": "Важливе повідомлення!"
+        },
+        "text": {
+          "en": "Encryption for private password (km200) has changed and needs to be re-entered.\n",
+          "de": "Die Verschlüsselung für das private Passwort (km200) hat sich geändert und muss neu eingesehen werden.\n",
+          "ru": "Шифрование для частного пароля (км200) изменилось и должно быть повторно введено.\n",
+          "pt": "A criptografia para senha privada (km200) mudou e precisa ser reinserida.\n",
+          "nl": "Versleuteling voor privé-wachtwoord (km200) is veranderd en moet opnieuw worden ingevoerd.\n",
+          "fr": "Le chiffrement du mot de passe privé (km200) a changé et doit être réintroduit.\n",
+          "it": "Crittografia per password privata (km200) è cambiato e ha bisogno di essere ri-entrato.\n",
+          "es": "El cifrado para contraseña privada (km200) ha cambiado y necesita ser reiniciado.\n",
+          "pl": "Szyfrowanie prywatnego hasła (km200) zmieniło się i wymaga ponownego wprowadzenia.\n",
+          "uk": "Зашифрування для приватного пароля (km200) змінено та потребує повторного оновлення.\n",
+          "zh-cn": "私密密码(km200)的加密已经改变,需要重新输入.\n"
         },
         "level": "warn",
         "buttons": [
