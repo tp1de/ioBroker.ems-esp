@@ -1,4 +1,7 @@
 * older changes
+## 4.8.0 (2024-08-27)
+* ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway
+
 ## 4.7.2 (2024-08-17)
 * ems-esp: enable writing on custom entities
 

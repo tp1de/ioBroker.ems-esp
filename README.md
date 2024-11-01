@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.1 (2024-11-01)
 * update dependencies
 * new log entry for private password (km200) since enryption is changed
 
@@ -62,9 +62,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * support small screens
 * update dependencies
 * update translations
-
-### 4.8.0 (2024-08-27)
-* ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway
 
 ## License
 MIT License
