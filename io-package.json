@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.0.1",
+    "version": "5.0.2",
     "news": {
+      "5.0.2": {
+        "en": "check on ems-esp api errors for ../api/system..",
+        "de": "überprüfen sie ems-esp api fehler für ../api/system..",
+        "ru": "проверьте ошибки ems-esp api для ../api/system.",
+        "pt": "verificar se os erros ems-esp api para ../api/system.",
+        "nl": "controleren op ems-esp api fouten voor ../api/system..",
+        "fr": "vérifier les erreurs ems-esp api pour ../api/system..",
+        "it": "controllare gli errori ems-esp api per ../api/system..",
+        "es": "verifique los errores de ems-esp api para ../api/system.",
+        "pl": "sprawdzić błędy ems- esp api dla.. / api / system..",
+        "uk": "перевірте помилки в емс-esp для ./api/system.",
+        "zh-cn": "检查 ./ api/ system 的 ems-esp api 错误..."
+      },
       "5.0.1": {
         "en": "update dependencies\nnew log entry for private password (km200) since enryption is changed",
         "de": "aktualisierung der abhängigkeiten\nneuer log-eintrag für privates passwort (km200) da die anmeldung geändert wird",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: nieaktywny parametr do wyszukiwania rozszerzonych jednostek EMS + z powodu ograniczeń pamięci w bramie",
         "uk": "ems-esp: параметр відключення для пошуку розширених суб'єктів EMS+ через обмеження пам'яті в шлюзу",
         "zh-cn": "ems- esp: 由于网关内存限制, 无法搜索扩展的EMS+ 实体的参数"
-      },
-      "4.7.2": {
-        "en": "ems-esp: enable writing on custom entities",
-        "de": "ems-esp: aktivieren sie das schreiben von benutzerdefinierten einheiten",
-        "ru": "ems-esp: включить написание на пользовательских объектах",
-        "pt": "ems-esp: permitir escrever em entidades personalizadas",
-        "nl": "ems-esp: schrijven op aangepaste entiteiten inschakelen",
-        "fr": "ems-esp: active l'écriture sur des entités personnalisées",
-        "it": "ems-esp: abilitare la scrittura su entità personalizzate",
-        "es": "ems-esp: habilitar la escritura en entidades personalizadas",
-        "pl": "ems- esp: umożliwia zapis na niestandardowych podmiotach",
-        "uk": "ems-esp: увімкніть написання на користувача",
-        "zh-cn": "ems- ep: 启用自定义实体的写入"
       }
     },
     "titleLang": {

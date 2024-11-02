@@ -1,4 +1,10 @@
 * older changes
+## 4.9.0 (2024-09-26)
+* ems-esp: improve reading for temperatureSensors
+* support small screens
+* update dependencies
+* update translations
+
 ## 4.8.0 (2024-08-27)
 * ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway
 

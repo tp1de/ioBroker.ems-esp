@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.2 (2024-11-02)
 * check on ems-esp api errors for ../api/system..
 
 ### 5.0.1 (2024-11-01)
@@ -57,12 +57,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * responsive design added
 
 ### 4.9.1 (2024-10-01)
-* update dependencies
-* update translations
-
-### 4.9.0 (2024-09-26)
-* ems-esp: improve reading for temperatureSensors
-* support small screens
 * update dependencies
 * update translations
 
