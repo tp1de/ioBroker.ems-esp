@@ -25,7 +25,7 @@
                     "label": "emsesp_ip",
                     "noClearButton": true,
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -37,7 +37,7 @@
                     "min": 15,
                     "max": 600,
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 4,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -143,7 +143,7 @@
                     "type": "objectId",
                     "label": "ems_modulation",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 5,
                     "lg": 3,
                     "xl": 3
@@ -152,7 +152,7 @@
                     "type": "objectId",
                     "label": "ems_wwactive",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 5,
                     "lg": 3,
                     "xl": 3
@@ -179,7 +179,7 @@
                     "noClearButton": true,
                     "label": "km200_ip",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -190,7 +190,7 @@
                     "min": 90,
                     "max": 600,
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -213,7 +213,7 @@
                         }
                     ],
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 8,
                     "md": 4,
                     "lg": 4,
                     "xl": 4
@@ -224,7 +224,7 @@
                     "label": "gateway_pw",
                     "noClearButton": true,
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 8,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -236,7 +236,7 @@
                     "maxLength": 20,
                     "label": "private_pw",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 8,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -276,7 +276,7 @@
                         }
                     ],
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 9,
                     "md": 3,
                     "lg": 3,
                     "xl": 3
@@ -293,7 +293,7 @@
                     "onlyEnabled": true,
                     "short": false,
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 4,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -322,7 +322,7 @@
                     "type": "room",
                     "label": "room",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -331,7 +331,7 @@
                     "type": "func",
                     "label": "function",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -351,7 +351,7 @@
                     "type": "objectId",
                     "label": "modulation",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -360,7 +360,7 @@
                     "type": "objectId",
                     "label": "supplytemp",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -369,7 +369,7 @@
                     "type": "objectId",
                     "label": "returntemp",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -379,7 +379,7 @@
                     "type": "number",
                     "label": "eff20",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -388,7 +388,7 @@
                     "type": "number",
                     "label": "eff25",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -397,7 +397,7 @@
                     "type": "number",
                     "label": "eff30",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -406,7 +406,7 @@
                     "type": "number",
                     "label": "eff35",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -415,7 +415,7 @@
                     "type": "number",
                     "label": "eff40",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -424,7 +424,7 @@
                     "type": "number",
                     "label": "eff45",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -433,7 +433,7 @@
                     "type": "number",
                     "label": "eff50",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -442,7 +442,7 @@
                     "type": "number",
                     "label": "eff55",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -451,7 +451,7 @@
                     "type": "number",
                     "label": "eff60",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -460,7 +460,7 @@
                     "type": "number",
                     "label": "eff70",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
