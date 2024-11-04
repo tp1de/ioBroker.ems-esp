@@ -12,7 +12,12 @@
                 "emsesp_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "ems_active"
+                    "label": "ems_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "emsesp_ip": {
                     "newLine": true,
@@ -20,7 +25,7 @@
                     "label": "emsesp_ip",
                     "noClearButton": true,
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -32,7 +37,7 @@
                     "min": 15,
                     "max": 600,
                     "xs": 12,
-                    "sm": 4,
+                    "sm": 12,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -129,7 +134,7 @@
                     "min": 1,
                     "max": 65535,
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -138,7 +143,7 @@
                     "type": "objectId",
                     "label": "ems_modulation",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 5,
                     "lg": 3,
                     "xl": 3
@@ -147,7 +152,7 @@
                     "type": "objectId",
                     "label": "ems_wwactive",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 5,
                     "lg": 3,
                     "xl": 3
@@ -161,7 +166,12 @@
                 "km200_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "km200_active"
+                    "label": "km200_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "km200_ip": {
                     "newLine": true,
@@ -169,7 +179,7 @@
                     "noClearButton": true,
                     "label": "km200_ip",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -180,7 +190,7 @@
                     "min": 90,
                     "max": 600,
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -203,7 +213,7 @@
                         }
                     ],
                     "xs": 12,
-                    "sm": 8,
+                    "sm": 12,
                     "md": 4,
                     "lg": 4,
                     "xl": 4
@@ -214,7 +224,7 @@
                     "label": "gateway_pw",
                     "noClearButton": true,
                     "xs": 12,
-                    "sm": 8,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -226,7 +236,7 @@
                     "maxLength": 20,
                     "label": "private_pw",
                     "xs": 12,
-                    "sm": 8,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -234,7 +244,12 @@
                 "recordings": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "recordings"
+                    "label": "recordings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 }
             }
         },
@@ -261,7 +276,7 @@
                         }
                     ],
                     "xs": 12,
-                    "sm": 9,
+                    "sm": 12,
                     "md": 3,
                     "lg": 3,
                     "xl": 3
@@ -278,7 +293,7 @@
                     "onlyEnabled": true,
                     "short": false,
                     "xs": 12,
-                    "sm": 4,
+                    "sm": 12,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -288,7 +303,7 @@
                     "type": "checkbox",
                     "label": "states_reorg",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -297,7 +312,7 @@
                     "type": "checkbox",
                     "label": "statistics",
                     "xs": 12,
-                    "sm": 8,
+                    "sm": 12,
                     "md": 6,
                     "lg": 4,
                     "xl": 4
@@ -307,7 +322,7 @@
                     "type": "room",
                     "label": "room",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -316,7 +331,7 @@
                     "type": "func",
                     "label": "function",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -324,14 +339,19 @@
                 "eff_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "eff_active"
+                    "label": "eff_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "modulation": {
                     "newLine": true,
                     "type": "objectId",
                     "label": "modulation",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -340,7 +360,7 @@
                     "type": "objectId",
                     "label": "supplytemp",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -349,7 +369,7 @@
                     "type": "objectId",
                     "label": "returntemp",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 3,
                     "xl": 3
@@ -454,7 +474,12 @@
                 "heatdemand": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "heatdemand"
+                    "label": "heatdemand",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "thermostats": {
                     "newLine": true,
