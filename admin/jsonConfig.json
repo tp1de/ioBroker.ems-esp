@@ -902,7 +902,12 @@
                     "text": "ems_expert_warn_long",
                     "style": {
                         "fontSize": 20
-                    }
+                    },
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 },
                 "syslog": {
                     "newLine": true,
