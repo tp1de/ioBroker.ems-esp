@@ -931,7 +931,12 @@
                 "ems_custom": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "ems_custom"
+                    "label": "ems_custom",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 },
                 "devices": {
                     "newLine": true,
