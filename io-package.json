@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "news": {
+      "5.0.3": {
+        "en": "add missing size attributes for config",
+        "de": "hinzufügen von fehlenden größenattributen für config",
+        "ru": "добавить недостающие атрибуты размера для настройки",
+        "pt": "adicionar atributos de tamanho ausentes para config",
+        "nl": "ontbrekende grootte-attributen voor configuratie toevoegen",
+        "fr": "ajouter des attributs de taille manquants pour config",
+        "it": "aggiungere gli attributi delle dimensioni mancanti per la configurazione",
+        "es": "añadir atributos de tamaño perdido para config",
+        "pl": "dodaj brakujące atrybuty rozmiaru dla konfiguratora",
+        "uk": "додати атрибути відсутніх розмірів для налаштування",
+        "zh-cn": "添加配置缺少的大小属性"
+      },
       "5.0.2": {
         "en": "check on ems-esp api errors for ../api/system..",
         "de": "überprüfen sie ems-esp api fehler für ../api/system..",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: poprawić odczyt temperatury Czujniki\nwsparcie dla małych ekranów\naktualizacji zależności\naktualizacja tłumaczeń",
         "uk": "ems-esp: поліпшення читання для температури Датчики\nпідтримка невеликих екранів\nоновлення залежності\nоновлення перекладів",
         "zh-cn": "ems-esp: 改善温度读取 传感器\n支持小屏幕\n更新依赖关系\n更新翻译"
-      },
-      "4.8.0": {
-        "en": "ems-esp: disabled parameter to search for extended EMS+ entities due to memory limitations in gateway",
-        "de": "ems-esp: deaktivierter Parameter zur Suche nach erweiterten EMS+-Einheiten aufgrund von Speicherbeschränkungen im Gateway",
-        "ru": "ems-esp: отключенный параметр для поиска расширенных EMS+ объектов из-за ограничений памяти в шлюзах",
-        "pt": "ems-esp: parâmetro desativado para procurar entidades EMS+ estendidas devido às limitações de memória no gateway",
-        "nl": "ems-esp: uitgeschakelde parameter om uitgebreide EMS+-entiteiten te zoeken vanwege geheugenbeperkingen in gateway",
-        "fr": "ems-esp: paramètre désactivé pour rechercher des entités EMS+ étendues en raison des limitations de mémoire dans la passerelle",
-        "it": "ems-esp: parametro disabilitato per la ricerca di entità EMS+ estese a causa delle limitazioni di memoria nel gateway",
-        "es": "ems-esp: Parámetro deshabilitado para buscar entidades EMS+ extendidas debido a limitaciones de memoria en gateway",
-        "pl": "ems- esp: nieaktywny parametr do wyszukiwania rozszerzonych jednostek EMS + z powodu ograniczeń pamięci w bramie",
-        "uk": "ems-esp: параметр відключення для пошуку розширених суб'єктів EMS+ через обмеження пам'яті в шлюзу",
-        "zh-cn": "ems- esp: 由于网关内存限制, 无法搜索扩展的EMS+ 实体的参数"
       }
     },
     "titleLang": {

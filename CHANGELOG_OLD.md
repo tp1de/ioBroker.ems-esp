@@ -1,4 +1,8 @@
 * older changes
+## 4.9.1 (2024-10-01)
+* update dependencies
+* update translations
+
 ## 4.9.0 (2024-09-26)
 * ems-esp: improve reading for temperatureSensors
 * support small screens

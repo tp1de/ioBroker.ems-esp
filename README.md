@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.3 (2024-11-11)
 * add missing size attributes for config
 
 ### 5.0.2 (2024-11-02)
@@ -58,10 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 4.9.2 (2024-10-27)
 * update translations
 * responsive design added
-
-### 4.9.1 (2024-10-01)
-* update dependencies
-* update translations
 
 ## License
 MIT License
