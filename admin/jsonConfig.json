@@ -12,7 +12,12 @@
                 "emsesp_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "ems_active"
+                    "label": "ems_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "emsesp_ip": {
                     "newLine": true,
@@ -161,7 +166,12 @@
                 "km200_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "km200_active"
+                    "label": "km200_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "km200_ip": {
                     "newLine": true,
@@ -234,7 +244,12 @@
                 "recordings": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "recordings"
+                    "label": "recordings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 }
             }
         },
@@ -288,7 +303,7 @@
                     "type": "checkbox",
                     "label": "states_reorg",
                     "xs": 12,
-                    "sm": 6,
+                    "sm": 12,
                     "md": 4,
                     "lg": 2,
                     "xl": 2
@@ -297,7 +312,7 @@
                     "type": "checkbox",
                     "label": "statistics",
                     "xs": 12,
-                    "sm": 8,
+                    "sm": 12,
                     "md": 6,
                     "lg": 4,
                     "xl": 4
@@ -324,7 +339,12 @@
                 "eff_active": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "eff_active"
+                    "label": "eff_active",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "modulation": {
                     "newLine": true,
@@ -359,7 +379,7 @@
                     "type": "number",
                     "label": "eff20",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -368,7 +388,7 @@
                     "type": "number",
                     "label": "eff25",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -377,7 +397,7 @@
                     "type": "number",
                     "label": "eff30",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -386,7 +406,7 @@
                     "type": "number",
                     "label": "eff35",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -395,7 +415,7 @@
                     "type": "number",
                     "label": "eff40",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -404,7 +424,7 @@
                     "type": "number",
                     "label": "eff45",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -413,7 +433,7 @@
                     "type": "number",
                     "label": "eff50",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -422,7 +442,7 @@
                     "type": "number",
                     "label": "eff55",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -431,7 +451,7 @@
                     "type": "number",
                     "label": "eff60",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -440,7 +460,7 @@
                     "type": "number",
                     "label": "eff70",
                     "xs": 12,
-                    "sm": 12,
+                    "sm": 6,
                     "md": 1,
                     "lg": 1,
                     "xl": 1
@@ -454,7 +474,12 @@
                 "heatdemand": {
                     "newLine": true,
                     "type": "checkbox",
-                    "label": "heatdemand"
+                    "label": "heatdemand",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "thermostats": {
                     "newLine": true,
@@ -877,7 +902,12 @@
                     "text": "ems_expert_warn_long",
                     "style": {
                         "fontSize": 20
-                    }
+                    },
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
                 },
                 "syslog": {
                     "newLine": true,
