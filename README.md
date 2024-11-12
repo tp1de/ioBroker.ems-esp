@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.4 (2024-11-12)
 * add missing size attributes for config
 * dependabot updates
 
@@ -58,10 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 5.0.0 (2024-10-27)
 * change encryption for private passwort (km200) - needs to be re-entered
-
-### 4.9.2 (2024-10-27)
-* update translations
-* responsive design added
 
 ## License
 MIT License

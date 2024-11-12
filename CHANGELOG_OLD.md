@@ -1,4 +1,8 @@
 * older changes
+## 4.9.2 (2024-10-27)
+* update translations
+* responsive design added
+
 ## 4.9.1 (2024-10-01)
 * update dependencies
 * update translations
