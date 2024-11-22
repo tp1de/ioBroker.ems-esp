@@ -42,6 +42,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* Add native entries to io-package
+
 ### 5.0.4 (2024-11-12)
 * add missing size attributes for config
 * dependabot updates
