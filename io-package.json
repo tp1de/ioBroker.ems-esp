@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.0.4",
+    "version": "5.0.5",
     "news": {
+      "5.0.5": {
+        "en": "Add native entries to io-package",
+        "de": "Fügen Sie native Einträge zu io-package hinzu",
+        "ru": "Добавить местные записи в io-package",
+        "pt": "Adicionar entradas nativas ao io-package",
+        "nl": "Eigen items toevoegen aan io-package",
+        "fr": "Ajouter des entrées natives à io-package",
+        "it": "Aggiungi voci native a io-package",
+        "es": "Añadir entradas nativas a io-package",
+        "pl": "Dodaj natywne wpisy do pakietu jo-",
+        "uk": "Додати рідні записи в io-package",
+        "zh-cn": "在 io- package 中添加本地条目"
+      },
       "5.0.4": {
         "en": "add missing size attributes for config\ndependabot updates",
         "de": "hinzufügen von fehlenden größenattributen für config\naktualisierungen von abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "aktualizacja tłumaczeń\nresponsible design added",
         "uk": "оновлення перекладів\nдодано адаптивний дизайн",
         "zh-cn": "更新翻译\n添加应答设计"
-      },
-      "4.9.1": {
-        "en": "update dependencies\nupdate translations",
-        "de": "aktualisierung der abhängigkeiten\nübersetzungen aktualisieren",
-        "ru": "обновление зависимостей\nобновление переводов",
-        "pt": "dependências\ntraduções de atualização",
-        "nl": "afhankelijkheden bijwerken\nvertalingen bijwerken",
-        "fr": "mettre à jour les dépendances\nmettre à jour les traductions",
-        "it": "aggiornamento dipendenze\naggiornare le traduzioni",
-        "es": "dependencias de actualización\ntraducción actualizada",
-        "pl": "aktualizacji zależności\naktualizacja tłumaczeń",
-        "uk": "оновлення залежності\nоновлення перекладів",
-        "zh-cn": "更新依赖关系\n更新翻译"
       }
     },
     "titleLang": {

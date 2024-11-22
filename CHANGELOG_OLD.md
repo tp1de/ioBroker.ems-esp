@@ -1,4 +1,7 @@
 * older changes
+## 5.0.0 (2024-10-27)
+* change encryption for private passwort (km200) - needs to be re-entered
+
 ## 4.9.2 (2024-10-27)
 * update translations
 * responsive design added
