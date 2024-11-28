@@ -44,7 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * dependabot updates
-* send switchprog updates 3 times (test)
+* ems-esp: send switchprog updates 3 times (test)
 
 ### 5.0.5 (2024-11-22)
 * Add native entries to io-package
