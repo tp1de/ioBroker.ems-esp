@@ -44,6 +44,7 @@
     "emsesp_active": "EMS-ESP Gateway aktiv",
     "emsesp_ip": "IP Adresse",
     "function": "Zustandsattribute: Funktion",
+    "Devices": "Eigene Entities",
     "gateway": "Lesen der Zustände vom Gateway und erstellen der Datei km200.csv",
     "gateway_pw": "Gateway-Passwort",
     "heat_demand": "Wärmebedarf",
@@ -82,7 +83,7 @@
     "supplytemp": "Vorlauftemperatur",
     "syslog": "Syslog-Server aktiv?",
     "syslog_port": "Syslog-Port",
-    "switch_programs": "Programme wechseln",
+    "switch_programs": "Zeitprogramme",
     "warn_cancel": "Stornieren",
     "warn_ok": "Warnung ignorieren"
 }
