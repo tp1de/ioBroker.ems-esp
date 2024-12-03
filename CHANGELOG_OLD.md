@@ -1,4 +1,8 @@
 * older changes
+## 5.0.1 (2024-11-01)
+* update dependencies
+* new log entry for private password (km200) since enryption is changed
+
 ## 5.0.0 (2024-10-27)
 * change encryption for private passwort (km200) - needs to be re-entered
 

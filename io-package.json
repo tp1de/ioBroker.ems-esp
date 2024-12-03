@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.0.5",
+    "version": "5.0.6",
     "news": {
+      "5.0.6": {
+        "en": "dependabot updates\nems-esp: send switchprog updates 3 times (test)",
+        "de": "aktualisierungen von abhängigkeiten\nems-esp: switchprog-updates 3 mal senden (test)",
+        "ru": "обновления\nems-esp: отправлять обновления switchprog 3 раза (испытание)",
+        "pt": "atualizações do dependabot\nems-esp: enviar atualizações do switchprog 3 vezes (teste)",
+        "nl": "dependabot-updates\nems-esp: stuur switchprog updates 3 keer (test)",
+        "fr": "mises à jour de dermabot\nems-esp: envoyer des mises à jour switchprog 3 fois (test)",
+        "it": "aggiornamenti dipendeabot\nems-esp: invia aggiornamenti di switchprog 3 volte (test)",
+        "es": "actualizaciones de dependabot\nems-esp: enviar actualizaciones de conmutación 3 veces (test)",
+        "pl": "aktualizacje zależności\nems- esp: wysyłaj aktualizacje rozdzielczości 3 razy (test)",
+        "uk": "оновлення залежності\nems-esp: відправити комутацію оновлення 3 рази (тест)",
+        "zh-cn": "依赖更新\nems- esp : 发送三次切换程序更新( 测试)"
+      },
       "5.0.5": {
         "en": "Add native entries to io-package",
         "de": "Fügen Sie native Einträge zu io-package hinzu",
@@ -80,19 +93,6 @@
         "pl": "zmiana szyfrowania dla prywatnych passwortów (km200) - musi zostać ponownie wprowadzona",
         "uk": "змінити шифрування для приватного пасту (km200) - потрібно бути повторним",
         "zh-cn": "更改私人密码加密( km200) - 需要重新输入"
-      },
-      "4.9.2": {
-        "en": "update translations\nresponsive design added",
-        "de": "übersetzungen aktualisieren\nansprechendes design hinzugefügt",
-        "ru": "обновление переводов\nадаптивный дизайн добавлен",
-        "pt": "traduções de atualização\ndesign responsivo adicionado",
-        "nl": "vertalingen bijwerken\nresponsief ontwerp toegevoegd",
-        "fr": "mettre à jour les traductions\ndesign adapté ajouté",
-        "it": "aggiornare le traduzioni\ndesign reattivo aggiunto",
-        "es": "traducción actualizada\ndiseño sensible añadido",
-        "pl": "aktualizacja tłumaczeń\nresponsible design added",
-        "uk": "оновлення перекладів\nдодано адаптивний дизайн",
-        "zh-cn": "更新翻译\n添加应答设计"
       }
     },
     "titleLang": {

@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.0.6 (2024-12-03)
 * dependabot updates
 * ems-esp: send switchprog updates 3 times (test)
 
@@ -58,10 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 5.0.2 (2024-11-02)
 * check on ems-esp api errors for ../api/system..
-
-### 5.0.1 (2024-11-01)
-* update dependencies
-* new log entry for private password (km200) since enryption is changed
 
 ## License
 MIT License
