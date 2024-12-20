@@ -106,16 +106,6 @@
                     "lg": 2,
                     "xl": 2
                 },
-                "ems_custom": {
-                    "newLine": true,
-                    "type": "checkbox",
-                    "label": "ems_custom",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 12,
-                    "lg": 12,
-                    "xl": 12
-                },
                 "ems_token": {
                     "newLine": true,
                     "type": "text",
