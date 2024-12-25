@@ -1,4 +1,7 @@
 * older changes
+## 5.0.2 (2024-11-02)
+* check on ems-esp api errors for ../api/system..
+
 ## 5.0.1 (2024-11-01)
 * update dependencies
 * new log entry for private password (km200) since enryption is changed
