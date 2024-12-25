@@ -207,7 +207,7 @@ async function enable_state(stateid, retention, interval) {
 	const id = adapter.namespace + "." + stateid;
 	try {
 		const obj = await adapter.getObjectAsync(id);
-		if (obj.common == undefined) {
+		if (obj.common.custom == undefined) {
 
 			adapter.sendTo(db, "enableHistory", {
 				id: id, options:
