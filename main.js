@@ -485,19 +485,21 @@ async function init_statistics2() {
 		try {
 			adapter.getState("statistics.created", function (err, state) {
 				if (state == null || state.val === false) {
-					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts", 86400, 60);
-					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts", 86400, 60);
-					if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts", 86400, 60);
-
-					//if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
-					//if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
-
-					if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas", 86400, 15);
-					if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas", 86400, 15);
-					if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus", 86400, 15);
 					adapter.setState("statistics.created", { ack: true, val: true });
 				}
 			});
+
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burnstarts", 86400, 60);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burnstarts", 86400, 60);
+			if (adapter.config.km200_active) enable_state("heatSources.numberOfStarts", 86400, 60);
+
+			//if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
+			//if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
+
+			if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("heatSources.hs1.burngas", 86400, 15);
+			if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.burngas", 86400, 15);
+			if (adapter.config.km200_active) enable_state("heatSources.hs1.flameStatus", 86400, 15);
+			
 			await adapter.delay(500);
 		} catch (e) { }
 	}
