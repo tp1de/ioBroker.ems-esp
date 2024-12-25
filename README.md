@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* enable statistics
+* error correction on enabling statistics
 
 ### 5.0.6 (2024-12-03)
 * dependabot updates
