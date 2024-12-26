@@ -170,6 +170,7 @@ async function main() {
 
 		if (db != "") {
 			await init_statistics2();
+			//read_statistics();
 			adapterIntervals.stat = setInterval(function () { read_statistics(); }, 300000); // 300 sec
 		}
 	}
@@ -659,8 +660,11 @@ async function stat(db, id, hour, state) {
 					try { c = result.result.length; } catch (e) { }
 					if (c == 0 || c == 1) value = 0;
 					try {
-						if (result.result[0].val != null) value = Math.round(result.result[c - 1].val - result.result[0].val);
-						// adapter.log.info(id + " " +hour + ": "  + Math.round(result.result[0].val)+" - " + Math.round(result.result[c-1].val) + " = " + value);
+						let val1 = result.result[0].val;
+						if (val1 == 0) val1 = result.result[1].val;
+						value = Math.round(result.result[c - 1].val - val1);
+						if (value < 0) value = 0;
+						//adapter.log.info(id + " " +hour + ": " + c +"  "+ + Math.round(val1)+" - " + Math.round(result.result[c-1].val) + " = " + value);
 					} catch (e) { }
 					adapter.setStateAsync(state, { ack: true, val: value });
 				}
