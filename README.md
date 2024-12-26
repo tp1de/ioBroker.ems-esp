@@ -44,7 +44,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * correct statistics on adapter start-up
-* test boiler.silentmode
 
 ### 5.1.0 (2024-12-25)
 * error correction on enabling statistics
