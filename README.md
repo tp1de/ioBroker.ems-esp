@@ -42,7 +42,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 5.1.1 (2024-12-26)
 * correct statistics on adapter start-up
 
 ### 5.1.0 (2024-12-25)
@@ -58,9 +58,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 5.0.4 (2024-11-12)
 * add missing size attributes for config
 * dependabot updates
-
-### 5.0.3 (2024-11-11)
-* add missing size attributes for config
 
 ## License
 MIT License

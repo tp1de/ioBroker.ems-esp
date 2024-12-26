@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "news": {
+      "5.1.1": {
+        "en": "correct statistics on adapter start-up",
+        "de": "korrekte statistiken zum adapterstart",
+        "ru": "правильная статистика запуска адаптера",
+        "pt": "estatísticas corretas no start-up do adaptador",
+        "nl": "correcte statistieken over het opstarten van de adapter",
+        "fr": "des statistiques correctes sur le démarrage de l'adaptateur",
+        "it": "statistiche corrette sull'avvio dell'adattatore",
+        "es": "estadísticas correctas sobre la puesta en marcha del adaptador",
+        "pl": "prawidłowe statystyki dotyczące uruchamiania adaptera",
+        "uk": "коректна статистика запуску адаптера",
+        "zh-cn": "适配器启动的正确统计"
+      },
       "5.1.0": {
         "en": "error correction on enabling statistics",
         "de": "fehlerkorrektur bei der freigabe von statistiken",
@@ -80,19 +93,6 @@
         "pl": "sprawdzić błędy ems- esp api dla.. / api / system..",
         "uk": "перевірте помилки в емс-esp для ./api/system.",
         "zh-cn": "检查 ./ api/ system 的 ems-esp api 错误..."
-      },
-      "5.0.1": {
-        "en": "update dependencies\nnew log entry for private password (km200) since enryption is changed",
-        "de": "aktualisierung der abhängigkeiten\nneuer log-eintrag für privates passwort (km200) da die anmeldung geändert wird",
-        "ru": "обновление зависимостей\nновый вход журнала для частного пароля (км200), так как инкрипция изменена",
-        "pt": "dependências\nnova entrada de log para senha privada (km200) desde que o enryption é alterado",
-        "nl": "afhankelijkheden bijwerken\nnieuwe loginvoer voor privé-wachtwoord (km200) sinds enryption is gewijzigd",
-        "fr": "mettre à jour les dépendances\nnouvelle entrée de journal pour mot de passe privé (km200) depuis le changement d'enryption",
-        "it": "aggiornamento dipendenze\nnuova voce di registro per password privata (km200) dal momento che l'enryption è cambiato",
-        "es": "dependencias de actualización\nnueva entrada de registro para contraseña privada (km200) ya que se cambia la inscripción",
-        "pl": "aktualizacji zależności\nnowy wpis dziennika dla prywatnego hasła (km200) od czasu zmiany enrypcji",
-        "uk": "оновлення залежності\nновий запис журналу для приватного пароля (km200) з моменту затримання змінено",
-        "zh-cn": "更新依赖关系\n更改 enryption 后, 私有密码( km200) 的新日志条目"
       }
     },
     "titleLang": {
