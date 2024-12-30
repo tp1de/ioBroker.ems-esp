@@ -22,7 +22,7 @@ The adapter supports an interface towards the heating systems from Bosch Group u
 
 * ems-esp gateway (https://github.com/emsesp/EMS-ESP32) with the ESP32 chip. 
   The old ESP8266 gateways with API V2 are not supported anymore !!
-  The adapter is tested for the ems-esp gateway with latest stable firmware version (V3.6.5)
+  The adapter is tested for the ems-esp gateway with latest stable firmware version (V3.7.1)
   Latest dev versions of firmware might not work stable with the ioBroker adapter. Use is on own risk.
 
 * New Bosch-Group Cloud-Gateways (MX300 / EasyControl ...) are not supported since they do not support LAN API !
