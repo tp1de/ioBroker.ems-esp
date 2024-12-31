@@ -45,7 +45,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* ems-esp: enum corrections
+* ems-esp: enum 
+* dependabot updates
 
 ### 5.1.1 (2024-12-26)
 * correct statistics on adapter start-up
