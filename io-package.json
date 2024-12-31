@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.1.1",
+    "version": "5.1.2",
     "news": {
+      "5.1.2": {
+        "en": "ems-esp: fix enum errors for setting \"Value\" \ndependabot updates",
+        "de": "ems-esp: Enum-Fehler für die Einstellung \"Value\" beheben\naktualisierungen von abhängigkeiten",
+        "ru": "ems-esp: исправить ошибки энума для установки \"Value\"\nобновления",
+        "pt": "ems-esp: corrigir erros enum para definir \"Value\"\natualizações do dependabot",
+        "nl": "ems-esp: fix enum fouten voor het instellen van \"Value\"\ndependabot-updates",
+        "fr": "ems-esp: corriger les erreurs enum pour définir \"Valeur\"\nmises à jour de dermabot",
+        "it": "ems-esp: correggere gli errori enum per l'impostazione \"Value\"\naggiornamenti dipendeabot",
+        "es": "ems-esp: corrige errores enum para establecer \"Value\"\nactualizaciones de dependabot",
+        "pl": "ems- esp: naprawić błędy enum dla ustawienia \"Value\"\naktualizacje zależności",
+        "uk": "ems-esp: виправлено помилки в облаштуванні \"Value\"\nоновлення залежності",
+        "zh-cn": "ems- esp: 修复设置“ value” 的 enum 错误\n依赖更新"
+      },
       "5.1.1": {
         "en": "correct statistics on adapter start-up",
         "de": "korrekte statistiken zum adapterstart",
@@ -80,19 +93,6 @@
         "pl": "dodaj brakujące atrybuty rozmiaru dla konfiguratora",
         "uk": "додати атрибути відсутніх розмірів для налаштування",
         "zh-cn": "添加配置缺少的大小属性"
-      },
-      "5.0.2": {
-        "en": "check on ems-esp api errors for ../api/system..",
-        "de": "überprüfen sie ems-esp api fehler für ../api/system..",
-        "ru": "проверьте ошибки ems-esp api для ../api/system.",
-        "pt": "verificar se os erros ems-esp api para ../api/system.",
-        "nl": "controleren op ems-esp api fouten voor ../api/system..",
-        "fr": "vérifier les erreurs ems-esp api pour ../api/system..",
-        "it": "controllare gli errori ems-esp api per ../api/system..",
-        "es": "verifique los errores de ems-esp api para ../api/system.",
-        "pl": "sprawdzić błędy ems- esp api dla.. / api / system..",
-        "uk": "перевірте помилки в емс-esp для ./api/system.",
-        "zh-cn": "检查 ./ api/ system 的 ems-esp api 错误..."
       }
     },
     "titleLang": {

@@ -1,4 +1,8 @@
 * older changes
+## 5.0.4 (2024-11-12)
+* add missing size attributes for config
+* dependabot updates
+
 ## 5.0.3 (2024-11-11)
 * add missing size attributes for config
 
