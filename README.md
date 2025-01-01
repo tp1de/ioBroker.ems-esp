@@ -44,6 +44,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* dependabot updates
+
 ### 5.1.2 (2024-12-31)
 * ems-esp: fix enum errors for setting "Value" 
 * dependabot updates
