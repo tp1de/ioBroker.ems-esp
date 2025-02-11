@@ -36,7 +36,6 @@
     "simple-syslog-server": "^1.0.0",
     "axios": "^1.7.9"
   },
-  "deprecated": false,
   "devDependencies": {
     "@alcalzone/release-script": "^3.8.0",
     "@alcalzone/release-script-plugin-iobroker": "^3.7.2",
