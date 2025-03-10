@@ -221,7 +221,6 @@
     "ems_dallas_old_format": false,
     "ems_analog": false,
     "ems_custom_elements": false,
-    "ems_token": "",
     "ems_energy": false,
     "ems_nominalpower": 15,
     "ems_modulation": "boiler.curburnpow",
@@ -319,10 +318,12 @@
     "database": "iobroker"
   },
   "encryptedNative": [
-    "private_pw"
+    "private_pw",
+    "ems_token"
   ],
   "protectedNative": [
-    "private_pw"
+    "private_pw",
+    "ems_token"
   ],
   "objects": []
 }
