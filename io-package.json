@@ -215,6 +215,7 @@
     "emsesp_active": true,
     "emsesp_ip": "http://ems-esp",
     "ems_polling": 60,
+    "ems_token": "",
     "km200_structure": false,
     "ems_expert_on": false,
     "ems_dallas": false,
