@@ -44,7 +44,7 @@
     "@iobroker/adapter-dev": "^1.4.0",
     "@iobroker/testing": "^5.0.3",
     "@tsconfig/node18": "^18.2.4",
-    "@types/chai": "^5.2.0",
+    "@types/chai": "^5.2.1",
     "@types/chai-as-promised": "^8.0.2",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.13",
