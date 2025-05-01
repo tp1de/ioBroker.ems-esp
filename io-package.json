@@ -191,17 +191,17 @@
           "uk": "Важливе повідомлення!"
         },
         "text": {
-          "en": "This update contains a breaking change. Please stop instance before installing and check parameters afterwards.",
-          "de": "Dieses Update enthält ein Breaking Change. Bitte stoppen Sie die Instanz vor der Installation und überprüfen Sie die Parameter danach.",
-          "ru": "Это обновление содержит нарушающие изменения. Пожалуйста, остановите экземпляр перед установкой и проверьте параметры после.",
-          "pt": "Esta atualização contém uma mudança de ruptura. Por favor, pare a instância antes de instalar e verificar os parâmetros depois.",
-          "nl": "Deze update bevat een breuk verandering. Stop instance voor het installeren en controleer parameters achteraf.",
-          "fr": "Cette mise à jour contient un changement de rupture. Veuillez arrêter l'instance avant d'installer et vérifier les paramètres après.",
-          "it": "Questo aggiornamento contiene un cambiamento di rottura. Si prega di interrompere l'istanza prima di installare e controllare i parametri in seguito.",
-          "es": "Esta actualización contiene un cambio de ruptura. Por favor deje de ejemplo antes de instalar y comprobar los parámetros después.",
-          "pl": "Ta aktualizacja zawiera przełomową zmianę. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
-          "uk": "Цей оновлення містить зміни розриву. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
-          "zh-cn": "此更新包含一个突破性的更改 。 在安装之前请停止实例, 并在之后检查参数 ."
+          "en": " This update contains a breaking change on EMS-ESP token which needs to be entered new. Please stop instance before installing and check parameters afterwards.",
+          "de": "Dieses Update enthält eine Änderung des EMS-ESP-Tokens, welches neu eingegeben werden muss. Bitte stoppen Sie die Instanz vor der Installation und überprüfen Sie die Parameter danach.",
+          "ru": "В этом обновлении содержится изменение на токене EMS-ESP, который должен быть введен новым. Пожалуйста, остановите экземпляр перед установкой и проверьте параметры после.",
+          "pt": "Esta atualização contém uma mudança de ruptura no token EMS-ESP que precisa ser introduzido novo. Por favor, pare a instância antes de instalar e verificar os parâmetros depois.",
+          "nl": "Deze update bevat een breaking change op EMS-ESP token die moet worden ingevoerd nieuwe. Stop instance voor het installeren en controleer parameters achteraf.",
+          "fr": "Cette mise à jour contient une rupture sur le jeton EMS-ESP qui doit être entré nouveau. Veuillez arrêter l'instance avant d'installer et vérifier les paramètres après.",
+          "it": "Questo aggiornamento contiene un cambiamento di rottura sul token EMS-ESP che deve essere inserito nuovo. Si prega di interrompere l'istanza prima di installare e controllare i parametri in seguito.",
+          "es": "Esta actualización contiene un cambio de ruptura en el token EMS-ESP que debe ser introducido nuevo. Por favor deje de ejemplo antes de instalar y comprobar los parámetros después.",
+          "pl": "Ta aktualizacja zawiera przełomową zmianę na symbolu ESP, który musi być wprowadzony nowy. Proszę zatrzymać instancję przed instalacją i sprawdzić parametry później.",
+          "uk": "Цей оновлення містить зміни розриву на токені EMS-ESP, які потрібно вводити нові. Будь ласка, припиніть екземпляр перед установкою і перевірте параметри після.",
+          "zh-cn": "此更新包含一个需要输入的EMS- ESP 令牌的中断更改 。 在安装之前请停止实例, 并在之后检查参数 ."
         },
         "level": "warn",
         "buttons": [
