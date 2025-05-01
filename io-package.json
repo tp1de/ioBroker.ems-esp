@@ -160,12 +160,12 @@
     },
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.4.10"
+        "admin": ">=7.1.5"
       }
     ],
     "messages": [
@@ -173,8 +173,8 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<4.1.2",
-            "newVersion>=4.0.2"
+            "oldVersion<=5.1.2",
+            "newVersion>5.1.2"
           ]
         },
         "title": {
