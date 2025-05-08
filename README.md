@@ -45,6 +45,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * ems-esp: NEW encrypt ems token - token needs to be re-entered
+* minimum node version 20 required
 * dependabot updates
 
 ### 5.1.2 (2024-12-31)
