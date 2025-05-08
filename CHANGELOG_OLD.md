@@ -1,4 +1,7 @@
 * older changes
+## 5.0.5 (2024-11-22)
+* Add native entries to io-package
+
 ## 5.0.4 (2024-11-12)
 * add missing size attributes for config
 * dependabot updates

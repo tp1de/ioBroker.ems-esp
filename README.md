@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.0 (2025-05-08)
 * ems-esp: NEW encrypt ems token - token needs to be re-entered
 * minimum node version 20 required
 * dependabot updates
@@ -61,9 +61,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 5.0.6 (2024-12-03)
 * dependabot updates
 * ems-esp: send switchprog updates 3 times (test)
-
-### 5.0.5 (2024-11-22)
-* Add native entries to io-package
 
 ## License
 MIT License

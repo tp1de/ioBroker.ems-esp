@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "5.1.2",
+    "version": "6.0.0",
     "news": {
+      "6.0.0": {
+        "en": "ems-esp: NEW encrypt ems token - token needs to be re-entered\nminimum node version 20 required\ndependabot updates",
+        "de": "ems-esp: NEW encrypt ems token - token muss neu eingeschrieben werden\nmindestknotenversion 20 erforderlich\naktualisierungen von abhängigkeiten",
+        "ru": "ems-esp: новый токен шифрования ems - токен должен быть повторно введен\nнеобходим минимальный узел версии 20\nобновления dependabot",
+        "pt": "ems-esp: NEW encrypt ems token - token precisa ser re-entered\nnode mínimo versão 20 necessária\natualizações do dependabot",
+        "nl": "ems-esp: NIEUW ems token versleutelen - token moet opnieuw worden ingevoerd\nminimum node versie 20 vereist\ndependabot-updates",
+        "fr": "ems-esp: NEW crypt ems token - token doit être réintroduit\nnœud minimum 20 requis\nmises à jour de dermabot",
+        "it": "ems-esp: NUOVA cifratura ems token - token deve essere ri-entrato\nminimo nodo versione 20 richiesto\naggiornamenti dipendeabot",
+        "es": "ems-esp: NUEVA cifra ems token - token necesita ser reiniciado\nversión mínima de nodo 20 necesaria\nactualizaciones de dependabot",
+        "pl": "ems- esp: new code ems token - token musi być ponownie wprowadzony\nwymagany minimalny węzeł w wersji 20\naktualizacje zależności",
+        "uk": "ems-esp: NEW шифрувати теги - токени повинні бути перероблені\nмінімальна версія вузла 20 необхідно\nоновлення залежності",
+        "zh-cn": "ems-esp: 新加密的 ems 令牌 - 令牌需要重新输入\n需要最小节点版本 20\n依赖更新"
+      },
       "5.1.2": {
         "en": "ems-esp: fix enum errors for setting \"Value\" \ndependabot updates",
         "de": "ems-esp: Enum-Fehler für die Einstellung \"Value\" beheben\naktualisierungen von abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "dodaj brakujące atrybuty rozmiaru dla konfiguratora\naktualizacje zależności",
         "uk": "додати атрибути відсутніх розмірів для налаштування\nоновлення залежності",
         "zh-cn": "添加配置缺少的大小属性\n依赖更新"
-      },
-      "5.0.3": {
-        "en": "add missing size attributes for config",
-        "de": "hinzufügen von fehlenden größenattributen für config",
-        "ru": "добавить недостающие атрибуты размера для настройки",
-        "pt": "adicionar atributos de tamanho ausentes para config",
-        "nl": "ontbrekende grootte-attributen voor configuratie toevoegen",
-        "fr": "ajouter des attributs de taille manquants pour config",
-        "it": "aggiungere gli attributi delle dimensioni mancanti per la configurazione",
-        "es": "añadir atributos de tamaño perdido para config",
-        "pl": "dodaj brakujące atrybuty rozmiaru dla konfiguratora",
-        "uk": "додати атрибути відсутніх розмірів для налаштування",
-        "zh-cn": "添加配置缺少的大小属性"
       }
     },
     "titleLang": {
