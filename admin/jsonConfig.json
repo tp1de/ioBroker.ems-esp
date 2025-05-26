@@ -108,7 +108,7 @@
                 },
                 "ems_token": {
                     "newLine": true,
-                    "type": "text",
+                    "type": "password",
                     "label": "ems_token",
                     "xs": 12,
                     "sm": 12,
