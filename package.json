@@ -41,6 +41,7 @@
     "@alcalzone/release-script-plugin-license": "^3.7.0",
     "@alcalzone/release-script-plugin-manual-review": "^3.7.0",
     "@iobroker/adapter-dev": "^1.4.0",
+    "@iobroker/eslint-config": "^2.0.2",
     "@iobroker/testing": "^5.0.4",
     "@tsconfig/node18": "^18.2.4",
     "@types/chai": "^5.2.2",
@@ -50,14 +51,9 @@
     "@types/proxyquire": "^1.3.31",
     "@types/sinon": "^17.0.4",
     "@types/sinon-chai": "^4.0.0",
-<<<<<<< HEAD
-    "chai": "^5.2.0",
-    "chai-as-promised": "^8.0.1",
-=======
-    "chai-as-promised": "^8.0.1",
     "chai": "^5.2.1",
+    "chai-as-promised": "^8.0.1",
     "eslint": "^9.32.0",
->>>>>>> 6b3230b23ca2fd42bacd5cba9f3a5642d1058e0a
     "mocha": "^11.7.1",
     "proxyquire": "^2.1.3",
     "sinon": "^21.0.0",
@@ -85,7 +81,7 @@
     "test:unit": "mocha test/unit --exit",
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:js && npm run test:package",
-    "lint": "eslint",
+    "lint": "eslint -c eslint.config.mjs .",
     "translate": "translate-adapter",
     "release": "release-script"
   },
