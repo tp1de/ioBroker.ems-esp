@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-empty */ /*
+/* eslint-disable no-empty */
+
+/*
  * ems-esp adapter
  *
  */
@@ -72,7 +74,7 @@ function startAdapter(options) {
                             }
                         }
                     });
-                } catch (e) {}
+                } catch (e) { }
             }
         },
     });
@@ -105,7 +107,7 @@ async function main() {
             await adapter.setForeignObjectAsync(`system.adapter.${adapter.namespace}`, obj);
             adapter.log.info('old database parameters are updated to new version .... instance will restart');
         }
-    } catch (e) {}
+    } catch (e) { }
 
     if (adapter.config.states_reorg) {
         await delete_states_emsesp();
@@ -173,11 +175,11 @@ async function main() {
             let dbversion = '';
             try {
                 dbversion = obj.native.dbversion;
-            } catch (e) {}
+            } catch (e) { }
             let retention = 0;
             try {
                 retention = obj.native.retention;
-            } catch (e) {}
+            } catch (e) { }
             let retdays;
             if (retention == 0) {
                 retdays = 999999;
@@ -190,7 +192,7 @@ async function main() {
             let adapterversion = '';
             try {
                 adapterversion = obj.common.version;
-            } catch (e) {}
+            } catch (e) { }
             adapter.log.info(
                 `InfluxDB ${dbversion} - Retention: ${retdays} days --- Adapterversion: ${adapterversion}`,
             );
@@ -280,7 +282,7 @@ async function info() {
         if (ems == false || km200 == false) {
             adapter.setState('info.connection', false, true);
         }
-    } catch (e) {}
+    } catch (e) { }
 }
 
 async function enable_state(stateid, retention, interval) {
@@ -402,7 +404,7 @@ async function init_controls() {
                 true,
             );
         }
-    } catch (e) {}
+    } catch (e) { }
 }
 
 async function control_state(state, type, name, value, write) {
@@ -462,7 +464,7 @@ async function heatdemand() {
             if (savetemp > settemp) {
                 settemp = savetemp;
             }
-        } catch (e) {}
+        } catch (e) { }
 
         try {
             const state4 = await adapter.getForeignStateAsync(adapter.config.thermostats[i].actualtemp);
@@ -539,7 +541,7 @@ async function heatdemand() {
         if (active.val == true || active.val == 1) {
             hd = true;
         }
-    } catch (e) {}
+    } catch (e) { }
 
     for (let i = 0; i < adapter.config.heatingcircuits.length; i++) {
         const hc = adapter.config.heatingcircuits[i].hc;
@@ -704,7 +706,7 @@ async function init_statistics() {
             native: {},
         });
         await adapter.delay(500);
-    } catch (e) {}
+    } catch (e) { }
 }
 
 async function init_statistics2() {
@@ -748,7 +750,7 @@ async function init_statistics2() {
             }
 
             await adapter.delay(500);
-        } catch (e) {}
+        } catch (e) { }
     }
 }
 
@@ -932,14 +934,14 @@ async function read_statistics() {
         stat(db, id, 24, 'statistics.boiler-starts-24h');
 
         /*
-		if (adapter.config.emsesp_active) {
-			id = adapter.namespace + ".boiler.wwstarts";
-			if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
+        if (adapter.config.emsesp_active) {
+            id = adapter.namespace + ".boiler.wwstarts";
+            if (adapter.config.km200_structure) id = adapter.namespace + ".dhwCircuits.dhw1.wwstarts";
 	
-			stat(db,id,1,"statistics.ww-starts-1h");
-			stat(db,id,24,"statistics.ww-starts-24h");
-		}
-		*/
+            stat(db,id,1,"statistics.ww-starts-1h");
+            stat(db,id,24,"statistics.ww-starts-24h");
+        }
+        */
 
         if (adapter.config.km200_active) {
             id = `${adapter.namespace}.heatSources.hs1.flameStatus`;
@@ -970,7 +972,7 @@ async function read_statistics() {
                                     on += 1;
                                 }
                             }
-                        } catch (e) {}
+                        } catch (e) { }
 
                         let value = 0;
                         if (count !== 0 && count != undefined) {
@@ -981,7 +983,7 @@ async function read_statistics() {
                     }
                 },
             );
-        } catch (e) {}
+        } catch (e) { }
     }
 }
 
@@ -1004,7 +1006,7 @@ async function stat(db, id, hour, state) {
                         let c = 0;
                         try {
                             c = result.result.length;
-                        } catch (e) {}
+                        } catch (e) { }
                         if (c == 0 || c == 1) {
                             value = 0;
                         }
@@ -1018,7 +1020,7 @@ async function stat(db, id, hour, state) {
                                 value = 0;
                             }
                             //adapter.log.info(id + " " +hour + ": " + c +"  "+ + Math.round(val1)+" - " + Math.round(result.result[c-1].val) + " = " + value);
-                        } catch (e) {}
+                        } catch (e) { }
                         adapter.setStateAsync(state, { ack: true, val: value });
                     }
                 },
