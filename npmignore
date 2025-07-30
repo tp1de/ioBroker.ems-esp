@@ -21,5 +21,6 @@ package-lock.json
 # maintenance scripts
 maintenance/**
 
+# eslint 9 migration
 eslint.config.mjs
 prettier.config.mjs
