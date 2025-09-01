@@ -44,7 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* dependabot updates
+* dependabot updates 
 * eslint 9 migration
 * test and release with node 24.x
 
