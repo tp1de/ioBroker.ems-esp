@@ -47,6 +47,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * dependabot updates 
 * eslint 9 migration
 * test and release with node 24.x
+* repository checker updates
 
 ### 6.0.0 (2025-05-08)
 * ems-esp: NEW encrypt ems token - token needs to be re-entered
