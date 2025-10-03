@@ -43,7 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.1 (2025-10-03)
 * dependabot updates 
 * eslint 9 migration
 * test and release with node 24.x
@@ -63,10 +63,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 5.1.0 (2024-12-25)
 * error correction on enabling statistics
-
-### 5.0.6 (2024-12-03)
-* dependabot updates
-* ems-esp: send switchprog updates 3 times (test)
 
 ## License
 MIT License
