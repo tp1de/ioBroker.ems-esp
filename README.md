@@ -43,8 +43,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 6.0.2-alpha.0 (2025-10-24)
 * Migrate to NPM Trusted Publishing
 
 ### 6.0.1 (2025-10-03)
@@ -64,9 +63,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 5.1.1 (2024-12-26)
 * correct statistics on adapter start-up
-
-### 5.1.0 (2024-12-25)
-* error correction on enabling statistics
 
 ## License
 MIT License

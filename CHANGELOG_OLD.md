@@ -1,4 +1,7 @@
 * older changes
+## 5.1.0 (2024-12-25)
+* error correction on enabling statistics
+
 ## 5.0.6 (2024-12-03)
 * dependabot updates
 * ems-esp: send switchprog updates 3 times (test)

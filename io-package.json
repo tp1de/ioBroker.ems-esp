@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.1",
+    "version": "6.0.2-alpha.0",
     "news": {
+      "6.0.2-alpha.0": {
+        "en": "Migrate to NPM Trusted Publishing",
+        "de": "Migration auf NPM Trusted Publishing",
+        "ru": "Перейти в NPM Trusted Publishing",
+        "pt": "Migrar para publicação confiável NPM",
+        "nl": "Migreren naar NPM Trusted Publishing",
+        "fr": "Migrer vers NPM Trusted Publishing",
+        "it": "Migrare a NPM Trusted Publishing",
+        "es": "Migrar a NPM Trusted Publishing",
+        "pl": "Migracja do NPM zaufanych Publishing",
+        "uk": "Migrate до NPM Trusted Publishing",
+        "zh-cn": "向国家预防机制过渡"
+      },
       "6.0.1": {
         "en": "dependabot updates \neslint 9 migration\ntest and release with node 24.x\nrepository checker updates",
         "de": "aktualisierungen von abhängigkeiten\neslint 9 migration\ntest und release mit knoten 24.x\nrepository checker updates",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności\nems- esp: wysyłaj aktualizacje rozdzielczości 3 razy (test)",
         "uk": "оновлення залежності\nems-esp: відправити комутацію оновлення 3 рази (тест)",
         "zh-cn": "依赖更新\nems- esp : 发送三次切换程序更新( 测试)"
-      },
-      "5.0.5": {
-        "en": "Add native entries to io-package",
-        "de": "Fügen Sie native Einträge zu io-package hinzu",
-        "ru": "Добавить местные записи в io-package",
-        "pt": "Adicionar entradas nativas ao io-package",
-        "nl": "Eigen items toevoegen aan io-package",
-        "fr": "Ajouter des entrées natives à io-package",
-        "it": "Aggiungi voci native a io-package",
-        "es": "Añadir entradas nativas a io-package",
-        "pl": "Dodaj natywne wpisy do pakietu jo-",
-        "uk": "Додати рідні записи в io-package",
-        "zh-cn": "在 io- package 中添加本地条目"
       }
     },
     "titleLang": {
