@@ -43,6 +43,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* Migrate to NPM Trusted Publishing
+
 ### 6.0.1 (2025-10-03)
 * dependabot updates 
 * eslint 9 migration
