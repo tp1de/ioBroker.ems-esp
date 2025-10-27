@@ -1,4 +1,7 @@
 * older changes
+## 5.1.1 (2024-12-26)
+* correct statistics on adapter start-up
+
 ## 5.1.0 (2024-12-25)
 * error correction on enabling statistics
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.2-alpha.0",
+    "version": "6.0.2-alpha.1",
     "news": {
+      "6.0.2-alpha.1": {
+        "en": "dependabot updates\nMigrate to NPM Trusted Publishing",
+        "de": "aktualisierungen von abhängigkeiten\nMigration auf NPM Trusted Publishing",
+        "ru": "обновления dependabot\nПерейти в NPM Trusted Publishing",
+        "pt": "atualizações do dependentebot\nMigrar para publicação confiável NPM",
+        "nl": "dependabot-updates\nMigreren naar NPM Trusted Publishing",
+        "fr": "mises à jour de dermabot\nMigrer vers NPM Trusted Publishing",
+        "it": "aggiornamenti dipendeabot\nMigrare a NPM Trusted Publishing",
+        "es": "actualizaciones de dependabot\nMigrar a NPM Trusted Publishing",
+        "pl": "aktualizacje zależności\nMigracja do NPM zaufanych Publishing",
+        "uk": "оновлення залежності\nMigrate до NPM Trusted Publishing",
+        "zh-cn": "依赖更新\n向国家预防机制过渡"
+      },
       "6.0.2-alpha.0": {
         "en": "Migrate to NPM Trusted Publishing",
         "de": "Migration auf NPM Trusted Publishing",
@@ -80,19 +93,6 @@
         "pl": "korekta błędów w statystykach wspomagających",
         "uk": "виправлення помилок на основі статистичних даних",
         "zh-cn": "启用统计错误更正"
-      },
-      "5.0.6": {
-        "en": "dependabot updates\nems-esp: send switchprog updates 3 times (test)",
-        "de": "aktualisierungen von abhängigkeiten\nems-esp: switchprog-updates 3 mal senden (test)",
-        "ru": "обновления\nems-esp: отправлять обновления switchprog 3 раза (испытание)",
-        "pt": "atualizações do dependabot\nems-esp: enviar atualizações do switchprog 3 vezes (teste)",
-        "nl": "dependabot-updates\nems-esp: stuur switchprog updates 3 keer (test)",
-        "fr": "mises à jour de dermabot\nems-esp: envoyer des mises à jour switchprog 3 fois (test)",
-        "it": "aggiornamenti dipendeabot\nems-esp: invia aggiornamenti di switchprog 3 volte (test)",
-        "es": "actualizaciones de dependabot\nems-esp: enviar actualizaciones de conmutación 3 veces (test)",
-        "pl": "aktualizacje zależności\nems- esp: wysyłaj aktualizacje rozdzielczości 3 razy (test)",
-        "uk": "оновлення залежності\nems-esp: відправити комутацію оновлення 3 рази (тест)",
-        "zh-cn": "依赖更新\nems- esp : 发送三次切换程序更新( 测试)"
       }
     },
     "titleLang": {
