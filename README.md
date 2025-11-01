@@ -43,6 +43,12 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* dependabot updates
+* updating pdf docu in respect to energy statistics for ems-esp gateways
+* Migrate to NPM Trusted Publishing
+
+
 ### 6.0.2-alpha.1 (2025-10-27)
 * dependabot updates
 * Migrate to NPM Trusted Publishing

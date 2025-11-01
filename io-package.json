@@ -225,7 +225,7 @@
     "ems_energy": false,
     "ems_nominalpower": 15,
     "ems_modulation": "boiler.curburnpow",
-    "ems_wwactive": "boiler.wwcharging",
+    "ems_wwactive": "boiler.dhw1.charging",
     "km200_active": false,
     "km200_ip": "http://192.168.178.x",
     "km200_polling": 300,
