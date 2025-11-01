@@ -44,6 +44,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* increase axios timeout for km200 reads
 * dependabot updates
 * updating pdf docu in respect to energy statistics for ems-esp gateways
 * Migrate to NPM Trusted Publishing
