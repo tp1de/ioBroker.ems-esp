@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.2-alpha.1",
+    "version": "6.0.2",
     "news": {
+      "6.0.2": {
+        "en": "increase axios timeout for km200 reads\ndependabot updates\nupdating pdf docu in respect to energy statistics for ems-esp gateways\nMigrate to NPM Trusted Publishing",
+        "de": "erhöhen axios timeout für km200 liess\naktualisierungen von abhängigkeiten\naktualisierung von pdf docu in bezug auf energiestatistiken für ems-esp-gateways\nMigration auf NPM Trusted Publishing",
+        "ru": "увеличение времени аксиоса для км200 считывается\nобновления dependabot\nобновление pdf docu в отношении энергетической статистики для шлюзов ems-esp\nПерейти в NPM Trusted Publishing",
+        "pt": "aumentar tempo limite axios para km200 leituras\natualizações do dependentebot\natualização do pdf docu em relação às estatísticas de energia para gateways ems-esp\nMigrar para publicação confiável NPM",
+        "nl": "axios timeout verhogen voor km200 leest\ndependabot-updates\nhet bijwerken van pdf-document met betrekking tot energiestatistieken voor ems-esp gateways\nMigreren naar NPM Trusted Publishing",
+        "fr": "augmentation axios timeout pour km200 lit\nmises à jour de dermabot\nmise à jour de pdf docu en ce qui concerne les statistiques de l'énergie pour les passerelles ems-esp\nMigrer vers NPM Trusted Publishing",
+        "it": "aumento timeout assios per km200 legge\naggiornamenti dipendeabot\naggiornamento pdf docu rispetto alle statistiche energetiche per i gateway ems-esp\nMigrare a NPM Trusted Publishing",
+        "es": "aumentar el tiempo de axios para km200 lecturas\nactualizaciones de dependabot\nactualización pdf docu con respecto a las estadísticas de energía para los portales ems-esp\nMigrar a NPM Trusted Publishing",
+        "pl": "zwiększenie czasu axios dla km200 czytników\naktualizacje zależności\naktualizacja pdf docu w odniesieniu do statystyk energetycznych dla bramek ems- esp\nMigracja do NPM zaufanych Publishing",
+        "uk": "збільшити час axios для км200 читати\nоновлення залежності\nоновлення pdf docu щодо енергетичної статистики для емс-esp шлюзів\nMigrate до NPM Trusted Publishing",
+        "zh-cn": "km200 的加速度超时\n依赖更新\n更新 pdf docu 关于 ems-esp 网关的能源统计\n向国家预防机制过渡"
+      },
       "6.0.2-alpha.1": {
         "en": "dependabot updates\nMigrate to NPM Trusted Publishing",
         "de": "aktualisierungen von abhängigkeiten\nMigration auf NPM Trusted Publishing",
@@ -80,19 +93,6 @@
         "pl": "prawidłowe statystyki dotyczące uruchamiania adaptera",
         "uk": "коректна статистика запуску адаптера",
         "zh-cn": "适配器启动的正确统计"
-      },
-      "5.1.0": {
-        "en": "error correction on enabling statistics",
-        "de": "fehlerkorrektur bei der freigabe von statistiken",
-        "ru": "исправление ошибок в стимулирующей статистике",
-        "pt": "correção de erro na ativação de estatísticas",
-        "nl": "foutcorrectie bij het inschakelen van statistieken",
-        "fr": "correction d'erreur sur l'activation des statistiques",
-        "it": "correzione degli errori per consentire statistiche",
-        "es": "corrección de errores sobre estadísticas habilitantes",
-        "pl": "korekta błędów w statystykach wspomagających",
-        "uk": "виправлення помилок на основі статистичних даних",
-        "zh-cn": "启用统计错误更正"
       }
     },
     "titleLang": {
