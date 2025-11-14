@@ -45,7 +45,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 
 ### **WORK IN PROGRESS**
-* dependabot updates
+* dependabot updates 
 
 
 ### 6.0.2 (2025-11-01)
