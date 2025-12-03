@@ -45,10 +45,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 6.0.3 (2025-12-01)
 * dependabot updates 
-* update error message for ems-esp gateway 
+* update error message for ems-esp gateway
 
 ### 6.0.2 (2025-11-01)
 * increase axios timeout for km200 reads
@@ -65,6 +64,10 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 6.0.0 (2025-05-08)
 * ems-esp: NEW encrypt ems token - token needs to be re-entered
 * minimum node version 20 required
+* dependabot updates
+
+### 5.1.2 (2024-12-31)
+* ems-esp: fix enum errors for setting "Value" 
 * dependabot updates
 
 ## License

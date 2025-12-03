@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.2",
+    "version": "6.0.3",
     "news": {
+      "6.0.3": {
+        "en": "dependabot updates \nupdate error message for ems-esp gateway",
+        "de": "aktualisierungen von abhängigkeiten\naktualisierung der fehlermeldung für ems-esp gateway",
+        "ru": "обновления dependabot\nобновление сообщения об ошибке для ems-esp gateway",
+        "pt": "atualizações do dependentebot\natualizar mensagem de erro para o gateway ems-esp",
+        "nl": "dependabot-updates\nupdate foutmelding voor ems-esp gateway",
+        "fr": "mises à jour de dermabot\nmettre à jour le message d'erreur pour la passerelle ems-esp",
+        "it": "aggiornamenti dipendeabot\nmessaggio di errore di aggiornamento per ems-esp gateway",
+        "es": "actualizaciones de dependabot\nmensaje de error de actualización para la puerta de entrada ems-esp",
+        "pl": "aktualizacje zależności\naktualizacja komunikatu błędu dla bramki ems- esp",
+        "uk": "оновлення залежності\nоновлення повідомлення про помилку для ems-esp",
+        "zh-cn": "依赖更新\n更新 ems- esp 网关的错误消息"
+      },
       "6.0.2": {
         "en": "increase axios timeout for km200 reads\ndependabot updates\nupdating pdf docu in respect to energy statistics for ems-esp gateways\nMigrate to NPM Trusted Publishing",
         "de": "erhöhen axios timeout für km200 liess\naktualisierungen von abhängigkeiten\naktualisierung von pdf docu in bezug auf energiestatistiken für ems-esp-gateways\nMigration auf NPM Trusted Publishing",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: naprawić błędy enum dla ustawienia \"Value\"\naktualizacje zależności",
         "uk": "ems-esp: виправлено помилки в облаштуванні \"Value\"\nоновлення залежності",
         "zh-cn": "ems- esp: 修复设置“ value” 的 enum 错误\n依赖更新"
-      },
-      "5.1.1": {
-        "en": "correct statistics on adapter start-up",
-        "de": "korrekte statistiken zum adapterstart",
-        "ru": "правильная статистика запуска адаптера",
-        "pt": "estatísticas corretas no start-up do adaptador",
-        "nl": "correcte statistieken over het opstarten van de adapter",
-        "fr": "des statistiques correctes sur le démarrage de l'adaptateur",
-        "it": "statistiche corrette sull'avvio dell'adattatore",
-        "es": "estadísticas correctas sobre la puesta en marcha del adaptador",
-        "pl": "prawidłowe statystyki dotyczące uruchamiania adaptera",
-        "uk": "коректна статистика запуску адаптера",
-        "zh-cn": "适配器启动的正确统计"
       }
     },
     "titleLang": {
