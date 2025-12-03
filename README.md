@@ -47,6 +47,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * return to version 6.0.2 messaging
+* reduce timeout for ems-esp get requests to 500 msec
 
 ### 6.0.3 (2025-12-01)
 * dependabot updates 
