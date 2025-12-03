@@ -1,4 +1,8 @@
 * older changes
+## 5.1.2 (2024-12-31)
+* ems-esp: fix enum errors for setting "Value" 
+* dependabot updates
+
 ## 5.1.1 (2024-12-26)
 * correct statistics on adapter start-up
 

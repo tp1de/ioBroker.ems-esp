@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.3",
+    "version": "6.0.4",
     "news": {
+      "6.0.4": {
+        "en": "ems-esp: return to version 6.0.2 for error handling",
+        "de": "ems-esp: zurück zur version 6.0.2 für fehlerbehandlung",
+        "ru": "ems-esp: возврат к версии 6.0.2 для обработки ошибок",
+        "pt": "ems-esp: retornar à versão 6.0.2 para manipulação de erros",
+        "nl": "ems-esp: terug naar versie 6.0.2 voor foutafhandeling",
+        "fr": "ems-esp: retour à la version 6.0.2 pour la gestion des erreurs",
+        "it": "ems-esp: ritorno alla versione 6.0.2 per la gestione degli errori",
+        "es": "ems-esp: volver a la versión 6.0.2 para el manejo de errores",
+        "pl": "ems- esp: powrót do wersji 6.0.2 dla obsługi błędów",
+        "uk": "ems-esp: повернення до версії 6.0.2 для обробки помилок",
+        "zh-cn": "ems- esp: 返回6. 0.2版本处理错误"
+      },
       "6.0.3": {
         "en": "dependabot updates \nupdate error message for ems-esp gateway",
         "de": "aktualisierungen von abhängigkeiten\naktualisierung der fehlermeldung für ems-esp gateway",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: new code ems token - token musi być ponownie wprowadzony\nwymagany minimalny węzeł w wersji 20\naktualizacje zależności",
         "uk": "ems-esp: NEW шифрувати теги - токени повинні бути перероблені\nмінімальна версія вузла 20 необхідно\nоновлення залежності",
         "zh-cn": "ems-esp: 新加密的 ems 令牌 - 令牌需要重新输入\n需要最小节点版本 20\n依赖更新"
-      },
-      "5.1.2": {
-        "en": "ems-esp: fix enum errors for setting \"Value\" \ndependabot updates",
-        "de": "ems-esp: Enum-Fehler für die Einstellung \"Value\" beheben\naktualisierungen von abhängigkeiten",
-        "ru": "ems-esp: исправить ошибки энума для установки \"Value\"\nобновления",
-        "pt": "ems-esp: corrigir erros enum para definir \"Value\"\natualizações do dependabot",
-        "nl": "ems-esp: fix enum fouten voor het instellen van \"Value\"\ndependabot-updates",
-        "fr": "ems-esp: corriger les erreurs enum pour définir \"Valeur\"\nmises à jour de dermabot",
-        "it": "ems-esp: correggere gli errori enum per l'impostazione \"Value\"\naggiornamenti dipendeabot",
-        "es": "ems-esp: corrige errores enum para establecer \"Value\"\nactualizaciones de dependabot",
-        "pl": "ems- esp: naprawić błędy enum dla ustawienia \"Value\"\naktualizacje zależności",
-        "uk": "ems-esp: виправлено помилки в облаштуванні \"Value\"\nоновлення залежності",
-        "zh-cn": "ems- esp: 修复设置“ value” 的 enum 错误\n依赖更新"
       }
     },
     "titleLang": {
