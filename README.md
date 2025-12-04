@@ -45,7 +45,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 6.0.5 (2025-12-04)
 * ems-esp: reduce read timeout error messages
 
 ### 6.0.4 (2025-12-03)
@@ -66,11 +66,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * eslint 9 migration
 * test and release with node 24.x
 * repository checker updates
-
-### 6.0.0 (2025-05-08)
-* ems-esp: NEW encrypt ems token - token needs to be re-entered
-* minimum node version 20 required
-* dependabot updates
 
 ## License
 MIT License

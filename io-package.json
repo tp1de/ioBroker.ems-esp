@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.4",
+    "version": "6.0.5",
     "news": {
+      "6.0.5": {
+        "en": "ems-esp: reduce read timeout error messages",
+        "de": "ems-esp: verringern sie die auslesezeit fehlermeldungen",
+        "ru": "ems-esp: сокращение времени чтения сообщений об ошибках",
+        "pt": "ems-esp: reduzir as mensagens de erro de tempo- limite de leitura",
+        "nl": "ems-esp: lees timeout foutmeldingen verminderen",
+        "fr": "ems-esp: réduire les messages d'erreur de temps de lecture",
+        "it": "ems-esp: ridurre i messaggi di errore di timeout di lettura",
+        "es": "ems-esp: reducir el tiempo de lectura mensajes de error",
+        "pl": "ems- esp: zmniejszyć wyświetlanie komunikatów błędów timeout",
+        "uk": "ems-esp: зменшити повідомлення про помилку часу читання",
+        "zh-cn": "ems- ep: 减少读取超时错误消息"
+      },
       "6.0.4": {
         "en": "ems-esp: return to version 6.0.2 for error handling",
         "de": "ems-esp: zurück zur version 6.0.2 für fehlerbehandlung",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności\nmigracja\ntest i zwolnienie z węzłem 24.x\naktualizacje sprawdzacza repozytorium",
         "uk": "оновлення залежності\neslint 9 міграції\nтест і реліз з вершиною 24.x\nоновлення репозиторій",
         "zh-cn": "依赖更新\neslint 9 移徙\n测试和释放带节点的 24.x\n仓库检查器更新"
-      },
-      "6.0.0": {
-        "en": "ems-esp: NEW encrypt ems token - token needs to be re-entered\nminimum node version 20 required\ndependabot updates",
-        "de": "ems-esp: NEW encrypt ems token - token muss neu eingeschrieben werden\nmindestknotenversion 20 erforderlich\naktualisierungen von abhängigkeiten",
-        "ru": "ems-esp: новый токен шифрования ems - токен должен быть повторно введен\nнеобходим минимальный узел версии 20\nобновления dependabot",
-        "pt": "ems-esp: NEW encrypt ems token - token precisa ser re-entered\nnode mínimo versão 20 necessária\natualizações do dependabot",
-        "nl": "ems-esp: NIEUW ems token versleutelen - token moet opnieuw worden ingevoerd\nminimum node versie 20 vereist\ndependabot-updates",
-        "fr": "ems-esp: NEW crypt ems token - token doit être réintroduit\nnœud minimum 20 requis\nmises à jour de dermabot",
-        "it": "ems-esp: NUOVA cifratura ems token - token deve essere ri-entrato\nminimo nodo versione 20 richiesto\naggiornamenti dipendeabot",
-        "es": "ems-esp: NUEVA cifra ems token - token necesita ser reiniciado\nversión mínima de nodo 20 necesaria\nactualizaciones de dependabot",
-        "pl": "ems- esp: new code ems token - token musi być ponownie wprowadzony\nwymagany minimalny węzeł w wersji 20\naktualizacje zależności",
-        "uk": "ems-esp: NEW шифрувати теги - токени повинні бути перероблені\nмінімальна версія вузла 20 необхідно\nоновлення залежності",
-        "zh-cn": "ems-esp: 新加密的 ems 令牌 - 令牌需要重新输入\n需要最小节点版本 20\n依赖更新"
       }
     },
     "titleLang": {

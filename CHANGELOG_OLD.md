@@ -1,4 +1,9 @@
 * older changes
+## 6.0.0 (2025-05-08)
+* ems-esp: NEW encrypt ems token - token needs to be re-entered
+* minimum node version 20 required
+* dependabot updates
+
 ## 5.1.2 (2024-12-31)
 * ems-esp: fix enum errors for setting "Value" 
 * dependabot updates
