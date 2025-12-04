@@ -46,7 +46,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* reduce read timeout error messages
+* ems-esp: reduce read timeout error messages
 
 ### 6.0.4 (2025-12-03)
 * ems-esp: return to version 6.0.2 for error handling
