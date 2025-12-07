@@ -644,7 +644,7 @@ async function init_statistics() {
             type: 'state',
             common: {
                 type: 'number',
-                name: 'ems read time for polling standard entities',
+                name: 'ems read time for polling',
                 unit: 'seconds',
                 role: 'value',
                 read: true,

@@ -46,7 +46,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* ems-esp: add polling time for custom entities within statistics
+* ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
 
 ### 6.0.5 (2025-12-04)
 * ems-esp: reduce read timeout error messages
