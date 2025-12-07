@@ -47,6 +47,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 -->
 ### **WORK IN PROGRESS**
 * ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
+* ems-esp: old dallas format parameter is now disabled -> now temperaturesensor is used
+* ems-esp: custom entities are now read by default - config parameter is not available anymore
 
 ### 6.0.5 (2025-12-04)
 * ems-esp: reduce read timeout error messages
