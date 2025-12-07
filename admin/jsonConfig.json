@@ -79,27 +79,10 @@
                     "lg": 2,
                     "xl": 2
                 },
-                "ems_dallas_old_format": {
-                    "type": "checkbox",
-                    "label": "ems_dallas_old_format",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 3,
-                    "lg": 2,
-                    "xl": 2
-                },
+                
                 "ems_analog": {
                     "type": "checkbox",
                     "label": "ems_analog",
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 3,
-                    "lg": 2,
-                    "xl": 2
-                },
-                "ems_custom_elements": {
-                    "type": "checkbox",
-                    "label": "ems_custom_elements",
                     "xs": 12,
                     "sm": 12,
                     "md": 3,
