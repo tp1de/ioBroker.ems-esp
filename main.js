@@ -736,9 +736,6 @@ async function init_statistics2() {
                 enable_state('heatSources.numberOfStarts', 86400, 60);
             }
 
-            //if (adapter.config.emsesp_active && adapter.config.km200_structure) enable_state("dhwCircuits.dhw1.wwstarts",86400,60);
-            //if (adapter.config.emsesp_active && adapter.config.km200_structure === false) enable_state("boiler.wwstarts",86400,60);
-
             if (adapter.config.emsesp_active && adapter.config.km200_structure) {
                 enable_state('heatSources.hs1.burngas', 86400, 15);
             }
