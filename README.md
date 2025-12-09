@@ -52,7 +52,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 7.0.0 (2025-12-09)
 * ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
 * ems-esp: All entity types are now read without being selected by checkboxes
 
@@ -71,12 +71,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 * dependabot updates
 * updating pdf docu in respect to energy statistics for ems-esp gateways
 * Migrate to NPM Trusted Publishing
-
-### 6.0.1 (2025-10-03)
-* dependabot updates 
-* eslint 9 migration
-* test and release with node 24.x
-* repository checker updates
 
 ## License
 MIT License

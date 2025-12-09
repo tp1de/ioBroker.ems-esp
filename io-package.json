@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "6.0.5",
+    "version": "7.0.0",
     "news": {
+      "7.0.0": {
+        "en": "ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!\nems-esp: All entity types are now read without being selected by checkboxes",
+        "de": "ems-esp: nacharbeiten der codierung --> diese adapterversion unterstützt nur firmware >= 3.7.2 !!!\nems-esp: Alle Entity-Typen werden jetzt gelesen, ohne durch Checkboxen ausgewählt zu werden",
+        "ru": "ems-esp: переработка кодирования -> эта адаптерная версия поддерживает только прошивку>= 3.7.2!!!\nэмс-эсп: Все типы объектов теперь читаются без выбора флажками",
+        "pt": "ems-esp: rework of coding --> esta versão do adaptador só suporta firmware >= 3.7.2 !!!\nems-esp: Todos os tipos de entidade agora são lidos sem serem selecionados por caixas de seleção",
+        "nl": "ems-esp: herbewerking van codering --> deze adapterversie ondersteunt alleen firmware 3.7.2 !!\nems-esp: Alle entiteittypen worden nu gelezen zonder geselecteerd te worden door selectievakjes",
+        "fr": "ems-esp: retravailler le codage --> cette version adaptateur ne prend en charge que le firmware >= 3.7.2 !!!\neMP: Tous les types d'entités sont maintenant lus sans être sélectionnés par des cases à cocher",
+        "it": "ems-esp: rework of coding --> questa versione adattatore supporta solo il firmware >= 3.7.2!!!\nems-esp: Tutti i tipi di entità sono ora letti senza essere selezionati dalle caselle di controllo",
+        "es": "ems-esp: rework of coding -- confía en esta versión de adaptador sólo admite firmware 3.7.2 !!!\nems-esp: Todos los tipos de entidad ahora se leen sin ser seleccionados por casillas de verificación",
+        "pl": "ems- esp: przerabianie kodowania -- > ta wersja adaptera obsługuje tylko oprogramowanie firmowe > = 3.7.2!\nems- esp: Wszystkie typy podmiotów są teraz odczytywane bez wybierania przez pola kontrolne",
+        "uk": "ems-esp: відновлення кодування --> цей варіант адаптера тільки підтримує прошивку >= 3.7.2!!!\nемс-есп: Всі типи суб'єктів тепер прочитаються без вибраних прапорців",
+        "zh-cn": "ems- esp: 重修编码 -- > 此适配器版本仅支持固件qq 3.7.2 开!\n内容: 现在所有实体类型都无需通过复选框来读取"
+      },
       "6.0.5": {
         "en": "ems-esp: reduce read timeout error messages",
         "de": "ems-esp: verringern sie die auslesezeit fehlermeldungen",
@@ -80,19 +93,6 @@
         "pl": "Migracja do NPM zaufanych Publishing",
         "uk": "Migrate до NPM Trusted Publishing",
         "zh-cn": "向国家预防机制过渡"
-      },
-      "6.0.1": {
-        "en": "dependabot updates \neslint 9 migration\ntest and release with node 24.x\nrepository checker updates",
-        "de": "aktualisierungen von abhängigkeiten\neslint 9 migration\ntest und release mit knoten 24.x\nrepository checker updates",
-        "ru": "обновления dependabot\nэслинт 9 миграция\nтестирование и выпуск с узлом 24.x\nрепозиторий checker updates",
-        "pt": "atualizações do dependentebot\neslint 9 migrações\nteste e libertação com o nó 24.x\natualizações do verificador de repositório",
-        "nl": "dependabot-updates\neslint 9 migratie\ntest en release met node 24.x\narchiefcontrole-updates",
-        "fr": "mises à jour de dermabot\neslint 9 migration\ntest et relâchement avec un nœud 24.x\nmises à jour du vérificateur du dépôt",
-        "it": "aggiornamenti dipendeabot\neslint 9 migrazione\ntest e rilascio con nodo 24.x\nrepository checker aggiornamenti",
-        "es": "actualizaciones de dependabot\neslint 9 migration\nprueba y liberación con nodo 24.x\nactualizaciones de chequeo de depósito",
-        "pl": "aktualizacje zależności\nmigracja\ntest i zwolnienie z węzłem 24.x\naktualizacje sprawdzacza repozytorium",
-        "uk": "оновлення залежності\neslint 9 міграції\nтест і реліз з вершиною 24.x\nоновлення репозиторій",
-        "zh-cn": "依赖更新\neslint 9 移徙\n测试和释放带节点的 24.x\n仓库检查器更新"
       }
     },
     "titleLang": {

@@ -1,4 +1,10 @@
 * older changes
+## 6.0.1 (2025-10-03)
+* dependabot updates 
+* eslint 9 migration
+* test and release with node 24.x
+* repository checker updates
+
 ## 6.0.0 (2025-05-08)
 * ems-esp: NEW encrypt ems token - token needs to be re-entered
 * minimum node version 20 required
