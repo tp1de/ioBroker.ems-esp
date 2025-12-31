@@ -75,7 +75,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ## License
 MIT License
 
-Copyright (c) 2025 Thomas Petrick (tp1de)
+Copyright (c) 2025-2026 Thomas Petrick (tp1de)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
