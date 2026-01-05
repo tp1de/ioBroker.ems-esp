@@ -52,7 +52,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 7.0.1 (2026-01-05)
 * dependabot updates
 
 ### 7.0.0 (2025-12-09)
@@ -68,12 +68,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 6.0.3 (2025-12-01)
 * dependabot updates 
 * update error message for ems-esp gateway
-
-### 6.0.2 (2025-11-01)
-* increase axios timeout for km200 reads
-* dependabot updates
-* updating pdf docu in respect to energy statistics for ems-esp gateways
-* Migrate to NPM Trusted Publishing
 
 ## License
 MIT License

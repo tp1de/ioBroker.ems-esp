@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.0",
+    "version": "7.0.1",
     "news": {
+      "7.0.1": {
+        "en": "dependabot updates",
+        "de": "aktualisierungen von abhängigkeiten",
+        "ru": "обновления dependabot",
+        "pt": "atualizações do dependentebot",
+        "nl": "dependabot-updates",
+        "fr": "mises à jour de dermabot",
+        "it": "aggiornamenti dipendeabot",
+        "es": "actualizaciones de dependabot",
+        "pl": "aktualizacje zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "依赖更新"
+      },
       "7.0.0": {
         "en": "ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!\nems-esp: All entity types are now read without being selected by checkboxes",
         "de": "ems-esp: nacharbeiten der codierung --> diese adapterversion unterstützt nur firmware >= 3.7.2 !!!\nems-esp: Alle Entity-Typen werden jetzt gelesen, ohne durch Checkboxen ausgewählt zu werden",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności\nMigracja do NPM zaufanych Publishing",
         "uk": "оновлення залежності\nMigrate до NPM Trusted Publishing",
         "zh-cn": "依赖更新\n向国家预防机制过渡"
-      },
-      "6.0.2-alpha.0": {
-        "en": "Migrate to NPM Trusted Publishing",
-        "de": "Migration auf NPM Trusted Publishing",
-        "ru": "Перейти в NPM Trusted Publishing",
-        "pt": "Migrar para publicação confiável NPM",
-        "nl": "Migreren naar NPM Trusted Publishing",
-        "fr": "Migrer vers NPM Trusted Publishing",
-        "it": "Migrare a NPM Trusted Publishing",
-        "es": "Migrar a NPM Trusted Publishing",
-        "pl": "Migracja do NPM zaufanych Publishing",
-        "uk": "Migrate до NPM Trusted Publishing",
-        "zh-cn": "向国家预防机制过渡"
       }
     },
     "titleLang": {

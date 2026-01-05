@@ -1,4 +1,10 @@
 * older changes
+## 6.0.2 (2025-11-01)
+* increase axios timeout for km200 reads
+* dependabot updates
+* updating pdf docu in respect to energy statistics for ems-esp gateways
+* Migrate to NPM Trusted Publishing
+
 ## 6.0.1 (2025-10-03)
 * dependabot updates 
 * eslint 9 migration
