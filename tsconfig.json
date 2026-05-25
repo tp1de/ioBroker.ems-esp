@@ -14,6 +14,7 @@
 		"esModuleInterop": true,
 		// this is necessary for the automatic typing of the adapter config
 		"resolveJsonModule": true,
+		"ignoreDeprecations": "6.0",
 
 		// Set this to false if you want to disable the very strict rules (not recommended)
 		"strict": true,
