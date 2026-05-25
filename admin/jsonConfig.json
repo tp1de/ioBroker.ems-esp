@@ -33,7 +33,7 @@
                 "ems_polling": {
                     "type": "number",
                     "label": "ems_polling",
-                    "default": "60",
+                    "default": 60,
                     "min": 15,
                     "max": 600,
                     "xs": 12,
@@ -93,7 +93,7 @@
                     "newLine": true,
                     "type": "number",
                     "label": "ems_nominalpower",
-                    "default": "60",
+                    "default": 60,
                     "min": 1,
                     "max": 65535,
                     "xs": 12,
