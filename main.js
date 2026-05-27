@@ -628,7 +628,7 @@ async function heatdemand() {
 
 async function init_statistics() {
     try {
-        await adapter.etObjectNotExistsAsync('statistics.created', {
+        await adapter.setObjectNotExistsAsync('statistics.created', {
             type: 'state',
             common: {
                 type: 'boolean',
@@ -640,7 +640,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.ems-read', {
+        adapter.setObjectNotExistsAsync('statistics.ems-read', {
             type: 'state',
             common: {
                 type: 'number',
@@ -652,7 +652,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.km200-read', {
+        adapter.setObjectNotExistsAsync('statistics.km200-read', {
             type: 'state',
             common: {
                 type: 'number',
@@ -664,7 +664,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.boiler-on-1h', {
+        adapter.setObjectNotExistsAsync('statistics.boiler-on-1h', {
             type: 'state',
             common: {
                 type: 'number',
@@ -676,7 +676,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.boiler-starts-1h', {
+        adapter.setObjectNotExistsAsync('statistics.boiler-starts-1h', {
             type: 'state',
             common: {
                 type: 'number',
@@ -688,7 +688,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.boiler-starts-24h', {
+        adapter.setObjectNotExistsAsync('statistics.boiler-starts-24h', {
             type: 'state',
             common: {
                 type: 'number',
@@ -700,7 +700,7 @@ async function init_statistics() {
             },
             native: {},
         });
-        adapter.setObject('statistics.efficiency', {
+        adapter.setObjectNotExistsAsync('statistics.efficiency', {
             type: 'state',
             common: { type: 'number', name: 'boiler efficiency', unit: '%', role: 'value', read: true, write: true },
             native: {},
