@@ -218,7 +218,7 @@
         },
         "tab-parameter": {
             "type": "panel",
-            "label": "Parameter",
+            "label": "parameter",
             "items": {
                 "recordings_format": {
                     "newLine": true,
@@ -697,7 +697,7 @@
                     "md": 12,
                     "lg": 12,
                     "xl": 12,
-                    "label": "Devices",
+                    "label": "devices",
                     "style": {
                         "fontSize": 8
                     },
