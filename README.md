@@ -52,7 +52,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 7.0.2 (2026-05-30)
 * dependabot updates
 * fixing issues detected by repository checker
 
@@ -69,13 +69,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 6.0.4 (2025-12-03)
 * ems-esp: return to version 6.0.2 for error handling
 
-### 6.0.3 (2025-12-01)
-* dependabot updates 
-* update error message for ems-esp gateway
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
-
-## License
+[Older changelogs can be found there](CHANGELOG_OLD.md)## License
 MIT License
 
 Copyright (c) 2025-2026 Thomas Petrick (tp1de)

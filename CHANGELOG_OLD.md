@@ -1,4 +1,9 @@
 * older changes
+## 6.0.3 (2025-12-01)
+* dependabot updates 
+* update error message for ems-esp gateway
+
+
 ## 6.0.2 (2025-11-01)
 * increase axios timeout for km200 reads
 * dependabot updates

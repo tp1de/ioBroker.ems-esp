@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.1",
+    "version": "7.0.2",
     "news": {
+      "7.0.2": {
+        "en": "dependabot updates\nfixing issues detected by repository checker",
+        "de": "aktualisierungen von abhängigkeiten\nproblembehebung durch repository checker",
+        "ru": "обновления dependabot\nисправление проблем, обнаруженных проверкой репозитория",
+        "pt": "atualizações do dependentebot\ncorrigir problemas detectados pelo verificador de repositório",
+        "nl": "dependabot-updates\nvastleggen van problemen gedetecteerd door repository checker",
+        "fr": "mises à jour de dermabot\ncorrection des problèmes détectés par le contrôleur du dépôt",
+        "it": "aggiornamenti dipendeabot\nrisolvere i problemi rilevati da repository checker",
+        "es": "actualizaciones de dependabot\nsolucionar problemas detectados por el repositorio",
+        "pl": "aktualizacje zależności\nproblemy z ustawianiem wykrywane przez sprawdzacz repozytorium",
+        "uk": "оновлення залежності\nусунення проблем, виявлених репозиторійним чекером",
+        "zh-cn": "依赖更新\n修复仓库检查器检测到的问题"
+      },
       "7.0.1": {
         "en": "dependabot updates",
         "de": "aktualisierungen von abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "zwiększenie czasu axios dla km200 czytników\naktualizacje zależności\naktualizacja pdf docu w odniesieniu do statystyk energetycznych dla bramek ems- esp\nMigracja do NPM zaufanych Publishing",
         "uk": "збільшити час axios для км200 читати\nоновлення залежності\nоновлення pdf docu щодо енергетичної статистики для емс-esp шлюзів\nMigrate до NPM Trusted Publishing",
         "zh-cn": "km200 的加速度超时\n依赖更新\n更新 pdf docu 关于 ems-esp 网关的能源统计\n向国家预防机制过渡"
-      },
-      "6.0.2-alpha.1": {
-        "en": "dependabot updates\nMigrate to NPM Trusted Publishing",
-        "de": "aktualisierungen von abhängigkeiten\nMigration auf NPM Trusted Publishing",
-        "ru": "обновления dependabot\nПерейти в NPM Trusted Publishing",
-        "pt": "atualizações do dependentebot\nMigrar para publicação confiável NPM",
-        "nl": "dependabot-updates\nMigreren naar NPM Trusted Publishing",
-        "fr": "mises à jour de dermabot\nMigrer vers NPM Trusted Publishing",
-        "it": "aggiornamenti dipendeabot\nMigrare a NPM Trusted Publishing",
-        "es": "actualizaciones de dependabot\nMigrar a NPM Trusted Publishing",
-        "pl": "aktualizacje zależności\nMigracja do NPM zaufanych Publishing",
-        "uk": "оновлення залежності\nMigrate до NPM Trusted Publishing",
-        "zh-cn": "依赖更新\n向国家预防机制过渡"
       }
     },
     "titleLang": {
