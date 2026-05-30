@@ -16,19 +16,6 @@
         "uk": "оновлення залежності",
         "zh-cn": "依赖更新"
       },
-      "7.0.2": {
-        "en": "dependabot updates\nfixing issues detected by repository checker",
-        "de": "aktualisierungen von abhängigkeiten\nproblembehebung durch repository checker",
-        "ru": "обновления dependabot\nисправление проблем, обнаруженных проверкой репозитория",
-        "pt": "atualizações do dependentebot\ncorrigir problemas detectados pelo verificador de repositório",
-        "nl": "dependabot-updates\nvastleggen van problemen gedetecteerd door repository checker",
-        "fr": "mises à jour de dermabot\ncorrection des problèmes détectés par le contrôleur du dépôt",
-        "it": "aggiornamenti dipendeabot\nrisolvere i problemi rilevati da repository checker",
-        "es": "actualizaciones de dependabot\nsolucionar problemas detectados por el repositorio",
-        "pl": "aktualizacje zależności\nproblemy z ustawianiem wykrywane przez sprawdzacz repozytorium",
-        "uk": "оновлення залежності\nусунення проблем, виявлених репозиторійним чекером",
-        "zh-cn": "依赖更新\n修复仓库检查器检测到的问题"
-      },
       "7.0.1": {
         "en": "dependabot updates",
         "de": "aktualisierungen von abhängigkeiten",
