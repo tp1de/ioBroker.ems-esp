@@ -35,8 +35,8 @@
 		"inlineSourceMap": false
 	},
 	"include": [
-		"src/**/*.ts",
-		"test/**/*.ts"
+		"src/**/*",
+		"test/**/*"
 	],
 	"exclude": [
 		"build/**",

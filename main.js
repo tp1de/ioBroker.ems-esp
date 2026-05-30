@@ -211,7 +211,7 @@ async function main() {
     }
 
     if (!unloaded) {
-        adapterIntervals.status = setInterval(function () {
+        adapterIntervals.status = adapter.setInterval(function () {
             info();
         }, 10000);
     } // 10 sec
@@ -241,14 +241,14 @@ async function main() {
         if (db != '') {
             await init_statistics2();
             //read_statistics();
-            adapterIntervals.stat = setInterval(function () {
+            adapterIntervals.stat = adapter.setInterval(function () {
                 read_statistics();
             }, 300000); // 300 sec
         }
     }
 
     if (adapter.config.eff_active && !unloaded) {
-        adapterIntervals.eff = setInterval(function () {
+        adapterIntervals.eff = adapter.setInterval(function () {
             read_efficiency();
         }, 60000);
     } // 60 sec
@@ -257,7 +257,7 @@ async function main() {
         await init_controls();
         await heatdemand();
         adapter.log.info('heat demand processing: polling every minute');
-        adapterIntervals.heatdemand = setInterval(function () {
+        adapterIntervals.heatdemand = adapter.setInterval(function () {
             heatdemand();
         }, 60000); // 60 sec
     }
