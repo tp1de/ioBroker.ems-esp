@@ -515,34 +515,10 @@
                             "sort": false,
                             "default": "hc1",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": "hc1",
-                                        "de": "HK1"
-                                    },
-                                    "value": "hc1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc2",
-                                        "de": "HK2"
-                                    },
-                                    "value": "hc2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc3",
-                                        "de": "HK3"
-                                    },
-                                    "value": "hc3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc4",
-                                        "de": "HK4"
-                                    },
-                                    "value": "hc4"
-                                }
+                                { "label": "hc1", "value": "hc1" },
+                                { "label": "hc2", "value": "hc2" },
+                                { "label": "hc3", "value": "hc3" },
+                                { "label": "hc4", "value": "hc4" }                                    
                             ]
                         },
                         {
@@ -554,36 +530,11 @@
                             "sort": false,
                             "default": "1",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": "1"
-                                    },
-                                    "value": "1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "2"
-                                    },
-                                    "value": "2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "3"
-                                    },
-                                    "value": "3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "4"
-                                    },
-                                    "value": "4"
-                                },
-                                {
-                                    "label": {
-                                        "en": "5"
-                                    },
-                                    "value": "5"
-                                }
+                                { "label": "1", "value": "1" },
+                                { "label": "2", "value": "2" },
+                                { "label": "3", "value": "3" },
+                                { "label": "4", "value": "4" },
+                                { "label": "5", "value": "5" }
                             ]
                         }
                     ]
@@ -607,34 +558,10 @@
                             "sort": true,
                             "default": "hc1",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": "hc1",
-                                        "de": "HK1"
-                                    },
-                                    "value": "hc1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc2",
-                                        "de": "HK2"
-                                    },
-                                    "value": "hc2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc3",
-                                        "de": "HK3"
-                                    },
-                                    "value": "hc3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hc4",
-                                        "de": "HK4"
-                                    },
-                                    "value": "hc4"
-                                }
+                                { "label": "hc1", "value": "hc1" },
+                                { "label": "hc2", "value": "hc2" },
+                                { "label": "hc3", "value": "hc3" },
+                                { "label": "hc4", "value": "hc4" } 
                             ]
                         },
                         {
@@ -645,55 +572,15 @@
                             "filter": false,
                             "sort": false,
                             "default": "1",
-                            "options": [
-                                {
-                                    "label": {
-                                        "en": "1"
-                                    },
-                                    "value": "1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "2"
-                                    },
-                                    "value": "2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "3"
-                                    },
-                                    "value": "3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "4"
-                                    },
-                                    "value": "4"
-                                },
-                                {
-                                    "label": {
-                                        "en": "5"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "label": {
-                                        "en": "6"
-                                    },
-                                    "value": "6"
-                                },
-                                {
-                                    "label": {
-                                        "en": "7"
-                                    },
-                                    "value": "7"
-                                },
-                                {
-                                    "label": {
-                                        "en": "8"
-                                    },
-                                    "value": "8"
-                                }
+                            "options": [                             
+                                { "label": "1", "value": "1" },
+                                { "label": "2", "value": "2" },
+                                { "label": "3", "value": "3" },
+                                { "label": "4", "value": "4" },
+                                { "label": "5", "value": "5" },
+                                { "label": "6", "value": "6" },
+                                { "label": "7", "value": "7" },
+                                { "label": "8", "value": "8" }                               
                             ]
                         },
                         {
@@ -705,54 +592,14 @@
                             "sort": false,
                             "default": "1",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": "1"
-                                    },
-                                    "value": "1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "2"
-                                    },
-                                    "value": "2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "3"
-                                    },
-                                    "value": "3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "4"
-                                    },
-                                    "value": "4"
-                                },
-                                {
-                                    "label": {
-                                        "en": "5"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "label": {
-                                        "en": "6"
-                                    },
-                                    "value": "6"
-                                },
-                                {
-                                    "label": {
-                                        "en": "7"
-                                    },
-                                    "value": "7"
-                                },
-                                {
-                                    "label": {
-                                        "en": "8"
-                                    },
-                                    "value": "8"
-                                }
+                                { "label": "1", "value": "1" },
+                                { "label": "2", "value": "2" },
+                                { "label": "3", "value": "3" },
+                                { "label": "4", "value": "4" },
+                                { "label": "5", "value": "5" },
+                                { "label": "6", "value": "6" },
+                                { "label": "7", "value": "7" },
+                                { "label": "8", "value": "8" }
                             ]
                         },
                         {
@@ -913,60 +760,15 @@
                             "sort": false,
                             "default": "",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": ""
-                                    },
-                                    "value": ""
-                                },
-                                {
-                                    "label": {
-                                        "en": "0"
-                                    },
-                                    "value": "0"
-                                },
-                                {
-                                    "label": {
-                                        "en": "1"
-                                    },
-                                    "value": "1"
-                                },
-                                {
-                                    "label": {
-                                        "en": "2"
-                                    },
-                                    "value": "2"
-                                },
-                                {
-                                    "label": {
-                                        "en": "3"
-                                    },
-                                    "value": "3"
-                                },
-                                {
-                                    "label": {
-                                        "en": "4"
-                                    },
-                                    "value": "4"
-                                },
-                                {
-                                    "label": {
-                                        "en": "5"
-                                    },
-                                    "value": "5"
-                                },
-                                {
-                                    "label": {
-                                        "en": "6"
-                                    },
-                                    "value": "6"
-                                },
-                                {
-                                    "label": {
-                                        "en": "7"
-                                    },
-                                    "value": "7"
-                                }
+                                { "label": "", "value": "" },
+                                { "label": "0", "value": "0" },
+                                { "label": "1", "value": "1" },
+                                { "label": "2", "value": "2" },
+                                { "label": "3", "value": "3" },
+                                { "label": "4", "value": "4" },
+                                { "label": "5", "value": "5" },
+                                { "label": "6", "value": "6" },
+                                { "label": "7", "value": "7" }
                             ]
                         },
                         {
@@ -1006,31 +808,11 @@
                             "sort": false,
                             "default": "number",
                             "options": [
-                                {
-                                    "label": {
-                                        "en": "number/enum"
-                                    },
-                                    "value": "number"
-                                },
-                                {
-                                    "label": {
-                                        "en": "hex"
-                                    },
-                                    "value": "hex"
-                                },
-                                {
-                                    "label": {
-                                        "en": "string"
-                                    },
-                                    "value": "string"
-                                },
-                                {
-                                    "label": {
-                                        "en": "holidayModes"
-                                    },
-                                    "value": "holidayModes"
-                                }
-                            ]
+                                { "label": "number/enum", "value": "number" },
+                                { "label": "hex", "value": "hex" },
+                                { "label": "string", "value": "string" },
+                                { "label": "holidayModes", "value": "holidayModes" }
+                              ]
                         },
                         {
                             "type": "text",
