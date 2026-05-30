@@ -26,9 +26,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: ioBroker/testing-action-check@v2.0.0
+      - uses: ioBroker/testing-action-check@v1
         with:
-          node-version: '24.x'
+          node-version: '22.x'
           # Uncomment the following line if your adapter cannot be installed using 'npm ci'
           # install-command: 'npm install'
           lint: true
