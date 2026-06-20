@@ -53,7 +53,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* fixing issues detected by repository checker
+* fixing issue on main
 
 ### 7.0.3 (2026-05-30)
 * dependabot updates

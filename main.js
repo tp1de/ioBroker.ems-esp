@@ -408,7 +408,7 @@ async function init_controls() {
 }
 
 async function control_state(state, type, name, value, write) {
-    await adapter.etObjectNotExistsAsync(`controls.${state}`, {
+    await adapter.setObjectNotExistsAsync(`controls.${state}`, {
         type: 'state',
         common: { type: type, name: name, role: 'value', read: true, write: write },
         native: {},
