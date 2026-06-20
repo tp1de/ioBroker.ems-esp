@@ -52,7 +52,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 7.0.5 (2026-06-20)
 * Fixing errors while restarting adapter
 
 ### 7.0.4 (2026-06-20)
@@ -68,10 +68,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 7.0.0 (2025-12-09)
 * ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
 * ems-esp: All entity types are now read without being selected by checkboxes
-
-### 6.0.5 (2025-12-04)
-* ems-esp: reduce read timeout error messages
-
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

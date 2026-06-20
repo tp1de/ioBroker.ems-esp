@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.4",
+    "version": "7.0.5",
     "news": {
+      "7.0.5": {
+        "en": "Fixing errors while restarting adapter",
+        "de": "Behebung von Fehlern beim Neustart des Adapters",
+        "ru": "Исправление ошибок при перезапуске адаптера",
+        "pt": "Corrigindo erros ao reiniciar o adaptador",
+        "nl": "Fouten corrigeren tijdens het opnieuw opstarten van de adapter",
+        "fr": "Correction des erreurs lors du redémarrage de l'adaptateur",
+        "it": "Risoluzione degli errori durante il riavvio dell'adattatore",
+        "es": "Corrección de errores al reiniciar el adaptador",
+        "pl": "Naprawianie błędów podczas ponownego uruchamiania adaptera",
+        "uk": "Виправлення помилок під час перезапуску адаптера",
+        "zh-cn": "修复重启适配器时出现的错误"
+      },
       "7.0.4": {
         "en": "fixing issue on main",
         "de": "Problembehebung auf der Hauptseite",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: powrót do wersji 6.0.2 dla obsługi błędów",
         "uk": "ems-esp: повернення до версії 6.0.2 для обробки помилок",
         "zh-cn": "ems- esp: 返回6. 0.2版本处理错误"
-      },
-      "6.0.3": {
-        "en": "dependabot updates \nupdate error message for ems-esp gateway",
-        "de": "aktualisierungen von abhängigkeiten\naktualisierung der fehlermeldung für ems-esp gateway",
-        "ru": "обновления dependabot\nобновление сообщения об ошибке для ems-esp gateway",
-        "pt": "atualizações do dependentebot\natualizar mensagem de erro para o gateway ems-esp",
-        "nl": "dependabot-updates\nupdate foutmelding voor ems-esp gateway",
-        "fr": "mises à jour de dermabot\nmettre à jour le message d'erreur pour la passerelle ems-esp",
-        "it": "aggiornamenti dipendeabot\nmessaggio di errore di aggiornamento per ems-esp gateway",
-        "es": "actualizaciones de dependabot\nmensaje de error de actualización para la puerta de entrada ems-esp",
-        "pl": "aktualizacje zależności\naktualizacja komunikatu błędu dla bramki ems- esp",
-        "uk": "оновлення залежності\nоновлення повідомлення про помилку для ems-esp",
-        "zh-cn": "依赖更新\n更新 ems- esp 网关的错误消息"
       }
     },
     "titleLang": {
