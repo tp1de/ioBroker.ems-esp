@@ -52,6 +52,9 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Fixing errors while restarting adapter
+
 ### 7.0.4 (2026-06-20)
 * fixing issue on main
 
