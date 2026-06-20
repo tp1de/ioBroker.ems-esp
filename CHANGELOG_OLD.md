@@ -1,8 +1,11 @@
 * older changes
+## 7.0.0 (2025-12-09)
+* ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
+* ems-esp: All entity types are now read without being selected by checkboxes
+
+
 ## 6.0.5 (2025-12-04)
 * ems-esp: reduce read timeout error messages
-
-
 
 ## 6.0.4 (2025-12-03)
 * ems-esp: return to version 6.0.2 for error handling

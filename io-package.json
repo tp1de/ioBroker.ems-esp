@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.5",
+    "version": "7.0.6",
     "news": {
+      "7.0.6": {
+        "en": "dependabot updates \nfixing errors while restarting adapter",
+        "de": "Dependabot-Updates\nFehlerbehebung beim Neustart des Adapters",
+        "ru": "обновления dependabot\nИсправление ошибок при перезапуске адаптера",
+        "pt": "atualizações do dependabot\nCorrigindo erros ao reiniciar o adaptador",
+        "nl": "dependabot-updates\nFouten corrigeren tijdens het opnieuw opstarten van de adapter",
+        "fr": "mises à jour de dependabot\nCorrection des erreurs lors du redémarrage de l'adaptateur",
+        "it": "aggiornamenti di Dependabot\ncorrezione degli errori durante il riavvio dell'adattatore",
+        "es": "Actualizaciones de Dependabot\nCorrección de errores al reiniciar el adaptador",
+        "pl": "aktualizacje dependabot\nnaprawianie błędów podczas ponownego uruchamiania adaptera",
+        "uk": "оновлення dependabot\nвиправлення помилок під час перезапуску адаптера",
+        "zh-cn": "Dependabot 更新\n修复重启适配器时出现的错误"
+      },
       "7.0.5": {
         "en": "Fixing errors while restarting adapter",
         "de": "Behebung von Fehlern beim Neustart des Adapters",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: zmniejszyć wyświetlanie komunikatów błędów timeout",
         "uk": "ems-esp: зменшити повідомлення про помилку часу читання",
         "zh-cn": "ems- ep: 减少读取超时错误消息"
-      },
-      "6.0.4": {
-        "en": "ems-esp: return to version 6.0.2 for error handling",
-        "de": "ems-esp: zurück zur version 6.0.2 für fehlerbehandlung",
-        "ru": "ems-esp: возврат к версии 6.0.2 для обработки ошибок",
-        "pt": "ems-esp: retornar à versão 6.0.2 para manipulação de erros",
-        "nl": "ems-esp: terug naar versie 6.0.2 voor foutafhandeling",
-        "fr": "ems-esp: retour à la version 6.0.2 pour la gestion des erreurs",
-        "it": "ems-esp: ritorno alla versione 6.0.2 per la gestione degli errori",
-        "es": "ems-esp: volver a la versión 6.0.2 para el manejo de errores",
-        "pl": "ems- esp: powrót do wersji 6.0.2 dla obsługi błędów",
-        "uk": "ems-esp: повернення до версії 6.0.2 для обробки помилок",
-        "zh-cn": "ems- esp: 返回6. 0.2版本处理错误"
       }
     },
     "titleLang": {
