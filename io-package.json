@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.3",
+    "version": "7.0.4",
     "news": {
+      "7.0.4": {
+        "en": "fixing issue on main",
+        "de": "Problembehebung auf der Hauptseite",
+        "ru": "Исправление проблемы в главном меню.",
+        "pt": "Corrigindo problema no servidor principal",
+        "nl": "Probleem oplossen op de hoofdpagina",
+        "fr": "Correction d'un problème sur le serveur principal",
+        "it": "risoluzione del problema sul principale",
+        "es": "Solucionando problema en principal",
+        "pl": "naprawianie problemu na stronie głównej",
+        "uk": "виправлення проблеми на головному",
+        "zh-cn": "修复主控端问题"
+      },
       "7.0.3": {
         "en": "dependabot updates",
         "de": "aktualisierungen von abhängigkeiten",

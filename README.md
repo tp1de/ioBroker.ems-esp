@@ -52,7 +52,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 7.0.4 (2026-06-20)
 * fixing issue on main
 
 ### 7.0.3 (2026-05-30)
@@ -68,6 +68,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 6.0.5 (2025-12-04)
 * ems-esp: reduce read timeout error messages
+
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
@@ -93,4 +94,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 *OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE."
-
