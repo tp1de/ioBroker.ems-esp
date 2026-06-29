@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.6",
+    "version": "7.0.7",
     "news": {
+      "7.0.7": {
+        "en": "->",
+        "de": "->",
+        "ru": "->",
+        "pt": "->",
+        "nl": "->",
+        "fr": "->",
+        "it": "->",
+        "es": "->",
+        "pl": "->",
+        "uk": "->",
+        "zh-cn": "->"
+      },
       "7.0.6": {
         "en": "dependabot updates \nfixing errors while restarting adapter",
         "de": "Dependabot-Updates\nFehlerbehebung beim Neustart des Adapters",
