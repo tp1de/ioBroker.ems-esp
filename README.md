@@ -39,10 +39,6 @@ English documentation: https://github.com/tp1de/ioBroker.ems-esp/blob/main/doc/e
 
 German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-esp-f%C3%BCr-bosch-heizungen
 
-
-* New version for ems-esp module: All entity types are now read without being selected by checkboxes:
-  temperature- and analogsensor, custom and scheduler entities 
-
 * The adapterversion >= 7.0.0 supports only ems-esp firmware versions >= 7.2.0  
   
 ## Changelog
@@ -51,7 +47,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### **WORK IN PROGRESS**
 -->
 
-### **WORK IN PROGRESS**
+### WORK IN PROGRESS
 * dependabot updates & fixing issues detected by repository checker
 
 ### 7.0.6 (2026-06-20)
