@@ -45,8 +45,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 * The adapterversion >= 7.0.0 supports only ems-esp firmware versions >= 7.2.0  
   
-
-
 ## Changelog
 <!--
 	Placeholder for the next version (at the beginning of the line):
