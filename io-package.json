@@ -16,19 +16,6 @@
         "uk": "оновлення dependabot\nвиправлення помилок під час перезапуску адаптера",
         "zh-cn": "Dependabot 更新\n修复重启适配器时出现的错误"
       },
-      "7.0.5": {
-        "en": "Fixing errors while restarting adapter",
-        "de": "Behebung von Fehlern beim Neustart des Adapters",
-        "ru": "Исправление ошибок при перезапуске адаптера",
-        "pt": "Corrigindo erros ao reiniciar o adaptador",
-        "nl": "Fouten corrigeren tijdens het opnieuw opstarten van de adapter",
-        "fr": "Correction des erreurs lors du redémarrage de l'adaptateur",
-        "it": "Risoluzione degli errori durante il riavvio dell'adattatore",
-        "es": "Corrección de errores al reiniciar el adaptador",
-        "pl": "Naprawianie błędów podczas ponownego uruchamiania adaptera",
-        "uk": "Виправлення помилок під час перезапуску адаптера",
-        "zh-cn": "修复重启适配器时出现的错误"
-      },
       "7.0.4": {
         "en": "fixing issue on main",
         "de": "Problembehebung auf der Hauptseite",
