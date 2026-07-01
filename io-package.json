@@ -4,17 +4,17 @@
     "version": "7.0.7",
     "news": {
       "7.0.7": {
-        "en": "->",
-        "de": "->",
-        "ru": "->",
-        "pt": "->",
-        "nl": "->",
-        "fr": "->",
-        "it": "->",
-        "es": "->",
-        "pl": "->",
-        "uk": "->",
-        "zh-cn": "->"
+        "en": "dependabot updates",
+        "de": "Aktualisierungen von Abhängigkeiten",
+        "ru": "обновления dependabot",
+        "pt": "atualizações do dependentebot",
+        "nl": "dependabot-updates",
+        "fr": "mises à jour de dermabot",
+        "it": "aggiornamenti dipendeabot",
+        "es": "actualizaciones de dependabot",
+        "pl": "aktualizacje zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "依赖更新"
       },
       "7.0.6": {
         "en": "dependabot updates \nfixing errors while restarting adapter",

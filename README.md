@@ -47,12 +47,13 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 7.0.7 (2026-06-29)
 -->
 
+### 7.0.7 (2026-06-29)
+* dependabot updates
+* fixing issues detected by repository checker
+
 ### 7.0.6 (2026-06-20)
 * dependabot updates 
 * fixing errors while restarting adapter
-
-### 7.0.5 (2026-06-20)
-* fixing issue
 
 ### 7.0.4 (2026-06-20)
 * fixing issue on main
