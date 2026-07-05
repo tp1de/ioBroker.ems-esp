@@ -46,9 +46,8 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 	Placeholder for the next version (at the beginning of the line):
 ### **WORK IN PROGRESS**
 -->
-
-## **WORK IN PROGRESS**
-* dependabot updates & fixing issues detected by repository checker
+### 7.0.8 (2026-07-05)
+* fixing issues detected by repository checker
 
 ### 7.0.7 (2026-06-29)
 * dependabot updates
@@ -64,6 +63,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 ### 7.0.3 (2026-05-30)
 * dependabot updates
 * fixing issues detected by repository checker
+
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

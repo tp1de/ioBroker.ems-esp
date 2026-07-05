@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "ems-esp",
-    "version": "7.0.7",
+    "version": "7.0.8",
     "news": {
+      "7.0.8": {
+       "en": "dependabot updates",
+        "de": "Aktualisierungen von Abhängigkeiten",
+        "ru": "обновления dependabot",
+        "pt": "atualizações do dependentebot",
+        "nl": "dependabot-updates",
+        "fr": "mises à jour de dermabot",
+        "it": "aggiornamenti dipendeabot",
+        "es": "actualizaciones de dependabot",
+        "pl": "aktualizacje zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "依赖更新"
+      },
       "7.0.7": {
         "en": "dependabot updates",
         "de": "Aktualisierungen von Abhängigkeiten",
@@ -80,19 +93,6 @@
         "pl": "ems- esp: przerabianie kodowania -- > ta wersja adaptera obsługuje tylko oprogramowanie firmowe > = 3.7.2!\nems- esp: Wszystkie typy podmiotów są teraz odczytywane bez wybierania przez pola kontrolne",
         "uk": "ems-esp: відновлення кодування --> цей варіант адаптера тільки підтримує прошивку >= 3.7.2!!!\nемс-есп: Всі типи суб'єктів тепер прочитаються без вибраних прапорців",
         "zh-cn": "ems- esp: 重修编码 -- > 此适配器版本仅支持固件qq 3.7.2 开!\n内容: 现在所有实体类型都无需通过复选框来读取"
-      },
-      "6.0.5": {
-        "en": "ems-esp: reduce read timeout error messages",
-        "de": "ems-esp: verringern sie die auslesezeit fehlermeldungen",
-        "ru": "ems-esp: сокращение времени чтения сообщений об ошибках",
-        "pt": "ems-esp: reduzir as mensagens de erro de tempo- limite de leitura",
-        "nl": "ems-esp: lees timeout foutmeldingen verminderen",
-        "fr": "ems-esp: réduire les messages d'erreur de temps de lecture",
-        "it": "ems-esp: ridurre i messaggi di errore di timeout di lettura",
-        "es": "ems-esp: reducir el tiempo de lectura mensajes de error",
-        "pl": "ems- esp: zmniejszyć wyświetlanie komunikatów błędów timeout",
-        "uk": "ems-esp: зменшити повідомлення про помилку часу читання",
-        "zh-cn": "ems- ep: 减少读取超时错误消息"
       }
     },
     "titleLang": {

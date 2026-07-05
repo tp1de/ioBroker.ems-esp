@@ -2,7 +2,6 @@
 ## 7.0.1 (2026-01-05)
 * dependabot updates
 
-
 ## 7.0.0 (2025-12-09)
 * ems-esp: rework of coding --> this adapter version only supports firmware >= 3.7.2 !!!
 * ems-esp: All entity types are now read without being selected by checkboxes
