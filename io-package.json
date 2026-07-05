@@ -4,7 +4,7 @@
     "version": "7.0.8",
     "news": {
       "7.0.8": {
-       "en": "dependabot updates",
+        "en": "dependabot updates",
         "de": "Aktualisierungen von Abhängigkeiten",
         "ru": "обновления dependabot",
         "pt": "atualizações do dependentebot",
