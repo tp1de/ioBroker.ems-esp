@@ -46,10 +46,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-### **WORK IN PROGRESS**
--->
+
 ### **WORK IN PROGRESS**
 * Update for ems-esp 3.10.x
 * dependabot updates
