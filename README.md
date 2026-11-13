@@ -46,8 +46,7 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 
 ## Changelog
-
-### **WORK IN PROGRESS**
+### 7.0.9 (2026-11-13)
 * Update for ems-esp 3.10.x
 * dependabot updates
 
@@ -64,11 +63,6 @@ German ioBroker forum: https://forum.iobroker.net/topic/45862/neuer-adapter-ems-
 
 ### 7.0.4 (2026-06-20)
 * fixing issue on main
-
-### 7.0.3 (2026-05-30)
-* dependabot updates
-* fixing issues detected by repository checker
-
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

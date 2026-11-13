@@ -1,4 +1,10 @@
 * older changes
+## 7.0.3 (2026-05-30)
+* dependabot updates
+* fixing issues detected by repository checker
+
+
+
 ## 7.0.1 (2026-01-05)
 * dependabot updates
 
